@@ -1,0 +1,67 @@
+{
+  "source_checks": [
+    {
+      "path": "scripts\\diagnostics\\refine_rejected_saddle.py",
+      "passed": true
+    },
+    {
+      "path": "src\\mechbridge\\reaction_network.py",
+      "passed": true
+    },
+    {
+      "path": "src\\mechbridge\\aimnet_backend.py",
+      "passed": true
+    },
+    {
+      "path": "src\\mechbridge\\physics.py",
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "src/mechbridge/adapters.py": "505f378eb853a7e0e4f6dcd646928b12dfee8c14d3e5c92d1956103191a8caeb",
+    "src/mechbridge/aimnet_backend.py": "d089b646c02eba073f564bda6e28612f4a0f189bd5d64029b00f16fe76a024b3",
+    "src/mechbridge/backends.py": "6a16a66c92dfacb114604a7263e8204fd59ad0b657a5179b45ca07b87c15511b",
+    "src/mechbridge/chemistry.py": "6c9064ba98a7d9470497d9c3043be2a06e0fc8ad2b2e474f40327be4407de50a",
+    "src/mechbridge/cli.py": "906dd86d63bf0bb0f2d9570f4122c83fea107c85293e52e6c8ed83c478dec1b6",
+    "src/mechbridge/electronic.py": "6742c424fbd22b8c41ad1bbda7cdd587a901647f7db75f6abb0b954f28be8c3e",
+    "src/mechbridge/event_graph.py": "a6aa19af062e92efd7b0c27df703f17811a1a00081bdcd22f0063cd6df3cd0be",
+    "src/mechbridge/io.py": "acc946b7f2bbf17a4b1af423860f8d7fdfba25e038afa9927374951b05f0e11e",
+    "src/mechbridge/kinetics.py": "a05904ed22f4cf38b79ec7c3cf06a2976687c34b19cbf56d174e3ac52ba7c48f",
+    "src/mechbridge/local_patterns.py": "0590b9c89ac74f52c16284d89ee5b6417d8dd18dc33acf6b4af579cd09522a08",
+    "src/mechbridge/molecular_visuals.py": "130f373e2d84397cc9935cad5984636825efecf59a22c0d8433e4126e6cdb7ea",
+    "src/mechbridge/pairing.py": "2fbe801e759327e643a0418b7556447c355feb71071586d85f62c77dfbcaecb6",
+    "src/mechbridge/physics.py": "69b9a4aa8a87965df3514b0356a33ed71f15fee427e58af6d50e340c2a33df99",
+    "src/mechbridge/reaction_network.py": "e875b9290c59463f6e0c70e03004a5d34f5d540afb1257982a316daf557d71a6",
+    "src/mechbridge/search_seeds.py": "a6d3fa705f69b37a06bc08ccbcfb2d7fc55acf58a592e63f7773c22338c4ffb4",
+    "src/mechbridge/symbolic_library.py": "29e3f8935a512669bef179e57c93955ea61e9392ae2cd9a2400d65d0d6807255",
+    "src/mechbridge/training_data.py": "50378b2dba756b78e93ec115987c7fa869856346f3a37eb2bb4a2a45948e73c2",
+    "src/mechbridge/verification.py": "ee716013518b6adc974e7ecb0c0e7c1a4918f7f1fe7bb19038f428af08e8c70a",
+    "src/mechbridge/__init__.py": "298dea1f0a6bedb9b6098b9c0dfeafe45155ac3e900b7294f6316eac157b6c3e",
+    "scripts/diagnostics/audit_saddle_modes.py": "2019e47149a453bf50a72410674861d2a5a8dbdeb6996abd458604b0289ce20d",
+    "scripts/diagnostics/refine_rejected_saddle.py": "e9cc3e9f13ad806da6612a5a0695132f7a01d658ae181f8b2a81356033f4a4d0",
+    "scripts/exploration/summarize_local_transfer.py": "7a3a063627a8f6784d78a28ac68f2049fd14672670210935fdb95f0a10bb93d4"
+  },
+  "tests": {
+    "windows": {
+      "passed": 29,
+      "skipped": 1,
+      "reason": "PySCF only available in WSL"
+    },
+    "WSL": {
+      "passed": 30,
+      "skipped": 0
+    }
+  },
+  "artifact_checks": {
+    "propanal": 30,
+    "acetone": 34,
+    "continuation": 23
+  },
+  "artifact_checks_passed": true,
+  "reference_TS_or_product_geometry_used": false,
+  "model_weights_updated": false,
+  "pending_computations": [],
+  "DFT_status": "physical_event_verified",
+  "DFT_verified_events": 1,
+  "total_MLIP_evaluations": 41938
+}

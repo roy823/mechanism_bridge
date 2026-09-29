@@ -1,0 +1,667 @@
+{
+  "rows": [
+    {
+      "start": "propanal",
+      "strategy": "geometry",
+      "status": "completed",
+      "evaluations": 4746,
+      "initialization_evaluations": 145,
+      "attempts": 6,
+      "root_chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "not_index_one": 4,
+        "calculation_failed": 1,
+        "same_basin_return": 1
+      },
+      "transferred_attempts": 0,
+      "file": "reports/local_transfer_v3/search_refined/propanal_s17/propanal/geometry/network.json"
+    },
+    {
+      "start": "propanal",
+      "strategy": "center_random",
+      "status": "completed",
+      "evaluations": 5279,
+      "initialization_evaluations": 145,
+      "attempts": 6,
+      "root_chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "not_index_one": 6
+      },
+      "transferred_attempts": 0,
+      "file": "reports/local_transfer_v3/search_refined/propanal_s17/propanal/center_random/network.json"
+    },
+    {
+      "start": "propanal",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "evaluations": 5299,
+      "initialization_evaluations": 145,
+      "attempts": 6,
+      "root_chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 1,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "not_index_one": 4,
+        "new_connection": 1,
+        "unresolved_minimum": 1
+      },
+      "transferred_attempts": 6,
+      "file": "reports/local_transfer_v3/search_refined/propanal_s17/propanal/bond_edits/network.json"
+    },
+    {
+      "start": "propanal",
+      "strategy": "arrows",
+      "status": "completed",
+      "evaluations": 5248,
+      "initialization_evaluations": 145,
+      "attempts": 6,
+      "root_chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "not_index_one": 4,
+        "unresolved_minimum": 2
+      },
+      "transferred_attempts": 6,
+      "file": "reports/local_transfer_v3/search_refined/propanal_s17/propanal/arrows/network.json"
+    },
+    {
+      "start": "acetone",
+      "strategy": "geometry",
+      "status": "completed",
+      "evaluations": 5002,
+      "initialization_evaluations": 192,
+      "attempts": 6,
+      "root_chemical_pairs": [
+        [
+          "CC(C)=O",
+          "CCC=O"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 1,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "unresolved_minimum": 1,
+        "not_index_one": 3,
+        "calculation_failed": 1,
+        "new_connection": 1
+      },
+      "transferred_attempts": 0,
+      "file": "reports/local_transfer_v3/search_curvature/acetone_s17/acetone/geometry/network.json"
+    },
+    {
+      "start": "acetone",
+      "strategy": "center_random",
+      "status": "completed",
+      "evaluations": 5079,
+      "initialization_evaluations": 192,
+      "attempts": 6,
+      "root_chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "not_index_one": 6
+      },
+      "transferred_attempts": 0,
+      "file": "reports/local_transfer_v3/search_curvature/acetone_s17/acetone/center_random/network.json"
+    },
+    {
+      "start": "acetone",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "evaluations": 3844,
+      "initialization_evaluations": 192,
+      "attempts": 6,
+      "root_chemical_pairs": [
+        [
+          "C=C(C)O",
+          "CC(C)=O"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 2,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "not_index_one": 2,
+        "unresolved_minimum": 1,
+        "calculation_failed": 1,
+        "new_connection": 2
+      },
+      "transferred_attempts": 6,
+      "file": "reports/local_transfer_v3/search_curvature/acetone_s17/acetone/bond_edits/network.json"
+    },
+    {
+      "start": "acetone",
+      "strategy": "arrows",
+      "status": "completed",
+      "evaluations": 4232,
+      "initialization_evaluations": 192,
+      "attempts": 6,
+      "root_chemical_pairs": [
+        [
+          "C=C(C)O",
+          "CC(C)=O"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 2,
+      "continued_from_new_node": false,
+      "continued_from_new_species": false,
+      "outcomes": {
+        "not_index_one": 3,
+        "calculation_failed": 1,
+        "new_connection": 2
+      },
+      "transferred_attempts": 6,
+      "file": "reports/local_transfer_v3/search_curvature/acetone_s17/acetone/arrows/network.json"
+    }
+  ],
+  "DFT": [
+    {
+      "event_id": "acetone_arrows_edge0_DFT",
+      "status": "physical_event_verified",
+      "method": "wb97x",
+      "basis": "6-31g(d)",
+      "environment": "gas_phase",
+      "gradients": 214,
+      "seconds": 2166.4083585739136,
+      "physical_event_verified": true,
+      "expected_endpoint_match": true,
+      "endpoint_graphs": [
+        "CC(C)=O",
+        "C=C(C)O"
+      ],
+      "barriers_eV": [
+        3.2030376179418454,
+        2.432796020252681
+      ],
+      "file": "reports/local_transfer_v3/qc/acetone/verification.json",
+      "TS_RMSD_A": 0.019983410385584984
+    }
+  ],
+  "total_evaluations": 38729,
+  "total_attempts": 48,
+  "evidence": "MLIP mode-displacement descents; DFT evidence applies only to listed QC events",
+  "family_holdout": false,
+  "trained_model": false,
+  "coverage_supported": 16,
+  "coverage_panel_size": 22,
+  "evaluations_including_initial_diagnostics": 39613,
+  "historical_coverage_comparison": {
+    "archive": "reports\\validation_v2\\search\\MR_8342_1_s17\\source_snapshot.zip",
+    "source_sha256": "2d6a68f102ba804ba2fa2ee334295e6a5c7889feb70eaed0aa88da0162564b51",
+    "historical_audit": {
+      "source_records": 1926,
+      "outside_pilot_domain": 1850,
+      "replay_valid_records": 67,
+      "replay_or_parse_rejected": 8,
+      "no_distinct_chemical_graph": 1
+    },
+    "rows": [
+      {
+        "smiles": "CC=O",
+        "historical_exact_proposals": 3,
+        "current_local_proposals": 3
+      },
+      {
+        "smiles": "CCC=O",
+        "historical_exact_proposals": 3,
+        "current_local_proposals": 5
+      },
+      {
+        "smiles": "CCCC=O",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 5
+      },
+      {
+        "smiles": "CC(C)=O",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 6
+      },
+      {
+        "smiles": "CCC(C)=O",
+        "historical_exact_proposals": 1,
+        "current_local_proposals": 8
+      },
+      {
+        "smiles": "CC(=O)CC(C)=O",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 16
+      },
+      {
+        "smiles": "O=CCO",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 2
+      },
+      {
+        "smiles": "O=CC=O",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 2
+      },
+      {
+        "smiles": "CC(=O)O",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 3
+      },
+      {
+        "smiles": "CCC(=O)O",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 4
+      },
+      {
+        "smiles": "CC(N)=O",
+        "historical_exact_proposals": 3,
+        "current_local_proposals": 5
+      },
+      {
+        "smiles": "CCC(N)=O",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 6
+      },
+      {
+        "smiles": "CC#N",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 0
+      },
+      {
+        "smiles": "CCC#N",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 0
+      },
+      {
+        "smiles": "C[N+](=O)[O-]",
+        "historical_exact_proposals": 3,
+        "current_local_proposals": 3
+      },
+      {
+        "smiles": "CC[N+](=O)[O-]",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 2
+      },
+      {
+        "smiles": "O=C1CCC1",
+        "historical_exact_proposals": 6,
+        "current_local_proposals": 10
+      },
+      {
+        "smiles": "O=C1CCCC1",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 10
+      },
+      {
+        "smiles": "CO",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 0
+      },
+      {
+        "smiles": "CCO",
+        "historical_exact_proposals": 3,
+        "current_local_proposals": 0
+      },
+      {
+        "smiles": "CCC",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 0
+      },
+      {
+        "smiles": "O=Cc1ccccc1",
+        "historical_exact_proposals": 0,
+        "current_local_proposals": 0
+      }
+    ],
+    "historical_supported": 7,
+    "current_supported": 16,
+    "caveat": "Descriptive engineering comparison; current replay also has stricter source occupancy checks, not a pure localization ablation"
+  },
+  "posthoc_continuation": {
+    "status": "completed",
+    "evaluations": 1495,
+    "attempts": 3,
+    "source_graph": "C=C(C)O",
+    "edges": [],
+    "outcomes": {
+      "not_index_one": 3
+    },
+    "file": "reports/local_transfer_v3/continuation/acetone_enol_observed/arrows/network.json",
+    "included_in_primary_comparison": false
+  },
+  "evaluations_including_continuation": 41108,
+  "posthoc_saddle_modes": {
+    "evaluations": 186,
+    "cases": [
+      {
+        "source": "reports\\local_transfer_v3\\continuation\\acetone_enol_observed\\arrows\\attempt_000",
+        "point": {
+          "force_max_eV_A": 0.02493734285235405,
+          "force_converged": true,
+          "energy_eV": 1.6435562458304478,
+          "frequencies_cm-1": [
+            -2112.8223110026843,
+            -79.34886113395682,
+            347.0765349984674,
+            413.08165193493,
+            562.2905168065454,
+            640.7666435288419,
+            753.975806503423,
+            869.1118148458702,
+            925.5540105997983,
+            967.3924354688801,
+            1014.6719381763363,
+            1080.5648673575206,
+            1320.5205103262776,
+            1378.141989827879,
+            1427.0225247043168,
+            1429.5855300986734,
+            1444.0807458622373,
+            1502.7813685278222,
+            1792.634208030956,
+            3045.5542429115003,
+            3085.002560511204,
+            3104.3028288705204,
+            3167.986237886059,
+            3200.2078784627406
+          ],
+          "imaginary_count": 2,
+          "imaginary_threshold_cm-1": 30.0,
+          "rigid_mode_count": 6
+        },
+        "negative_modes": [
+          {
+            "frequency_cm": -2112.8223110026843,
+            "seed_mode_absolute_overlap": 0.8341794088011004,
+            "top_displaced_coordinate_indices": [
+              5,
+              4,
+              6,
+              1
+            ],
+            "squared_cartesian_displacement_fractions": [
+              0.0026152319599937243,
+              0.0035334100074185435,
+              2.841907691411075e-05,
+              0.001704226187446672,
+              0.040892906722307526,
+              0.9352844147463438,
+              0.015833483672142195,
+              3.199704637054232e-05,
+              4.61825317639471e-05,
+              2.972804929898773e-05
+            ]
+          },
+          {
+            "frequency_cm": -79.34886113395682,
+            "seed_mode_absolute_overlap": 0.004437277338417599,
+            "top_displaced_coordinate_indices": [
+              7,
+              8,
+              9,
+              6
+            ],
+            "squared_cartesian_displacement_fractions": [
+              0.002726999985669873,
+              0.0005411100067016754,
+              4.719837278678356e-05,
+              0.001967512457427966,
+              0.008784900920121132,
+              0.0005340333156480089,
+              0.00927362893410108,
+              0.38307209324191344,
+              0.3498650670502801,
+              0.2431874557153498
+            ]
+          }
+        ]
+      },
+      {
+        "source": "reports\\local_transfer_v3\\continuation\\acetone_enol_observed\\arrows\\attempt_001",
+        "point": {
+          "force_max_eV_A": 0.025577513501048088,
+          "force_converged": true,
+          "energy_eV": 1.6434157198769235,
+          "frequencies_cm-1": [
+            -2109.737750913657,
+            -66.41262945564915,
+            346.87144900346107,
+            409.9024188025024,
+            560.6905182674234,
+            640.6707667477455,
+            750.74640145937,
+            868.7162903093351,
+            926.2477761212227,
+            968.3577063696064,
+            1014.2253080663863,
+            1080.1214753611791,
+            1322.4269042258975,
+            1378.7849896446314,
+            1426.905839769681,
+            1430.3034918444512,
+            1444.7404689018445,
+            1502.00139120913,
+            1796.1764374735842,
+            3044.5667156043205,
+            3098.0809998354503,
+            3103.526272903003,
+            3161.493659205019,
+            3209.142853084516
+          ],
+          "imaginary_count": 2,
+          "imaginary_threshold_cm-1": 30.0,
+          "rigid_mode_count": 6
+        },
+        "negative_modes": [
+          {
+            "frequency_cm": -2109.737750913657,
+            "seed_mode_absolute_overlap": 0.8245145882201628,
+            "top_displaced_coordinate_indices": [
+              5,
+              4,
+              6,
+              1
+            ],
+            "squared_cartesian_displacement_fractions": [
+              0.0026320718764094595,
+              0.003559843713568239,
+              2.9569631892667464e-05,
+              0.0017045085745512286,
+              0.041282724601050265,
+              0.9347928217733641,
+              0.015881356005969967,
+              3.194505637795974e-05,
+              5.20611290377116e-05,
+              3.309763777846534e-05
+            ]
+          },
+          {
+            "frequency_cm": -66.41262945564915,
+            "seed_mode_absolute_overlap": 0.008533018429703684,
+            "top_displaced_coordinate_indices": [
+              7,
+              8,
+              9,
+              4
+            ],
+            "squared_cartesian_displacement_fractions": [
+              0.0027332328901040395,
+              0.000583953549546626,
+              4.640344107213338e-05,
+              0.0019499349696369783,
+              0.009263222890094734,
+              0.0005836647953392942,
+              0.009201841094500708,
+              0.3832729302082446,
+              0.3516479914640366,
+              0.24071682469742428
+            ]
+          }
+        ]
+      },
+      {
+        "source": "reports\\local_transfer_v3\\continuation\\acetone_enol_observed\\arrows\\attempt_002",
+        "point": {
+          "force_max_eV_A": 0.028673080727458,
+          "force_converged": true,
+          "energy_eV": 5.280357087990628,
+          "frequencies_cm-1": [
+            -648.6400677817948,
+            -302.05214615682604,
+            149.6927414687289,
+            264.2111301873353,
+            404.5855508497407,
+            443.5857412605069,
+            584.0145183401376,
+            682.3364236387056,
+            791.81792628542,
+            835.2338892893429,
+            860.6412440031982,
+            944.3674762122042,
+            1157.1347038812985,
+            1318.2223185971043,
+            1458.0237754351344,
+            1471.11037620179,
+            1955.3625595765648,
+            2319.572885531369,
+            2567.403820443248,
+            2799.939442623103,
+            3073.3793977062082,
+            3109.07071309758,
+            3153.1634360813614,
+            4095.960410888916
+          ],
+          "imaginary_count": 2,
+          "imaginary_threshold_cm-1": 30.0,
+          "rigid_mode_count": 6
+        },
+        "negative_modes": [
+          {
+            "frequency_cm": -648.6400677817948,
+            "seed_mode_absolute_overlap": 0.2971687434143988,
+            "top_displaced_coordinate_indices": [
+              4,
+              6,
+              0,
+              8
+            ],
+            "squared_cartesian_displacement_fractions": [
+              0.07826196345643976,
+              0.050188557774838514,
+              0.035466778176130004,
+              0.002300515570491126,
+              0.3912443203790458,
+              0.023920262878789907,
+              0.21889563520476946,
+              0.07647922441304544,
+              0.07797365753101383,
+              0.04526908461543617
+            ]
+          },
+          {
+            "frequency_cm": -302.05214615682604,
+            "seed_mode_absolute_overlap": 0.0006719781988083292,
+            "top_displaced_coordinate_indices": [
+              4,
+              6,
+              5,
+              8
+            ],
+            "squared_cartesian_displacement_fractions": [
+              1.9854744137383986e-05,
+              0.001754024838714726,
+              0.0005713606494310542,
+              3.33787950398642e-05,
+              0.6411393186740206,
+              0.08292940463320539,
+              0.2630754060193444,
+              0.0047055871264138046,
+              0.004796522833380689,
+              0.0009751416863119509
+            ]
+          }
+        ]
+      }
+    ],
+    "interpretation": "Post-hoc mode characterization only. Frequency/overlap alone does not establish a torsional or reaction assignment.",
+    "changes_to_primary_outcomes": false
+  },
+  "all_MLIP_evaluations": 41938,
+  "posthoc_tighter_refinement": {
+    "status": "validated_descents",
+    "evaluations": 644,
+    "ts": {
+      "force_max_eV_A": 0.004605453927069902,
+      "force_converged": true,
+      "energy_eV": 1.6401922517994167,
+      "frequencies_cm-1": [
+        -2093.143790340634,
+        100.55333403198162,
+        354.31061640464935,
+        417.62465556464497,
+        564.7242399688087,
+        647.941510242172,
+        753.8875032080338,
+        867.0658373258844,
+        926.4823475795256,
+        972.9150524309066,
+        1018.2725019001837,
+        1086.9895918324482,
+        1319.5306110475872,
+        1379.5555182407268,
+        1415.5893429077623,
+        1439.3240624434852,
+        1444.8732177627378,
+        1505.2875940088163,
+        1800.1782512837033,
+        3035.298465074798,
+        3087.9189647719813,
+        3100.5473583490143,
+        3153.9766693919914,
+        3210.1071668207696
+      ],
+      "imaginary_count": 1,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6
+    },
+    "endpoint_graphs": [
+      "CC(C)=O",
+      "C=C(C)O"
+    ],
+    "source_connection": {
+      "source": "reports\\local_transfer_v3\\continuation\\acetone_enol_observed\\arrows\\network.json",
+      "source_sha256": "99b9550cf3fb10c13bb302ec56f75370c222b0e35ff2c31524dfe61daa17c3cc",
+      "endpoints": [
+        {
+          "graph": "CC(C)=O",
+          "source_geometry_RMSD_A": null,
+          "source_energy_difference_eV": 0.4762477062627495,
+          "matches_source_minimum": false
+        },
+        {
+          "graph": "C=C(C)O",
+          "source_geometry_RMSD_A": 0.0032387968417320486,
+          "source_energy_difference_eV": 3.283388299912815e-06,
+          "matches_source_minimum": true
+        }
+      ],
+      "source_connected": true,
+      "DFT_verified": false,
+      "interpretation": "Tighter-tolerance post-hoc continuation of a known reversible pair; no new reaction family"
+    },
+    "included_in_primary_comparison": false
+  }
+}

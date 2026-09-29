@@ -10,12 +10,14 @@
 
 - **已经运行：** RGD1 起始构型、SynEPD 箭头回放、预训练 AIMNet2-rxn、Dimer、双侧下降、实际端点网络与三维可视化。
 - **验证 v2：** 位移幅度统一、反应中心控制、随机重复、扩展起点及独立 DFT/IRC。
+- **局部迁移 v3：** 局部价态/电荷 SMARTS、初始电子源占据检查、异步距离与角度 seed、seed 处的内坐标初始方向；实际输出见 [v3 报告](reports/local_transfer_v3/RESULTS_zh.md)。
 - **尚未实现：** 训练好的逆向箭头模型、独立审核的大规模箭头配对集、FlowER/RitS/React-OT 接入。
 
 | 结果 | 入口 |
 |---|---|
 | 网络探索 v1：三起点、99 次尝试 | [报告](reports/network_exploration_v1/RESULTS_zh.md)、[分子视图](reports/network_exploration_v1/molecules/index.html) |
 | 验证 v2 | [固定方案](docs/VALIDATION_V2_zh.md)、[实际结果](reports/validation_v2/RESULTS_zh.md) |
+| 局部迁移 v3：丙醛与丙酮，48 次主对照及单独续探诊断 | [实施说明](docs/LOCAL_TRANSFER_V3_zh.md)、[结果与 DFT 证据](reports/local_transfer_v3/RESULTS_zh.md)、[真实分子视图](reports/local_transfer_v3/search_curvature/acetone_s17/molecules/index.html) |
 | 历史 RF、DFT 和 IBO 可行性试验 | [历史结果](FEASIBILITY_RESULTS_zh.md) |
 
 v1 中符号组优于当时的随机几何基线，但位移幅度未统一，且完整箭头尚无稳定超越净变键的证据。v2 专门检验这些限制。乙醛与乙烯醇属于同一反应家族，不算独立样本。
@@ -80,7 +82,7 @@ Linux/WSL 使用 `.venv-qc` 和 `requirements-qc.txt`。当前探索为 CPU 上�
 独立 DFT/IRC（WSL 内）：
 
 ```bash
-.venv-qc/bin/python scripts/qc/verify_network_connection.py --run reports/network_exploration_v1 --start MR_8342_1 --strategy arrows --edge 0 --outdir reports/new_dft_verification
+.venv-qc/bin/python scripts/qc/verify_network_connection.py --run reports/network_exploration_v1 --start MR_8342_1 --strategy arrows --edge 0 --outdir reports/new_dft_verification --selection "One predefined representative acetaldehyde connection"
 ```
 
 ## 证据等级
@@ -93,6 +95,6 @@ Linux/WSL 使用 `.venv-qc` 和 `requirements-qc.txt`。当前探索为 CPU 上�
 
 由 A 提出的种子若连接 B/C，只登记 B/C。失败、未收敛、符号库不覆盖与意外有效连接各自记录。电子守恒不能代替机理准确率。
 
-首轮限 CHNO、净中性闭壳层；不覆盖溶液、自由基和电子态交叉。AIMNet2-rxn 预训练包含 RGD1，当前试验不证明未见化学泛化。符号库使用完整体系匹配，覆盖不到的新物种会停止符号分支。
+首轮限 CHNO、净中性闭壳层；不覆盖溶液、自由基和电子态交叉。AIMNet2-rxn 预训练包含 RGD1，当前试验不证明未见化学泛化。当前符号库使用局部电荷/价态模式，排除芳香活动中心与初始电子源不满足的表达；覆盖不到的新物种会停止符号分支。
 
 更多资料：[探索方法](docs/GPA_REACTION_EXPLORATION_zh.md)、[历史复现](docs/FEASIBILITY_RUN_zh.md)、[文献重评](docs/LITERATURE_REASSESSMENT_2026-09-29_zh.md)、[TS 到机理方案](docs/TS_TO_MECHANISM_WORKFLOW_zh.md)。

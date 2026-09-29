@@ -1,0 +1,7959 @@
+{
+  "library_policy": "local_one_heavy_shell_charge_valence_preserving_arrows_v3",
+  "library_audit": {
+    "source_records": 1926,
+    "outside_pilot_domain": 1850,
+    "replay_valid_records": 48,
+    "replay_or_parse_rejected": 27,
+    "unsupported_local_directions": 11,
+    "no_distinct_chemical_graph": 1
+  },
+  "library_sha256": "84b3d907cc1595269e34ba34be0163c4863f4314f646cd768b44967648210a29",
+  "compiled_patterns": 85,
+  "source_graphs": 92,
+  "panel": [
+    {
+      "smiles": "CC=O",
+      "source_graph_present": true,
+      "proposals": 3,
+      "distinct_products": 1,
+      "transferred_proposals": 0,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                3
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                3
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": false,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                4
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": false,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                5
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": false,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            5
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CCC=O",
+      "source_graph_present": true,
+      "proposals": 5,
+      "distinct_products": 3,
+      "transferred_proposals": 2,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                7
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                7
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                7
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                7
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            2,
+            1,
+            7
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                8
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            2,
+            1,
+            8
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1511:forward",
+          "name": "Decarbonylation of aldehydes under ionic conditions",
+          "arrows": [
+            {
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                1,
+                9
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                9
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 3.0
+            },
+            {
+              "atoms": [
+                2,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "CC.[C-]#[O+]",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": false,
+          "pattern_smarts": "[#6&+0&A&v4](-[#6&+0&A&v4])-[#6&+0&A&v4](=[#8&+0&A&v2])-[#1&+0&A&v1]",
+          "matched_atoms": [
+            1,
+            0,
+            2,
+            3,
+            9
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                1,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                7,
+                1
+              ],
+              "sink": [
+                7,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                7
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                7
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1CO1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": false,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            7,
+            2,
+            1,
+            0,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                1,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                8,
+                1
+              ],
+              "sink": [
+                8,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1CO1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": false,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            8,
+            2,
+            1,
+            0,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CCCC=O",
+      "source_graph_present": false,
+      "proposals": 5,
+      "distinct_products": 3,
+      "transferred_proposals": 5,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                10
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                10
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                3
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CCC=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            3,
+            2,
+            10
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                11
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                11
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                3
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CCC=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            3,
+            2,
+            11
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1511:forward",
+          "name": "Decarbonylation of aldehydes under ionic conditions",
+          "arrows": [
+            {
+              "source": [
+                2,
+                3
+              ],
+              "sink": [
+                2,
+                12
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                12
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                3,
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                12
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 2.0,
+              "after": 3.0
+            },
+            {
+              "atoms": [
+                3,
+                12
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "CCC.[C-]#[O+]",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#6&+0&A&v4](-[#6&+0&A&v4])-[#6&+0&A&v4](=[#8&+0&A&v2])-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            3,
+            4,
+            12
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                2,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                10,
+                2
+              ],
+              "sink": [
+                10,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                3
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CCC1CO1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            10,
+            3,
+            2,
+            1,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                2,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                11,
+                2
+              ],
+              "sink": [
+                11,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                3
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CCC1CO1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            11,
+            3,
+            2,
+            1,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CC(C)=O",
+      "source_graph_present": false,
+      "proposals": 6,
+      "distinct_products": 1,
+      "transferred_proposals": 6,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                4
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                5
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            0,
+            5
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                6
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            0,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                7
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                7
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                7
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                7
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            2,
+            7
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                8
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            2,
+            8
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                9
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                9
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            2,
+            9
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CCC(C)=O",
+      "source_graph_present": true,
+      "proposals": 8,
+      "distinct_products": 4,
+      "transferred_proposals": 7,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                8
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            2,
+            1,
+            8
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                9
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                9
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            2,
+            1,
+            9
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                10
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                10
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            2,
+            3,
+            10
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                11
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                11
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            2,
+            3,
+            11
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                12
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                12
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                12
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                12
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            2,
+            3,
+            12
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                1,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                8,
+                1
+              ],
+              "sink": [
+                8,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1OC1C",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            8,
+            2,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                1,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                9,
+                1
+              ],
+              "sink": [
+                9,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1OC1C",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            9,
+            2,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1693:reverse",
+          "name": "Acid-catalyzed epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                4
+              ],
+              "sink": [
+                1,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                0,
+                2
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            }
+          ],
+          "predicted_graph": "CC1(C)CO1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC(C)=O",
+          "transferred": false,
+          "pattern_smarts": "[#6&+0&A&v4]-[#6&+0&A&v4](-[#6&+0&A&v4]-[#6&+0&A&v4])=[#8&+0&A&v2]",
+          "matched_atoms": [
+            3,
+            2,
+            0,
+            1,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CC(=O)CC(C)=O",
+      "source_graph_present": false,
+      "proposals": 16,
+      "distinct_products": 4,
+      "transferred_proposals": 16,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                7
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                7
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                7
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                7
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC(C)=O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            7
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                8
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC(C)=O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            8
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                9
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                9
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC(C)=O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            9
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                10
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                10
+              ],
+              "sink": [
+                3,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "CC(=O)C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            3,
+            10
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                11
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                11
+              ],
+              "sink": [
+                3,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "CC(=O)C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            3,
+            11
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                6
+              ],
+              "sink": [
+                6,
+                10
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                10
+              ],
+              "sink": [
+                3,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                6,
+                4
+              ],
+              "sink": [
+                6
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                3,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                6,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC(=O)C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            6,
+            4,
+            3,
+            10
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                6
+              ],
+              "sink": [
+                6,
+                11
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                11
+              ],
+              "sink": [
+                3,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                6,
+                4
+              ],
+              "sink": [
+                6
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                3,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                6,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC(=O)C=C(C)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            6,
+            4,
+            3,
+            11
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                6
+              ],
+              "sink": [
+                6,
+                12
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                5,
+                12
+              ],
+              "sink": [
+                5,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                6,
+                4
+              ],
+              "sink": [
+                6
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                4,
+                5
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                5,
+                12
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                6,
+                12
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC(C)=O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            6,
+            4,
+            5,
+            12
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                6
+              ],
+              "sink": [
+                6,
+                13
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                5,
+                13
+              ],
+              "sink": [
+                5,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                6,
+                4
+              ],
+              "sink": [
+                6
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                4,
+                5
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                5,
+                13
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                6,
+                13
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC(C)=O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            6,
+            4,
+            5,
+            13
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                6
+              ],
+              "sink": [
+                6,
+                14
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                5,
+                14
+              ],
+              "sink": [
+                5,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                6,
+                4
+              ],
+              "sink": [
+                6
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                4,
+                5
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                5,
+                14
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                6,
+                14
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)CC(C)=O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            6,
+            4,
+            5,
+            14
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                10,
+                3
+              ],
+              "sink": [
+                10,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                1,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "CC(=O)C1OC1C",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            10,
+            1,
+            3,
+            4,
+            2
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                6
+              ],
+              "sink": [
+                3,
+                6
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                10,
+                3
+              ],
+              "sink": [
+                10,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                6,
+                4
+              ],
+              "sink": [
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                3,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC(=O)C1OC1C",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            10,
+            4,
+            3,
+            1,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                11,
+                3
+              ],
+              "sink": [
+                11,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                1,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "CC(=O)C1OC1C",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            11,
+            1,
+            3,
+            4,
+            2
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                6
+              ],
+              "sink": [
+                3,
+                6
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                11,
+                3
+              ],
+              "sink": [
+                11,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                6,
+                4
+              ],
+              "sink": [
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                3,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC(=O)C1OC1C",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            11,
+            4,
+            3,
+            1,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1693:reverse",
+          "name": "Acid-catalyzed epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4,
+                3
+              ],
+              "sink": [
+                4,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "CC(=O)C1(C)CO1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC(C)=O",
+          "transferred": true,
+          "pattern_smarts": "[#6&+0&A&v4]-[#6&+0&A&v4](-[#6&+0&A&v4]-[#6&+0&A&v4])=[#8&+0&A&v2]",
+          "matched_atoms": [
+            0,
+            1,
+            4,
+            3,
+            2
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1693:reverse",
+          "name": "Acid-catalyzed epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                1,
+                3
+              ],
+              "sink": [
+                1,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                6
+              ],
+              "sink": [
+                3,
+                6
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                4,
+                6
+              ],
+              "before": 2.0,
+              "after": 1.0
+            }
+          ],
+          "predicted_graph": "CC(=O)C1(C)CO1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC(C)=O",
+          "transferred": true,
+          "pattern_smarts": "[#6&+0&A&v4]-[#6&+0&A&v4](-[#6&+0&A&v4]-[#6&+0&A&v4])=[#8&+0&A&v2]",
+          "matched_atoms": [
+            5,
+            4,
+            1,
+            3,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "O=CCO",
+      "source_graph_present": false,
+      "proposals": 2,
+      "distinct_products": 1,
+      "transferred_proposals": 2,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                5
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            2,
+            5
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                6
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            2,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "O=CC=O",
+      "source_graph_present": false,
+      "proposals": 2,
+      "distinct_products": 1,
+      "transferred_proposals": 2,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                5
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "O=C=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            2,
+            5
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                4
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "O=C=CO",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            2,
+            1,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CC(=O)O",
+      "source_graph_present": false,
+      "proposals": 3,
+      "distinct_products": 1,
+      "transferred_proposals": 3,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                4
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                5
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            5
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                6
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                1
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(O)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            2,
+            1,
+            0,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CCC(=O)O",
+      "source_graph_present": false,
+      "proposals": 4,
+      "distinct_products": 2,
+      "transferred_proposals": 4,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                8
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=C(O)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            2,
+            1,
+            8
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                9
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                9
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=C(O)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            2,
+            1,
+            9
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                1,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                8,
+                1
+              ],
+              "sink": [
+                8,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1OC1O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            8,
+            2,
+            1,
+            0,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                1,
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                9,
+                1
+              ],
+              "sink": [
+                9,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1OC1O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            9,
+            2,
+            1,
+            0,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CC(N)=O",
+      "source_graph_present": true,
+      "proposals": 5,
+      "distinct_products": 2,
+      "transferred_proposals": 3,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                4
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                5
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            0,
+            5
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                6
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=C(N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            3,
+            1,
+            0,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:22:forward",
+          "name": "Amide–imidic acid tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            },
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                7
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                7
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                7
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                7
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC(=N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC(N)=O",
+          "transferred": false,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            3,
+            1,
+            2,
+            7,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:22:forward",
+          "name": "Amide–imidic acid tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            },
+            {
+              "source": [
+                3,
+                1
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            },
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                8
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                3,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC(=N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC(N)=O",
+          "transferred": false,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            3,
+            1,
+            2,
+            8,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CCC(N)=O",
+      "source_graph_present": false,
+      "proposals": 6,
+      "distinct_products": 3,
+      "transferred_proposals": 6,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                8
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=C(N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            2,
+            1,
+            8
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                9
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                9
+              ],
+              "sink": [
+                1,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                4,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=C(N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            4,
+            2,
+            1,
+            9
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:22:forward",
+          "name": "Amide–imidic acid tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            },
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                10
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                10
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CCC(=N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC(N)=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            4,
+            2,
+            3,
+            10,
+            1
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:22:forward",
+          "name": "Amide–imidic acid tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                2
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            },
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                4,
+                11
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                3,
+                11
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                11
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                4,
+                11
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CCC(=N)O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC(N)=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            4,
+            2,
+            3,
+            11,
+            1
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                1,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                8,
+                1
+              ],
+              "sink": [
+                8,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1OC1N",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            8,
+            2,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4
+              ],
+              "sink": [
+                1,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                9,
+                1
+              ],
+              "sink": [
+                9,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                2
+              ],
+              "sink": [
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC1OC1N",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            9,
+            2,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CC#N",
+      "source_graph_present": false,
+      "proposals": 0,
+      "distinct_products": 0,
+      "transferred_proposals": 0,
+      "actions": []
+    },
+    {
+      "smiles": "CCC#N",
+      "source_graph_present": false,
+      "proposals": 0,
+      "distinct_products": 0,
+      "transferred_proposals": 0,
+      "actions": []
+    },
+    {
+      "smiles": "C[N+](=O)[O-]",
+      "source_graph_present": true,
+      "proposals": 3,
+      "distinct_products": 1,
+      "transferred_proposals": 0,
+      "actions": [
+        {
+          "template_id": "SynEPD:20:forward",
+          "name": "Nitro–aci-nitro tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                4
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                4
+              ],
+              "sink": [
+                1,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=[N+]([O-])O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "C[N+](=O)[O-]",
+          "transferred": false,
+          "pattern_smarts": "[#7&+&A&v4](=[#8&+0&A&v2])(-[#6&+0&A&v4]-[#1&+0&A&v1])-[#8&-&A&v1]",
+          "matched_atoms": [
+            1,
+            2,
+            0,
+            4,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:20:forward",
+          "name": "Nitro–aci-nitro tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                5
+              ],
+              "sink": [
+                1,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=[N+]([O-])O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "C[N+](=O)[O-]",
+          "transferred": false,
+          "pattern_smarts": "[#7&+&A&v4](=[#8&+0&A&v2])(-[#6&+0&A&v4]-[#1&+0&A&v1])-[#8&-&A&v1]",
+          "matched_atoms": [
+            1,
+            2,
+            0,
+            5,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:20:forward",
+          "name": "Nitro–aci-nitro tautomerization",
+          "arrows": [
+            {
+              "source": [
+                2
+              ],
+              "sink": [
+                2,
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                6
+              ],
+              "sink": [
+                1,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                2
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                0,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                2,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "C=[N+]([O-])O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "C[N+](=O)[O-]",
+          "transferred": false,
+          "pattern_smarts": "[#7&+&A&v4](=[#8&+0&A&v2])(-[#6&+0&A&v4]-[#1&+0&A&v1])-[#8&-&A&v1]",
+          "matched_atoms": [
+            1,
+            2,
+            0,
+            6,
+            3
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CC[N+](=O)[O-]",
+      "source_graph_present": false,
+      "proposals": 2,
+      "distinct_products": 1,
+      "transferred_proposals": 2,
+      "actions": [
+        {
+          "template_id": "SynEPD:20:forward",
+          "name": "Nitro–aci-nitro tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                8
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                8
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                3
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                8
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                8
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=[N+]([O-])O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "C[N+](=O)[O-]",
+          "transferred": true,
+          "pattern_smarts": "[#7&+&A&v4](=[#8&+0&A&v2])(-[#6&+0&A&v4]-[#1&+0&A&v1])-[#8&-&A&v1]",
+          "matched_atoms": [
+            2,
+            3,
+            1,
+            8,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:20:forward",
+          "name": "Nitro–aci-nitro tautomerization",
+          "arrows": [
+            {
+              "source": [
+                3
+              ],
+              "sink": [
+                3,
+                9
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                9
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                2,
+                3
+              ],
+              "sink": [
+                3
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                3,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            }
+          ],
+          "predicted_graph": "CC=[N+]([O-])O",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "C[N+](=O)[O-]",
+          "transferred": true,
+          "pattern_smarts": "[#7&+&A&v4](=[#8&+0&A&v2])(-[#6&+0&A&v4]-[#1&+0&A&v1])-[#8&-&A&v1]",
+          "matched_atoms": [
+            2,
+            3,
+            1,
+            9,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "O=C1CCC1",
+      "source_graph_present": true,
+      "proposals": 10,
+      "distinct_products": 3,
+      "transferred_proposals": 8,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                5
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                5
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            2,
+            5
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                6
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            2,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                9
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                9
+              ],
+              "sink": [
+                4,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                4,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            4,
+            9
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                10
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                4,
+                10
+              ],
+              "sink": [
+                4,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                4,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            4,
+            10
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                2,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                5,
+                2
+              ],
+              "sink": [
+                5,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                2
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC12",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            5,
+            1,
+            2,
+            3,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                2,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                6,
+                2
+              ],
+              "sink": [
+                6,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                2
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC12",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            6,
+            1,
+            2,
+            3,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                4,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                9,
+                4
+              ],
+              "sink": [
+                9,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                9
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                4,
+                9
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC12",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            9,
+            1,
+            4,
+            3,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                4,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                10,
+                4
+              ],
+              "sink": [
+                10,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                10
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                4,
+                10
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC12",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            10,
+            1,
+            4,
+            3,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1795:reverse",
+          "name": "Oxaspiropentane rearrangement",
+          "arrows": [
+            {
+              "source": [
+                3,
+                4
+              ],
+              "sink": [
+                3,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0,
+                4
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                3,
+                4
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC12CO2",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "O=C1CCC1",
+          "transferred": false,
+          "pattern_smarts": "[#6&+0&A&v4]1-[#6&+0&A&v4]-[#6&+0&A&v4]-[#6&+0&A&v4]-1=[#8&+0&A&v2]",
+          "matched_atoms": [
+            2,
+            3,
+            1,
+            0,
+            4
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1795:reverse",
+          "name": "Oxaspiropentane rearrangement",
+          "arrows": [
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0,
+                2
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                2
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC12CO2",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "O=C1CCC1",
+          "transferred": false,
+          "pattern_smarts": "[#6&+0&A&v4]1-[#6&+0&A&v4]-[#6&+0&A&v4]-[#6&+0&A&v4]-1=[#8&+0&A&v2]",
+          "matched_atoms": [
+            4,
+            3,
+            1,
+            0,
+            2
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "O=C1CCCC1",
+      "source_graph_present": false,
+      "proposals": 10,
+      "distinct_products": 3,
+      "transferred_proposals": 10,
+      "actions": [
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                6
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                6
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            2,
+            6
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                7
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                2,
+                7
+              ],
+              "sink": [
+                2,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                7
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                2
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                2,
+                7
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            2,
+            7
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                12
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                5,
+                12
+              ],
+              "sink": [
+                5,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                12
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                5
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                5,
+                12
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            5,
+            12
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:17:forward",
+          "name": "Keto–enol tautomerization",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                0,
+                13
+              ],
+              "electrons": 2,
+              "kind": "LP-/Sigma+"
+            },
+            {
+              "source": [
+                5,
+                13
+              ],
+              "sink": [
+                5,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "Pi-/LP+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                13
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                5
+              ],
+              "before": 1.0,
+              "after": 2.0
+            },
+            {
+              "atoms": [
+                5,
+                13
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "OC1=CCCC1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CC=O",
+          "transferred": true,
+          "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+          "matched_atoms": [
+            0,
+            1,
+            5,
+            13
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                2,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                6,
+                2
+              ],
+              "sink": [
+                6,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                2
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                6
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                6
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC2C1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            6,
+            1,
+            2,
+            3,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                2,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                7,
+                2
+              ],
+              "sink": [
+                7,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                2
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                7
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                7
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC2C1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            7,
+            1,
+            2,
+            3,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                5,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                12,
+                5
+              ],
+              "sink": [
+                12,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                12
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                5,
+                12
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC2C1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            12,
+            1,
+            5,
+            4,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1692:reverse",
+          "name": "Meinwald epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                0
+              ],
+              "sink": [
+                5,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/LP+"
+            },
+            {
+              "source": [
+                13,
+                5
+              ],
+              "sink": [
+                13,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                0,
+                1
+              ],
+              "sink": [
+                0
+              ],
+              "electrons": 2,
+              "kind": "LP-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                13
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                5,
+                13
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2OC2C1",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC=O",
+          "transferred": true,
+          "pattern_smarts": "[#1&+0&A&v1]-[#6&+0&A&v4](-[#6&+0&A&v4]=[#8&+0&A&v2])-[#6&+0&A&v4]",
+          "matched_atoms": [
+            13,
+            1,
+            5,
+            4,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1693:reverse",
+          "name": "Acid-catalyzed epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                4,
+                5
+              ],
+              "sink": [
+                4,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                0
+              ],
+              "sink": [
+                5,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                5
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                4
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                4,
+                5
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2(C1)CO2",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC(C)=O",
+          "transferred": true,
+          "pattern_smarts": "[#6&+0&A&v4]-[#6&+0&A&v4](-[#6&+0&A&v4]-[#6&+0&A&v4])=[#8&+0&A&v2]",
+          "matched_atoms": [
+            2,
+            1,
+            4,
+            5,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        },
+        {
+          "template_id": "SynEPD:1693:reverse",
+          "name": "Acid-catalyzed epoxide rearrangement",
+          "arrows": [
+            {
+              "source": [
+                3,
+                2
+              ],
+              "sink": [
+                3,
+                1
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Sigma+"
+            },
+            {
+              "source": [
+                1,
+                0
+              ],
+              "sink": [
+                2,
+                0
+              ],
+              "electrons": 2,
+              "kind": "Sigma-/Pi+"
+            }
+          ],
+          "edits": [
+            {
+              "atoms": [
+                0,
+                1
+              ],
+              "before": 2.0,
+              "after": 1.0
+            },
+            {
+              "atoms": [
+                0,
+                2
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                1,
+                3
+              ],
+              "before": 0,
+              "after": 1
+            },
+            {
+              "atoms": [
+                2,
+                3
+              ],
+              "before": 1.0,
+              "after": 0.0
+            }
+          ],
+          "predicted_graph": "C1CC2(C1)CO2",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "template_source_graph": "CCC(C)=O",
+          "transferred": true,
+          "pattern_smarts": "[#6&+0&A&v4]-[#6&+0&A&v4](-[#6&+0&A&v4]-[#6&+0&A&v4])=[#8&+0&A&v2]",
+          "matched_atoms": [
+            5,
+            1,
+            3,
+            2,
+            0
+          ],
+          "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+        }
+      ]
+    },
+    {
+      "smiles": "CO",
+      "source_graph_present": false,
+      "proposals": 0,
+      "distinct_products": 0,
+      "transferred_proposals": 0,
+      "actions": []
+    },
+    {
+      "smiles": "CCO",
+      "source_graph_present": false,
+      "proposals": 0,
+      "distinct_products": 0,
+      "transferred_proposals": 0,
+      "actions": []
+    },
+    {
+      "smiles": "CCC",
+      "source_graph_present": false,
+      "proposals": 0,
+      "distinct_products": 0,
+      "transferred_proposals": 0,
+      "actions": []
+    },
+    {
+      "smiles": "O=Cc1ccccc1",
+      "source_graph_present": false,
+      "proposals": 0,
+      "distinct_products": 0,
+      "transferred_proposals": 0,
+      "actions": []
+    }
+  ],
+  "interpretation": "Fixed engineering coverage panel; no physical validation or family holdout"
+}

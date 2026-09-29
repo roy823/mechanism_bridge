@@ -6,6 +6,7 @@ No expected product is used to accept or reject a physical connection.
 from dataclasses import dataclass, asdict
 from pathlib import Path
 import json
+import hashlib
 import time
 import traceback
 import numpy as np
@@ -49,13 +50,15 @@ class CountedCalculator(Calculator):
 
 @dataclass(frozen=True)
 class SearchProtocol:
-    seed_policy: str = 'equal_internal_displacement_v2'
+    seed_policy: str = 'local_angles_async_internal_tangent_v3'
     max_attempts: int = 12
     seeds_per_node: int = 6
     total_evaluations: int = 6000
     evaluations_per_attempt: int = 700
     ts_steps: int = 100
     descent_steps: int = 150
+    initial_fmax: float = .003
+    initial_curvature_steps: int = 3
     fmax: float = .03
     hessian_step: float = .005
     mode_displacement: float = .15
@@ -161,7 +164,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
     nodes, edges, attempts, mols = [], [], [], []
     report = dict(start=start, strategy=strategy, protocol=asdict(protocol), nodes=nodes,
                   edges=edges, attempts=attempts, evidence='MLIP_descents_not_DFT_IRC',
-                  library_policy='exact_observed_reactant_matching_with_forward_and_reverse_arrows',
+                  library_policy=library.policy if library is not None else 'geometry_only',
                   status='running', unsupported_nodes=[])
     def save():
         report['evaluations'] = calculator.calls
@@ -180,17 +183,31 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
     try:
         root = Atoms(numbers=numbers, positions=start['positions_A'])
         root.calc = calculator
-        with BFGS(root, maxstep=.1, logfile=str(outdir/'initial.log')) as opt:
-            opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
-        root_info, _ = inspect_point(root, protocol)
+        with BFGS(root, maxstep=.1, logfile=str(outdir/'initial.log'),
+                  trajectory=str(outdir/'initial.traj')) as opt:
+            opt.run(fmax=protocol.initial_fmax, steps=protocol.descent_steps)
+        root_info, root_modes = inspect_point(root, protocol)
+        report['initial_relaxation_checks'] = [root_info.copy()]
+        # Symmetric UFF structures can have zero force at a torsional maximum.
+        # A minimum initializer must use curvature, not force convergence alone.
+        for repair in range(protocol.initial_curvature_steps):
+            if not root_info['force_converged'] or root_info['imaginary_count'] == 0:
+                break
+            root.positions += protocol.mode_displacement * root_modes[0]
+            with BFGS(root,maxstep=.1,logfile=str(outdir/f'initial_curvature_{repair}.log'),
+                      trajectory=str(outdir/f'initial_curvature_{repair}.traj')) as opt:
+                opt.run(fmax=protocol.initial_fmax,steps=protocol.descent_steps)
+            root_info, root_modes = inspect_point(root,protocol)
+            report['initial_relaxation_checks'].append(root_info.copy())
+        report['initial_point'] = root_info.copy()
+        report['initialization_evaluations'] = calculator.calls
+        write(outdir/'initial.xyz', root, write_results=False)
         if not root_info['force_converged'] or root_info['imaginary_count'] != 0:
             report['status'] = 'initial_minimum_unresolved'
             return report
         root_info.update(positions_A=root.positions.tolist(), graph_smiles=graph_smiles(
             geometry_mol(numbers, root.positions, 0)))
         register(root_info, 0)
-        write(outdir/'initial.xyz', root, write_results=False)
-        report['initialization_evaluations'] = calculator.calls
         expanded = set()
         visits = {}
         while len(attempts) < protocol.max_attempts and calculator.calls < protocol.total_evaluations:
@@ -218,8 +235,27 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                     break
                 aid = len(attempts)
                 proposal = proposals[((visit*protocol.seeds_per_node+sample)//3) % len(proposals)] if proposals else None
-                x, direction, meta = make_seed(state, mols[node_id], strategy, proposal,
-                                               sample, protocol.random_seed + node_id*10000 + visit*100 + sample)
+                # Seed randomness follows state geometry + action + visit, not
+                # discovery-order node IDs. Shared symbolic controls get the same RNG.
+                identity = json.dumps(dict(graph=node['graph_smiles'],
+                    positions=np.round(state.positions,6).tolist(),
+                    edits=proposal['edits'] if proposal else None,
+                    seed=protocol.random_seed,visit=visit,sample=sample),sort_keys=True)
+                seed_rng = int.from_bytes(hashlib.sha256(identity.encode()).digest()[:4],'little')
+                try:
+                    x, direction, meta = make_seed(state, mols[node_id], strategy, proposal,
+                                                   sample, seed_rng)
+                except (ValueError, RuntimeError) as exc:
+                    dest = outdir/f'attempt_{aid:03d}'
+                    dest.mkdir()
+                    failure = dict(status='seed_generation_failed',error=str(exc),evaluations=0,
+                                   is_IRC=False,DFT_verified=False,endpoints=[])
+                    atomic_json(dest/'result.json', failure)
+                    attempts.append(dict(id=aid,source_node=node_id,proposal=proposal,
+                        status=failure['status'],evaluations=0,artifact=f'attempt_{aid:03d}/result.json'))
+                    save()
+                    continue
+                meta['random_seed'] = seed_rng
                 trial = state.copy()
                 trial.positions = x
                 calculator.attempt_limit = min(calculator.total_limit,

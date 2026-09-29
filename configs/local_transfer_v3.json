@@ -1,0 +1,17 @@
+{
+  "name": "local electron-action transfer and asynchronous geometry pilot",
+  "starts_file": "data/processed/local_transfer_starts.jsonl",
+  "strategies": ["geometry", "center_random", "bond_edits", "arrows"],
+  "core_starts": ["propanal", "acetone"],
+  "core_random_seeds": [17],
+  "extension_starts": [],
+  "extension_random_seeds": [],
+  "max_attempts": 6,
+  "seeds_per_node": 3,
+  "total_evaluations": 6000,
+  "evaluations_per_attempt": 1200,
+  "workers": 2,
+  "primary_metric": "root-connected observed chemical graph pairs per actual potential evaluations",
+  "claims": "Homolog transfer engineering pilot, no unseen-family or statistically significant superiority claim",
+  "DFT_selection": "First root-connected nonidentity arrow event in propanal, otherwise acetone; one representative, selection independent of DFT outcomes"
+}

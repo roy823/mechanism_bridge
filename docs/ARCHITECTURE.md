@@ -16,8 +16,8 @@ Observed reactant + public symbolic proposals
 | Concern | Modules | Contract |
 |---|---|---|
 | Source data and graphs | adapters, chemistry, event_graph, io | Atom identity, explicit system and provenance |
-| Symbols | symbolic_library | Arrow replay; reactant matching; preserve distinct source/sink alternatives |
-| Seeds | search_seeds | Equal displacement norms; no reference TS or product geometry |
+| Symbols | symbolic_library, local_patterns | Occupied electron-source checks; charge/valence local SMARTS; preserve distinct source/sink alternatives |
+| Seeds | search_seeds | Equal displacement norms; asynchronous distance/angle priors and seed-local internal-coordinate tangent; no reference TS or product geometry |
 | Energy/forces | aimnet_backend, backends | Official model or explicit PySCF; separate energy scales |
 | Local physics | physics | Projected Hessian and explicitly named mode-displacement descent |
 | Exploration | reaction_network | Budgets, Dimer, observed minima, parallel edges and reachable frontier |
@@ -44,3 +44,5 @@ New runs store protocol, starting records, source ZIP and hashes, model and symb
 Edges connect observed minima, independently of the node that proposed a seed. Root-connected edges, disconnected discoveries, chemical graph pairs and conformers have separate counts.
 
 v1 is historical evidence. Its source is archived in `reports/repository_snapshots/pre_validation_v2.zip`. v2 changes seed normalization and adds a center-only control; current scripts do not reproduce v1's exact numbers. Raw data, weights, caches and newly generated reports are ignored by Git; already tracked historical artifacts remain preserved.
+
+v3 replaces whole-reactant matching with local patterns and changes seed geometry/directions. Historical source ZIPs remain the evidence for earlier runs. Root initialization uses tighter force convergence and bounded negative-mode displacement to escape stationary torsional maxima; its evaluations are charged to the same run budget. Candidate paths still use the documented MLIP mode-displacement descent, not DFT IRC.

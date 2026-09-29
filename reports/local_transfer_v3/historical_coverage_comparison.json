@@ -1,0 +1,126 @@
+{
+  "archive": "reports\\validation_v2\\search\\MR_8342_1_s17\\source_snapshot.zip",
+  "source_sha256": "2d6a68f102ba804ba2fa2ee334295e6a5c7889feb70eaed0aa88da0162564b51",
+  "historical_audit": {
+    "source_records": 1926,
+    "outside_pilot_domain": 1850,
+    "replay_valid_records": 67,
+    "replay_or_parse_rejected": 8,
+    "no_distinct_chemical_graph": 1
+  },
+  "rows": [
+    {
+      "smiles": "CC=O",
+      "historical_exact_proposals": 3,
+      "current_local_proposals": 3
+    },
+    {
+      "smiles": "CCC=O",
+      "historical_exact_proposals": 3,
+      "current_local_proposals": 5
+    },
+    {
+      "smiles": "CCCC=O",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 5
+    },
+    {
+      "smiles": "CC(C)=O",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 6
+    },
+    {
+      "smiles": "CCC(C)=O",
+      "historical_exact_proposals": 1,
+      "current_local_proposals": 8
+    },
+    {
+      "smiles": "CC(=O)CC(C)=O",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 16
+    },
+    {
+      "smiles": "O=CCO",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 2
+    },
+    {
+      "smiles": "O=CC=O",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 2
+    },
+    {
+      "smiles": "CC(=O)O",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 3
+    },
+    {
+      "smiles": "CCC(=O)O",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 4
+    },
+    {
+      "smiles": "CC(N)=O",
+      "historical_exact_proposals": 3,
+      "current_local_proposals": 5
+    },
+    {
+      "smiles": "CCC(N)=O",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 6
+    },
+    {
+      "smiles": "CC#N",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 0
+    },
+    {
+      "smiles": "CCC#N",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 0
+    },
+    {
+      "smiles": "C[N+](=O)[O-]",
+      "historical_exact_proposals": 3,
+      "current_local_proposals": 3
+    },
+    {
+      "smiles": "CC[N+](=O)[O-]",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 2
+    },
+    {
+      "smiles": "O=C1CCC1",
+      "historical_exact_proposals": 6,
+      "current_local_proposals": 10
+    },
+    {
+      "smiles": "O=C1CCCC1",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 10
+    },
+    {
+      "smiles": "CO",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 0
+    },
+    {
+      "smiles": "CCO",
+      "historical_exact_proposals": 3,
+      "current_local_proposals": 0
+    },
+    {
+      "smiles": "CCC",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 0
+    },
+    {
+      "smiles": "O=Cc1ccccc1",
+      "historical_exact_proposals": 0,
+      "current_local_proposals": 0
+    }
+  ],
+  "historical_supported": 7,
+  "current_supported": 16,
+  "caveat": "Descriptive engineering comparison; current replay also has stricter source occupancy checks, not a pure localization ablation"
+}

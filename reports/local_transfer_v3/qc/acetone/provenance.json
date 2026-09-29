@@ -1,0 +1,17 @@
+{
+  "packages": {
+    "pyscf": "2.10.0",
+    "sella": "2.6.0",
+    "numpy": "1.26.4",
+    "ase": "3.29.0"
+  },
+  "blas_threads": 1,
+  "pyscf_threads": 2,
+  "frames": 0,
+  "selection": "First root-connected chemical arrow event in propanal otherwise acetone; declared in configs/local_transfer_v3.json before DFT",
+  "files": {
+    "src/mechbridge/verification.py": "ee716013518b6adc974e7ecb0c0e7c1a4918f7f1fe7bb19038f428af08e8c70a",
+    "src/mechbridge/backends.py": "6a16a66c92dfacb114604a7263e8204fd59ad0b657a5179b45ca07b87c15511b",
+    "scripts/qc/verify_network_connection.py": "c80c5bd256bb5b77d520a3486605ea98a6d051e90d024b4c42218d03b58b0820"
+  }
+}

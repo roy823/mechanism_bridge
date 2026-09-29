@@ -1,0 +1,214 @@
+{
+  "event_id": "acetone_arrows_edge0_DFT",
+  "atomic_numbers": [
+    6,
+    6,
+    6,
+    8,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "charge": 0,
+  "multiplicity": 1,
+  "positions_A": {
+    "ts": [
+      [
+        1.3046140071977275,
+        -0.1417679461778577,
+        -0.37560352417107173
+      ],
+      [
+        0.07017235853271106,
+        0.19607703000458415,
+        0.2444945620271233
+      ],
+      [
+        -1.3341985730064005,
+        -0.2014724449854925,
+        -0.046031934115791276
+      ],
+      [
+        0.29544820442675057,
+        1.0928243300537346,
+        1.1286331968654928
+      ],
+      [
+        1.9880347046146436,
+        -0.657079287448423,
+        0.29789736035915615
+      ],
+      [
+        1.3991602104133098,
+        1.0363969713483452,
+        0.5023987250500261
+      ],
+      [
+        1.3510136833366269,
+        -0.5089137704221312,
+        -1.391163677868829
+      ],
+      [
+        -1.8911849157421181,
+        -0.3191281815667537,
+        0.881581574272768
+      ],
+      [
+        -1.7970419221317637,
+        0.6132126501436965,
+        -0.6049938681795689
+      ],
+      [
+        -1.3860450592228588,
+        -1.1100424483090698,
+        -0.6372302496943768
+      ]
+    ]
+  },
+  "reactant_smiles": "C=C(C)O",
+  "product_smiles": "CC(C)=O",
+  "expected_pair_origin": "Actual MLIP descent endpoints, not the symbolic target",
+  "source_json": "reports/local_transfer_v3/search_curvature/acetone_s17/acetone/arrows/attempt_003/result.json",
+  "source_sha256": "c940f1af13432274c8a221e0521536ca7c0f509125e7047984c5fb8f2bb68614",
+  "original_symbolic_proposal": {
+    "fraction": 0.35,
+    "template_id": "SynEPD:17:forward",
+    "displacement_norm_A": 0.6,
+    "unnormalized_fit_displacement_A": 1.353089034139833,
+    "progress_targets": [
+      0.35,
+      0.35,
+      0.35,
+      0.35
+    ],
+    "angle_targets": [
+      {
+        "atoms": [
+          0,
+          5,
+          3
+        ],
+        "degrees": 110.0,
+        "kind": "hydrogen_transfer"
+      }
+    ],
+    "angle_cosines_at_seed": [
+      0.3111413421519402
+    ],
+    "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+    "template_source_graph": "CC=O",
+    "transferred": true,
+    "origin": "local_transfer_of_published_SynEPD_arrows",
+    "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+    "source_sink_couplings": [
+      [
+        1,
+        0
+      ]
+    ],
+    "geometric_fit_cost": 0.1139384499530618,
+    "geometric_fit_nfev": 68,
+    "geometric_fit_optimality": 0.0006235274171488003,
+    "predicted_graph": "C=C(C)O",
+    "arrows": [
+      {
+        "source": [
+          3
+        ],
+        "sink": [
+          3,
+          5
+        ],
+        "electrons": 2,
+        "kind": "LP-/Sigma+"
+      },
+      {
+        "source": [
+          0,
+          5
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "electrons": 2,
+        "kind": "Sigma-/Pi+"
+      },
+      {
+        "source": [
+          3,
+          1
+        ],
+        "sink": [
+          3
+        ],
+        "electrons": 2,
+        "kind": "Pi-/LP+"
+      }
+    ],
+    "net_edits": [
+      {
+        "atoms": [
+          0,
+          1
+        ],
+        "before": 1.0,
+        "after": 2.0
+      },
+      {
+        "atoms": [
+          0,
+          5
+        ],
+        "before": 1.0,
+        "after": 0.0
+      },
+      {
+        "atoms": [
+          1,
+          3
+        ],
+        "before": 2.0,
+        "after": 1.0
+      },
+      {
+        "atoms": [
+          3,
+          5
+        ],
+        "before": 0,
+        "after": 1
+      }
+    ],
+    "random_seed": 4159082088
+  },
+  "source_index_one_frequencies": [
+    -2097.3622370625667,
+    106.76085336872944,
+    354.5817384727928,
+    419.07531928601827,
+    564.8437599220546,
+    649.452684012776,
+    752.4265940075253,
+    867.1919646641845,
+    927.6431431847429,
+    972.6682021289893,
+    1017.8406948214426,
+    1087.9083029790108,
+    1319.7073579063772,
+    1379.8891937352723,
+    1414.765771950508,
+    1438.8411195379142,
+    1446.5152711118608,
+    1504.7894739255698,
+    1802.6818494221893,
+    3032.904253376707,
+    3090.4973993178533,
+    3100.1576917700145,
+    3151.184209058542,
+    3207.4931191849173
+  ]
+}

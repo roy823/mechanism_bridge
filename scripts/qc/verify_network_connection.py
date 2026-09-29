@@ -19,7 +19,10 @@ def main():
     p.add_argument('--strategy',default='arrows')
     p.add_argument('--edge',type=int,required=True)
     p.add_argument('--outdir',type=Path,required=True)
+    p.add_argument('--selection',required=True,help='Predeclared event selection rule for this experiment')
     args=p.parse_args()
+    args.run=args.run.resolve()
+    args.outdir=args.outdir.resolve()
     if args.outdir.exists():raise FileExistsError(args.outdir)
     source=args.run/args.start/args.strategy/'network.json'
     network=json.loads(source.read_text(encoding='utf-8'))
@@ -42,7 +45,7 @@ def main():
     (args.outdir/'input.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
     provenance=dict(packages={m:importlib.metadata.version(m) for m in ['pyscf','sella','numpy','ase']},
         blas_threads=1,pyscf_threads=2,frames=0,
-        selection='Two predeclared representative root-connected graph pairs from v1, one expected and one unexpected',
+        selection=args.selection,
         files={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
                for p in [ROOT/'src/mechbridge/verification.py',ROOT/'src/mechbridge/backends.py',Path(__file__)]})
     (args.outdir/'provenance.json').write_text(json.dumps(provenance,indent=2),encoding='utf-8')

@@ -18,6 +18,58 @@ def internal_direction(x, direction):
     return (d / norm).reshape(x.shape)
 
 
+def cosine_angle(x, ids):
+    a, b, c = x[list(ids)]
+    u, v = a-b, c-b
+    return float(np.dot(u, v) / max(np.linalg.norm(u)*np.linalg.norm(v), 1e-12))
+
+
+def angle_targets(numbers, edits, sample):
+    """Soft, sampled geometrical priors, available to both symbolic controls."""
+    targets = []
+    broken = [e for e in edits if e['after'] == 0]
+    formed = [e for e in edits if e['before'] == 0]
+    for old in broken:
+        for new in formed:
+            shared = set(old['atoms']) & set(new['atoms'])
+            if len(shared) == 1:
+                h = next(iter(shared))
+                if numbers[h] == 1:
+                    donor = next(i for i in old['atoms'] if i != h)
+                    acceptor = next(i for i in new['atoms'] if i != h)
+                    angle = (110., 140., 170.)[sample % 3]
+                    targets.append(dict(atoms=[donor,h,acceptor], degrees=angle,
+                                        kind='hydrogen_transfer'))
+    for edit in edits:
+        if edit['before'] != 2 or edit['after'] != 1:
+            continue
+        for c in edit['atoms']:
+            hetero = next(i for i in edit['atoms'] if i != c)
+            if numbers[c] != 6 or numbers[hetero] not in (7,8):
+                continue
+            for new in formed:
+                if c in new['atoms']:
+                    nu = next(i for i in new['atoms'] if i != c)
+                    targets.append(dict(atoms=[nu,c,hetero],degrees=(100.,110.,120.)[sample % 3],
+                                        kind='carbonyl_addition'))
+    return targets
+
+
+def reaction_direction(x, ij, delta, unchanged):
+    """Damped internal-coordinate tangent at the actual seed geometry."""
+    rows, rhs = [], []
+    for (i,j), value, weight in [(p, v, 1.) for p,v in zip(ij,delta)] + [
+                                (p, 0., .5) for p in unchanged]:
+        row = np.zeros_like(x)
+        unit = (x[i]-x[j])/max(np.linalg.norm(x[i]-x[j]),1e-10)
+        row[i], row[j] = weight*unit, -weight*unit
+        rows.append(row.ravel()); rhs.append(weight*value)
+    jac = np.asarray(rows)
+    tangent = np.linalg.lstsq(np.vstack([jac, .1*np.eye(x.size)]),
+                             np.r_[rhs, np.zeros(x.size)],rcond=1e-10)[0].reshape(x.shape)
+    return internal_direction(x, tangent)
+
+
 def make_seed(atoms, mol, strategy, proposal, sample, random_seed):
     x = atoms.positions.copy()
     rng = np.random.default_rng(random_seed)
@@ -62,6 +114,12 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed):
             target.append(length * {1: 1., 2: .88, 3: .80}[e['after']])
     delta = np.array(target) - r0
     delta = np.where(np.abs(delta) < .08, np.where(delta >= 0, .08, -.08), delta)
+    # Matched across net-edit and arrow controls: synchronous, decrease-leading,
+    # and increase-leading trajectories. These are proposals, not assumed paths.
+    phase = (0., -.15, .15)[sample % 3]
+    progress_target = np.clip(fraction + phase*np.array([
+        np.sign(e['after']-e['before']) for e in edits]), .15, .9)
+    angles = angle_targets(atoms.numbers, edits, sample)
     unchanged = [(i, j) for i, j in old_bonds if (i, j) not in changed]
     links = []
     index = {tuple(e['atoms']): k for k, e in enumerate(edits)}
@@ -70,28 +128,42 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed):
             a, b = tuple(sorted(arrow['source'])), tuple(sorted(arrow['sink']))
             if a in index and b in index:
                 links.append((index[a], index[b]))
-    # This synchrony term is an explicit proposal heuristic, not a physical law.
+    # Source/sink progress differences follow the sampled asynchronous targets.
     def residual(flat):
         y = flat.reshape(x.shape)
         distances = np.linalg.norm(y[ij[:, 0]] - y[ij[:, 1]], axis=1)
         progress = (distances - r0) / delta
-        out = list(2. * (distances - r0 - fraction * delta))
-        out.extend((np.linalg.norm(y[i]-y[j]) - np.linalg.norm(x[i]-x[j])) for i,j in unchanged)
+        out = list((distances - r0 - progress_target * delta) / .5)
+        out.extend((np.linalg.norm(y[i]-y[j]) - np.linalg.norm(x[i]-x[j])) / 1. for i,j in unchanged)
         out.extend((.12 * (y-x)).ravel())
-        out.extend(0.7 * (progress[a] - progress[b]) for a,b in links)
+        out.extend(0.7 * ((progress[a] - progress[b]) -
+                   (progress_target[a]-progress_target[b])) for a,b in links)
+        out.extend((cosine_angle(y,a['atoms'])-np.cos(np.deg2rad(a['degrees']))) / .5 for a in angles)
         for i in range(len(y)):
             for j in range(i):
                 floor = .6 * (covalent_radii[atoms.numbers[i]] + covalent_radii[atoms.numbers[j]])
                 out.append(3 * max(0., floor - np.linalg.norm(y[i]-y[j])))
         return out
     initial = x + rng.normal(0., .015, x.shape)
-    fit = least_squares(residual, initial.ravel(), max_nfev=100)
+    fit = least_squares(residual, initial.ravel(), max_nfev=200,
+                        ftol=1e-5, xtol=1e-5, gtol=1e-5)
+    if not fit.success or not np.isfinite(fit.x).all():
+        raise ValueError(f'Seed geometry fit did not converge: {fit.message}')
     y = fit.x.reshape(x.shape)
-    direction = internal_direction(x, y-x)
-    return x + amplitude * direction, direction, dict(fraction=fraction, template_id=proposal['template_id'],
+    displacement = internal_direction(x, y-x)
+    seed = x + amplitude * displacement
+    direction = reaction_direction(seed, ij, delta * progress_target, unchanged)
+    return seed, direction, dict(fraction=fraction, template_id=proposal['template_id'],
                             displacement_norm_A=amplitude,
                             unnormalized_fit_displacement_A=float(np.linalg.norm(y-x)),
+                            progress_targets=progress_target.tolist(), angle_targets=angles,
+                            angle_cosines_at_seed=[cosine_angle(seed,a['atoms']) for a in angles],
+                            mode_policy='damped_internal_coordinate_tangent_at_seed',
+                            template_source_graph=proposal.get('template_source_graph'),
+                            transferred=proposal.get('transferred'),
+                            origin=proposal.get('origin'), pattern_smarts=proposal.get('pattern_smarts'),
                             source_sink_couplings=links, geometric_fit_cost=float(fit.cost),
+                            geometric_fit_nfev=fit.nfev, geometric_fit_optimality=float(fit.optimality),
                             predicted_graph=proposal['predicted_graph'],
                             arrows=proposal['arrows'] if strategy=='arrows' else None,
                             net_edits=edits)

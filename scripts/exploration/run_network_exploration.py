@@ -59,7 +59,8 @@ def main():
         symbolic_library_sha256=hashlib.sha256((ROOT/'data/raw/synepd/polar.json').read_bytes()).hexdigest(),
         reference_TS_used_in_search=False, reference_product_geometry_used_in_search=False,
         pretrained_overlap='AIMNet2-rxn includes RGD1; engineering feasibility, not unseen chemistry',
-        symbolic_hypotheses='Published arrows; proposed product graph is allowed, product is not enforced',
+        symbolic_hypotheses=library.policy,
+        symbolic_library_audit=dict(library.audit),
         started_at_unix=time.time())
     atomic_json(a.outdir/'manifest.json', manifest)
     backend = ReactionPotential(weights.parent)

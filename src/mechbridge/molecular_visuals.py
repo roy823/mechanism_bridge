@@ -28,6 +28,7 @@ COLORS={1:'#dbe3ef',6:'#475569',7:'#3478d4',8:'#e95058'}
 NAMES={'CC=O':'乙醛','C=CO':'乙烯醇','C[N+](=O)[O-]':'硝基甲烷',
        'C=[N+]([O-])O':'aci-nitro 互变体','O=[NH+]C[O-]':'意外连接候选',
        'CC(N)=O':'乙酰胺','O=C1CCC1':'环丁酮','O=CC1CC1':'环收缩产物候选'}
+NAMES.update({'CC(C)=O':'丙酮','CCC=O':'丙醛','C=C(C)O':'丙酮烯醇'})
 
 
 def depiction(mol, png=False):
@@ -202,7 +203,7 @@ def static_figure(event,out):
     text+=f"\nTS 虚频：{event['imaginary_frequency']:.1f} "+r'$\mathrm{cm}^{-1}$'
     ax.text(0,1,text,va='top',fontsize=10,linespacing=1.7)
     ax=fig.add_subplot(grid[3,:]);ax.axis('off')
-    ax.text(0,.5,'坐标与能量来自实际 AIMNet2-rxn 计算；黄色虚线表示端点间变化的键。双侧 BFGS 下降，非 IRC / 非动力学时间；尚未 DFT 复核。',fontsize=9,color='#58677d')
+    ax.text(0,.5,'坐标与能量来自实际 AIMNet2-rxn 计算；黄色虚线表示端点间变化的键。图示为双侧 BFGS 下降，非 IRC / 非动力学时间；独立 DFT 复核见对应报告。',fontsize=9,color='#58677d')
     stem='reaction_'+event['id']
     fig.savefig(out/(stem+'.png'),dpi=180)
     fig.savefig(out/(stem+'.pdf'))

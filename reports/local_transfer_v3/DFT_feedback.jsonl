@@ -1,0 +1,1 @@
+{"event_id": "acetone_arrows_edge0_DFT", "status": "physical_event_verified", "original_MLIP_pair_preserved": true, "actual_endpoint_graphs": ["CC(C)=O", "C=C(C)O"], "source_verification": "reports/local_transfer_v3/qc/acetone/verification.json", "model_weights_updated": false, "interpretation": "Evidence for this attempted connection, not reaction impossibility"}

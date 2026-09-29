@@ -69,12 +69,36 @@ def test_library_uses_public_arrows(tmp_path):
     assert proposals and proposals[0]['predicted_graph']=='C=CO'
     assert library.propose(parse_explicit('CO'))==[]
     assert library.propose(parse_explicit('C=CO'))
+    larger = parse_explicit('CCC=O')
+    transferred = library.propose(larger)
+    assert transferred and all(p['transferred'] for p in transferred)
+    assert any(p['predicted_graph'] == 'CC=CO' for p in transferred)
+    assert library.propose(parse_explicit('O=Cc1ccccc1')) == []
+    for proposal in transferred:
+        product, edits = replay(larger,proposal['arrows'])
+        assert product.GetNumAtoms() == larger.GetNumAtoms()
+        active = {i for e in edits for i in e['atoms']}
+        old = {(b.GetBeginAtomIdx(),b.GetEndAtomIdx()):b.GetBondTypeAsDouble()
+               for b in larger.GetBonds() if not ({b.GetBeginAtomIdx(),b.GetEndAtomIdx()} & active)}
+        for (i,j),order in old.items():
+            assert product.GetBondBetweenAtoms(i,j).GetBondTypeAsDouble() == order
+    with pytest.raises(ValueError,match='explicit-H'):
+        library.propose(Chem.MolFromSmiles('CCC=O'))
 
 
 def test_single_electron_rejected():
     m,a=example()
     a[0]['electrons']=1
     with pytest.raises(ValueError): replay(m,a)
+
+
+def test_missing_or_double_spent_electron_source_rejected():
+    m,a=example()
+    with pytest.raises(ValueError,match='occupied electron pairs'):
+        replay(m,[a[1],a[1]])
+    carbon=next(v.GetIdx() for v in m.GetAtoms() if v.GetAtomicNum()==6)
+    with pytest.raises(ValueError,match='occupied electron pairs'):
+        replay(m,[dict(source=[carbon],sink=[carbon,0],electrons=2)])
 
 
 def test_all_information_conditions_have_equal_displacement():
@@ -91,6 +115,13 @@ def test_all_information_conditions_have_equal_displacement():
             assert np.linalg.norm(y-x)==pytest.approx(amplitude)
             assert np.linalg.norm(d)==pytest.approx(1.)
             assert np.linalg.norm((y-x).sum(0))<1e-9
+            assert np.linalg.norm(d.sum(0))<1e-9
+            assert np.linalg.norm(np.cross(y-y.mean(0),d).sum(0))<1e-9
+            if strategy in ('bond_edits','arrows'):
+                assert meta['angle_targets']
+                assert meta['mode_policy']=='damped_internal_coordinate_tangent_at_seed'
+                if sample:
+                    assert np.ptp(meta['progress_targets']) > 0
             if strategy=='center_random':
                 assert 'predicted_graph' not in meta
                 assert meta['information']=='active_atom_ids_only'
@@ -130,3 +161,29 @@ def test_network_registers_observed_endpoints_not_proposing_node(tmp_path,monkey
     assert report['edges'][0]['proposed_from']==0
     assert report['attempts'][0]['source_is_endpoint'] is False
     assert report['root_component_nodes']==[0]
+
+
+def test_root_initialization_escapes_negative_curvature_and_charges_cost(tmp_path,monkeypatch):
+    """Control-flow test: force convergence cannot hide a high-order stationary point."""
+    import mechbridge.reaction_network as net
+    class EvaluateOnly:
+        def __init__(self,atoms,**kwargs):self.atoms=atoms
+        def __enter__(self):return self
+        def __exit__(self,*args):return False
+        def run(self,**kwargs):self.atoms.get_forces();return True
+    checks=[]
+    def point(atoms,protocol):
+        checks.append(atoms.positions.copy())
+        mode=np.zeros_like(atoms.positions);mode[1,2]=1.
+        return dict(energy_eV=float(atoms.get_potential_energy()),force_converged=True,
+                    imaginary_count=max(0,3-len(checks))),[mode]
+    monkeypatch.setattr(net,'BFGS',EvaluateOnly)
+    monkeypatch.setattr(net,'inspect_point',point)
+    start=dict(id='water_control',atomic_numbers=[8,1,1],
+               positions_A=[[0,0,0],[.8,.6,0],[-.8,.6,0]],charge=0,multiplicity=1)
+    result=net.explore(start,None,EMT(),'geometry',tmp_path/'root_curvature',
+                       net.SearchProtocol(max_attempts=0))
+    assert result['status']=='completed'
+    assert [r['imaginary_count'] for r in result['initial_relaxation_checks']]==[2,1,0]
+    assert result['initialization_evaluations']==result['evaluations']==3
+    assert result['initial_point']['imaginary_count']==0
