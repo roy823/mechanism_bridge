@@ -8,10 +8,20 @@ from ase.optimize import BFGS
 
 FREQUENCY_FACTOR = 521.470898  # sqrt(eV / Angstrom^2 / amu) -> cm^-1
 
-def finite_hessian(atoms, step=0.005):
+def finite_hessian(atoms, step=0.005, batch_forces=None, batch_size=16):
     if step <= 0 or atoms.constraints or np.any(atoms.pbc):
         raise ValueError("Requires positive displacement and unconstrained nonperiodic molecule")
     x = atoms.get_positions().copy()
+    if batch_forces is not None:
+        if batch_size<1:raise ValueError('Positive Hessian batch size required')
+        shifts=step*np.eye(x.size).reshape(x.size,*x.shape)
+        geometries=np.stack((x+shifts,x-shifts),axis=1).reshape(-1,*x.shape)
+        force=np.concatenate([batch_forces(atoms.numbers,geometries[i:i+batch_size])
+                              for i in range(0,len(geometries),batch_size)])
+        if force.shape!=geometries.shape or not np.isfinite(force).all():
+            raise ValueError('Invalid batched Hessian forces')
+        h=(-(force[::2]-force[1::2])/(2*step)).reshape(x.size,x.size).T
+        return (h+h.T)/2
     h = np.empty((x.size, x.size))
     try:
         for j in range(x.size):
@@ -51,9 +61,11 @@ def vibrational_analysis(positions, masses, hessian, imaginary_threshold_cm=30.)
             "imaginary_threshold_cm-1": imaginary_threshold_cm,
             "rigid_mode_count": int(3*n - q.shape[1]), "modes": modes}
 
-def analyze_stationary(atoms, fmax=0.02, step=0.005, imaginary_threshold_cm=30.):
+def analyze_stationary(atoms, fmax=0.02, step=0.005, imaginary_threshold_cm=30.,
+                       batch_forces=None, batch_size=16):
     force = float(np.max(np.linalg.norm(atoms.get_forces(), axis=1)))
-    vibration = vibrational_analysis(atoms.positions, atoms.get_masses(), finite_hessian(atoms, step), imaginary_threshold_cm)
+    vibration = vibrational_analysis(atoms.positions, atoms.get_masses(),
+        finite_hessian(atoms,step,batch_forces,batch_size), imaginary_threshold_cm)
     return {"force_max_eV_A": force, "force_converged": force <= fmax,
             "energy_eV": float(atoms.get_potential_energy()), **vibration}
 

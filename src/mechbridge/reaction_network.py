@@ -15,10 +15,12 @@ from ase import Atoms
 from ase.calculators.calculator import Calculator, all_changes
 from ase.io import write
 from ase.optimize import BFGS
-from ase.mep import DimerControl, MinModeAtoms, MinModeTranslate
+from ase.mep import DimerControl, MinModeAtoms
 from .physics import analyze_stationary
 from .event_graph import geometry_mol, graph_smiles
 from .search_seeds import make_seed
+from .exploration_actions import choose_action
+from .saddle_optimization import StationaryDimerTranslate
 
 
 class BudgetExceeded(RuntimeError):
@@ -32,6 +34,8 @@ class CountedCalculator(Calculator):
         super().__init__()
         self.backend = backend
         self.calls = 0
+        self.model_calls = 0
+        self.model_seconds = 0.
         self.total_limit = total_limit
         self.attempt_limit = total_limit
 
@@ -40,27 +44,48 @@ class CountedCalculator(Calculator):
         if self.calls >= min(self.total_limit, self.attempt_limit):
             raise BudgetExceeded('Energy/force evaluation budget exhausted')
         self.calls += 1
-        self.backend.calculate(self.atoms, ['energy', 'forces'], all_changes)
+        self.model_calls += 1
+        started=time.perf_counter()
+        try:
+            self.backend.calculate(self.atoms, ['energy', 'forces'], all_changes)
+        finally:
+            self.model_seconds+=time.perf_counter()-started
         energy = float(self.backend.results['energy'])
         forces = np.asarray(self.backend.results['forces']).copy()
         if not np.isfinite(energy) or not np.isfinite(forces).all():
             raise ValueError('Nonfinite model prediction')
         self.results = {'energy': energy, 'forces': forces}
 
+    def batch_forces(self,numbers,positions):
+        """Budgets count geometries, not batched calls, preserving fair comparisons."""
+        count=len(positions)
+        if self.calls+count>min(self.total_limit,self.attempt_limit):
+            raise BudgetExceeded('Insufficient geometry budget for Hessian batch')
+        self.calls+=count;self.model_calls+=1
+        started=time.perf_counter()
+        try:
+            result=self.backend.evaluate_many(numbers,positions)
+        finally:
+            self.model_seconds+=time.perf_counter()-started
+        return result['forces']
+
 
 @dataclass(frozen=True)
 class SearchProtocol:
-    seed_policy: str = 'local_angles_async_internal_tangent_v3'
+    seed_policy: str = 'diverse_frontier_precise_stationary_v4'
     max_attempts: int = 12
-    seeds_per_node: int = 6
+    seeds_per_node: int = 1
+    geometry_seeds_per_node: int = 9
     total_evaluations: int = 6000
     evaluations_per_attempt: int = 700
-    ts_steps: int = 100
-    descent_steps: int = 150
+    ts_steps: int = 160
+    descent_steps: int = 250
     initial_fmax: float = .003
     initial_curvature_steps: int = 3
-    fmax: float = .03
+    fmax: float = .005
     hessian_step: float = .005
+    hessian_batch_size: int = 1
+    dimer_extrapolate_forces: bool = False
     mode_displacement: float = .15
     geometry_tolerance_A: float = .15
     energy_tolerance_eV: float = .03
@@ -89,7 +114,9 @@ def atomic_json(path, data):
 
 
 def inspect_point(atoms, protocol):
-    analysis = analyze_stationary(atoms, protocol.fmax, protocol.hessian_step)
+    batch=atoms.calc.batch_forces if protocol.hessian_batch_size>1 else None
+    analysis = analyze_stationary(atoms, protocol.fmax, protocol.hessian_step,
+                                  batch_forces=batch,batch_size=protocol.hessian_batch_size)
     modes = analysis.pop('modes')
     return analysis, modes
 
@@ -98,19 +125,27 @@ def search_connection(seed, direction, calculator, outdir, protocol):
     outdir.mkdir(parents=True, exist_ok=False)
     started, initial_calls = time.time(), calculator.calls
     result = dict(status='started', evidence='MLIP_two_sided_mode_displacement_descent',
-                  is_IRC=False, DFT_verified=False, endpoints=[])
+                  is_IRC=False, DFT_verified=False, endpoints=[],
+                  optimizer_force_criterion='original_cartesian_per_atom_norm')
     try:
         seed.calc = calculator
         write(outdir / 'seed.xyz', seed, write_results=False)
         np.save(outdir / 'seed_direction.npy', direction)
         with DimerControl(logfile=str(outdir/'dimer.log'), dimer_separation=.005,
                           maximum_translation=.1, max_num_rot=3,
+                          extrapolate_forces=protocol.dimer_extrapolate_forces,
                           f_rot_min=.01, f_rot_max=.1) as control:
             mm = MinModeAtoms(seed, control=control, eigenmodes=[direction.copy()],
                               random_seed=protocol.random_seed)
-            with MinModeTranslate(mm, logfile=str(outdir/'opt.log'),
+            with StationaryDimerTranslate(mm, logfile=str(outdir/'opt.log'),
                                   trajectory=str(outdir/'search.traj')) as opt:
                 result['optimizer_converged'] = bool(opt.run(fmax=protocol.fmax, steps=protocol.ts_steps))
+        residual_force=float(np.linalg.norm(seed.get_forces(),axis=1).max())
+        if residual_force>protocol.fmax:
+            result['status']='ts_force_unconverged'
+            result['ts']=dict(force_max_eV_A=residual_force,force_converged=False)
+            write(outdir/'ts.xyz',seed,write_results=False)
+            return result
         ts, modes = inspect_point(seed, protocol)
         result['ts'] = ts
         write(outdir/'ts.xyz', seed, write_results=False)
@@ -154,7 +189,7 @@ def search_connection(seed, direction, calculator, outdir, protocol):
 def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()):
     """Only an observed initial geometry and a reusable symbol library enter search."""
     outdir = Path(outdir)
-    if strategy not in ('geometry','center_random','bond_edits','arrows'):
+    if strategy not in ('geometry','center_random','bond_edits','arrows','hybrid'):
         raise ValueError('Unknown search strategy')
     outdir.mkdir(parents=True, exist_ok=False)
     calculator = CountedCalculator(backend, protocol.total_evaluations)
@@ -165,9 +200,13 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
     report = dict(start=start, strategy=strategy, protocol=asdict(protocol), nodes=nodes,
                   edges=edges, attempts=attempts, evidence='MLIP_descents_not_DFT_IRC',
                   library_policy=library.policy if library is not None else 'geometry_only',
-                  status='running', unsupported_nodes=[])
+                  status='running', unsupported_nodes=[],exhausted_nodes=[])
+    started=time.perf_counter()
     def save():
         report['evaluations'] = calculator.calls
+        report['model_calls'] = calculator.model_calls
+        report['model_seconds'] = calculator.model_seconds
+        report['elapsed_seconds'] = time.perf_counter()-started
         atomic_json(outdir/'network.json', report)
     def register(end, depth):
         x = np.asarray(end['positions_A'])
@@ -210,41 +249,56 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         register(root_info, 0)
         expanded = set()
         visits = {}
+        actions_used={}
+        proposal_cache={}
         while len(attempts) < protocol.max_attempts and calculator.calls < protocol.total_evaluations:
             graph = nx.Graph()
             graph.add_nodes_from(range(len(nodes)))
             graph.add_edges_from(e['nodes'] for e in edges)
             connected = nx.node_connected_component(graph, 0)
-            available = sorted(connected - set(report['unsupported_nodes']))
+            available = sorted(connected - set(report['unsupported_nodes']) - set(report['exhausted_nodes']))
             if not available:
                 break
             # Prefer unvisited basins, then spend remaining budget on new seeds
             # at covered basins. A failed first batch is not a proof of exhaustion.
-            node_id = min(available, key=lambda i: (visits.get(i, 0), i))
+            species_visits={}
+            for i,count in visits.items():
+                smi=nodes[i]['graph_smiles'];species_visits[smi]=species_visits.get(smi,0)+count
+            node_id = min(available, key=lambda i: (species_visits.get(nodes[i]['graph_smiles'],0),visits.get(i,0),i))
             visit = visits.get(node_id, 0)
             visits[node_id] = visit + 1
             expanded.add(node_id)
             node = nodes[node_id]
             state = Atoms(numbers=numbers, positions=node['positions_A'])
-            proposals = library.propose(mols[node_id]) if strategy != 'geometry' else []
-            if strategy != 'geometry' and not proposals:
+            if node_id not in proposal_cache:
+                proposal_cache[node_id]=library.propose(mols[node_id]) if strategy!='geometry' else []
+            proposals=proposal_cache[node_id]
+            if strategy not in ('geometry','hybrid') and not proposals:
                 report['unsupported_nodes'].append(node_id)
                 continue
             for sample in range(protocol.seeds_per_node):
                 if len(attempts) >= protocol.max_attempts or calculator.calls >= protocol.total_evaluations:
                     break
                 aid = len(attempts)
-                proposal = proposals[((visit*protocol.seeds_per_node+sample)//3) % len(proposals)] if proposals else None
+                used=actions_used.setdefault(node_id,{})
+                choice=choose_action(proposals,used,{n['graph_smiles'] for n in nodes},strategy,
+                                     protocol.geometry_seeds_per_node)
+                if choice is None:
+                    report['exhausted_nodes'].append(node_id)
+                    break
+                proposal,key,variant,seed_strategy=choice
+                used[key]=used.get(key,0)+1
                 # Seed randomness follows state geometry + action + visit, not
                 # discovery-order node IDs. Shared symbolic controls get the same RNG.
                 identity = json.dumps(dict(graph=node['graph_smiles'],
                     positions=np.round(state.positions,6).tolist(),
                     edits=proposal['edits'] if proposal else None,
-                    seed=protocol.random_seed,visit=visit,sample=sample),sort_keys=True)
+                    seed=protocol.random_seed,variant=variant),sort_keys=True)
                 seed_rng = int.from_bytes(hashlib.sha256(identity.encode()).digest()[:4],'little')
                 try:
-                    x, direction, meta = make_seed(state, mols[node_id], strategy, proposal,
-                                                   sample, seed_rng)
+                    seed_started=time.perf_counter()
+                    x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
+                                                   variant, seed_rng)
                 except (ValueError, RuntimeError) as exc:
                     dest = outdir/f'attempt_{aid:03d}'
                     dest.mkdir()
@@ -256,6 +310,8 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                     save()
                     continue
                 meta['random_seed'] = seed_rng
+                meta['seed_strategy']=seed_strategy
+                meta['generation_seconds']=time.perf_counter()-seed_started
                 trial = state.copy()
                 trial.positions = x
                 calculator.attempt_limit = min(calculator.total_limit,
@@ -264,6 +320,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 result = search_connection(trial, direction, calculator, dest, protocol)
                 attempt = dict(id=aid, source_node=node_id, proposal=meta,
                                status=result['status'], evaluations=result['evaluations'],
+                               seconds=result['seconds'],
                                artifact=f'attempt_{aid:03d}/result.json')
                 attempts.append(attempt)
                 if result['status'] == 'validated_descents':

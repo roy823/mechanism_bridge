@@ -19,12 +19,17 @@ from mechbridge.reaction_network import SearchProtocol, explore, atomic_json
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--outdir', type=Path, required=True)
-    p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows'],
+    p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows','hybrid'],
                    default=['geometry','bond_edits','arrows'])
     p.add_argument('--start-ids', nargs='+')
     p.add_argument('--starts',type=Path,default=ROOT/'data/processed/network_starts.jsonl')
     p.add_argument('--attempts', type=int, default=12)
-    p.add_argument('--seeds-per-node', type=int, default=6)
+    p.add_argument('--seeds-per-node', type=int, default=1)
+    p.add_argument('--hessian-batch-size',type=int,default=32)
+    p.add_argument('--fmax',type=float,default=.005)
+    p.add_argument('--geometry-seeds-per-node',type=int,default=9)
+    p.add_argument('--dimer-extrapolate-forces',action='store_true',
+                   help='Enable ASE force extrapolation; optional, validated only on a small fixed-seed benchmark')
     p.add_argument('--evaluations', type=int, default=6000)
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
@@ -35,7 +40,9 @@ def main():
     RDLogger.DisableLog('rdApp.*')
     protocol = SearchProtocol(max_attempts=a.attempts, seeds_per_node=a.seeds_per_node,
         total_evaluations=a.evaluations, evaluations_per_attempt=a.attempt_evaluations,
-        random_seed=a.seed)
+        random_seed=a.seed,hessian_batch_size=a.hessian_batch_size,fmax=a.fmax,
+        geometry_seeds_per_node=a.geometry_seeds_per_node,
+        dimer_extrapolate_forces=a.dimer_extrapolate_forces)
     starts = [json.loads(l) for l in a.starts.read_text(encoding='utf-8').splitlines()]
     if a.start_ids:
         starts = [s for s in starts if s['id'] in a.start_ids]

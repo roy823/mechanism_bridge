@@ -1,0 +1,300 @@
+{
+  "rows": [
+    {
+      "case": "acetone",
+      "extrapolate_forces": false,
+      "status": "validated_descents",
+      "evaluations": 799,
+      "model_calls": 625,
+      "seconds": 8.088260889053345,
+      "endpoints": [
+        "C=C(C)O",
+        "CC(C)=O"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": false,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    },
+    {
+      "case": "acetone",
+      "extrapolate_forces": true,
+      "status": "validated_descents",
+      "evaluations": 685,
+      "model_calls": 511,
+      "seconds": 7.410429000854492,
+      "endpoints": [
+        "C=C(C)O",
+        "CC(C)=O"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": true,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    },
+    {
+      "case": "enol",
+      "extrapolate_forces": true,
+      "status": "validated_descents",
+      "evaluations": 995,
+      "model_calls": 821,
+      "seconds": 10.920700073242188,
+      "endpoints": [
+        "C=C(C)O",
+        "CC(C)=O"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": true,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    },
+    {
+      "case": "enol",
+      "extrapolate_forces": false,
+      "status": "validated_descents",
+      "evaluations": 1079,
+      "model_calls": 905,
+      "seconds": 11.305340051651001,
+      "endpoints": [
+        "C=C(C)O",
+        "CC(C)=O"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": false,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    },
+    {
+      "case": "glycolaldehyde",
+      "extrapolate_forces": false,
+      "status": "validated_descents",
+      "evaluations": 619,
+      "model_calls": 481,
+      "seconds": 6.179115295410156,
+      "endpoints": [
+        "O/C=C\\O",
+        "O=CCO"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": false,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    },
+    {
+      "case": "glycolaldehyde",
+      "extrapolate_forces": true,
+      "status": "validated_descents",
+      "evaluations": 556,
+      "model_calls": 418,
+      "seconds": 5.2212159633636475,
+      "endpoints": [
+        "O/C=C\\O",
+        "O=CCO"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": true,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    },
+    {
+      "case": "cyclobutanone",
+      "extrapolate_forces": true,
+      "status": "validated_descents",
+      "evaluations": 631,
+      "model_calls": 442,
+      "seconds": 6.342287063598633,
+      "endpoints": [
+        "O=C1CCC1",
+        "OC1=CCC1"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": true,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    },
+    {
+      "case": "cyclobutanone",
+      "extrapolate_forces": false,
+      "status": "validated_descents",
+      "evaluations": 712,
+      "model_calls": 523,
+      "seconds": 6.701953172683716,
+      "endpoints": [
+        "O=C1CCC1",
+        "OC1=CCC1"
+      ],
+      "protocol": {
+        "seed_policy": "diverse_frontier_precise_stationary_v4",
+        "max_attempts": 12,
+        "seeds_per_node": 1,
+        "geometry_seeds_per_node": 9,
+        "total_evaluations": 1600,
+        "evaluations_per_attempt": 1600,
+        "ts_steps": 160,
+        "descent_steps": 250,
+        "initial_fmax": 0.003,
+        "initial_curvature_steps": 3,
+        "fmax": 0.005,
+        "hessian_step": 0.005,
+        "hessian_batch_size": 32,
+        "dimer_extrapolate_forces": false,
+        "mode_displacement": 0.15,
+        "geometry_tolerance_A": 0.15,
+        "energy_tolerance_eV": 0.03,
+        "random_seed": 17
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "acetone",
+      "evaluations_off": 799,
+      "evaluations_on": 685,
+      "status_off": "validated_descents",
+      "status_on": "validated_descents",
+      "same_endpoint_graphs": true,
+      "wall_time_ratio": 1.0914699929141338
+    },
+    {
+      "case": "enol",
+      "evaluations_off": 1079,
+      "evaluations_on": 995,
+      "status_off": "validated_descents",
+      "status_on": "validated_descents",
+      "same_endpoint_graphs": true,
+      "wall_time_ratio": 1.0352211832418377
+    },
+    {
+      "case": "glycolaldehyde",
+      "evaluations_off": 619,
+      "evaluations_on": 556,
+      "status_off": "validated_descents",
+      "status_on": "validated_descents",
+      "same_endpoint_graphs": true,
+      "wall_time_ratio": 1.183462882739944
+    },
+    {
+      "case": "cyclobutanone",
+      "evaluations_off": 712,
+      "evaluations_on": 631,
+      "status_off": "validated_descents",
+      "status_on": "validated_descents",
+      "same_endpoint_graphs": true,
+      "wall_time_ratio": 1.056709213171598
+    }
+  ],
+  "default_enabled": false,
+  "interpretation": "Validation outcomes take precedence over speed; no automatic promotion from four seeds"
+}

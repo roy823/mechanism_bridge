@@ -1,0 +1,85 @@
+{
+  "tests": {
+    "windows": {
+      "passed": 35,
+      "skipped": 1,
+      "skip_reason": "PySCF available only in WSL"
+    },
+    "WSL": {
+      "passed": 36,
+      "skipped": 0
+    }
+  },
+  "artifact_checks": 409,
+  "artifact_checks_passed": true,
+  "diagnostic_source_checks": 45,
+  "diagnostic_sources_passed": true,
+  "hessian_validation_passed": true,
+  "DFT_chain": {
+    "selection": {
+      "run": "reports/network_growth_v4/search/propanal_s17",
+      "start": "propanal",
+      "strategy": "hybrid",
+      "chain": {
+        "nodes": [
+          0,
+          2,
+          3
+        ],
+        "species": [
+          "CCC=O",
+          "[H]/[C-]=[O+]\\CC",
+          "CC.[C-]#[O+]"
+        ],
+        "edges": [
+          1,
+          2
+        ],
+        "chemical_edges": [
+          1,
+          2
+        ],
+        "completed_at_attempt": 6
+      },
+      "edges_to_verify": [
+        1,
+        2
+      ],
+      "rule": "If a root-connected chain with at least two distinct chemical edges is found, select the earliest such symbolic/hybrid chain from the first listed system with that property; independently verify both constituent TSs. Otherwise report lack of chain evidence."
+    },
+    "events": [
+      {
+        "event_id": "propanal_hybrid_edge1_DFT",
+        "MLIP_edge_id": 1,
+        "status": "physical_event_verified",
+        "physical_event_verified": true,
+        "original_pair_preserved": false,
+        "actual_graphs": [
+          "[H]/[C-]=[O+]/CC",
+          "CCC=O"
+        ],
+        "model_weights_updated": false,
+        "source": "reports\\network_growth_v4\\qc\\propanal_edge1\\verification.json",
+        "meaning": "Event-specific physical evidence; failure is not proof of reaction impossibility"
+      },
+      {
+        "event_id": "propanal_hybrid_edge2_DFT",
+        "MLIP_edge_id": 2,
+        "status": "unresolved_ts",
+        "physical_event_verified": false,
+        "original_pair_preserved": null,
+        "actual_graphs": [],
+        "model_weights_updated": false,
+        "source": "reports\\network_growth_v4\\qc\\propanal_edge2\\verification.json",
+        "meaning": "Event-specific physical evidence; failure is not proof of reaction impossibility"
+      }
+    ],
+    "shared_intermediates": [],
+    "actual_two_step_DFT_chain": false,
+    "original_MLIP_chain_preserved": false,
+    "model_weights_updated": false,
+    "independent_arrow_gold": false
+  },
+  "pending_computations": [],
+  "model_weights_updated": false
+}

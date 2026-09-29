@@ -1,0 +1,20 @@
+{
+  "name": "neutral small-molecule reaction-network growth inspired by ReactionAtlas",
+  "starts_file": "data/processed/network_growth_starts.jsonl",
+  "strategies": ["geometry", "arrows", "hybrid"],
+  "core_starts": ["acetone", "propanal", "glycolaldehyde", "glyceraldehyde", "acetylacetone", "cyclobutanone", "acetamide", "nitroethane"],
+  "core_random_seeds": [17],
+  "extension_starts": [],
+  "extension_random_seeds": [],
+  "max_attempts": 24,
+  "seeds_per_node": 1,
+  "total_evaluations": 16000,
+  "evaluations_per_attempt": 1400,
+  "workers": 3,
+  "primary_metric": "root-reachable actual chemical events and distinct-species paths of at least two steps",
+  "secondary_metrics": ["unique compounds", "continuation from newly discovered species", "model wall time", "total wall time", "attempt failure funnel"],
+  "method": "Dimer, force tolerance 0.005 eV/A, 32-geometry batched finite-difference Hessian; 3 geometry variants per atom-mapped action",
+  "hybrid": "Three symbolic proposal attempts then one geometry proposal when available; geometry also applies to symbol-unsupported nodes",
+  "claims": "One random seed per system; empirical scheduling only, no neural-model weight update or experimental yield claim",
+  "DFT_selection": "If a root-connected chain with at least two distinct chemical edges is found, select the earliest such symbolic/hybrid chain from the first listed system with that property; independently verify both constituent TSs. Otherwise report lack of chain evidence."
+}

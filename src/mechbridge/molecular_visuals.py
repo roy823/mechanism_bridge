@@ -29,6 +29,12 @@ NAMES={'CC=O':'乙醛','C=CO':'乙烯醇','C[N+](=O)[O-]':'硝基甲烷',
        'C=[N+]([O-])O':'aci-nitro 互变体','O=[NH+]C[O-]':'意外连接候选',
        'CC(N)=O':'乙酰胺','O=C1CCC1':'环丁酮','O=CC1CC1':'环收缩产物候选'}
 NAMES.update({'CC(C)=O':'丙酮','CCC=O':'丙醛','C=C(C)O':'丙酮烯醇'})
+NAMES.update({'O=CCO':'羟基乙醛','O/C=C\\O':'乙烯二醇',
+    'O=C[C@H](O)CO':'甘油醛','O=C[C@@H](O)CO':'甘油醛',
+    'O=C(CO)CO':'二羟基丙酮','CC(=O)CC(C)=O':'乙酰丙酮',
+    'CC[N+](=O)[O-]':'硝基乙烷','OC1=CCC1':'环丁酮烯醇',
+    'CC.[C-]#[O+]':'乙烷 + 一氧化碳',
+    '[H]/[C-]=[O+]\\CC':'局部电荷中间体候选'})
 
 
 def depiction(mol, png=False):

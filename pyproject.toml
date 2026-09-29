@@ -7,7 +7,7 @@ name = "mechanism-bridge"
 version = "0.2.0"
 description = "Evidence-preserving bridge between symbolic mechanisms and saddle-connected events"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26", "scipy>=1.11", "h5py>=3.10", "rdkit>=2024.3", "ase>=3.23", "networkx>=3.2"]
+dependencies = ["numpy>=1.26", "scipy>=1.11", "h5py>=3.10", "rdkit>=2024.3", "ase>=3.29", "networkx>=3.2"]
 
 [project.optional-dependencies]
 qc = ["pyscf>=2.10", "sella>=2.6", "threadpoolctl>=3"]

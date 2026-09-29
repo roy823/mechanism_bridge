@@ -20,7 +20,7 @@
 'use strict';
 const DATA=__MOLECULAR_DATA__;
 const $=id=>document.getElementById(id), colors={H:'#dbe3ef',C:'#475569',N:'#3478d4',O:'#e95058'};
-const strategyNames={arrows:'完整箭头',bond_edits:'净变键',center_random:'仅反应中心',geometry:'几何'};
+const strategyNames={arrows:'完整箭头',bond_edits:'净变键',center_random:'仅反应中心',geometry:'几何',hybrid:'符号＋几何'};
 let current,frameIndex=0,timer=null,viewers={};
 const escapeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const formula=s=>escapeText(s).replace(/(\d+)/g,'<sub>$1</sub>');

@@ -38,3 +38,19 @@ class ReactionPotential(Calculator):
             r = self.predict(dict(coord=a.positions, numbers=a.numbers, charge=0.), forces=True)
         self.results = dict(energy=float(r['energy'].detach().cpu().reshape(-1)[0]),
                             forces=r['forces'].detach().cpu().numpy().reshape((-1,3)))
+
+    def evaluate_many(self, numbers, positions):
+        """Independent same-composition systems via the official batch API."""
+        numbers=np.asarray(numbers)
+        positions=np.asarray(positions)
+        if (positions.ndim!=3 or positions.shape[1:]!=(len(numbers),3)
+            or not len(positions) or not np.isfinite(positions).all()
+            or not set(numbers)<={1,6,7,8} or sum(numbers)%2):
+            raise ValueError('Batch requires finite neutral closed-shell CHNO geometries')
+        import torch
+        with torch.compiler.set_stance('force_eager'):
+            r=self.predict(dict(coord=positions,
+                numbers=np.broadcast_to(numbers,(len(positions),len(numbers))).copy(),
+                charge=np.zeros(len(positions))),forces=True)
+        return dict(energy=r['energy'].detach().cpu().numpy().reshape(-1),
+                    forces=r['forces'].detach().cpu().numpy().reshape(positions.shape))

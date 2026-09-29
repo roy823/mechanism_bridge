@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "source": "reports/local_transfer_v3/qc/acetone/minimum_forward.xyz",
+      "serial_median_seconds": 0.6790094999887515,
+      "batch_median_seconds": 0.10677620000205934,
+      "speedup": 6.359183975227212,
+      "force_max_difference_eV_A": 9.723007678985596e-07,
+      "hessian_max_difference_eV_A2": 0.000213623046875,
+      "imaginary_counts": {
+        "1": 0,
+        "32": 0
+      },
+      "passed": true
+    },
+    {
+      "source": "reports/local_transfer_v3/qc/acetone/ts.xyz",
+      "serial_median_seconds": 0.5910674000042491,
+      "batch_median_seconds": 0.10005589999491349,
+      "speedup": 5.907371779518219,
+      "force_max_difference_eV_A": 2.562999725341797e-06,
+      "hessian_max_difference_eV_A2": 0.000545501708984375,
+      "imaginary_counts": {
+        "1": 1,
+        "32": 1
+      },
+      "passed": true
+    },
+    {
+      "source": "reports/local_transfer_v3/continuation/acetone_enol_observed/arrows/attempt_000/ts.xyz",
+      "serial_median_seconds": 0.6049817999883089,
+      "batch_median_seconds": 0.08713609998812899,
+      "speedup": 6.942952462535376,
+      "force_max_difference_eV_A": 2.0265579223632812e-06,
+      "hessian_max_difference_eV_A2": 0.0004024505615234375,
+      "imaginary_counts": {
+        "1": 2,
+        "32": 2
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "device": "cpu",
+  "threads": 2,
+  "batch_size": 32,
+  "step_A": 0.005,
+  "repeats": 3,
+  "interpretation": "Component benchmark, not overall search or DFT speedup; concurrent system load may affect timing"
+}

@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "start": "glycolaldehyde",
+      "attempt": 6,
+      "old_status": "ts_force_unconverged",
+      "new_status": "validated_descents",
+      "old_evaluations": 705,
+      "new_evaluations": 943,
+      "old_force": 0.005040472373366356,
+      "new_force": 0.00404416024684906,
+      "endpoints": [
+        "O=CCO",
+        "O[C@H]1CO1"
+      ]
+    },
+    {
+      "start": "acetone",
+      "attempt": 1,
+      "old_status": "ts_force_unconverged",
+      "new_status": "validated_descents",
+      "old_evaluations": 671,
+      "new_evaluations": 1118,
+      "old_force": 0.005057649686932564,
+      "new_force": 0.0032050078734755516,
+      "endpoints": [
+        "CC(C)=O",
+        "C=C(C)O"
+      ]
+    },
+    {
+      "start": "acetone",
+      "attempt": 10,
+      "old_status": "ts_force_unconverged",
+      "new_status": "validated_descents",
+      "old_evaluations": 1100,
+      "new_evaluations": 1145,
+      "old_force": 0.005438956432044506,
+      "new_force": 0.004796409513801336,
+      "endpoints": [
+        "CCC=O",
+        "CCC=O"
+      ]
+    }
+  ],
+  "primary_counts_unchanged": true
+}

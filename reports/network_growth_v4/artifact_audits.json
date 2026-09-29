@@ -1,0 +1,68 @@
+[
+  {
+    "run": "reports\\network_growth_v4\\search\\acetamide_s17",
+    "passed": true,
+    "checks": 38,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\search\\acetone_s17",
+    "passed": true,
+    "checks": 42,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\search\\acetylacetone_s17",
+    "passed": true,
+    "checks": 29,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\search\\cyclobutanone_s17",
+    "passed": true,
+    "checks": 41,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\search\\glyceraldehyde_s17",
+    "passed": true,
+    "checks": 34,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\search\\glycolaldehyde_s17",
+    "passed": true,
+    "checks": 46,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\search\\nitroethane_s17",
+    "passed": true,
+    "checks": 38,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\search\\propanal_s17",
+    "passed": true,
+    "checks": 36,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\geometry_budget_check\\acetamide",
+    "passed": true,
+    "checks": 25,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\geometry_budget_check\\acetone",
+    "passed": true,
+    "checks": 25,
+    "failures": []
+  },
+  {
+    "run": "reports\\network_growth_v4\\geometry_budget_check\\acetylacetone",
+    "passed": true,
+    "checks": 25,
+    "failures": []
+  }
+]

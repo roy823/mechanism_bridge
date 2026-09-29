@@ -150,7 +150,7 @@ def test_network_registers_observed_endpoints_not_proposing_node(tmp_path,monkey
         ends=[dict(positions_A=xyz.tolist(),graph_smiles=graph_smiles(mol),energy_eV=.1,
                    barrier_eV=.9,force_converged=True,imaginary_count=0)
               for mol,xyz in molecules[1:]]
-        return dict(status='validated_descents',evaluations=0,endpoints=ends,
+        return dict(status='validated_descents',evaluations=0,seconds=0.,endpoints=ends,
                     ts={'energy_eV':1.},ts_positions_A=x.tolist())
     monkeypatch.setattr(net,'search_connection',observed)
     start=dict(id='topology_mock',atomic_numbers=[a.GetAtomicNum() for a in m.GetAtoms()],
@@ -187,3 +187,58 @@ def test_root_initialization_escapes_negative_curvature_and_charges_cost(tmp_pat
     assert [r['imaginary_count'] for r in result['initial_relaxation_checks']]==[2,1,0]
     assert result['initialization_evaluations']==result['evaluations']==3
     assert result['initial_point']['imaginary_count']==0
+
+
+def test_batched_hessian_counts_geometries_and_preserves_positions():
+    from ase.calculators.calculator import Calculator,all_changes
+    from mechbridge.physics import finite_hessian
+    class Harmonic(Calculator):
+        implemented_properties=['energy','forces']
+        def calculate(self,atoms=None,properties=('energy',),system_changes=all_changes):
+            super().calculate(atoms,properties,system_changes)
+            x=self.atoms.positions
+            self.results=dict(energy=float((x*x).sum()/2),forces=-x.copy())
+        def evaluate_many(self,numbers,positions):
+            return dict(energy=(positions**2).sum((1,2))/2,forces=-positions)
+    atoms=Atoms('H2',positions=[[0.,0.,0.],[0.,0.,.8]])
+    atoms.calc=CountedCalculator(Harmonic(),13)
+    atoms.get_forces()
+    before=atoms.positions.copy()
+    h=finite_hessian(atoms,batch_forces=atoms.calc.batch_forces,batch_size=4)
+    assert np.allclose(h,np.eye(6))
+    assert np.array_equal(before,atoms.positions)
+    assert atoms.calc.calls==13
+    assert atoms.calc.model_calls==4
+    with pytest.raises(BudgetExceeded):
+        atoms.calc.batch_forces(atoms.numbers,np.array([before]))
+
+
+def test_action_scheduler_diversity_and_finite_exhaustion():
+    from mechbridge.exploration_actions import choose_action,action_key
+    proposals=[dict(edits=[i],arrows=[i],predicted_graph=g) for i,g in enumerate(['A','A','B'])]
+    used={}
+    p,key,variant,strategy=choose_action(proposals,used,{'R'},'arrows')
+    assert p['predicted_graph']=='A' and variant==0
+    used[key]=1
+    assert choose_action(proposals,used,{'R'},'arrows')[0]['predicted_graph']=='B'
+    assert choose_action(proposals,{}, {'A'},'arrows')[0]['predicted_graph']=='B'
+    assert choose_action(proposals,{action_key(p):3 for p in proposals},set(),'arrows') is None
+    assert choose_action([],{},set(),'hybrid')[-1]=='geometry'
+
+
+def test_dimer_stops_on_physical_force_not_projected_norm():
+    from mechbridge.saddle_optimization import StationaryDimerTranslate
+    class Modes:
+        force=np.array([[.0051,0.,0.]])
+        curvature=-1.
+        def get_forces(self,real=False):
+            assert real
+            return self.force
+        def get_curvature(self):return self.curvature
+    optimizer=object.__new__(StationaryDimerTranslate)
+    optimizer.dimeratoms=Modes();optimizer.fmax=.005
+    assert not optimizer.gradient_converged(np.array([.0049,0.,0.]))
+    optimizer.dimeratoms.force=np.array([[.0049,0.,0.]])
+    assert optimizer.gradient_converged(np.array([.0051,0.,0.]))
+    optimizer.dimeratoms.curvature=1.
+    assert not optimizer.gradient_converged(np.zeros(3))

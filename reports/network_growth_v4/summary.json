@@ -1,0 +1,1795 @@
+{
+  "rows": [
+    {
+      "start": "acetone",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 10828,
+      "model_calls": 10538,
+      "model_seconds": 93.68139730012626,
+      "seconds": 107.61279810001724,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "same_basin_return": 1
+      },
+      "root_nodes": [
+        0
+      ],
+      "root_species": [
+        "CC(C)=O"
+      ],
+      "chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "expanded_new_species": [],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 0,
+      "file": "reports/network_growth_v4/search/acetone_s17/acetone/geometry/network.json"
+    },
+    {
+      "start": "acetone",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 18,
+      "evaluations": 16000,
+      "model_calls": 14376,
+      "model_seconds": 142.51143880261225,
+      "seconds": 172.37085380000644,
+      "outcomes": {
+        "new_connection": 8,
+        "ts_force_unconverged": 7,
+        "not_index_one": 2,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "root_species": [
+        "C=C(C)O",
+        "CC(C)=O"
+      ],
+      "chemical_pairs": [
+        [
+          "C=C(C)O",
+          "CC(C)=O"
+        ]
+      ],
+      "root_edges": 8,
+      "all_edges": 8,
+      "expanded_new_species": [
+        "C=C(C)O"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/acetone_s17/acetone/arrows/network.json"
+    },
+    {
+      "start": "acetone",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 17,
+      "evaluations": 16000,
+      "model_calls": 14724,
+      "model_seconds": 154.6058318009891,
+      "seconds": 185.1195657000062,
+      "outcomes": {
+        "new_connection": 6,
+        "ts_force_unconverged": 8,
+        "not_index_one": 2,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "root_species": [
+        "C=C(C)O",
+        "CC(C)=O"
+      ],
+      "chemical_pairs": [
+        [
+          "C=C(C)O",
+          "CC(C)=O"
+        ]
+      ],
+      "root_edges": 6,
+      "all_edges": 6,
+      "expanded_new_species": [
+        "C=C(C)O"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/acetone_s17/acetone/hybrid/network.json"
+    },
+    {
+      "start": "propanal",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 15,
+      "evaluations": 16000,
+      "model_calls": 15072,
+      "model_seconds": 134.1359894016059,
+      "seconds": 155.82618060000823,
+      "outcomes": {
+        "calculation_failed": 3,
+        "new_connection": 2,
+        "ts_force_unconverged": 8,
+        "budget_exhausted": 2
+      },
+      "root_nodes": [
+        0,
+        1,
+        2
+      ],
+      "root_species": [
+        "CCC=O",
+        "[H]/[O+]=[C-]\\CC"
+      ],
+      "chemical_pairs": [
+        [
+          "CCC=O",
+          "[H]/[O+]=[C-]\\CC"
+        ]
+      ],
+      "root_edges": 2,
+      "all_edges": 2,
+      "expanded_new_species": [
+        "[H]/[O+]=[C-]\\CC"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/propanal_s17/propanal/geometry/network.json"
+    },
+    {
+      "start": "propanal",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 15,
+      "evaluations": 16000,
+      "model_calls": 14782,
+      "model_seconds": 149.64582360058557,
+      "seconds": 176.71878009999637,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "new_connection": 3,
+        "calculation_failed": 1,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 2,
+        "duplicate_connection": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "root_species": [
+        "CC.[C-]#[O+]",
+        "CCC=O",
+        "[H]/[C-]=[O+]\\CC"
+      ],
+      "chemical_pairs": [
+        [
+          "CC.[C-]#[O+]",
+          "CCC=O"
+        ],
+        [
+          "CCC=O",
+          "[H]/[C-]=[O+]\\CC"
+        ]
+      ],
+      "root_edges": 3,
+      "all_edges": 3,
+      "expanded_new_species": [
+        "CC.[C-]#[O+]"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/propanal_s17/propanal/arrows/network.json"
+    },
+    {
+      "start": "propanal",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 15,
+      "evaluations": 16000,
+      "model_calls": 14956,
+      "model_seconds": 145.81755430050544,
+      "seconds": 171.43756720001693,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "new_connection": 3,
+        "calculation_failed": 2,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "root_species": [
+        "CC.[C-]#[O+]",
+        "CCC=O",
+        "[H]/[C-]=[O+]\\CC"
+      ],
+      "chemical_pairs": [
+        [
+          "CC.[C-]#[O+]",
+          "CCC=O"
+        ],
+        [
+          "CC.[C-]#[O+]",
+          "[H]/[C-]=[O+]\\CC"
+        ],
+        [
+          "CCC=O",
+          "[H]/[C-]=[O+]\\CC"
+        ]
+      ],
+      "root_edges": 3,
+      "all_edges": 3,
+      "expanded_new_species": [
+        "CC.[C-]#[O+]",
+        "[H]/[C-]=[O+]\\CC"
+      ],
+      "chains": [
+        {
+          "nodes": [
+            0,
+            2,
+            3
+          ],
+          "species": [
+            "CCC=O",
+            "[H]/[C-]=[O+]\\CC",
+            "CC.[C-]#[O+]"
+          ],
+          "edges": [
+            1,
+            2
+          ],
+          "chemical_edges": [
+            1,
+            2
+          ],
+          "completed_at_attempt": 6
+        }
+      ],
+      "longest_demonstrated_chemical_path": 2,
+      "file": "reports/network_growth_v4/search/propanal_s17/propanal/hybrid/network.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 14,
+      "evaluations": 16000,
+      "model_calls": 15540,
+      "model_seconds": 133.94743520126212,
+      "seconds": 154.4396776999929,
+      "outcomes": {
+        "ts_force_unconverged": 10,
+        "new_connection": 2,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        3
+      ],
+      "root_species": [
+        "CO.[C-]#[O+]",
+        "O=CCO"
+      ],
+      "chemical_pairs": [
+        [
+          "CO.[C-]#[O+]",
+          "O=CCO"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 2,
+      "expanded_new_species": [
+        "CO.[C-]#[O+]"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/glycolaldehyde_s17/glycolaldehyde/geometry/network.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 18,
+      "evaluations": 16000,
+      "model_calls": 14221,
+      "model_seconds": 143.94979750007042,
+      "seconds": 174.33259569999063,
+      "outcomes": {
+        "new_connection": 9,
+        "ts_force_unconverged": 5,
+        "duplicate_connection": 2,
+        "budget_exhausted": 2
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        9,
+        10
+      ],
+      "root_species": [
+        "O/C=C\\O",
+        "O=CCO",
+        "[H]/[O+]=C\\C[O-]",
+        "[H]/[O+]=[C-]/CO"
+      ],
+      "chemical_pairs": [
+        [
+          "O/C=C\\O",
+          "O=CCO"
+        ],
+        [
+          "O/C=C\\O",
+          "[H]/[O+]=C\\C[O-]"
+        ],
+        [
+          "O=CCO",
+          "[H]/[O+]=C\\C[O-]"
+        ],
+        [
+          "O=CCO",
+          "[H]/[O+]=[C-]/CO"
+        ]
+      ],
+      "root_edges": 7,
+      "all_edges": 9,
+      "expanded_new_species": [
+        "O/C=C\\O"
+      ],
+      "chains": [
+        {
+          "nodes": [
+            0,
+            2,
+            9
+          ],
+          "species": [
+            "O=CCO",
+            "O/C=C\\O",
+            "[H]/[O+]=C\\C[O-]"
+          ],
+          "edges": [
+            1,
+            7
+          ],
+          "chemical_edges": [
+            1,
+            7
+          ],
+          "completed_at_attempt": 15
+        }
+      ],
+      "longest_demonstrated_chemical_path": 2,
+      "file": "reports/network_growth_v4/search/glycolaldehyde_s17/glycolaldehyde/arrows/network.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 17,
+      "evaluations": 16000,
+      "model_calls": 14620,
+      "model_seconds": 142.32525350051583,
+      "seconds": 170.5237911999866,
+      "outcomes": {
+        "new_connection": 7,
+        "ts_force_unconverged": 6,
+        "duplicate_connection": 2,
+        "budget_exhausted": 2
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        5,
+        6
+      ],
+      "root_species": [
+        "O/C=C\\O",
+        "O=CCO",
+        "[H]/[O+]=[C-]/CO"
+      ],
+      "chemical_pairs": [
+        [
+          "O/C=C\\O",
+          "O=CCO"
+        ],
+        [
+          "O/C=C\\O",
+          "[H]/[O+]=[C-]/CO"
+        ],
+        [
+          "O=CCO",
+          "[H]/[O+]=[C-]/CO"
+        ]
+      ],
+      "root_edges": 5,
+      "all_edges": 7,
+      "expanded_new_species": [
+        "O/C=C\\O",
+        "[H]/[O+]=[C-]/CO"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/glycolaldehyde_s17/glycolaldehyde/hybrid/network.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 14,
+      "evaluations": 16000,
+      "model_calls": 15310,
+      "model_seconds": 158.95999130184646,
+      "seconds": 184.48730850001448,
+      "outcomes": {
+        "ts_force_unconverged": 10,
+        "new_connection": 3,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        4
+      ],
+      "root_species": [
+        "O=C[C@@H](O)CO",
+        "[H]/[O+]=C\\C([O-])CO",
+        "[H]/[O+]=C\\[C@H]([O-])CO"
+      ],
+      "chemical_pairs": [
+        [
+          "O=C[C@@H](O)CO",
+          "[H]/[O+]=C\\[C@H]([O-])CO"
+        ],
+        [
+          "[H]/[O+]=C\\C([O-])CO",
+          "[H]/[O+]=C\\[C@H]([O-])CO"
+        ]
+      ],
+      "root_edges": 2,
+      "all_edges": 3,
+      "expanded_new_species": [
+        "[H]/[O+]=C\\C([O-])CO",
+        "[H]/[O+]=C\\[C@H]([O-])CO"
+      ],
+      "chains": [
+        {
+          "nodes": [
+            0,
+            1,
+            4
+          ],
+          "species": [
+            "O=C[C@@H](O)CO",
+            "[H]/[O+]=C\\[C@H]([O-])CO",
+            "[H]/[O+]=C\\C([O-])CO"
+          ],
+          "edges": [
+            0,
+            2
+          ],
+          "chemical_edges": [
+            0,
+            2
+          ],
+          "completed_at_attempt": 7
+        }
+      ],
+      "longest_demonstrated_chemical_path": 2,
+      "file": "reports/network_growth_v4/search/glyceraldehyde_s17/glyceraldehyde/geometry/network.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 13,
+      "evaluations": 16000,
+      "model_calls": 15655,
+      "model_seconds": 176.3114457996271,
+      "seconds": 206.3993269999919,
+      "outcomes": {
+        "ts_force_unconverged": 10,
+        "new_connection": 1,
+        "budget_exhausted": 2
+      },
+      "root_nodes": [
+        0,
+        1
+      ],
+      "root_species": [
+        "O=C[C@@H](O)CO",
+        "OCCO.[C-]#[O+]"
+      ],
+      "chemical_pairs": [
+        [
+          "O=C[C@@H](O)CO",
+          "OCCO.[C-]#[O+]"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 1,
+      "expanded_new_species": [
+        "OCCO.[C-]#[O+]"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/glyceraldehyde_s17/glyceraldehyde/arrows/network.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 13,
+      "evaluations": 16000,
+      "model_calls": 15655,
+      "model_seconds": 178.75304060030612,
+      "seconds": 208.0134304999956,
+      "outcomes": {
+        "ts_force_unconverged": 10,
+        "new_connection": 1,
+        "budget_exhausted": 2
+      },
+      "root_nodes": [
+        0,
+        1
+      ],
+      "root_species": [
+        "O=C[C@@H](O)CO",
+        "OCCO.[C-]#[O+]"
+      ],
+      "chemical_pairs": [
+        [
+          "O=C[C@@H](O)CO",
+          "OCCO.[C-]#[O+]"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 1,
+      "expanded_new_species": [
+        "OCCO.[C-]#[O+]"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/glyceraldehyde_s17/glyceraldehyde/hybrid/network.json"
+    },
+    {
+      "start": "acetylacetone",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11495,
+      "model_calls": 11408,
+      "model_seconds": 127.31377739773598,
+      "seconds": 144.53427820000798,
+      "outcomes": {
+        "ts_force_unconverged": 9
+      },
+      "root_nodes": [
+        0
+      ],
+      "root_species": [
+        "CC(=O)CC(C)=O"
+      ],
+      "chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "expanded_new_species": [],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 0,
+      "file": "reports/network_growth_v4/search/acetylacetone_s17/acetylacetone/geometry/network.json"
+    },
+    {
+      "start": "acetylacetone",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 14,
+      "evaluations": 16000,
+      "model_calls": 15913,
+      "model_seconds": 189.81677520106314,
+      "seconds": 223.9194892999949,
+      "outcomes": {
+        "ts_force_unconverged": 13,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0
+      ],
+      "root_species": [
+        "CC(=O)CC(C)=O"
+      ],
+      "chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "expanded_new_species": [],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 0,
+      "file": "reports/network_growth_v4/search/acetylacetone_s17/acetylacetone/arrows/network.json"
+    },
+    {
+      "start": "acetylacetone",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 14,
+      "evaluations": 16000,
+      "model_calls": 15913,
+      "model_seconds": 189.6174412984692,
+      "seconds": 222.19719529998838,
+      "outcomes": {
+        "ts_force_unconverged": 13,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0
+      ],
+      "root_species": [
+        "CC(=O)CC(C)=O"
+      ],
+      "chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "expanded_new_species": [],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 0,
+      "file": "reports/network_growth_v4/search/acetylacetone_s17/acetylacetone/hybrid/network.json"
+    },
+    {
+      "start": "cyclobutanone",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 14,
+      "evaluations": 16000,
+      "model_calls": 15370,
+      "model_seconds": 162.43434140071622,
+      "seconds": 187.6471645999991,
+      "outcomes": {
+        "new_connection": 2,
+        "ts_force_unconverged": 10,
+        "calculation_failed": 1,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2
+      ],
+      "root_species": [
+        "C=C.C=C=O",
+        "O=C1CCC1"
+      ],
+      "chemical_pairs": [
+        [
+          "C=C.C=C=O",
+          "O=C1CCC1"
+        ]
+      ],
+      "root_edges": 2,
+      "all_edges": 2,
+      "expanded_new_species": [
+        "C=C.C=C=O"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/cyclobutanone_s17/cyclobutanone/geometry/network.json"
+    },
+    {
+      "start": "cyclobutanone",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 17,
+      "evaluations": 16000,
+      "model_calls": 14268,
+      "model_seconds": 159.5608048005961,
+      "seconds": 190.84943030000431,
+      "outcomes": {
+        "new_connection": 5,
+        "not_index_one": 2,
+        "ts_force_unconverged": 6,
+        "calculation_failed": 1,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 2
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "root_species": [
+        "C1CC1.[C-]#[O+]",
+        "O=C1CCC1",
+        "O=CC1CC1",
+        "OC1=CCC1"
+      ],
+      "chemical_pairs": [
+        [
+          "C1CC1.[C-]#[O+]",
+          "O=CC1CC1"
+        ],
+        [
+          "O=C1CCC1",
+          "O=CC1CC1"
+        ],
+        [
+          "O=C1CCC1",
+          "OC1=CCC1"
+        ]
+      ],
+      "root_edges": 5,
+      "all_edges": 5,
+      "expanded_new_species": [
+        "C1CC1.[C-]#[O+]",
+        "O=CC1CC1",
+        "OC1=CCC1"
+      ],
+      "chains": [
+        {
+          "nodes": [
+            0,
+            2,
+            3
+          ],
+          "species": [
+            "O=C1CCC1",
+            "O=CC1CC1",
+            "C1CC1.[C-]#[O+]"
+          ],
+          "edges": [
+            1,
+            2
+          ],
+          "chemical_edges": [
+            1,
+            2
+          ],
+          "completed_at_attempt": 5
+        },
+        {
+          "nodes": [
+            0,
+            2,
+            4
+          ],
+          "species": [
+            "O=C1CCC1",
+            "O=CC1CC1",
+            "C1CC1.[C-]#[O+]"
+          ],
+          "edges": [
+            1,
+            3
+          ],
+          "chemical_edges": [
+            1,
+            3
+          ],
+          "completed_at_attempt": 6
+        }
+      ],
+      "longest_demonstrated_chemical_path": 2,
+      "file": "reports/network_growth_v4/search/cyclobutanone_s17/cyclobutanone/arrows/network.json"
+    },
+    {
+      "start": "cyclobutanone",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 16,
+      "evaluations": 16000,
+      "model_calls": 14425,
+      "model_seconds": 161.68738739722176,
+      "seconds": 191.00648430001456,
+      "outcomes": {
+        "new_connection": 5,
+        "not_index_one": 2,
+        "ts_force_unconverged": 6,
+        "calculation_failed": 1,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "root_species": [
+        "C1CC1.[C-]#[O+]",
+        "C=C.C=C=O",
+        "O=C1CCC1",
+        "O=CC1CC1",
+        "OC1=CCC1"
+      ],
+      "chemical_pairs": [
+        [
+          "C1CC1.[C-]#[O+]",
+          "O=CC1CC1"
+        ],
+        [
+          "C=C.C=C=O",
+          "O=C1CCC1"
+        ],
+        [
+          "O=C1CCC1",
+          "O=CC1CC1"
+        ],
+        [
+          "O=C1CCC1",
+          "OC1=CCC1"
+        ]
+      ],
+      "root_edges": 5,
+      "all_edges": 5,
+      "expanded_new_species": [
+        "C1CC1.[C-]#[O+]",
+        "C=C.C=C=O",
+        "O=CC1CC1",
+        "OC1=CCC1"
+      ],
+      "chains": [
+        {
+          "nodes": [
+            0,
+            2,
+            3
+          ],
+          "species": [
+            "O=C1CCC1",
+            "O=CC1CC1",
+            "C1CC1.[C-]#[O+]"
+          ],
+          "edges": [
+            1,
+            2
+          ],
+          "chemical_edges": [
+            1,
+            2
+          ],
+          "completed_at_attempt": 5
+        },
+        {
+          "nodes": [
+            0,
+            2,
+            4
+          ],
+          "species": [
+            "O=C1CCC1",
+            "O=CC1CC1",
+            "C1CC1.[C-]#[O+]"
+          ],
+          "edges": [
+            1,
+            3
+          ],
+          "chemical_edges": [
+            1,
+            3
+          ],
+          "completed_at_attempt": 6
+        }
+      ],
+      "longest_demonstrated_chemical_path": 2,
+      "file": "reports/network_growth_v4/search/cyclobutanone_s17/cyclobutanone/hybrid/network.json"
+    },
+    {
+      "start": "acetamide",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 10504,
+      "model_calls": 10400,
+      "model_seconds": 100.03122449968942,
+      "seconds": 115.85360630002106,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "not_index_one": 1
+      },
+      "root_nodes": [
+        0
+      ],
+      "root_species": [
+        "CC(N)=O"
+      ],
+      "chemical_pairs": [],
+      "root_edges": 0,
+      "all_edges": 0,
+      "expanded_new_species": [],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 0,
+      "file": "reports/network_growth_v4/search/acetamide_s17/acetamide/geometry/network.json"
+    },
+    {
+      "start": "acetamide",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 17,
+      "evaluations": 16000,
+      "model_calls": 14492,
+      "model_seconds": 143.39998669963097,
+      "seconds": 176.5536196999892,
+      "outcomes": {
+        "new_connection": 5,
+        "seed_generation_failed": 1,
+        "unresolved_minimum": 2,
+        "budget_exhausted": 3,
+        "ts_force_unconverged": 5,
+        "duplicate_connection": 1
+      },
+      "root_nodes": [
+        0,
+        1
+      ],
+      "root_species": [
+        "C=C(N)O",
+        "CC(N)=O"
+      ],
+      "chemical_pairs": [
+        [
+          "C=C(N)O",
+          "CC(N)=O"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 5,
+      "expanded_new_species": [
+        "C=C(N)O"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/acetamide_s17/acetamide/arrows/network.json"
+    },
+    {
+      "start": "acetamide",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 16,
+      "evaluations": 16000,
+      "model_calls": 14752,
+      "model_seconds": 140.15450620042975,
+      "seconds": 169.4005567000131,
+      "outcomes": {
+        "new_connection": 4,
+        "seed_generation_failed": 1,
+        "unresolved_minimum": 2,
+        "budget_exhausted": 2,
+        "ts_force_unconverged": 6,
+        "duplicate_connection": 1
+      },
+      "root_nodes": [
+        0,
+        1
+      ],
+      "root_species": [
+        "C=C(N)O",
+        "CC(N)=O"
+      ],
+      "chemical_pairs": [
+        [
+          "C=C(N)O",
+          "CC(N)=O"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 4,
+      "expanded_new_species": [
+        "C=C(N)O"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/acetamide_s17/acetamide/hybrid/network.json"
+    },
+    {
+      "start": "nitroethane",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 14,
+      "evaluations": 16000,
+      "model_calls": 15594,
+      "model_seconds": 151.67808509955648,
+      "seconds": 176.26699039997766,
+      "outcomes": {
+        "ts_force_unconverged": 11,
+        "new_connection": 1,
+        "calculation_failed": 1,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1
+      ],
+      "root_species": [
+        "C=[N+]([O-])OC",
+        "CC[N+](=O)[O-]"
+      ],
+      "chemical_pairs": [
+        [
+          "C=[N+]([O-])OC",
+          "CC[N+](=O)[O-]"
+        ]
+      ],
+      "root_edges": 1,
+      "all_edges": 1,
+      "expanded_new_species": [
+        "C=[N+]([O-])OC"
+      ],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/nitroethane_s17/nitroethane/geometry/network.json"
+    },
+    {
+      "start": "nitroethane",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 6399,
+      "model_calls": 5471,
+      "model_seconds": 55.42122349893907,
+      "seconds": 69.11666860000696,
+      "outcomes": {
+        "ts_force_unconverged": 1,
+        "new_connection": 4,
+        "calculation_failed": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2
+      ],
+      "root_species": [
+        "CCON=O",
+        "CC[N+](=O)[O-]",
+        "CCn1oo1"
+      ],
+      "chemical_pairs": [
+        [
+          "CCON=O",
+          "CC[N+](=O)[O-]"
+        ],
+        [
+          "CC[N+](=O)[O-]",
+          "CCn1oo1"
+        ]
+      ],
+      "root_edges": 2,
+      "all_edges": 4,
+      "expanded_new_species": [],
+      "chains": [],
+      "longest_demonstrated_chemical_path": 1,
+      "file": "reports/network_growth_v4/search/nitroethane_s17/nitroethane/arrows/network.json"
+    },
+    {
+      "start": "nitroethane",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 15,
+      "evaluations": 16000,
+      "model_calls": 15014,
+      "model_seconds": 145.1069089975208,
+      "seconds": 169.87329869999667,
+      "outcomes": {
+        "ts_force_unconverged": 9,
+        "new_connection": 4,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "root_nodes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "root_species": [
+        "CC/N=[O+]\\[O-]",
+        "CCON=O",
+        "CC[N+](=O)[O-]",
+        "CCn1oo1"
+      ],
+      "chemical_pairs": [
+        [
+          "CC/N=[O+]\\[O-]",
+          "CCn1oo1"
+        ],
+        [
+          "CCON=O",
+          "CC[N+](=O)[O-]"
+        ],
+        [
+          "CC[N+](=O)[O-]",
+          "CCn1oo1"
+        ]
+      ],
+      "root_edges": 3,
+      "all_edges": 4,
+      "expanded_new_species": [
+        "CC/N=[O+]\\[O-]",
+        "CCON=O",
+        "CCn1oo1"
+      ],
+      "chains": [
+        {
+          "nodes": [
+            0,
+            2,
+            3
+          ],
+          "species": [
+            "CC[N+](=O)[O-]",
+            "CCn1oo1",
+            "CC/N=[O+]\\[O-]"
+          ],
+          "edges": [
+            1,
+            2
+          ],
+          "chemical_edges": [
+            1,
+            2
+          ],
+          "completed_at_attempt": 5
+        }
+      ],
+      "longest_demonstrated_chemical_path": 2,
+      "file": "reports/network_growth_v4/search/nitroethane_s17/nitroethane/hybrid/network.json"
+    }
+  ],
+  "DFT_selection": {
+    "run": "reports/network_growth_v4/search/propanal_s17",
+    "start": "propanal",
+    "strategy": "hybrid",
+    "chain": {
+      "nodes": [
+        0,
+        2,
+        3
+      ],
+      "species": [
+        "CCC=O",
+        "[H]/[C-]=[O+]\\CC",
+        "CC.[C-]#[O+]"
+      ],
+      "edges": [
+        1,
+        2
+      ],
+      "chemical_edges": [
+        1,
+        2
+      ],
+      "completed_at_attempt": 6
+    },
+    "edges_to_verify": [
+      1,
+      2
+    ],
+    "rule": "If a root-connected chain with at least two distinct chemical edges is found, select the earliest such symbolic/hybrid chain from the first listed system with that property; independently verify both constituent TSs. Otherwise report lack of chain evidence."
+  },
+  "DFT": [
+    {
+      "case": "propanal_edge1",
+      "status": "physical_event_verified",
+      "physical_event_verified": true,
+      "original_pair_preserved": false,
+      "endpoint_graphs": [
+        "[H]/[C-]=[O+]/CC",
+        "CCC=O"
+      ],
+      "file": "reports/network_growth_v4/qc/propanal_edge1/verification.json"
+    },
+    {
+      "case": "propanal_edge2",
+      "status": "unresolved_ts",
+      "physical_event_verified": false,
+      "original_pair_preserved": null,
+      "endpoint_graphs": [],
+      "file": "reports/network_growth_v4/qc/propanal_edge2/verification.json"
+    }
+  ],
+  "attempts": 339,
+  "evaluations": 359226,
+  "model_calls": 338469,
+  "campaign_seconds": 1592.1478867530823,
+  "multistep_runs": 6,
+  "runs_expanding_new_species": 18,
+  "neural_model_weights_updated": false,
+  "evidence": "All search chains use actual MLIP minimum/TS connectivity; only individual listed QC events have DFT evidence",
+  "strategy_totals": {
+    "geometry": {
+      "chemical_pairs_sum": 6,
+      "multistep_runs": 1,
+      "evaluations": 112827
+    },
+    "arrows": {
+      "chemical_pairs_sum": 14,
+      "multistep_runs": 2,
+      "evaluations": 118399
+    },
+    "hybrid": {
+      "chemical_pairs_sum": 16,
+      "multistep_runs": 3,
+      "evaluations": 128000
+    }
+  },
+  "supplementary": {
+    "hessian": {
+      "cases": [
+        {
+          "source": "reports/local_transfer_v3/qc/acetone/minimum_forward.xyz",
+          "serial_median_seconds": 0.6790094999887515,
+          "batch_median_seconds": 0.10677620000205934,
+          "speedup": 6.359183975227212,
+          "force_max_difference_eV_A": 9.723007678985596e-07,
+          "hessian_max_difference_eV_A2": 0.000213623046875,
+          "imaginary_counts": {
+            "1": 0,
+            "32": 0
+          },
+          "passed": true
+        },
+        {
+          "source": "reports/local_transfer_v3/qc/acetone/ts.xyz",
+          "serial_median_seconds": 0.5910674000042491,
+          "batch_median_seconds": 0.10005589999491349,
+          "speedup": 5.907371779518219,
+          "force_max_difference_eV_A": 2.562999725341797e-06,
+          "hessian_max_difference_eV_A2": 0.000545501708984375,
+          "imaginary_counts": {
+            "1": 1,
+            "32": 1
+          },
+          "passed": true
+        },
+        {
+          "source": "reports/local_transfer_v3/continuation/acetone_enol_observed/arrows/attempt_000/ts.xyz",
+          "serial_median_seconds": 0.6049817999883089,
+          "batch_median_seconds": 0.08713609998812899,
+          "speedup": 6.942952462535376,
+          "force_max_difference_eV_A": 2.0265579223632812e-06,
+          "hessian_max_difference_eV_A2": 0.0004024505615234375,
+          "imaginary_counts": {
+            "1": 2,
+            "32": 2
+          },
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "device": "cpu",
+      "threads": 2,
+      "batch_size": 32,
+      "step_A": 0.005,
+      "repeats": 3,
+      "interpretation": "Component benchmark, not overall search or DFT speedup; concurrent system load may affect timing"
+    },
+    "dimer_extrapolation": {
+      "rows": [
+        {
+          "case": "acetone",
+          "extrapolate_forces": false,
+          "status": "validated_descents",
+          "evaluations": 799,
+          "model_calls": 625,
+          "seconds": 8.088260889053345,
+          "endpoints": [
+            "C=C(C)O",
+            "CC(C)=O"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": false,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        },
+        {
+          "case": "acetone",
+          "extrapolate_forces": true,
+          "status": "validated_descents",
+          "evaluations": 685,
+          "model_calls": 511,
+          "seconds": 7.410429000854492,
+          "endpoints": [
+            "C=C(C)O",
+            "CC(C)=O"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": true,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        },
+        {
+          "case": "enol",
+          "extrapolate_forces": true,
+          "status": "validated_descents",
+          "evaluations": 995,
+          "model_calls": 821,
+          "seconds": 10.920700073242188,
+          "endpoints": [
+            "C=C(C)O",
+            "CC(C)=O"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": true,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        },
+        {
+          "case": "enol",
+          "extrapolate_forces": false,
+          "status": "validated_descents",
+          "evaluations": 1079,
+          "model_calls": 905,
+          "seconds": 11.305340051651001,
+          "endpoints": [
+            "C=C(C)O",
+            "CC(C)=O"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": false,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        },
+        {
+          "case": "glycolaldehyde",
+          "extrapolate_forces": false,
+          "status": "validated_descents",
+          "evaluations": 619,
+          "model_calls": 481,
+          "seconds": 6.179115295410156,
+          "endpoints": [
+            "O/C=C\\O",
+            "O=CCO"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": false,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        },
+        {
+          "case": "glycolaldehyde",
+          "extrapolate_forces": true,
+          "status": "validated_descents",
+          "evaluations": 556,
+          "model_calls": 418,
+          "seconds": 5.2212159633636475,
+          "endpoints": [
+            "O/C=C\\O",
+            "O=CCO"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": true,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        },
+        {
+          "case": "cyclobutanone",
+          "extrapolate_forces": true,
+          "status": "validated_descents",
+          "evaluations": 631,
+          "model_calls": 442,
+          "seconds": 6.342287063598633,
+          "endpoints": [
+            "O=C1CCC1",
+            "OC1=CCC1"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": true,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        },
+        {
+          "case": "cyclobutanone",
+          "extrapolate_forces": false,
+          "status": "validated_descents",
+          "evaluations": 712,
+          "model_calls": 523,
+          "seconds": 6.701953172683716,
+          "endpoints": [
+            "O=C1CCC1",
+            "OC1=CCC1"
+          ],
+          "protocol": {
+            "seed_policy": "diverse_frontier_precise_stationary_v4",
+            "max_attempts": 12,
+            "seeds_per_node": 1,
+            "geometry_seeds_per_node": 9,
+            "total_evaluations": 1600,
+            "evaluations_per_attempt": 1600,
+            "ts_steps": 160,
+            "descent_steps": 250,
+            "initial_fmax": 0.003,
+            "initial_curvature_steps": 3,
+            "fmax": 0.005,
+            "hessian_step": 0.005,
+            "hessian_batch_size": 32,
+            "dimer_extrapolate_forces": false,
+            "mode_displacement": 0.15,
+            "geometry_tolerance_A": 0.15,
+            "energy_tolerance_eV": 0.03,
+            "random_seed": 17
+          }
+        }
+      ],
+      "comparisons": [
+        {
+          "case": "acetone",
+          "evaluations_off": 799,
+          "evaluations_on": 685,
+          "status_off": "validated_descents",
+          "status_on": "validated_descents",
+          "same_endpoint_graphs": true,
+          "wall_time_ratio": 1.0914699929141338
+        },
+        {
+          "case": "enol",
+          "evaluations_off": 1079,
+          "evaluations_on": 995,
+          "status_off": "validated_descents",
+          "status_on": "validated_descents",
+          "same_endpoint_graphs": true,
+          "wall_time_ratio": 1.0352211832418377
+        },
+        {
+          "case": "glycolaldehyde",
+          "evaluations_off": 619,
+          "evaluations_on": 556,
+          "status_off": "validated_descents",
+          "status_on": "validated_descents",
+          "same_endpoint_graphs": true,
+          "wall_time_ratio": 1.183462882739944
+        },
+        {
+          "case": "cyclobutanone",
+          "evaluations_off": 712,
+          "evaluations_on": 631,
+          "status_off": "validated_descents",
+          "status_on": "validated_descents",
+          "same_endpoint_graphs": true,
+          "wall_time_ratio": 1.056709213171598
+        }
+      ],
+      "default_enabled": false,
+      "interpretation": "Validation outcomes take precedence over speed; no automatic promotion from four seeds"
+    },
+    "convergence_contract": {
+      "rows": [
+        {
+          "start": "glycolaldehyde",
+          "attempt": 6,
+          "old_status": "ts_force_unconverged",
+          "new_status": "validated_descents",
+          "old_evaluations": 705,
+          "new_evaluations": 943,
+          "old_force": 0.005040472373366356,
+          "new_force": 0.00404416024684906,
+          "endpoints": [
+            "O=CCO",
+            "O[C@H]1CO1"
+          ]
+        },
+        {
+          "start": "acetone",
+          "attempt": 1,
+          "old_status": "ts_force_unconverged",
+          "new_status": "validated_descents",
+          "old_evaluations": 671,
+          "new_evaluations": 1118,
+          "old_force": 0.005057649686932564,
+          "new_force": 0.0032050078734755516,
+          "endpoints": [
+            "CC(C)=O",
+            "C=C(C)O"
+          ]
+        },
+        {
+          "start": "acetone",
+          "attempt": 10,
+          "old_status": "ts_force_unconverged",
+          "new_status": "validated_descents",
+          "old_evaluations": 1100,
+          "new_evaluations": 1145,
+          "old_force": 0.005438956432044506,
+          "new_force": 0.004796409513801336,
+          "endpoints": [
+            "CCC=O",
+            "CCC=O"
+          ]
+        }
+      ],
+      "primary_counts_unchanged": true
+    },
+    "DFT_chain": {
+      "selection": {
+        "run": "reports/network_growth_v4/search/propanal_s17",
+        "start": "propanal",
+        "strategy": "hybrid",
+        "chain": {
+          "nodes": [
+            0,
+            2,
+            3
+          ],
+          "species": [
+            "CCC=O",
+            "[H]/[C-]=[O+]\\CC",
+            "CC.[C-]#[O+]"
+          ],
+          "edges": [
+            1,
+            2
+          ],
+          "chemical_edges": [
+            1,
+            2
+          ],
+          "completed_at_attempt": 6
+        },
+        "edges_to_verify": [
+          1,
+          2
+        ],
+        "rule": "If a root-connected chain with at least two distinct chemical edges is found, select the earliest such symbolic/hybrid chain from the first listed system with that property; independently verify both constituent TSs. Otherwise report lack of chain evidence."
+      },
+      "events": [
+        {
+          "event_id": "propanal_hybrid_edge1_DFT",
+          "MLIP_edge_id": 1,
+          "status": "physical_event_verified",
+          "physical_event_verified": true,
+          "original_pair_preserved": false,
+          "actual_graphs": [
+            "[H]/[C-]=[O+]/CC",
+            "CCC=O"
+          ],
+          "model_weights_updated": false,
+          "source": "reports\\network_growth_v4\\qc\\propanal_edge1\\verification.json",
+          "meaning": "Event-specific physical evidence; failure is not proof of reaction impossibility"
+        },
+        {
+          "event_id": "propanal_hybrid_edge2_DFT",
+          "MLIP_edge_id": 2,
+          "status": "unresolved_ts",
+          "physical_event_verified": false,
+          "original_pair_preserved": null,
+          "actual_graphs": [],
+          "model_weights_updated": false,
+          "source": "reports\\network_growth_v4\\qc\\propanal_edge2\\verification.json",
+          "meaning": "Event-specific physical evidence; failure is not proof of reaction impossibility"
+        }
+      ],
+      "shared_intermediates": [],
+      "actual_two_step_DFT_chain": false,
+      "original_MLIP_chain_preserved": false,
+      "model_weights_updated": false,
+      "independent_arrow_gold": false
+    },
+    "geometry_budget_controls": [
+      {
+        "start": "acetamide",
+        "status": "completed",
+        "evaluations": 16000,
+        "original_evaluations": 10504,
+        "metrics": {
+          "root_nodes": [
+            0
+          ],
+          "root_species": [
+            "CC(N)=O"
+          ],
+          "chemical_pairs": [],
+          "root_edges": 0,
+          "all_edges": 0,
+          "expanded_new_species": [],
+          "chains": [],
+          "longest_demonstrated_chemical_path": 0
+        },
+        "original_attempt_prefix_preserved": true
+      },
+      {
+        "start": "acetone",
+        "status": "completed",
+        "evaluations": 16000,
+        "original_evaluations": 10828,
+        "metrics": {
+          "root_nodes": [
+            0
+          ],
+          "root_species": [
+            "CC(C)=O"
+          ],
+          "chemical_pairs": [],
+          "root_edges": 0,
+          "all_edges": 0,
+          "expanded_new_species": [],
+          "chains": [],
+          "longest_demonstrated_chemical_path": 0
+        },
+        "original_attempt_prefix_preserved": true
+      },
+      {
+        "start": "acetylacetone",
+        "status": "completed",
+        "evaluations": 16000,
+        "original_evaluations": 11495,
+        "metrics": {
+          "root_nodes": [
+            0
+          ],
+          "root_species": [
+            "CC(=O)CC(C)=O"
+          ],
+          "chemical_pairs": [],
+          "root_edges": 0,
+          "all_edges": 0,
+          "expanded_new_species": [],
+          "chains": [],
+          "longest_demonstrated_chemical_path": 0
+        },
+        "original_attempt_prefix_preserved": true
+      }
+    ],
+    "convergence_network_check": {
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 8000,
+      "metrics": {
+        "root_nodes": [
+          0,
+          1,
+          2
+        ],
+        "root_species": [
+          "O/C=C\\O",
+          "O=CCO"
+        ],
+        "chemical_pairs": [
+          [
+            "O/C=C\\O",
+            "O=CCO"
+          ]
+        ],
+        "root_edges": 2,
+        "all_edges": 4,
+        "expanded_new_species": [
+          "O/C=C\\O"
+        ],
+        "chains": [],
+        "longest_demonstrated_chemical_path": 1
+      }
+    }
+  }
+}

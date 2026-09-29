@@ -1,0 +1,31 @@
+{
+  "run": "reports/network_growth_v4/search/propanal_s17",
+  "start": "propanal",
+  "strategy": "hybrid",
+  "chain": {
+    "nodes": [
+      0,
+      2,
+      3
+    ],
+    "species": [
+      "CCC=O",
+      "[H]/[C-]=[O+]\\CC",
+      "CC.[C-]#[O+]"
+    ],
+    "edges": [
+      1,
+      2
+    ],
+    "chemical_edges": [
+      1,
+      2
+    ],
+    "completed_at_attempt": 6
+  },
+  "edges_to_verify": [
+    1,
+    2
+  ],
+  "rule": "If a root-connected chain with at least two distinct chemical edges is found, select the earliest such symbolic/hybrid chain from the first listed system with that property; independently verify both constituent TSs. Otherwise report lack of chain evidence."
+}
