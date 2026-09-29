@@ -1,0 +1,73 @@
+{
+  "results": [
+    {
+      "event_id": "MR_375774_0",
+      "seed_method": "endpoint_interpolation",
+      "gradient_budget": 60,
+      "reference_ts_used_for_seed": false,
+      "status": "completed",
+      "optimizer_converged": true,
+      "stationary": {
+        "force_max_eV_A": 0.013389076291827555,
+        "force_converged": true,
+        "energy_eV": -4043.2975699019776,
+        "frequencies_cm-1": [
+          -1890.2111775031722,
+          396.73521656293025,
+          483.0034778967487,
+          626.3265808888219,
+          1099.518014778724,
+          1197.3221445061558,
+          2157.5386288953814,
+          2685.5432585893996,
+          3569.573165646184
+        ],
+        "imaginary_count": 1,
+        "imaginary_threshold_cm-1": 30.0,
+        "rigid_mode_count": 6
+      },
+      "reference_ts_RMSD_A": 0.0010707532133859968,
+      "reference_energy_difference_eV": 1.0978869795508217e-06,
+      "recovered_reference_saddle": true,
+      "gradient_evaluations": 22,
+      "seconds": 132.13121056556702
+    },
+    {
+      "event_id": "MR_375774_0",
+      "seed_method": "heldout_graph_model",
+      "gradient_budget": 60,
+      "reference_ts_used_for_seed": false,
+      "status": "completed",
+      "optimizer_converged": true,
+      "stationary": {
+        "force_max_eV_A": 0.01282087635310784,
+        "force_converged": true,
+        "energy_eV": -4042.3097441306845,
+        "frequencies_cm-1": [
+          -521.378188683366,
+          451.9759378150295,
+          837.2406730845584,
+          1077.2475646431317,
+          1159.5290695352976,
+          1422.5851109301639,
+          1517.9688805220937,
+          3127.4931065033725,
+          3458.260907705207
+        ],
+        "imaginary_count": 1,
+        "imaginary_threshold_cm-1": 30.0,
+        "rigid_mode_count": 6
+      },
+      "reference_ts_RMSD_A": 0.8772473466847097,
+      "reference_energy_difference_eV": 0.9878246734060667,
+      "recovered_reference_saddle": false,
+      "gradient_evaluations": 35,
+      "seconds": 193.1025686264038
+    }
+  ],
+  "limitations": [
+    "One-event search diagnostic, not a generalization claim",
+    "Model is conditioned on graph edits, not independent curved-arrow labels",
+    "Matching a previously verified saddle is a recovery metric, not a fresh IRC verification"
+  ]
+}

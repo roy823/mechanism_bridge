@@ -1,0 +1,168 @@
+{
+  "url_public_html": "https://figshare.com/articles/dataset/model_reaction_database/21066901/6",
+  "files": [
+    {
+      "id": 38170323,
+      "name": "RGD1_CHNO.h5",
+      "size": 1340003744,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/38170323",
+      "supplied_md5": "d31869ebccf4313c429f82694b7bb3a0",
+      "computed_md5": "d31869ebccf4313c429f82694b7bb3a0",
+      "mimetype": "application/x-hdf"
+    },
+    {
+      "id": 38170374,
+      "name": "DFT_reaction_info.csv",
+      "size": 39807298,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/38170374",
+      "supplied_md5": "b5b26b2a73f6fe9c2ffd24b4800783e7",
+      "computed_md5": "b5b26b2a73f6fe9c2ffd24b4800783e7",
+      "mimetype": "text/plain"
+    },
+    {
+      "id": 39521815,
+      "name": "RGD1CHNO_smiles.csv",
+      "size": 61031137,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/39521815",
+      "supplied_md5": "9d16c08ec75a9681ea1ba581a539e54c",
+      "computed_md5": "9d16c08ec75a9681ea1ba581a539e54c",
+      "mimetype": "text/plain"
+    }
+  ],
+  "folder_structure": {},
+  "authors": [
+    {
+      "id": 10955358,
+      "full_name": "Qiyuan Zhao",
+      "first_name": "Qiyuan",
+      "last_name": "Zhao",
+      "is_active": true,
+      "url_name": "Qiyuan_Zhao",
+      "orcid_id": ""
+    },
+    {
+      "id": 3618290,
+      "full_name": "Brett Savoie",
+      "first_name": "Brett",
+      "last_name": "Savoie",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 13763355,
+      "full_name": "Michael Woulfe",
+      "first_name": "Michael",
+      "last_name": "Woulfe",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 13763357,
+      "full_name": "Sai Mahit Vaddadi",
+      "first_name": "Sai Mahit",
+      "last_name": "Vaddadi",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 13763360,
+      "full_name": "Lawal A. Ogunfowora",
+      "first_name": "Lawal A.",
+      "last_name": "Ogunfowora",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 13763363,
+      "full_name": "Sanjay Garimella",
+      "first_name": "Sanjay",
+      "last_name": "Garimella",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    }
+  ],
+  "custom_fields": [],
+  "figshare_url": "https://figshare.com/articles/dataset/model_reaction_database/21066901",
+  "download_disabled": false,
+  "description": "<p>This reaction database is generated along with the manuscript \"Comprehensive exploration of graphically defined reaction spaces\".</p>\n<p><br></p>\n<p>Additional data files are provided <a href=\"https://figshare.com/articles/dataset/model_reaction_database/21066901\" target=\"_blank\">here</a>. The csv file named as RGD1CHNO_smiles.csv contains atom-mapped SMILES, activation energies, and enthalpies of formation for each reaction. The HDF5 file contains the geometry information and can be iterated by a python script from Github (https://github.com/zhaoqy1996/RGD1/parse_data.py).</p>\n<p><br></p>\n<p>An additional csv file (DFT_reaction_info.csv) is supplied to reproduce figures in the article.</p>",
+  "funding": null,
+  "funding_list": [],
+  "version": 6,
+  "status": "public",
+  "size": 1440842179,
+  "created_date": "2023-03-08T18:51:04Z",
+  "modified_date": "2023-11-26T23:42:26Z",
+  "is_public": true,
+  "is_confidential": false,
+  "is_metadata_record": false,
+  "confidential_reason": "",
+  "metadata_reason": "",
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tags": [
+    "reaction classes",
+    "reaction database",
+    "Transition States",
+    "activation energy calculations",
+    "enthalpy of reaction",
+    "Reaction Kinetics and Dynamics"
+  ],
+  "keywords": [
+    "reaction classes",
+    "reaction database",
+    "Transition States",
+    "activation energy calculations",
+    "enthalpy of reaction",
+    "Reaction Kinetics and Dynamics"
+  ],
+  "categories": [
+    {
+      "id": 25243,
+      "title": "Reaction kinetics and dynamics",
+      "parent_id": 25222,
+      "path": "/25066/25222/25243",
+      "source_id": "340607",
+      "taxonomy_id": 100
+    }
+  ],
+  "references": [],
+  "has_linked_file": false,
+  "citation": "Zhao, Qiyuan; Savoie, Brett; Woulfe, Michael; Vaddadi, Sai Mahit; Ogunfowora, Lawal A.; Garimella, Sanjay (2022). RGD1-CNHO Database. figshare. Dataset. https://doi.org/10.6084/m9.figshare.21066901.v6",
+  "related_materials": [],
+  "is_embargoed": false,
+  "embargo_date": null,
+  "embargo_type": "file",
+  "embargo_title": "",
+  "embargo_reason": "",
+  "embargo_options": [],
+  "id": 21066901,
+  "title": "RGD1-CNHO Database",
+  "doi": "10.6084/m9.figshare.21066901.v6",
+  "handle": "",
+  "url": "https://api.figshare.com/v2/articles/21066901",
+  "published_date": "2023-03-08T18:51:04Z",
+  "thumb": "",
+  "defined_type": 3,
+  "defined_type_name": "dataset",
+  "group_id": null,
+  "url_private_api": "https://api.figshare.com/v2/account/articles/21066901",
+  "url_public_api": "https://api.figshare.com/v2/articles/21066901",
+  "url_private_html": "https://figshare.com/account/articles/21066901",
+  "timeline": {
+    "posted": "2023-03-08T18:51:04",
+    "firstOnline": "2022-09-08"
+  },
+  "resource_title": null,
+  "resource_doi": null
+}

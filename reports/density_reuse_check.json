@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "rows": [
+    {
+      "displacement_A": 0.0,
+      "energy_difference_eV": 0.0,
+      "force_max_difference_eV_A": 2.42061449010067e-12,
+      "cold_seconds": 20.589609146118164,
+      "warm_seconds": 10.897754430770874
+    },
+    {
+      "displacement_A": 0.001,
+      "energy_difference_eV": 1.7007550923153758e-10,
+      "force_max_difference_eV_A": 0.00010786570971881015,
+      "cold_seconds": 10.40843391418457,
+      "warm_seconds": 8.185408353805542
+    },
+    {
+      "displacement_A": 0.002,
+      "energy_difference_eV": 1.3642420526593924e-10,
+      "force_max_difference_eV_A": 0.00010811905542065792,
+      "cold_seconds": 10.469372749328613,
+      "warm_seconds": 8.030543565750122
+    }
+  ]
+}

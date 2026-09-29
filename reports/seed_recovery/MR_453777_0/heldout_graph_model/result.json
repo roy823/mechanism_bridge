@@ -1,0 +1,29 @@
+{
+  "event_id": "MR_453777_0",
+  "seed_method": "heldout_graph_model",
+  "gradient_budget": 60,
+  "reference_ts_used_for_seed": false,
+  "status": "completed",
+  "optimizer_converged": true,
+  "stationary": {
+    "force_max_eV_A": 0.006854865468363538,
+    "force_converged": true,
+    "energy_eV": -4584.273558456046,
+    "frequencies_cm-1": [
+      -1865.8404174671955,
+      420.1447999099786,
+      551.0643472957031,
+      1232.301424757438,
+      2197.916509833379,
+      2671.7222386661356
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "reference_ts_RMSD_A": 0.0001890266854404545,
+  "reference_energy_difference_eV": 6.328984454739839e-05,
+  "recovered_reference_saddle": true,
+  "gradient_evaluations": 13,
+  "seconds": 67.66659021377563
+}

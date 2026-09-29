@@ -1,0 +1,295 @@
+{
+  "event_id": "MR_375774_0_model_alternative",
+  "source": {
+    "event_id": "MR_375774_0_model_alternative",
+    "atomic_numbers": [
+      7,
+      7,
+      6,
+      1,
+      1
+    ],
+    "positions_A": {
+      "reactant": [
+        [
+          0.44093,
+          -0.50329,
+          0.31359
+        ],
+        [
+          -1.45142,
+          0.64799,
+          -0.42274
+        ],
+        [
+          -0.49596,
+          0.07941,
+          -0.06814
+        ],
+        [
+          0.25172,
+          -1.50941,
+          0.2941
+        ],
+        [
+          -1.76597,
+          1.2854,
+          0.3144
+        ]
+      ],
+      "ts": [
+        [
+          0.03284026,
+          0.43223176,
+          0.32536219
+        ],
+        [
+          -1.11935726,
+          0.51738052,
+          -0.25452689
+        ],
+        [
+          -0.1682292,
+          -0.85175055,
+          0.63603786
+        ],
+        [
+          -0.26890214,
+          -1.55035316,
+          -0.20496993
+        ],
+        [
+          -1.49705166,
+          1.45259142,
+          -0.07069322
+        ]
+      ],
+      "product": [
+        [
+          1.28884714,
+          -3.16e-06,
+          0.00019455
+        ],
+        [
+          -1.17561644,
+          -1.64e-06,
+          -0.04480868
+        ],
+        [
+          0.1429252,
+          -2.77e-06,
+          0.01320235
+        ],
+        [
+          -1.63850435,
+          -0.85266025,
+          0.231348
+        ],
+        [
+          -1.63827217,
+          0.85276004,
+          0.23132025
+        ]
+      ]
+    },
+    "reactant_smiles": "N=C=N",
+    "product_smiles": "NC#N",
+    "mapped_reactant": "[N:1](=[C:3]=[N:2][H:5])[H:4]",
+    "mapped_product": "[N:1]#[C:3][N:2]([H:4])[H:5]",
+    "graph_pair_key": "4c41c1fa4a04a4a55b2622845f15fa9f3920da9b0c3ec25fb36584cd5c9ee6b1",
+    "charge": 0,
+    "multiplicity": 1,
+    "state_basis": "explicit closed-shell singlet pilot assumption; SCF checks required",
+    "source_doi": "10.5281/zenodo.7860446",
+    "source_group": "MR_375774_0",
+    "source_sha256": "ed125b4cb1eac9af670a7cae8b9d29c88a9f8be24d0206a027f0f2c035f8f268",
+    "geometry_graph_agreement": true,
+    "verified_pair": false,
+    "candidate_origin": "heldout_graph_model_then_DFT_search",
+    "parent_event_id": "MR_375774_0",
+    "requested_endpoints_are_only_a_hypothesis": true
+  },
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "physical_event_verified": true,
+  "verified_pair": false,
+  "symbolic_status": "automated_hypothesis_requires_independent_review",
+  "status": "physical_event_verified_with_symbolic_hypotheses",
+  "elapsed_seconds": 900.0978124141693,
+  "ts_optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.012820862266488837,
+    "force_converged": true,
+    "energy_eV": -4042.3097441306472,
+    "frequencies_cm-1": [
+      -521.3781794522188,
+      451.9759341957554,
+      837.2406846416652,
+      1077.2475651106665,
+      1159.529063731811,
+      1422.585114891898,
+      1517.9688766791226,
+      3127.4930725142917,
+      3458.2609260891113
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "endpoints": [
+    {
+      "force_max_eV_A": 0.013929156020241222,
+      "force_converged": true,
+      "energy_eV": -4044.624639835215,
+      "frequencies_cm-1": [
+        639.6239959858217,
+        822.2146025252958,
+        1010.4385363830538,
+        1117.490986216014,
+        1224.7553255224655,
+        1415.465237547139,
+        1861.7232531932193,
+        3309.33358176204,
+        3430.471924137274
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "C1=NN1",
+      "barrier_electronic_eV": 2.314895704567789
+    },
+    {
+      "force_max_eV_A": 0.017333050226818403,
+      "force_converged": true,
+      "energy_eV": -4044.7566631161176,
+      "frequencies_cm-1": [
+        474.1934664419426,
+        538.860162958064,
+        648.4910508523627,
+        887.8954434891522,
+        1295.7100438212724,
+        1360.892590091105,
+        2196.888756698733,
+        3366.2001818426506,
+        3491.042090000429
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "[CH-]=[N+]=N",
+      "barrier_electronic_eV": 2.4469189854703473
+    }
+  ],
+  "expected_endpoint_match": false,
+  "distinct_endpoint_graphs": true,
+  "is_IRC": true,
+  "event_outcome": "alternative_valid_event",
+  "observed_reactant_smiles": "C1=NN1",
+  "observed_product_smiles": "[CH-]=[N+]=N",
+  "symbolic": {
+    "arrows": [
+      {
+        "orbital": 4,
+        "source": [
+          1,
+          4
+        ],
+        "sink": [
+          1
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 5,
+        "source": [
+          2,
+          3
+        ],
+        "sink": [
+          2
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 6,
+        "source": [
+          1
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 7,
+        "source": [
+          0,
+          2
+        ],
+        "sink": [
+          2,
+          3
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 9,
+        "source": [
+          1,
+          2
+        ],
+        "sink": [
+          1,
+          4
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 10,
+        "source": [
+          0
+        ],
+        "sink": [
+          0,
+          2
+        ],
+        "electrons": 2
+      }
+    ],
+    "electron_pair_bookkeeping_passed": true,
+    "atom_index_base": 0,
+    "atom_map_convention": "atom_map = coordinate_index + 1",
+    "assignment_cost": 2.7300149046285194,
+    "label_origin": "Lewis_capacity_constrained_tracked_IBO_hypothesis",
+    "independently_annotated": false,
+    "unique_mechanism_certified": false,
+    "tracking_low_overlap": true
+  },
+  "electronic_path_kind": "sampled_IRC_with_relaxed_endpoints",
+  "electronic_frame_indices": [
+    0,
+    4,
+    9,
+    14,
+    19,
+    24,
+    29,
+    34,
+    39,
+    44,
+    49,
+    54,
+    59,
+    64,
+    69,
+    74,
+    79
+  ],
+  "gradient_evaluations": 166
+}

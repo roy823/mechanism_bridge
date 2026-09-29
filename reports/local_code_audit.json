@@ -1,0 +1,66 @@
+{
+  "checked_at_utc": "2026-09-29T02:32:42.722796+00:00",
+  "python": "3.11.9",
+  "packages": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "h5py": "3.16.0",
+    "rdkit": "2023.9.5",
+    "ase": "3.25.0",
+    "torch": "2.5.1+cu121"
+  },
+  "pytest": {
+    "command": "python -m pytest -q",
+    "passed": 13,
+    "duration_seconds": 1.25,
+    "quantum_chemistry_rerun": false
+  },
+  "bundled_pilot": {
+    "flower": {
+      "count": 1000,
+      "with_arrow_pairs": 0,
+      "with_endpoint_smiles": 1000,
+      "known_multiplicity": 0,
+      "kinds": {
+        "symbolic_elementary_step": 1000
+      }
+    },
+    "mech_uspto": {
+      "count": 1000,
+      "with_arrow_pairs": 1000,
+      "with_endpoint_smiles": 1000,
+      "known_multiplicity": 0,
+      "kinds": {
+        "symbolic_overall_reaction": 1000
+      }
+    },
+    "rgd1": {
+      "count": 1000,
+      "with_arrow_pairs": 0,
+      "with_endpoint_smiles": 1000,
+      "known_multiplicity": 0,
+      "kinds": {
+        "physical_event_candidate": 1000
+      }
+    },
+    "transition1x": {
+      "count": 1000,
+      "with_arrow_pairs": 0,
+      "with_endpoint_smiles": 0,
+      "known_multiplicity": 0,
+      "kinds": {
+        "physical_event_candidate": 1000
+      }
+    }
+  },
+  "downloaded_mech_uspto": {
+    "rows": 31364,
+    "columns": [
+      "original_reactions",
+      "updated_reaction",
+      "mechanistic_class",
+      "mechanistic_label",
+      "data_source"
+    ]
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "event_id": "MR_375774_0",
+  "source": {
+    "event_id": "MR_375774_0",
+    "atomic_numbers": [
+      7,
+      7,
+      6,
+      1,
+      1
+    ],
+    "positions_A": {
+      "reactant": [
+        [
+          0.44093,
+          -0.50329,
+          0.31359
+        ],
+        [
+          -1.45142,
+          0.64799,
+          -0.42274
+        ],
+        [
+          -0.49596,
+          0.07941,
+          -0.06814
+        ],
+        [
+          0.25172,
+          -1.50941,
+          0.2941
+        ],
+        [
+          -1.76597,
+          1.2854,
+          0.3144
+        ]
+      ],
+      "ts": [
+        [
+          -1.31824,
+          -0.028689,
+          0.009904
+        ],
+        [
+          1.186274,
+          -0.025746,
+          -0.139434
+        ],
+        [
+          -0.1204,
+          -0.104494,
+          0.020339
+        ],
+        [
+          -0.030158,
+          1.064282,
+          0.030136
+        ],
+        [
+          1.676318,
+          -0.056275,
+          0.754538
+        ]
+      ],
+      "product": [
+        [
+          1.28884714,
+          -3.16e-06,
+          0.00019455
+        ],
+        [
+          -1.17561644,
+          -1.64e-06,
+          -0.04480868
+        ],
+        [
+          0.1429252,
+          -2.77e-06,
+          0.01320235
+        ],
+        [
+          -1.63850435,
+          -0.85266025,
+          0.231348
+        ],
+        [
+          -1.63827217,
+          0.85276004,
+          0.23132025
+        ]
+      ]
+    },
+    "reactant_smiles": "N=C=N",
+    "product_smiles": "NC#N",
+    "mapped_reactant": "[N:1](=[C:3]=[N:2][H:5])[H:4]",
+    "mapped_product": "[N:1]#[C:3][N:2]([H:4])[H:5]",
+    "graph_pair_key": "4c41c1fa4a04a4a55b2622845f15fa9f3920da9b0c3ec25fb36584cd5c9ee6b1",
+    "charge": 0,
+    "multiplicity": 1,
+    "state_basis": "explicit closed-shell singlet pilot assumption; SCF checks required",
+    "source_doi": "10.5281/zenodo.7860446",
+    "source_group": "MR_375774_0",
+    "source_sha256": "ed125b4cb1eac9af670a7cae8b9d29c88a9f8be24d0206a027f0f2c035f8f268",
+    "geometry_graph_agreement": true,
+    "verified_pair": false
+  },
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "physical_event_verified": true,
+  "verified_pair": false,
+  "symbolic_status": "automated_hypothesis_requires_independent_review",
+  "status": "physical_event_verified_with_symbolic_hypotheses",
+  "elapsed_seconds": 689.7862198352814,
+  "ts_optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.008124446866862608,
+    "force_converged": true,
+    "energy_eV": -4043.2975688040906,
+    "frequencies_cm-1": [
+      -1887.0860554315007,
+      395.94564039723963,
+      483.57745121406083,
+      625.2053611613445,
+      1096.8676657653934,
+      1195.1925189519293,
+      2157.8969157494844,
+      2684.9138533409564,
+      3570.711350019751
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "endpoints": [
+    {
+      "force_max_eV_A": 0.007200391784637127,
+      "force_converged": true,
+      "energy_eV": -4047.1681839663966,
+      "frequencies_cm-1": [
+        525.1548607273253,
+        532.1982205494462,
+        758.0701088697116,
+        931.7309260673048,
+        936.5103978907646,
+        1318.2101965821182,
+        2280.880837278886,
+        3666.569912566261,
+        3668.0009100714096
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "N=C=N",
+      "barrier_electronic_eV": 3.870615162305967
+    },
+    {
+      "force_max_eV_A": 0.005913788277672542,
+      "force_converged": true,
+      "energy_eV": -4047.318396321277,
+      "frequencies_cm-1": [
+        425.27541995864703,
+        495.26455486398436,
+        618.8710944924403,
+        1121.666225106718,
+        1223.5000597985,
+        1677.375837484387,
+        2429.496519637238,
+        3618.9950276348545,
+        3719.0046170871406
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "N#CN",
+      "barrier_electronic_eV": 4.020827517186262
+    }
+  ],
+  "expected_endpoint_match": true,
+  "distinct_endpoint_graphs": true,
+  "is_IRC": true,
+  "symbolic": {
+    "arrows": [
+      {
+        "orbital": 3,
+        "source": [
+          1,
+          2
+        ],
+        "sink": [
+          1,
+          4
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 5,
+        "source": [
+          0,
+          3
+        ],
+        "sink": [
+          0
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 6,
+        "source": [
+          1,
+          4
+        ],
+        "sink": [
+          1,
+          2
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 8,
+        "source": [
+          1,
+          2
+        ],
+        "sink": [
+          1
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 9,
+        "source": [
+          1
+        ],
+        "sink": [
+          1,
+          3
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 10,
+        "source": [
+          0
+        ],
+        "sink": [
+          0,
+          2
+        ],
+        "electrons": 2
+      }
+    ],
+    "electron_pair_bookkeeping_passed": true,
+    "assignment_cost": 2.4530618553278387,
+    "label_origin": "Lewis_capacity_constrained_tracked_IBO_hypothesis",
+    "independently_annotated": false,
+    "unique_mechanism_certified": false,
+    "tracking_low_overlap": true
+  },
+  "electronic_path_kind": "sampled_IRC_with_relaxed_endpoints",
+  "electronic_frame_indices": [
+    0,
+    3,
+    7,
+    10,
+    14,
+    18,
+    21,
+    25,
+    29,
+    32,
+    36,
+    39,
+    43,
+    47,
+    50,
+    54,
+    58
+  ],
+  "gradient_evaluations": 147
+}

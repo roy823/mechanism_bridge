@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mechanism-bridge"
+version = "0.1.0"
+description = "Evidence-preserving bridge between symbolic mechanisms and saddle-connected events"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "scipy>=1.11", "h5py>=3.10", "rdkit>=2024.3", "ase>=3.23"]
+
+[project.optional-dependencies]
+qc = ["pyscf>=2.10", "sella>=2.6"]
+learning = ["scikit-learn>=1.6", "matplotlib>=3.5"]
+test = ["pytest>=8"]
+
+[project.scripts]
+mechbridge = "mechbridge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

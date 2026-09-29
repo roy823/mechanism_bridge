@@ -1,0 +1,89 @@
+{
+  "checked_at_utc": "2026-09-29T03:53:30.550656+00:00",
+  "expected_total_bytes": 8295213008,
+  "all_verified": true,
+  "files": [
+    {
+      "dataset": "mech_uspto",
+      "path": "data/raw/mech_uspto/mech-USPTO-31k.csv",
+      "expected_bytes": 32348446,
+      "expected_sha256": "4a3a6e0c123503224f57f97a3fd1f2bdb35eb34c1b92b1cb7627596fbcff4cfe",
+      "doi": "10.6084/m9.figshare.24797220.v2",
+      "license": {
+        "value": 1,
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "status": "downloaded_verified",
+      "bytes": 32348446,
+      "md5": "4d1e1fbcb95771e6e6f4cc7748f46d42",
+      "sha256": "4a3a6e0c123503224f57f97a3fd1f2bdb35eb34c1b92b1cb7627596fbcff4cfe",
+      "verified_at_utc": "2026-09-29T03:06:00.213139+00:00"
+    },
+    {
+      "dataset": "flower",
+      "path": "data/raw/flower/data.zip",
+      "expected_bytes": 238206912,
+      "expected_sha256": "8e2333563bdf94051181898b4a77adf3e34bf696a6c33e03823f5ea77aa23ee5",
+      "doi": "10.6084/m9.figshare.28359407.v3",
+      "license": {
+        "value": 3,
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "status": "downloaded_verified",
+      "bytes": 238206912,
+      "md5": "6f304f7b4ac0f3c7b83a18fb4a27b189",
+      "sha256": "8e2333563bdf94051181898b4a77adf3e34bf696a6c33e03823f5ea77aa23ee5",
+      "verified_at_utc": "2026-09-29T03:06:00.549608+00:00"
+    },
+    {
+      "dataset": "rgd1_zenodo",
+      "path": "data/raw/rgd1_zenodo/RGD1CHNO_AMsmiles.csv",
+      "expected_bytes": 60724906,
+      "expected_sha256": "7b0ecae0a7f7b2439a03bed4bfbf80fbc9b647b0823e5a8e7b1e3be96d0ad05e",
+      "doi": "10.5281/zenodo.7860446",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "status": "downloaded_verified",
+      "bytes": 60724906,
+      "md5": "66aa145ff7f2419b2d2f51ee27ae159d",
+      "sha256": "7b0ecae0a7f7b2439a03bed4bfbf80fbc9b647b0823e5a8e7b1e3be96d0ad05e",
+      "verified_at_utc": "2026-09-29T03:06:00.262025+00:00"
+    },
+    {
+      "dataset": "rgd1_zenodo",
+      "path": "data/raw/rgd1_zenodo/RGD1_allrxns.h5",
+      "expected_bytes": 1340003744,
+      "expected_sha256": "ed125b4cb1eac9af670a7cae8b9d29c88a9f8be24d0206a027f0f2c035f8f268",
+      "doi": "10.5281/zenodo.7860446",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "status": "downloaded_verified",
+      "bytes": 1340003744,
+      "md5": "d31869ebccf4313c429f82694b7bb3a0",
+      "sha256": "ed125b4cb1eac9af670a7cae8b9d29c88a9f8be24d0206a027f0f2c035f8f268",
+      "verified_at_utc": "2026-09-29T03:06:02.353289+00:00"
+    },
+    {
+      "dataset": "transition1x",
+      "path": "data/raw/transition1x/Transition1x.h5",
+      "expected_bytes": 6623929000,
+      "expected_sha256": "6a20f8a3f49c50d462270d10d4c44ca102e788072e2096a91d70b5a0f598b629",
+      "doi": "10.6084/m9.figshare.19614657.v4",
+      "license": {
+        "value": 3,
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "status": "downloaded_verified",
+      "url": "https://ndownloader.figshare.com/files/36035789",
+      "bytes": 6623929000,
+      "md5": "faab0413cf6b042b6d50e6272dea9a8c",
+      "sha256": "6a20f8a3f49c50d462270d10d4c44ca102e788072e2096a91d70b5a0f598b629",
+      "verified_at_utc": "2026-09-29T03:53:30.549657+00:00"
+    }
+  ]
+}

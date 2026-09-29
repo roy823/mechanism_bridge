@@ -1,0 +1,129 @@
+{
+  "event_id": "MR_453777_0",
+  "transformation": "same rigid rotation and translation applied to every frame",
+  "max_energy_difference_eV": 0.0001981516042428574,
+  "raw_arrow_set_unchanged": false,
+  "baseline_arrow_count": 4,
+  "rotated_arrow_hypotheses": {
+    "arrows": [
+      {
+        "orbital": 5,
+        "source": [
+          0,
+          3
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 8,
+        "source": [
+          1,
+          2
+        ],
+        "sink": [
+          2,
+          3
+        ],
+        "electrons": 2
+      }
+    ],
+    "electron_pair_bookkeeping_passed": true,
+    "atom_index_base": 0,
+    "atom_map_convention": "atom_map = coordinate_index + 1",
+    "assignment_cost": 2.1333162812918744,
+    "label_origin": "Lewis_capacity_constrained_tracked_IBO_hypothesis",
+    "independently_annotated": false,
+    "unique_mechanism_certified": false
+  },
+  "caveat": "Finite DFT grids and orbital localization/tracking can contribute to changes; no independent arrow truth is supplied",
+  "atom_relay_normalization_before": {
+    "normalized_flows": [
+      {
+        "source": [
+          0,
+          3
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "pair_count": 1
+      },
+      {
+        "source": [
+          1,
+          2
+        ],
+        "sink": [
+          2,
+          3
+        ],
+        "pair_count": 1
+      }
+    ],
+    "contracted_relays": [
+      {
+        "source": [
+          0,
+          3
+        ],
+        "relay_atom": [
+          0
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "pair_count": 1
+      },
+      {
+        "source": [
+          1,
+          2
+        ],
+        "relay_atom": [
+          2
+        ],
+        "sink": [
+          2,
+          3
+        ],
+        "pair_count": 1
+      }
+    ],
+    "chemical_equivalence_certified": false
+  },
+  "atom_relay_normalization_after": {
+    "normalized_flows": [
+      {
+        "source": [
+          0,
+          3
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "pair_count": 1
+      },
+      {
+        "source": [
+          1,
+          2
+        ],
+        "sink": [
+          2,
+          3
+        ],
+        "pair_count": 1
+      }
+    ],
+    "contracted_relays": [],
+    "chemical_equivalence_certified": false
+  },
+  "normalized_flow_unchanged": true
+}

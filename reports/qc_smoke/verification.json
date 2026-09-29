@@ -1,0 +1,64 @@
+{
+  "ts": {
+    "force_max_eV_A": 0.0006533795220532401,
+    "force_converged": true,
+    "energy_eV": -1508.5357108085193,
+    "frequencies_cm-1": [
+      -1081.3271326770705,
+      1866.1069488175176,
+      1866.2294744349042,
+      4023.539797140452,
+      4363.2744769335295,
+      4363.383225851447
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "method": "HF/STO-3G",
+  "is_IRC": false,
+  "expected_endpoint_match": "not_checked",
+  "status": "index1_with_two_relaxed_minima",
+  "endpoints": [
+    {
+      "force_max_eV_A": 3.947733253417671e-07,
+      "force_converged": true,
+      "energy_eV": -1509.0188347443968,
+      "frequencies_cm-1": [
+        1411.4197489994126,
+        2076.035893727946,
+        2076.1185697941914,
+        3832.9896805272538,
+        4107.868615404437,
+        4107.934201271368
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "geometry_file": "minus.xyz",
+      "barrier_electronic_eV": 0.4831239358775292
+    },
+    {
+      "force_max_eV_A": 3.9477394179879043e-07,
+      "force_converged": true,
+      "energy_eV": -1509.0188347443986,
+      "frequencies_cm-1": [
+        1411.4197490227436,
+        2076.0358937267324,
+        2076.118569792037,
+        3832.9896805300427,
+        4107.868615408963,
+        4107.934201272372
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "geometry_file": "plus.xyz",
+      "barrier_electronic_eV": 0.4831239358793482
+    }
+  ],
+  "endpoint_distance_matrix_rms_A": 1.0461809527467012e-13,
+  "distinct_basins": "not_certified_geometry_metric_only",
+  "example_origin": "constructed_planar_NH3_not_downloaded_dataset",
+  "purpose": "numerical_pipeline_smoke_not_target_level_benchmark"
+}

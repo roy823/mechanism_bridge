@@ -1,0 +1,49 @@
+{
+  "scope": "graph-level feasibility proxy, not a curved-arrow or validated-path benchmark",
+  "runtime_versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "rdkit": "2024.3.2",
+    "scikit-learn": "1.6.1"
+  },
+  "events": 226,
+  "formula_groups": 51,
+  "atom_pair_rows": 5501,
+  "split": "5-fold GroupKFold by atomic composition; no reverse/conformer cross-fold leakage",
+  "metrics": {
+    "forward_R": {
+      "pair_distance_MAE_A": 0.31462753005108335,
+      "changed_pair_distance_MAE_A": 0.3967486748225245
+    },
+    "forward_R_graph_edits": {
+      "pair_distance_MAE_A": 0.24389952092654282,
+      "changed_pair_distance_MAE_A": 0.15642416678913718
+    },
+    "inverse_R": {
+      "signed_edit_macro_F1": 0.3437075091046467,
+      "changed_pair_precision": 0.41914893617021276,
+      "changed_pair_recall": 0.6952941176470588,
+      "changed_pair_F1": 0.5230088495575221,
+      "exact_event_edit_fraction": 0.004424778761061947
+    },
+    "inverse_R_TS": {
+      "signed_edit_macro_F1": 0.5718928679272969,
+      "changed_pair_precision": 0.7396335583413693,
+      "changed_pair_recall": 0.9023529411764706,
+      "changed_pair_F1": 0.81293057763646,
+      "exact_event_edit_fraction": 0.17256637168141592
+    }
+  },
+  "forward_group_mean_MAE_reduction_A": 0.22638694907063212,
+  "forward_group_bootstrap_95_percent_CI_A": [
+    0.1965515042005756,
+    0.25681962813092013
+  ],
+  "limitations": [
+    "Forward symbolic features are net bond edits, not full electron arrows",
+    "R+edits has product graph information unavailable to R-only; this does NOT establish benefit beyond R/P graphs",
+    "Inverse reconstructs net graph edits from R and TS; it is NOT electronic arrow decoding",
+    "TS labels are source B3LYP-D3/TZVP structures; most are not independently reverified here",
+    "No new-physics feedback-learning claim is made"
+  ]
+}

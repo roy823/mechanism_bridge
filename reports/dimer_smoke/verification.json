@@ -1,0 +1,71 @@
+{
+  "ts": {
+    "force_max_eV_A": 0.012930748551969877,
+    "force_converged": true,
+    "energy_eV": -1508.5357046247805,
+    "frequencies_cm-1": [
+      -1080.6401112388824,
+      1865.7465299427906,
+      1867.1371264188956,
+      4022.3158996248935,
+      4361.802170512138,
+      4362.34186387335
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "method": "negative_mode_displacement_then_BFGS",
+  "is_IRC": false,
+  "expected_endpoint_match": "not_checked",
+  "status": "index1_with_two_relaxed_minima",
+  "endpoints": [
+    {
+      "force_max_eV_A": 0.018066301200226044,
+      "force_converged": true,
+      "energy_eV": -1509.0188272594385,
+      "frequencies_cm-1": [
+        1411.4345278416301,
+        2075.6504406123163,
+        2076.5788842273964,
+        3831.5564836297312,
+        4105.629767760536,
+        4107.4829983971695
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "geometry_file": "minus.xyz",
+      "barrier_electronic_eV": 0.4831226346580024
+    },
+    {
+      "force_max_eV_A": 0.01771671340606419,
+      "force_converged": true,
+      "energy_eV": -1509.0188303177138,
+      "frequencies_cm-1": [
+        1411.700518090434,
+        2075.7633375509736,
+        2076.460475306569,
+        3833.3615930021097,
+        4107.019664920638,
+        4109.427716974307
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "geometry_file": "plus.xyz",
+      "barrier_electronic_eV": 0.48312569293329943
+    }
+  ],
+  "endpoint_distance_matrix_rms_A": 0.0003494409441651766,
+  "distinct_basins": "not_certified_geometry_metric_only",
+  "backend": {
+    "factory": "PySCFCalculator",
+    "method": "HF",
+    "basis": "sto-3g"
+  },
+  "charge": 0,
+  "multiplicity": 1,
+  "dimer_optimizer_converged": true,
+  "input_file": "planar_nh3.xyz"
+}

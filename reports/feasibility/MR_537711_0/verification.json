@@ -1,0 +1,309 @@
+{
+  "event_id": "MR_537711_0",
+  "source": {
+    "event_id": "MR_537711_0",
+    "atomic_numbers": [
+      7,
+      6,
+      6,
+      8,
+      7
+    ],
+    "positions_A": {
+      "reactant": [
+        [
+          0.19115,
+          0.73455,
+          -0.18226
+        ],
+        [
+          -0.91867,
+          0.25533,
+          -0.06264
+        ],
+        [
+          1.90441,
+          -0.97056,
+          0.23925
+        ],
+        [
+          -2.00509,
+          -0.10431,
+          0.02732
+        ],
+        [
+          1.25442,
+          -0.00248,
+          -0.0003
+        ]
+      ],
+      "ts": [
+        [
+          0.226434,
+          -0.36242,
+          0.441828
+        ],
+        [
+          -0.900008,
+          -0.062247,
+          0.049609
+        ],
+        [
+          1.606539,
+          -0.468337,
+          -0.389516
+        ],
+        [
+          -2.017324,
+          0.131641,
+          -0.174541
+        ],
+        [
+          1.473481,
+          0.666761,
+          0.048997
+        ]
+      ],
+      "product": [
+        [
+          0.02157,
+          0.42446,
+          -0.1058
+        ],
+        [
+          -1.10575,
+          0.02493,
+          -0.00532
+        ],
+        [
+          1.27103,
+          0.06109,
+          -0.01477
+        ],
+        [
+          -2.22546,
+          -0.22754,
+          0.05801
+        ],
+        [
+          2.37881,
+          -0.23827,
+          0.05677
+        ]
+      ]
+    },
+    "reactant_smiles": "[C-]#[N+]N=C=O",
+    "product_smiles": "O=C=NC#N",
+    "mapped_reactant": "[N:1](=[C:2]=[O:4])[N+:5]#[C-:3]",
+    "mapped_product": "[N:1](=[C:2]=[O:4])[C:3]#[N:5]",
+    "graph_pair_key": "e8112e8e374f4bf65f79bb452ee472a08fb20c44c5f2a4050ecd319303e94000",
+    "charge": 0,
+    "multiplicity": 1,
+    "state_basis": "explicit closed-shell singlet pilot assumption; SCF checks required",
+    "source_doi": "10.5281/zenodo.7860446",
+    "source_group": "MR_537711_0",
+    "source_sha256": "ed125b4cb1eac9af670a7cae8b9d29c88a9f8be24d0206a027f0f2c035f8f268",
+    "geometry_graph_agreement": true,
+    "verified_pair": false
+  },
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "physical_event_verified": true,
+  "verified_pair": false,
+  "symbolic_status": "automated_hypothesis_requires_independent_review",
+  "status": "physical_event_verified_with_symbolic_hypotheses",
+  "elapsed_seconds": 3380.4906692504883,
+  "ts_optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.014664795592195272,
+    "force_converged": true,
+    "energy_eV": -7093.72513350254,
+    "frequencies_cm-1": [
+      -453.3812257548394,
+      115.63379518203688,
+      172.7070587825191,
+      571.776346082101,
+      638.6753887020882,
+      722.393817773743,
+      1402.4523841985006,
+      1843.189548447945,
+      2356.165651020914
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "endpoints": [
+    {
+      "force_max_eV_A": 0.019668661800559924,
+      "force_converged": true,
+      "energy_eV": -7095.235541366623,
+      "frequencies_cm-1": [
+        134.39869964470046,
+        309.57601654027917,
+        353.23690896747,
+        556.8110033159784,
+        659.308075003863,
+        908.28409556799,
+        1486.1818936270847,
+        2284.5541077649773,
+        2404.8943224234213
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "[C-]#[N+]N=C=O",
+      "barrier_electronic_eV": 1.510407864082481
+    },
+    {
+      "force_max_eV_A": 0.017405711803649835,
+      "force_converged": true,
+      "energy_eV": -7097.3982274353875,
+      "frequencies_cm-1": [
+        129.1059162886185,
+        486.4052603696117,
+        494.72340315843513,
+        581.7525750076159,
+        626.8397642732294,
+        904.963716860861,
+        1562.336539381217,
+        2429.2120028219992,
+        2480.0224433993117
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "N#CN=C=O",
+      "barrier_electronic_eV": 3.673093932847223
+    }
+  ],
+  "expected_endpoint_match": true,
+  "distinct_endpoint_graphs": true,
+  "is_IRC": true,
+  "symbolic": {
+    "arrows": [
+      {
+        "orbital": 7,
+        "source": [
+          0,
+          1
+        ],
+        "sink": [
+          0,
+          2
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 8,
+        "source": [
+          0,
+          4
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 9,
+        "source": [
+          3
+        ],
+        "sink": [
+          1,
+          3
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 10,
+        "source": [
+          0,
+          1
+        ],
+        "sink": [
+          0
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 11,
+        "source": [
+          1,
+          3
+        ],
+        "sink": [
+          3
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 13,
+        "source": [
+          2,
+          4
+        ],
+        "sink": [
+          4
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 14,
+        "source": [
+          2
+        ],
+        "sink": [
+          2,
+          4
+        ],
+        "electrons": 2
+      },
+      {
+        "orbital": 15,
+        "source": [
+          0
+        ],
+        "sink": [
+          0,
+          1
+        ],
+        "electrons": 2
+      }
+    ],
+    "electron_pair_bookkeeping_passed": true,
+    "assignment_cost": 4.691994381359086,
+    "label_origin": "Lewis_capacity_constrained_tracked_IBO_hypothesis",
+    "independently_annotated": false,
+    "unique_mechanism_certified": false,
+    "tracking_low_overlap": true
+  },
+  "electronic_path_kind": "sampled_IRC_with_relaxed_endpoints",
+  "electronic_frame_indices": [
+    0,
+    9,
+    18,
+    27,
+    37,
+    46,
+    55,
+    64,
+    74,
+    83,
+    92,
+    101,
+    111,
+    120,
+    129,
+    138,
+    148
+  ],
+  "gradient_evaluations": 305
+}

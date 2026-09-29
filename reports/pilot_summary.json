@@ -1,0 +1,21 @@
+{
+  "pilot_limit_per_source": 1000,
+  "sampling": "first records, engineering smoke only, not a representative benchmark",
+  "flower": 1000,
+  "mech_uspto": 1000,
+  "mech_arrow_parse_failures": 0,
+  "rgd1": 1000,
+  "rgd1_mapped_csv_graph_agreement": {
+    "False": 443,
+    "True": 557
+  },
+  "transition1x": 1000,
+  "exact_graph_candidates": 0,
+  "verified_paired_events": 0,
+  "flower_audit": {
+    "composition_conserved": 1000,
+    "charge_conserved": 1000,
+    "complete_unique_atom_maps": 1000,
+    "mapped_atom_identity_conserved": 1000
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "selection": "smallest atom count then source ID, no QC outcomes used",
+  "max_atoms": 8,
+  "counts": {
+    "small_records": 1174,
+    "multifragment_excluded": 422,
+    "geometry_source_graph_disagreement": 339,
+    "same_graph_excluded": 99,
+    "graph_perception_failed": 88
+  },
+  "eligible": 226,
+  "distinct_graph_pairs": 192,
+  "selected": [
+    "MR_453777_0",
+    "MR_375774_0",
+    "MR_537711_0",
+    "MR_550384_0",
+    "MR_117021_1",
+    "MR_117022_2",
+    "MR_269338_0",
+    "MR_275155_0",
+    "MR_313153_1",
+    "MR_409053_1",
+    "MR_429289_0",
+    "MR_429292_1"
+  ]
+}

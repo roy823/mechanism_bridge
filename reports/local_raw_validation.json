@@ -1,0 +1,82 @@
+{
+  "flower_archive": {
+    "members": [
+      {
+        "name": "data/flower_dataset/beam.txt",
+        "bytes": 114,
+        "compressed_bytes": 73
+      },
+      {
+        "name": "data/flower_dataset/test.txt",
+        "bytes": 246523271,
+        "compressed_bytes": 11039504
+      },
+      {
+        "name": "data/flower_dataset/train.txt",
+        "bytes": 2172642051,
+        "compressed_bytes": 98312021
+      },
+      {
+        "name": "data/flower_dataset/val.txt",
+        "bytes": 24440767,
+        "compressed_bytes": 1076406
+      },
+      {
+        "name": "data/flower_new_dataset/beam.txt",
+        "bytes": 114,
+        "compressed_bytes": 73
+      },
+      {
+        "name": "data/flower_new_dataset/test.txt",
+        "bytes": 360434042,
+        "compressed_bytes": 12878365
+      },
+      {
+        "name": "data/flower_new_dataset/train.txt",
+        "bytes": 3133283240,
+        "compressed_bytes": 113631404
+      },
+      {
+        "name": "data/flower_new_dataset/val.txt",
+        "bytes": 36233111,
+        "compressed_bytes": 1267540
+      }
+    ],
+    "uncompressed_bytes": 5973556710
+  },
+  "transition1x": {
+    "top_level_groups": [
+      "data",
+      "test",
+      "train",
+      "val"
+    ],
+    "reaction_counts": {
+      "data": 10073,
+      "test": 287,
+      "train": 9561,
+      "val": 225
+    },
+    "sample": {
+      "group": "/data/C2H2N2O/rxn2091",
+      "atomic_numbers": [
+        8,
+        6,
+        7,
+        7,
+        6,
+        1,
+        1
+      ],
+      "keys": [
+        "atomic_numbers",
+        "positions",
+        "product",
+        "reactant",
+        "transition_state",
+        "wB97x_6-31G(d).energy",
+        "wB97x_6-31G(d).forces"
+      ]
+    }
+  }
+}

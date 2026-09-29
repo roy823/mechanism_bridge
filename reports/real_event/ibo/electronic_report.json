@@ -1,0 +1,45 @@
+{
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "ordered_path_asserted_by_user": false,
+  "orbital_representation": "Pipek-Mezey exponent 4 in IAO basis (PySCF ibo.PM)",
+  "scf_stability_test": "not_performed",
+  "arrows": null,
+  "arrow_status": "requires_annotation_or_trained_decoder",
+  "frames": [
+    {
+      "frame": 0,
+      "energy_hartree": -261.88477633803416,
+      "scf_converged": true,
+      "localization_converged": true,
+      "localization_gradient_norm": 1.5890880489488196e-06,
+      "orthogonality_error": 7.971401316808624e-14,
+      "tracking": {
+        "performed": false
+      },
+      "orbital_population_sum_e": [
+        1.9999999999996043,
+        2.000000000000077,
+        2.0000000000002967,
+        2.000000000000023,
+        1.9999999999999365,
+        2.00000000000005,
+        1.9999999999999967,
+        2.0000000000000075,
+        1.999999999999993,
+        1.999999999999984,
+        2.0000000000000147,
+        2.0000000000001656,
+        1.9999999999999123,
+        1.9999999999999638,
+        1.9999999999999614,
+        2.0000000000000173,
+        2.0000000000000098,
+        1.9999999999999272
+      ]
+    }
+  ]
+}

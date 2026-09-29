@@ -1,0 +1,32 @@
+{
+  "method": "HF",
+  "basis": "sto-3g",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "ordered_path_asserted_by_user": false,
+  "orbital_representation": "Pipek-Mezey exponent 4 in IAO basis (PySCF ibo.PM)",
+  "scf_stability_test": "not_performed",
+  "arrows": null,
+  "arrow_status": "requires_annotation_or_trained_decoder",
+  "frames": [
+    {
+      "frame": 0,
+      "energy_hartree": -55.4376653014902,
+      "scf_converged": true,
+      "localization_converged": true,
+      "localization_gradient_norm": 1.7629701307903905e-08,
+      "orthogonality_error": 7.771561172376096e-16,
+      "tracking": {
+        "performed": false
+      },
+      "orbital_population_sum_e": [
+        1.9999999999999976,
+        2.0000000000000027,
+        1.999999999999996,
+        2.000000000000002,
+        2.0
+      ]
+    }
+  ]
+}

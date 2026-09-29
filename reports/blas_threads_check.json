@@ -1,0 +1,37 @@
+{
+  "initial_threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 32,
+      "prefix": "libopenblas",
+      "filepath": "/mnt/d/\u5b66\u4e60\u76f8\u5173\u6587\u6863/LEARN/MolGPA/mechanism_bridge/.venv-qc/lib/python3.12/site-packages/numpy.libs/libopenblas64_p-r0-0cf96a72.3.23.dev.so",
+      "version": "0.3.23.dev",
+      "threading_layer": "pthreads",
+      "architecture": "Cooperlake"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 32,
+      "prefix": "libscipy_openblas",
+      "filepath": "/mnt/d/\u5b66\u4e60\u76f8\u5173\u6587\u6863/LEARN/MolGPA/mechanism_bridge/.venv-qc/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-68440149.so",
+      "version": "0.3.28",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "rows": [
+    {
+      "blas_threads": null,
+      "seconds": 15.74324631690979
+    },
+    {
+      "blas_threads": 1,
+      "seconds": 9.232123613357544
+    }
+  ],
+  "energy_difference_eV": 5.4569682106375694e-12,
+  "force_max_difference_eV_A": 2.7403201235953745e-12,
+  "passed": true
+}

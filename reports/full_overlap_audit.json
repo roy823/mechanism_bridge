@@ -1,0 +1,34 @@
+{
+  "variant": "flower_dataset",
+  "splits": [
+    "train",
+    "val",
+    "test"
+  ],
+  "rgd1_reference": "Zenodo mapped CSV; HDF5 identity not checked here",
+  "domain_filter": {
+    "elements": [
+      "C",
+      "H",
+      "N",
+      "O"
+    ],
+    "maximum_heavy_atoms": 10
+  },
+  "rgd1_csv_rows": 176898,
+  "rgd1_distinct_nonidentity_graph_pairs": 139693,
+  "flower_rows": 1622935,
+  "flower_train_rows": 1445189,
+  "outside_rgd1_element_or_size_scope": 1259214,
+  "identical_smiles_skipped": 360463,
+  "flower_rows_canonicalized": 3258,
+  "flower_val_rows": 15744,
+  "flower_test_rows": 162002,
+  "distinct_candidate_graph_pairs": 0,
+  "verified_pairs": 0,
+  "limitations": [
+    "CSV graph matches are only retrieval candidates",
+    "No geometry atom mapping, spin/environment, IRC or arrow verification",
+    "Old/new FlowER variants are not merged"
+  ]
+}

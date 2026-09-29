@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "source_model_label_level": "RGD1 B3LYP-D3/TZVP geometry",
+  "new_evidence_level": "new restricted wb97x/6-31g(d) verified TS geometry",
+  "task": "residual calibration to new quantum evidence, not relabeling source data",
+  "groups": 3,
+  "events": [
+    {
+      "event_id": "MR_375774_0",
+      "changed_pair_MAE_before_A": 0.0655231503110606,
+      "changed_pair_MAE_after_A": 0.10872906545531807
+    },
+    {
+      "event_id": "MR_453777_0",
+      "changed_pair_MAE_before_A": 0.08623219503339724,
+      "changed_pair_MAE_after_A": 0.13222308359754037
+    },
+    {
+      "event_id": "MR_537711_0",
+      "changed_pair_MAE_before_A": 0.22790231748869638,
+      "changed_pair_MAE_after_A": 0.20491814877669523
+    }
+  ],
+  "event_mean_MAE_before_A": 0.12655255427771808,
+  "event_mean_MAE_after_A": 0.14862343260985122,
+  "candidate_promoted": false,
+  "model_artifact_status": "experimental_residual_candidate; original graph models unchanged",
+  "validation": "Leave-one-formula-out new-QC updates; base predictions also excluded each target formula",
+  "limitations": [
+    "Very small nonrandom pilot; no statistical/general active-learning conclusion",
+    "One residual-update experiment, not repeated acquisition rounds",
+    "No inverse curved-arrow model update tested",
+    "Distance accuracy does not certify generated structures or TS connectivity"
+  ],
+  "validation_improved": false
+}

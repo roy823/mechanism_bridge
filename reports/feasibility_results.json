@@ -1,0 +1,801 @@
+{
+  "core_data_all_verified": true,
+  "graph_benchmark": {
+    "scope": "graph-level feasibility proxy, not a curved-arrow or validated-path benchmark",
+    "runtime_versions": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "rdkit": "2024.3.2",
+      "scikit-learn": "1.6.1"
+    },
+    "events": 226,
+    "formula_groups": 51,
+    "atom_pair_rows": 5501,
+    "split": "5-fold GroupKFold by atomic composition; no reverse/conformer cross-fold leakage",
+    "metrics": {
+      "forward_R": {
+        "pair_distance_MAE_A": 0.31462753005108335,
+        "changed_pair_distance_MAE_A": 0.3967486748225245
+      },
+      "forward_R_graph_edits": {
+        "pair_distance_MAE_A": 0.24389952092654282,
+        "changed_pair_distance_MAE_A": 0.15642416678913718
+      },
+      "inverse_R": {
+        "signed_edit_macro_F1": 0.3437075091046467,
+        "changed_pair_precision": 0.41914893617021276,
+        "changed_pair_recall": 0.6952941176470588,
+        "changed_pair_F1": 0.5230088495575221,
+        "exact_event_edit_fraction": 0.004424778761061947
+      },
+      "inverse_R_TS": {
+        "signed_edit_macro_F1": 0.5718928679272969,
+        "changed_pair_precision": 0.7396335583413693,
+        "changed_pair_recall": 0.9023529411764706,
+        "changed_pair_F1": 0.81293057763646,
+        "exact_event_edit_fraction": 0.17256637168141592
+      }
+    },
+    "forward_group_mean_MAE_reduction_A": 0.22638694907063212,
+    "forward_group_bootstrap_95_percent_CI_A": [
+      0.1965515042005756,
+      0.25681962813092013
+    ],
+    "limitations": [
+      "Forward symbolic features are net bond edits, not full electron arrows",
+      "R+edits has product graph information unavailable to R-only; this does NOT establish benefit beyond R/P graphs",
+      "Inverse reconstructs net graph edits from R and TS; it is NOT electronic arrow decoding",
+      "TS labels are source B3LYP-D3/TZVP structures; most are not independently reverified here",
+      "No new-physics feedback-learning claim is made"
+    ]
+  },
+  "generated_at_utc": "2026-09-29T05:07:32.631222+00:00",
+  "pending_events": [],
+  "quantum_events": [
+    {
+      "event_id": "MR_375774_0",
+      "status": "physical_event_verified_with_symbolic_hypotheses",
+      "physical_event_verified": true,
+      "verified_pair": false,
+      "elapsed_seconds": 689.7862198352814,
+      "gradient_evaluations": 147,
+      "error": null,
+      "expected_endpoint_match": true,
+      "event_outcome": null,
+      "imaginary_frequencies_cm-1": [
+        -1887.0860554315007,
+        395.94564039723963,
+        483.57745121406083,
+        625.2053611613445,
+        1096.8676657653934,
+        1195.1925189519293,
+        2157.8969157494844,
+        2684.9138533409564,
+        3570.711350019751
+      ],
+      "arrow_hypotheses": [
+        {
+          "orbital": 3,
+          "source": [
+            1,
+            2
+          ],
+          "sink": [
+            1,
+            4
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 5,
+          "source": [
+            0,
+            3
+          ],
+          "sink": [
+            0
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 6,
+          "source": [
+            1,
+            4
+          ],
+          "sink": [
+            1,
+            2
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 8,
+          "source": [
+            1,
+            2
+          ],
+          "sink": [
+            1
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 9,
+          "source": [
+            1
+          ],
+          "sink": [
+            1,
+            3
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 10,
+          "source": [
+            0
+          ],
+          "sink": [
+            0,
+            2
+          ],
+          "electrons": 2
+        }
+      ],
+      "orbital_low_overlap": true,
+      "near_degenerate_arrow_sets": 1,
+      "minimum_individual_squared_overlap": 0.3617486177022334,
+      "minimum_occupied_subspace_squared_overlap": 0.8489200090714374
+    },
+    {
+      "event_id": "MR_375774_0_model_alternative",
+      "status": "physical_event_verified_with_symbolic_hypotheses",
+      "physical_event_verified": true,
+      "verified_pair": false,
+      "elapsed_seconds": 900.0978124141693,
+      "gradient_evaluations": 166,
+      "error": null,
+      "expected_endpoint_match": false,
+      "event_outcome": "alternative_valid_event",
+      "imaginary_frequencies_cm-1": [
+        -521.3781794522188,
+        451.9759341957554,
+        837.2406846416652,
+        1077.2475651106665,
+        1159.529063731811,
+        1422.585114891898,
+        1517.9688766791226,
+        3127.4930725142917,
+        3458.2609260891113
+      ],
+      "arrow_hypotheses": [
+        {
+          "orbital": 4,
+          "source": [
+            1,
+            4
+          ],
+          "sink": [
+            1
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 5,
+          "source": [
+            2,
+            3
+          ],
+          "sink": [
+            2
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 6,
+          "source": [
+            1
+          ],
+          "sink": [
+            0,
+            1
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 7,
+          "source": [
+            0,
+            2
+          ],
+          "sink": [
+            2,
+            3
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 9,
+          "source": [
+            1,
+            2
+          ],
+          "sink": [
+            1,
+            4
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 10,
+          "source": [
+            0
+          ],
+          "sink": [
+            0,
+            2
+          ],
+          "electrons": 2
+        }
+      ],
+      "orbital_low_overlap": true,
+      "near_degenerate_arrow_sets": 1,
+      "minimum_individual_squared_overlap": 0.3270552929907304,
+      "minimum_occupied_subspace_squared_overlap": 0.7336373078298573
+    },
+    {
+      "event_id": "MR_453777_0",
+      "status": "physical_event_verified_with_symbolic_hypotheses",
+      "physical_event_verified": true,
+      "verified_pair": false,
+      "elapsed_seconds": 492.4544656276703,
+      "gradient_evaluations": 131,
+      "error": null,
+      "expected_endpoint_match": true,
+      "event_outcome": null,
+      "imaginary_frequencies_cm-1": [
+        -1863.9967596829938,
+        420.5297177830526,
+        552.6564616596623,
+        1232.385489097351,
+        2198.0939689942884,
+        2672.1526822120704
+      ],
+      "arrow_hypotheses": [
+        {
+          "orbital": 5,
+          "source": [
+            0,
+            3
+          ],
+          "sink": [
+            0
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 6,
+          "source": [
+            2
+          ],
+          "sink": [
+            2,
+            3
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 7,
+          "source": [
+            1,
+            2
+          ],
+          "sink": [
+            2
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 9,
+          "source": [
+            0
+          ],
+          "sink": [
+            0,
+            1
+          ],
+          "electrons": 2
+        }
+      ],
+      "orbital_low_overlap": true,
+      "near_degenerate_arrow_sets": 2,
+      "minimum_individual_squared_overlap": 0.3332818489575407,
+      "minimum_occupied_subspace_squared_overlap": 0.898370053409172,
+      "representation_stability": {
+        "event_id": "MR_453777_0",
+        "transformation": "same rigid rotation and translation applied to every frame",
+        "max_energy_difference_eV": 0.0001981516042428574,
+        "raw_arrow_set_unchanged": false,
+        "baseline_arrow_count": 4,
+        "rotated_arrow_hypotheses": {
+          "arrows": [
+            {
+              "orbital": 5,
+              "source": [
+                0,
+                3
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "electrons": 2
+            },
+            {
+              "orbital": 8,
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "electrons": 2
+            }
+          ],
+          "electron_pair_bookkeeping_passed": true,
+          "atom_index_base": 0,
+          "atom_map_convention": "atom_map = coordinate_index + 1",
+          "assignment_cost": 2.1333162812918744,
+          "label_origin": "Lewis_capacity_constrained_tracked_IBO_hypothesis",
+          "independently_annotated": false,
+          "unique_mechanism_certified": false
+        },
+        "caveat": "Finite DFT grids and orbital localization/tracking can contribute to changes; no independent arrow truth is supplied",
+        "atom_relay_normalization_before": {
+          "normalized_flows": [
+            {
+              "source": [
+                0,
+                3
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "pair_count": 1
+            },
+            {
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "pair_count": 1
+            }
+          ],
+          "contracted_relays": [
+            {
+              "source": [
+                0,
+                3
+              ],
+              "relay_atom": [
+                0
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "pair_count": 1
+            },
+            {
+              "source": [
+                1,
+                2
+              ],
+              "relay_atom": [
+                2
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "pair_count": 1
+            }
+          ],
+          "chemical_equivalence_certified": false
+        },
+        "atom_relay_normalization_after": {
+          "normalized_flows": [
+            {
+              "source": [
+                0,
+                3
+              ],
+              "sink": [
+                0,
+                1
+              ],
+              "pair_count": 1
+            },
+            {
+              "source": [
+                1,
+                2
+              ],
+              "sink": [
+                2,
+                3
+              ],
+              "pair_count": 1
+            }
+          ],
+          "contracted_relays": [],
+          "chemical_equivalence_certified": false
+        },
+        "normalized_flow_unchanged": true
+      }
+    },
+    {
+      "event_id": "MR_537711_0",
+      "status": "physical_event_verified_with_symbolic_hypotheses",
+      "physical_event_verified": true,
+      "verified_pair": false,
+      "elapsed_seconds": 3380.4906692504883,
+      "gradient_evaluations": 305,
+      "error": null,
+      "expected_endpoint_match": true,
+      "event_outcome": null,
+      "imaginary_frequencies_cm-1": [
+        -453.3812257548394,
+        115.63379518203688,
+        172.7070587825191,
+        571.776346082101,
+        638.6753887020882,
+        722.393817773743,
+        1402.4523841985006,
+        1843.189548447945,
+        2356.165651020914
+      ],
+      "arrow_hypotheses": [
+        {
+          "orbital": 7,
+          "source": [
+            0,
+            1
+          ],
+          "sink": [
+            0,
+            2
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 8,
+          "source": [
+            0,
+            4
+          ],
+          "sink": [
+            0,
+            1
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 9,
+          "source": [
+            3
+          ],
+          "sink": [
+            1,
+            3
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 10,
+          "source": [
+            0,
+            1
+          ],
+          "sink": [
+            0
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 11,
+          "source": [
+            1,
+            3
+          ],
+          "sink": [
+            3
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 13,
+          "source": [
+            2,
+            4
+          ],
+          "sink": [
+            4
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 14,
+          "source": [
+            2
+          ],
+          "sink": [
+            2,
+            4
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 15,
+          "source": [
+            0
+          ],
+          "sink": [
+            0,
+            1
+          ],
+          "electrons": 2
+        }
+      ],
+      "orbital_low_overlap": true,
+      "near_degenerate_arrow_sets": 2,
+      "minimum_individual_squared_overlap": 0.2750671442339732,
+      "minimum_occupied_subspace_squared_overlap": 0.28920073641557115
+    }
+  ],
+  "seed_recovery": [
+    {
+      "event_id": "MR_375774_0",
+      "seed_method": "endpoint_interpolation",
+      "gradient_budget": 60,
+      "reference_ts_used_for_seed": false,
+      "status": "completed",
+      "optimizer_converged": true,
+      "stationary": {
+        "force_max_eV_A": 0.013389076291827555,
+        "force_converged": true,
+        "energy_eV": -4043.2975699019776,
+        "frequencies_cm-1": [
+          -1890.2111775031722,
+          396.73521656293025,
+          483.0034778967487,
+          626.3265808888219,
+          1099.518014778724,
+          1197.3221445061558,
+          2157.5386288953814,
+          2685.5432585893996,
+          3569.573165646184
+        ],
+        "imaginary_count": 1,
+        "imaginary_threshold_cm-1": 30.0,
+        "rigid_mode_count": 6
+      },
+      "reference_ts_RMSD_A": 0.0010707532133859968,
+      "reference_energy_difference_eV": 1.0978869795508217e-06,
+      "recovered_reference_saddle": true,
+      "gradient_evaluations": 22,
+      "seconds": 132.13121056556702
+    },
+    {
+      "event_id": "MR_375774_0",
+      "seed_method": "heldout_graph_model",
+      "gradient_budget": 60,
+      "reference_ts_used_for_seed": false,
+      "status": "completed",
+      "optimizer_converged": true,
+      "stationary": {
+        "force_max_eV_A": 0.01282087635310784,
+        "force_converged": true,
+        "energy_eV": -4042.3097441306845,
+        "frequencies_cm-1": [
+          -521.378188683366,
+          451.9759378150295,
+          837.2406730845584,
+          1077.2475646431317,
+          1159.5290695352976,
+          1422.5851109301639,
+          1517.9688805220937,
+          3127.4931065033725,
+          3458.260907705207
+        ],
+        "imaginary_count": 1,
+        "imaginary_threshold_cm-1": 30.0,
+        "rigid_mode_count": 6
+      },
+      "reference_ts_RMSD_A": 0.8772473466847097,
+      "reference_energy_difference_eV": 0.9878246734060667,
+      "recovered_reference_saddle": false,
+      "gradient_evaluations": 35,
+      "seconds": 193.1025686264038
+    },
+    {
+      "event_id": "MR_453777_0",
+      "seed_method": "endpoint_interpolation",
+      "gradient_budget": 60,
+      "reference_ts_used_for_seed": false,
+      "status": "completed",
+      "optimizer_converged": true,
+      "stationary": {
+        "force_max_eV_A": 0.0077511800240185336,
+        "force_converged": true,
+        "energy_eV": -4584.273642170161,
+        "frequencies_cm-1": [
+          -1866.5268654446115,
+          420.89573151170663,
+          552.2185162383348,
+          1231.7719254448564,
+          2197.2367440405847,
+          2672.2312637900036
+        ],
+        "imaginary_count": 1,
+        "imaginary_threshold_cm-1": 30.0,
+        "rigid_mode_count": 6
+      },
+      "reference_ts_RMSD_A": 7.220274390345481e-05,
+      "reference_energy_difference_eV": 2.042427058768226e-05,
+      "recovered_reference_saddle": true,
+      "gradient_evaluations": 28,
+      "seconds": 140.9048421382904
+    },
+    {
+      "event_id": "MR_453777_0",
+      "seed_method": "heldout_graph_model",
+      "gradient_budget": 60,
+      "reference_ts_used_for_seed": false,
+      "status": "completed",
+      "optimizer_converged": true,
+      "stationary": {
+        "force_max_eV_A": 0.006854865468363538,
+        "force_converged": true,
+        "energy_eV": -4584.273558456046,
+        "frequencies_cm-1": [
+          -1865.8404174671955,
+          420.1447999099786,
+          551.0643472957031,
+          1232.301424757438,
+          2197.916509833379,
+          2671.7222386661356
+        ],
+        "imaginary_count": 1,
+        "imaginary_threshold_cm-1": 30.0,
+        "rigid_mode_count": 6
+      },
+      "reference_ts_RMSD_A": 0.0001890266854404545,
+      "reference_energy_difference_eV": 6.328984454739839e-05,
+      "recovered_reference_saddle": true,
+      "gradient_evaluations": 13,
+      "seconds": 67.66659021377563
+    }
+  ],
+  "physically_verified_events": 4,
+  "independently_reviewed_arrow_pairs": 0,
+  "physics_feedback_records": [
+    {
+      "physical_event_id": "pilot:MR_375774_0",
+      "query_id": "MR_375774_0",
+      "query_endpoints": [
+        "N=C=N",
+        "NC#N"
+      ],
+      "observed_endpoints": [
+        "N=C=N",
+        "N#CN"
+      ],
+      "relation": "compatible_graph_pair",
+      "physical_event_retained": true,
+      "not_a_negative_reaction_label": true,
+      "representation": "endpoint_graph_query; curved-arrow labels remain unreviewed",
+      "evidence": "reports/feasibility/MR_375774_0/verification.json",
+      "novel_chemistry_claim": false
+    },
+    {
+      "physical_event_id": "pilot:MR_375774_0_model_alternative",
+      "query_id": "MR_375774_0",
+      "query_endpoints": [
+        "N=C=N",
+        "NC#N"
+      ],
+      "observed_endpoints": [
+        "C1=NN1",
+        "[CH-]=[N+]=N"
+      ],
+      "relation": "incompatible_query_event_pair",
+      "physical_event_retained": true,
+      "not_a_negative_reaction_label": true,
+      "representation": "endpoint_graph_query; curved-arrow labels remain unreviewed",
+      "evidence": "reports/feasibility/MR_375774_0_model_alternative/verification.json",
+      "novel_chemistry_claim": false
+    },
+    {
+      "physical_event_id": "pilot:MR_453777_0",
+      "query_id": "MR_453777_0",
+      "query_endpoints": [
+        "N=C=O",
+        "OC#N"
+      ],
+      "observed_endpoints": [
+        "N=C=O",
+        "N#CO"
+      ],
+      "relation": "compatible_graph_pair",
+      "physical_event_retained": true,
+      "not_a_negative_reaction_label": true,
+      "representation": "endpoint_graph_query; curved-arrow labels remain unreviewed",
+      "evidence": "reports/feasibility/MR_453777_0/verification.json",
+      "novel_chemistry_claim": false
+    },
+    {
+      "physical_event_id": "pilot:MR_537711_0",
+      "query_id": "MR_537711_0",
+      "query_endpoints": [
+        "[C-]#[N+]N=C=O",
+        "O=C=NC#N"
+      ],
+      "observed_endpoints": [
+        "[C-]#[N+]N=C=O",
+        "N#CN=C=O"
+      ],
+      "relation": "compatible_graph_pair",
+      "physical_event_retained": true,
+      "not_a_negative_reaction_label": true,
+      "representation": "endpoint_graph_query; curved-arrow labels remain unreviewed",
+      "evidence": "reports/feasibility/MR_537711_0/verification.json",
+      "novel_chemistry_claim": false
+    }
+  ],
+  "conclusion": "Graph/geometric complementarity and a small physical-evidence pipeline are tested; full arrow-level bidirectional learning and iterative physics-feedback benefit remain unproven",
+  "physics_feedback_probe": {
+    "status": "completed",
+    "source_model_label_level": "RGD1 B3LYP-D3/TZVP geometry",
+    "new_evidence_level": "new restricted wb97x/6-31g(d) verified TS geometry",
+    "task": "residual calibration to new quantum evidence, not relabeling source data",
+    "groups": 3,
+    "events": [
+      {
+        "event_id": "MR_375774_0",
+        "changed_pair_MAE_before_A": 0.0655231503110606,
+        "changed_pair_MAE_after_A": 0.10872906545531807
+      },
+      {
+        "event_id": "MR_453777_0",
+        "changed_pair_MAE_before_A": 0.08623219503339724,
+        "changed_pair_MAE_after_A": 0.13222308359754037
+      },
+      {
+        "event_id": "MR_537711_0",
+        "changed_pair_MAE_before_A": 0.22790231748869638,
+        "changed_pair_MAE_after_A": 0.20491814877669523
+      }
+    ],
+    "event_mean_MAE_before_A": 0.12655255427771808,
+    "event_mean_MAE_after_A": 0.14862343260985122,
+    "candidate_promoted": false,
+    "model_artifact_status": "experimental_residual_candidate; original graph models unchanged",
+    "validation": "Leave-one-formula-out new-QC updates; base predictions also excluded each target formula",
+    "limitations": [
+      "Very small nonrandom pilot; no statistical/general active-learning conclusion",
+      "One residual-update experiment, not repeated acquisition rounds",
+      "No inverse curved-arrow model update tested",
+      "Distance accuracy does not certify generated structures or TS connectivity"
+    ],
+    "validation_improved": false
+  }
+}

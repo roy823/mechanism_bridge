@@ -1,0 +1,113 @@
+{
+  "output_file": "Transition1x.h5",
+  "raw_bytes": 6623929000,
+  "raw_sha256": "6a20f8a3f49c50d462270d10d4c44ca102e788072e2096a91d70b5a0f598b629",
+  "doi": "10.6084/m9.figshare.19614657.v4",
+  "parts": [
+    {
+      "file": "Transition1x.part001.gz",
+      "index": 1,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 423633579,
+      "raw_sha256": "976289ac5a27ccf5967ef98204f28dbcb1c23a558541790d5b3f623e81b658c8"
+    },
+    {
+      "file": "Transition1x.part002.gz",
+      "index": 2,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 422733452,
+      "raw_sha256": "506996445c42be8c119b6559afb832041cb12a44a64c7a36a511b202408e380f"
+    },
+    {
+      "file": "Transition1x.part003.gz",
+      "index": 3,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 423463473,
+      "raw_sha256": "9b487120192fbe01743af11d428f53014aac58d925f454345a935dddf79cc677"
+    },
+    {
+      "file": "Transition1x.part004.gz",
+      "index": 4,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 424104286,
+      "raw_sha256": "65f43a391f7525cb8901c4d57ae7b6b32ff7c9ababb268b2c4b43259132c2106"
+    },
+    {
+      "file": "Transition1x.part005.gz",
+      "index": 5,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 423761667,
+      "raw_sha256": "f17c7b97d90560efa6bfb68e7de041d279c636d7ce81ce555dc81a4459c43ee2"
+    },
+    {
+      "file": "Transition1x.part006.gz",
+      "index": 6,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 426036657,
+      "raw_sha256": "238bc4d43524464a7b2d40af320c54d723da569de252e5a60be1ea1a3afa017d"
+    },
+    {
+      "file": "Transition1x.part007.gz",
+      "index": 7,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 425661068,
+      "raw_sha256": "f1ec22b42be83ab27b774d649e176e82fddc038a55671000866ac96c30065c16"
+    },
+    {
+      "file": "Transition1x.part008.gz",
+      "index": 8,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 425473022,
+      "raw_sha256": "64dfa793c58ee0dcae357c51733c69908ee6272369ccc62cf3142e280d9f9424"
+    },
+    {
+      "file": "Transition1x.part009.gz",
+      "index": 9,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 425555373,
+      "raw_sha256": "7885c50a9f06d6fbb2894a0277cc9395eaba603ce4c2476bd3c34dce80bb6f64"
+    },
+    {
+      "file": "Transition1x.part010.gz",
+      "index": 10,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 426799760,
+      "raw_sha256": "ed4ede6a9c87099a86680cd3c6a79e556f074288f2829c4f33287decb2d1a257"
+    },
+    {
+      "file": "Transition1x.part011.gz",
+      "index": 11,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 425615960,
+      "raw_sha256": "6c5bdf67f59256bf404ab0e871ab9d2779966ccc6c270ce8986d92c3f9937dc3"
+    },
+    {
+      "file": "Transition1x.part012.gz",
+      "index": 12,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 422152677,
+      "raw_sha256": "729fb5b7c3202d83a7fe0822366cb927c63b4f9d3c18a859bbe7f12db54fb822"
+    },
+    {
+      "file": "Transition1x.part013.gz",
+      "index": 13,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 422048729,
+      "raw_sha256": "850bc358d82c257609cf8532fc45e48e68070d9201ab282d77b40307cbe48974"
+    },
+    {
+      "file": "Transition1x.part014.gz",
+      "index": 14,
+      "raw_bytes": 450000000,
+      "compressed_bytes": 422751849,
+      "raw_sha256": "07ec7b3f1e77f8216a38e4ba2682893d2bd5f40b664a127b0b76972aa95106c9"
+    },
+    {
+      "file": "Transition1x.part015.gz",
+      "index": 15,
+      "raw_bytes": 323929000,
+      "compressed_bytes": 303977462,
+      "raw_sha256": "f1b98830355cc87d617ae0d3cecbc4e8a93931313f7d3eac167211cfa855dd43"
+    }
+  ]
+}

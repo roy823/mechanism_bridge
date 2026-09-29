@@ -1,0 +1,16 @@
+{
+  "mech_uspto": {
+    "rows": 31364,
+    "unique_mechanistic_class": 63,
+    "duplicate_ids": null
+  },
+  "rgd1_mapping": {
+    "rows": 176898,
+    "unique_reaction": 176898,
+    "duplicate_ids": 0
+  },
+  "bundled_rgd1_conflict_diagnostic": {
+    "agree_only_after_removing_stereo_isotopes": 230,
+    "still_disagree_without_stereo_isotopes": 213
+  }
+}

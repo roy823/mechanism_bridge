@@ -1,0 +1,179 @@
+{
+  "url_public_html": "https://figshare.com/articles/dataset/FlowER_-_Mechanistic_datasets_and_model_checkpoint/28359407/3",
+  "files": [
+    {
+      "id": 55904912,
+      "name": "checkpoints.zip",
+      "size": 444244997,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/55904912",
+      "supplied_md5": "2ab43d1956aafc12ead0b707b2b3c9db",
+      "computed_md5": "2ab43d1956aafc12ead0b707b2b3c9db",
+      "mimetype": "application/zip"
+    },
+    {
+      "id": 55904909,
+      "name": "data.zip",
+      "size": 238206912,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/55904909",
+      "supplied_md5": "6f304f7b4ac0f3c7b83a18fb4a27b189",
+      "computed_md5": "6f304f7b4ac0f3c7b83a18fb4a27b189",
+      "mimetype": "application/zip"
+    }
+  ],
+  "folder_structure": {},
+  "authors": [
+    {
+      "id": 8188614,
+      "full_name": "Joonyoung F. Joung",
+      "first_name": "Joonyoung F.",
+      "last_name": "Joung",
+      "is_active": true,
+      "url_name": "Joonyoung_F_Joung",
+      "orcid_id": "0000-0002-5976-2048"
+    },
+    {
+      "id": 20730493,
+      "full_name": "Mun Hong Fong",
+      "first_name": "Mun Hong",
+      "last_name": "Fong",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": "0009-0008-9682-4480"
+    },
+    {
+      "id": 20730496,
+      "full_name": "Nicholas Casetti",
+      "first_name": "Nicholas",
+      "last_name": "Casetti",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 20730499,
+      "full_name": "Jordan P. Liles",
+      "first_name": "Jordan P.",
+      "last_name": "Liles",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 20730500,
+      "full_name": "Ne S. Dassanayake",
+      "first_name": "Ne",
+      "last_name": "S. Dassanayake",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 12248674,
+      "full_name": "Connor W. Coley",
+      "first_name": "Connor W.",
+      "last_name": "Coley",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": "0000-0002-8271-8723"
+    }
+  ],
+  "custom_fields": [],
+  "figshare_url": "https://figshare.com/articles/dataset/FlowER_-_Mechanistic_datasets_and_model_checkpoint/28359407",
+  "download_disabled": false,
+  "description": "<p dir=\"ltr\">This repository contains the train, validation, and test datasets used for training the FlowER model, along with the model checkpoint files. These checkpoint files allow full reproducibility of all data used in the FlowER paper.</p><p><br></p><p dir=\"ltr\">There are three checkpoints for</p><ol><li>FlowER model trained on dataset, which allows full reproducibility of all main Figures in the FlowER paper</li><li>FlowER-large model trained on dataset, which allows a reproducibility of Figure 2a in the FlowER paper</li><li>FlowER-large model trained on <i>revistied </i>dataset, which we have corrected minor errors in the mechanistic templates including intramolecular proton transfer reactions</li></ol><p><br></p><p dir=\"ltr\">There are two datasets,</p><ol><li>flower_dataset: the mechanstic dataset for full reproducibility of all main data used in the FlowER paper.</li><li>flower_new_dataset: <i>revistied </i>mechanstic dataset which we have corrected minor errors in the mechanistic templates</li></ol><p><br></p><p dir=\"ltr\">In both datasets, the train, validation, and test datasets are recorded at the elementary step level. Each line in the text files follows the format:</p><p dir=\"ltr\"><br>reactants>>products|Number</p><p><br></p><p><br></p><ul><li>Reactants and products are represented with atom-mapped SMILES.</li><li>The Number represents the overall reaction index. That is, elementary steps with the same Number originate from the same overall reaction.</li></ul><p dir=\"ltr\">The <b>FlowER model</b> can be found at: <a href=\"https://github.com/FongMunHong/FlowER\" rel=\"noreferrer\" target=\"_blank\">https://github.com/FongMunHong/FlowER</a></p>",
+  "funding": "Machine Learning for Pharmaceutical Discovery and Synthesis consortium",
+  "funding_list": [
+    {
+      "id": 25843171,
+      "title": "Machine Learning for Pharmaceutical Discovery and Synthesis consortium",
+      "grant_code": "",
+      "funder_name": null,
+      "is_user_defined": 1
+    },
+    {
+      "id": 25843174,
+      "title": "National Science Foundation under Grant No. CHE-2144153",
+      "grant_code": "",
+      "funder_name": null,
+      "is_user_defined": 1
+    }
+  ],
+  "version": 3,
+  "status": "public",
+  "size": 682451909,
+  "created_date": "2025-07-01T17:27:28Z",
+  "modified_date": "2025-07-02T01:51:29Z",
+  "is_public": true,
+  "is_confidential": false,
+  "is_metadata_record": false,
+  "confidential_reason": "",
+  "metadata_reason": "",
+  "license": {
+    "value": 3,
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
+  },
+  "tags": [
+    "Chemical reactions",
+    "Organic synthesis",
+    "Reaction mechanism",
+    "Cheminformatics",
+    "Flow matching"
+  ],
+  "keywords": [
+    "Chemical reactions",
+    "Organic synthesis",
+    "Reaction mechanism",
+    "Cheminformatics",
+    "Flow matching"
+  ],
+  "categories": [
+    {
+      "id": 25186,
+      "title": "Cheminformatics and quantitative structure-activity relationships",
+      "parent_id": 25174,
+      "path": "/25066/25174/25186",
+      "source_id": "340404",
+      "taxonomy_id": 100
+    },
+    {
+      "id": 25210,
+      "title": "Organic chemical synthesis",
+      "parent_id": 25201,
+      "path": "/25066/25201/25210",
+      "source_id": "340503",
+      "taxonomy_id": 100
+    }
+  ],
+  "references": [],
+  "has_linked_file": false,
+  "citation": "Joung, Joonyoung F.; Fong, Mun Hong; Casetti, Nicholas; Liles, Jordan P.; S. Dassanayake, Ne; Coley, Connor W. (2025). FlowER - Mechanistic datasets and model checkpoint. figshare. Dataset. https://doi.org/10.6084/m9.figshare.28359407.v3",
+  "related_materials": [],
+  "is_embargoed": false,
+  "embargo_date": null,
+  "embargo_type": null,
+  "embargo_title": "",
+  "embargo_reason": "",
+  "embargo_options": [],
+  "id": 28359407,
+  "title": "FlowER - Mechanistic datasets and model checkpoint",
+  "doi": "10.6084/m9.figshare.28359407.v3",
+  "handle": "",
+  "url": "https://api.figshare.com/v2/articles/28359407",
+  "published_date": "2025-07-01T17:27:28Z",
+  "thumb": "",
+  "defined_type": 3,
+  "defined_type_name": "dataset",
+  "group_id": null,
+  "url_private_api": "https://api.figshare.com/v2/account/articles/28359407",
+  "url_public_api": "https://api.figshare.com/v2/articles/28359407",
+  "url_private_html": "https://figshare.com/account/articles/28359407",
+  "timeline": {
+    "posted": "2025-07-01T17:27:28",
+    "firstOnline": "2025-02-16"
+  },
+  "resource_title": null,
+  "resource_doi": null
+}

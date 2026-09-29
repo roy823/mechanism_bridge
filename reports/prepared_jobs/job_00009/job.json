@@ -1,0 +1,33 @@
+{
+  "event_id": "transition1x:C2H2N2O/rxn3124",
+  "charge": 0,
+  "multiplicity": 1,
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "environment": "gas_phase",
+  "electronic_state_assignment": "explicit_CLI_assertion_requires_scientific_review",
+  "source_provenance": {
+    "file": "Transition1x.h5",
+    "sha256": "6a20f8a3f49c50d462270d10d4c44ca102e788072e2096a91d70b5a0f598b629",
+    "doi": "10.6084/m9.figshare.19614657.v4",
+    "importer": "mechanism-bridge/0.1.0",
+    "hdf5_group": "/data/C2H2N2O/rxn3124",
+    "source_split": "data"
+  },
+  "status": "pending_calculation",
+  "command": [
+    "mechbridge",
+    "verify",
+    "reports/prepared_jobs/job_00009/ts.xyz",
+    "reports/prepared_jobs/job_00009/results",
+    "--dimer",
+    "--charge",
+    "0",
+    "--multiplicity",
+    "1",
+    "--method",
+    "wb97x",
+    "--basis",
+    "6-31g(d)"
+  ]
+}

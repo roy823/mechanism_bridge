@@ -1,0 +1,215 @@
+{
+  "event_id": "MR_453777_0",
+  "adjacent_frames": [
+    {
+      "frame": 1,
+      "minimum_individual_squared_overlap": 0.974179450890041,
+      "minimum_occupied_subspace_squared_overlap": 0.9739810527452821
+    },
+    {
+      "frame": 2,
+      "minimum_individual_squared_overlap": 0.5255037673286962,
+      "minimum_occupied_subspace_squared_overlap": 0.9280362630981208
+    },
+    {
+      "frame": 3,
+      "minimum_individual_squared_overlap": 0.9092979612862387,
+      "minimum_occupied_subspace_squared_overlap": 0.9084957747754684
+    },
+    {
+      "frame": 4,
+      "minimum_individual_squared_overlap": 0.6081094445164706,
+      "minimum_occupied_subspace_squared_overlap": 0.9803255511451032
+    },
+    {
+      "frame": 5,
+      "minimum_individual_squared_overlap": 0.631758167146611,
+      "minimum_occupied_subspace_squared_overlap": 0.9659728926625856
+    },
+    {
+      "frame": 6,
+      "minimum_individual_squared_overlap": 0.9489795254011244,
+      "minimum_occupied_subspace_squared_overlap": 0.974059996156998
+    },
+    {
+      "frame": 7,
+      "minimum_individual_squared_overlap": 0.9395273142209841,
+      "minimum_occupied_subspace_squared_overlap": 0.958754478627166
+    },
+    {
+      "frame": 8,
+      "minimum_individual_squared_overlap": 0.9817685200282473,
+      "minimum_occupied_subspace_squared_overlap": 0.9825375023992843
+    },
+    {
+      "frame": 9,
+      "minimum_individual_squared_overlap": 0.9783182180230479,
+      "minimum_occupied_subspace_squared_overlap": 0.9809406535906552
+    },
+    {
+      "frame": 10,
+      "minimum_individual_squared_overlap": 0.9867083874198115,
+      "minimum_occupied_subspace_squared_overlap": 0.9908939506864506
+    },
+    {
+      "frame": 11,
+      "minimum_individual_squared_overlap": 0.5363467191601242,
+      "minimum_occupied_subspace_squared_overlap": 0.9816398488598173
+    },
+    {
+      "frame": 12,
+      "minimum_individual_squared_overlap": 0.4435171398108915,
+      "minimum_occupied_subspace_squared_overlap": 0.9671575249714675
+    },
+    {
+      "frame": 13,
+      "minimum_individual_squared_overlap": 0.9664769186091582,
+      "minimum_occupied_subspace_squared_overlap": 0.9828091365433307
+    },
+    {
+      "frame": 14,
+      "minimum_individual_squared_overlap": 0.9543898971638505,
+      "minimum_occupied_subspace_squared_overlap": 0.9538710539280668
+    },
+    {
+      "frame": 15,
+      "minimum_individual_squared_overlap": 0.4949532177427971,
+      "minimum_occupied_subspace_squared_overlap": 0.898370053409172
+    },
+    {
+      "frame": 16,
+      "minimum_individual_squared_overlap": 0.3332818489575407,
+      "minimum_occupied_subspace_squared_overlap": 0.9121105975502587
+    }
+  ],
+  "last_step_alternative_hypotheses": [
+    {
+      "total_squared_overlap_score_gap": 0.0,
+      "arrows": [
+        {
+          "orbital": 5,
+          "source": [
+            0,
+            3
+          ],
+          "sink": [
+            0
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 6,
+          "source": [
+            2
+          ],
+          "sink": [
+            2,
+            3
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 7,
+          "source": [
+            1,
+            2
+          ],
+          "sink": [
+            2
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 9,
+          "source": [
+            0
+          ],
+          "sink": [
+            0,
+            1
+          ],
+          "electrons": 2
+        }
+      ],
+      "electron_pair_bookkeeping_passed": true,
+      "atom_index_base": 0,
+      "atom_map_convention": "atom_map = coordinate_index + 1",
+      "assignment_cost": 3.3983502646723425,
+      "label_origin": "Lewis_capacity_constrained_tracked_IBO_hypothesis",
+      "independently_annotated": false,
+      "unique_mechanism_certified": false
+    },
+    {
+      "total_squared_overlap_score_gap": 0.023890824133758315,
+      "arrows": [
+        {
+          "orbital": 4,
+          "source": [
+            0,
+            1
+          ],
+          "sink": [
+            0
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 5,
+          "source": [
+            0,
+            3
+          ],
+          "sink": [
+            0,
+            1
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 6,
+          "source": [
+            2
+          ],
+          "sink": [
+            2,
+            3
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 7,
+          "source": [
+            1,
+            2
+          ],
+          "sink": [
+            2
+          ],
+          "electrons": 2
+        },
+        {
+          "orbital": 9,
+          "source": [
+            0
+          ],
+          "sink": [
+            0,
+            1
+          ],
+          "electrons": 2
+        }
+      ],
+      "electron_pair_bookkeeping_passed": true,
+      "atom_index_base": 0,
+      "atom_map_convention": "atom_map = coordinate_index + 1",
+      "assignment_cost": 3.3983502646723425,
+      "label_origin": "Lewis_capacity_constrained_tracked_IBO_hypothesis",
+      "independently_annotated": false,
+      "unique_mechanism_certified": false
+    }
+  ],
+  "alternatives_are_exhaustive": false,
+  "overlap_score_gap_cutoff": 0.05,
+  "review_required": true,
+  "meaning": "Individual IBO identity can be ambiguous even when occupied subspace is stable; candidates are not independent chemical truth"
+}
