@@ -1,0 +1,20 @@
+{
+  "name": "equal-amplitude source-information ablation",
+  "starts_file": "data/processed/validation_starts.jsonl",
+  "strategies": ["geometry", "center_random", "bond_edits", "arrows"],
+  "core_starts": ["MR_8342_1", "MR_460039_0"],
+  "core_random_seeds": [17, 29, 43],
+  "extension_starts": ["SynEPD_22", "SynEPD_1741"],
+  "extension_random_seeds": [17],
+  "max_attempts": 6,
+  "seeds_per_node": 3,
+  "total_evaluations": 6000,
+  "evaluations_per_attempt": 1200,
+  "seed_displacement_norms_A": [0.6, 1.0, 1.4],
+  "workers": 3,
+  "primary_metric": "root-connected distinct chemical graph pairs by cumulative energy/force evaluations",
+  "secondary_metrics": ["new species", "validated edges", "first connection cost", "continued exploration", "unresolved/censored attempts"],
+  "claims": "Pilot sensitivity analysis, not unseen-family generalization; conformers and reverse reactions are not independent samples.",
+  "DFT_representatives": ["MR_8342_1/arrows/edge0", "MR_460039_0/arrows/edge1"],
+  "DFT_selection": "One representative for each v1 root-connected chemical graph pair, before seeing DFT outcomes."
+}

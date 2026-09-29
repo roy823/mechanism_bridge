@@ -1,5 +1,7 @@
 .venv/
 .venv-qc/
+.venv-explore/
+models/
 .cache/
 tools/aria2/
 tools/pip.pyz
@@ -10,3 +12,5 @@ data/raw/
 data/processed/
 *.part
 work/
+.history/
+reports/

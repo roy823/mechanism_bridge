@@ -1,2 +1,2 @@
-"""Mechanism Bridge: evidence first, no reaction-template completion."""
-__version__ = "0.1.0"
+"""Symbol-guided exploration of saddle-connected molecular reaction events."""
+__version__ = "0.2.0"

@@ -41,6 +41,9 @@ def stationary(atoms, calculator, fmax=0.02):
 
 def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
                  ts_steps=100, irc_steps=120, frames=17):
+    """Validate a supplied candidate on DFT; frames=0 omits orbital annotation."""
+    if frames == 1 or frames < 0:
+        raise ValueError('Use frames=0 for physical verification, or frames>=2 for orbital analysis')
     from sella import Sella, IRC
     outdir = Path(outdir); outdir.mkdir(parents=True,exist_ok=True)
     started = time.time()
@@ -56,6 +59,7 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
               "symbolic_status":"not_computed","status":"started"}
     def save():
         result["elapsed_seconds"] = time.time()-started
+        result['gradient_evaluations'] = calc.evaluation_count
         temp = outdir / "verification.json.tmp"
         temp.write_text(json.dumps(result,indent=2,allow_nan=False),encoding="utf-8")
         temp.replace(outdir / "verification.json")
@@ -110,6 +114,11 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
         result["observed_product_smiles"] = minima[1][1]["graph_smiles"]
         path = [minima[0][0]] + branches[0][::-1] + [ts_atoms] + branches[1] + [minima[1][0]]
         write(outdir/"ordered_path.xyz",path)
+        if frames == 0:
+            result['status'] = 'physical_event_verified'
+            result['symbolic_status'] = 'not_requested'
+            save()
+            return result
         indices = np.unique(np.linspace(0,len(path)-1,min(frames,len(path))).astype(int))
         sampled = [path[i] for i in indices]
         write(outdir/"electronic_frames.xyz",sampled)

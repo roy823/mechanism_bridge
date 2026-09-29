@@ -1,5 +1,7 @@
 # GPA、势能面与符号机理的连接方案
 
+> 历史设计讨论。当前已落地的分子探索流程见 [README](../README_zh.md)，最新受控比较见 [验证 v2](VALIDATION_V2_zh.md)。
+
 依据：2026-09-29 阅读 `D:/学习相关文档/LEARN/MILP/GeoTransitionAtlas-Migration` 的 README、架构说明，以及 geometry/aperture、energetics/critical、descent、stationary_points、transitions/network、calculators 等关键模块。本次未修改或运行该仓库。
 
 核心目标是把 GPA/势能面发现的基元事件转成有电子结构证据的符号机理，并建立可双向使用的数据库。可以先用两个已有模型与计算工作流完成；重新训练通用反应生成器或势模型不是前置条件。

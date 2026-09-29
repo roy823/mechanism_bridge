@@ -1,5 +1,7 @@
 # 项目可行性、文献与模型选择
 
+> 历史评估记录，保留当时的数据审计与判断。当前实现、模型安装状态和入口以 [README](../README_zh.md) 为准；最新试验见 [验证 v2](VALIDATION_V2_zh.md)。
+
 评估日期：2026-09-29。依据为本机全部 `src/mechbridge` 模块、下载与试验脚本、处理样本和公开一手文献。本机下载状态以 `../reports/local_download_inventory.json` 为准。
 
 用户补充 GPA 项目后，研究主线进一步明确为“几何/势能发现事件—电子结构—符号解释”。已有能力、迁移边界及两个模型的分工见 [GPA_BRIDGE_DESIGN_zh.md](GPA_BRIDGE_DESIGN_zh.md)。下面的跨库零交集仅是一种严格记录检索结果，不是项目可行性的前提，也不表示缺少共同机理类型。
@@ -34,7 +36,7 @@
 
 **本次完整重合检索**
 
-`scripts/audit_overlap.py` 扫描原版 `flower_dataset` 的 train/val/test 共 **1,622,935 行**，与 RGD1 映射 CSV 的 **176,898 条记录、139,693 个非恒等端点图对**比较。跳过 360,463 行相同 SMILES 端点，以及 1,259,214 行超出 RGD1 的 CHNO/10 重原子范围的数据，剩余 3,258 行进行图标准化；严格候选数为 **0**。结果见 `../reports/full_overlap_audit.json`，可用 `python scripts/audit_overlap.py` 复现。
+`scripts/diagnostics/audit_overlap.py` 扫描原版 `flower_dataset` 的 train/val/test 共 **1,622,935 行**，与 RGD1 映射 CSV 的 **176,898 条记录、139,693 个非恒等端点图对**比较。跳过 360,463 行相同 SMILES 端点，以及 1,259,214 行超出 RGD1 的 CHNO/10 重原子范围的数据，剩余 3,258 行进行图标准化；严格候选数为 **0**。结果见 `../reports/full_overlap_audit.json`，可用 `python scripts/diagnostics/audit_overlap.py` 复现。
 
 这一结果只针对原版 FlowER 和该映射 CSV、当前 RDKit 标准化规则及完整体系的精确匹配；未扫描新数据变体，也不排除 HDF5 原始端点、局部反应中心或新计算体系的重合。部分 RGD1 源 SMILES 会触发 RDKit 立体方向冲突警告，日志予以保留，结果不是经过化学人工审核的全库定论。它足以说明：不能把“直接跨库取交集”当成获得大量正配对的默认方案，应优先从物理路径建立箭头标注。
 
@@ -73,7 +75,7 @@ FlowER v3 权重包 MD5 为 `2ab43d1956aafc12ead0b707b2b3c9db`，含不同模型
 需要 FlowER 权重时，项目现有脚本支持：
 
 ```bash
-python scripts/download_data.py --datasets flower --checkpoints --max-file-mb 500
+python scripts/data/download_data.py --datasets flower --checkpoints --max-file-mb 500
 ```
 
 在独立 AIMNet 环境中，官方接口可获取并加载默认成员。以下尚未在本机执行：

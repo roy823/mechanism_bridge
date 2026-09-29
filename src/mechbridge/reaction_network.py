@@ -1,0 +1,276 @@
+"""GPA-style exploration: seeds -> index-one saddles -> observed minima -> graph.
+
+Connections here are MLIP mode-displacement descents, explicitly not DFT IRC.
+No expected product is used to accept or reject a physical connection.
+"""
+from dataclasses import dataclass, asdict
+from pathlib import Path
+import json
+import time
+import traceback
+import numpy as np
+import networkx as nx
+from ase import Atoms
+from ase.calculators.calculator import Calculator, all_changes
+from ase.io import write
+from ase.optimize import BFGS
+from ase.mep import DimerControl, MinModeAtoms, MinModeTranslate
+from .physics import analyze_stationary
+from .event_graph import geometry_mol, graph_smiles
+from .search_seeds import make_seed
+
+
+class BudgetExceeded(RuntimeError):
+    pass
+
+
+class CountedCalculator(Calculator):
+    implemented_properties = ['energy', 'forces']
+
+    def __init__(self, backend, total_limit):
+        super().__init__()
+        self.backend = backend
+        self.calls = 0
+        self.total_limit = total_limit
+        self.attempt_limit = total_limit
+
+    def calculate(self, atoms=None, properties=('energy',), system_changes=all_changes):
+        super().calculate(atoms, properties, system_changes)
+        if self.calls >= min(self.total_limit, self.attempt_limit):
+            raise BudgetExceeded('Energy/force evaluation budget exhausted')
+        self.calls += 1
+        self.backend.calculate(self.atoms, ['energy', 'forces'], all_changes)
+        energy = float(self.backend.results['energy'])
+        forces = np.asarray(self.backend.results['forces']).copy()
+        if not np.isfinite(energy) or not np.isfinite(forces).all():
+            raise ValueError('Nonfinite model prediction')
+        self.results = {'energy': energy, 'forces': forces}
+
+
+@dataclass(frozen=True)
+class SearchProtocol:
+    seed_policy: str = 'equal_internal_displacement_v2'
+    max_attempts: int = 12
+    seeds_per_node: int = 6
+    total_evaluations: int = 6000
+    evaluations_per_attempt: int = 700
+    ts_steps: int = 100
+    descent_steps: int = 150
+    fmax: float = .03
+    hessian_step: float = .005
+    mode_displacement: float = .15
+    geometry_tolerance_A: float = .15
+    energy_tolerance_eV: float = .03
+    random_seed: int = 17
+
+
+def aligned_rmsd(x, y):
+    x, y = x-x.mean(0), y-y.mean(0)
+    u, _, vt = np.linalg.svd(x.T @ y)
+    rotation = u @ np.diag([1., 1., np.linalg.det(u @ vt)]) @ vt
+    return float(np.sqrt(np.mean(np.sum((x @ rotation-y)**2, axis=1))))
+
+
+def molecular_rmsd(mol_a, x_a, mol_b, x_b):
+    if graph_smiles(mol_a) != graph_smiles(mol_b):
+        return float('inf')
+    matches = mol_a.GetSubstructMatches(mol_b, uniquify=False, useChirality=True, maxMatches=256)
+    return min((aligned_rmsd(x_a[list(m)], x_b) for m in matches), default=float('inf'))
+
+
+def atomic_json(path, data):
+    path = Path(path)
+    tmp = path.with_suffix(path.suffix + '.tmp')
+    tmp.write_text(json.dumps(data, indent=2, ensure_ascii=False, allow_nan=False), encoding='utf-8')
+    tmp.replace(path)
+
+
+def inspect_point(atoms, protocol):
+    analysis = analyze_stationary(atoms, protocol.fmax, protocol.hessian_step)
+    modes = analysis.pop('modes')
+    return analysis, modes
+
+
+def search_connection(seed, direction, calculator, outdir, protocol):
+    outdir.mkdir(parents=True, exist_ok=False)
+    started, initial_calls = time.time(), calculator.calls
+    result = dict(status='started', evidence='MLIP_two_sided_mode_displacement_descent',
+                  is_IRC=False, DFT_verified=False, endpoints=[])
+    try:
+        seed.calc = calculator
+        write(outdir / 'seed.xyz', seed, write_results=False)
+        np.save(outdir / 'seed_direction.npy', direction)
+        with DimerControl(logfile=str(outdir/'dimer.log'), dimer_separation=.005,
+                          maximum_translation=.1, max_num_rot=3,
+                          f_rot_min=.01, f_rot_max=.1) as control:
+            mm = MinModeAtoms(seed, control=control, eigenmodes=[direction.copy()],
+                              random_seed=protocol.random_seed)
+            with MinModeTranslate(mm, logfile=str(outdir/'opt.log'),
+                                  trajectory=str(outdir/'search.traj')) as opt:
+                result['optimizer_converged'] = bool(opt.run(fmax=protocol.fmax, steps=protocol.ts_steps))
+        ts, modes = inspect_point(seed, protocol)
+        result['ts'] = ts
+        write(outdir/'ts.xyz', seed, write_results=False)
+        if not ts['force_converged'] or ts['imaginary_count'] != 1:
+            result['status'] = 'not_index_one'
+            return result
+        np.save(outdir/'negative_mode.npy', modes[0])
+        for sign in (-1, 1):
+            end = seed.copy()
+            end.positions += sign * protocol.mode_displacement * modes[0]
+            end.calc = calculator
+            with BFGS(end, maxstep=.1, logfile=str(outdir/f'descent_{sign}.log'),
+                      trajectory=str(outdir/f'descent_{sign}.traj')) as opt:
+                opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
+            analysis, _ = inspect_point(end, protocol)
+            analysis['positions_A'] = end.positions.tolist()
+            analysis['barrier_eV'] = ts['energy_eV'] - analysis['energy_eV']
+            mol = geometry_mol(end.numbers, end.positions, 0)
+            analysis['graph_smiles'] = graph_smiles(mol)
+            result['endpoints'].append(analysis)
+            write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
+        if not all(e['force_converged'] and e['imaginary_count'] == 0 and e['barrier_eV'] >= -1e-4
+                   for e in result['endpoints']):
+            result['status'] = 'unresolved_minimum'
+        else:
+            result['status'] = 'validated_descents'
+            result['ts_positions_A'] = seed.positions.tolist()
+    except BudgetExceeded:
+        result['status'] = 'budget_exhausted'
+    except Exception as exc:
+        result['status'] = 'calculation_failed'
+        result['error'] = f'{type(exc).__name__}: {exc}'
+        (outdir/'error.log').write_text(traceback.format_exc(), encoding='utf-8')
+    finally:
+        result['evaluations'] = calculator.calls - initial_calls
+        result['seconds'] = time.time() - started
+        atomic_json(outdir/'result.json', result)
+    return result
+
+
+def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()):
+    """Only an observed initial geometry and a reusable symbol library enter search."""
+    outdir = Path(outdir)
+    if strategy not in ('geometry','center_random','bond_edits','arrows'):
+        raise ValueError('Unknown search strategy')
+    outdir.mkdir(parents=True, exist_ok=False)
+    calculator = CountedCalculator(backend, protocol.total_evaluations)
+    numbers = start['atomic_numbers']
+    if start['charge'] != 0 or start['multiplicity'] != 1 or not set(numbers) <= {1,6,7,8}:
+        raise ValueError('Pilot requires neutral closed-shell CHNO')
+    nodes, edges, attempts, mols = [], [], [], []
+    report = dict(start=start, strategy=strategy, protocol=asdict(protocol), nodes=nodes,
+                  edges=edges, attempts=attempts, evidence='MLIP_descents_not_DFT_IRC',
+                  library_policy='exact_observed_reactant_matching_with_forward_and_reverse_arrows',
+                  status='running', unsupported_nodes=[])
+    def save():
+        report['evaluations'] = calculator.calls
+        atomic_json(outdir/'network.json', report)
+    def register(end, depth):
+        x = np.asarray(end['positions_A'])
+        m = geometry_mol(numbers, x, 0)
+        for node, oldmol in zip(nodes, mols):
+            if (abs(node['energy_eV']-end['energy_eV']) <= protocol.energy_tolerance_eV and
+                molecular_rmsd(oldmol, np.array(node['positions_A']), m, x) < protocol.geometry_tolerance_A):
+                return node['id']
+        idx = len(nodes)
+        nodes.append(dict(id=idx, depth_discovered=depth, **end))
+        mols.append(m)
+        return idx
+    try:
+        root = Atoms(numbers=numbers, positions=start['positions_A'])
+        root.calc = calculator
+        with BFGS(root, maxstep=.1, logfile=str(outdir/'initial.log')) as opt:
+            opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
+        root_info, _ = inspect_point(root, protocol)
+        if not root_info['force_converged'] or root_info['imaginary_count'] != 0:
+            report['status'] = 'initial_minimum_unresolved'
+            return report
+        root_info.update(positions_A=root.positions.tolist(), graph_smiles=graph_smiles(
+            geometry_mol(numbers, root.positions, 0)))
+        register(root_info, 0)
+        write(outdir/'initial.xyz', root, write_results=False)
+        report['initialization_evaluations'] = calculator.calls
+        expanded = set()
+        visits = {}
+        while len(attempts) < protocol.max_attempts and calculator.calls < protocol.total_evaluations:
+            graph = nx.Graph()
+            graph.add_nodes_from(range(len(nodes)))
+            graph.add_edges_from(e['nodes'] for e in edges)
+            connected = nx.node_connected_component(graph, 0)
+            available = sorted(connected - set(report['unsupported_nodes']))
+            if not available:
+                break
+            # Prefer unvisited basins, then spend remaining budget on new seeds
+            # at covered basins. A failed first batch is not a proof of exhaustion.
+            node_id = min(available, key=lambda i: (visits.get(i, 0), i))
+            visit = visits.get(node_id, 0)
+            visits[node_id] = visit + 1
+            expanded.add(node_id)
+            node = nodes[node_id]
+            state = Atoms(numbers=numbers, positions=node['positions_A'])
+            proposals = library.propose(mols[node_id]) if strategy != 'geometry' else []
+            if strategy != 'geometry' and not proposals:
+                report['unsupported_nodes'].append(node_id)
+                continue
+            for sample in range(protocol.seeds_per_node):
+                if len(attempts) >= protocol.max_attempts or calculator.calls >= protocol.total_evaluations:
+                    break
+                aid = len(attempts)
+                proposal = proposals[((visit*protocol.seeds_per_node+sample)//3) % len(proposals)] if proposals else None
+                x, direction, meta = make_seed(state, mols[node_id], strategy, proposal,
+                                               sample, protocol.random_seed + node_id*10000 + visit*100 + sample)
+                trial = state.copy()
+                trial.positions = x
+                calculator.attempt_limit = min(calculator.total_limit,
+                    calculator.calls + protocol.evaluations_per_attempt)
+                dest = outdir/f'attempt_{aid:03d}'
+                result = search_connection(trial, direction, calculator, dest, protocol)
+                attempt = dict(id=aid, source_node=node_id, proposal=meta,
+                               status=result['status'], evaluations=result['evaluations'],
+                               artifact=f'attempt_{aid:03d}/result.json')
+                attempts.append(attempt)
+                if result['status'] == 'validated_descents':
+                    ends = [register(e, node['depth_discovered']+1) for e in result['endpoints']]
+                    attempt['observed_nodes'] = ends
+                    attempt['source_is_endpoint'] = node_id in ends
+                    if ends[0] == ends[1]:
+                        attempt['status'] = 'same_basin_return'
+                    else:
+                        duplicate = False
+                        for edge in edges:
+                            if sorted(edge['nodes']) != sorted(ends):
+                                continue
+                            # Atom identity is fixed throughout a run. Conservative TS
+                            # comparison keeps uncertain symmetry duplicates separate.
+                            if (abs(edge['ts_energy_eV']-result['ts']['energy_eV']) < .03 and
+                                aligned_rmsd(np.array(edge['ts_positions_A']),
+                                             np.array(result['ts_positions_A'])) < .15):
+                                duplicate = True
+                                break
+                        attempt['status'] = 'duplicate_connection' if duplicate else 'new_connection'
+                        if not duplicate:
+                            edges.append(dict(id=len(edges), nodes=ends, attempt=aid,
+                                proposed_from=node_id, ts_energy_eV=result['ts']['energy_eV'],
+                                ts_positions_A=result['ts_positions_A'],
+                                barriers_eV=[e['barrier_eV'] for e in result['endpoints']],
+                                source_connected=node_id in ends,
+                                kind='chemical' if nodes[ends[0]]['graph_smiles'] != nodes[ends[1]]['graph_smiles'] else 'conformational'))
+                save()
+                print(json.dumps(dict(start=start['id'], strategy=strategy, attempt=aid,
+                                      status=attempt['status'], evaluations=calculator.calls)), flush=True)
+        report['expanded_nodes'] = sorted(expanded)
+        report['searched_nodes'] = sorted({a['source_node'] for a in attempts})
+        report['node_batches'] = visits
+        report['status'] = 'completed'
+        report['stop_reason'] = ('evaluation_budget' if calculator.calls >= protocol.total_evaluations else
+                                 'attempt_budget' if len(attempts) >= protocol.max_attempts else 'frontier_exhausted')
+        graph = nx.Graph()
+        graph.add_nodes_from(range(len(nodes)))
+        graph.add_edges_from(e['nodes'] for e in edges)
+        report['root_component_nodes'] = sorted(nx.node_connected_component(graph, 0))
+    except BudgetExceeded:
+        report['status'] = 'initialization_budget_exhausted'
+    finally:
+        save()
+    return report

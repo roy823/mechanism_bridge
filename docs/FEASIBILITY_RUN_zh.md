@@ -18,9 +18,9 @@
 
 ```bash
 .venv-qc/bin/python -m pytest -q --basetemp work/pytest-new-run
-.venv-qc/bin/python scripts/prepare_feasibility.py --max-atoms 8 --limit 12
-.venv-qc/bin/python scripts/benchmark_graph_bridge.py
-.venv-qc/bin/python scripts/run_feasibility.py --limit 3 --threads 2 --outdir reports/new-quantum-run
+.venv-qc/bin/python scripts/data/prepare_feasibility.py --max-atoms 8 --limit 12
+.venv-qc/bin/python scripts/baselines/benchmark_graph_bridge.py
+.venv-qc/bin/python scripts/qc/run_feasibility.py --limit 3 --threads 2 --outdir reports/new-quantum-run
 ```
 
 最后一条计算会占用 CPU，具体时间取决于 SCF、TS 和 IRC 收敛。已有量化结果不会覆盖；新实验使用新的输出目录。后处理脚本当前读取正式运行目录 `reports/feasibility/`。
@@ -51,19 +51,19 @@
 低轨道重叠需要审阅。可运行：
 
 ```bash
-.venv-qc/bin/python scripts/audit_orbitals.py --event MR_453777_0
+.venv-qc/bin/python scripts/qc/audit_orbitals.py --event MR_453777_0
 ```
 
 该脚本比较单轨道和整个占据子空间的重叠，并检查最后一步的近等分数匹配。所保存的候选并不穷尽所有等价表示，也不宣称其中某个就是唯一机理。
 
-还可运行 `scripts/check_representation_stability.py --event MR_453777_0`，将整条路径做相同刚体变换后重新计算 IBO，以测试原始箭头集合的稳定性。若集合改变，需要区分有限 DFT 网格误差、轨道局域化和跟踪的影响，不能仅凭守恒认为标签已经唯一确定。
+还可运行 `scripts/qc/check_representation_stability.py --event MR_453777_0`，将整条路径做相同刚体变换后重新计算 IBO，以测试原始箭头集合的稳定性。若集合改变，需要区分有限 DFT 网格误差、轨道局域化和跟踪的影响，不能仅凭守恒认为标签已经唯一确定。
 
 `contract_atom_relays` 实现一个待评估的受限代数约定：仅收缩一入一出且电子对净变化为零的原子位点，保留中继记录，不合并不同电子对源—汇对应或消除闭环。本次旋转前后的 4 支/2 支箭头在该约定下得到相同流对应；这不构成一般化学等价性的证明。
 
 ## 留出模型初猜的真实计算
 
 ```bash
-.venv-qc/bin/python scripts/benchmark_seed_recovery.py --event MR_453777_0 --budget 60
+.venv-qc/bin/python scripts/baselines/benchmark_seed_recovery.py --event MR_453777_0 --budget 60
 ```
 
 模型由留出预测的 TS 距离矩阵经三维嵌入得到初猜；对照为对齐后的端点插值。两者都不使用参考 TS 作初猜，各有 60 次 DFT 梯度预算。解析 Hessian 的附加验证成本单独存在，不能只凭梯度次数给出总体算力加速比。事后按驻点、阶数、参考结构 RMSD 和能量差判断是否找回已验证鞍点；这项恢复指标不等于重新执行了每个种子的完整 IRC。
@@ -73,7 +73,7 @@
 ## 输出与结论
 
 ```bash
-.venv-qc/bin/python scripts/summarize_feasibility.py
+.venv-qc/bin/python scripts/qc/summarize_feasibility.py
 ```
 
 自动生成 `FEASIBILITY_RESULTS_zh.md`、`reports/feasibility_results.json`、图层对照图和逐事件路径证据图。报告区分：图层互补信息、物理连接验证、自动符号假设、独立箭头真值、多轮反馈学习。后两项不能由本次小样本直接证明。
@@ -85,13 +85,13 @@
 模型找到了不同一阶鞍点时，可以继续检查其实际连接，而不是直接标成失败反应：
 
 ```bash
-.venv-qc/bin/python scripts/verify_alternative.py --parent-event MR_375774_0
+.venv-qc/bin/python scripts/qc/verify_alternative.py --parent-event MR_375774_0
 ```
 
 新证据更新探针：
 
 ```bash
-.venv-qc/bin/python scripts/probe_physics_feedback.py
+.venv-qc/bin/python scripts/baselines/probe_physics_feedback.py
 ```
 
 该脚本在至少三个独立组成组具备新量化证据时，执行一次按组成留一验证的几何残差更新。源 B3LYP-D3/TZVP 几何模型与新 ωB97X/6-31G(d) 标签分开标注；它是跨层级校准的小样本探针，不是完整主动学习实验。意外连接不会被当作原目标的几何标签加入。
