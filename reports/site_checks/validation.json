@@ -1,7 +1,7 @@
 {
   "passed": true,
   "html_pages": 196,
-  "local_links_checked": 2157,
+  "local_links_checked": 2164,
   "missing_links": [],
   "source_hashes_unchanged": true,
   "browser": "Installed Edge, headless; isolated Playwright environment",

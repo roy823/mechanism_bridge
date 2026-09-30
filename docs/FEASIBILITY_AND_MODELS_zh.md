@@ -1,5 +1,25 @@
 # 项目可行性、文献与模型选择
 
+## 2026-10-01：AIMNetCentral 广元素实测选择
+
+当前官方维护入口为 [AIMNetCentral](https://github.com/isayevlab/aimnetcentral)。本机已经固定并实测四个 member0：
+
+| 用途 | 选择 | 元素范围 | 本项目结论 |
+|---|---|---|---|
+| CHNO 历史复现 | 原固定 `aimnet2-rxn` | H/C/N/O | 保持旧结果可比，不追溯替换推理默认值 |
+| 广元素闭壳层探索 | **`aimnet2-2025`** | H/B/C/N/O/F/Si/P/S/Cl/As/Se/Br/I | 当前首选；分子间作用改进，速度与其他成员相当 |
+| 较高参考层级的广元素计算 | `aimnet2` | 同上 | wB97M-D3；三个 DFT-seeded CHNO 事件均严格保留 |
+| 自由基/开壳层 | `aimnet2-nse` | 同上 | 支持 multiplicity；只在需要时使用，当前检查成本较高 |
+| Pd 催化 | `aimnet2-pd` | 14 元素中的 As 换成 Pd | 独立分支，尚未下载或评测 |
+
+本机 11 原子体系上，四个模型 CPU 单构型约 8–9 ms；RTX 4060 单构型约 11–14 ms，未体现优势。batch32 时 CPU 约 772–781 构型/s，GPU 约 2609–2782 构型/s。广元素模型显存峰值约 106–128 MiB。搜索中的逐步 Dimer 保持 CPU；批量 Hessian、NEB 图像与较大体系优先 GPU。
+
+在丙酮互变、甲醛水合、甲醛二聚三个 DFT TS/负模辅助检查中，`aimnet2` 与 `aimnet2-2025` 均严格保留 3/3 端点对；NSE 保留 3/3 图对，但甲醛二聚有一个端点没有通过极小值验收。官方文档的 Cl⁻ + CH₃Cl 对称 SN2 示例在三个广元素模型上均通过本项目的一阶鞍点和双侧下降检查。这些都是参考辅助检查，不是自主发现或全面精度 benchmark。
+
+当前 AIMNetCentral 注册表会给 `aimnet2-rxn` 加外部 D3，而本项目历史固定 HF artifact 按当时模型卡显式关闭 D3。在测试几何上，两种默认设置产生 0.2146 eV 能量差和 0.01836 eV/Å 最大力差；关闭注册表 D3 后两者完全一致。因此旧网络不静默升级。
+
+完整数字和权重哈希见 [AIMNetCentral v8 报告](../reports/aimnetcentral_v8/RESULTS_zh.md)。
+
 > 历史评估记录，保留当时的数据审计与判断。当前实现、模型安装状态和入口以 [README](../README_zh.md) 为准；最新试验见 [验证 v2](VALIDATION_V2_zh.md)。
 
 评估日期：2026-09-29。依据为本机全部 `src/mechbridge` 模块、下载与试验脚本、处理样本和公开一手文献。本机下载状态以 `../reports/local_download_inventory.json` 为准。

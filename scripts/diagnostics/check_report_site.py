@@ -38,6 +38,7 @@ def main():
         (out/'overview_dom.txt').write_text(page.locator('body').aria_snapshot(),encoding='utf-8')
         page.get_by_role('link',name='文献与基准',exact=True).click()
         expect(page.get_by_role('heading',name='现在应该比较什么？',exact=True)).to_be_visible()
+        expect(page.get_by_role('heading',name='AIMNetCentral 广元素势：实际速度与选择',exact=True)).to_be_visible()
         page.screenshot(path=str(out/'benchmark.png'),full_page=False);ui.append('overview_to_benchmark_navigation')
         page.get_by_role('link',name='物理事件',exact=True).click()
         page.get_by_label('筛选证据等级',exact=True).select_option('DFT_IRC')

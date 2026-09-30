@@ -25,6 +25,12 @@ class ReactionPotential(Calculator):
         self.predict = AIMNet2Calculator(str(model_path), device='cpu', compile_model=False,
                                          needs_dispersion=False, needs_coulomb=True)
 
+    def validate_system(self, numbers, charge, multiplicity):
+        if int(charge) != 0 or int(multiplicity) != 1:
+            raise ValueError('AIMNet2-rxn pilot requires charge=0 and multiplicity=1')
+        if not set(np.asarray(numbers,dtype=int)) <= {1,6,7,8}:
+            raise ValueError('AIMNet2-rxn supports H, C, N and O only')
+
     def calculate(self, atoms=None, properties=('energy',), system_changes=all_changes):
         super().calculate(atoms, properties, system_changes)
         a = self.atoms

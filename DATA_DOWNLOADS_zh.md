@@ -1,5 +1,7 @@
 # 核心数据下载（本机版）
 
+AIMNetCentral 广元素评测已下载 `aimnet2`、`aimnet2-2025`、`aimnet2-nse` 和当前注册表 `aimnet2-rxn` 的 member0，每个约 8.8–9.0 MB，保存于 `models/aimnetcentral/`。来源 URL、字节数与 SHA256 见 [model_receipt.json](reports/aimnetcentral_v8/model_receipt.json)。这些权重不计入下方数据集文件清单。
+
 双分子验证新增 **Coley 组 [3+2] 环加成数据**：[作者仓库](https://github.com/coleygroup/dipolar_cycloaddition_dataset)，固定提交 `1608a64499779bf8f89a886308d97c6a830d084c`。已下载数据表（2,185,526 字节）和参考结构档案（94,023,449 字节），校验见 [下载回执](data/raw/coley_dipolar/receipt.json)。复现命令：`python scripts/data/fetch_coley_dipolar.py --reference-profiles`。3217、3216 的参考 TS 仅用于单独诊断，反应物起始主实验未读取参考 TS/产物几何。这些文件不计入下方原有五文件清单。
 
 网络探索新增资源：SynEPD v0.4.1 符号数据和 AIMNet2-rxn 预训练权重已另存于 `data/raw/synepd/`、`models/aimnet2-rxn/`。固定提交与 SHA256 见 [探索资源清单](reports/exploration_resource_receipt.json)，复现下载用 `python scripts/data/fetch_exploration_resources.py`。这些新增文件不计入下方原有五文件清单。

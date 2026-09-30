@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "model_sha256",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "model_sha256",
+      "family": "aimnet2-rxn",
+      "passed": true
+    },
+    {
+      "check": "model_sha256",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "model_sha256",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2-rxn",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2-rxn",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "cross_device_reactive_diagnostic",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2-rxn",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "acetone_tautomerization",
+      "family": "aimnet2-rxn",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_hydration",
+      "family": "aimnet2-rxn",
+      "passed": true
+    },
+    {
+      "check": "reference_pair_preserved",
+      "case": "formaldehyde_dimerization",
+      "family": "aimnet2-rxn",
+      "passed": true
+    },
+    {
+      "check": "documented_SN2_strict",
+      "family": "aimnet2",
+      "passed": true
+    },
+    {
+      "check": "documented_SN2_strict",
+      "family": "aimnet2-2025",
+      "passed": true
+    },
+    {
+      "check": "documented_SN2_strict",
+      "family": "aimnet2-nse",
+      "passed": true
+    },
+    {
+      "check": "broad_charged_pipeline_smoke",
+      "passed": true
+    },
+    {
+      "check": "registry_weights_match_pinned_when_D3_aligned",
+      "passed": true
+    }
+  ],
+  "windows_tests": "51 passed, 1 skipped",
+  "wsl_tests": "52 passed",
+  "browser_report_check": true,
+  "pending_computations": []
+}

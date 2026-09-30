@@ -1,0 +1,26 @@
+{
+  "family": "aimnet2-nse",
+  "status": "validated_descents",
+  "evaluations": 275,
+  "seconds": 2.0835177898406982,
+  "strict_self_exchange_passed": true,
+  "bonded_chlorine_indices": [
+    [
+      2
+    ],
+    [
+      1
+    ]
+  ],
+  "endpoint_graphs": [
+    "CCl.[Cl-]",
+    "CCl.[Cl-]"
+  ],
+  "barriers_eV": [
+    0.9432871491553669,
+    0.9432840280569508
+  ],
+  "source": "https://isayevlab.github.io/aimnetcentral/advanced/reaction_paths/",
+  "source_input": "Documented symmetric SN2 TS guess and reaction direction; reference-assisted, not discovery",
+  "reference_product_geometry_used": false
+}

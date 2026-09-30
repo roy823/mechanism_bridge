@@ -1,0 +1,664 @@
+{
+  "device": "cpu",
+  "compile_model": false,
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "package_versions": {
+    "aimnet": "0.2.0",
+    "torch": "2.8.0+cpu",
+    "ase": "3.29.0",
+    "numpy": "1.26.4",
+    "rdkit": "2024.3.2",
+    "nvalchemi-toolkit-ops": "0.4.1",
+    "warp-lang": "1.17.0"
+  },
+  "models": [
+    {
+      "family": "aimnet2",
+      "description": {
+        "cutoff": 5.0,
+        "implemented_species": [
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          14,
+          15,
+          16,
+          17,
+          33,
+          34,
+          35,
+          53
+        ],
+        "needs_dispersion": true,
+        "needs_coulomb": true,
+        "family": "aimnet2",
+        "device": "cpu",
+        "compile_model": false,
+        "model_path": "D:\\学习相关文档\\LEARN\\MolGPA\\mechanism_bridge\\models\\aimnetcentral\\aimnet2_wb97m_d3_0.pt",
+        "needs_dispersion_override": null,
+        "needs_coulomb_override": null
+      },
+      "load_seconds": 12.355136200028937,
+      "systems": {
+        "chno_11": {
+          "supported": true,
+          "atoms": 11,
+          "elements": [
+            1,
+            6,
+            8
+          ],
+          "single": {
+            "median_seconds": 0.008659199986141175,
+            "mean_seconds": 0.00864112500275951,
+            "min_seconds": 0.007214099983684719,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.041072399995755404,
+            "mean_seconds": 0.041271400005955784,
+            "min_seconds": 0.039358000038191676,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 779.112007170436
+        },
+        "flowER_halogenated_organic_pair": {
+          "supported": true,
+          "atoms": 31,
+          "elements": [
+            1,
+            6,
+            7,
+            8,
+            9,
+            35
+          ],
+          "single": {
+            "median_seconds": 0.011424800002714619,
+            "mean_seconds": 0.011457629993674345,
+            "min_seconds": 0.011051000037696213,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.14257179998094216,
+            "mean_seconds": 0.14197347141868835,
+            "min_seconds": 0.13664159999461845,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 224.4483130905095
+        },
+        "main_group_P_S_Cl": {
+          "supported": true,
+          "atoms": 15,
+          "elements": [
+            1,
+            6,
+            8,
+            15,
+            16,
+            17
+          ],
+          "single": {
+            "median_seconds": 0.009858399978838861,
+            "mean_seconds": 0.009981739995419047,
+            "min_seconds": 0.008864799980074167,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.057818999979645014,
+            "mean_seconds": 0.059529000003489534,
+            "min_seconds": 0.057245500036515296,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 553.4512878338521
+        }
+      },
+      "finite_difference_hessian": {
+        "seconds": 0.09319039998808876,
+        "imaginary_count": 1,
+        "geometries": 66,
+        "batch_size": 32
+      },
+      "native_hessian": {
+        "median_seconds": 0.07618689996888861,
+        "mean_seconds": 0.07612723333295435,
+        "min_seconds": 0.0752102000406012,
+        "repeats": 3,
+        "imaginary_count": 1,
+        "max_abs_difference_from_finite_eV_A2": 0.00904083251953125
+      }
+    },
+    {
+      "family": "aimnet2-2025",
+      "description": {
+        "cutoff": 5.0,
+        "implemented_species": [
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          14,
+          15,
+          16,
+          17,
+          33,
+          34,
+          35,
+          53
+        ],
+        "needs_dispersion": true,
+        "needs_coulomb": true,
+        "family": "aimnet2-2025",
+        "device": "cpu",
+        "compile_model": false,
+        "model_path": "D:\\学习相关文档\\LEARN\\MolGPA\\mechanism_bridge\\models\\aimnetcentral\\aimnet2_2025_b973c_d3_0.pt",
+        "needs_dispersion_override": null,
+        "needs_coulomb_override": null
+      },
+      "load_seconds": 0.05092850001528859,
+      "systems": {
+        "chno_11": {
+          "supported": true,
+          "atoms": 11,
+          "elements": [
+            1,
+            6,
+            8
+          ],
+          "single": {
+            "median_seconds": 0.0081443999952171,
+            "mean_seconds": 0.008219864999409765,
+            "min_seconds": 0.007051199965644628,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.04097659996477887,
+            "mean_seconds": 0.04103777142673997,
+            "min_seconds": 0.03982060000998899,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 780.9335090638403
+        },
+        "flowER_halogenated_organic_pair": {
+          "supported": true,
+          "atoms": 31,
+          "elements": [
+            1,
+            6,
+            7,
+            8,
+            9,
+            35
+          ],
+          "single": {
+            "median_seconds": 0.011486199975479394,
+            "mean_seconds": 0.01177216500218492,
+            "min_seconds": 0.010527799953706563,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.14287510002031922,
+            "mean_seconds": 0.14471122857815186,
+            "min_seconds": 0.1371754999854602,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 223.9718467070124
+        },
+        "main_group_P_S_Cl": {
+          "supported": true,
+          "atoms": 15,
+          "elements": [
+            1,
+            6,
+            8,
+            15,
+            16,
+            17
+          ],
+          "single": {
+            "median_seconds": 0.00858589995186776,
+            "mean_seconds": 0.008739380002953111,
+            "min_seconds": 0.00824199995258823,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.05817400000523776,
+            "mean_seconds": 0.0589361571390847,
+            "min_seconds": 0.05688339995685965,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 550.0739161329606
+        }
+      },
+      "finite_difference_hessian": {
+        "seconds": 0.09244660002877936,
+        "imaginary_count": 3,
+        "geometries": 66,
+        "batch_size": 32
+      },
+      "native_hessian": {
+        "median_seconds": 0.08169750001979992,
+        "mean_seconds": 0.08109916667065893,
+        "min_seconds": 0.07891129999188706,
+        "repeats": 3,
+        "imaginary_count": 3,
+        "max_abs_difference_from_finite_eV_A2": 0.004730224609375
+      }
+    },
+    {
+      "family": "aimnet2-nse",
+      "description": {
+        "cutoff": 5.0,
+        "implemented_species": [
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          14,
+          15,
+          16,
+          17,
+          33,
+          34,
+          35,
+          53
+        ],
+        "needs_dispersion": true,
+        "needs_coulomb": true,
+        "family": "aimnet2-nse",
+        "device": "cpu",
+        "compile_model": false,
+        "model_path": "D:\\学习相关文档\\LEARN\\MolGPA\\mechanism_bridge\\models\\aimnetcentral\\aimnet2nse_wb97m_0.pt",
+        "needs_dispersion_override": null,
+        "needs_coulomb_override": null
+      },
+      "load_seconds": 0.05456169997341931,
+      "systems": {
+        "chno_11": {
+          "supported": true,
+          "atoms": 11,
+          "elements": [
+            1,
+            6,
+            8
+          ],
+          "single": {
+            "median_seconds": 0.008670100010931492,
+            "mean_seconds": 0.008752684999490157,
+            "min_seconds": 0.008099000027868897,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.040975699957925826,
+            "mean_seconds": 0.041179414273106625,
+            "min_seconds": 0.04043339996133,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 780.9506618034068
+        },
+        "flowER_halogenated_organic_pair": {
+          "supported": true,
+          "atoms": 31,
+          "elements": [
+            1,
+            6,
+            7,
+            8,
+            9,
+            35
+          ],
+          "single": {
+            "median_seconds": 0.011342050012899563,
+            "mean_seconds": 0.011332760000368581,
+            "min_seconds": 0.010761900048237294,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.14249050000216812,
+            "mean_seconds": 0.1419856571426083,
+            "min_seconds": 0.13712279999163002,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 224.57637526370596
+        },
+        "main_group_P_S_Cl": {
+          "supported": true,
+          "atoms": 15,
+          "elements": [
+            1,
+            6,
+            8,
+            15,
+            16,
+            17
+          ],
+          "single": {
+            "median_seconds": 0.009224549983628094,
+            "mean_seconds": 0.009248020002269186,
+            "min_seconds": 0.008921000000555068,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.0590863999677822,
+            "mean_seconds": 0.05939860000840521,
+            "min_seconds": 0.057213100022636354,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 541.5797885376078
+        }
+      },
+      "finite_difference_hessian": {
+        "seconds": 0.09615050000138581,
+        "imaginary_count": 1,
+        "geometries": 66,
+        "batch_size": 32
+      },
+      "native_hessian": {
+        "median_seconds": 0.07812899997225031,
+        "mean_seconds": 0.07822566665709019,
+        "min_seconds": 0.07784510002238676,
+        "repeats": 3,
+        "imaginary_count": 1,
+        "max_abs_difference_from_finite_eV_A2": 0.024272918701171875
+      }
+    },
+    {
+      "family": "aimnet2-rxn",
+      "description": {
+        "cutoff": 5.0,
+        "implemented_species": [
+          1,
+          6,
+          7,
+          8
+        ],
+        "needs_dispersion": false,
+        "needs_coulomb": true,
+        "family": "aimnet2-rxn",
+        "device": "cpu",
+        "compile_model": false,
+        "model_path": "D:\\学习相关文档\\LEARN\\MolGPA\\mechanism_bridge\\models\\aimnetcentral\\aimnet2_rxn_0.pt",
+        "needs_dispersion_override": null,
+        "needs_coulomb_override": null
+      },
+      "load_seconds": 0.050446500012185425,
+      "systems": {
+        "chno_11": {
+          "supported": true,
+          "atoms": 11,
+          "elements": [
+            1,
+            6,
+            8
+          ],
+          "single": {
+            "median_seconds": 0.008325249975314364,
+            "mean_seconds": 0.008327299999655225,
+            "min_seconds": 0.0075245999614708126,
+            "repeats": 20
+          },
+          "batch32": {
+            "median_seconds": 0.041447199997492135,
+            "mean_seconds": 0.04179909999947995,
+            "min_seconds": 0.04087179998168722,
+            "repeats": 7
+          },
+          "batch32_geometries_per_second": 772.0666293968287
+        },
+        "flowER_halogenated_organic_pair": {
+          "supported": false,
+          "reason": "Elements outside aimnet2-rxn: [9, 35]"
+        },
+        "main_group_P_S_Cl": {
+          "supported": false,
+          "reason": "Elements outside aimnet2-rxn: [15, 16, 17]"
+        }
+      },
+      "finite_difference_hessian": {
+        "seconds": 0.092967199976556,
+        "imaginary_count": 2,
+        "geometries": 66,
+        "batch_size": 32
+      },
+      "native_hessian": {
+        "median_seconds": 0.08161389996530488,
+        "mean_seconds": 0.08140536667391036,
+        "min_seconds": 0.07779940002365038,
+        "repeats": 3,
+        "imaginary_count": 2,
+        "max_abs_difference_from_finite_eV_A2": 0.003398895263671875
+      }
+    }
+  ],
+  "reaction_TS_diagnostics": [
+    {
+      "case": "acetone_tautomerization",
+      "DFT_method": "wb97x/6-31g(d)",
+      "models": [
+        {
+          "family": "aimnet2",
+          "force_max_eV_A": 0.8710305690765381,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -2501.4788456370597,
+            223.66810961955665,
+            397.2928174929787
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            2.950464434749847,
+            2.4364176816961844
+          ]
+        },
+        {
+          "family": "aimnet2-2025",
+          "force_max_eV_A": 1.6946580410003662,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -2656.3000919733418,
+            163.4097499545271,
+            207.97341310396348
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            2.8874671304783988,
+            2.3236801227039905
+          ]
+        },
+        {
+          "family": "aimnet2-nse",
+          "force_max_eV_A": 1.0964350700378418,
+          "imaginary_count": 2,
+          "lowest_frequencies_cm_1": [
+            -2860.3377548272642,
+            -432.69676876914536,
+            221.12639605688693
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            3.0406360423257865,
+            2.510026294641648
+          ]
+        },
+        {
+          "family": "aimnet2-rxn",
+          "force_max_eV_A": 0.4909893572330475,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -2049.9109737749413,
+            224.73959787726912,
+            367.48010611515247
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            2.9067754779387345,
+            2.4313891740611666
+          ]
+        }
+      ]
+    },
+    {
+      "case": "formaldehyde_hydration",
+      "DFT_method": "wb97x/6-31g(d)",
+      "models": [
+        {
+          "family": "aimnet2",
+          "force_max_eV_A": 1.0317156314849854,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -2107.777674220894,
+            155.70755667482717,
+            526.1101981047836
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            2.1983715893093176,
+            1.7170545442731964
+          ]
+        },
+        {
+          "family": "aimnet2-2025",
+          "force_max_eV_A": 0.699410617351532,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -1598.593055985413,
+            482.5993721646582,
+            729.9685185155153
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            1.9608464533093866,
+            1.4832607332327825
+          ]
+        },
+        {
+          "family": "aimnet2-nse",
+          "force_max_eV_A": 1.1178158521652222,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -1239.8623371617643,
+            703.5761704764471,
+            753.0323704904557
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            2.0735627112926522,
+            1.5989362108803107
+          ]
+        },
+        {
+          "family": "aimnet2-rxn",
+          "force_max_eV_A": 0.45492076873779297,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -1629.69326713993,
+            526.8804655795124,
+            575.3997609989301
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            2.0875380722703847,
+            1.591419920483963
+          ]
+        }
+      ]
+    },
+    {
+      "case": "formaldehyde_dimerization",
+      "DFT_method": "wb97x/6-31g(d)",
+      "models": [
+        {
+          "family": "aimnet2",
+          "force_max_eV_A": 3.9104464054107666,
+          "imaginary_count": 3,
+          "lowest_frequencies_cm_1": [
+            -1739.4386677887428,
+            -570.5872287778186,
+            -391.2924741737013
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            4.006885910094752,
+            3.129827168871998
+          ]
+        },
+        {
+          "family": "aimnet2-2025",
+          "force_max_eV_A": 2.104058265686035,
+          "imaginary_count": 3,
+          "lowest_frequencies_cm_1": [
+            -3240.9299341838578,
+            -701.7638416099696,
+            -320.6597653191819
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            3.853475508203701,
+            2.9855717485033892
+          ]
+        },
+        {
+          "family": "aimnet2-nse",
+          "force_max_eV_A": 3.2417080402374268,
+          "imaginary_count": 2,
+          "lowest_frequencies_cm_1": [
+            -992.2111650508232,
+            -478.93574694284484,
+            200.16111344683196
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            4.152753238739024,
+            3.2166113306411717
+          ]
+        },
+        {
+          "family": "aimnet2-rxn",
+          "force_max_eV_A": 0.7568475008010864,
+          "imaginary_count": 1,
+          "lowest_frequencies_cm_1": [
+            -1986.4845389058448,
+            152.57860390946976,
+            312.14578488350514
+          ],
+          "barriers_from_DFT_endpoints_eV": [
+            4.270865636358388,
+            3.4152759354530713
+          ]
+        }
+      ]
+    }
+  ],
+  "current_rxn_artifact_consistency": {
+    "official_registry_default_vs_pinned": {
+      "energy_abs_difference_eV": 0.2146163284778595,
+      "force_max_abs_difference_eV_A": 0.018361389636993408,
+      "cause": "Current registry family default adds external D3; pinned historical artifact explicitly suppresses it"
+    },
+    "registry_weights_without_D3_vs_pinned": {
+      "energy_abs_difference_eV": 0.0,
+      "force_max_abs_difference_eV_A": 0.0
+    }
+  },
+  "model_files": [
+    {
+      "file": "models/aimnetcentral/aimnet2_2025_b973c_d3_0.pt",
+      "bytes": 8839102,
+      "sha256": "043ed5418a104e31f79462f8e5ebeca64a2d24422174f5d29f894d32271981b5"
+    },
+    {
+      "file": "models/aimnetcentral/aimnet2_rxn_0.pt",
+      "bytes": 8838524,
+      "sha256": "ce8bc2a4cc6fcb5ebaa1bc8897fcd75104e5a00fe86e9d5fc6a020d572174894"
+    },
+    {
+      "file": "models/aimnetcentral/aimnet2_wb97m_d3_0.pt",
+      "bytes": 8836941,
+      "sha256": "f0f7c054539ad3261bd36f9b11c56d12f87cb723e25bea7521755bbd3ec24e28"
+    },
+    {
+      "file": "models/aimnetcentral/aimnet2nse_wb97m_0.pt",
+      "bytes": 8962701,
+      "sha256": "b98b3449b2a3765de6a188edff9344a38cc72df75f9d9bf68f4b898a253c5864"
+    }
+  ],
+  "timing_scope": "Warm energy+force inference; current finite-difference Hessian; two CPU threads when CPU",
+  "evidence_limits": "Timing and local PES diagnostics, not a chemical accuracy benchmark or TS success rate"
+}

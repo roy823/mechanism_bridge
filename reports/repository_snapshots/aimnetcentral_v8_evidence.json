@@ -1,0 +1,1734 @@
+{
+  "file": "reports/repository_snapshots/aimnetcentral_v8_evidence.zip",
+  "bytes": 1391362,
+  "sha256": "0a76099acde6ade5de20807120f5728f4aa62f0a89c327f7b5141418479d7610",
+  "files": 344,
+  "crc_passed": true,
+  "excludes": [
+    "model weights; exact official URLs and SHA256 are in model_receipt.json",
+    "temporary GPU package overlay",
+    "failed preflight output directories"
+  ],
+  "inventory": [
+    {
+      "path": ".venv-explore/Lib/site-packages/aimnet/calculators/model_registry.yaml",
+      "bytes": 6605,
+      "sha256": "f0e9d4073793a0ce4793851abb266ef514b9f0e75befc34dadda7ae49115f9ce"
+    },
+    {
+      "path": "assets/report_site/benchmark.html",
+      "bytes": 8988,
+      "sha256": "e996417e34d42d4c304880f34ca8e72d610b2988e8183bbdd8587b466957801c"
+    },
+    {
+      "path": "data/processed/aimnetcentral_sn2_start.jsonl",
+      "bytes": 446,
+      "sha256": "a786a42292a3844c19c7a3434c547fa1e33a46398427b16de163add14cd8862e"
+    },
+    {
+      "path": "DATA_DOWNLOADS_zh.md",
+      "bytes": 5005,
+      "sha256": "9aeb67e2d34f60e52413de2615c4de2406ebe1cc95429fea78c98ff84147bf84"
+    },
+    {
+      "path": "docs/FEASIBILITY_AND_MODELS_zh.md",
+      "bytes": 14908,
+      "sha256": "59305157ff107caba2cd9a75a7b909b5d16b2aff8e3efe422d68297fc6bbe54d"
+    },
+    {
+      "path": "README_zh.md",
+      "bytes": 7639,
+      "sha256": "e2f94fff764ba1fa74fe0a4247b797aa62418d246c0771c422f6b85d32a0365a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/comparison.pdf",
+      "bytes": 18936,
+      "sha256": "e7638ac01db3f85e52dadf63a6234775ce7f67ba405b5798bb7b3612cc6b9ead"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/comparison.png",
+      "bytes": 86126,
+      "sha256": "e2f2cca79eabb7c70f7311046a2ebd025913f2ed8e944d87fdc11e79ebff024c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/cpu4/results.json",
+      "bytes": 17749,
+      "sha256": "f0938babb266295bb72a79dfacb4b9eef32bd1f2a6e0b500a732cfece4797158"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/cpu6/results.json",
+      "bytes": 18410,
+      "sha256": "6f518539b8bdd65f08cdb23b804a4d29bb0c7a53714cdb452526e5abdb0da5e7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/cpu7/results.json",
+      "bytes": 19606,
+      "sha256": "3501da08aaa1b85eb284eea7ad9bf4f846b1343d32423dded041c26eeb322442"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/gpu5/results.json",
+      "bytes": 17919,
+      "sha256": "114f8b421536985961dd535d2a2d5ef219cc6c0a9737e81acbcc70ac95aa6bec"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/gpu6/results.json",
+      "bytes": 19462,
+      "sha256": "3e146edadce9810918f359eb3d8640546f0ae4e0a280bb362de0cf5a8398488a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/model_receipt.json",
+      "bytes": 1450,
+      "sha256": "a22e70f258a79542762ffd819b54df4d8ceb8c3d4a4f64d12b6acc774617fdaa"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/pipeline_smoke_2025/aimnetcentral_documented_sn2_reactant/geometry/initial.log",
+      "bytes": 1164,
+      "sha256": "781924b7ba9ab479b49c82081d454e851880f7ad144adef23e4b63cb293126bd"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/pipeline_smoke_2025/aimnetcentral_documented_sn2_reactant/geometry/initial.traj",
+      "bytes": 10934,
+      "sha256": "aa90468e770aecfa0568145c4eb53f427b06d6c6450acd221de13b3ebdf44edc"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/pipeline_smoke_2025/aimnetcentral_documented_sn2_reactant/geometry/initial.xyz",
+      "bytes": 377,
+      "sha256": "2f417ee32f266962cf88c4ba4cba75c2e140fad775175263b7a59a34f67ad125"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/pipeline_smoke_2025/aimnetcentral_documented_sn2_reactant/geometry/network.json",
+      "bytes": 4758,
+      "sha256": "51cbcb3fa528d9eef5b6045443a240b07374cf0aa895f144ec5cb90ddbb2fde0"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/pipeline_smoke_2025/manifest.json",
+      "bytes": 5569,
+      "sha256": "060a14cfe508887a1ad223ce27bda9267b17b8c8e98c6df17d6d207965132214"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/pipeline_smoke_2025/source_snapshot.zip",
+      "bytes": 62863,
+      "sha256": "9bca7d9efda2d8a3d23f5bddd20d11cd774c18e9db3d671c520bc340c0457470"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/pipeline_smoke_2025/starts.jsonl",
+      "bytes": 485,
+      "sha256": "0bcc44e3d687def57731ef1a09a6e391131126291bf3c82f36035e2d4c12e17d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/descent_-1.log",
+      "bytes": 3125,
+      "sha256": "6213cd33c7af6b51ba4338629526cbd53d81041ecb6868afa8efae4386b694e6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/descent_-1.traj",
+      "bytes": 51512,
+      "sha256": "04942e4a5c0f6111a848f4eb910670426a79f539adb28c9cc629798a72a58ab9"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/descent_1.log",
+      "bytes": 5298,
+      "sha256": "eb117f9b30e8d0162b9a31ec0f66a5c68c0ac3f8fe918b2f2e3a81fd7d13fa23"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/descent_1.traj",
+      "bytes": 77416,
+      "sha256": "3e79a03d80f6ca24fb7b67a7a86e60afc7c20227cffda4a13eca8f0f725df844"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/dimer.log",
+      "bytes": 6113,
+      "sha256": "1bedfe19c6c2a80048042b9689a8bd5d63a1b4fb51ed2a9ba1281412762cfd90"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/minimum_-1.xyz",
+      "bytes": 598,
+      "sha256": "9e26d7414f0d06f0bfcfa500733040283433c47c72cfc1b405e0a89ae20ec9e3"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/minimum_1.xyz",
+      "bytes": 598,
+      "sha256": "518c61519900de857e581b982d3447b9a247716a3cf36a0e3901c68fd31e63a2"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/negative_mode.npy",
+      "bytes": 368,
+      "sha256": "4bb7abf9a4ffa48b32a9deed46783b66e877031621c272e46ed09604222dd258"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/opt.log",
+      "bytes": 8200,
+      "sha256": "9a17860a305f3e9c6d938999e4c54052a2122d40de4a7bb02f1b7a2538b74c13"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/result.json",
+      "bytes": 6670,
+      "sha256": "7722215372ab5fb96a8bef3b7507ee54761579c84b11fc6a14b27d2e869685d1"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/search.traj",
+      "bytes": 18397,
+      "sha256": "57370916f3484b47bf2345a4e0661d50f2ac10bf216e36a019db31042fb82531"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/seed.xyz",
+      "bytes": 598,
+      "sha256": "f487e5ff3b160df30b43acf3ef6cd09e2d667eee19e96b0032e5b0bb2d764221"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/seed_direction.npy",
+      "bytes": 368,
+      "sha256": "d6680de502323b8ad801ca3007a3877b60e18654dcd23f17a211fb32099239e6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/acetone_tautomerization/ts.xyz",
+      "bytes": 598,
+      "sha256": "1dcf87682c164764c1a05dae76afcf34c221d8472ae8f1ca577bb56b48f467b4"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/descent_-1.log",
+      "bytes": 7206,
+      "sha256": "0f53576ffaff1c2aec694a4048bf9fb1b7723182e780690659682ab4cca4467c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/descent_-1.traj",
+      "bytes": 90406,
+      "sha256": "ca3e1fefac0880e00e2e0f36aab8bb4521f96f1f80707188c44812603bd37f15"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/descent_1.log",
+      "bytes": 3072,
+      "sha256": "c395c6f46dfa26bd68f8a90daebb88eafff3ef9e173f8c7ddf6b6bd40498946a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/descent_1.traj",
+      "bytes": 46726,
+      "sha256": "d746fb71bbb34b0d6acedbf8e1ae1e3aae6e5d4f38f77cd288c50e1e31decd0a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/dimer.log",
+      "bytes": 7795,
+      "sha256": "55cb2eb5ee8eadd4991756af1bfd55eefd6aff6834b9375e16f7a2605da458d7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/minimum_-1.xyz",
+      "bytes": 487,
+      "sha256": "a3b0fa912180e1155b033fa40b4853714b1a4b820f7d378470544881375982a8"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/minimum_1.xyz",
+      "bytes": 487,
+      "sha256": "8243d191b6f7cd9d748d79ea090025ad5bc828eeccdbfe2e4dc55c82c653859a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/negative_mode.npy",
+      "bytes": 320,
+      "sha256": "74a67d0fa7959135af740a6bce80a399cc4a46b986204c797d4e2bde3bc2d07b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/opt.log",
+      "bytes": 10000,
+      "sha256": "5b50c5ac7b6cd3c0d3c876cb7f5170a3de3e8f1ca1a79264edcf0a9e9b18c95d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/result.json",
+      "bytes": 5519,
+      "sha256": "23ced563859101ef470a8c6932c1a60fceb9d59b45868ce6a1e72ae13a5c9b1a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/search.traj",
+      "bytes": 33988,
+      "sha256": "cab4156a2984984e0f2aade5c02dd40027b8f5d7f4d0242e4412e9e1675015a2"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/seed.xyz",
+      "bytes": 487,
+      "sha256": "c4525e99fcb3f0de28268d6c00677401b472850eb0c5c365f22131fc47584c77"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/seed_direction.npy",
+      "bytes": 320,
+      "sha256": "fba3a4723dd690b0a193eda267fabef629a6fba27151fd834e6b76386e5894cb"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_dimerization/ts.xyz",
+      "bytes": 487,
+      "sha256": "d41b24c63d29a4acb0d9fc9da3538cf6bcf3e48019f0883ca65457969c11d831"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/descent_-1.log",
+      "bytes": 2330,
+      "sha256": "9c42553d7f4ff8502201b891d9fdc0e499853942275f9dc22eb74e77c040e59a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/descent_-1.traj",
+      "bytes": 37376,
+      "sha256": "f3e457e79c898507e55cccd9159637d9abb37b37f9d917e799942eddec127b27"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/descent_1.log",
+      "bytes": 7365,
+      "sha256": "7bf48823d608a128d87b452a4e5d69e4c7d965dcce44f16fd8ccca9feb4874e8"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/descent_1.traj",
+      "bytes": 87522,
+      "sha256": "f4be7a98c07f8cf9222e6eb296c48c4b473965b2b281c5be8c7372746010052f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/dimer.log",
+      "bytes": 3909,
+      "sha256": "b93bb0d5508845c2b13d5415679f2d2ba810179a6496f026786dfadecf3b9c10"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/minimum_-1.xyz",
+      "bytes": 432,
+      "sha256": "0066c6e9e333623cda18cab889433ce9a9d408443e840946dab3362e1828bd31"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/minimum_1.xyz",
+      "bytes": 432,
+      "sha256": "001a1f6fd49c7b7cf9e1d2b7ed17a2f7603bf5f03843fddd05ea7d8b241ea9df"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/negative_mode.npy",
+      "bytes": 296,
+      "sha256": "73d0bc57dc61f8761b654fe963d82c71040916b3d8631e8a3a70b4dba8b21f60"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/opt.log",
+      "bytes": 4400,
+      "sha256": "a77b214868b2ab90006d0b06bd4d35e31c52d748d47563123e228b46ddf8569d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/result.json",
+      "bytes": 4937,
+      "sha256": "d09e33345d474b6f3037e2342563b983dc7d2265d87e03b5be66806a95a76e15"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/search.traj",
+      "bytes": 8595,
+      "sha256": "b390b023c1de9fc03407b422d8c32914f43cdd5fad4f63419fed08db86c6faf1"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/seed.xyz",
+      "bytes": 432,
+      "sha256": "3dcd38a21e57ab79c7219f36f18893049ac12603cde8f76a09bae50c6356be66"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/seed_direction.npy",
+      "bytes": 296,
+      "sha256": "170cba16bec49296106dde454ef5712a7905e032d14aeb493cd4a888ccf64015"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/formaldehyde_hydration/ts.xyz",
+      "bytes": 432,
+      "sha256": "45cbb14b92b4752a46db8a0fbe71a135673f903822490114626badfa6c90dbd6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/manifest.json",
+      "bytes": 1270,
+      "sha256": "4b26028e234da11cb09b49a9e8a7d907681cf05db8b6907394d140af3839ae3e"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2/results.json",
+      "bytes": 3954,
+      "sha256": "6ce596fa81636cfe36ed4d201298ebbe062a4f66b2bf2b762945682a412750d7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/descent_-1.log",
+      "bytes": 2330,
+      "sha256": "213eb386c83fa5c4a7a44d4b3ab2b5b1f143b2529b262860bdd5f9d523eb42c4"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/descent_-1.traj",
+      "bytes": 42008,
+      "sha256": "f0aa82825ec8c32e7b30267cf12c631eca7a19232f7f469befe3411a04040f04"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/descent_1.log",
+      "bytes": 5139,
+      "sha256": "eecf9f765e1801a689c1ac85a8c9827fb3913426bc3a664270e1d691b137769e"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/descent_1.traj",
+      "bytes": 75560,
+      "sha256": "36a19c541726f7b37dc0330540052a803a503ccd816fb70034d0edeae5af1862"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/dimer.log",
+      "bytes": 7157,
+      "sha256": "26a4c9f0ef748b198eefb01411991ddf1f1b8a73c657dc200e0e3228ba62aa50"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/minimum_-1.xyz",
+      "bytes": 598,
+      "sha256": "d9668b9ae6833a1fabd3fc801db2213cf54df2c784237906fbef301e61431690"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/minimum_1.xyz",
+      "bytes": 598,
+      "sha256": "4257f123303b6aba7083b937717b834f98a3a227ea799acb2dc546b90dbe5891"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/negative_mode.npy",
+      "bytes": 368,
+      "sha256": "819b7a3713139aa1aadc2c978a53f5fbaef85e7e5fd7e1f0eff57593d3ba5799"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/opt.log",
+      "bytes": 9200,
+      "sha256": "011bf61ffa5483829abf87b107b670b0680d9bc75dd5e82d3d7e89250830da1a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/result.json",
+      "bytes": 6677,
+      "sha256": "1da8656940f5078e5661ed954b19de59d49e2f1279a73b9f419ca73125a7b540"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/search.traj",
+      "bytes": 34669,
+      "sha256": "146eec5e3a091e3d16a607dc05ecd3f1d23dfb01a71e1b8cc802831a1e8faa2f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/seed.xyz",
+      "bytes": 598,
+      "sha256": "f487e5ff3b160df30b43acf3ef6cd09e2d667eee19e96b0032e5b0bb2d764221"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/seed_direction.npy",
+      "bytes": 368,
+      "sha256": "d6680de502323b8ad801ca3007a3877b60e18654dcd23f17a211fb32099239e6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/acetone_tautomerization/ts.xyz",
+      "bytes": 598,
+      "sha256": "a2e9206853ca2622a33b83c50703c8aa75a36a4311791712fa0e88ad3f8e4589"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/descent_-1.log",
+      "bytes": 7789,
+      "sha256": "2cf3bc4998cbee99ef306f91b137777f377fdaa77e724f27cbcb72550a15be03"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/descent_-1.traj",
+      "bytes": 96567,
+      "sha256": "3658988f416345ca1e1709993b64f835eac59baae775e7d1ecfaab6503544b11"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/descent_1.log",
+      "bytes": 3231,
+      "sha256": "e2fa1991b070270d55a7c024583a0232dde62502a5aad7fdd11ff87b4a74c0d9"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/descent_1.traj",
+      "bytes": 48406,
+      "sha256": "f8a97f532a053211c5159fea76f9b846c0475fb3b6fa1c365014dfcc69aac3e3"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/dimer.log",
+      "bytes": 8665,
+      "sha256": "5b736fdc26c73f696ba2f65707f93843bd2aed20e32b563579364e911c150a01"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/minimum_-1.xyz",
+      "bytes": 487,
+      "sha256": "6ee8a5e617e295cd4f512522084c8a199f651860926756703eb5fe3466c3247b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/minimum_1.xyz",
+      "bytes": 487,
+      "sha256": "02e2b33e37d19bd55e83606c182ed1299f64d0cae51f5acef0872e15e1398a58"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/negative_mode.npy",
+      "bytes": 320,
+      "sha256": "a68a30c3b56bef9513718a8c2e38277bd4dc79df4ab02e06c1d8f4c35e62e0a3"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/opt.log",
+      "bytes": 11200,
+      "sha256": "5e7ababb016d5b6a051ad1b925de7c7d9a8841397b08ee38367d88418206c967"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/result.json",
+      "bytes": 5513,
+      "sha256": "1c9c27f686f7cdcf2b27b2020360ab5269fbf7489efc62831b739bf16c801716"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/search.traj",
+      "bytes": 36292,
+      "sha256": "ffbc9ba698cf95841d5ccfa1f9feb004dde77aee0c025fc004cc4ba4ed4d4a2b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/seed.xyz",
+      "bytes": 487,
+      "sha256": "c4525e99fcb3f0de28268d6c00677401b472850eb0c5c365f22131fc47584c77"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/seed_direction.npy",
+      "bytes": 320,
+      "sha256": "fba3a4723dd690b0a193eda267fabef629a6fba27151fd834e6b76386e5894cb"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_dimerization/ts.xyz",
+      "bytes": 487,
+      "sha256": "7ebf39f795e309bbc9a43c0bda084743f7db66a1f4483d9630e6d91d365c849e"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/descent_-1.log",
+      "bytes": 5245,
+      "sha256": "760c4a571e82b6cd5c2ed9f3288f019bb081c57dfb3ffe02594b487cabcfb346"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/descent_-1.traj",
+      "bytes": 66410,
+      "sha256": "af8d9a9d81286c95fc34c92554cd32dcb5051a94b1dec36f9dbbccc19f49750f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/descent_1.log",
+      "bytes": 2489,
+      "sha256": "5613cf988ed26a09fa6f623173e720d0b714fd8a92bd6e6053b9ac06ad97f55e"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/descent_1.traj",
+      "bytes": 38946,
+      "sha256": "b5522f329d815912e3a2e1080845e5ddf5647b85a18825b1a3d3b3d6d5a8f293"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/dimer.log",
+      "bytes": 2865,
+      "sha256": "d939f9a9327a04e0973e4b338c7618105e8b35141c5069d5856a4f23cbf8d97d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/minimum_-1.xyz",
+      "bytes": 432,
+      "sha256": "4a353daceef773e3b62ff731f453f2ad66869901ff2effb5688823a743e31f7d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/minimum_1.xyz",
+      "bytes": 432,
+      "sha256": "dba0563eb09282d362b885a9733c0fec3a6442e12dee2455a510e89daf703195"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/negative_mode.npy",
+      "bytes": 296,
+      "sha256": "16292500cba3bbd85fee23d60f3f5c2e30cd63558c6913ef1ef64e79fe9e4962"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/opt.log",
+      "bytes": 3200,
+      "sha256": "55a6424a1825ebf56af8f9a56fcc87f0c0c0ce9c49aadf1096579d953d10cea1"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/result.json",
+      "bytes": 4924,
+      "sha256": "7821ba00961d9a081d91d228b02041fc90dd4a90cdfa64cfcbffbe34fbb49094"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/search.traj",
+      "bytes": 6435,
+      "sha256": "129f7feb1e3c148b433aeae42131e9806619b5e810e6f3c2caa9bd6591f25269"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/seed.xyz",
+      "bytes": 432,
+      "sha256": "3dcd38a21e57ab79c7219f36f18893049ac12603cde8f76a09bae50c6356be66"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/seed_direction.npy",
+      "bytes": 296,
+      "sha256": "170cba16bec49296106dde454ef5712a7905e032d14aeb493cd4a888ccf64015"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/formaldehyde_hydration/ts.xyz",
+      "bytes": 432,
+      "sha256": "b4fc3f24d900aaee70bff723d5976cc8a0c0af964ceba5938b6056ea1a5fbe33"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/manifest.json",
+      "bytes": 1286,
+      "sha256": "293046173a8632ef5e6b9b4691e3f02fbda9e56cb64455f00661e5fb2410d773"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_2025/results.json",
+      "bytes": 3968,
+      "sha256": "83d264123cc96d71ff31b21c8acbea4c1a0ba3d872c6d60356b18eb84626c2fd"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/descent_-1.log",
+      "bytes": 2966,
+      "sha256": "78b6de7efaddb3f1e56c51e882a20c09021ee7634bee331d287268da80030973"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/descent_-1.traj",
+      "bytes": 49616,
+      "sha256": "2535ef4a443f63c59e21dc3d947c774b56357d54651532d45cff2cec8319b4f7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/descent_1.log",
+      "bytes": 5139,
+      "sha256": "2cfb8569790f771d68d8570923821713506caebb39383bb416f86d9b724a23c7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/descent_1.traj",
+      "bytes": 75568,
+      "sha256": "1507ee153b7ff656cf8d6f160a410b633f8b422be5c2b6ea2e000a802b29fffc"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/dimer.log",
+      "bytes": 6925,
+      "sha256": "0ca492493114bfcf0b5f57acc2de28d5e20d5cede0870118f27b580e4d8876c1"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/minimum_-1.xyz",
+      "bytes": 598,
+      "sha256": "9f42d0dc15ce45b11372b2ac3e9582082dd11f98c32c40fb271672b8373729d2"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/minimum_1.xyz",
+      "bytes": 598,
+      "sha256": "99e39706cdf7f6afa253e4e6642ee9d60f22283612acc8eddd7149d7a28b2f9a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/negative_mode.npy",
+      "bytes": 368,
+      "sha256": "11f095e8af72371753f703812725dd67708d39baaabc53d656666a1b57249e56"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/opt.log",
+      "bytes": 8600,
+      "sha256": "45b63a344bdebd1b427e0357147697b94b67f6ab0d1d3cfa7b8eae96b19dc056"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/result.json",
+      "bytes": 6672,
+      "sha256": "5885bf8a941db06670b121c8da72b09992ba1494af0a2715b7073df1da476ae5"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/search.traj",
+      "bytes": 33376,
+      "sha256": "67e4fb8461a592ae861d7e792760a45d657c4bba4641884cba035f47b5cd1ad9"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/seed.xyz",
+      "bytes": 598,
+      "sha256": "f487e5ff3b160df30b43acf3ef6cd09e2d667eee19e96b0032e5b0bb2d764221"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/seed_direction.npy",
+      "bytes": 368,
+      "sha256": "d6680de502323b8ad801ca3007a3877b60e18654dcd23f17a211fb32099239e6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/acetone_tautomerization/ts.xyz",
+      "bytes": 598,
+      "sha256": "3eb8b081fbad30d594341f2b09ae17e1093d56e4ac2ba0513fc4364e5e477f16"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/descent_-1.log",
+      "bytes": 2807,
+      "sha256": "b754bf5a170c72b262450573fb5b5bdb7c984c91dea9868bd8945cf3d958b132"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/descent_-1.traj",
+      "bytes": 43926,
+      "sha256": "d495467d6ff2158d531e3ae9a3e0d73c310c7e7da58d6f3302eb0e474e1e4726"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/descent_1.log",
+      "bytes": 8160,
+      "sha256": "7504a90fb6d039e3de488e8cc58451f7562282afbf51d7f4750b7825ef9df42a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/descent_1.traj",
+      "bytes": 100487,
+      "sha256": "0f32b8b856a16700c51319da5cb28d9573700e1f1c790310600908f5814bbe46"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/dimer.log",
+      "bytes": 22585,
+      "sha256": "dc8ef35de9885fca9069b573b648ce8a00bf01f070a139dd530c892191c1c556"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/minimum_-1.xyz",
+      "bytes": 487,
+      "sha256": "80f47724a1daa67fa826fb6585674837a8648f3bd639fbfd30ef471e5833223b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/minimum_1.xyz",
+      "bytes": 487,
+      "sha256": "f6e3b87dcf0ea7c924d9264fe348cd691d6a0161582d3b0c9fc4efe05e6ba00b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/negative_mode.npy",
+      "bytes": 320,
+      "sha256": "875b9fac65037488c6dd19d3dc8f5e47ffbb15b1fef0a313ea7578324e5af0c6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/opt.log",
+      "bytes": 27000,
+      "sha256": "e06f36b67e092c4a72829d2d5142205323b9deda9bb1982821665c8a041159a5"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/result.json",
+      "bytes": 4719,
+      "sha256": "83d8bee800317bc9805ac981290af22acc84af64c321b2dad20abf22a569528f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/search.traj",
+      "bytes": 66628,
+      "sha256": "3d60958298ecc886713c5a1bf6928db6737562d4b32531f80b46a12c989377b7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/seed.xyz",
+      "bytes": 487,
+      "sha256": "c4525e99fcb3f0de28268d6c00677401b472850eb0c5c365f22131fc47584c77"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/seed_direction.npy",
+      "bytes": 320,
+      "sha256": "fba3a4723dd690b0a193eda267fabef629a6fba27151fd834e6b76386e5894cb"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_dimerization/ts.xyz",
+      "bytes": 487,
+      "sha256": "8db89538e150f452d485f86b0276d4b206efa4e449c754489ec5ee4ec8ea0803"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/descent_-1.log",
+      "bytes": 8160,
+      "sha256": "64f8fb1502c7a0d9e9b20ecc16f1b1190dd80fcd471d133f60a59e0f2c130c23"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/descent_-1.traj",
+      "bytes": 95457,
+      "sha256": "03f82b238e99f9aeb13606290ab88a87e9e4a30f7935ff421950016e3ed7e755"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/descent_1.log",
+      "bytes": 2383,
+      "sha256": "01bce2b1c5f82807c6681185715380b8aa0a1370a854cc2cada2129f5aae8b68"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/descent_1.traj",
+      "bytes": 37906,
+      "sha256": "ed35e4d3c6804e39f7b34c56a1f043bef052e9a90604b7e08ed1995a225e1c7d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/dimer.log",
+      "bytes": 3851,
+      "sha256": "7f00bb23ee901c48ecf1a1ad486d20cea4efd2769a466837a38b3dc18848dbc0"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/minimum_-1.xyz",
+      "bytes": 432,
+      "sha256": "8dd8471d0be8dbd6793576fc2d031218be7fc85ac380998e13fa6a2d42f48cc5"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/minimum_1.xyz",
+      "bytes": 432,
+      "sha256": "af94eb3cbf3e2f0d4386e004c75b7081bfd5d7fa34e3514e856ef132fad6e3f2"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/negative_mode.npy",
+      "bytes": 296,
+      "sha256": "04de31353ab5c3b7c35f6f022e1e501a10c90d94db53c0d8151e330bfb96af6f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/opt.log",
+      "bytes": 4600,
+      "sha256": "5bc63f8c962b76c8ef85a5b1b14bfc23b76b65e7ed6230f20eca9e61c83a3a6d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/result.json",
+      "bytes": 4926,
+      "sha256": "6244d9974162eb7af7b1fa385db8d8ae248b5534741c472c506efd2d8fdd030d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/search.traj",
+      "bytes": 8955,
+      "sha256": "d8ce2083368343740f532f48a138c03850763b4a6351b697abd7d171a729bac0"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/seed.xyz",
+      "bytes": 432,
+      "sha256": "3dcd38a21e57ab79c7219f36f18893049ac12603cde8f76a09bae50c6356be66"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/seed_direction.npy",
+      "bytes": 296,
+      "sha256": "170cba16bec49296106dde454ef5712a7905e032d14aeb493cd4a888ccf64015"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/formaldehyde_hydration/ts.xyz",
+      "bytes": 432,
+      "sha256": "598cf99bcce89572fd02fe357bd0723f4961844844a813aa756c92fd350247f6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/manifest.json",
+      "bytes": 1279,
+      "sha256": "1a6e87d7becf24a32d832f6c9130cefebb621061bcf5acb59120a7e2482d52ee"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_nse/results.json",
+      "bytes": 3957,
+      "sha256": "7f166541a26bf045512e294e8d944547bac29f2dc33db25065fbfd0aa09b7920"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/descent_-1.log",
+      "bytes": 6305,
+      "sha256": "11ee7f404e224ff97896edb8f28a3c43af41eec6d5025fc84ba854f724f912e4"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/descent_-1.traj",
+      "bytes": 90055,
+      "sha256": "54515037033b08a199760cc37c8cf92498b3e11ff2405c4a541eab9a69244ce1"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/descent_1.log",
+      "bytes": 3814,
+      "sha256": "c67d33961d05e5ab4f5df88c8981e03509bdf20ea6bdb4df0124b04fa5d98ce7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/descent_1.traj",
+      "bytes": 60055,
+      "sha256": "df20f7b6058ea305789dfc64fdc600496c96a5e8a06c32fae38cea404d0836b6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/dimer.log",
+      "bytes": 2865,
+      "sha256": "013981c8e6a790d96d7540ebc8c338f1e6e3a84aa5854314359e55b5de64d605"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/minimum_-1.xyz",
+      "bytes": 598,
+      "sha256": "7fc9a8281d57ce47e5160a228e75e34253a77955cc15828a967b361dd39ef37d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/minimum_1.xyz",
+      "bytes": 598,
+      "sha256": "46aa4f2accc227fd24dff7feee62e6254658b24f4f9a5b04b38a33c7e04539d3"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/negative_mode.npy",
+      "bytes": 368,
+      "sha256": "d661cc04a30b691390fd936375e5215d745bc35de8abbc545c0fdd2162ee6715"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/opt.log",
+      "bytes": 3600,
+      "sha256": "52416606aec526031b9065d0d1fd6952c23fc29e95013d8a614d927910b508ea"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/result.json",
+      "bytes": 6679,
+      "sha256": "a1b4294977a8b7d84390efd1a6a4f73af29a6d238fec97a796dae75f2a12e634"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/search.traj",
+      "bytes": 8460,
+      "sha256": "b3cf1f3f86c727b03e320cc1f4c62e1d5d498d7f7ee78ff5d4dd009dfc6cf7b5"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/seed.xyz",
+      "bytes": 598,
+      "sha256": "f487e5ff3b160df30b43acf3ef6cd09e2d667eee19e96b0032e5b0bb2d764221"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/seed_direction.npy",
+      "bytes": 368,
+      "sha256": "d6680de502323b8ad801ca3007a3877b60e18654dcd23f17a211fb32099239e6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/acetone_tautomerization/ts.xyz",
+      "bytes": 598,
+      "sha256": "3414537fef1a32d086f41fd57990c63b1da601bb4ce28477df8673c1d0622c44"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/descent_-1.log",
+      "bytes": 3496,
+      "sha256": "8ae3133d18c0657753887f5158f93bd14cf59ac1638b39ebbbed85575edd34d5"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/descent_-1.traj",
+      "bytes": 51199,
+      "sha256": "a4df6af7c894f15262ceac19b480fa16b21653ec3e6dd51ee7fdf15f1777bd47"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/descent_1.log",
+      "bytes": 8796,
+      "sha256": "4eaffcb2bd35cc76db00462d1cb20debeeb81315d018ca2db61e2d71eeb2e2d8"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/descent_1.traj",
+      "bytes": 107271,
+      "sha256": "7d77d82df5a8ebba550550554c4afc2b7c786bf4d2df1683f73b93966475dab6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/dimer.log",
+      "bytes": 7969,
+      "sha256": "228bfde2c015ad69c84a0018c6353b34a417a48456c8ebd77c4d61ba00405d5a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/minimum_-1.xyz",
+      "bytes": 487,
+      "sha256": "2280471ec5880e468c210827563d8e996d3b4fa7c8560aa43af02d1cf9d3cf1c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/minimum_1.xyz",
+      "bytes": 487,
+      "sha256": "8384375e094710e0dcbfda2ebd8949dd8017142c8f47d86aa078e168aa1d32dd"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/negative_mode.npy",
+      "bytes": 320,
+      "sha256": "66b97c39a00b35fb0e39a40460556b31e2f5423144d6046a982b6959e9e980dc"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/opt.log",
+      "bytes": 9800,
+      "sha256": "8e3919db0c25e05a82b964db1e6ce995d1ffdb127824d910be9d700520263fdc"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/result.json",
+      "bytes": 5504,
+      "sha256": "aa7e834fb1426f65be34947fac5d54034b2d496bcf13d6906c85e9e77cbd5b85"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/search.traj",
+      "bytes": 33604,
+      "sha256": "978ee9515f70310acb54d2f2c92e668b3da9a5a70eaf52665e87d167f6cdba00"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/seed.xyz",
+      "bytes": 487,
+      "sha256": "c4525e99fcb3f0de28268d6c00677401b472850eb0c5c365f22131fc47584c77"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/seed_direction.npy",
+      "bytes": 320,
+      "sha256": "fba3a4723dd690b0a193eda267fabef629a6fba27151fd834e6b76386e5894cb"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_dimerization/ts.xyz",
+      "bytes": 487,
+      "sha256": "b869d56956c8caa2000832ccc7d51f5c6d46177cc60984592a6db52142dff2ce"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/descent_-1.log",
+      "bytes": 3231,
+      "sha256": "074e860dbf6a9179842f1644dfce56c15de20945f5444620f04a5cc542b20509"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/descent_-1.traj",
+      "bytes": 46451,
+      "sha256": "f1b982d4046608f990c39d48bbc414b6d2ed62a0a39de2d14b8bfa7ea529188c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/descent_1.log",
+      "bytes": 2489,
+      "sha256": "599595df8ca4dad66809641b8ed6ab7fbee5ef134eef33f9f0af81a20963f87f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/descent_1.traj",
+      "bytes": 39043,
+      "sha256": "00bb723ee0229213913810faa2dba754103be9f65c0cb6612101313d1f9d0442"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/dimer.log",
+      "bytes": 2285,
+      "sha256": "4c71da7c7db594780c929779f8a9e9967235857d6964625c3854fc92f376cf9c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/minimum_-1.xyz",
+      "bytes": 432,
+      "sha256": "e9bfbb55f7421f45e619d610564709618747b4edb15563def6768a0ce984fe3d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/minimum_1.xyz",
+      "bytes": 432,
+      "sha256": "aa7ba4f541268860291b24f9ec5777f9558871a5fa6451bcd8e5e1cbd30170c6"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/negative_mode.npy",
+      "bytes": 296,
+      "sha256": "8f3f23277e28ee2e01ded15d558787187aa64112d371a43eaf5ee1178c9b3032"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/opt.log",
+      "bytes": 2600,
+      "sha256": "61d92e1f4dbc98cfe5d862ca9a15c62f6c0819251444958d08d002564bbaa6a8"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/result.json",
+      "bytes": 4936,
+      "sha256": "573aff4a7bc8ca614cac394c043bf193944f55998afed283e6d74d78007f2436"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/search.traj",
+      "bytes": 5355,
+      "sha256": "211311170db88b2c0bdaf20ca17cd44e9f26aded02b30337131b2d20f64e2208"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/seed.xyz",
+      "bytes": 432,
+      "sha256": "3dcd38a21e57ab79c7219f36f18893049ac12603cde8f76a09bae50c6356be66"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/seed_direction.npy",
+      "bytes": 296,
+      "sha256": "170cba16bec49296106dde454ef5712a7905e032d14aeb493cd4a888ccf64015"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/formaldehyde_hydration/ts.xyz",
+      "bytes": 432,
+      "sha256": "6aad64831c6f59b420e6a603176425fb1895d494bd1e3eb8a699ba470685f21e"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/manifest.json",
+      "bytes": 1166,
+      "sha256": "18096f889be03a38c90ec5c2ec1681381f77151f1410588312d9e892ca5672bc"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/reactive_aimnet2_rxn/results.json",
+      "bytes": 3964,
+      "sha256": "80faf9d775f963209415f0ec1675324561118ab8ea72668891b84d82cf97195a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/RESULTS_zh.md",
+      "bytes": 2569,
+      "sha256": "cde4e05cd461b7d7797c89ac3e469f86b255eace78e736cde8a92194ed1e8333"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/result.json",
+      "bytes": 626,
+      "sha256": "37f71bc9302c1912a8e5eef48429c1a54f53717a593d8e8db37d91b53caafb9f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/descent_-1.log",
+      "bytes": 846,
+      "sha256": "65b0fbdf93f8c4a03800323ad6e54276c6d315340dc6ca3e7ec87d7f11253b3c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/descent_-1.traj",
+      "bytes": 8005,
+      "sha256": "8c4c6a9c0ed41e6049f72a05091a6384cee2ef58402d25b2d8801bfa31fa19e1"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/descent_1.log",
+      "bytes": 846,
+      "sha256": "ee7c3afa87532a4e1de6566a58da3355d08fd0bbf94182bdc42c1fe9a5fe987d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/descent_1.traj",
+      "bytes": 8005,
+      "sha256": "de1f9ce81cbe1e178e3217a4a70513f782f73b01a643f3ff53ba74d8e57a773f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/dimer.log",
+      "bytes": 2401,
+      "sha256": "404593f684190347b3f37673608647e56fbdbd467202706ef3d0f4db7816390e"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/minimum_-1.xyz",
+      "bytes": 377,
+      "sha256": "168ccb1208773062871c93279464352f07e19818d0c7c678a1747460e1ed4c5a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/minimum_1.xyz",
+      "bytes": 377,
+      "sha256": "031988c2caeeca31531a7cdd277a0958ed1416880c6a5412b6409d0f46635c73"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/negative_mode.npy",
+      "bytes": 272,
+      "sha256": "09d9814435045ca1126b7edd33f3c0cb292fa10083a11633b146cee9724a655a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/opt.log",
+      "bytes": 2400,
+      "sha256": "910bbf2b552f37c11f4ea30d464cb991af08cf21e3635765102861de2b07d078"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/result.json",
+      "bytes": 4412,
+      "sha256": "2af79f1b5be1c1eefbbbb34fd0bea039e49e77f8eae69f3f28c91d80a3f22d7f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/search.traj",
+      "bytes": 4699,
+      "sha256": "40ed556686734cda47501c6af6c1463dbb1cefd5bdf98877937bbc36623e9813"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/seed.xyz",
+      "bytes": 377,
+      "sha256": "1bd61171e6b70e8922c2d2b44c4a5739c35450bb670ba4a7c8f9896d65a0e04b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/seed_direction.npy",
+      "bytes": 272,
+      "sha256": "3d3798270ee346356fe0880937268dfa147ee6dd53eb880c1efd55c7b8d26255"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2/search/ts.xyz",
+      "bytes": 377,
+      "sha256": "5c4407b05d254b459783abd9674211d7a78f0a8839b8a6f7e1bf826c4f8e1d28"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/result.json",
+      "bytes": 630,
+      "sha256": "c0b3a918f2d159d570ce970381e7fc0cbe63d7dca12205c81b06993b9d603c6e"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/descent_-1.log",
+      "bytes": 793,
+      "sha256": "5029c2709996c1dc817052e672bb1f59c10595a74177ebecbc4cac53b95b514b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/descent_-1.traj",
+      "bytes": 7516,
+      "sha256": "16120c3b5074559c29410b7bb49f8a442ac4cba5ff4f929197d085e96c91d8e8"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/descent_1.log",
+      "bytes": 793,
+      "sha256": "36c108a5b9f7caae27290dc06697e8cbd231c3e1d7a65ee6d73224e7e078a91c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/descent_1.traj",
+      "bytes": 7517,
+      "sha256": "0515ad507cd2cded1db82970290e247d5f5afddbe1a019fe1dbced4a4169480a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/dimer.log",
+      "bytes": 2343,
+      "sha256": "b1ed9003fd020fadb81dea159f869bb173e9ddb3e7f83ff694f37911a02dd9f2"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/minimum_-1.xyz",
+      "bytes": 377,
+      "sha256": "dddd90233dca6c9a9d795ad7c279ebf086128f3f9fb2bfa82eccefd107257ef2"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/minimum_1.xyz",
+      "bytes": 377,
+      "sha256": "4bff3b757353d20d1c114f35d4bda8007d7f572abe1cd1061f5d5acc7b91430a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/negative_mode.npy",
+      "bytes": 272,
+      "sha256": "9eef5a7d6cf50db340fe22947033305e5f5b8087175c72099cf54e8a3f16bbd1"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/opt.log",
+      "bytes": 2400,
+      "sha256": "7d3d09f8b4cd4305221043bcc03f59eec758a53d5570ab01faf172152ab1fcfe"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/result.json",
+      "bytes": 4407,
+      "sha256": "5ca98ba4cc4dc25f32fde4142e00d8d7e4ba64092c833ebb8cfbae65e62b49de"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/search.traj",
+      "bytes": 4699,
+      "sha256": "608eef34d542f117dfb8c5b54d5fca873e570fd21b911fd91ff54d8d8fcae340"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/seed.xyz",
+      "bytes": 377,
+      "sha256": "1bd61171e6b70e8922c2d2b44c4a5739c35450bb670ba4a7c8f9896d65a0e04b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/seed_direction.npy",
+      "bytes": 272,
+      "sha256": "3d3798270ee346356fe0880937268dfa147ee6dd53eb880c1efd55c7b8d26255"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_2025/search/ts.xyz",
+      "bytes": 377,
+      "sha256": "1d6494725ba67c691b216a72b0997d713e76c5869f434fe671bda8464b297f14"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/result.json",
+      "bytes": 630,
+      "sha256": "c57a589f7ea339b253acc72e646c54abc439a5023f0c3036ddb6f5c22f6b721a"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/descent_-1.log",
+      "bytes": 1111,
+      "sha256": "848024c3b276a3a2ed16b6c3fe67feacbad3137662620e5300838c429e1fe272"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/descent_-1.traj",
+      "bytes": 10446,
+      "sha256": "7e4d242dbe78d130f10fd3228494b74497dcb7d918226c7fa479c41bfa0f4f4c"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/descent_1.log",
+      "bytes": 1058,
+      "sha256": "d8d017cb3166dc0939fe8429714d10f63235abfcd501f38330c78f5c71837366"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/descent_1.traj",
+      "bytes": 9957,
+      "sha256": "dcfd3d87036b4bd8b90edabf20f2ae2f9432ad05fa0a7e8bb1dd955ac194c2fb"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/dimer.log",
+      "bytes": 3561,
+      "sha256": "a5cc4d74a5a83571b4b0a23586e10c46a491b021acdf337c1324d77552106d0d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/minimum_-1.xyz",
+      "bytes": 377,
+      "sha256": "3fe72f6ba4e06903e7ec87eee048b900966e6a5a8538bb2eb833df9bcb62bc12"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/minimum_1.xyz",
+      "bytes": 377,
+      "sha256": "b60fb2416ab4c8f1af03a666d29041cb0714aa15f7f766df20508d996e2e42c9"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/negative_mode.npy",
+      "bytes": 272,
+      "sha256": "a8217712bbea433a4e43738690979aa92eeb96e437e580edfa2640dfd77d9825"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/opt.log",
+      "bytes": 3600,
+      "sha256": "b01abfcd7dddca5ca43173082bec1e7a36a132917da84b3080601904bab138a4"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/result.json",
+      "bytes": 4395,
+      "sha256": "885e8410f27b393c4da10e6bb1747dd044f9879e10ac2a7a62de192abecbcaf7"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/search.traj",
+      "bytes": 6715,
+      "sha256": "6b381e07a3cf24a1e5783c526fabef1be612a11e6f1c3b04df013c7d14628b6f"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/seed.xyz",
+      "bytes": 377,
+      "sha256": "1bd61171e6b70e8922c2d2b44c4a5739c35450bb670ba4a7c8f9896d65a0e04b"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/seed_direction.npy",
+      "bytes": 272,
+      "sha256": "3d3798270ee346356fe0880937268dfa147ee6dd53eb880c1efd55c7b8d26255"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/sn2_aimnet2_nse/search/ts.xyz",
+      "bytes": 377,
+      "sha256": "f2c7296f3f174e58607e35b51af30f23d98bf05ae67fffac291601c18dfdd659"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/summary.json",
+      "bytes": 71459,
+      "sha256": "3624f51cffc7460d289c010581d13313d6ad7560295d9d0d0f7e87e0a1b0613d"
+    },
+    {
+      "path": "reports/aimnetcentral_v8/validation_checks.json",
+      "bytes": 4900,
+      "sha256": "00feb662cdb71be17b65a50429dce3a26cafdfc6fceafef13ac0fc1a2ef68d3b"
+    },
+    {
+      "path": "reports/benchmark.html",
+      "bytes": 11415,
+      "sha256": "7583573555c895ffec3de210574dde7d664905c57eba25b27790927a7488c3a9"
+    },
+    {
+      "path": "reports/site_checks/validation.json",
+      "bytes": 673,
+      "sha256": "c6853fc146c4ee79024c9eaf462ac1ddefe9a23616b15bdf9cad9fecfccf2b67"
+    },
+    {
+      "path": "scripts/baselines/benchmark_graph_bridge.py",
+      "bytes": 8028,
+      "sha256": "81cadc09787d721a1db52c849e2bbc05615f3cd73daacd20b07ad8099dd5d91f"
+    },
+    {
+      "path": "scripts/baselines/benchmark_seed_recovery.py",
+      "bytes": 5460,
+      "sha256": "7dd7675f99ac844e4ec09834d8d01dc5ad60a265882ab2d749acbef9343a8706"
+    },
+    {
+      "path": "scripts/baselines/probe_physics_feedback.py",
+      "bytes": 4501,
+      "sha256": "945e086d973330f03ee915c71f90855f181b168af3da97f980a0275a9f8124fa"
+    },
+    {
+      "path": "scripts/data/build_pilot.py",
+      "bytes": 3088,
+      "sha256": "f7891954d5afa42e9aa3adc7366d7dbf3514cfb5ec9e94c39d57feb5f3188c70"
+    },
+    {
+      "path": "scripts/data/download_core.py",
+      "bytes": 7421,
+      "sha256": "c6e76176c96b41ff47c74f08bfd8ca6c683324f4dd4944561442504138101610"
+    },
+    {
+      "path": "scripts/data/download_data.py",
+      "bytes": 5855,
+      "sha256": "8017a6e66c935e0e787110adc724d245f052966de2cdeeb78600449b6d71ff58"
+    },
+    {
+      "path": "scripts/data/fetch_coley_dipolar.py",
+      "bytes": 3249,
+      "sha256": "0df2adefac8a3028c9d4fc3902a45192a61789849b5e74ad9ddcf06a15edd7e4"
+    },
+    {
+      "path": "scripts/data/fetch_exploration_resources.py",
+      "bytes": 1995,
+      "sha256": "4689d363fe5b3df813e77945dc68ef5c40f47470cca2791104b748d6ea2fbb36"
+    },
+    {
+      "path": "scripts/data/prepare_bimolecular_starts.py",
+      "bytes": 5244,
+      "sha256": "920e389c00c78f17d8c2513e393924c2a3d002cc9d982ab8da3eab670f190f8d"
+    },
+    {
+      "path": "scripts/data/prepare_feasibility.py",
+      "bytes": 4350,
+      "sha256": "eaae9121bacc7712d57c4be5385480b3362a4f3f1acf5e789957851dd1eaa554"
+    },
+    {
+      "path": "scripts/data/prepare_jobs.py",
+      "bytes": 2207,
+      "sha256": "ea1584051884066d66cae19cd8f37feabfca3e7e9ffeb6da2bf0503690a74434"
+    },
+    {
+      "path": "scripts/data/prepare_literature_benchmark.py",
+      "bytes": 4857,
+      "sha256": "28f123ef6bf7d4384d95b90520e0dd531f8c6da90573eb484ee946336740b942"
+    },
+    {
+      "path": "scripts/data/prepare_local_transfer_pilot.py",
+      "bytes": 3616,
+      "sha256": "5a744dafc2f025da82551541a78801e9a9c4eb0c04d647bf2c875b67c69aa993"
+    },
+    {
+      "path": "scripts/data/prepare_network_growth.py",
+      "bytes": 2471,
+      "sha256": "f7ed15f422ea2d57d0ce06ceb078ae6b75349eea7f8b8d51cae0d38c56375cb3"
+    },
+    {
+      "path": "scripts/data/prepare_network_pilot.py",
+      "bytes": 2424,
+      "sha256": "08084b6ea298b0045228454627f65d91ee0ff3d1a27b0902ba41517687b1d275"
+    },
+    {
+      "path": "scripts/data/prepare_validation_starts.py",
+      "bytes": 2458,
+      "sha256": "e8b57d5a2b3945208881607937df8796209c5563b9463695c6609f84be151817"
+    },
+    {
+      "path": "scripts/diagnostics/audit_aimnetcentral_results.py",
+      "bytes": 2962,
+      "sha256": "1c10a375c0015bcb2a7ba18c256e21bfe5429a8e37d86e4a22014b924e2da9e5"
+    },
+    {
+      "path": "scripts/diagnostics/audit_cohort_environment.py",
+      "bytes": 1053,
+      "sha256": "6e62a15d4b30490446d4e2cdad9b0b16b4779421edb1d729c39a9c6c2d68692c"
+    },
+    {
+      "path": "scripts/diagnostics/audit_overlap.py",
+      "bytes": 5268,
+      "sha256": "3911a9cf50a55cef4edca0c94870ade9f2b728c3ad55b5ffa781dde0cb36a1ce"
+    },
+    {
+      "path": "scripts/diagnostics/audit_saddle_modes.py",
+      "bytes": 1954,
+      "sha256": "2019e47149a453bf50a72410674861d2a5a8dbdeb6996abd458604b0289ce20d"
+    },
+    {
+      "path": "scripts/diagnostics/benchmark_aimnetcentral.py",
+      "bytes": 9579,
+      "sha256": "bf11bbdfbaa6199a0a48bf9d7063896b1c27aa44de67e3126628dd7b01fa6784"
+    },
+    {
+      "path": "scripts/diagnostics/benchmark_dimer_extrapolation.py",
+      "bytes": 3251,
+      "sha256": "eba69805126d65891636ce921f41b4e85f91520ca140360583f5a17c8907a1c5"
+    },
+    {
+      "path": "scripts/diagnostics/benchmark_hessian_batch.py",
+      "bytes": 2666,
+      "sha256": "9d9feb21976f32f4ca78cb5e38501079d96cd4ad1c7a954f865693efe1326587"
+    },
+    {
+      "path": "scripts/diagnostics/check_blas_threads.py",
+      "bytes": 1298,
+      "sha256": "eb6a484e08a5df092dfde2e5d19d37ed7bb6abf90737ed15742542916db33dcc"
+    },
+    {
+      "path": "scripts/diagnostics/check_coley_reference_ts.py",
+      "bytes": 3730,
+      "sha256": "54122f85bd3ff3f38c6e8fcd2700e650296ee39c88c1f9ed0a2208cc5f018dd2"
+    },
+    {
+      "path": "scripts/diagnostics/check_density_reuse.py",
+      "bytes": 1415,
+      "sha256": "cc8fea4cb0c3c24736252dd41c6824d5fe699125e7cc8672615882942367f9dd"
+    },
+    {
+      "path": "scripts/diagnostics/check_dimer_convergence_contract.py",
+      "bytes": 2489,
+      "sha256": "5c41aad864e4a913229e91214ba347a0dd4f0ab4e088d3d65fe1b65d12ea0fe9"
+    },
+    {
+      "path": "scripts/diagnostics/check_report_site.py",
+      "bytes": 6006,
+      "sha256": "2015d8e4e23edcfc27335540973889fe7b5d9e38d35f15131b89c814ba8725d6"
+    },
+    {
+      "path": "scripts/diagnostics/diagnose_encounter_minima.py",
+      "bytes": 4055,
+      "sha256": "688f55a358c5a661aa80fe75d7df1741147ac58eaf74d49ff6fc7fa3990daa2a"
+    },
+    {
+      "path": "scripts/diagnostics/refine_rejected_saddle.py",
+      "bytes": 2376,
+      "sha256": "e9cc3e9f13ad806da6612a5a0695132f7a01d658ae181f8b2a81356033f4a4d0"
+    },
+    {
+      "path": "scripts/diagnostics/validate_aimnetcentral_reactive.py",
+      "bytes": 3415,
+      "sha256": "b4291f3cda5274b8100855f432c6791e29dc2aea8ef6c155b00b47177cfad212"
+    },
+    {
+      "path": "scripts/diagnostics/validate_aimnetcentral_sn2.py",
+      "bytes": 2735,
+      "sha256": "37a704f5bcfcfc47667f2c15a8e0c3e5d60785061afee3a07e2da3eeefad8d8d"
+    },
+    {
+      "path": "scripts/exploration/audit_network_artifacts.py",
+      "bytes": 3858,
+      "sha256": "507cc7ae03c4027d185a69d022478d49002629cd8d85a8ad83df0f1d51bbf6bb"
+    },
+    {
+      "path": "scripts/exploration/build_report_site.py",
+      "bytes": 309,
+      "sha256": "3ff14f91accaaa2bbd2dfb76fab040a20633cd63d41f45da099bc76c56f5db44"
+    },
+    {
+      "path": "scripts/exploration/check_reaction_potential.py",
+      "bytes": 2175,
+      "sha256": "f41a23940b0ee0f6c1e02e66ca39e9794577297d996e9ed7be30188106f8ccae"
+    },
+    {
+      "path": "scripts/exploration/render_bimolecular.py",
+      "bytes": 2449,
+      "sha256": "c028e69f605893ffd4b9fb522c034230be661f2f5850063734cc09c641a96e56"
+    },
+    {
+      "path": "scripts/exploration/render_molecular_exploration.py",
+      "bytes": 480,
+      "sha256": "ef41654a5184bbf71a636d423653059140dd0eaac2b41145bba5ccb181a37cec"
+    },
+    {
+      "path": "scripts/exploration/render_network_growth.py",
+      "bytes": 2176,
+      "sha256": "c7afb24be9e0ce828206b173f96af64e03c24f95d4e98cf7efc5f31bf33a8496"
+    },
+    {
+      "path": "scripts/exploration/run_geometry_budget_check.py",
+      "bytes": 2116,
+      "sha256": "f7d3406d68bf5f90ab474dd0b3312280ffdb03efaa523e5efccddbbd9ec12191"
+    },
+    {
+      "path": "scripts/exploration/run_network_exploration.py",
+      "bytes": 4623,
+      "sha256": "aa9b27a622ff1d69513e959611dd748d02df9aba297e72dfc33f2d56096fc29d"
+    },
+    {
+      "path": "scripts/exploration/run_validation_campaign.py",
+      "bytes": 3027,
+      "sha256": "d4a5722ad6813f2209b7c972eb6500ce1c01557cba76cd2ee8a3c11a65f06185"
+    },
+    {
+      "path": "scripts/exploration/summarize_aimnetcentral.py",
+      "bytes": 8387,
+      "sha256": "381664797f04a44d8cb84780a9929cfb1efb041275c2e4fd272f56a58bfa9563"
+    },
+    {
+      "path": "scripts/exploration/summarize_bimolecular.py",
+      "bytes": 16232,
+      "sha256": "d5a9a436191bae18e686b95cf385a45ede9132efda668d2f779c9a1e8a92de2e"
+    },
+    {
+      "path": "scripts/exploration/summarize_literature_benchmark.py",
+      "bytes": 5172,
+      "sha256": "61f7e47f45df6f81da241526a4e6441050981c2eaf89386b60fc86ea6eb9564d"
+    },
+    {
+      "path": "scripts/exploration/summarize_local_transfer.py",
+      "bytes": 13459,
+      "sha256": "7a3a063627a8f6784d78a28ac68f2049fd14672670210935fdb95f0a10bb93d4"
+    },
+    {
+      "path": "scripts/exploration/summarize_network_exploration.py",
+      "bytes": 8547,
+      "sha256": "9a732d5d70deb36e2c97b4845dd71bb74dd83f5fc9a3675d598e890752a1624e"
+    },
+    {
+      "path": "scripts/exploration/summarize_network_growth.py",
+      "bytes": 10712,
+      "sha256": "ec016be03f4b01dc8a36f465e6d454b65648318bb08d49fa3cd1b26f22df320e"
+    },
+    {
+      "path": "scripts/exploration/summarize_validation_campaign.py",
+      "bytes": 15350,
+      "sha256": "764ab5e872db49b3eae5e5081c5fa20d30c79cf1f318581b36313c53e5b5c7e2"
+    },
+    {
+      "path": "scripts/qc/audit_orbitals.py",
+      "bytes": 3275,
+      "sha256": "8a1684f606f67031d6dc17b7c1d38632c8d199847323282b51da0ba2745a5f81"
+    },
+    {
+      "path": "scripts/qc/audit_verified_chain.py",
+      "bytes": 4809,
+      "sha256": "d8c3fb6522337cf7dde1274320c7e20c45e3ea90a91b522defd81d72c986dbbc"
+    },
+    {
+      "path": "scripts/qc/check_representation_stability.py",
+      "bytes": 3196,
+      "sha256": "0ba54d172d657e5a8c4a21146299954b3adceec12e8e7c7bde20ea39f74f76c1"
+    },
+    {
+      "path": "scripts/qc/check_saved_endpoint.py",
+      "bytes": 1588,
+      "sha256": "739a8fdc3936d55d8f227fa339c42dcd0fea4e96c8a8c6c6c26e13a259788387"
+    },
+    {
+      "path": "scripts/qc/qc_smoke.py",
+      "bytes": 1415,
+      "sha256": "5d3bd995b81edb78ae83d9e57136999ca554e6516a863d9044c86c35edc97dbd"
+    },
+    {
+      "path": "scripts/qc/refine_dft_candidate.py",
+      "bytes": 2178,
+      "sha256": "36993c858c7e96cace65b04302cbf5fa22b4f9da4d6a71d54b9dcbe3500c5d92"
+    },
+    {
+      "path": "scripts/qc/refine_endpoint_curvature.py",
+      "bytes": 2669,
+      "sha256": "0924e89e1f8f771a44a72e46ed8d3eb1ddced46ae65cad313b47a4ee4e464008"
+    },
+    {
+      "path": "scripts/qc/run_feasibility.py",
+      "bytes": 1241,
+      "sha256": "77db2edfd75fd7dcfe165a278ec5e34faa3d386a2561205268c638458ea93b2e"
+    },
+    {
+      "path": "scripts/qc/summarize_feasibility.py",
+      "bytes": 14452,
+      "sha256": "19ddf5310d9268209a215fea789187ac9b198d385634b6d311b91d420648ec08"
+    },
+    {
+      "path": "scripts/qc/verify_alternative.py",
+      "bytes": 1663,
+      "sha256": "946113a37a3947d61cf1478426ba7d551bd0f8b772f2b2d4615c0c53c3e84d05"
+    },
+    {
+      "path": "scripts/qc/verify_network_connection.py",
+      "bytes": 3240,
+      "sha256": "c80c5bd256bb5b77d520a3486605ea98a6d051e90d024b4c42218d03b58b0820"
+    },
+    {
+      "path": "src/mechbridge/__init__.py",
+      "bytes": 101,
+      "sha256": "298dea1f0a6bedb9b6098b9c0dfeafe45155ac3e900b7294f6316eac157b6c3e"
+    },
+    {
+      "path": "src/mechbridge/adapters.py",
+      "bytes": 9962,
+      "sha256": "505f378eb853a7e0e4f6dcd646928b12dfee8c14d3e5c92d1956103191a8caeb"
+    },
+    {
+      "path": "src/mechbridge/aimnet_backend.py",
+      "bytes": 3547,
+      "sha256": "551fb7918b9fa05c7560f0da1feebab5624b7b9720b078899d614aadb219267f"
+    },
+    {
+      "path": "src/mechbridge/aimnetcentral_backend.py",
+      "bytes": 6666,
+      "sha256": "7e8014b12fb4df3bb4e8494180ec108ef94137296549dbfc0e38734453c79f02"
+    },
+    {
+      "path": "src/mechbridge/backends.py",
+      "bytes": 3721,
+      "sha256": "6a16a66c92dfacb114604a7263e8204fd59ad0b657a5179b45ca07b87c15511b"
+    },
+    {
+      "path": "src/mechbridge/chemistry.py",
+      "bytes": 3012,
+      "sha256": "6c9064ba98a7d9470497d9c3043be2a06e0fc8ad2b2e474f40327be4407de50a"
+    },
+    {
+      "path": "src/mechbridge/cli.py",
+      "bytes": 5521,
+      "sha256": "906dd86d63bf0bb0f2d9570f4122c83fea107c85293e52e6c8ed83c478dec1b6"
+    },
+    {
+      "path": "src/mechbridge/electronic.py",
+      "bytes": 4554,
+      "sha256": "6742c424fbd22b8c41ad1bbda7cdd587a901647f7db75f6abb0b954f28be8c3e"
+    },
+    {
+      "path": "src/mechbridge/encounters.py",
+      "bytes": 3247,
+      "sha256": "31ce53b7b79272ae8ff4176b80c4b964feaad23bad7456ac3ddbe775ed7a31e1"
+    },
+    {
+      "path": "src/mechbridge/event_classification.py",
+      "bytes": 1746,
+      "sha256": "3598d3531076db3b32b065ee5e21a5dc4f8aa0fc68cc563ad4a32fa22f7336fe"
+    },
+    {
+      "path": "src/mechbridge/event_graph.py",
+      "bytes": 6288,
+      "sha256": "d61876868eac0050b657febe7c7e192c02e7cc702e32089a100881d3dbff4418"
+    },
+    {
+      "path": "src/mechbridge/exploration_actions.py",
+      "bytes": 1514,
+      "sha256": "34d651013b5d4186d3fce61579d8b64f439061d6980621f0a8ff4327c1999831"
+    },
+    {
+      "path": "src/mechbridge/intermolecular_actions.py",
+      "bytes": 3717,
+      "sha256": "aacaadaf818327259c2a5a1c81bd686e0d094a4608e3d916b8766a5ffed7dbc4"
+    },
+    {
+      "path": "src/mechbridge/io.py",
+      "bytes": 1358,
+      "sha256": "acc946b7f2bbf17a4b1af423860f8d7fdfba25e038afa9927374951b05f0e11e"
+    },
+    {
+      "path": "src/mechbridge/kinetics.py",
+      "bytes": 1578,
+      "sha256": "a05904ed22f4cf38b79ec7c3cf06a2976687c34b19cbf56d174e3ac52ba7c48f"
+    },
+    {
+      "path": "src/mechbridge/local_patterns.py",
+      "bytes": 1963,
+      "sha256": "0590b9c89ac74f52c16284d89ee5b6417d8dd18dc33acf6b4af579cd09522a08"
+    },
+    {
+      "path": "src/mechbridge/molecular_visuals.py",
+      "bytes": 15571,
+      "sha256": "3a06b6e7ee1b248f5b30233b17318a00308402240b984cf9949dbe001410025c"
+    },
+    {
+      "path": "src/mechbridge/network_metrics.py",
+      "bytes": 2166,
+      "sha256": "90ea800f1865c2e424c250f351b55e2b0f7195921601a61f4ec87fa3cd06ebf4"
+    },
+    {
+      "path": "src/mechbridge/pairing.py",
+      "bytes": 3218,
+      "sha256": "2fbe801e759327e643a0418b7556447c355feb71071586d85f62c77dfbcaecb6"
+    },
+    {
+      "path": "src/mechbridge/physics.py",
+      "bytes": 6464,
+      "sha256": "f009830680220d30e4e4d83f11ef82bd2c302c5505b6e23de5f6ca6579955310"
+    },
+    {
+      "path": "src/mechbridge/potentials.py",
+      "bytes": 1928,
+      "sha256": "97d3da587a48873b0d8934ea954ed9e2825e34d71408e5c4787df5c33e0d0599"
+    },
+    {
+      "path": "src/mechbridge/reaction_network.py",
+      "bytes": 20078,
+      "sha256": "bebd23e59676633d91eaa1f207700eadccb9d18dbd6f5fdc13258b91c642bb11"
+    },
+    {
+      "path": "src/mechbridge/report_catalog.py",
+      "bytes": 4310,
+      "sha256": "1357abf163eb900b88784c761ea6fe3d3bef76a023babafe1cd6fa2dd4fd92a4"
+    },
+    {
+      "path": "src/mechbridge/report_layout.py",
+      "bytes": 2125,
+      "sha256": "dc5929a2ccc61309c81d24b721f6ce0e5886257f7c991c81a9e263f63288ded5"
+    },
+    {
+      "path": "src/mechbridge/report_site.py",
+      "bytes": 11418,
+      "sha256": "aa658869c382ff027ec3a817b2850a7e112ede907c843d1bd33c6573b0a77642"
+    },
+    {
+      "path": "src/mechbridge/saddle_optimization.py",
+      "bytes": 671,
+      "sha256": "54b949eaca50cd07cfe6054a0a5f53698c204a54656424a4b7707899ca97b697"
+    },
+    {
+      "path": "src/mechbridge/search_seeds.py",
+      "bytes": 9584,
+      "sha256": "dd9d7e8565697fef3fa2b1217022227603dbe80ac0c3176575ff2e0612d98817"
+    },
+    {
+      "path": "src/mechbridge/symbolic_library.py",
+      "bytes": 9999,
+      "sha256": "8aae5fd4567edf75fae559dab06bd0850cd4d2e27ec27b265e401e9b73cc164e"
+    },
+    {
+      "path": "src/mechbridge/training_data.py",
+      "bytes": 1384,
+      "sha256": "50378b2dba756b78e93ec115987c7fa869856346f3a37eb2bb4a2a45948e73c2"
+    },
+    {
+      "path": "src/mechbridge/verification.py",
+      "bytes": 8544,
+      "sha256": "bf9e2f4502bd7301086f4d782bf9eba93cff8751b4034494348ad7ac1aa86590"
+    },
+    {
+      "path": "tests/test_aimnetcentral_backend.py",
+      "bytes": 1046,
+      "sha256": "f60512d432c3308b300969a445f1470d202eb6075493db7f9861998519aff47c"
+    },
+    {
+      "path": "tests/test_bimolecular.py",
+      "bytes": 3780,
+      "sha256": "dad47dfd0d79b5a0461f5eb95912d6ad18b84cd2bef1f19a00aaae42b47a951a"
+    },
+    {
+      "path": "tests/test_core.py",
+      "bytes": 5369,
+      "sha256": "23abee4195086c9c25335556826df8e1a4a7a01314924261deeb158d5ac105e3"
+    },
+    {
+      "path": "tests/test_event_graph.py",
+      "bytes": 3528,
+      "sha256": "59bd2f05ad4a8a8edb7b430830de1d426f3530bebb62c317b941707f091096a2"
+    },
+    {
+      "path": "tests/test_kinetics.py",
+      "bytes": 890,
+      "sha256": "178c5bb90dab201ecd4105b209d11ace39e4483fc4228bc27ded60c15717ae81"
+    },
+    {
+      "path": "tests/test_network_exploration.py",
+      "bytes": 11349,
+      "sha256": "5029b302f100c7fb2ffe09b8e73f8e6f62826251f0e3bce26a7e044564d1db41"
+    },
+    {
+      "path": "tests/test_network_metrics.py",
+      "bytes": 1000,
+      "sha256": "b4a37f9e7ef36af730d380d7eb703bba77ea09bbfc9f0e99de51e68b67bee805"
+    },
+    {
+      "path": "tests/test_reports.py",
+      "bytes": 2183,
+      "sha256": "eec7c20b69ae58d25a4864a522ad170590a2e8976e33270953ea8b4ceaf5bb6f"
+    }
+  ]
+}

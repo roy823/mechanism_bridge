@@ -14,6 +14,9 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--config',type=Path,default=ROOT/'configs/validation_v2.json')
     p.add_argument('--outdir',type=Path,default=ROOT/'reports/validation_v2/search')
+    p.add_argument('--potential',choices=['aimnet2-rxn','aimnet2','aimnet2-2025','aimnet2-nse'],default='aimnet2-rxn')
+    p.add_argument('--device',choices=['cpu','cuda'],default='cpu')
+    p.add_argument('--compile-model',action='store_true')
     a=p.parse_args()
     if a.outdir.exists():raise FileExistsError('Choose a fresh experiment directory')
     a.outdir.mkdir(parents=True)
@@ -24,6 +27,7 @@ def main():
             for seed in config[cohort+'_random_seeds']:
                 plan.append(dict(start=start,seed=seed,cohort=cohort,folder=f'{start}_s{seed}'))
     manifest=dict(config=config,config_sha256=hashlib.sha256(a.config.read_bytes()).hexdigest(),
+        potential=a.potential,device=a.device,compile_model=a.compile_model,
         started_at=time.time(),plan=plan,completed=[],failed=[])
     path=a.outdir/'campaign.json'
     def save():
@@ -35,7 +39,8 @@ def main():
             '--start-ids',job['start'],'--seed',str(job['seed']),
             '--attempts',str(config['max_attempts']),'--seeds-per-node',str(config['seeds_per_node']),
             '--evaluations',str(config['total_evaluations']),'--attempt-evaluations',str(config['evaluations_per_attempt']),
-            '--strategies',*config['strategies']]
+            '--potential',a.potential,'--device',a.device,'--strategies',*config['strategies']]
+        if a.compile_model:command.append('--compile-model')
         with (a.outdir/(job['folder']+'.log')).open('w',encoding='utf-8') as log:
             result=subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
         return dict(**job,exit_code=result.returncode)

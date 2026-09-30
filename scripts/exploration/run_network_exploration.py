@@ -1,7 +1,6 @@
 """Run comparable geometry/net-edit/full-arrow GPA-style searches on real starts."""
 import argparse
 import hashlib
-import importlib.metadata
 import json
 from pathlib import Path
 import sys
@@ -11,7 +10,7 @@ from dataclasses import asdict
 from rdkit import RDLogger
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
-from mechbridge.aimnet_backend import ReactionPotential
+from mechbridge.potentials import load_potential
 from mechbridge.symbolic_library import ArrowLibrary
 from mechbridge.reaction_network import SearchProtocol, explore, atomic_json
 
@@ -19,6 +18,9 @@ from mechbridge.reaction_network import SearchProtocol, explore, atomic_json
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--outdir', type=Path, required=True)
+    p.add_argument('--potential',choices=['aimnet2-rxn','aimnet2','aimnet2-2025','aimnet2-nse'],default='aimnet2-rxn')
+    p.add_argument('--device',choices=['cpu','cuda'],default='cpu')
+    p.add_argument('--compile-model',action='store_true')
     p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows','hybrid'],
                    default=['geometry','bond_edits','arrows'])
     p.add_argument('--start-ids', nargs='+')
@@ -50,27 +52,22 @@ def main():
             raise ValueError('Unknown start ID')
     (a.outdir/'starts.jsonl').write_text(''.join(json.dumps(s)+'\n' for s in starts),encoding='utf-8')
     library = ArrowLibrary(ROOT/'data/raw/synepd/polar.json')
-    weights = ROOT/'models/aimnet2-rxn/ensemble_0.safetensors'
+    backend,potential=load_potential(a.potential,ROOT,a.device,a.compile_model)
     sources = list((ROOT/'src/mechbridge').glob('*.py')) + [Path(__file__)]
     with zipfile.ZipFile(a.outdir/'source_snapshot.zip','w',zipfile.ZIP_DEFLATED) as archive:
         for source in sources:archive.write(source,source.relative_to(ROOT).as_posix())
     manifest = dict(protocol=asdict(protocol), starts=[s['id'] for s in starts],
-        strategies=a.strategies, model='AIMNet2-rxn ensemble_0', device='cpu',
-        weights_sha256=hashlib.sha256(weights.read_bytes()).hexdigest(),
-        model_config_sha256=hashlib.sha256((weights.parent/'config.json').read_bytes()).hexdigest(),
-        inference=dict(needs_dispersion=False,needs_coulomb=True,compile_model=False,
-                       torch_stance='force_eager',threads=2),
-        packages={name:importlib.metadata.version(name) for name in ['aimnet','torch','ase','numpy','rdkit','scipy']},
+        strategies=a.strategies,**potential,
         source_sha256={s.relative_to(ROOT).as_posix():hashlib.sha256(s.read_bytes()).hexdigest() for s in sources},
         starts_sha256=hashlib.sha256(a.starts.read_bytes()).hexdigest(),
         symbolic_library_sha256=hashlib.sha256((ROOT/'data/raw/synepd/polar.json').read_bytes()).hexdigest(),
         reference_TS_used_in_search=False, reference_product_geometry_used_in_search=False,
-        pretrained_overlap='AIMNet2-rxn includes RGD1; engineering feasibility, not unseen chemistry',
+        pretrained_overlap=('AIMNet2-rxn includes RGD1; engineering feasibility, not unseen chemistry'
+            if a.potential=='aimnet2-rxn' else 'Broad AIMNetCentral training overlap not audited for this run'),
         symbolic_hypotheses=library.policy,
         symbolic_library_audit=dict(library.audit),
         started_at_unix=time.time())
     atomic_json(a.outdir/'manifest.json', manifest)
-    backend = ReactionPotential(weights.parent)
     for start in starts:
         for strategy in a.strategies:
             report = explore(start, library, backend, strategy, a.outdir/start['id']/strategy, protocol)

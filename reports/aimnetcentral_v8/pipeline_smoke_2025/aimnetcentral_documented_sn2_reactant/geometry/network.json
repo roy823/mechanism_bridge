@@ -1,0 +1,197 @@
+{
+  "start": {
+    "id": "aimnetcentral_documented_sn2_reactant",
+    "atomic_numbers": [
+      6,
+      17,
+      17,
+      1,
+      1,
+      1
+    ],
+    "positions_A": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.78,
+        0.0,
+        0.0
+      ],
+      [
+        -3.2,
+        0.0,
+        0.0
+      ],
+      [
+        -0.39,
+        1.01,
+        0.078
+      ],
+      [
+        -0.39,
+        -0.342,
+        0.955
+      ],
+      [
+        -0.39,
+        -0.668,
+        -1.033
+      ]
+    ],
+    "charge": -1,
+    "multiplicity": 1,
+    "provenance": {
+      "source": "https://isayevlab.github.io/aimnetcentral/advanced/reaction_paths/",
+      "role": "documented reactant complex for broad-element pipeline smoke check",
+      "reference_TS_or_product_geometry_used": false
+    }
+  },
+  "strategy": "geometry",
+  "protocol": {
+    "seed_policy": "reactant_graph_and_rigid_encounter_seeds_v6",
+    "max_attempts": 0,
+    "seeds_per_node": 1,
+    "geometry_seeds_per_node": 9,
+    "total_evaluations": 1600,
+    "evaluations_per_attempt": 700,
+    "ts_steps": 160,
+    "descent_steps": 250,
+    "initial_fmax": 0.003,
+    "initial_curvature_steps": 3,
+    "fmax": 0.005,
+    "hessian_step": 0.005,
+    "hessian_batch_size": 32,
+    "dimer_extrapolate_forces": false,
+    "mode_displacement": 0.15,
+    "geometry_tolerance_A": 0.15,
+    "energy_tolerance_eV": 0.03,
+    "random_seed": 17
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "depth_discovered": 0,
+      "force_max_eV_A": 0.0027422569692134857,
+      "force_converged": true,
+      "energy_eV": -26130.07518171369,
+      "frequencies_cm-1": [
+        133.68587503231285,
+        134.8731514832383,
+        171.1554758494194,
+        483.08341172899367,
+        939.9773834388458,
+        941.7032738754176,
+        1335.1508270177264,
+        1398.7755111429938,
+        1399.9860761386008,
+        3082.188080051687,
+        3095.552513579567,
+        3095.80747546918
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "positions_A": [
+        [
+          -0.06510786897142813,
+          -0.0005357762857147101,
+          -0.0008156942444813953
+        ],
+        [
+          1.8188655078327098,
+          0.001769682836606166,
+          0.0026625168648730367
+        ],
+        [
+          -3.115947587907908,
+          0.0019204935386687712,
+          0.002958488782157517
+        ],
+        [
+          -0.4105440046355955,
+          1.0188214138403584,
+          -0.053749414191981974
+        ],
+        [
+          -0.410503480550806,
+          -0.46591680111832384,
+          0.9076679986417432
+        ],
+        [
+          -0.4067625497458562,
+          -0.5560590177144102,
+          -0.8587239230660589
+        ]
+      ],
+      "graph_smiles": "CCl.[Cl-]"
+    }
+  ],
+  "edges": [],
+  "attempts": [],
+  "evidence": "MLIP_descents_not_DFT_IRC",
+  "library_policy": "published_local_arrows_plus_explicit_reactant_grammar_v6",
+  "status": "completed",
+  "unsupported_nodes": [],
+  "exhausted_nodes": [],
+  "initial_relaxation_checks": [
+    {
+      "force_max_eV_A": 0.0027422569692134857,
+      "force_converged": true,
+      "energy_eV": -26130.07518171369,
+      "frequencies_cm-1": [
+        133.68587503231285,
+        134.8731514832383,
+        171.1554758494194,
+        483.08341172899367,
+        939.9773834388458,
+        941.7032738754176,
+        1335.1508270177264,
+        1398.7755111429938,
+        1399.9860761386008,
+        3082.188080051687,
+        3095.552513579567,
+        3095.80747546918
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6
+    }
+  ],
+  "initial_point": {
+    "force_max_eV_A": 0.0027422569692134857,
+    "force_converged": true,
+    "energy_eV": -26130.07518171369,
+    "frequencies_cm-1": [
+      133.68587503231285,
+      134.8731514832383,
+      171.1554758494194,
+      483.08341172899367,
+      939.9773834388458,
+      941.7032738754176,
+      1335.1508270177264,
+      1398.7755111429938,
+      1399.9860761386008,
+      3082.188080051687,
+      3095.552513579567,
+      3095.80747546918
+    ],
+    "imaginary_count": 0,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "initialization_evaluations": 57,
+  "expanded_nodes": [],
+  "searched_nodes": [],
+  "node_batches": {},
+  "stop_reason": "attempt_budget",
+  "root_component_nodes": [
+    0
+  ],
+  "evaluations": 57,
+  "model_calls": 23,
+  "model_seconds": 0.2823996001970954,
+  "elapsed_seconds": 0.3744181000511162
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "case": "acetone_tautomerization",
+    "family": "aimnet2",
+    "status": "validated_descents",
+    "evaluations": 599,
+    "seconds": 7.287398815155029,
+    "DFT_reference_pair_preserved": true,
+    "endpoint_graphs": [
+      "C=C(C)O",
+      "CC(C)=O"
+    ],
+    "ts": {
+      "force_max_eV_A": 0.0032020569778978825,
+      "force_converged": true,
+      "energy_eV": -5256.567979666644,
+      "frequencies_cm-1": [
+        -2631.4404519836717,
+        86.22240859321786,
+        390.81857397825985,
+        459.73202238341474,
+        541.9632972579159,
+        646.8465223461444,
+        808.1190929724478,
+        885.2956128961871,
+        970.3392896508642,
+        1014.3465750457897,
+        1052.5367038826187,
+        1089.7480191601924,
+        1349.9397946122106,
+        1410.457915726779,
+        1427.8864984625463,
+        1459.9123102850033,
+        1533.02528909096,
+        1593.0534675890356,
+        2668.553671839067,
+        3057.2423480632942,
+        3105.1342658297376,
+        3122.6767103111815,
+        3146.852164270942,
+        3250.118527087109
+      ],
+      "imaginary_count": 1,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6
+    },
+    "barriers_eV": [
+      2.3875616665891357,
+      2.9003035236028154
+    ],
+    "reference_assisted": true,
+    "reference_product_geometry_used": false,
+    "reference_TS_and_negative_mode_used": true
+  },
+  {
+    "case": "formaldehyde_hydration",
+    "family": "aimnet2",
+    "status": "validated_descents",
+    "evaluations": 455,
+    "seconds": 5.676328897476196,
+    "DFT_reference_pair_preserved": true,
+    "endpoint_graphs": [
+      "OCO",
+      "C=O.O"
+    ],
+    "ts": {
+      "force_max_eV_A": 0.002425526501610875,
+      "force_converged": true,
+      "energy_eV": -5197.311617113894,
+      "frequencies_cm-1": [
+        -2284.2432262080115,
+        454.47089531881215,
+        539.7844172384931,
+        701.2668840995119,
+        798.5716962298703,
+        1055.6820203009004,
+        1118.7174719831064,
+        1256.4924694207148,
+        1299.567245151706,
+        1340.1710946464245,
+        1559.2131870171704,
+        1858.5689374044657,
+        2967.8947566087654,
+        3030.8755430587657,
+        3864.001137049574
+      ],
+      "imaginary_count": 1,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6
+    },
+    "barriers_eV": [
+      2.1864740689316022,
+      1.8151699567297328
+    ],
+    "reference_assisted": true,
+    "reference_product_geometry_used": false,
+    "reference_TS_and_negative_mode_used": true
+  },
+  {
+    "case": "formaldehyde_dimerization",
+    "family": "aimnet2",
+    "status": "validated_descents",
+    "evaluations": 674,
+    "seconds": 8.848143100738525,
+    "DFT_reference_pair_preserved": true,
+    "endpoint_graphs": [
+      "C=O.C=O",
+      "O=CCO"
+    ],
+    "ts": {
+      "force_max_eV_A": 0.002697857329621911,
+      "force_converged": true,
+      "energy_eV": -6233.259626855424,
+      "frequencies_cm-1": [
+        -1649.5309657654407,
+        78.28817158136951,
+        323.38262772902226,
+        427.3502188251786,
+        591.0608125957168,
+        751.7799510272488,
+        879.0541956904113,
+        1023.2989982353354,
+        1197.5721413802282,
+        1307.5119664061087,
+        1340.199470522894,
+        1469.2938269470021,
+        1595.971762042632,
+        1748.6995257205297,
+        2012.0611921706754,
+        2718.1998174604355,
+        3075.1936917696094,
+        3165.9955379849434
+      ],
+      "imaginary_count": 1,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6
+    },
+    "barriers_eV": [
+      2.4468593127876375,
+      3.4025744915688847
+    ],
+    "reference_assisted": true,
+    "reference_product_geometry_used": false,
+    "reference_TS_and_negative_mode_used": true
+  }
+]

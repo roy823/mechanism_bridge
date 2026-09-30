@@ -122,7 +122,7 @@ def inspect_point(atoms, protocol):
     return analysis, modes
 
 
-def search_connection(seed, direction, calculator, outdir, protocol):
+def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
     outdir.mkdir(parents=True, exist_ok=False)
     started, initial_calls = time.time(), calculator.calls
     result = dict(status='started', evidence='MLIP_two_sided_mode_displacement_descent',
@@ -164,7 +164,7 @@ def search_connection(seed, direction, calculator, outdir, protocol):
             analysis, _ = inspect_point(end, protocol)
             analysis['positions_A'] = end.positions.tolist()
             analysis['barrier_eV'] = ts['energy_eV'] - analysis['energy_eV']
-            mol = geometry_mol(end.numbers, end.positions, 0)
+            mol = geometry_mol(end.numbers, end.positions, charge)
             analysis['graph_smiles'] = graph_smiles(mol)
             result['endpoints'].append(analysis)
             write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
@@ -195,8 +195,13 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
     outdir.mkdir(parents=True, exist_ok=False)
     calculator = CountedCalculator(backend, protocol.total_evaluations)
     numbers = start['atomic_numbers']
-    if start['charge'] != 0 or start['multiplicity'] != 1 or not set(numbers) <= {1,6,7,8}:
-        raise ValueError('Pilot requires neutral closed-shell CHNO')
+    validator=getattr(backend,'validate_system',None)
+    if validator is not None:
+        validator(numbers,start['charge'],start['multiplicity'])
+    if start['multiplicity'] != 1:
+        raise ValueError('Current Lewis-graph registry supports closed-shell singlet exploration only')
+    if strategy!='geometry' and (start['charge']!=0 or not set(numbers)<={1,6,7,8}):
+        raise ValueError('Current symbolic proposal layer only supports neutral CHNO; use geometry or add reviewed actions')
     nodes, edges, attempts, mols = [], [], [], []
     report = dict(start=start, strategy=strategy, protocol=asdict(protocol), nodes=nodes,
                   edges=edges, attempts=attempts, evidence='MLIP_descents_not_DFT_IRC',
@@ -211,7 +216,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         atomic_json(outdir/'network.json', report)
     def register(end, depth):
         x = np.asarray(end['positions_A'])
-        m = geometry_mol(numbers, x, 0)
+        m = geometry_mol(numbers, x, start['charge'])
         for node, oldmol in zip(nodes, mols):
             if (abs(node['energy_eV']-end['energy_eV']) <= protocol.energy_tolerance_eV and
                 molecular_rmsd(oldmol, np.array(node['positions_A']), m, x) < protocol.geometry_tolerance_A):
@@ -246,7 +251,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
             report['status'] = 'initial_minimum_unresolved'
             return report
         root_info.update(positions_A=root.positions.tolist(), graph_smiles=graph_smiles(
-            geometry_mol(numbers, root.positions, 0)))
+            geometry_mol(numbers, root.positions, start['charge'])))
         register(root_info, 0)
         expanded = set()
         visits = {}
@@ -318,7 +323,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 calculator.attempt_limit = min(calculator.total_limit,
                     calculator.calls + protocol.evaluations_per_attempt)
                 dest = outdir/f'attempt_{aid:03d}'
-                result = search_connection(trial, direction, calculator, dest, protocol)
+                result = search_connection(trial,direction,calculator,dest,protocol,start['charge'])
                 attempt = dict(id=aid, source_node=node_id, proposal=meta,
                                status=result['status'], evaluations=result['evaluations'],
                                seconds=result['seconds'],

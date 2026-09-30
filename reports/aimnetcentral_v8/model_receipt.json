@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "family": "aimnet2-2025",
+      "url": "https://storage.googleapis.com/aimnetcentral/aimnet2v2/AIMNet2/aimnet2_2025_b973c_d3_0.pt",
+      "file": "models/aimnetcentral/aimnet2_2025_b973c_d3_0.pt",
+      "bytes": 8839102,
+      "sha256": "043ed5418a104e31f79462f8e5ebeca64a2d24422174f5d29f894d32271981b5"
+    },
+    {
+      "family": "aimnet2-rxn",
+      "url": "https://storage.googleapis.com/aimnetcentral/aimnet2v2/AIMNet2rxn/aimnet2_rxn_0.pt",
+      "file": "models/aimnetcentral/aimnet2_rxn_0.pt",
+      "bytes": 8838524,
+      "sha256": "ce8bc2a4cc6fcb5ebaa1bc8897fcd75104e5a00fe86e9d5fc6a020d572174894"
+    },
+    {
+      "family": "aimnet2",
+      "url": "https://storage.googleapis.com/aimnetcentral/aimnet2v2/AIMNet2/aimnet2_wb97m_d3_0.pt",
+      "file": "models/aimnetcentral/aimnet2_wb97m_d3_0.pt",
+      "bytes": 8836941,
+      "sha256": "f0f7c054539ad3261bd36f9b11c56d12f87cb723e25bea7521755bbd3ec24e28"
+    },
+    {
+      "family": "aimnet2-nse",
+      "url": "https://storage.googleapis.com/aimnetcentral/aimnet2v2/AIMNet2NSE/aimnet2nse_wb97m_0.pt",
+      "file": "models/aimnetcentral/aimnet2nse_wb97m_0.pt",
+      "bytes": 8962701,
+      "sha256": "b98b3449b2a3765de6a188edff9344a38cc72df75f9d9bf68f4b898a253c5864"
+    }
+  ],
+  "registry": "aimnet 0.2.0 bundled model_registry.yaml",
+  "registry_sha256": "f0e9d4073793a0ce4793851abb266ef514b9f0e75befc34dadda7ae49115f9ce"
+}
