@@ -1,5 +1,9 @@
 # Mechanism Bridge
 
+**统一结果入口：[研究总览 HTML](reports/index.html)**。查看 [全部物理事件与真实三维轨迹](reports/events.html)、[benchmark 方向、文献差距与同题案例](reports/benchmark.html)。重建页面运行 `python scripts/exploration/build_report_site.py`；说明见 [统一报告与 benchmark](docs/BENCHMARK_AND_REPORTS_zh.md)。
+
+整站离线文件与本轮计算已打包：[证据包与恢复说明](reports/repository_snapshots/report_portal_v6_README.md)。
+
 双分子探索 v5：[方法与边界](docs/BIMOLECULAR_V5_zh.md)、[实际结果](reports/bimolecular_v5/RESULTS_zh.md)、[分子与三维路径](reports/bimolecular_v5/index.html)。扩展至 ReactionAtlas 相关 CHO 反应物组合和 Coley 数据中的双分子环加成；区分真实跨分子成键、旁观物重排与未连通的相遇构型。
 
 下一阶段设计：[符号动作、GPA 式事件网络与 MCTS](docs/MCTS_REACTION_SEARCH_DESIGN_zh.md)。该文档是待实现方案，包含搜索定义、能量评分、动力学产品判定和验证计划。

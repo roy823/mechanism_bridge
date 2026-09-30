@@ -1,0 +1,26 @@
+{% extends 'page.html' %}{% block body %}<div class="eyebrow">Benchmark & literature alignment</div><h1>现在应该比较什么？</h1><p class="lead">当前目标是检验符号信息能否提高“反应物 → 经过验证的物理事件”的搜索效率，并最终建立可学习的双向配对。产品预测准确率、TS 成功率和网络覆盖率分别回答不同问题。</p>
+<div class="notice"><b>本页没有原模型排行榜。</b>本机尚未运行 FlowER 或 ReactionAtlas 的完整原始模型。文献案例测试使用本项目的 AIMNet2-rxn 与搜索流程；人工动作规则不标成 FlowER 预测。</div>
+<section class="panel"><h2>三项工作的定位与差距</h2><div class="table-wrap"><table class="matrix"><thead><tr><th>维度</th><th>本项目当前状态</th><th>FlowER</th><th>ReactionAtlas</th></tr></thead><tbody>
+<tr><td>核心输出</td><td>符号提议对应的三维 TS 与实际端点</td><td>BE 矩阵变化、图步骤与多步机理序列</td><td>三维 TS、极小值与扩展反应网络</td></tr>
+<tr><td>提议模型</td><td>公开局部模板＋人为电子动作规则＋几何拟合；未训练神经提议模型</td><td>学习的电子重分布生成模型</td><td>MoreRed 三维提议＋MD/P-RFO 探索</td></tr>
+<tr><td>物理证据</td><td>逐事件 MLIP 力/曲率/双侧下降；少量完整 DFT/IRC</td><td>主要为符号与产品评测，可接下游量化计算；图步骤不自动等于物理基元事件</td><td>大规模 MLFF 搜索及独立 DFT 评估；生成筛选并非每条都采用完整 DFT/IRC</td></tr>
+<tr><td>作用范围</td><td>中性闭壳层 CHNO；小分子与有限双分子相遇</td><td>更广的合成反应、试剂、离子与符号空间</td><td>小糖网络、离子/缓冲物种及多种反应计量关系</td></tr>
+<tr><td>规模与泛化</td><td>小规模工程验证；未做独立家族留出泛化评测</td><td>百万级图步骤训练与系统预测评测</td><td>万级物种与反应网络探索</td></tr>
+<tr><td>持续扩展</td><td>固定库存内探索；相遇盆地尚需桥接；模型权重未更新</td><td>符号机理搜索；不是三维反应网络引擎</td><td>新物种回到探索与动力学采样闭环</td></tr>
+<tr><td>逆向机理学习</td><td>有轨道解释原型，但独立箭头金标准为零</td><td>并非已验证 TS/路径到箭头的逆向模型</td><td>并非电子箭头配对与双向表示学习数据集</td></tr>
+</tbody></table></div><p class="footnote">来源：<a href="https://www.nature.com/articles/s41586-025-09426-9">FlowER 正式论文</a>、<a href="https://github.com/FongMunHong/FlowER">官方代码及版本说明</a>、<a href="https://arxiv.org/html/2606.30778v1">ReactionAtlas v1 论文与方法</a>。正式论文、预印本和后续仓库版本不能混为同一 benchmark。</p></section>
+<section class="panel"><h2>本项目的 benchmark 分层</h2><div class="table-wrap"><table><thead><tr><th>问题</th><th>应该统计</th><th>当前阶段</th></tr></thead><tbody>
+<tr><td>符号提议覆盖</td><td>适用动作数、守恒/价态通过率；不支持的输入计入审计</td><td>已有模板与规则覆盖检查</td></tr>
+<tr><td>符号 → 物理事件</td><td>同输入、同预算下的目标端点命中、不同有效事件数、DFT 保留率</td><td>本轮重点；几何/净变键/完整箭头对照</td></tr>
+<tr><td>搜索效率</td><td>包含失败的几何评估、首个有效事件成本；墙钟标明 CPU/GPU</td><td>已有；不可直接与论文只统计成功任务的 GPU 时间比较</td></tr>
+<tr><td>网络持续增长</td><td>真实盆地连通路径、新物种续探；与物种层图分开</td><td>MLIP 小规模证据；完整 DFT 多步链未完成</td></tr>
+<tr><td>物理事件 → 符号机理</td><td>独立箭头标注、等价箭头集合、电子结构一致性</td><td>金标准不足，暂不报告准确率</td></tr>
+<tr><td>物理反馈学习</td><td>冻结测试集上的前后提升、DFT 成本与未见家族表现</td><td>保存反馈，尚未完成模型更新与前瞻评测</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>作者案例的来源与适用性</h2><p>“论文示例”“被纳入公开测试集”“逐例预测成功”和“DFT/IRC 验证”是不同证据。下表逐条说明，不把简化体系称为完整复现。</p><div class="table-wrap"><table><thead><tr><th>案例</th><th>作者依据</th><th>本轮处理</th><th>关键限制</th></tr></thead><tbody>
+{% for c in cases.cases %}<tr><td><b>{{ case_names[c.id] }}</b><br><code>{{ c.reactant }}</code></td><td><a href="{{ c.source }}">{{ c.location }}</a><br>{{ source_labels[c.evidence] }}</td><td>{{ '进入相同预算测试' if c.admission=='accepted' else '准备阶段受阻，保留记录' }}</td><td>{{ c.admission_reason if c.admission!='accepted' else '目标图只用于事后评分；无参考 TS / 产物几何输入' }}</td></tr>{% endfor %}
+<tr><td>FlowER 十步合成展示</td><td>官方 beam.txt；论文 Fig. 3 / 扩展数据</td><td>当前未执行</td><td>完整体系含 Br、F、Cl 和多组分，超出本机势能范围。保留原反应，未删去原子。</td></tr>
+</tbody></table></div><details><summary>查看完整的 FlowER 展示反应</summary><pre>{{ cases.FlowER_original_flagship.record }}</pre></details>
+<div class="notice">环氧乙烷—氨是 FlowER 的表示示例，不是作者对该单例做过 DFT 的证明。筛选到的原始测试记录没有公开的逐例预测成功信息。此次环氧开环动作属于人为规则扩展，不能声称零样本学习。</div></section>
+<section class="panel"><h2>本轮实际测试</h2>{% if benchmark %}<div class="table-wrap"><table><thead><tr><th>案例</th><th>策略</th><th>目标命中 / 计划取向</th><th>尝试</th><th>几何评估</th></tr></thead><tbody>{% for r in benchmark.aggregates %}<tr><td>{{ case_names[r.case] }}</td><td>{{ r.strategy_label }}</td><td>{{ r.hits }} / {{ r.runs }}</td><td>{{ r.attempts }}</td><td>{{ r.evaluations }}</td></tr>{% endfor %}</tbody></table></div><p>新结果均为 MLIP 证据；本轮没有新跑完整 DFT。历史上甲醛二聚的 DFT 复核另列在事件库。</p>{% else %}<p>固定配置已记录，实验正在运行，完成后生成结果；此处没有预填成功率。</p>{% endif %}<div class="links"><a href="literature_benchmark_v6/index.html">全部运行与失败记录 →</a><a href="events.html?stage=literature_benchmark_v6">对应分子与路径 →</a></div></section>
+<section class="panel"><h2>下一步的优先级</h2><ol><li><b>先补可比性与标注。</b>冻结输入库存、方法、预算和目标定义，保留支持范围之外的案例。</li><li><b>改进提议与几何。</b>Coley 3217 的参考 TS 对照已表明存在可保留的环化通路，自主 seed 尚未命中。</li><li><b>处理相遇盆地与多组分。</b>不同相遇极小值可以分别探索；物种层汇总不能伪造三维盆地连接。</li><li><b>建立独立电子解释标签后再训练双向模型。</b>物理通过不等于唯一箭头正确。</li></ol><p class="footnote">同为“甲醛二聚→羟基乙醛”，我们的高能 TS 与 ReactionAtlas 报告的另一条通路也不能视为相同结果。量化方法、参照态和具体路径需同时匹配。</p></section>{% endblock %}

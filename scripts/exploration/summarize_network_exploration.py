@@ -1,7 +1,6 @@
 """Summarize actual search artifacts, keeping conformers and chemical events apart."""
 import argparse
 from collections import Counter
-import html
 import json
 from pathlib import Path
 import sys
@@ -108,7 +107,6 @@ def main():
     axes[1].bar(labels,[r['evaluations'] for r in aggregate])
     axes[1].set_title('Actual energy/force evaluations')
     fig.savefig(a.run/'comparison.png',dpi=160); plt.close(fig)
-    sections=[]
     for k,(path,n) in enumerate(networks):
         g=nx.MultiGraph()
         g.add_nodes_from(v['id'] for v in n['nodes'])
@@ -119,8 +117,6 @@ def main():
         ax.set_title(f"{n['start']['id']} / {n['strategy']} (MLIP)");ax.axis('off')
         filename=f'network_{k}.svg'
         fig.savefig(a.run/filename);plt.close(fig)
-        sections.append(f'<section><h2>{html.escape(n["start"]["id"])} — {n["strategy"]}</h2><img src="{filename}"><details><summary>Observed edges and barriers</summary><pre>{html.escape(json.dumps(n["edges"],indent=2))}</pre></details></section>')
-    (a.run/'index.html').write_text('<!doctype html><meta charset="utf-8"><title>Reaction network pilot</title><style>body{font:16px system-ui;max-width:1050px;margin:30px auto;background:#f5f7fa;color:#172333}section{background:white;padding:20px;margin:20px 0}img{max-width:100%}pre{white-space:pre-wrap}</style><h1>Symbol-guided reaction network exploration</h1><p><a href="molecules/index.html">打开分子结构与三维反应过程视图</a></p><p>AIMNet2-rxn + Dimer + two-sided mode-displacement descent. Not DFT IRC.</p><img src="comparison.png">'+''.join(sections),encoding='utf-8')
     print(json.dumps(result,indent=2))
 
 

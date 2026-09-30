@@ -79,7 +79,7 @@ def replay(mol, arrows):
 
 
 class ArrowLibrary:
-    policy = 'published_local_arrows_plus_explicit_bimolecular_grammar_v5'
+    policy = 'published_local_arrows_plus_explicit_reactant_grammar_v6'
 
     def __init__(self, path):
         self.templates = []

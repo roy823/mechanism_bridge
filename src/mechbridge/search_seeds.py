@@ -31,6 +31,17 @@ def angle_targets(numbers, edits, sample):
     broken = [e for e in edits if e['after'] == 0]
     formed = [e for e in edits if e['before'] == 0]
     for old in broken:
+        if old['before']!=1:continue
+        for new in formed:
+            shared=set(old['atoms']) & set(new['atoms'])
+            if len(shared)!=1:continue
+            center=next(iter(shared))
+            leave=next(i for i in old['atoms'] if i!=center)
+            donor=next(i for i in new['atoms'] if i!=center)
+            if numbers[center]==6 and numbers[leave] in (7,8) and numbers[donor] in (7,8):
+                targets.append(dict(atoms=[donor,center,leave],degrees=(150.,165.,180.)[sample%3],
+                                    kind='nucleophilic_substitution_approach'))
+    for old in broken:
         for new in formed:
             shared = set(old['atoms']) & set(new['atoms'])
             if len(shared) == 1:

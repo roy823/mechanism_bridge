@@ -1,7 +1,6 @@
 """Audit actual intermolecular events and compare held-out reference products."""
 import argparse
 from collections import Counter
-import html
 import json
 from pathlib import Path
 import sys
@@ -197,20 +196,6 @@ def main():
         '没有神经模型更新、浓度动力学或产率预测，也没有声称穷举全部符号空间。','',
         '每次运行仍固定原子库存；本轮验证两个分子之间的探索，没有动态加入第三个分子，也不把断裂片段自动拼接成已验证网络边。']
     (root/'RESULTS_zh.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
-    rows_html=''.join('<tr>'+''.join('<td>'+html.escape(str(r[k]))+'</td>' for k in
-        ['start','strategy','status','attempts','heavy_events','input_pair_heavy_events','root_connected_heavy_events'])+'</tr>' for r in rows)
-    viewers=''.join(f'<li><a href="{html.escape(str(p.relative_to(root)).replace(chr(92),"/"))}">{html.escape(p.parent.parent.name)}</a></li>'
-                   for p in sorted((root/'search').glob('*/molecules/index.html')))
-    (root/'index.html').write_text('<!doctype html><html lang="zh"><meta charset="utf-8"><title>双分子探索 v5</title>'
-        '<style>body{font:16px system-ui;max-width:1400px;margin:30px auto;padding:20px;background:#f4f7fa;color:#18283b}'
-        'table{border-collapse:collapse;background:white}td,th{padding:8px;border:1px solid #ddd}h1{color:#174875}</style>'
-        '<h1>双分子反应探索 v5</h1><p>真实分子坐标 · AIMNet2-rxn / Dimer · 单独标记 DFT 证据</p>'
-        '<p>跨分子重原子成键与旁观分子重排分开统计。符号规则仅提供候选，最终端点由势能搜索决定。</p>'
-        '<p><a href="RESULTS_zh.md">完整报告</a> · <a href="summary.json">结构化证据</a></p>'
-        '<img src="bimolecular_overview.png" style="max-width:100%" alt="双分子成键命中情况">'
-        '<h2>分子式、结构与真实三维轨迹</h2><ul>'+viewers+'</ul><h2>主实验</h2>'
-        '<table><tr><th>起点</th><th>策略</th><th>状态</th><th>尝试</th><th>跨分子重原子事件</th><th>原始反应物匹配</th><th>根连通</th></tr>'
-        +rows_html+'</table><h2>独立 DFT</h2><pre>'+html.escape(json.dumps(qc,ensure_ascii=False,indent=2))+'</pre></html>',encoding='utf-8')
     print(json.dumps(dict(attempts=summary['attempts'],totals=totals,DFT_selection=selected),indent=2))
 
 

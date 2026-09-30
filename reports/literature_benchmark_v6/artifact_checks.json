@@ -1,0 +1,32 @@
+[
+  {
+    "run": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o0_s17",
+    "passed": true,
+    "checks": 49
+  },
+  {
+    "run": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o1_s17",
+    "passed": true,
+    "checks": 37
+  },
+  {
+    "run": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o0_s17",
+    "passed": true,
+    "checks": 39
+  },
+  {
+    "run": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o1_s17",
+    "passed": true,
+    "checks": 47
+  },
+  {
+    "run": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o0_s17",
+    "passed": true,
+    "checks": 33
+  },
+  {
+    "run": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o1_s17",
+    "passed": true,
+    "checks": 33
+  }
+]

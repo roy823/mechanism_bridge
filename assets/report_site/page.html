@@ -1,0 +1,3 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ title }} · Mechanism Bridge</title><link rel="stylesheet" href="{{ root }}_site/site.css"></head><body>
+<header class="topbar"><a class="brand" href="{{ root }}index.html">Mechanism Bridge<small>反应事件 · 证据 · 基准</small></a><nav class="nav" aria-label="全站导航">{% for key,label,href in navigation %}<a {% if section==key %}class="active" aria-current="page"{% endif %} href="{{ root }}{{ href }}">{{ label }}</a>{% endfor %}</nav></header>
+<main class="portal">{% block body %}{% endblock %}</main><footer>来源均可追溯到本地计算记录。MLIP 下降、DFT/IRC、符号假设分开标注；不同实验协议不合并为统一成功率。页面可离线打开。</footer>{% block scripts %}{% endblock %}</body></html>

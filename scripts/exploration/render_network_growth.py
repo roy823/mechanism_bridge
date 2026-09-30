@@ -1,6 +1,5 @@
 """Render actual growth counts and link molecule-coordinate viewers."""
 import argparse
-import html
 import json
 from pathlib import Path
 import numpy as np
@@ -33,28 +32,7 @@ def main():
     fig.suptitle('八体系反应网络探索：实际 MLIP 候选',fontsize=17)
     fig.supxlabel('每体系一个随机种子；基于实际极小值连接；不等同于 DFT 认证或实验产物预测',fontsize=10)
     fig.savefig(root/'growth_overview.png',dpi=180);fig.savefig(root/'growth_overview.pdf');plt.close(fig)
-    audit_path=root/'DFT_chain_audit.json'
-    audit=json.loads(audit_path.read_text()) if audit_path.exists() else None
-    verdict=('独立 DFT 复核尚在进行' if audit is None else
-        '原两步链通过独立 DFT 复核' if audit['original_MLIP_chain_preserved'] else
-        '原 MLIP 两步链未获完整 DFT 认证，逐边结果见报告')
-    rows=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in [names[r['start']],labels[r['strategy']],
-        r['attempts'],len(r['root_species']),len(r['chemical_pairs']),r['longest_demonstrated_chemical_path'],r['evaluations']])+'</tr>'
-        for r in summary['rows'])
-    page=f'''<!doctype html><meta charset="utf-8"><title>反应网络增长 v4</title>
-<style>body{{font:16px/1.7 system-ui;max-width:1100px;margin:35px auto;padding:0 20px;background:#f6f8fc;color:#193149}}
-table{{border-collapse:collapse;width:100%;background:white}}td,th{{padding:8px;border-bottom:1px solid #dbe3ef;text-align:left}}
-img{{width:100%}}.status{{padding:16px;background:#fff4d8;border-radius:8px}}a{{color:#087b93}}</style>
-<h1>符号与几何引导的反应网络增长</h1>
-<p>{summary['attempts']} 次尝试；{summary['multistep_runs']} 组有多步 MLIP 候选；{summary['runs_expanding_new_species']} 组从新物种继续探索。未更新模型权重。</p>
-<p class="status">{verdict}</p><img src="growth_overview.png">
-<h2>真实分子结构与路径</h2><ul>
-<li><a href="search/propanal_s17/molecules/index.html">丙醛：符号提议与新中间体的几何续探</a></li>
-<li><a href="search/cyclobutanone_s17/molecules/index.html">环丁酮：多物种网络与真实 TS 构型</a></li></ul>
-<h2>逐次统计汇总</h2><table><tr><th>体系</th><th>方法</th><th>尝试</th><th>物种</th><th>化学图对</th><th>连续步</th><th>几何评估</th></tr>{rows}</table>
-<p><a href="RESULTS_zh.md">完整结果、效率检查和限制</a> · <a href="summary.json">统计 JSON</a> · <a href="growth_overview.pdf">图表 PDF</a></p>'''
-    (root/'index.html').write_text(page,encoding='utf-8')
-    print(root/'index.html')
+
 
 
 if __name__=='__main__':main()

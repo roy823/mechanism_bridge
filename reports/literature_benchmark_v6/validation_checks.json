@@ -1,0 +1,34 @@
+{
+  "windows_tests": {
+    "passed": 49,
+    "skipped": 1
+  },
+  "wsl_tests": {
+    "passed": 50
+  },
+  "artifact_checks": 238,
+  "artifact_checks_passed": true,
+  "browser": {
+    "passed": true,
+    "html_pages": 196,
+    "local_links_checked": 2157,
+    "missing_links": [],
+    "source_hashes_unchanged": true,
+    "browser": "Installed Edge, headless; isolated Playwright environment",
+    "built_in_browser": "unavailable: runtime sandbox metadata error before browser setup",
+    "ui_checks": [
+      "overview_to_benchmark_navigation",
+      "DFT_filter_actual_coordinates_and_WebGL",
+      "TS_jump_and_actual_frame_playback",
+      "MLIP_coordinates_keep_MLIP_label_with_linked_DFT",
+      "empty_filter_state",
+      "legacy_molecular_page_uses_shared_navigation_and_evidence",
+      "mobile_layout_no_horizontal_overflow"
+    ],
+    "page_errors": []
+  },
+  "attempts": 138,
+  "evaluations": 162000,
+  "campaign_seconds": 697.7495498657227,
+  "pending_computations": []
+}

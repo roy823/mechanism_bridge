@@ -1,0 +1,14 @@
+{
+  "member": "data/flower_dataset/test.txt",
+  "nonempty_records": 162002,
+  "candidates": [
+    {
+      "line": 161152,
+      "atoms": 16,
+      "reactant": "[C-]#N.c1ccc[cH+]cc1",
+      "product": "N#CC1C=CC=CC=C1",
+      "record": "[C:3]1([H:10])=[C:4]([H:11])[C:5]([H:12])=[C:6]([H:13])[C:7]([H:14])=[C:8]([H:15])[C+:9]1[H:16].[N:1]#[C-:2]>>[N:1]#[C:2][C:3]1([H:10])[C:4]([H:11])=[C:5]([H:12])[C:6]([H:13])=[C:7]([H:14])[C:8]([H:15])=[C:9]1[H:16]|PC"
+    }
+  ],
+  "individual_FlowER_success_known": false
+}

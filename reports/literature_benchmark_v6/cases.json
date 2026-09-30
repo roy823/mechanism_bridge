@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "id": "flower_epoxide_ammonia",
+      "reactant": "C1CO1.N",
+      "targets": [
+        "[NH3+]CC[O-]",
+        "NCCO"
+      ],
+      "source": "https://arxiv.org/pdf/2502.12979",
+      "location": "Fig. 1b, PDF page 4",
+      "evidence": "paper_illustration_not_individually_DFT_validated",
+      "reference_model_success_known": false,
+      "symbolic_proposals": 8,
+      "atoms": 11,
+      "admission": "accepted"
+    },
+    {
+      "id": "atlas_glycolaldehyde_hydration",
+      "reactant": "O=CCO.O",
+      "targets": [
+        "OCC(O)O"
+      ],
+      "source": "https://arxiv.org/html/2606.30778v1",
+      "location": "S2.3.4, glycolaldehyde gem-diol discussion",
+      "evidence": "paper_reports_gas_phase_DFT_barrier_for_same_reaction",
+      "reference_model_success_known": true,
+      "symbolic_proposals": 8,
+      "atoms": 11,
+      "admission": "accepted"
+    },
+    {
+      "id": "atlas_formaldehyde_dimer",
+      "reactant": "C=O.C=O",
+      "targets": [
+        "O=CCO"
+      ],
+      "source": "https://arxiv.org/html/2606.30778v1",
+      "location": "S2.3.4, formose initiation",
+      "evidence": "paper_reports_alternative_TS_for_same_endpoint_pair",
+      "reference_model_success_known": true,
+      "symbolic_proposals": 4,
+      "atoms": 8,
+      "admission": "accepted"
+    },
+    {
+      "id": "flower_test_tropylium_cyanide",
+      "reactant": "[C-]#N.c1ccc[cH+]cc1",
+      "targets": [
+        "N#CC1C=CC=CC=C1"
+      ],
+      "source": "https://doi.org/10.6084/m9.figshare.28359407.v3",
+      "location": "flower_dataset/test.txt line 161152",
+      "evidence": "exact_public_test_record_individual_prediction_unavailable",
+      "reference_model_success_known": false,
+      "record_sha256": "62f7bab468c8763c60419bac6541da630fc03f8eab44b4d55ecc3d4c06656e09",
+      "symbolic_proposals": 0,
+      "atoms": 16,
+      "admission": "blocked_geometry_perception",
+      "admission_reason": "Open-shell Lewis graph outside this pilot"
+    }
+  ],
+  "FlowER_original_flagship": {
+    "record": "O.Cl.[OH3+].CC(=O)CC(=O)C(F)(F)F.NNc1cccc(Br)c1>>Cc1cc(n(n1)-c1cccc(c1)Br)C(F)(F)F|Cc1cc(nn1-c1cc(ccc1)Br)C(F)(F)F",
+    "executed": false,
+    "reason": "Contains Br, F, Cl and more than two components; outside current MLIP domain; no atom deletion"
+  },
+  "reference_models_executed": false,
+  "model": "AIMNet2-rxn ensemble_0",
+  "reference_targets_used_only_for_post_search_scoring": true
+}

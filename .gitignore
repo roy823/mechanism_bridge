@@ -1,6 +1,7 @@
 .venv/
 .venv-qc/
 .venv-explore/
+.venv-ui/
 models/
 .cache/
 tools/aria2/
@@ -14,3 +15,4 @@ data/processed/
 work/
 .history/
 reports/
+.venv-ui/

@@ -73,7 +73,7 @@ class CountedCalculator(Calculator):
 
 @dataclass(frozen=True)
 class SearchProtocol:
-    seed_policy: str = 'symbolic_actions_and_rigid_bimolecular_encounters_v5'
+    seed_policy: str = 'reactant_graph_and_rigid_encounter_seeds_v6'
     max_attempts: int = 12
     seeds_per_node: int = 1
     geometry_seeds_per_node: int = 9

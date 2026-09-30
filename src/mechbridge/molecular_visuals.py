@@ -9,7 +9,6 @@ import base64
 import hashlib
 import io
 import json
-import shutil
 import re
 import numpy as np
 from ase import Atoms
@@ -79,12 +78,14 @@ def display_rotation(ts):
     return rotation
 
 
-def load_events(run):
+def load_events(run, network_paths=None):
     events=[]
     networks=[]
-    for path in sorted(run.glob('*/*/network.json')):
+    paths=run.glob('*/*/network.json') if network_paths is None else network_paths
+    for path in sorted(paths):
         n=json.loads(path.read_text(encoding='utf-8'))
-        if n['status']!='completed': raise ValueError('Only completed runs can be visualized')
+        if n['status']=='running': raise ValueError('Only finished runs can be visualized')
+        if n['status']!='completed':continue
         numbers=n['start']['atomic_numbers']
         symbols=Atoms(numbers=numbers).get_chemical_symbols()
         network=dict(start=n['start']['id'],strategy=n['strategy'],nodes=[],edges=[],
@@ -137,7 +138,10 @@ def load_events(run):
                 imaginary_frequency=data['ts']['frequencies_cm-1'][0],
                 matched_proposal=matched,predicted_graph=proposal,
                 root_connected=set(edge['nodes'])<=set(n['root_component_nodes']),
-                artifact=folder.relative_to(run).as_posix(),is_IRC=False,DFT_verified=False)
+                artifact=folder.relative_to(run).as_posix(),is_IRC=False,DFT_verified=False,
+                evidence='MLIP_DESCENT',method_label='AIMNet2-rxn ensemble_0',
+                path_label='沿负模位移后的双侧 BFGS 下降，非 IRC',related_checks=[],
+                source_result=(folder/'result.json').relative_to(ROOT).as_posix())
             events.append(event)
             network['edges'].append(dict(id=eid,nodes=edge['nodes'],barriers=edge['barriers_eV']))
         networks.append(network)
@@ -227,6 +231,7 @@ def static_figure(event,out):
 
 
 def render_visuals(run):
+    from .report_layout import molecular_document,prepare_shared_assets,relative_link,attach_checks
     run=Path(run).resolve()
     out=run/'molecules';out.mkdir(exist_ok=True)
     events,networks=load_events(run)
@@ -243,26 +248,19 @@ def render_visuals(run):
         for side in ['left','right']:
             m=geometry_mol(event['numbers'],event[side]['positions'],0)
             (out/(eid+'_'+side+'.mol')).write_text(Chem.MolToMolBlock(m),encoding='utf-8')
+        event['downloads']=dict(path=eid+'_path.xyz',ts=eid+'_TS.xyz',left=eid+'_left.mol',right=eid+'_right.mol')
     selected=[];seen=set()
     for e in events:
         pair=tuple(sorted([e['left']['smiles'],e['right']['smiles']]))
         if pair[0] != pair[1] and pair not in seen:
             seen.add(pair);selected.append(e)
     figures=[static_figure(e,out) for e in selected]
-    assets=ROOT/'assets/molecular_viewer'
-    shutil.copy2(assets/'3Dmol-min.js',out/'3Dmol-min.js')
-    shutil.copy2(assets/'LICENSE',out/'3Dmol-LICENSE.txt')
-    payload=dict(events=events,networks=networks,figures=figures)
-    template=(assets/'viewer.html').read_text(encoding='utf-8')
-    rendered=template.replace('__MOLECULAR_DATA__',json.dumps(payload,ensure_ascii=False).replace('</','<\\/'))
+    prepare_shared_assets();attach_checks(events,out)
+    stage=run.relative_to(ROOT/'reports').parts[0]
+    payload=dict(events=events,networks=networks,figures=figures,
+                 report_url=relative_link(ROOT/'reports'/stage/'index.html',out))
+    rendered=molecular_document(payload,out)
     (out/'index.html').write_text(rendered,encoding='utf-8')
-    overview=run/'index.html'
-    if overview.exists():
-        source=overview.read_text(encoding='utf-8')
-        if 'molecules/index.html' not in source:
-            source=source.replace('<h1>Symbol-guided reaction network exploration</h1>',
-                '<h1>Symbol-guided reaction network exploration</h1><p><a href="molecules/index.html">分子结构与真实三维反应过程</a></p>')
-            overview.write_text(source,encoding='utf-8')
     provenance=dict(event_count=len(events),figures=figures,
         positions='Actual saved unmodified coordinates; display applies one common rigid rotation per event',
         energy='Saved trajectory energies and saved TS result; no new model calls',

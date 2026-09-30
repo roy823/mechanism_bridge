@@ -26,6 +26,7 @@ Observed reactant + public symbolic proposals
 | DFT verification | verification | TS refinement, strict Sella IRC, endpoints; optional separate orbital annotation |
 | Electronic interpretation | electronic, event_graph | IAO/IBO and candidate arrows; no independent-truth claim |
 | Visualization | molecular_visuals | Saved coordinates/energies, 2D depictions, offline WebGL and PNG/PDF |
+| Research reports | report_catalog, report_layout, report_site | One offline HTML design; primary experiment manifests, exact evidence labels, separate MLIP/DFT coordinates, linked source records |
 | Historical support | pairing, training_data, kinetics | Source matching, reactive training samples and explicit free-energy kinetics |
 
 ## Entrypoints
@@ -38,6 +39,8 @@ Observed reactant + public symbolic proposals
 - `mechbridge` CLI: ingestion, pairing/splitting, XYZ export, IBO and local downhill checks.
 
 Scripts order experiments; reusable scientific functions live in `src/mechbridge`. Former script paths have no compatibility aliases.
+
+`scripts/exploration/build_report_site.py` owns the HTML entrypoints. Numerical summarizers write JSON/text/figures only. The shared Jinja templates live in `assets/report_site`; molecular views use one shared viewer. `reports/index.html` is the canonical user entry, and the existing stage and molecular pages are regenerated with the same navigation. Tests of browser behavior use a separate `.venv-ui` and installed Edge, without altering the numerical environments.
 
 ## Evidence and reproducibility
 

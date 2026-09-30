@@ -2,7 +2,6 @@
 import argparse
 from collections import Counter,defaultdict
 import json
-import html
 from pathlib import Path
 import sys
 import numpy as np
@@ -197,15 +196,6 @@ def summarize(root):
         ax.set(title=cohort+' (pilot, descriptive only)',xlabel='Energy/force evaluation budget',ylabel='Mean root-connected candidate graph pairs')
         ax.grid(alpha=.2);ax.legend(fontsize=8)
     fig.savefig(root/'budget_comparison.png',dpi=180);fig.savefig(root/'budget_comparison.pdf');plt.close(fig)
-    headers=['队列','方法','运行数','有候选连接的运行','势评估次数']
-    table='<table><tr>'+''.join('<th>'+h+'</th>' for h in headers)+'</tr>'
-    for r in aggregates:
-        table+='<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in
-            [r['cohort'],r['strategy'],r['runs'],r['runs_with_chemical_connection'],r['evaluations']])+'</tr>'
-    table+='</table>'
-    qc_html=''.join('<li>'+html.escape(f"{r['case']}: {r['status']}；端点对保留={r.get('MLIP_endpoint_pair_preserved')}；实际端点="+' ↔ '.join(r.get('observed_endpoints',[])))+'</li>' for r in qc)
-    page='<!doctype html><meta charset="utf-8"><title>验证 v2</title><style>body{font:16px/1.7 system-ui;max-width:1100px;margin:40px auto;padding:0 20px;color:#183149;background:#f7f9fc}table{border-collapse:collapse;width:100%;background:white}td,th{padding:10px;border-bottom:1px solid #dae4ee;text-align:left}img{width:100%}a{color:#087f95}</style><h1>符号引导反应探索 · 验证 v2</h1><p>统一位移幅度、增加反应中心控制、重复随机种子，并独立复核代表性 DFT/IRC 连接。</p>'+table+'<img src="budget_comparison.png"><h2>独立量化复核</h2><ul>'+qc_html+'</ul><p><a href="RESULTS_zh.md">完整结果与限制</a> · <a href="summary.json">原始统计 JSON</a> · <a href="DFT_events.jsonl">DFT 事件记录</a></p><h2>分子结构与真实构型</h2><p><a href="search/SynEPD_1741_s17/molecules/index.html">环丁酮扩展试验：结构式、三维 TS 与下降路径</a></p><p><a href="../network_exploration_v1/molecules/index.html">v1 全部分子视图</a></p><p>只有两个核心化学体系和两个单次扩展体系，不宣称统计泛化。搜索网络是 MLIP 双侧下降结果；仅上列代表事件有额外 DFT/IRC 证据。</p>'
-    (root/'index.html').write_text(page,encoding='utf-8')
     print(json.dumps(dict(aggregates=aggregates,paired=paired,DFT=qc),indent=2))
 
 

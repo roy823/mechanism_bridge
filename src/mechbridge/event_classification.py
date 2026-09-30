@@ -3,6 +3,12 @@ from rdkit import Chem
 from .event_graph import bond_orders,graph_smiles,resonance_equivalent
 
 
+def matches_reference_pair(endpoints,reactant,products):
+    """Both sides of one observed event must match; seeing a product alone is insufficient."""
+    return len(endpoints)==2 and any(resonance_equivalent(endpoints[i],reactant) and
+        any(resonance_equivalent(endpoints[1-i],p) for p in products) for i in (0,1))
+
+
 def classify_event(left,right):
     fragments=[Chem.GetMolFrags(m) for m in (left,right)]
     labels=[{i:k for k,f in enumerate(fs) for i in f} for fs in fragments]

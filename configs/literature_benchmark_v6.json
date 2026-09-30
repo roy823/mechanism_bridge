@@ -1,0 +1,13 @@
+{
+ "name":"Literature-aligned cases and matched information controls; not an original-model reproduction",
+ "starts_file":"data/processed/literature_benchmark_starts.jsonl",
+ "strategies":["geometry","bond_edits","arrows"],
+ "core_starts":["flower_epoxide_ammonia_o0","flower_epoxide_ammonia_o1","atlas_glycolaldehyde_hydration_o0","atlas_glycolaldehyde_hydration_o1","atlas_formaldehyde_dimer_o0","atlas_formaldehyde_dimer_o1"],
+ "core_random_seeds":[17],"extension_starts":[],"extension_random_seeds":[],
+ "max_attempts":9,"seeds_per_node":1,"total_evaluations":9000,"evaluations_per_attempt":1600,"workers":3,
+ "primary_metric":"Reference endpoint graph hit after index-one TS and validated actual descents; input-reactant endpoint must also match",
+ "secondary_metrics":["any valid chemical event","initialization graph drift","symbolic coverage","strict root connectivity","all-call cost including failures"],
+ "comparability":"Net-edit and full-arrow groups share rigid orientations, geometry amplitudes and angle priors; full arrows additionally couple source/sink progress",
+ "reference_models_executed":false,
+ "DFT_selection":"No new DFT in this bounded benchmark; previously verified matched cases linked separately. All new outcomes labelled MLIP evidence."
+}

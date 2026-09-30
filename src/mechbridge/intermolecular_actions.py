@@ -22,6 +22,18 @@ def electron_actions(mol):
     carbonyls = matches('[C;+0]=[O;+0]')
     donors = matches('[O,N;+0]-[H]')
     enols = matches('[C;+0]=[C;+0]-[O;+0]-[H]')
+    # Both the symbolic zwitterion step and a concerted proton-transfer route
+    # are hypotheses. The PES decides whether the zwitterion is a minimum.
+    for c, other, o in matches('[C;+0]1[C;+0][O;+0]1'):
+        for (nu,) in matches('[N;+0;v3]'):
+            if component[c] == component[nu]:continue
+            yield action('epoxide_amine_opening_stepwise',
+                [((nu,), (nu,c)), ((c,o), (o,))])
+            for atom in mol.GetAtomWithIdx(nu).GetNeighbors():
+                if atom.GetAtomicNum()!=1:continue
+                h=atom.GetIdx()
+                yield action('epoxide_amine_opening_with_proton_transfer',
+                    [((nu,), (nu,c)), ((c,o), (o,h)), ((nu,h), (nu,))])
     # Addition with an explicit donor proton; no invented proton or catalyst.
     for c, o in carbonyls:
         for nu, h in donors:

@@ -1,0 +1,577 @@
+{
+  "rows": [
+    {
+      "case": "flower_epoxide_ammonia",
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 6,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o0_s17/flower_epoxide_ammonia_o0/geometry/network.json"
+    },
+    {
+      "case": "flower_epoxide_ammonia",
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o0_s17/flower_epoxide_ammonia_o0/bond_edits/network.json"
+    },
+    {
+      "case": "flower_epoxide_ammonia",
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o0_s17/flower_epoxide_ammonia_o0/arrows/network.json"
+    },
+    {
+      "case": "flower_epoxide_ammonia",
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 6,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o1_s17/flower_epoxide_ammonia_o1/geometry/network.json"
+    },
+    {
+      "case": "flower_epoxide_ammonia",
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 4,
+        "unresolved_minimum": 2,
+        "not_index_one": 1,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o1_s17/flower_epoxide_ammonia_o1/bond_edits/network.json"
+    },
+    {
+      "case": "flower_epoxide_ammonia",
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 4,
+        "not_index_one": 1,
+        "unresolved_minimum": 3,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/flower_epoxide_ammonia_o1_s17/flower_epoxide_ammonia_o1/arrows/network.json"
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "start": "atlas_glycolaldehyde_hydration_o0",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 6,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o0_s17/atlas_glycolaldehyde_hydration_o0/geometry/network.json"
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "start": "atlas_glycolaldehyde_hydration_o0",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 1,
+      "outcomes": {
+        "ts_force_unconverged": 5,
+        "new_connection": 1,
+        "budget_exhausted": 1
+      },
+      "target_hit": true,
+      "target_edges": [
+        0
+      ],
+      "target_seen_in_other_pair": [
+        0
+      ],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o0_s17/atlas_glycolaldehyde_hydration_o0/bond_edits/network.json"
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "start": "atlas_glycolaldehyde_hydration_o0",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 2,
+      "outcomes": {
+        "ts_force_unconverged": 4,
+        "new_connection": 2,
+        "budget_exhausted": 1
+      },
+      "target_hit": true,
+      "target_edges": [
+        0
+      ],
+      "target_seen_in_other_pair": [
+        0
+      ],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o0_s17/atlas_glycolaldehyde_hydration_o0/arrows/network.json"
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "start": "atlas_glycolaldehyde_hydration_o1",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 3,
+      "outcomes": {
+        "new_connection": 3,
+        "ts_force_unconverged": 4,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o1_s17/atlas_glycolaldehyde_hydration_o1/geometry/network.json"
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "start": "atlas_glycolaldehyde_hydration_o1",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 3,
+      "outcomes": {
+        "ts_force_unconverged": 1,
+        "budget_exhausted": 2,
+        "new_connection": 3,
+        "same_basin_return": 1
+      },
+      "target_hit": true,
+      "target_edges": [
+        1
+      ],
+      "target_seen_in_other_pair": [
+        1
+      ],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o1_s17/atlas_glycolaldehyde_hydration_o1/bond_edits/network.json"
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "start": "atlas_glycolaldehyde_hydration_o1",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 1,
+      "outcomes": {
+        "ts_force_unconverged": 3,
+        "budget_exhausted": 2,
+        "calculation_failed": 1,
+        "new_connection": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_glycolaldehyde_hydration_o1_s17/atlas_glycolaldehyde_hydration_o1/arrows/network.json"
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "start": "atlas_formaldehyde_dimer_o0",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o0_s17/atlas_formaldehyde_dimer_o0/geometry/network.json"
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "start": "atlas_formaldehyde_dimer_o0",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 9000,
+      "all_edges": 4,
+      "outcomes": {
+        "unresolved_minimum": 1,
+        "new_connection": 4,
+        "ts_force_unconverged": 2,
+        "calculation_failed": 1,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o0_s17/atlas_formaldehyde_dimer_o0/bond_edits/network.json"
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "start": "atlas_formaldehyde_dimer_o0",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 4,
+      "outcomes": {
+        "unresolved_minimum": 1,
+        "new_connection": 4,
+        "ts_force_unconverged": 1,
+        "calculation_failed": 1,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [
+        3
+      ],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o0_s17/atlas_formaldehyde_dimer_o0/arrows/network.json"
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "start": "atlas_formaldehyde_dimer_o1",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 7,
+      "evaluations": 9000,
+      "all_edges": 1,
+      "outcomes": {
+        "ts_force_unconverged": 5,
+        "new_connection": 1,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o1_s17/atlas_formaldehyde_dimer_o1/geometry/network.json"
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "start": "atlas_formaldehyde_dimer_o1",
+      "strategy": "bond_edits",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 0,
+      "outcomes": {
+        "ts_force_unconverged": 5,
+        "unresolved_minimum": 2,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o1_s17/atlas_formaldehyde_dimer_o1/bond_edits/network.json"
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "start": "atlas_formaldehyde_dimer_o1",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 8,
+      "evaluations": 9000,
+      "all_edges": 1,
+      "outcomes": {
+        "new_connection": 1,
+        "ts_force_unconverged": 3,
+        "unresolved_minimum": 3,
+        "budget_exhausted": 1
+      },
+      "target_hit": false,
+      "target_edges": [],
+      "target_seen_in_other_pair": [
+        0
+      ],
+      "initial_graph_preserved": true,
+      "file": "reports/literature_benchmark_v6/search/atlas_formaldehyde_dimer_o1_s17/atlas_formaldehyde_dimer_o1/arrows/network.json"
+    }
+  ],
+  "aggregates": [
+    {
+      "case": "flower_epoxide_ammonia",
+      "strategy": "geometry",
+      "strategy_label": "纯几何",
+      "runs": 2,
+      "hits": 0,
+      "attempts": 14,
+      "evaluations": 18000,
+      "outcomes": {
+        "ts_force_unconverged": 12,
+        "budget_exhausted": 2
+      }
+    },
+    {
+      "case": "flower_epoxide_ammonia",
+      "strategy": "bond_edits",
+      "strategy_label": "净变键",
+      "runs": 2,
+      "hits": 0,
+      "attempts": 16,
+      "evaluations": 18000,
+      "outcomes": {
+        "ts_force_unconverged": 11,
+        "budget_exhausted": 2,
+        "unresolved_minimum": 2,
+        "not_index_one": 1
+      }
+    },
+    {
+      "case": "flower_epoxide_ammonia",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头",
+      "runs": 2,
+      "hits": 0,
+      "attempts": 17,
+      "evaluations": 18000,
+      "outcomes": {
+        "ts_force_unconverged": 11,
+        "budget_exhausted": 2,
+        "not_index_one": 1,
+        "unresolved_minimum": 3
+      }
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "strategy": "geometry",
+      "strategy_label": "纯几何",
+      "runs": 2,
+      "hits": 0,
+      "attempts": 15,
+      "evaluations": 18000,
+      "outcomes": {
+        "ts_force_unconverged": 10,
+        "budget_exhausted": 2,
+        "new_connection": 3
+      }
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "strategy": "bond_edits",
+      "strategy_label": "净变键",
+      "runs": 2,
+      "hits": 2,
+      "attempts": 14,
+      "evaluations": 18000,
+      "outcomes": {
+        "ts_force_unconverged": 6,
+        "new_connection": 4,
+        "budget_exhausted": 3,
+        "same_basin_return": 1
+      }
+    },
+    {
+      "case": "atlas_glycolaldehyde_hydration",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头",
+      "runs": 2,
+      "hits": 1,
+      "attempts": 14,
+      "evaluations": 18000,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "new_connection": 3,
+        "budget_exhausted": 3,
+        "calculation_failed": 1
+      }
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "strategy": "geometry",
+      "strategy_label": "纯几何",
+      "runs": 2,
+      "hits": 0,
+      "attempts": 15,
+      "evaluations": 18000,
+      "outcomes": {
+        "ts_force_unconverged": 12,
+        "budget_exhausted": 2,
+        "new_connection": 1
+      }
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "strategy": "bond_edits",
+      "strategy_label": "净变键",
+      "runs": 2,
+      "hits": 0,
+      "attempts": 17,
+      "evaluations": 18000,
+      "outcomes": {
+        "unresolved_minimum": 3,
+        "new_connection": 4,
+        "ts_force_unconverged": 7,
+        "calculation_failed": 1,
+        "budget_exhausted": 2
+      }
+    },
+    {
+      "case": "atlas_formaldehyde_dimer",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头",
+      "runs": 2,
+      "hits": 0,
+      "attempts": 16,
+      "evaluations": 18000,
+      "outcomes": {
+        "unresolved_minimum": 4,
+        "new_connection": 5,
+        "ts_force_unconverged": 4,
+        "calculation_failed": 1,
+        "budget_exhausted": 2
+      }
+    }
+  ],
+  "attempts": 138,
+  "evaluations": 162000,
+  "campaign_seconds": 697.7495498657227,
+  "reference_models_executed": false,
+  "evidence": "MLIP index-one and actual two-sided descent; no new DFT",
+  "selection": {
+    "cases": [
+      {
+        "id": "flower_epoxide_ammonia",
+        "reactant": "C1CO1.N",
+        "targets": [
+          "[NH3+]CC[O-]",
+          "NCCO"
+        ],
+        "source": "https://arxiv.org/pdf/2502.12979",
+        "location": "Fig. 1b, PDF page 4",
+        "evidence": "paper_illustration_not_individually_DFT_validated",
+        "reference_model_success_known": false,
+        "symbolic_proposals": 8,
+        "atoms": 11,
+        "admission": "accepted"
+      },
+      {
+        "id": "atlas_glycolaldehyde_hydration",
+        "reactant": "O=CCO.O",
+        "targets": [
+          "OCC(O)O"
+        ],
+        "source": "https://arxiv.org/html/2606.30778v1",
+        "location": "S2.3.4, glycolaldehyde gem-diol discussion",
+        "evidence": "paper_reports_gas_phase_DFT_barrier_for_same_reaction",
+        "reference_model_success_known": true,
+        "symbolic_proposals": 8,
+        "atoms": 11,
+        "admission": "accepted"
+      },
+      {
+        "id": "atlas_formaldehyde_dimer",
+        "reactant": "C=O.C=O",
+        "targets": [
+          "O=CCO"
+        ],
+        "source": "https://arxiv.org/html/2606.30778v1",
+        "location": "S2.3.4, formose initiation",
+        "evidence": "paper_reports_alternative_TS_for_same_endpoint_pair",
+        "reference_model_success_known": true,
+        "symbolic_proposals": 4,
+        "atoms": 8,
+        "admission": "accepted"
+      },
+      {
+        "id": "flower_test_tropylium_cyanide",
+        "reactant": "[C-]#N.c1ccc[cH+]cc1",
+        "targets": [
+          "N#CC1C=CC=CC=C1"
+        ],
+        "source": "https://doi.org/10.6084/m9.figshare.28359407.v3",
+        "location": "flower_dataset/test.txt line 161152",
+        "evidence": "exact_public_test_record_individual_prediction_unavailable",
+        "reference_model_success_known": false,
+        "record_sha256": "62f7bab468c8763c60419bac6541da630fc03f8eab44b4d55ecc3d4c06656e09",
+        "symbolic_proposals": 0,
+        "atoms": 16,
+        "admission": "blocked_geometry_perception",
+        "admission_reason": "Open-shell Lewis graph outside this pilot"
+      }
+    ],
+    "FlowER_original_flagship": {
+      "record": "O.Cl.[OH3+].CC(=O)CC(=O)C(F)(F)F.NNc1cccc(Br)c1>>Cc1cc(n(n1)-c1cccc(c1)Br)C(F)(F)F|Cc1cc(nn1-c1cc(ccc1)Br)C(F)(F)F",
+      "executed": false,
+      "reason": "Contains Br, F, Cl and more than two components; outside current MLIP domain; no atom deletion"
+    },
+    "reference_models_executed": false,
+    "model": "AIMNet2-rxn ensemble_0",
+    "reference_targets_used_only_for_post_search_scoring": true
+  },
+  "comparison": "Matched geometry/net-edit/full-arrow controls; manual epoxide grammar was added before execution"
+}
