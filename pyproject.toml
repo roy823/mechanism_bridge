@@ -7,12 +7,12 @@ name = "mechanism-bridge"
 version = "0.2.0"
 description = "Evidence-preserving bridge between symbolic mechanisms and saddle-connected events"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26", "scipy>=1.11", "h5py>=3.10", "rdkit>=2024.3", "ase>=3.29", "networkx>=3.2"]
+dependencies = ["numpy>=1.26,<2", "scipy>=1.11", "h5py>=3.10", "rdkit>=2024.3", "ase>=3.29", "networkx>=3.2"]
 
 [project.optional-dependencies]
 qc = ["pyscf>=2.10", "sella>=2.6", "threadpoolctl>=3"]
 learning = ["scikit-learn>=1.6", "matplotlib>=3.5"]
-exploration = ["aimnet[ase,hf]==0.2.0", "torch>=2.8", "matplotlib>=3.5"]
+exploration = ["aimnet[ase,hf]==0.2.0", "torch>=2.8", "matplotlib>=3.5", "sella==2.6.0", "jax==0.4.38", "jaxlib==0.4.38"]
 reporting = ["jinja2>=3.1", "matplotlib>=3.5"]
 test = ["pytest>=8"]
 

@@ -4,6 +4,8 @@
 
 广元素势能选择已实测：[AIMNetCentral 模型报告](reports/aimnetcentral_v8/RESULTS_zh.md)。当前建议为广元素闭壳层使用 `aimnet2-2025`，CHNO 历史实验保留固定 `aimnet2-rxn`，开壳层分支使用 `aimnet2-nse`。
 
+`aimnet2-2025` 的完整网络压力测试见 [TransitionNet v9 报告](reports/aimnet2025_transitionnet_v9/RESULTS_zh.md)。Landscape17 malonaldehyde 的两个参考极小值均被盆地搜索找回，同时出现一个额外 AIMNet 极小值；模型网络形成 3 个节点和 3 条严格边，只精确匹配 1/4 条 DFT 参考 TS。当前结果支持继续开发 PES loop，但不支持“已复现完整参考网络”的表述。
+
 整站离线文件与本轮计算已打包：[证据包与恢复说明](reports/repository_snapshots/report_portal_v6_README.md)。
 
 双分子探索 v5：[方法与边界](docs/BIMOLECULAR_V5_zh.md)、[实际结果](reports/bimolecular_v5/RESULTS_zh.md)、[分子与三维路径](reports/bimolecular_v5/index.html)。扩展至 ReactionAtlas 相关 CHO 反应物组合和 Coley 数据中的双分子环加成；区分真实跨分子成键、旁观物重排与未连通的相遇构型。
@@ -20,6 +22,7 @@
 - **验证 v2：** 位移幅度统一、反应中心控制、随机重复、扩展起点及独立 DFT/IRC。
 - **局部迁移 v3：** 局部价态/电荷 SMARTS、初始电子源占据检查、异步距离与角度 seed、seed 处的内坐标初始方向；实际输出见 [v3 报告](reports/local_transfer_v3/RESULTS_zh.md)。
 - **尚未实现：** 训练好的逆向箭头模型、独立审核的大规模箭头配对集、FlowER/RitS/React-OT 接入。
+- **TransitionNet v9：** 严格要求鞍点双侧下降的一端回到发起物理极小值；新增符号端点→NEB→Sella 和二面角盆地搜索→NEB→Sella 两条路径。
 
 | 结果 | 入口 |
 |---|---|
@@ -27,6 +30,7 @@
 | 验证 v2 | [固定方案](docs/VALIDATION_V2_zh.md)、[实际结果](reports/validation_v2/RESULTS_zh.md) |
 | 局部迁移 v3：丙醛与丙酮，48 次主对照及单独续探诊断 | [实施说明](docs/LOCAL_TRANSFER_V3_zh.md)、[结果与 DFT 证据](reports/local_transfer_v3/RESULTS_zh.md)、[真实分子视图](reports/local_transfer_v3/search_curvature/acetone_s17/molecules/index.html) |
 | 网络增长 v4：8 体系、24 组运行及效率检查 | [方案](docs/NETWORK_GROWTH_V4_zh.md)、[实际结果](reports/network_growth_v4/RESULTS_zh.md) |
+| TransitionNet v9：AIMNet2-2025 与 Landscape17 完整 KTN 对照 | [结果、真实三维节点和网络](reports/aimnet2025_transitionnet_v9/RESULTS_zh.md) |
 | 历史 RF、DFT 和 IBO 可行性试验 | [历史结果](FEASIBILITY_RESULTS_zh.md) |
 
 v1 中符号组优于当时的随机几何基线，但位移幅度未统一，且完整箭头尚无稳定超越净变键的证据。v2 专门检验这些限制。乙醛与乙烯醇属于同一反应家族，不算独立样本。

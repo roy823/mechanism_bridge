@@ -1,5 +1,16 @@
 # 项目可行性、文献与模型选择
 
+## 2026-10-01：完整 TransitionNet 压力测试
+
+本轮固定使用 `aimnet2-2025`，并用 Landscape17 malonaldehyde 的完整 DFT kinetic transition network 作为金标准。严格网络登记要求 TS 双侧下降至少一端匹配发起的物理极小值；此前脱离根节点的边不再进入网络。
+
+- 参考网络有 2 个极小值、4 条 TS。用参考 TS 初始化的上限诊断保留 2/4 条连接，说明模型势能面本身已经无法完整保留参考拓扑。
+- 不输入参考 TS/其他极小值的二面角盆地搜索找回 2/2 参考极小值，同时发现 1 个额外 `aimnet2-2025` 极小值。
+- NEB→Sella P-RFO→双侧下降为三个模型极小值建立 3 条严格边；只有 1/4 条精确匹配 DFT 参考 TS。
+- 同一输入和预算下，箭头 Dimer 找到 3 条严格边、纯几何为 0，但箭头得到的三条均改变了参考键图且匹配参考 TS 为 0/4。这说明“更多 TS”不等于“更好地复现目标网络”。
+
+完整数字、真实三维节点和网络图见 [TransitionNet v9](../reports/aimnet2025_transitionnet_v9/RESULTS_zh.md)。该结果支持把符号搜索与构象 PES loop 合并，也证明必须使用节点/边召回率和额外节点/边率评估，不能只计成功鞍点数。
+
 ## 2026-10-01：AIMNetCentral 广元素实测选择
 
 当前官方维护入口为 [AIMNetCentral](https://github.com/isayevlab/aimnetcentral)。本机已经固定并实测四个 member0：

@@ -1,0 +1,14 @@
+{
+  "status": "ts_force_unconverged",
+  "evidence": "Sella_PRFO_then_MLIP_two_sided_descents",
+  "is_IRC": false,
+  "DFT_verified": false,
+  "endpoints": [],
+  "optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.005051553249359131,
+    "force_converged": false
+  },
+  "evaluations": 192,
+  "seconds": 1.5893354415893555
+}

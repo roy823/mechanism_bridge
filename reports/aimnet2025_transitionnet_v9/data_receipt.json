@@ -1,0 +1,14 @@
+{
+  "dataset": "Landscape17",
+  "version": 1,
+  "doi": "10.6084/m9.figshare.29949230.v1",
+  "license": "CC BY 4.0",
+  "download_url": "https://ndownloader.figshare.com/files/57341180",
+  "file_id": 57341180,
+  "size": 53019632,
+  "md5": "322e3d9d9851c469d0f6069ec5fd846d",
+  "sha256": "3870ecfd6a5404c6654efba22f003f645e2f4dffffad1b5a22770d3437b3027b",
+  "archive_crc_passed": true,
+  "extracted_subset": "malonaldehyde",
+  "extracted_members": 440
+}
