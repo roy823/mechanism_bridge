@@ -21,6 +21,7 @@ from .event_graph import geometry_mol, graph_smiles
 from .search_seeds import make_seed
 from .exploration_actions import choose_action
 from .saddle_optimization import StationaryDimerTranslate
+from .event_classification import classify_event
 
 
 class BudgetExceeded(RuntimeError):
@@ -72,7 +73,7 @@ class CountedCalculator(Calculator):
 
 @dataclass(frozen=True)
 class SearchProtocol:
-    seed_policy: str = 'diverse_frontier_precise_stationary_v4'
+    seed_policy: str = 'symbolic_actions_and_rigid_bimolecular_encounters_v5'
     max_attempts: int = 12
     seeds_per_node: int = 1
     geometry_seeds_per_node: int = 9
@@ -343,12 +344,14 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                                 break
                         attempt['status'] = 'duplicate_connection' if duplicate else 'new_connection'
                         if not duplicate:
+                            chemistry=classify_event(mols[ends[0]],mols[ends[1]])
                             edges.append(dict(id=len(edges), nodes=ends, attempt=aid,
                                 proposed_from=node_id, ts_energy_eV=result['ts']['energy_eV'],
                                 ts_positions_A=result['ts_positions_A'],
                                 barriers_eV=[e['barrier_eV'] for e in result['endpoints']],
                                 source_connected=node_id in ends,
-                                kind='chemical' if nodes[ends[0]]['graph_smiles'] != nodes[ends[1]]['graph_smiles'] else 'conformational'))
+                                endpoint_chemistry=chemistry,
+                                kind='conformational' if chemistry['resonance_equivalent'] else 'chemical'))
                 save()
                 print(json.dumps(dict(start=start['id'], strategy=strategy, attempt=aid,
                                       status=attempt['status'], evaluations=calculator.calls)), flush=True)

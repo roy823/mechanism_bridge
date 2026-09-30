@@ -1,0 +1,2611 @@
+{
+  "rows": [
+    {
+      "start": "formaldehyde_water_o0",
+      "system": "formaldehyde_water",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11644,
+      "seconds": 114.0145637000096,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "unresolved_minimum": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_water_o0",
+      "system": "formaldehyde_water",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 6210,
+      "seconds": 58.89913770000567,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 4,
+        "new_connection": 1,
+        "calculation_failed": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_water_o0",
+      "system": "formaldehyde_water",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 11,
+      "evaluations": 12000,
+      "seconds": 122.75664549999055,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "new_connection": 1,
+        "calculation_failed": 1,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11359,
+      "seconds": 110.00112020000233,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 1,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "new_connection": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 6557,
+      "seconds": 60.99001350000617,
+      "nodes": 5,
+      "edges": 2,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 1,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "new_connection": 2,
+        "ts_force_unconverged": 1,
+        "calculation_failed": 2,
+        "unresolved_minimum": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 11,
+      "evaluations": 12000,
+      "seconds": 121.5895818999852,
+      "nodes": 5,
+      "edges": 2,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 1,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "new_connection": 2,
+        "ts_force_unconverged": 5,
+        "calculation_failed": 2,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11100,
+      "seconds": 109.63524439997855,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "not_index_one": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 11,
+      "evaluations": 12000,
+      "seconds": 115.58519850001903,
+      "nodes": 6,
+      "edges": 3,
+      "heavy_events": 2,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 2,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 1,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "unresolved_minimum": 5,
+        "ts_force_unconverged": 2,
+        "new_connection": 3,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 11,
+      "evaluations": 12000,
+      "seconds": 124.2449600000109,
+      "nodes": 5,
+      "edges": 2,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 1,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "unresolved_minimum": 3,
+        "ts_force_unconverged": 4,
+        "new_connection": 2,
+        "budget_exhausted": 2
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o1",
+      "system": "formaldehyde_dimer",
+      "strategy": "geometry",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 426,
+      "seconds": 3.484831199981272,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/formaldehyde_dimer_o1_s17/formaldehyde_dimer_o1/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o1",
+      "system": "formaldehyde_dimer",
+      "strategy": "arrows",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 426,
+      "seconds": 3.446393899997929,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/formaldehyde_dimer_o1_s17/formaldehyde_dimer_o1/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o1",
+      "system": "formaldehyde_dimer",
+      "strategy": "hybrid",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 426,
+      "seconds": 3.3615312000038102,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/formaldehyde_dimer_o1_s17/formaldehyde_dimer_o1/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 136.11853759997757,
+      "nodes": 2,
+      "edges": 1,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "new_connection": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 141.226826899976,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "new_connection": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 145.9244602000108,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "new_connection": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o1",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11099,
+      "seconds": 126.9787847000116,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 1,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "new_connection": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o1_s17/formaldehyde_glycolaldehyde_o1/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o1",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 142.86481540001114,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o1_s17/formaldehyde_glycolaldehyde_o1/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o1",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 147.89123239999753,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "unresolved_minimum": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o1_s17/formaldehyde_glycolaldehyde_o1/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o0",
+      "system": "formaldehyde_enediol",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11605,
+      "seconds": 135.28096740000183,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 9
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_enediol_o0_s17/formaldehyde_enediol_o0/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o0",
+      "system": "formaldehyde_enediol",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 143.41022130000056,
+      "nodes": 2,
+      "edges": 1,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 1,
+      "outcomes": {
+        "ts_force_unconverged": 8,
+        "new_connection": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_enediol_o0_s17/formaldehyde_enediol_o0/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o0",
+      "system": "formaldehyde_enediol",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 150.42967189999763,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 9,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_enediol_o0_s17/formaldehyde_enediol_o0/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11661,
+      "seconds": 142.11086280000745,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 9
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 134.39999720000196,
+      "nodes": 5,
+      "edges": 2,
+      "heavy_events": 2,
+      "unique_heavy_pairs": 2,
+      "input_pair_heavy_events": 2,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "new_connection": 2,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 124.40038820001064,
+      "nodes": 5,
+      "edges": 2,
+      "heavy_events": 2,
+      "unique_heavy_pairs": 2,
+      "input_pair_heavy_events": 2,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "new_connection": 2,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/hybrid/network.json"
+    },
+    {
+      "start": "coley_3217_o0",
+      "system": "coley_3217",
+      "strategy": "geometry",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 335,
+      "seconds": 4.760179599979892,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/coley_3217_o0_s17/coley_3217_o0/geometry/network.json"
+    },
+    {
+      "start": "coley_3217_o0",
+      "system": "coley_3217",
+      "strategy": "arrows",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 335,
+      "seconds": 5.027305499999784,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/coley_3217_o0_s17/coley_3217_o0/arrows/network.json"
+    },
+    {
+      "start": "coley_3217_o0",
+      "system": "coley_3217",
+      "strategy": "hybrid",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 335,
+      "seconds": 4.424237400002312,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/coley_3217_o0_s17/coley_3217_o0/hybrid/network.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "system": "coley_3217",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11629,
+      "seconds": 142.79183659999399,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 9
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/coley_3217_o1_s17/coley_3217_o1/geometry/network.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "system": "coley_3217",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 7491,
+      "seconds": 87.65800419999869,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 4,
+        "new_connection": 1,
+        "not_index_one": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/coley_3217_o1_s17/coley_3217_o1/arrows/network.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "system": "coley_3217",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 129.47198570001638,
+      "nodes": 3,
+      "edges": 1,
+      "heavy_events": 1,
+      "unique_heavy_pairs": 1,
+      "input_pair_heavy_events": 1,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 7,
+        "new_connection": 1,
+        "not_index_one": 1,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/coley_3217_o1_s17/coley_3217_o1/hybrid/network.json"
+    },
+    {
+      "start": "coley_3216_o0",
+      "system": "coley_3216",
+      "strategy": "geometry",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 341,
+      "seconds": 4.807487200014293,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/coley_3216_o0_s17/coley_3216_o0/geometry/network.json"
+    },
+    {
+      "start": "coley_3216_o0",
+      "system": "coley_3216",
+      "strategy": "arrows",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 341,
+      "seconds": 4.52459230000386,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/coley_3216_o0_s17/coley_3216_o0/arrows/network.json"
+    },
+    {
+      "start": "coley_3216_o0",
+      "system": "coley_3216",
+      "strategy": "hybrid",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 341,
+      "seconds": 4.254248999990523,
+      "nodes": 0,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {},
+      "initialized": false,
+      "file": "reports/bimolecular_v5/search/coley_3216_o0_s17/coley_3216_o0/hybrid/network.json"
+    },
+    {
+      "start": "coley_3216_o1",
+      "system": "coley_3216",
+      "strategy": "geometry",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 11128,
+      "seconds": 135.65286549998564,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 9
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/coley_3216_o1_s17/coley_3216_o1/geometry/network.json"
+    },
+    {
+      "start": "coley_3216_o1",
+      "system": "coley_3216",
+      "strategy": "arrows",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 7625,
+      "seconds": 87.14417189999949,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 6
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/coley_3216_o1_s17/coley_3216_o1/arrows/network.json"
+    },
+    {
+      "start": "coley_3216_o1",
+      "system": "coley_3216",
+      "strategy": "hybrid",
+      "status": "completed",
+      "attempts": 10,
+      "evaluations": 12000,
+      "seconds": 126.0169114000164,
+      "nodes": 1,
+      "edges": 0,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 0,
+      "spectator_rearrangements": 0,
+      "outcomes": {
+        "ts_force_unconverged": 9,
+        "budget_exhausted": 1
+      },
+      "initialized": true,
+      "file": "reports/bimolecular_v5/search/coley_3216_o1_s17/coley_3216_o1/hybrid/network.json"
+    }
+  ],
+  "events": [
+    {
+      "start": "formaldehyde_water_o0",
+      "system": "formaldehyde_water",
+      "strategy": "arrows",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            6
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        1
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O"
+        ],
+        [
+          "OCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O",
+        "OCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.6370634670591722,
+        2.0950069041334354
+      ],
+      "pair_key": [
+        "C=O.O",
+        "OCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "formaldehyde_water_o0",
+      "system": "formaldehyde_water",
+      "strategy": "hybrid",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            6
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        1
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O"
+        ],
+        [
+          "OCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O",
+        "OCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.6370634670591722,
+        2.0950069041334354
+      ],
+      "pair_key": [
+        "C=O.O",
+        "OCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/hybrid/attempt_001/result.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "geometry",
+      "edge": 0,
+      "attempt": 6,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intramolecular_with_spectator",
+      "cross_fragment_bonds": [],
+      "fragment_counts": [
+        2,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "[H]/[C-]=[O+]/[H]",
+          "O"
+        ],
+        [
+          "C=O",
+          "O"
+        ]
+      ],
+      "endpoint_graphs": [
+        "O.[H]/[C-]=[O+]/[H]",
+        "C=O.O"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.5920656941751155,
+        3.5630903105270315
+      ],
+      "pair_key": [
+        "C=O.O",
+        "O.[H]/[C-]=[O+]/[H]"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/geometry/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/geometry/attempt_006/result.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "arrows",
+      "edge": 0,
+      "attempt": 0,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_hydrogen_transfer",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            2,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            5
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            2,
+            5
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O"
+        ],
+        [
+          "[H]/[C-]=[O+]/[H]",
+          "O"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O",
+        "O.[H]/[C-]=[O+]/[H]"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        2.4284365760333646,
+        0.4898175103866782
+      ],
+      "pair_key": [
+        "C=O.O",
+        "O.[H]/[C-]=[O+]/[H]"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/arrows/attempt_000/result.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "arrows",
+      "edge": 1,
+      "attempt": 4,
+      "nodes": [
+        3,
+        4
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            5
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "OCO"
+        ],
+        [
+          "C=O",
+          "O"
+        ]
+      ],
+      "endpoint_graphs": [
+        "OCO",
+        "C=O.O"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.967475979534318,
+        1.637053224923732
+      ],
+      "pair_key": [
+        "C=O.O",
+        "OCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/arrows/attempt_004/result.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "hybrid",
+      "edge": 0,
+      "attempt": 0,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_hydrogen_transfer",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            2,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            5
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            2,
+            5
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O"
+        ],
+        [
+          "[H]/[C-]=[O+]/[H]",
+          "O"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O",
+        "O.[H]/[C-]=[O+]/[H]"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        2.4284365760333646,
+        0.4898175103866782
+      ],
+      "pair_key": [
+        "C=O.O",
+        "O.[H]/[C-]=[O+]/[H]"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/hybrid/attempt_000/result.json"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "system": "formaldehyde_water",
+      "strategy": "hybrid",
+      "edge": 1,
+      "attempt": 5,
+      "nodes": [
+        3,
+        4
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            5
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "OCO"
+        ],
+        [
+          "C=O",
+          "O"
+        ]
+      ],
+      "endpoint_graphs": [
+        "OCO",
+        "C=O.O"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.967475979534318,
+        1.637053224923732
+      ],
+      "pair_key": [
+        "C=O.O",
+        "OCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17/formaldehyde_water_o1/hybrid/attempt_005/result.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "arrows",
+      "edge": 0,
+      "attempt": 3,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_hydrogen_transfer",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            2,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            3,
+            5
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            5
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "C=O"
+        ],
+        [
+          "[C-]#[O+]",
+          "CO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.C=O",
+        "CO.[C-]#[O+]"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.5511670513510527,
+        2.5770331570375515
+      ],
+      "pair_key": [
+        "C=O.C=O",
+        "CO.[C-]#[O+]"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/attempt_003/result.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "arrows",
+      "edge": 1,
+      "attempt": 4,
+      "nodes": [
+        3,
+        4
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            6
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        1
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "C=O"
+        ],
+        [
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        3.3983994948814593,
+        4.221649810119054
+      ],
+      "pair_key": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/attempt_004/result.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "arrows",
+      "edge": 2,
+      "attempt": 8,
+      "nodes": [
+        3,
+        5
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            6
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        1
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "C=O"
+        ],
+        [
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        3.3982934813379986,
+        4.221633323276651
+      ],
+      "pair_key": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/attempt_008/result.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "hybrid",
+      "edge": 0,
+      "attempt": 4,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_hydrogen_transfer",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            2,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            3,
+            5
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            4
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            5
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "C=O"
+        ],
+        [
+          "[C-]#[O+]",
+          "CO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.C=O",
+        "CO.[C-]#[O+]"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.5511670513510527,
+        2.5770331570375515
+      ],
+      "pair_key": [
+        "C=O.C=O",
+        "CO.[C-]#[O+]"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/hybrid/attempt_004/result.json"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "system": "formaldehyde_dimer",
+      "strategy": "hybrid",
+      "edge": 1,
+      "attempt": 5,
+      "nodes": [
+        3,
+        4
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            6
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        1
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "C=O"
+        ],
+        [
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        3.3983994948814593,
+        4.221649810119054
+      ],
+      "pair_key": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/hybrid/attempt_005/result.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "geometry",
+      "edge": 0,
+      "attempt": 3,
+      "nodes": [
+        0,
+        1
+      ],
+      "classification": "same_species_geometry_or_resonance",
+      "cross_fragment_bonds": [],
+      "fragment_counts": [
+        2,
+        2
+      ],
+      "resonance_equivalent": true,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O=CCO"
+        ],
+        [
+          "C=O",
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O=CCO",
+        "C=O.O=CCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        true
+      ],
+      "root_connected": true,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        1.8727220681222336,
+        1.8791511050786749
+      ],
+      "pair_key": [
+        "C=O.O=CCO",
+        "C=O.O=CCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/geometry/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/geometry/attempt_003/result.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "arrows",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            3
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            8
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "COC(=O)CO"
+        ],
+        [
+          "C=O",
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "COC(=O)CO",
+        "C=O.O=CCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        3.392486669735428,
+        2.332724241843194
+      ],
+      "pair_key": [
+        "C=O.O=CCO",
+        "COC(=O)CO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "hybrid",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            3
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            8
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "COC(=O)CO"
+        ],
+        [
+          "C=O",
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "COC(=O)CO",
+        "C=O.O=CCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        3.392486669735428,
+        2.332724241843194
+      ],
+      "pair_key": [
+        "C=O.O=CCO",
+        "COC(=O)CO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17/formaldehyde_glycolaldehyde_o0/hybrid/attempt_001/result.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o1",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "geometry",
+      "edge": 0,
+      "attempt": 2,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_hydrogen_transfer",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            6
+          ],
+          "heavy_atom_bond": false
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            7
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        4,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "[C-2]=O",
+          "[O-][CH+]CO",
+          "[H+]",
+          "[H+]"
+        ],
+        [
+          "[H]/[C-]=[O+]\\[H]",
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "[C-2]=O.[H+].[H+].[O-][CH+]CO",
+        "O=CCO.[H]/[C-]=[O+]\\[H]"
+      ],
+      "endpoint_domain_flags": [
+        "more_than_two_endpoint_fragments",
+        "isolated_atom_or_ion",
+        "formal_charge_magnitude_above_one"
+      ],
+      "input_pair_endpoint_match": [
+        false,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        4.777101133291516,
+        2.6940819033132613
+      ],
+      "pair_key": [
+        "O=CCO.[H]/[C-]=[O+]\\[H]",
+        "[C-2]=O.[H+].[H+].[O-][CH+]CO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o1_s17/formaldehyde_glycolaldehyde_o1/geometry/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o1_s17/formaldehyde_glycolaldehyde_o1/geometry/attempt_002/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o0",
+      "system": "formaldehyde_enediol",
+      "strategy": "arrows",
+      "edge": 0,
+      "attempt": 8,
+      "nodes": [
+        0,
+        1
+      ],
+      "classification": "intramolecular_with_spectator",
+      "cross_fragment_bonds": [],
+      "fragment_counts": [
+        2,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O/C=C/O"
+        ],
+        [
+          "C=O",
+          "O=CCO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O/C=C/O",
+        "C=O.O=CCO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": true,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        2.5710260278502126,
+        2.915173240270267
+      ],
+      "pair_key": [
+        "C=O.O/C=C/O",
+        "C=O.O=CCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o0_s17/formaldehyde_enediol_o0/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o0_s17/formaldehyde_enediol_o0/arrows/attempt_008/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol",
+      "strategy": "arrows",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            8
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "O/C=C/OCO"
+        ],
+        [
+          "C=O",
+          "O/C=C/O"
+        ]
+      ],
+      "endpoint_graphs": [
+        "O/C=C/OCO",
+        "C=O.O/C=C/O"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        2.074639475904765,
+        1.7110413552271275
+      ],
+      "pair_key": [
+        "C=O.O/C=C/O",
+        "O/C=C/OCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol",
+      "strategy": "arrows",
+      "edge": 1,
+      "attempt": 2,
+      "nodes": [
+        3,
+        4
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            3
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            11
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        1
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O/C=C/O"
+        ],
+        [
+          "O=C[C@H](O)CO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O/C=C/O",
+        "O=C[C@H](O)CO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        0.6441354815772611,
+        1.7149197513271144
+      ],
+      "pair_key": [
+        "C=O.O/C=C/O",
+        "O=C[C@H](O)CO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/arrows/attempt_002/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol",
+      "strategy": "hybrid",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            0,
+            2
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            8
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "O/C=C/OCO"
+        ],
+        [
+          "C=O",
+          "O/C=C/O"
+        ]
+      ],
+      "endpoint_graphs": [
+        "O/C=C/OCO",
+        "C=O.O/C=C/O"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        2.074639475904765,
+        1.7110413552271275
+      ],
+      "pair_key": [
+        "C=O.O/C=C/O",
+        "O/C=C/OCO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/hybrid/attempt_001/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol",
+      "strategy": "hybrid",
+      "edge": 1,
+      "attempt": 2,
+      "nodes": [
+        3,
+        4
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            0,
+            3
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 0,
+          "atoms": [
+            1,
+            11
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        2,
+        1
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=O",
+          "O/C=C/O"
+        ],
+        [
+          "O=C[C@H](O)CO"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=O.O/C=C/O",
+        "O=C[C@H](O)CO"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        true,
+        false
+      ],
+      "root_connected": false,
+      "reference_product_match": null,
+      "electronic_barriers_eV": [
+        0.6441354815772611,
+        1.7149197513271144
+      ],
+      "pair_key": [
+        "C=O.O/C=C/O",
+        "O=C[C@H](O)CO"
+      ],
+      "network_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17/formaldehyde_enediol_o1/hybrid/attempt_002/result.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "system": "coley_3217",
+      "strategy": "arrows",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            4
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            2,
+            8
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=CN(C)N=C"
+        ],
+        [
+          "C=C",
+          "C#[N+][N-]C"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=CN(C)N=C",
+        "C#[N+][N-]C.C=C"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": false,
+      "electronic_barriers_eV": [
+        3.3413275768880912,
+        1.7367440853848648
+      ],
+      "pair_key": [
+        "C#[N+][N-]C.C=C",
+        "C=CN(C)N=C"
+      ],
+      "network_file": "reports/bimolecular_v5/search/coley_3217_o1_s17/coley_3217_o1/arrows/network.json",
+      "result_file": "reports/bimolecular_v5/search/coley_3217_o1_s17/coley_3217_o1/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "system": "coley_3217",
+      "strategy": "hybrid",
+      "edge": 0,
+      "attempt": 1,
+      "nodes": [
+        1,
+        2
+      ],
+      "classification": "intermolecular_heavy_atom_bond",
+      "cross_fragment_bonds": [
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            1,
+            4
+          ],
+          "heavy_atom_bond": true
+        },
+        {
+          "from_endpoint": 1,
+          "atoms": [
+            2,
+            8
+          ],
+          "heavy_atom_bond": false
+        }
+      ],
+      "fragment_counts": [
+        1,
+        2
+      ],
+      "resonance_equivalent": false,
+      "endpoint_components": [
+        [
+          "C=CN(C)N=C"
+        ],
+        [
+          "C=C",
+          "C#[N+][N-]C"
+        ]
+      ],
+      "endpoint_graphs": [
+        "C=CN(C)N=C",
+        "C#[N+][N-]C.C=C"
+      ],
+      "endpoint_domain_flags": [],
+      "input_pair_endpoint_match": [
+        false,
+        true
+      ],
+      "root_connected": false,
+      "reference_product_match": false,
+      "electronic_barriers_eV": [
+        3.3413275768880912,
+        1.7367440853848648
+      ],
+      "pair_key": [
+        "C#[N+][N-]C.C=C",
+        "C=CN(C)N=C"
+      ],
+      "network_file": "reports/bimolecular_v5/search/coley_3217_o1_s17/coley_3217_o1/hybrid/network.json",
+      "result_file": "reports/bimolecular_v5/search/coley_3217_o1_s17/coley_3217_o1/hybrid/attempt_001/result.json"
+    }
+  ],
+  "strategy_totals": {
+    "geometry": {
+      "attempts": 82,
+      "evaluations": 104327,
+      "heavy_events": 0,
+      "unique_heavy_pairs": 0,
+      "input_pair_heavy_events": 0,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 1,
+      "spectator_rearrangements": 1,
+      "runs_with_heavy_event": 0
+    },
+    "arrows": {
+      "attempts": 75,
+      "evaluations": 88985,
+      "heavy_events": 8,
+      "unique_heavy_pairs": 7,
+      "input_pair_heavy_events": 8,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 2,
+      "spectator_rearrangements": 1,
+      "runs_with_heavy_event": 6
+    },
+    "hybrid": {
+      "attempts": 93,
+      "evaluations": 109102,
+      "heavy_events": 7,
+      "unique_heavy_pairs": 7,
+      "input_pair_heavy_events": 7,
+      "root_connected_heavy_events": 0,
+      "hydrogen_transfer_events": 2,
+      "spectator_rearrangements": 0,
+      "runs_with_heavy_event": 6
+    }
+  },
+  "DFT_selection": {
+    "run": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17",
+    "start": "formaldehyde_water_o0",
+    "strategy": "arrows",
+    "edge": 0,
+    "rule": "First system in this list with a validated interfragment heavy-atom event in arrows or hybrid; first matching run and earliest matching edge. Independently verify that TS if found."
+  },
+  "DFT": [
+    {
+      "file": "reports/bimolecular_v5/qc/formaldehyde_dimer/verification.json",
+      "status": "unresolved_ts",
+      "physical_event_verified": false,
+      "expected_endpoint_match": null,
+      "endpoints": [],
+      "seconds": 350.6630668640137,
+      "barriers_eV": [],
+      "imaginary_counts": [
+        1
+      ]
+    },
+    {
+      "file": "reports/bimolecular_v5/qc/formaldehyde_dimer_refined/verification.json",
+      "status": "physical_event_verified",
+      "physical_event_verified": true,
+      "expected_endpoint_match": true,
+      "endpoints": [
+        "O=CCO",
+        "C=O.C=O"
+      ],
+      "seconds": 2389.1796176433563,
+      "barriers_eV": [
+        4.593105265384111,
+        3.832927742551874
+      ],
+      "imaginary_counts": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "reports/bimolecular_v5/qc/formaldehyde_water/verification.json",
+      "status": "physical_event_verified",
+      "physical_event_verified": true,
+      "expected_endpoint_match": true,
+      "endpoints": [
+        "OCO",
+        "C=O.O"
+      ],
+      "seconds": 685.2121443748474,
+      "barriers_eV": [
+        2.2210383523961355,
+        1.5316689504925307
+      ],
+      "imaginary_counts": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "attempts": 250,
+  "evaluations": 302414,
+  "campaign_seconds": 1238.5926287174225,
+  "failed_jobs": [],
+  "neural_model_weights_updated": false,
+  "primary_evidence": "MLIP stationary points and two-sided mode-displacement descent; not IRC",
+  "comparison": "Full symbolic package including rigid orientation; not an isolated arrow ablation",
+  "unique_heavy_graph_pairs": [
+    [
+      "C#[N+][N-]C.C=C",
+      "C=CN(C)N=C"
+    ],
+    [
+      "C=O.C=O",
+      "O=CCO"
+    ],
+    [
+      "C=O.O",
+      "OCO"
+    ],
+    [
+      "C=O.O/C=C/O",
+      "O/C=C/OCO"
+    ],
+    [
+      "C=O.O/C=C/O",
+      "O=C[C@H](O)CO"
+    ],
+    [
+      "C=O.O=CCO",
+      "COC(=O)CO"
+    ]
+  ],
+  "supplementary": {
+    "coley_reference_ts_diagnostic": [
+      {
+        "rxn_id": "3217",
+        "reference_TS_used": true,
+        "outcome": "unresolved_minimum",
+        "reference_pair_preserved": true,
+        "endpoint_graphs": [
+          "CN1CCC=N1",
+          "C=C.[CH-]=[N+]=NC"
+        ],
+        "total_evaluations": 1060
+      },
+      {
+        "rxn_id": "3216",
+        "reference_TS_used": true,
+        "outcome": "unresolved_minimum",
+        "reference_pair_preserved": true,
+        "endpoint_graphs": [
+          "C=C.[CH2-][N+]#CC",
+          "CC1=NCCC1"
+        ],
+        "total_evaluations": 886
+      }
+    ],
+    "coley_reference_ts_strict": [
+      {
+        "rxn_id": "3217",
+        "reference_TS_used": true,
+        "outcome": "validated_descents",
+        "reference_pair_preserved": true,
+        "endpoint_graphs": [
+          "CN1CCC=N1",
+          "C=C.[CH-]=[N+]=NC"
+        ],
+        "total_evaluations": 1251
+      },
+      {
+        "rxn_id": "3216",
+        "reference_TS_used": true,
+        "outcome": "unresolved_minimum",
+        "reference_pair_preserved": true,
+        "endpoint_graphs": [
+          "C=C.[CH2-][N+]#CC",
+          "CC1=NCCC1"
+        ],
+        "total_evaluations": 1485
+      }
+    ],
+    "encounter_minima_diagnostic": [
+      {
+        "system": "formaldehyde_water",
+        "rmsd_A": 0.7565583960329729,
+        "energy_difference_eV": 0.022185729886671446,
+        "evaluations": 6467,
+        "both_minima_converged": false,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "formaldehyde_dimer",
+        "rmsd_A": 0.7125144363584717,
+        "energy_difference_eV": 0.0551549800329334,
+        "evaluations": 5080,
+        "both_minima_converged": false,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "formaldehyde_glycolaldehyde",
+        "rmsd_A": 1.772754252652738,
+        "energy_difference_eV": 0.020192928941422217,
+        "evaluations": 5949,
+        "both_minima_converged": false,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "formaldehyde_enediol",
+        "rmsd_A": 0.8173962761785878,
+        "energy_difference_eV": 0.02158130504280109,
+        "evaluations": 5738,
+        "both_minima_converged": false,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "coley_3217",
+        "rmsd_A": 0.9818635891151309,
+        "energy_difference_eV": 0.038681919553434696,
+        "evaluations": 5249,
+        "both_minima_converged": false,
+        "same_refined_minimum": false
+      }
+    ],
+    "encounter_minima_bfgs": [
+      {
+        "system": "formaldehyde_water",
+        "rmsd_A": 1.0627882927376162,
+        "energy_difference_eV": 0.07542660944158275,
+        "evaluations": 238,
+        "both_minima_converged": true,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "formaldehyde_dimer",
+        "rmsd_A": 0.7114281830737249,
+        "energy_difference_eV": 0.055145745061912166,
+        "evaluations": 114,
+        "both_minima_converged": true,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "formaldehyde_glycolaldehyde",
+        "rmsd_A": 1.7671414950409614,
+        "energy_difference_eV": 0.02020712021415072,
+        "evaluations": 248,
+        "both_minima_converged": true,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "formaldehyde_enediol",
+        "rmsd_A": 0.7866412104356125,
+        "energy_difference_eV": 0.021420098390004583,
+        "evaluations": 254,
+        "both_minima_converged": true,
+        "same_refined_minimum": false
+      },
+      {
+        "system": "coley_3217",
+        "rmsd_A": 0.9843226025786447,
+        "energy_difference_eV": 0.03869944691317695,
+        "evaluations": 248,
+        "both_minima_converged": true,
+        "same_refined_minimum": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "revision": "1608a64499779bf8f89a886308d97c6a830d084c",
+  "files": [
+    {
+      "url": "https://raw.githubusercontent.com/coleygroup/dipolar_cycloaddition_dataset/1608a64499779bf8f89a886308d97c6a830d084c/LICENSE",
+      "file": "data/raw/coley_dipolar/LICENSE",
+      "bytes": 1067,
+      "sha256": "4ef9682f72ede67442b9fd976812c34884ce9bbc35b4eb56cb1642f6bdca299d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/coleygroup/dipolar_cycloaddition_dataset/1608a64499779bf8f89a886308d97c6a830d084c/README.md",
+      "file": "data/raw/coley_dipolar/README.md",
+      "bytes": 11877,
+      "sha256": "ca5df496744c9d53775885d04b0d79e464a90c5217f554b5b1ad0c282bae69d6"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/coleygroup/dipolar_cycloaddition_dataset/1608a64499779bf8f89a886308d97c6a830d084c/final_data_files/full_dataset.csv",
+      "file": "data/raw/coley_dipolar/full_dataset.csv",
+      "bytes": 2185526,
+      "sha256": "5f08c6b2dc04dd3ae11c74b2e0251a595b230915c7196d7a67e96bfac7f1e12d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/coleygroup/dipolar_cycloaddition_dataset/1608a64499779bf8f89a886308d97c6a830d084c/final_data_files/full_data_profiles.tar.gz",
+      "file": "data/raw/coley_dipolar/full_data_profiles.tar.gz",
+      "bytes": 94023449,
+      "sha256": "c42f6cbe0031521d159844f845584c27435f778d4de6516faa117717dd6766ac"
+    }
+  ]
+}

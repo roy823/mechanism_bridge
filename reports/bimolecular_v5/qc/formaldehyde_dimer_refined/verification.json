@@ -1,0 +1,416 @@
+{
+  "event_id": "formaldehyde_dimer_o0_arrows_edge1_DFT_stricter_optimizer",
+  "source": {
+    "event_id": "formaldehyde_dimer_o0_arrows_edge1_DFT_stricter_optimizer",
+    "atomic_numbers": [
+      6,
+      8,
+      6,
+      8,
+      1,
+      1,
+      1,
+      1
+    ],
+    "charge": 0,
+    "multiplicity": 1,
+    "positions_A": {
+      "ts": [
+        [
+          -0.06980708,
+          0.12821099,
+          -0.89198481
+        ],
+        [
+          -0.24494325,
+          -1.06018607,
+          -1.44243853
+        ],
+        [
+          0.10917351,
+          0.0018274,
+          1.07002181
+        ],
+        [
+          -0.5955261,
+          0.7622239,
+          1.66416214
+        ],
+        [
+          0.91936669,
+          0.6235556,
+          -0.96831478
+        ],
+        [
+          -0.9056509,
+          0.84586578,
+          -0.82446265
+        ],
+        [
+          -0.23723205,
+          -0.83885375,
+          -0.1118275
+        ],
+        [
+          1.02461958,
+          -0.46264355,
+          1.50484342
+        ]
+      ]
+    },
+    "reactant_smiles": "C=O.C=O",
+    "product_smiles": "O=CCO",
+    "expected_pair_origin": "Actual MLIP descent endpoints, not the symbolic target",
+    "source_json": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/attempt_004/result.json",
+    "source_sha256": "143d1f62c5e1d2b3a6a0153c33a61a5bfe37b748e4159fa7e5c44bfd42d5d18b",
+    "original_symbolic_proposal": {
+      "fraction": 0.55,
+      "template_id": "grammar:carbonyl_C_H_coupled_addition",
+      "displacement_norm_A": 1.0,
+      "unnormalized_fit_displacement_A": 0.8584348975357411,
+      "progress_targets": [
+        0.7000000000000001,
+        0.4,
+        0.4,
+        0.7000000000000001
+      ],
+      "angle_targets": [
+        {
+          "atoms": [
+            2,
+            6,
+            1
+          ],
+          "degrees": 140.0,
+          "kind": "hydrogen_transfer"
+        },
+        {
+          "atoms": [
+            2,
+            0,
+            1
+          ],
+          "degrees": 110.0,
+          "kind": "carbonyl_addition"
+        }
+      ],
+      "angle_cosines_at_seed": [
+        -0.6002118953388804,
+        -0.461302416147346
+      ],
+      "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+      "template_source_graph": null,
+      "transferred": null,
+      "origin": "analyst_defined_reactant_only_electron_action_grammar",
+      "pattern_smarts": null,
+      "encounter_orientation": {
+        "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+        "score": 0.0001264763845684286,
+        "selected_trial": 14,
+        "cross_forming_pairs": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "contact_distance_A": 2.8,
+        "reference_product_or_TS_used": false,
+        "displacement_from_source_A": 8.786501060892993
+      },
+      "intermolecular": true,
+      "source_sink_couplings": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "geometric_fit_cost": 0.1933673277494416,
+      "geometric_fit_nfev": 5,
+      "geometric_fit_optimality": 0.00013124161013050584,
+      "predicted_graph": "O=CCO",
+      "arrows": [
+        {
+          "source": [
+            2,
+            6
+          ],
+          "sink": [
+            2,
+            0
+          ],
+          "electrons": 2,
+          "kind": "reactant_graph_grammar"
+        },
+        {
+          "source": [
+            0,
+            1
+          ],
+          "sink": [
+            1,
+            6
+          ],
+          "electrons": 2,
+          "kind": "reactant_graph_grammar"
+        }
+      ],
+      "net_edits": [
+        {
+          "atoms": [
+            0,
+            1
+          ],
+          "before": 2.0,
+          "after": 1.0
+        },
+        {
+          "atoms": [
+            0,
+            2
+          ],
+          "before": 0,
+          "after": 1
+        },
+        {
+          "atoms": [
+            1,
+            6
+          ],
+          "before": 0,
+          "after": 1
+        },
+        {
+          "atoms": [
+            2,
+            6
+          ],
+          "before": 1.0,
+          "after": 0.0
+        }
+      ],
+      "random_seed": 1086169816,
+      "seed_strategy": "arrows",
+      "generation_seconds": 0.020318299997597933
+    },
+    "source_index_one_frequencies": [
+      -1769.7368093805048,
+      110.10011817768003,
+      288.936040219984,
+      414.1838200780481,
+      604.6850398243727,
+      734.9254023534464,
+      776.0301494488704,
+      989.7082832428811,
+      1068.1808238739138,
+      1113.3432757780422,
+      1139.6333526989893,
+      1304.834260443451,
+      1417.2241247738193,
+      1758.0191146306518,
+      1999.3228767846333,
+      2691.3244674435687,
+      2856.860149690693,
+      2984.388353023533
+    ],
+    "refinement_parent": {
+      "file": "reports/bimolecular_v5/qc/formaldehyde_dimer/verification.json",
+      "sha256": "94f752697108652a39b7bacbc67f6c70092bc3fffeb4eac24c9d058f70e81764",
+      "reason": "Optimizer stopping criterion and final Cartesian force gate differed; physical gate unchanged",
+      "posthoc": true
+    }
+  },
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "protocol": {
+    "threads": 2,
+    "ts_max_steps": 100,
+    "irc_max_steps": 160,
+    "irc_dx_A_sqrt_amu": 0.08,
+    "ts_minimum_fmax_eV_A": 0.02,
+    "ts_optimizer_fmax_eV_A": 0.01,
+    "irc_fmax_eV_A": 0.05,
+    "irc_inner_fmax_eV_A": 0.02,
+    "scf_initial_guess": "independent_atomic_guess",
+    "electronic_state_stability_test": "not_performed"
+  },
+  "physical_event_verified": true,
+  "verified_pair": false,
+  "symbolic_status": "not_requested",
+  "status": "physical_event_verified",
+  "elapsed_seconds": 2389.1796176433563,
+  "gradient_evaluations": 327,
+  "ts_optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.005290007468721776,
+    "force_converged": true,
+    "energy_eV": -6225.939359125196,
+    "frequencies_cm-1": [
+      -2375.757358023604,
+      73.51005491121097,
+      281.68253849982403,
+      366.445629187179,
+      400.8361738817849,
+      768.596434975812,
+      884.2456835614975,
+      933.415471188623,
+      1196.0707929738387,
+      1266.5806147005849,
+      1299.9031064108676,
+      1411.1399228629377,
+      1566.6952040126353,
+      1869.1617640320305,
+      2335.2728583882513,
+      2933.029138037064,
+      2970.1213395021896,
+      3065.3336682894605
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "completed_irc_branches": [
+    {
+      "force_max_eV_A": 0.019201884871888182,
+      "force_converged": true,
+      "energy_eV": -6230.53246439058,
+      "frequencies_cm-1": [
+        82.3329541718992,
+        314.5094448740871,
+        336.5784951272427,
+        534.9004157581358,
+        728.9795845349176,
+        1061.727018720258,
+        1086.1218234782762,
+        1152.1911966333148,
+        1232.6223539325829,
+        1364.367581489234,
+        1414.4215434905545,
+        1427.7535218261535,
+        1501.2033454003904,
+        1891.1708922918829,
+        2966.572417964895,
+        3078.647850303151,
+        3142.179668740806,
+        3850.7480281900557
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "O=CCO",
+      "barrier_electronic_eV": 4.593105265384111
+    },
+    {
+      "force_max_eV_A": 0.017974386233103108,
+      "force_converged": true,
+      "energy_eV": -6229.772286867747,
+      "frequencies_cm-1": [
+        57.71448307802748,
+        134.40954704867886,
+        167.87105810232742,
+        214.06182475002433,
+        233.87564203854106,
+        292.17822916410506,
+        1198.4828517301191,
+        1222.1770292679632,
+        1282.8648470011462,
+        1292.0340293541,
+        1551.8720213607633,
+        1563.268178025612,
+        1864.3105265026227,
+        1876.7509221203857,
+        3001.190181255202,
+        3002.0088818688578,
+        3064.8921474438544,
+        3082.397392221538
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "C=O.C=O",
+      "barrier_electronic_eV": 3.832927742551874
+    }
+  ],
+  "endpoints": [
+    {
+      "force_max_eV_A": 0.019201884871888182,
+      "force_converged": true,
+      "energy_eV": -6230.53246439058,
+      "frequencies_cm-1": [
+        82.3329541718992,
+        314.5094448740871,
+        336.5784951272427,
+        534.9004157581358,
+        728.9795845349176,
+        1061.727018720258,
+        1086.1218234782762,
+        1152.1911966333148,
+        1232.6223539325829,
+        1364.367581489234,
+        1414.4215434905545,
+        1427.7535218261535,
+        1501.2033454003904,
+        1891.1708922918829,
+        2966.572417964895,
+        3078.647850303151,
+        3142.179668740806,
+        3850.7480281900557
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "O=CCO",
+      "barrier_electronic_eV": 4.593105265384111
+    },
+    {
+      "force_max_eV_A": 0.017974386233103108,
+      "force_converged": true,
+      "energy_eV": -6229.772286867747,
+      "frequencies_cm-1": [
+        57.71448307802748,
+        134.40954704867886,
+        167.87105810232742,
+        214.06182475002433,
+        233.87564203854106,
+        292.17822916410506,
+        1198.4828517301191,
+        1222.1770292679632,
+        1282.8648470011462,
+        1292.0340293541,
+        1551.8720213607633,
+        1563.268178025612,
+        1864.3105265026227,
+        1876.7509221203857,
+        3001.190181255202,
+        3002.0088818688578,
+        3064.8921474438544,
+        3082.397392221538
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "C=O.C=O",
+      "barrier_electronic_eV": 3.832927742551874
+    }
+  ],
+  "expected_endpoint_match": true,
+  "distinct_endpoint_graphs": true,
+  "event_outcome": "intended_valid_event",
+  "is_IRC": true,
+  "observed_reactant_smiles": "C=O.C=O",
+  "observed_product_smiles": "O=CCO"
+}

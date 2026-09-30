@@ -1,0 +1,7 @@
+{
+  "run": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17",
+  "start": "formaldehyde_water_o0",
+  "strategy": "arrows",
+  "edge": 0,
+  "rule": "First system in this list with a validated interfragment heavy-atom event in arrows or hybrid; first matching run and earliest matching edge. Independently verify that TS if found."
+}

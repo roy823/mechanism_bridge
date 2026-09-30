@@ -1,0 +1,527 @@
+[
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/adapters.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/aimnet_backend.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/backends.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/chemistry.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/cli.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/electronic.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/encounters.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/event_classification.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/event_graph.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/exploration_actions.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/intermolecular_actions.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/io.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/kinetics.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/local_patterns.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/molecular_visuals.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/network_metrics.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/pairing.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/physics.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/reaction_network.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/saddle_optimization.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/search_seeds.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/symbolic_library.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/training_data.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/verification.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "src/mechbridge/__init__.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_diagnostic",
+    "file": "scripts/diagnostics/diagnose_encounter_minima.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/adapters.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/aimnet_backend.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/backends.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/chemistry.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/cli.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/electronic.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/encounters.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/event_classification.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/event_graph.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/exploration_actions.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/intermolecular_actions.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/io.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/kinetics.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/local_patterns.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/molecular_visuals.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/network_metrics.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/pairing.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/physics.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/reaction_network.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/saddle_optimization.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/search_seeds.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/symbolic_library.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/training_data.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/verification.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "src/mechbridge/__init__.py",
+    "passed": true
+  },
+  {
+    "case": "encounter_minima_bfgs",
+    "file": "scripts/diagnostics/diagnose_encounter_minima.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/adapters.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/aimnet_backend.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/backends.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/chemistry.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/cli.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/electronic.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/encounters.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/event_classification.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/event_graph.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/exploration_actions.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/intermolecular_actions.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/io.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/kinetics.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/local_patterns.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/molecular_visuals.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/network_metrics.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/pairing.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/physics.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/reaction_network.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/saddle_optimization.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/search_seeds.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/symbolic_library.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/training_data.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/verification.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "src/mechbridge/__init__.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_diagnostic",
+    "file": "scripts/diagnostics/check_coley_reference_ts.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/adapters.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/aimnet_backend.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/backends.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/chemistry.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/cli.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/electronic.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/encounters.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/event_classification.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/event_graph.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/exploration_actions.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/intermolecular_actions.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/io.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/kinetics.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/local_patterns.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/molecular_visuals.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/network_metrics.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/pairing.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/physics.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/reaction_network.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/saddle_optimization.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/search_seeds.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/symbolic_library.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/training_data.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/verification.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "src/mechbridge/__init__.py",
+    "passed": true
+  },
+  {
+    "case": "coley_reference_ts_strict",
+    "file": "scripts/diagnostics/check_coley_reference_ts.py",
+    "passed": true
+  },
+  {
+    "case": "reports/bimolecular_v5/coley_reference_ts_strict/3217",
+    "check": "strict_stationarity",
+    "passed": true
+  }
+]

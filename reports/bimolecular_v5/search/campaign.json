@@ -1,0 +1,204 @@
+{
+  "config": {
+    "name": "Reactant-only bimolecular encounters: ReactionAtlas-inspired CHO and actual Coley dipolar pairs",
+    "starts_file": "data/processed/bimolecular_starts.jsonl",
+    "strategies": [
+      "geometry",
+      "arrows",
+      "hybrid"
+    ],
+    "core_starts": [
+      "formaldehyde_water_o0",
+      "formaldehyde_water_o1",
+      "formaldehyde_dimer_o0",
+      "formaldehyde_dimer_o1",
+      "formaldehyde_glycolaldehyde_o0",
+      "formaldehyde_glycolaldehyde_o1",
+      "formaldehyde_enediol_o0",
+      "formaldehyde_enediol_o1",
+      "coley_3217_o0",
+      "coley_3217_o1",
+      "coley_3216_o0",
+      "coley_3216_o1"
+    ],
+    "core_random_seeds": [
+      17
+    ],
+    "extension_starts": [],
+    "extension_random_seeds": [],
+    "max_attempts": 12,
+    "seeds_per_node": 1,
+    "total_evaluations": 12000,
+    "evaluations_per_attempt": 2000,
+    "workers": 3,
+    "primary_metric": "Validated MLIP events that change bonds across actual endpoint fragments; heavy-atom formation and hydrogen transfer reported separately",
+    "secondary_metric": "Strict actual-minimum root connectivity, spectator rearrangements, isolated discovered events, and initialization failures",
+    "comparison_scope": "Symbolic package includes rigid reactive orientation plus electron-derived geometric seed; this is not an isolated full-arrow ablation",
+    "evidence": "All barriers are gas-phase MLIP electronic energies, not aqueous activation free energies",
+    "DFT_selection": "First system in this list with a validated interfragment heavy-atom event in arrows or hybrid; first matching run and earliest matching edge. Independently verify that TS if found."
+  },
+  "config_sha256": "003eef264da625ff5edd16080b77ab157a7f3b1bda5b902e23b68e2986504304",
+  "started_at": 1790730801.628707,
+  "plan": [
+    {
+      "start": "formaldehyde_water_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_water_o0_s17"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_water_o1_s17"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_dimer_o0_s17"
+    },
+    {
+      "start": "formaldehyde_dimer_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_dimer_o1_s17"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_glycolaldehyde_o0_s17"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_glycolaldehyde_o1_s17"
+    },
+    {
+      "start": "formaldehyde_enediol_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_enediol_o0_s17"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_enediol_o1_s17"
+    },
+    {
+      "start": "coley_3217_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3217_o0_s17"
+    },
+    {
+      "start": "coley_3217_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3217_o1_s17"
+    },
+    {
+      "start": "coley_3216_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3216_o0_s17"
+    },
+    {
+      "start": "coley_3216_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3216_o1_s17"
+    }
+  ],
+  "completed": [
+    {
+      "start": "formaldehyde_water_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_water_o1_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "formaldehyde_water_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_water_o0_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "formaldehyde_dimer_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_dimer_o1_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_dimer_o0_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_glycolaldehyde_o0_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_glycolaldehyde_o1_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "formaldehyde_enediol_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_enediol_o0_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "coley_3217_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3217_o0_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "coley_3216_o0",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3216_o0_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "formaldehyde_enediol_o1_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "coley_3217_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3217_o1_s17",
+      "exit_code": 0
+    },
+    {
+      "start": "coley_3216_o1",
+      "seed": 17,
+      "cohort": "core",
+      "folder": "coley_3216_o1_s17",
+      "exit_code": 0
+    }
+  ],
+  "failed": [],
+  "finished_at": 1790732040.2213356
+}

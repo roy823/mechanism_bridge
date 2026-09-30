@@ -1,0 +1,9 @@
+{
+  "run": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17",
+  "start": "formaldehyde_dimer_o0",
+  "strategy": "arrows",
+  "edge": 1,
+  "selection": "Secondary diagnostic selected after observing MLIP results: earliest C-C coupling in the first formaldehyde-dimer arrows run; not part of the predeclared primary DFT selection",
+  "reason": "Test C-C formation in the ReactionAtlas-inspired formose initiation context in addition to C-O hydration",
+  "DFT_result_known_at_selection": false
+}

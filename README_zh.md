@@ -1,5 +1,7 @@
 # Mechanism Bridge
 
+双分子探索 v5：[方法与边界](docs/BIMOLECULAR_V5_zh.md)、[实际结果](reports/bimolecular_v5/RESULTS_zh.md)、[分子与三维路径](reports/bimolecular_v5/index.html)。扩展至 ReactionAtlas 相关 CHO 反应物组合和 Coley 数据中的双分子环加成；区分真实跨分子成键、旁观物重排与未连通的相遇构型。
+
 下一阶段设计：[符号动作、GPA 式事件网络与 MCTS](docs/MCTS_REACTION_SEARCH_DESIGN_zh.md)。该文档是待实现方案，包含搜索定义、能量评分、动力学产品判定和验证计划。
 
 文献与实现衔接：[ReactionAtlas 数据核查、符号到 seed 与 GPA 式闭环](docs/REACTIONATLAS_SYMBOLIC_GPA_zh.md)。包含公开数据版本差异、事件证据分层和下一阶段验证设计。

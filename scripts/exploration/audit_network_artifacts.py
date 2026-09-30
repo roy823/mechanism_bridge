@@ -30,8 +30,10 @@ def main():
         for strategy in manifest['strategies']:
             folder=args.run/start/strategy
             n=json.loads((folder/'network.json').read_text(encoding='utf-8'))
-            checks.append(dict(check='run_complete',start=start,strategy=strategy,passed=n['status']=='completed'))
-            calls=n['initialization_evaluations']+sum(a['evaluations'] for a in n['attempts'])
+            checks.append(dict(check='run_finished',start=start,strategy=strategy,
+                passed=n['status'] in ('completed','initial_minimum_unresolved','initialization_budget_exhausted')))
+            initialization=n.get('initialization_evaluations',n['evaluations'] if not n['attempts'] else -1)
+            calls=initialization+sum(a['evaluations'] for a in n['attempts'])
             checks.append(dict(check='evaluation_accounting',start=start,strategy=strategy,
                 passed=calls==n['evaluations'] and calls<=n['protocol']['total_evaluations']
                 and all(a['evaluations']<=n['protocol']['evaluations_per_attempt'] for a in n['attempts'])))
@@ -44,6 +46,12 @@ def main():
                     passed=observed==registered and edge['nodes'][0]!=edge['nodes'][1]
                     and detail['status']=='validated_descents' and detail['is_IRC'] is False
                     and detail['DFT_verified'] is False))
+                checks.append(dict(check='stationary_point_gates',start=start,strategy=strategy,edge=edge['id'],
+                    passed=detail['ts']['imaginary_count']==1 and detail['ts']['force_converged']
+                    and detail['ts']['force_max_eV_A']<=n['protocol']['fmax']
+                    and all(e['imaginary_count']==0 and e['force_converged'] and
+                            e['force_max_eV_A']<=n['protocol']['fmax'] and e['barrier_eV']>=-1e-4
+                            for e in detail['endpoints'])))
     result=dict(passed=all(c['passed'] for c in checks),checks=checks)
     (args.run/'artifact_audit.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     print(json.dumps(dict(passed=result['passed'],checks=len(checks),failures=[c for c in checks if not c['passed']]),indent=2))

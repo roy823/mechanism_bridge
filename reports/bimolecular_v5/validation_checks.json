@@ -1,0 +1,51 @@
+{
+  "windows_tests": {
+    "passed": 45,
+    "skipped": 1,
+    "seconds": 2.77,
+    "skip_reason": "PySCF available in WSL"
+  },
+  "wsl_tests": {
+    "passed": 46,
+    "skipped": 0,
+    "seconds": 20.93
+  },
+  "primary_artifact_checks": {
+    "passed": true,
+    "checks": 442
+  },
+  "supplementary_checks": {
+    "passed": true,
+    "checks": 105
+  },
+  "original_DFT_source_checks": {
+    "passed": true,
+    "checks": 6
+  },
+  "coley_resource_checks": [
+    {
+      "file": "data/raw/coley_dipolar/LICENSE",
+      "passed": true
+    },
+    {
+      "file": "data/raw/coley_dipolar/README.md",
+      "passed": true
+    },
+    {
+      "file": "data/raw/coley_dipolar/full_dataset.csv",
+      "passed": true
+    },
+    {
+      "file": "data/raw/coley_dipolar/full_data_profiles.tar.gz",
+      "passed": true
+    }
+  ],
+  "static_visuals_reviewed": [
+    "search/formaldehyde_water_o0_s17/molecules/reaction_formaldehyde_water_o0_arrows_0.png",
+    "bimolecular_overview.png"
+  ],
+  "interactive_browser_tested": false,
+  "pending_computations": [],
+  "verified_DFT_events": 2,
+  "all_expected_primary_runs_finished": true
+}

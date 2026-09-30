@@ -36,6 +36,13 @@ NAMES.update({'O=CCO':'羟基乙醛','O/C=C\\O':'乙烯二醇',
     'CC.[C-]#[O+]':'乙烷 + 一氧化碳',
     '[H]/[C-]=[O+]\\CC':'局部电荷中间体候选'})
 
+NAMES.update({'C=O.O':'甲醛 + 水','OCO':'甲二醇','C=O.C=O':'两分子甲醛',
+    'C=O.O=CCO':'甲醛 + 羟基乙醛','C=O.O/C=C/O':'甲醛 + 乙烯二醇',
+    'C#[N+][N-]C.C=C':'腈亚胺 + 乙烯','CN1CCC=N1':'五元环加成产物',
+    'C=C.C=[N+]=[C-]C':'偶极体 + 乙烯','CC1=NCCC1':'五元环加成产物',
+    'COC(=O)CO':'羟基乙酸甲酯','C=CN(C)N=C':'开链加成产物',
+    'O/C=C/OCO':'烯醇的羟甲基醚'})
+
 
 def depiction(mol, png=False):
     m=Chem.Mol(mol)
@@ -57,8 +64,9 @@ def clean_svg(svg):
 
 def entry(mol, coordinates):
     smiles=graph_smiles(mol)
+    formulas=[rdMolDescriptors.CalcMolFormula(m) for m in Chem.GetMolFrags(mol,asMols=True)]
     return dict(smiles=smiles,name=NAMES.get(smiles,'已优化构型'),
-        formula=rdMolDescriptors.CalcMolFormula(mol),svg=clean_svg(depiction(mol)),
+        formula=' + '.join(formulas),total_formula=rdMolDescriptors.CalcMolFormula(mol),svg=clean_svg(depiction(mol)),
         positions=np.asarray(coordinates).tolist(),
         bonds=[dict(i=i,j=j,order=order) for (i,j),order in bond_orders(mol).items()])
 
@@ -175,7 +183,8 @@ def static_figure(event,out):
     grid=fig.add_gridspec(4,3,height_ratios=[1.0,2.0,1.2,.18])
     left,right=event['left'],event['right']
     formula_math='$'+re.sub(r'(\d+)',r'_{\1}',left['formula'])+'$'
-    fig.suptitle(f"{left['name']} → TS → {right['name']}   |   {formula_math}",fontsize=20,color='#152d48')
+    connectivity = '根连通' if event['root_connected'] else '未与初始盆地连通'
+    fig.suptitle(f"[{connectivity}] {left['name']} → TS → {right['name']}   |   {formula_math}",fontsize=20,color='#152d48')
     for col,end,frame in [(0,left,event['frames'][0]),(2,right,event['frames'][-1])]:
         ax=fig.add_subplot(grid[0,col]);ax.axis('off')
         m=geometry_mol(event['numbers'],end['positions'],0)
@@ -237,7 +246,7 @@ def render_visuals(run):
     selected=[];seen=set()
     for e in events:
         pair=tuple(sorted([e['left']['smiles'],e['right']['smiles']]))
-        if e['root_connected'] and pair not in seen:
+        if pair[0] != pair[1] and pair not in seen:
             seen.add(pair);selected.append(e)
     figures=[static_figure(e,out) for e in selected]
     assets=ROOT/'assets/molecular_viewer'

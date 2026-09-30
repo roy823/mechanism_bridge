@@ -1,0 +1,10 @@
+{
+  "url": "https://raw.githubusercontent.com/coleygroup/dipolar_cycloaddition_dataset/1608a64499779bf8f89a886308d97c6a830d084c/final_data_files/full_data_profiles.tar.gz",
+  "revision": "1608a64499779bf8f89a886308d97c6a830d084c",
+  "bytes": 94023449,
+  "sha256": "c42f6cbe0031521d159844f845584c27435f778d4de6516faa117717dd6766ac",
+  "git_blob_sha1": "b6ac59a0057a81ab6a833a700044a311c691bcdd",
+  "author_git_blob_verified": true,
+  "seconds": 18.869523286819458,
+  "purpose": "Post-search oracle-TS diagnostic only; never a reactant-only seed input"
+}

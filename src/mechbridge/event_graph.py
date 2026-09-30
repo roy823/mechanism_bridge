@@ -28,6 +28,18 @@ def graph_smiles(mol):
     return Chem.MolToSmiles(Chem.RemoveHs(copy), isomericSmiles=True)
 
 
+def resonance_equivalent(left, right):
+    """Recognize enumerated Lewis resonance alternatives without moving nuclei.
+
+    A positive result is evidence of equivalence; a truncated enumeration can
+    miss alternatives. Stereochemistry and explicit hydrogen locations survive.
+    """
+    target=graph_smiles(right)
+    if graph_smiles(left)==target:return True
+    flags=Chem.UNCONSTRAINED_ANIONS|Chem.UNCONSTRAINED_CATIONS|Chem.ALLOW_CHARGE_SEPARATION
+    return any(graph_smiles(m)==target for m in Chem.ResonanceMolSupplier(left,flags=flags,maxStructs=256))
+
+
 def bond_orders(mol):
     return {tuple(sorted((b.GetBeginAtomIdx(), b.GetEndAtomIdx()))):
             b.GetBondTypeAsDouble() for b in mol.GetBonds()}

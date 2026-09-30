@@ -40,10 +40,12 @@ def stationary(atoms, calculator, fmax=0.02):
 
 
 def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
-                 ts_steps=100, irc_steps=120, frames=17):
+                 ts_steps=100, irc_steps=120, frames=17, ts_optimizer_fmax=0.01):
     """Validate a supplied candidate on DFT; frames=0 omits orbital annotation."""
     if frames == 1 or frames < 0:
         raise ValueError('Use frames=0 for physical verification, or frames>=2 for orbital analysis')
+    if not 0 < ts_optimizer_fmax <= .02:
+        raise ValueError('TS optimizer target must be positive and no looser than the physical force gate')
     from sella import Sella, IRC
     outdir = Path(outdir); outdir.mkdir(parents=True,exist_ok=True)
     started = time.time()
@@ -52,6 +54,7 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
               "multiplicity":record["multiplicity"],"environment":"gas_phase",
               "protocol":{"threads":threads,"ts_max_steps":ts_steps,"irc_max_steps":irc_steps,
                           "irc_dx_A_sqrt_amu":0.08,"ts_minimum_fmax_eV_A":0.02,
+                          "ts_optimizer_fmax_eV_A":ts_optimizer_fmax,
                           "irc_fmax_eV_A":0.05,"irc_inner_fmax_eV_A":0.02,
                           "scf_initial_guess":"independent_atomic_guess",
                           "electronic_state_stability_test":"not_performed"},
@@ -70,7 +73,7 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
         result["status"] = "refining_source_ts"; save()
         with Sella(atoms,order=1,internal=False,logfile=str(outdir/"ts.log"),
                    trajectory=str(outdir/"ts.traj")) as opt:
-            result["ts_optimizer_converged"] = bool(opt.run(fmax=0.02,steps=ts_steps))
+            result["ts_optimizer_converged"] = bool(opt.run(fmax=ts_optimizer_fmax,steps=ts_steps))
         ts, hessian, modes = stationary(atoms,calc)
         result["ts"] = ts
         np.savez_compressed(outdir/"ts_modes.npz",hessian_eV_A2=hessian,modes=modes)

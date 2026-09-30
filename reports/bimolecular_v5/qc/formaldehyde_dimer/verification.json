@@ -1,0 +1,275 @@
+{
+  "event_id": "formaldehyde_dimer_o0_arrows_edge1_DFT",
+  "source": {
+    "event_id": "formaldehyde_dimer_o0_arrows_edge1_DFT",
+    "atomic_numbers": [
+      6,
+      8,
+      6,
+      8,
+      1,
+      1,
+      1,
+      1
+    ],
+    "charge": 0,
+    "multiplicity": 1,
+    "positions_A": {
+      "ts": [
+        [
+          -0.03176940300165821,
+          0.1381862367696064,
+          -0.8989725943867523
+        ],
+        [
+          -0.4311160032345157,
+          -1.0341081987206298,
+          -1.3853764771714399
+        ],
+        [
+          0.09685043872483758,
+          0.014070808176593825,
+          1.0623240796394138
+        ],
+        [
+          -0.7858180288558559,
+          0.39252353089541486,
+          1.7588740596832113
+        ],
+        [
+          1.022489360687071,
+          0.4068653376905778,
+          -0.9847100658012419
+        ],
+        [
+          -0.7358533413640799,
+          0.9679236108332989,
+          -0.8763313019620459
+        ],
+        [
+          -0.27854586864349506,
+          -0.7704722179844857,
+          -0.07867547751221092
+        ],
+        [
+          1.1437632399921258,
+          -0.11498881239782341,
+          1.402866879576994
+        ]
+      ]
+    },
+    "reactant_smiles": "C=O.C=O",
+    "product_smiles": "O=CCO",
+    "expected_pair_origin": "Actual MLIP descent endpoints, not the symbolic target",
+    "source_json": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17/formaldehyde_dimer_o0/arrows/attempt_004/result.json",
+    "source_sha256": "143d1f62c5e1d2b3a6a0153c33a61a5bfe37b748e4159fa7e5c44bfd42d5d18b",
+    "original_symbolic_proposal": {
+      "fraction": 0.55,
+      "template_id": "grammar:carbonyl_C_H_coupled_addition",
+      "displacement_norm_A": 1.0,
+      "unnormalized_fit_displacement_A": 0.8584348975357411,
+      "progress_targets": [
+        0.7000000000000001,
+        0.4,
+        0.4,
+        0.7000000000000001
+      ],
+      "angle_targets": [
+        {
+          "atoms": [
+            2,
+            6,
+            1
+          ],
+          "degrees": 140.0,
+          "kind": "hydrogen_transfer"
+        },
+        {
+          "atoms": [
+            2,
+            0,
+            1
+          ],
+          "degrees": 110.0,
+          "kind": "carbonyl_addition"
+        }
+      ],
+      "angle_cosines_at_seed": [
+        -0.6002118953388804,
+        -0.461302416147346
+      ],
+      "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+      "template_source_graph": null,
+      "transferred": null,
+      "origin": "analyst_defined_reactant_only_electron_action_grammar",
+      "pattern_smarts": null,
+      "encounter_orientation": {
+        "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+        "score": 0.0001264763845684286,
+        "selected_trial": 14,
+        "cross_forming_pairs": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "contact_distance_A": 2.8,
+        "reference_product_or_TS_used": false,
+        "displacement_from_source_A": 8.786501060892993
+      },
+      "intermolecular": true,
+      "source_sink_couplings": [
+        [
+          3,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "geometric_fit_cost": 0.1933673277494416,
+      "geometric_fit_nfev": 5,
+      "geometric_fit_optimality": 0.00013124161013050584,
+      "predicted_graph": "O=CCO",
+      "arrows": [
+        {
+          "source": [
+            2,
+            6
+          ],
+          "sink": [
+            2,
+            0
+          ],
+          "electrons": 2,
+          "kind": "reactant_graph_grammar"
+        },
+        {
+          "source": [
+            0,
+            1
+          ],
+          "sink": [
+            1,
+            6
+          ],
+          "electrons": 2,
+          "kind": "reactant_graph_grammar"
+        }
+      ],
+      "net_edits": [
+        {
+          "atoms": [
+            0,
+            1
+          ],
+          "before": 2.0,
+          "after": 1.0
+        },
+        {
+          "atoms": [
+            0,
+            2
+          ],
+          "before": 0,
+          "after": 1
+        },
+        {
+          "atoms": [
+            1,
+            6
+          ],
+          "before": 0,
+          "after": 1
+        },
+        {
+          "atoms": [
+            2,
+            6
+          ],
+          "before": 1.0,
+          "after": 0.0
+        }
+      ],
+      "random_seed": 1086169816,
+      "seed_strategy": "arrows",
+      "generation_seconds": 0.020318299997597933
+    },
+    "source_index_one_frequencies": [
+      -1769.7368093805048,
+      110.10011817768003,
+      288.936040219984,
+      414.1838200780481,
+      604.6850398243727,
+      734.9254023534464,
+      776.0301494488704,
+      989.7082832428811,
+      1068.1808238739138,
+      1113.3432757780422,
+      1139.6333526989893,
+      1304.834260443451,
+      1417.2241247738193,
+      1758.0191146306518,
+      1999.3228767846333,
+      2691.3244674435687,
+      2856.860149690693,
+      2984.388353023533
+    ]
+  },
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "protocol": {
+    "threads": 2,
+    "ts_max_steps": 100,
+    "irc_max_steps": 160,
+    "irc_dx_A_sqrt_amu": 0.08,
+    "ts_minimum_fmax_eV_A": 0.02,
+    "irc_fmax_eV_A": 0.05,
+    "irc_inner_fmax_eV_A": 0.02,
+    "scf_initial_guess": "independent_atomic_guess",
+    "electronic_state_stability_test": "not_performed"
+  },
+  "physical_event_verified": false,
+  "verified_pair": false,
+  "symbolic_status": "not_computed",
+  "status": "unresolved_ts",
+  "elapsed_seconds": 350.6630668640137,
+  "gradient_evaluations": 35,
+  "ts_optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.020276977768240542,
+    "force_converged": false,
+    "energy_eV": -6225.939309416231,
+    "frequencies_cm-1": [
+      -2377.2498035355857,
+      76.73274838699635,
+      282.54203567625433,
+      366.6384921908943,
+      400.72351488214395,
+      769.3302181470867,
+      884.2061397879364,
+      932.9531299605827,
+      1196.5075105999622,
+      1266.5377797904832,
+      1300.1586666298167,
+      1411.244406176797,
+      1567.3940276730837,
+      1868.7911566315818,
+      2332.343931094013,
+      2929.5248519329893,
+      2969.8307603464086,
+      3063.5678151905863
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  }
+}

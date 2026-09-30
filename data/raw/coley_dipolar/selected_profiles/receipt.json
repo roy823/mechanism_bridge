@@ -1,0 +1,62 @@
+[
+  {
+    "member": "full_dataset_profiles/3216/TS_imag_mode.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3216/TS_imag_mode.xyz",
+    "sha256": "42275e3a7bfd21dbf4f4e1c778ea88752bd6d82eab17ee76b1c3b8117a558959"
+  },
+  {
+    "member": "full_dataset_profiles/3216/TS_ts_guess_UBF07G_template_1-5_3-4.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3216/TS_ts_guess_UBF07G_template_1-5_3-4.xyz",
+    "sha256": "f8fabff1957c49dede4c735e1435180864a2e3f166b6acd474609b2d729b4475"
+  },
+  {
+    "member": "full_dataset_profiles/3216/energies.csv",
+    "file": "data/raw/coley_dipolar/selected_profiles/3216/energies.csv",
+    "sha256": "752f396d971a1b64b0a29cd6433b3fdcf6e7d75e380028703a46773008015613"
+  },
+  {
+    "member": "full_dataset_profiles/3216/p0_C5H9N.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3216/p0_C5H9N.xyz",
+    "sha256": "0816f2269eb3c8607ca3903abe7424d7936a09199a8ac68fd7575cc36d3c1deb"
+  },
+  {
+    "member": "full_dataset_profiles/3216/r0_C2H4.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3216/r0_C2H4.xyz",
+    "sha256": "fd8737ea614bf67ca3e0c76a36cd6f133f261404951922c2627ce4322dae680a"
+  },
+  {
+    "member": "full_dataset_profiles/3216/r1_C3H5N.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3216/r1_C3H5N.xyz",
+    "sha256": "fa09ae7454cbd80df57b949b5ca8d64e6aa014f89c4a7d3139cf921559dd083d"
+  },
+  {
+    "member": "full_dataset_profiles/3217/TS__n3Jtl_ll_ad_1-2_3-4.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3217/TS__n3Jtl_ll_ad_1-2_3-4.xyz",
+    "sha256": "b083fb036826440f40e1597216f0bccc50f4e8f82be629cb1c2d1d5042923461"
+  },
+  {
+    "member": "full_dataset_profiles/3217/TS_imag_mode.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3217/TS_imag_mode.xyz",
+    "sha256": "6da7e15b6c89510b23ce347661c80818f549d2b2c9d910d7acc2524d30526765"
+  },
+  {
+    "member": "full_dataset_profiles/3217/energies.csv",
+    "file": "data/raw/coley_dipolar/selected_profiles/3217/energies.csv",
+    "sha256": "87128060a115d65135d53dec63cb2fdf7360a97ec92a6913dcbf948a82271068"
+  },
+  {
+    "member": "full_dataset_profiles/3217/p0_C4H8N2.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3217/p0_C4H8N2.xyz",
+    "sha256": "c279e55bf45ebd9f4fb281566b45637deab59071e9f1abb97549180cb1810f1f"
+  },
+  {
+    "member": "full_dataset_profiles/3217/r0_C2H4N2.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3217/r0_C2H4N2.xyz",
+    "sha256": "e3ee2b2c10955ab5497b25d99bf8aafffc96235301f9da0d5620a04d3cc86237"
+  },
+  {
+    "member": "full_dataset_profiles/3217/r1_C2H4.xyz",
+    "file": "data/raw/coley_dipolar/selected_profiles/3217/r1_C2H4.xyz",
+    "sha256": "f0488bc186ba3ae91f3bd93c897b68840c4c75ce688e60a7cb5f373e8c9f3f2a"
+  }
+]

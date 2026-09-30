@@ -1,0 +1,98 @@
+{
+  "primary_geometry_evaluations": 302414,
+  "primary_campaign_seconds": 1238.5926287174225,
+  "initialization_preflight": [
+    {
+      "start": "coley_3216_o0",
+      "evaluations": 341,
+      "status": "initial_minimum_unresolved"
+    },
+    {
+      "start": "coley_3216_o1",
+      "evaluations": 273,
+      "status": "completed"
+    },
+    {
+      "start": "coley_3217_o0",
+      "evaluations": 335,
+      "status": "initial_minimum_unresolved"
+    },
+    {
+      "start": "coley_3217_o1",
+      "evaluations": 272,
+      "status": "completed"
+    },
+    {
+      "start": "formaldehyde_dimer_o0",
+      "evaluations": 135,
+      "status": "completed"
+    },
+    {
+      "start": "formaldehyde_dimer_o1",
+      "evaluations": 426,
+      "status": "initial_minimum_unresolved"
+    },
+    {
+      "start": "formaldehyde_enediol_o0",
+      "evaluations": 165,
+      "status": "completed"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "evaluations": 215,
+      "status": "completed"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "evaluations": 215,
+      "status": "completed"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o1",
+      "evaluations": 297,
+      "status": "completed"
+    },
+    {
+      "start": "formaldehyde_water_o0",
+      "evaluations": 203,
+      "status": "completed"
+    },
+    {
+      "start": "formaldehyde_water_o1",
+      "evaluations": 208,
+      "status": "completed"
+    }
+  ],
+  "supplemental_geometry_evaluations": {
+    "encounter_minima_diagnostic": 28483,
+    "encounter_minima_bfgs": 1102,
+    "coley_reference_ts_diagnostic": 1946,
+    "coley_reference_ts_strict": 2736
+  },
+  "DFT_costs_reported_separately": true,
+  "all_MLIP_geometry_evaluations": 339766,
+  "DFT": [
+    {
+      "case": "formaldehyde_dimer",
+      "status": "unresolved_ts",
+      "gradient_evaluations": 35,
+      "seconds": 350.6630668640137,
+      "verified": false
+    },
+    {
+      "case": "formaldehyde_dimer_refined",
+      "status": "physical_event_verified",
+      "gradient_evaluations": 327,
+      "seconds": 2389.1796176433563,
+      "verified": true
+    },
+    {
+      "case": "formaldehyde_water",
+      "status": "physical_event_verified",
+      "gradient_evaluations": 169,
+      "seconds": 685.2121443748474,
+      "verified": true
+    }
+  ],
+  "DFT_total_gradient_evaluations": 531
+}

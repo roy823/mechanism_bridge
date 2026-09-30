@@ -1,0 +1,209 @@
+{
+  "library_audit": {
+    "source_records": 1926,
+    "replay_valid_records": 210,
+    "bimolecular_records": 162,
+    "outside_pilot_domain": 1593,
+    "unimolecular_records": 48,
+    "replay_or_parse_rejected": 122,
+    "unsupported_local_directions": 69,
+    "no_distinct_chemical_graph": 1
+  },
+  "templates": 351,
+  "systems": [
+    {
+      "system": "formaldehyde_water",
+      "graph": "C=O.O",
+      "atoms": 7,
+      "proposals": 2,
+      "intermolecular": 2,
+      "actions": [
+        {
+          "name": "carbonyl_addition_with_proton_transfer",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "OCO"
+        },
+        {
+          "name": "carbonyl_addition_with_proton_transfer",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "OCO"
+        }
+      ]
+    },
+    {
+      "system": "formaldehyde_dimer",
+      "graph": "C=O.C=O",
+      "atoms": 8,
+      "proposals": 4,
+      "intermolecular": 4,
+      "actions": [
+        {
+          "name": "carbonyl_C_H_coupled_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CCO"
+        },
+        {
+          "name": "carbonyl_C_H_coupled_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CCO"
+        },
+        {
+          "name": "carbonyl_C_H_coupled_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CCO"
+        },
+        {
+          "name": "carbonyl_C_H_coupled_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CCO"
+        }
+      ]
+    },
+    {
+      "system": "formaldehyde_glycolaldehyde",
+      "graph": "C=O.O=CCO",
+      "atoms": 12,
+      "proposals": 8,
+      "intermolecular": 5,
+      "actions": [
+        {
+          "name": "Carboxylate protonation",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=[OH+].O=CC[O-]"
+        },
+        {
+          "name": "carbonyl_C_H_coupled_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=C(CO)CO"
+        },
+        {
+          "name": "carbonyl_C_H_coupled_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CC(O)CO"
+        },
+        {
+          "name": "carbonyl_addition_with_proton_transfer",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CCOCO"
+        },
+        {
+          "name": "Keto\u2013enol tautomerization",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=O.OC=CO"
+        },
+        {
+          "name": "Carboxylate protonation",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=O.[O-]CC=[OH+]"
+        },
+        {
+          "name": "carbonyl_C_H_coupled_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CC(O)CO"
+        },
+        {
+          "name": "Keto\u2013enol tautomerization",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=O.OC=CO"
+        }
+      ]
+    },
+    {
+      "system": "formaldehyde_enediol",
+      "graph": "C=O.OC=CO",
+      "atoms": 12,
+      "proposals": 10,
+      "intermolecular": 6,
+      "actions": [
+        {
+          "name": "Carboxylate protonation",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=[OH+].[O-]C=CO"
+        },
+        {
+          "name": "neutral_enol_aldol_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CC(O)CO"
+        },
+        {
+          "name": "carbonyl_addition_with_proton_transfer",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "OC=COCO"
+        },
+        {
+          "name": "Keto\u2013enol tautomerization",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=O.O=CCO"
+        },
+        {
+          "name": "Carboxylate protonation",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=O.[O-]C=C[OH2+]"
+        },
+        {
+          "name": "Carboxylate protonation",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=[OH+].[O-]C=CO"
+        },
+        {
+          "name": "neutral_enol_aldol_addition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "O=CC(O)CO"
+        },
+        {
+          "name": "carbonyl_addition_with_proton_transfer",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "OC=COCO"
+        },
+        {
+          "name": "Keto\u2013enol tautomerization",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=O.O=CCO"
+        },
+        {
+          "name": "Carboxylate protonation",
+          "origin": "local_transfer_of_published_SynEPD_arrows",
+          "product": "C=O.[O-]C=C[OH2+]"
+        }
+      ]
+    },
+    {
+      "system": "coley_3217",
+      "graph": "C#[N+][N-]C.C=C",
+      "atoms": 14,
+      "proposals": 2,
+      "intermolecular": 2,
+      "actions": [
+        {
+          "name": "dipolar_3_plus_2_cycloaddition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "CN1CCC=N1"
+        },
+        {
+          "name": "dipolar_3_plus_2_cycloaddition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "CN1CCC=N1"
+        }
+      ]
+    },
+    {
+      "system": "coley_3216",
+      "graph": "C=C.[CH2-][N+]#CC",
+      "atoms": 15,
+      "proposals": 2,
+      "intermolecular": 2,
+      "actions": [
+        {
+          "name": "dipolar_3_plus_2_cycloaddition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "CC1=NCCC1"
+        },
+        {
+          "name": "dipolar_3_plus_2_cycloaddition",
+          "origin": "analyst_defined_reactant_only_electron_action_grammar",
+          "product": "CC1=NCCC1"
+        }
+      ]
+    }
+  ]
+}

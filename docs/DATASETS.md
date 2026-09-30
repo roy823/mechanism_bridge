@@ -31,4 +31,6 @@
 
 ## 验证等级
 
+双分子扩展另使用 [Coley 组的 1,3-偶极环加成公开数据](https://github.com/coleygroup/dipolar_cycloaddition_dataset)。数据表和参考结构档案固定到提交 `1608a64499779bf8f89a886308d97c6a830d084c`，位于 `data/raw/coley_dipolar/`。主实验仅输入反应物；参考产物用于事后比较，参考 TS 的独立诊断不计入主搜索命中。完整说明见 [双分子验证](BIMOLECULAR_V5_zh.md)。
+
 “下载成功”只表示字节校验成功。“导入成功”只表示该格式被解析。“图匹配”只是跨库候选。以上三者均不等于箭头—TS 配对已经得到量化计算验证。

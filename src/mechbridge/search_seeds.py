@@ -3,6 +3,7 @@ import numpy as np
 from scipy.optimize import least_squares
 from ase.data import covalent_radii
 from .event_graph import bond_orders
+from .encounters import orient_reactive_encounter
 
 
 def internal_direction(x, direction):
@@ -100,6 +101,7 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed):
     if strategy not in ('bond_edits', 'arrows') or proposal is None:
         raise ValueError('Symbolic strategy needs an applicable proposal')
     edits = proposal['edits']
+    x, encounter = orient_reactive_encounter(atoms.numbers,x,mol,edits,random_seed)
     old_bonds = bond_orders(mol)
     changed = {tuple(e['atoms']) for e in edits}
     ij = np.array([e['atoms'] for e in edits])
@@ -162,6 +164,8 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed):
                             template_source_graph=proposal.get('template_source_graph'),
                             transferred=proposal.get('transferred'),
                             origin=proposal.get('origin'), pattern_smarts=proposal.get('pattern_smarts'),
+                            encounter_orientation=encounter,
+                            intermolecular=proposal.get('intermolecular',False),
                             source_sink_couplings=links, geometric_fit_cost=float(fit.cost),
                             geometric_fit_nfev=fit.nfev, geometric_fit_optimality=float(fit.optimality),
                             predicted_graph=proposal['predicted_graph'],

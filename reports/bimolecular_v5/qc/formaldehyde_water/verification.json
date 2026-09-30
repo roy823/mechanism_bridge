@@ -1,0 +1,391 @@
+{
+  "event_id": "formaldehyde_water_o0_arrows_edge0_DFT",
+  "source": {
+    "event_id": "formaldehyde_water_o0_arrows_edge0_DFT",
+    "atomic_numbers": [
+      6,
+      8,
+      8,
+      1,
+      1,
+      1,
+      1
+    ],
+    "charge": 0,
+    "multiplicity": 1,
+    "positions_A": {
+      "ts": [
+        [
+          0.0672926466617044,
+          -0.056503748036604934,
+          -0.6472181761467304
+        ],
+        [
+          -1.2076458418139835,
+          -0.29206894224653196,
+          -0.5232132918975367
+        ],
+        [
+          0.22686170044230838,
+          0.4723335015861763,
+          0.9413900924759324
+        ],
+        [
+          0.7746489475033906,
+          -0.8916206444721592,
+          -0.7186412191291046
+        ],
+        [
+          0.39752288132721764,
+          0.8231628130433766,
+          -1.2076592468119756
+        ],
+        [
+          0.6079645275685165,
+          -0.2194217551010256,
+          1.4933809761621764
+        ],
+        [
+          -0.8666891645191156,
+          0.16411551794541676,
+          0.6619489145816934
+        ]
+      ]
+    },
+    "reactant_smiles": "C=O.O",
+    "product_smiles": "OCO",
+    "expected_pair_origin": "Actual MLIP descent endpoints, not the symbolic target",
+    "source_json": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17/formaldehyde_water_o0/arrows/attempt_001/result.json",
+    "source_sha256": "aff08f83e94e6474c39beb51aebc7b7a145e9550c8c53ac0fd91265e380a99c4",
+    "original_symbolic_proposal": {
+      "fraction": 0.35,
+      "template_id": "grammar:carbonyl_addition_with_proton_transfer",
+      "displacement_norm_A": 0.6,
+      "unnormalized_fit_displacement_A": 0.7025518548437935,
+      "progress_targets": [
+        0.35,
+        0.35,
+        0.35,
+        0.35
+      ],
+      "angle_targets": [
+        {
+          "atoms": [
+            2,
+            6,
+            1
+          ],
+          "degrees": 110.0,
+          "kind": "hydrogen_transfer"
+        },
+        {
+          "atoms": [
+            2,
+            0,
+            1
+          ],
+          "degrees": 100.0,
+          "kind": "carbonyl_addition"
+        }
+      ],
+      "angle_cosines_at_seed": [
+        -0.30109145955449745,
+        -0.16188665662744378
+      ],
+      "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+      "template_source_graph": null,
+      "transferred": null,
+      "origin": "analyst_defined_reactant_only_electron_action_grammar",
+      "pattern_smarts": null,
+      "encounter_orientation": {
+        "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+        "score": 2.208257387898006e-05,
+        "selected_trial": 20,
+        "cross_forming_pairs": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "contact_distance_A": 2.8,
+        "reference_product_or_TS_used": false,
+        "displacement_from_source_A": 6.984880887277099
+      },
+      "intermolecular": true,
+      "source_sink_couplings": [
+        [
+          0,
+          2
+        ]
+      ],
+      "geometric_fit_cost": 0.00593181556522125,
+      "geometric_fit_nfev": 6,
+      "geometric_fit_optimality": 5.112492867286739e-06,
+      "predicted_graph": "OCO",
+      "arrows": [
+        {
+          "source": [
+            2
+          ],
+          "sink": [
+            2,
+            0
+          ],
+          "electrons": 2,
+          "kind": "reactant_graph_grammar"
+        },
+        {
+          "source": [
+            0,
+            1
+          ],
+          "sink": [
+            1,
+            6
+          ],
+          "electrons": 2,
+          "kind": "reactant_graph_grammar"
+        },
+        {
+          "source": [
+            2,
+            6
+          ],
+          "sink": [
+            2
+          ],
+          "electrons": 2,
+          "kind": "reactant_graph_grammar"
+        }
+      ],
+      "net_edits": [
+        {
+          "atoms": [
+            0,
+            1
+          ],
+          "before": 2.0,
+          "after": 1.0
+        },
+        {
+          "atoms": [
+            0,
+            2
+          ],
+          "before": 0,
+          "after": 1
+        },
+        {
+          "atoms": [
+            1,
+            6
+          ],
+          "before": 0,
+          "after": 1
+        },
+        {
+          "atoms": [
+            2,
+            6
+          ],
+          "before": 1.0,
+          "after": 0.0
+        }
+      ],
+      "random_seed": 1142827947,
+      "seed_strategy": "arrows",
+      "generation_seconds": 0.01673449997906573
+    },
+    "source_index_one_frequencies": [
+      -1651.7562749650695,
+      444.0105160405886,
+      568.8499697353974,
+      722.6177989577488,
+      791.2264173333685,
+      912.4624205613974,
+      1153.3093108560076,
+      1246.3225388032322,
+      1308.4849854902482,
+      1370.2415792827326,
+      1532.4860120987073,
+      2005.337988948415,
+      2971.669731608086,
+      3044.3517022915917,
+      3657.794211406972
+    ]
+  },
+  "method": "wb97x",
+  "basis": "6-31g(d)",
+  "charge": 0,
+  "multiplicity": 1,
+  "environment": "gas_phase",
+  "protocol": {
+    "threads": 2,
+    "ts_max_steps": 100,
+    "irc_max_steps": 160,
+    "irc_dx_A_sqrt_amu": 0.08,
+    "ts_minimum_fmax_eV_A": 0.02,
+    "irc_fmax_eV_A": 0.05,
+    "irc_inner_fmax_eV_A": 0.02,
+    "scf_initial_guess": "independent_atomic_guess",
+    "electronic_state_stability_test": "not_performed"
+  },
+  "physical_event_verified": true,
+  "verified_pair": false,
+  "symbolic_status": "not_requested",
+  "status": "physical_event_verified",
+  "elapsed_seconds": 685.2121443748474,
+  "gradient_evaluations": 169,
+  "ts_optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.018000249445088542,
+    "force_converged": true,
+    "energy_eV": -5192.035799293331,
+    "frequencies_cm-1": [
+      -1743.3767566282652,
+      395.7070818684654,
+      605.7755143342622,
+      761.1564859208773,
+      824.7620078243478,
+      1073.0353247185415,
+      1236.9848443602216,
+      1324.4398399897023,
+      1409.7248508008931,
+      1426.802297780749,
+      1635.017858918159,
+      2022.3167468667618,
+      3002.777108848668,
+      3077.1392297897173,
+      3777.879306351587
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "completed_irc_branches": [
+    {
+      "force_max_eV_A": 0.01716582467598951,
+      "force_converged": true,
+      "energy_eV": -5194.2568376457275,
+      "frequencies_cm-1": [
+        403.8364153211536,
+        407.0571482468912,
+        587.7731995526431,
+        1034.6848549110478,
+        1093.34067868751,
+        1151.8643130562762,
+        1237.3047693518815,
+        1401.377771978503,
+        1426.820096266075,
+        1490.4919895336636,
+        1570.2248878683913,
+        3081.7246529147765,
+        3136.150764963843,
+        3823.9348201060243,
+        3828.4430463355175
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "OCO",
+      "barrier_electronic_eV": 2.2210383523961355
+    },
+    {
+      "force_max_eV_A": 0.01771829828464725,
+      "force_converged": true,
+      "energy_eV": -5193.567468243824,
+      "frequencies_cm-1": [
+        100.12984575263192,
+        101.03463375904191,
+        169.27760843613592,
+        209.6289037172806,
+        307.8614405789283,
+        394.3021028210112,
+        1208.7726884258602,
+        1288.7823181776757,
+        1571.0566699107494,
+        1725.9747199602552,
+        1878.893743504779,
+        2993.7758408766813,
+        3055.949111248297,
+        3806.7207609259754,
+        3926.2096924243665
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "C=O.O",
+      "barrier_electronic_eV": 1.5316689504925307
+    }
+  ],
+  "endpoints": [
+    {
+      "force_max_eV_A": 0.01716582467598951,
+      "force_converged": true,
+      "energy_eV": -5194.2568376457275,
+      "frequencies_cm-1": [
+        403.8364153211536,
+        407.0571482468912,
+        587.7731995526431,
+        1034.6848549110478,
+        1093.34067868751,
+        1151.8643130562762,
+        1237.3047693518815,
+        1401.377771978503,
+        1426.820096266075,
+        1490.4919895336636,
+        1570.2248878683913,
+        3081.7246529147765,
+        3136.150764963843,
+        3823.9348201060243,
+        3828.4430463355175
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "OCO",
+      "barrier_electronic_eV": 2.2210383523961355
+    },
+    {
+      "force_max_eV_A": 0.01771829828464725,
+      "force_converged": true,
+      "energy_eV": -5193.567468243824,
+      "frequencies_cm-1": [
+        100.12984575263192,
+        101.03463375904191,
+        169.27760843613592,
+        209.6289037172806,
+        307.8614405789283,
+        394.3021028210112,
+        1208.7726884258602,
+        1288.7823181776757,
+        1571.0566699107494,
+        1725.9747199602552,
+        1878.893743504779,
+        2993.7758408766813,
+        3055.949111248297,
+        3806.7207609259754,
+        3926.2096924243665
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "irc_converged": true,
+      "graph_smiles": "C=O.O",
+      "barrier_electronic_eV": 1.5316689504925307
+    }
+  ],
+  "expected_endpoint_match": true,
+  "distinct_endpoint_graphs": true,
+  "event_outcome": "intended_valid_event",
+  "is_IRC": true,
+  "observed_reactant_smiles": "C=O.O",
+  "observed_product_smiles": "OCO"
+}

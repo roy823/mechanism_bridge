@@ -8,6 +8,7 @@ import json
 from rdkit import Chem
 from .event_graph import graph_smiles, bond_orders
 from .local_patterns import compile_pattern, matches_pattern
+from .intermolecular_actions import electron_actions, crosses_components, diverse_proposals
 
 
 def parse_explicit(smiles):
@@ -78,7 +79,7 @@ def replay(mol, arrows):
 
 
 class ArrowLibrary:
-    policy = 'local_one_heavy_shell_charge_valence_preserving_arrows_v3'
+    policy = 'published_local_arrows_plus_explicit_bimolecular_grammar_v5'
 
     def __init__(self, path):
         self.templates = []
@@ -93,7 +94,7 @@ class ArrowLibrary:
                 if (any(a.GetAtomicNum() not in (1, 6, 7, 8) for a in r.GetAtoms())
                     or Chem.GetFormalCharge(r) != 0
                     or Chem.GetFormalCharge(p) != 0
-                    or len(Chem.GetMolFrags(r)) != 1
+                    or len(Chem.GetMolFrags(r)) > 2
                     or any(a.GetNumRadicalElectrons() for a in r.GetAtoms())):
                     self.audit['outside_pilot_domain'] += 1
                     continue
@@ -123,6 +124,8 @@ class ArrowLibrary:
                         query=query, arrows=local_arrows, source_graph=graph_smiles(mol),
                         smarts=Chem.MolToSmarts(query), name=rec['reaction_name'], source_id=rec['id']))
                 self.audit['replay_valid_records'] += 1
+                self.audit['bimolecular_records' if len(Chem.GetMolFrags(r)) == 2
+                           else 'unimolecular_records'] += 1
             except (ValueError, KeyError, RuntimeError) as exc:
                 self.audit['replay_or_parse_rejected'] += 1
                 self.rejections.append(dict(source_id=rec['id'],stage='source_replay',reason=str(exc)))
@@ -164,7 +167,22 @@ class ArrowLibrary:
                                    template_source_graph=template['source_graph'],
                                    transferred=key != template['source_graph'],
                                    pattern_smarts=template['smarts'], matched_atoms=list(match),
+                                   intermolecular=crosses_components(mol, edits),
                                    stereo_policy='No new stereochemistry inferred by symbolic replay'))
-                if len(result) >= limit:
-                    return result
-        return result
+        for name, arrows in electron_actions(mol):
+            try:
+                product, edits = replay(mol, arrows)
+            except (ValueError, RuntimeError):
+                continue
+            signature = (tuple((tuple(e['atoms']), e['after']) for e in edits),
+                         tuple(sorted((tuple(sorted(a['source'])), tuple(sorted(a['sink'])), 2)
+                                      for a in arrows)))
+            if not edits or signature in seen or graph_smiles(product) == key:
+                continue
+            seen.add(signature)
+            result.append(dict(template_id='grammar:'+name, name=name, arrows=arrows,
+                edits=edits, predicted_graph=graph_smiles(product),
+                origin='analyst_defined_reactant_only_electron_action_grammar',
+                independently_annotated=False, intermolecular=crosses_components(mol,edits),
+                stereo_policy='No new stereochemistry inferred by symbolic replay'))
+        return diverse_proposals(result, limit)

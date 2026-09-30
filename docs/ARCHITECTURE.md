@@ -17,7 +17,9 @@ Observed reactant + public symbolic proposals
 |---|---|---|
 | Source data and graphs | adapters, chemistry, event_graph, io | Atom identity, explicit system and provenance |
 | Symbols | symbolic_library, local_patterns | Occupied electron-source checks; charge/valence local SMARTS; preserve distinct source/sink alternatives |
-| Seeds | search_seeds | Equal displacement norms; asynchronous distance/angle priors and seed-local internal-coordinate tangent; no reference TS or product geometry |
+| Seeds | search_seeds | Matched internal-deformation norms, separate rigid encounter orientation; asynchronous distance/angle priors and seed-local internal-coordinate tangent; no reference TS or product geometry |
+| Bimolecular proposals | intermolecular_actions, encounters | Explicit analyst-defined electron grammar and rigid fragment orientations; assembly displacement is separate from normalized seed deformation |
+| Actual event types | event_classification | Cross-fragment heavy bonds, H transfer, spectator rearrangements and enumerated resonance equivalence |
 | Energy/forces | aimnet_backend, backends | Official model or explicit PySCF; separate energy scales |
 | Local physics | physics | Projected Hessian and explicitly named mode-displacement descent |
 | Exploration | reaction_network | Budgets, Dimer, observed minima, parallel edges and reachable frontier |

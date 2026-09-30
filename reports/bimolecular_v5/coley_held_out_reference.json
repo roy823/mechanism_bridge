@@ -1,0 +1,26 @@
+{
+  "selection_rule": "First two distinct neutral closed-shell CHNO reactant pairs sorted by explicit atom count then numeric reaction ID",
+  "eligible_rows": 3366,
+  "records": [
+    {
+      "": "2895",
+      "rxn_id": "3217",
+      "rxn_smiles": "[CH2:1]=[CH2:2].[CH:3]#[N+:4][N-:5][CH3:6]>>[CH2:1]1[CH2:2][N:5]([CH3:6])[N:4]=[CH:3]1",
+      "solvent": "water",
+      "temp": "298.15",
+      "G_act": "16.247335448031468",
+      "G_r": "-47.78084820084944"
+    },
+    {
+      "": "2894",
+      "rxn_id": "3216",
+      "rxn_smiles": "[CH2-:3][N+:4]#[C:5][CH3:6].[CH2:1]=[CH2:2]>>[CH2:1]1[CH2:2][CH2:3][N:4]=[C:5]1[CH3:6]",
+      "solvent": "water",
+      "temp": "298.15",
+      "G_act": "12.07435621426886",
+      "G_r": "-60.86825114359628"
+    }
+  ],
+  "used_for_proposals": false,
+  "used_for_seed_geometry": false
+}

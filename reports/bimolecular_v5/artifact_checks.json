@@ -1,0 +1,62 @@
+[
+  {
+    "run": "reports/bimolecular_v5/search/coley_3216_o0_s17",
+    "checks": 33,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/coley_3216_o1_s17",
+    "checks": 33,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/coley_3217_o0_s17",
+    "checks": 33,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/coley_3217_o1_s17",
+    "checks": 37,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_dimer_o0_s17",
+    "checks": 43,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_dimer_o1_s17",
+    "checks": 33,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_enediol_o0_s17",
+    "checks": 35,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_enediol_o1_s17",
+    "checks": 41,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o0_s17",
+    "checks": 39,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_glycolaldehyde_o1_s17",
+    "checks": 35,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_water_o0_s17",
+    "checks": 37,
+    "passed": true
+  },
+  {
+    "run": "reports/bimolecular_v5/search/formaldehyde_water_o1_s17",
+    "checks": 43,
+    "passed": true
+  }
+]
