@@ -1,0 +1,271 @@
+{
+  "checks": [
+    {
+      "check": "edge_count",
+      "passed": true
+    },
+    {
+      "check": "unique_graph_pairs",
+      "passed": true
+    },
+    {
+      "check": "literature_pairs",
+      "passed": true
+    },
+    {
+      "check": "formal_registration_contract",
+      "passed": true
+    },
+    {
+      "check": "detached_events_are_retained",
+      "passed": true
+    },
+    {
+      "check": "aimnet2_2025_manifest",
+      "campaign": "intramolecular",
+      "passed": true
+    },
+    {
+      "check": "aimnet2_2025_manifest",
+      "campaign": "targeted_bimolecular",
+      "passed": true
+    },
+    {
+      "check": "aimnet2_2025_manifest",
+      "campaign": "epoxide_ammonia",
+      "passed": true
+    },
+    {
+      "check": "aimnet2_2025_manifest",
+      "campaign": "bimolecular",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/arrows/attempt_020/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_004/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_007/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_009/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_017/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_019/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_005/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_008/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_009/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_012/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/arrows/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/arrows/attempt_008/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_000/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_007/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_016/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_003/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_004/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_007/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_004/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_005/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_006/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_007/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_008/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/geometry/attempt_005/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_005/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_006/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_008/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_009/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_010/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_014/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/coley_3217_o1/arrows/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/coley_3217_o1/arrows/attempt_003/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_000/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_009/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_017/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_023/result.json",
+      "passed": true
+    },
+    {
+      "check": "molecular_view_exists",
+      "page": "intramolecular/molecules/index.html",
+      "passed": true
+    },
+    {
+      "check": "molecular_view_exists",
+      "page": "targeted_bimolecular/molecules/index.html",
+      "passed": true
+    },
+    {
+      "check": "molecular_view_exists",
+      "page": "epoxide_ammonia/molecules/index.html",
+      "passed": true
+    },
+    {
+      "check": "molecular_view_exists",
+      "page": "bimolecular/molecules/index.html",
+      "passed": true
+    },
+    {
+      "check": "five_named_literature_pairs",
+      "passed": true
+    }
+  ],
+  "passed": 54,
+  "total": 54,
+  "all_passed": true
+}

@@ -1,0 +1,17 @@
+{
+  "event_count": 6,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "coley_3217_o1\\arrows\\attempt_001\\result.json": "f6058ff419ce3fb10904f772ff6003ddb7aaa2f0553212fea59d6df45ce32c60",
+    "coley_3217_o1\\arrows\\attempt_003\\result.json": "164642726250cc2c22020fd7655a4dbe390289a3b0d1d080d9bf0da4764ed5da",
+    "coley_3217_o1\\arrows\\attempt_004\\result.json": "3bf4d904210a1194ef902be9e5238fec4a78c73b103fbd8cf1b2cca4d18de919",
+    "formaldehyde_enediol_o1\\arrows\\attempt_000\\result.json": "03a99754a40bb63731ce45e5b9892e71e7b1ce76b1aed32f59ec5ead165a13fc",
+    "formaldehyde_enediol_o1\\arrows\\attempt_009\\result.json": "c80fd56ca521302f956b2480e88c37f49e5d754d11c972259a3621853bca29d3",
+    "formaldehyde_enediol_o1\\arrows\\attempt_017\\result.json": "44ce11fab408e97432f346a8785e7b18e8461a18eb3e1d9899a85cb633d92fda",
+    "formaldehyde_enediol_o1\\arrows\\attempt_023\\result.json": "e47f69163a164a4df3cb885961988774b5b122eaa656370e30931f21f42f2207"
+  }
+}

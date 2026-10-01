@@ -122,14 +122,19 @@ def build_site(refresh_legacy=True):
     cases=read_json(reports/'literature_benchmark_v6/cases.json')
     benchmark_path=reports/'literature_benchmark_v6/summary.json'
     aimnetcentral_path=reports/'aimnetcentral_v8/summary.json'
+    reaction_paths_path=reports/'aimnet2025_reaction_paths/summary.json'
     render('benchmark.html',reports/'benchmark.html','benchmark',title='文献与基准',cases=cases,
         benchmark=read_json(benchmark_path) if benchmark_path.exists() else None,
-        aimnetcentral=read_json(aimnetcentral_path) if aimnetcentral_path.exists() else None)
+        aimnetcentral=read_json(aimnetcentral_path) if aimnetcentral_path.exists() else None,
+        reaction_paths=read_json(reaction_paths_path) if reaction_paths_path.exists() else None)
     render('events.html',reports/'events.html','events',title='物理事件',events_json=json.dumps(events,ensure_ascii=False).replace('</','<\\/'))
     render('data.html',reports/'data.html','data',title='数据与复现')
     if refresh_legacy:
         for page in originals:
-            if page.parent.name=='molecules':render_visuals(page.parent.parent)
+            if page.parent.name=='molecules':
+                sid=page.relative_to(reports).parts[0]
+                if sid not in {s['id'] for s in stages}:continue
+                render_visuals(page.parent.parent)
             elif page.parent!=reports and page.parent.name not in {s['id'] for s in stages}:
                 sid=page.relative_to(reports).parts[0]
                 base=next((s for s in stages if s['id']==sid),None)

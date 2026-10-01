@@ -1,5 +1,13 @@
 # 项目可行性、文献与模型选择
 
+## 2026-10-01：AIMNet2-2025 正式算法反应路径扩展
+
+本轮保留 v1–v6 的事件定义：从极小值 A 产生符号/几何 seed，TS 双侧下降实际得到 B、C 后登记 B–TS–C；A 是否等于 B/C 仅保存为 `source_connected` 元数据，不是事件拒绝条件。
+
+这里的策略名 `arrows` 指完整箭头引导的三维 seed，并非只预测箭头。它使用电子源/受体、净变键、活性原子、相遇取向、分步反应进度和进攻角构造 seed 及初始 Dimer 方向。
+
+在羟基乙醛、甘油醛、甲醛＋羟基乙醛、甲醛＋烯二醇、Coley 3217 和两个环氧乙烷＋氨取向上，共完成 13 组运行、237 次尝试和 226,512 个几何评估，登记 40 条 B–TS–C 边、24 个按体系区分的端点图对。5 个端点图对与选定文献案例对应，包括 formose C–C 成键、Coley [3+2] 环加成和环氧开环。完整结果和实际保存轨迹见 [AIMNet2-2025 反应路径报告](../reports/aimnet2025_reaction_paths/RESULTS_zh.md)。这些新边尚未追加 DFT/IRC。
+
 ## 2026-10-01：AIMNetCentral 广元素实测选择
 
 当前官方维护入口为 [AIMNetCentral](https://github.com/isayevlab/aimnetcentral)。本机已经固定并实测四个 member0：

@@ -1,0 +1,11 @@
+{
+  "event_count": 1,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "formaldehyde_glycolaldehyde_o0\\arrows\\attempt_020\\result.json": "c9bab434b5ed96a4c01dc6ffe1e925f17364d9ee4e957f5442732c2e1e041616"
+  }
+}

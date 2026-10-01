@@ -4,6 +4,8 @@
 
 广元素势能选择已实测：[AIMNetCentral 模型报告](reports/aimnetcentral_v8/RESULTS_zh.md)。当前建议为广元素闭壳层使用 `aimnet2-2025`，CHNO 历史实验保留固定 `aimnet2-rxn`，开壳层分支使用 `aimnet2-nse`。
 
+`aimnet2-2025` 已按 v1–v6 的正式事件登记逻辑扩展到羟基乙醛、甘油醛、formose 成键、环氧乙烷加氨和 Coley [3+2] 环加成：[反应路径总表与真实构型回放](reports/aimnet2025_reaction_paths/index.html)、[中文报告](reports/aimnet2025_reaction_paths/RESULTS_zh.md)。命令中的 `arrows` 表示“完整电子箭头引导的三维 seed”，包含净变键、活性原子、相遇取向、进攻角和源/受体耦合，随后才进入 Dimer 与双侧下降。
+
 整站离线文件与本轮计算已打包：[证据包与恢复说明](reports/repository_snapshots/report_portal_v6_README.md)。
 
 双分子探索 v5：[方法与边界](docs/BIMOLECULAR_V5_zh.md)、[实际结果](reports/bimolecular_v5/RESULTS_zh.md)、[分子与三维路径](reports/bimolecular_v5/index.html)。扩展至 ReactionAtlas 相关 CHO 反应物组合和 Coley 数据中的双分子环加成；区分真实跨分子成键、旁观物重排与未连通的相遇构型。
@@ -27,6 +29,7 @@
 | 验证 v2 | [固定方案](docs/VALIDATION_V2_zh.md)、[实际结果](reports/validation_v2/RESULTS_zh.md) |
 | 局部迁移 v3：丙醛与丙酮，48 次主对照及单独续探诊断 | [实施说明](docs/LOCAL_TRANSFER_V3_zh.md)、[结果与 DFT 证据](reports/local_transfer_v3/RESULTS_zh.md)、[真实分子视图](reports/local_transfer_v3/search_curvature/acetone_s17/molecules/index.html) |
 | 网络增长 v4：8 体系、24 组运行及效率检查 | [方案](docs/NETWORK_GROWTH_V4_zh.md)、[实际结果](reports/network_growth_v4/RESULTS_zh.md) |
+| AIMNet2-2025 正式算法扩展：40 条 B–TS–C 边、24 个端点图对 | [结果总表](reports/aimnet2025_reaction_paths/index.html)、[保存的三维反应过程](reports/aimnet2025_reaction_paths/intramolecular/molecules/index.html) |
 | 历史 RF、DFT 和 IBO 可行性试验 | [历史结果](FEASIBILITY_RESULTS_zh.md) |
 
 v1 中符号组优于当时的随机几何基线，但位移幅度未统一，且完整箭头尚无稳定超越净变键的证据。v2 专门检验这些限制。乙醛与乙烯醇属于同一反应家族，不算独立样本。

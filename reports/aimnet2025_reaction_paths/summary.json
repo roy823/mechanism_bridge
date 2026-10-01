@@ -1,0 +1,994 @@
+{
+  "model": "aimnet2-2025 member0",
+  "reference": "B97-3c",
+  "algorithm": "formal v1-v6 event registration",
+  "registration": "A proposes a seed; the observed B-TS-C is registered even when A is neither endpoint",
+  "completed_runs": 13,
+  "attempts": 237,
+  "evaluations": 226512,
+  "edges": 40,
+  "unique_graph_pairs": 24,
+  "literature_relevant_edges": 7,
+  "unique_literature_pairs": 5,
+  "runs": [
+    {
+      "start": "formaldehyde_enediol_o1",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "status": "running",
+      "attempts": 1,
+      "evaluations": 1139,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": null,
+      "file": "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_enediol_o1/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "status": "completed",
+      "attempts": 24,
+      "evaluations": 22000,
+      "edges": 1,
+      "target_edges": 1,
+      "viewer": "bimolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 8637,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "bimolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/geometry/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 24,
+      "evaluations": 22000,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "bimolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "status": "completed",
+      "attempts": 24,
+      "evaluations": 23512,
+      "edges": 6,
+      "target_edges": 0,
+      "viewer": "epoxide_ammonia/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "status": "completed",
+      "attempts": 24,
+      "evaluations": 24317,
+      "edges": 5,
+      "target_edges": 1,
+      "viewer": "epoxide_ammonia/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/network.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "status": "completed",
+      "attempts": 21,
+      "evaluations": 20000,
+      "edges": 2,
+      "target_edges": 0,
+      "viewer": "intramolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/arrows/network.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "status": "completed",
+      "attempts": 18,
+      "evaluations": 18547,
+      "edges": 4,
+      "target_edges": 0,
+      "viewer": "intramolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/network.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 20,
+      "evaluations": 20000,
+      "edges": 4,
+      "target_edges": 0,
+      "viewer": "intramolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/network.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 8028,
+      "edges": 5,
+      "target_edges": 1,
+      "viewer": "intramolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/network.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "status": "completed",
+      "attempts": 9,
+      "evaluations": 7985,
+      "edges": 1,
+      "target_edges": 0,
+      "viewer": "intramolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/geometry/network.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 18,
+      "evaluations": 15899,
+      "edges": 6,
+      "target_edges": 1,
+      "viewer": "intramolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/network.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 6786,
+      "edges": 2,
+      "target_edges": 1,
+      "viewer": "targeted_bimolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/coley_3217_o1/arrows/network.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "status": "completed",
+      "attempts": 30,
+      "evaluations": 27662,
+      "edges": 4,
+      "target_edges": 2,
+      "viewer": "targeted_bimolecular/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/network.json"
+    }
+  ],
+  "events": [
+    {
+      "start": "formaldehyde_glycolaldehyde_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 0,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "C=O.O=CCO"
+      ],
+      "barriers_eV": [
+        4.264453144482104,
+        3.658191900671227
+      ],
+      "source_connected": false,
+      "predicted_graph": "O=CC(O)CO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:carbonyl_C_H_coupled_addition",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/arrows/attempt_020/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 0,
+      "endpoints": [
+        "NCCO",
+        "[NH3+]CC[O-]"
+      ],
+      "barriers_eV": [
+        2.6489376348508813,
+        0.11271513702831726
+      ],
+      "source_connected": false,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:epoxide_amine_opening_stepwise",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 1,
+      "endpoints": [
+        "C1CO1.N",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        3.4994219610771324,
+        3.503696421755194
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_004/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 2,
+      "endpoints": [
+        "CC=O.N",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        3.611076454260001,
+        2.423147168936339
+      ],
+      "source_connected": false,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_stepwise",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_007/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 3,
+      "endpoints": [
+        "NCCO",
+        "CC=O.N"
+      ],
+      "barriers_eV": [
+        2.829432209645347,
+        2.964711580194489
+      ],
+      "source_connected": false,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_stepwise",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_009/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 4,
+      "endpoints": [
+        "NCCO",
+        "CC=O.N"
+      ],
+      "barriers_eV": [
+        2.829428230135818,
+        2.964898206959333
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_017/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o0",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 5,
+      "endpoints": [
+        "C1CO1.N",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        2.4224975400211406,
+        1.9262797875571778
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/attempt_019/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 0,
+      "endpoints": [
+        "NCCO",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        3.1984265011851676,
+        2.1957913386722794
+      ],
+      "source_connected": false,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_stepwise",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 1,
+      "endpoints": [
+        "NCCO",
+        "CC=O.N"
+      ],
+      "barriers_eV": [
+        2.8294311416857454,
+        2.9644877584878486
+      ],
+      "source_connected": false,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_stepwise",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_005/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 2,
+      "endpoints": [
+        "C1CO1.N",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        2.7921026228241317,
+        2.729809363514505
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_008/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 3,
+      "endpoints": [
+        "C1CO1.N",
+        "C=O.CN"
+      ],
+      "barriers_eV": [
+        3.810571183777938,
+        4.079480509393761
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_009/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 4,
+      "endpoints": [
+        "C=O.CN",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        4.299857729326504,
+        3.902973284208201
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_012/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 0,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "O.O=C/C=C/O"
+      ],
+      "barriers_eV": [
+        2.8548350553119235,
+        3.178812809928786
+      ],
+      "source_connected": false,
+      "predicted_graph": "O.O=CC=CO",
+      "proposal_endpoint_match": true,
+      "template_id": "SynEPD:812:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 1,
+      "endpoints": [
+        "[H]/[C-]=[O+]\\[C@@H](O)CO",
+        "O=C[C@@H](O)CO"
+      ],
+      "barriers_eV": [
+        0.7240498956689407,
+        3.7493207691913994
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC[C@]1(O)CO1",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:1692:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/arrows/attempt_008/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "O=COC[CH-][O-].[H+].[H+]",
+        "O=C[C@@H](O)CO"
+      ],
+      "barriers_eV": [
+        5.458336863499426,
+        5.539148782481789
+      ],
+      "source_connected": true,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_000/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "edge": 1,
+      "endpoints": [
+        "O=COC[CH-][O-].[H+].[H+]",
+        "O=COC[CH-][O-].[H+].[H+]"
+      ],
+      "barriers_eV": [
+        0.1656026614145958,
+        0.2151009543413238
+      ],
+      "source_connected": false,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_001/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "edge": 2,
+      "endpoints": [
+        "COC=O.[C-2]=O.[H+].[H+]",
+        "O=COC[CH-][O-].[H+].[H+]"
+      ],
+      "barriers_eV": [
+        2.8004310787728173,
+        2.9057505763266818
+      ],
+      "source_connected": false,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_007/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "edge": 3,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "O/C=C/O.[CH-]=O.[H+]"
+      ],
+      "barriers_eV": [
+        4.736605739870356,
+        0.06869241923959635
+      ],
+      "source_connected": false,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/attempt_016/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "O.O=C/C=C/O"
+      ],
+      "barriers_eV": [
+        2.8548350553119235,
+        3.178812809928786
+      ],
+      "source_connected": false,
+      "predicted_graph": "O.O=CC=CO",
+      "proposal_endpoint_match": true,
+      "template_id": "SynEPD:812:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_001/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 1,
+      "endpoints": [
+        "O=COC[CH-][O-].[H+].[H+]",
+        "O=C[C@@H](O)CO"
+      ],
+      "barriers_eV": [
+        5.458336863499426,
+        5.539148782481789
+      ],
+      "source_connected": true,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_003/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 2,
+      "endpoints": [
+        "O=COC[CH-][O-].[H+].[H+]",
+        "O=COC[CH-][O-].[H+].[H+]"
+      ],
+      "barriers_eV": [
+        0.1656026614145958,
+        0.2151009543413238
+      ],
+      "source_connected": false,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_004/result.json"
+    },
+    {
+      "start": "glyceraldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 3,
+      "endpoints": [
+        "COC=O.[C-2]=O.[H+].[H+]",
+        "O=COC[CH-][O-].[H+].[H+]"
+      ],
+      "barriers_eV": [
+        2.8004310787728173,
+        2.9057505763266818
+      ],
+      "source_connected": false,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/attempt_007/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 0,
+      "endpoints": [
+        "[H]/[O+]=C/C[O-]",
+        "O/C=C\\O"
+      ],
+      "barriers_eV": [
+        0.6692066218074615,
+        2.925575186801325
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": true,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_004/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 1,
+      "endpoints": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "barriers_eV": [
+        1.8986263801043606,
+        4.4818669539708935
+      ],
+      "source_connected": false,
+      "predicted_graph": "[O-]CC=[OH+]",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:4:reverse",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_005/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 2,
+      "endpoints": [
+        "[H]/[O+]=C/C[O-]",
+        "O/C=C\\O"
+      ],
+      "barriers_eV": [
+        0.6692173228693719,
+        2.9255778746755823
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": true,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_006/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 3,
+      "endpoints": [
+        "O=CCO",
+        "O=CCO"
+      ],
+      "barriers_eV": [
+        4.876885430987386,
+        3.8361779472043054
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_007/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 4,
+      "endpoints": [
+        "O=CCO",
+        "O=CCO"
+      ],
+      "barriers_eV": [
+        3.836171237572671,
+        4.876872302274023
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/attempt_008/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "geometry",
+      "strategy_label": "纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "CC(=O)O",
+        "CC(=O)O"
+      ],
+      "barriers_eV": [
+        5.4142870354062325,
+        0.648252122350641
+      ],
+      "source_connected": false,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/geometry/attempt_005/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "[H]/[O+]=C/C[O-]",
+        "O/C=C\\O"
+      ],
+      "barriers_eV": [
+        0.6692066218074615,
+        2.925575186801325
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": true,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_005/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 1,
+      "endpoints": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "barriers_eV": [
+        1.8986263801043606,
+        4.4818669539708935
+      ],
+      "source_connected": false,
+      "predicted_graph": "[O-]CC=[OH+]",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:4:reverse",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_006/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 2,
+      "endpoints": [
+        "[H]/[O+]=C/C[O-]",
+        "O/C=C\\O"
+      ],
+      "barriers_eV": [
+        0.6692173228693719,
+        2.9255778746755823
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": true,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_008/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 3,
+      "endpoints": [
+        "O=CCO",
+        "O=CCO"
+      ],
+      "barriers_eV": [
+        4.876885430987386,
+        3.8361779472043054
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_009/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 4,
+      "endpoints": [
+        "O=CCO",
+        "O=CCO"
+      ],
+      "barriers_eV": [
+        3.836171237572671,
+        4.876872302274023
+      ],
+      "source_connected": false,
+      "predicted_graph": "OC=CO",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:17:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_010/result.json"
+    },
+    {
+      "start": "glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 5,
+      "endpoints": [
+        "CC(=O)O",
+        "CC(=O)O"
+      ],
+      "barriers_eV": [
+        5.4142870354062325,
+        0.648252122350641
+      ],
+      "source_connected": false,
+      "predicted_graph": null,
+      "proposal_endpoint_match": false,
+      "template_id": null,
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/attempt_014/result.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 0,
+      "endpoints": [
+        "CN1CCC=N1",
+        "C#[N+][N-]C.C=C"
+      ],
+      "barriers_eV": [
+        2.8539446364657124,
+        0.3854120572723332
+      ],
+      "source_connected": false,
+      "predicted_graph": "CN1CCC=N1",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:dipolar_3_plus_2_cycloaddition",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/coley_3217_o1/arrows/attempt_001/result.json"
+    },
+    {
+      "start": "coley_3217_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 1,
+      "endpoints": [
+        "C#[N+][N-]C.C=C",
+        "C=CN(C)N=C"
+      ],
+      "barriers_eV": [
+        1.5398986265226995,
+        3.1485518754479926
+      ],
+      "source_connected": false,
+      "predicted_graph": "CN1CCC=N1",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:dipolar_3_plus_2_cycloaddition",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/coley_3217_o1/arrows/attempt_003/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 0,
+      "endpoints": [
+        "C=O.O/C=C/O",
+        "O/C=C/OCO"
+      ],
+      "barriers_eV": [
+        1.3519711955850653,
+        1.7349833897278586
+      ],
+      "source_connected": false,
+      "predicted_graph": "C=[OH+].[O-]/C=C/O",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:4:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_000/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 1,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "C=O.O/C=C/O"
+      ],
+      "barriers_eV": [
+        1.338500620717241,
+        0.4070220028497715
+      ],
+      "source_connected": false,
+      "predicted_graph": "O=CC(O)CO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:neutral_enol_aldol_addition",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_009/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 2,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "C=O.O/C=C/O"
+      ],
+      "barriers_eV": [
+        1.338493005869168,
+        0.4070214625880908
+      ],
+      "source_connected": false,
+      "predicted_graph": "O=CC(O)CO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:neutral_enol_aldol_addition",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_017/result.json"
+    },
+    {
+      "start": "formaldehyde_enediol_o1",
+      "strategy": "arrows",
+      "strategy_label": "完整箭头引导三维 seed",
+      "edge": 3,
+      "endpoints": [
+        "C=O.O/C=C/O",
+        "C=O.O=CCO"
+      ],
+      "barriers_eV": [
+        2.2324885781035846,
+        2.661105871116888
+      ],
+      "source_connected": true,
+      "predicted_graph": "C=O.[O-]/C=C/[OH2+]",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:4:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/attempt_023/result.json"
+    }
+  ],
+  "outcomes": {
+    "formaldehyde_glycolaldehyde_o0": 1,
+    "flower_epoxide_ammonia_o0": 6,
+    "flower_epoxide_ammonia_o1": 5,
+    "glyceraldehyde": 10,
+    "glycolaldehyde": 12,
+    "coley_3217_o1": 2,
+    "formaldehyde_enediol_o1": 4
+  }
+}

@@ -41,6 +41,11 @@ NAMES.update({'C=O.O':'甲醛 + 水','OCO':'甲二醇','C=O.C=O':'两分子甲�
     'C=C.C=[N+]=[C-]C':'偶极体 + 乙烯','CC1=NCCC1':'五元环加成产物',
     'COC(=O)CO':'羟基乙酸甲酯','C=CN(C)N=C':'开链加成产物',
     'O/C=C/OCO':'烯醇的羟甲基醚'})
+NAMES.update({'C1CO1.N':'环氧乙烷 + 氨','[NH3+]CC[O-]':'2-氨基乙醇两性离子',
+    'NCCO':'2-氨基乙醇','CC=O.N':'乙醛 + 氨','C=O.CN':'甲醛 + 甲胺',
+    'O=CC(O)CO':'甘油醛','O=C[C@H](O)CO':'甘油醛','O=C[C@@H](O)CO':'甘油醛',
+    'CN1CCC=N1':'[3+2] 环加成产物','C#[N+][N-]C.C=C':'腈亚胺 + 乙烯',
+    'C=CN(C)N=C':'开链加成产物','O=CCC=O':'丙二醛'})
 
 
 def depiction(mol, png=False):
@@ -81,7 +86,13 @@ def display_rotation(ts):
 def load_events(run, network_paths=None):
     events=[]
     networks=[]
-    paths=run.glob('*/*/network.json') if network_paths is None else network_paths
+    manifest_path=Path(run)/'manifest.json'
+    manifest=json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.exists() else {}
+    model=manifest.get('model','aimnet2-rxn')
+    method_label={'aimnet2-2025':'AIMNet2-2025 member0 · B97-3c',
+                  'aimnet2':'AIMNet2 member0 · ωB97M-D3',
+                  'aimnet2-nse':'AIMNet2-NSE member0 · ωB97M-D3'}.get(model,'AIMNet2-rxn ensemble_0')
+    paths=run.glob('*/*/network.json') if network_paths is None else [Path(p).resolve() for p in network_paths]
     for path in sorted(paths):
         n=json.loads(path.read_text(encoding='utf-8'))
         if n['status']=='running': raise ValueError('Only finished runs can be visualized')
@@ -139,7 +150,7 @@ def load_events(run, network_paths=None):
                 matched_proposal=matched,predicted_graph=proposal,
                 root_connected=set(edge['nodes'])<=set(n['root_component_nodes']),
                 artifact=folder.relative_to(run).as_posix(),is_IRC=False,DFT_verified=False,
-                evidence='MLIP_DESCENT',method_label='AIMNet2-rxn ensemble_0',
+                evidence='MLIP_DESCENT',method_label=method_label,
                 path_label='沿负模位移后的双侧 BFGS 下降，非 IRC',related_checks=[],
                 source_result=(folder/'result.json').relative_to(ROOT).as_posix())
             events.append(event)
@@ -230,11 +241,11 @@ def static_figure(event,out):
     return stem
 
 
-def render_visuals(run):
+def render_visuals(run,network_paths=None,make_static=True):
     from .report_layout import molecular_document,prepare_shared_assets,relative_link,attach_checks
     run=Path(run).resolve()
     out=run/'molecules';out.mkdir(exist_ok=True)
-    events,networks=load_events(run)
+    events,networks=load_events(run,network_paths)
     # Keep actual source geometries in downloadable XYZ, SDF and multi-frame XYZ.
     for event in events:
         eid=event['id']
@@ -254,7 +265,7 @@ def render_visuals(run):
         pair=tuple(sorted([e['left']['smiles'],e['right']['smiles']]))
         if pair[0] != pair[1] and pair not in seen:
             seen.add(pair);selected.append(e)
-    figures=[static_figure(e,out) for e in selected]
+    figures=[static_figure(e,out) for e in selected] if make_static else []
     prepare_shared_assets();attach_checks(events,out)
     stage=run.relative_to(ROOT/'reports').parts[0]
     payload=dict(events=events,networks=networks,figures=figures,

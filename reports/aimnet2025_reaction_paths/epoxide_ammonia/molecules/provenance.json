@@ -1,0 +1,21 @@
+{
+  "event_count": 11,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "flower_epoxide_ammonia_o0\\arrows\\attempt_001\\result.json": "2d4a6b050e3f2aceb3b673d877a883eb9ee469ef2acb3dfa6f9410066ac2ba74",
+    "flower_epoxide_ammonia_o0\\arrows\\attempt_004\\result.json": "9965a4c4bc3a9ba87331ee8862c1c838b00a2bc86fc92abad8d5d820f1049ef6",
+    "flower_epoxide_ammonia_o0\\arrows\\attempt_007\\result.json": "4850a3fc527d1280f2c75434a9b6a8d42f6120c31c045db7b2274aca118230aa",
+    "flower_epoxide_ammonia_o0\\arrows\\attempt_009\\result.json": "b23b655f53e3b7b26fde174830ac60ca1234462a1aa100145b1017fc1c42f627",
+    "flower_epoxide_ammonia_o0\\arrows\\attempt_017\\result.json": "7bc7b06d62c5efba60709a2e4866d64b9ddd433b9a3d3e2e8ac632f553955ac9",
+    "flower_epoxide_ammonia_o0\\arrows\\attempt_019\\result.json": "cafca1aae5624debad5beb154ff1b9fa35144ed9773b7a0304ed74a612bf1190",
+    "flower_epoxide_ammonia_o1\\arrows\\attempt_001\\result.json": "7f899de94aad1f417be46ca471065f31ed4571800432ca4063c63440330a09f4",
+    "flower_epoxide_ammonia_o1\\arrows\\attempt_005\\result.json": "b119652ab97e34005831b63e290ccf8b478bd7e354eb7b60b4e84bbaa14d8a8b",
+    "flower_epoxide_ammonia_o1\\arrows\\attempt_008\\result.json": "c051b8b73f5cff6dc849894ac56375287f2d24c7dec3f6fe99edd32f1bfd6a61",
+    "flower_epoxide_ammonia_o1\\arrows\\attempt_009\\result.json": "a96da832028a5e8e4a134010b53c4327e8e8ac9eaed0e5ef2a8950859d65a36e",
+    "flower_epoxide_ammonia_o1\\arrows\\attempt_012\\result.json": "c52718ecb8e885b7292d07955517f71323e89c3e000b752ced16c02fb5120827"
+  }
+}
