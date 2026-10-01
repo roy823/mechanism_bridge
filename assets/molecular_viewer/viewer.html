@@ -12,7 +12,7 @@
 <div class="model-card"><div><b>端点 A</b><span id="energyLeft" class="subtle"></span></div><div id="left3d" class="model" aria-label="端点 A 三维模型"></div></div>
 <div class="model-card"><div><b>一阶鞍点 TS</b><span class="subtle">变化键用虚线标记</span></div><div id="ts3d" class="model" aria-label="过渡态三维模型"></div></div>
 <div class="model-card"><div><b>端点 B</b><span id="energyRight" class="subtle"></span></div><div id="right3d" class="model" aria-label="端点 B 三维模型"></div></div></div>
-<div class="legend"><span><i class="dot" style="background:#475569"></i>C 碳</span><span><i class="dot" style="background:#dbe3ef;border:1px solid #b8c5d3"></i>H 氢</span><span><i class="dot" style="background:#3478d4"></i>N 氮</span><span><i class="dot" style="background:#e95058"></i>O 氧</span><span><i class="goldline"></i>端点间变化的键／接触</span><span>拖动旋转 · 滚轮缩放</span></div></section>
+<div class="legend"><span><i class="dot" style="background:#475569"></i>C 碳</span><span><i class="dot" style="background:#dbe3ef;border:1px solid #b8c5d3"></i>H 氢</span><span><i class="dot" style="background:#3478d4"></i>N 氮</span><span><i class="dot" style="background:#e95058"></i>O 氧</span><span><i class="dot" style="background:#e08b2e"></i>P 磷</span><span><i class="goldline"></i>端点间变化的键／接触</span><span>拖动旋转 · 滚轮缩放</span></div></section>
 <section class="panel"><h2>沿已保存构型查看反应过程</h2><div class="playback"><div><div id="movie3d" class="model large" aria-label="构型序列三维回放"></div><div class="controls"><button id="play" class="primary">播放构型</button><button id="atLeft">端点 A</button><button id="atTS">跳到 TS</button><button id="atRight">端点 B</button><button id="resetView">重置视角</button></div><input id="frame" class="slider" type="range" min="0" max="1" value="0" aria-label="构型帧"><div class="frame-info"><span id="frameLabel"></span><strong id="frameEnergy"></strong></div></div><div><div class="subtle">相对端点 A 的势能 / eV · 点击曲线定位构型</div><svg id="energyChart" class="chart" viewBox="0 0 700 255" aria-label="实际构型能量曲线"></svg><h3>成键、断键相关原子对距离 / Å</h3><table><thead><tr><th>原子对</th><th>端点 A</th><th>当前帧</th><th>端点 B</th></tr></thead><tbody id="distances"></tbody></table></div></div><p id="pathNote" class="footnote">顺序为：左侧下降轨迹逆序 → 保存的 TS → 右侧下降轨迹。每帧来自实际计算，未插值；帧序号不是物理时间。这是沿负模位移后的双侧 BFGS 下降，非 IRC。</p></section>
 <section class="panel"><div class="section-head"><h2>以分子结构为节点的 Transition-net</h2><span class="subtle" id="networkTitle"></span></div><div id="network" class="network"></div><div id="edgeButtons" class="edges"></div><p class="footnote">实线连接对应已保存的 TS 与实际下降端点。浅灰节点不在初始节点的连通分量内；不会因为种子来自起点就伪造连接。不同构象或不同 TS 可产生平行边。</p></section>
 <section class="panel"><h2>下载与查看</h2><div class="downloads"><a id="xyzDownload" download>完整构型序列 XYZ</a><a id="tsDownload" download>TS 坐标 XYZ</a><a id="leftDownload" download>端点 A 结构 MOL</a><a id="rightDownload" download>端点 B 结构 MOL</a><a id="reportLink" target="_top">数值结果报告</a></div><div id="exports" class="exports" style="margin-top:18px"></div><details style="margin-top:15px"><summary>计算来源与表示说明</summary><p class="subtle" id="provenance"></p><p class="subtle">二维结构式由端点 Lewis 图绘制。三维位置直接读取保存的坐标，仅对整条序列施加同一个刚体变换以便观看。TS 与路径上的虚线只标记端点间发生变化的原子对，不赋予整数 TS 键级，也不代表已验证的电子流箭头。</p><a id="sourceResult">原始计算记录</a> · <a href="provenance.json">坐标来源记录</a> · <a href="__LICENSE_LINK__">3Dmol.js 许可</a></details></section>
@@ -20,7 +20,7 @@
 'use strict';
 const DATA=__MOLECULAR_DATA__;
 if(new URLSearchParams(location.search).get('embed')==='1')document.body.classList.add('embedded');
-const $=id=>document.getElementById(id), colors={H:'#dbe3ef',C:'#475569',N:'#3478d4',O:'#e95058'};
+const $=id=>document.getElementById(id), colors={H:'#dbe3ef',C:'#475569',N:'#3478d4',O:'#e95058',P:'#e08b2e'};
 const strategyNames={DFT:'DFT / IRC',arrows:'完整箭头引导三维 seed',bond_edits:'净变键',center_random:'仅反应中心',geometry:'几何',hybrid:'符号 seed＋几何 seed',aggregate:'聚合同体系网络'};
 let current,frameIndex=0,timer=null,viewers={};
 const escapeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -34,7 +34,7 @@ function renderModel(viewer,index,kind,reset=false){
  const bonds=kind==='left'?current.left.bonds:kind==='right'?current.right.bonds:unionBonds();
  const atoms=xyz.map((p,i)=>({elem:current.symbols[i],x:p[0],y:p[1],z:p[2],serial:i+1,bonds:[],bondOrder:[]}));
  bonds.forEach(b=>{if(kind==='transition'&&changed.has([b.i,b.j].sort((a,b)=>a-b).join(',')))return;atoms[b.i].bonds.push(b.j);atoms[b.i].bondOrder.push(b.order);atoms[b.j].bonds.push(b.i);atoms[b.j].bondOrder.push(b.order);});
- const model=viewer.addModel();model.addAtoms(atoms);
+ const model=viewer.addModel();model.addAtoms(atoms);model.setStyle({},{sphere:{radius:.28,color:'#8b98a8'},stick:{radius:.085,color:'#8b98a8'}});
  for(const [elem,color] of Object.entries(colors))model.setStyle({elem},{sphere:{radius:elem==='H'?.18:.28,color},stick:{radius:.085,color}});
  if(kind==='transition')for(const b of current.changes){const a=xyz[b.i],z=xyz[b.j];for(let k=0;k<7;k++){const point=t=>a.map((v,j)=>v+t*(z[j]-v));viewer.addCylinder({start:vec(point(k/7)),end:vec(point((k+.48)/7)),radius:.026,color:'#d39a28',fromCap:1,toCap:1});}}
  if($('labels').checked)xyz.forEach((p,i)=>viewer.addLabel(current.symbols[i]+(i+1),{position:vec(p),fontColor:'#183149',backgroundColor:'white',backgroundOpacity:.75,fontSize:12,inFront:true}));
