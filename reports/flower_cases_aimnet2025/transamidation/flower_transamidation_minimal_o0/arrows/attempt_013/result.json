@@ -1,0 +1,8 @@
+{
+  "status": "seed_generation_failed",
+  "error": "Seed geometry fit did not converge: The maximum number of function evaluations is exceeded.",
+  "evaluations": 0,
+  "is_IRC": false,
+  "DFT_verified": false,
+  "endpoints": []
+}

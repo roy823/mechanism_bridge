@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FlowER 反应类型物理搜索 · Mechanism Bridge</title><link rel="stylesheet" href="../_site/site.css"></head><body>
+<header class="topbar"><a class="brand" href="../index.html">Mechanism Bridge<small>反应事件 · 证据 · 基准</small></a><nav class="nav" aria-label="全站导航"><a  href="../index.html">研究总览</a><a class="active" aria-current="page" href="../index.html#experiments">实验结果</a><a  href="../events.html">物理事件</a><a  href="../benchmark.html">文献与基准</a><a  href="../data.html">数据与复现</a></nav></header>
+<main class="portal">
+<div class="breadcrumb"><a href="../index.html">研究总览</a> / FlowER 反应类型物理搜索</div>
+<div class="eyebrow">完整箭头引导三维 seed · AIMNet2-2025 · Dimer · 双侧下降</div>
+<h1>FlowER 论文反应类型的 GPA 式物理搜索</h1>
+<p class="lead">使用 Diels–Alder、Prilezhaev 环氧化和转酰胺化的最小代表体系，检验符号电子动作能否引导发现真实 B–TS–C 事件。它们代表论文展示的反应类型，不是受许可限制的逐条 NameRxn 测试分子。</p>
+<div class="stats">
+  <div class="stat"><strong>6</strong><span>完成运行</span></div>
+  <div class="stat"><strong>84</strong><span>seed / TS 尝试</span></div>
+  <div class="stat"><strong>13</strong><span>登记的 TS 边</span></div>
+  <div class="stat"><strong>4</strong><span>反应类型目标边</span></div>
+</div>
+<div class="links">
+  <a class="button primary" href="aggregate/molecules/index.html">物种聚合 TransitionNet</a>
+  <a class="button" href="diels_alder/molecules/index.html">Diels–Alder 轨迹</a>
+  <a class="button" href="prilezhaev/molecules/index.html">Prilezhaev 轨迹</a>
+  <a class="button" href="transamidation/molecules/index.html">转酰胺化轨迹</a>
+  <a class="button" href="RESULTS_zh.md">详细中文报告</a>
+  <a class="button" href="summary.json">结构化结果</a>
+</div>
+<section class="panel section"><h2>逐类结论</h2>
+<div class="table-wrap"><table><thead><tr><th>反应类型</th><th>最小代表反应</th><th>尝试 / 评估</th><th>物理 TS 边</th><th>目标结论</th></tr></thead><tbody>
+<tr><td>Diels-Alder cycloaddition</td><td><code>C=CC=C.C=C</code></td><td>24 / 25933</td><td>7</td><td>发现 1 条反应物↔环己烯目标边，并保留开链与带电旁路。</td></tr><tr><td>Prilezhaev epoxidation</td><td><code>C=C.OOC=O</code></td><td>12 / 13008</td><td>3</td><td>两个取向发现 2 条烯烃＋过酸↔环氧化物＋甲酸目标边。</td></tr><tr><td>Transamidation</td><td><code>CC(=O)N.CN</code></td><td>48 / 44378</td><td>3</td><td>找到胺加成的中性四面体事件；未形成完整取代产物与三步网络。</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>已验证的 B–TS–C</h2><p class="footnote">“命中提议”按组成与键连关系比较；当符号提议未指定新立体中心时，不要求实际三维下降端点抹去其立体化学。</p>
+<div class="table-wrap"><table><thead><tr><th>体系</th><th>实际端点</th><th>双向势垒/eV</th><th>符号模板</th><th>命中提议</th><th>类型目标</th></tr></thead><tbody>
+<tr><td>Diels-Alder cycloaddition</td><td><code>C=CC1CCC1</code><br>↔<br><code>C=C.C=CC=C</code></td><td>2.355 / 1.646</td><td><code>grammar:diels_alder_4_plus_2_cycloaddition</code></td><td>否</td><td>否</td></tr><tr><td>Diels-Alder cycloaddition</td><td><code>[CH2-][C@@H]1[CH+]CCC1</code><br>↔<br><code>C=C.C=CC=C</code></td><td>0.531 / 2.430</td><td><code>grammar:diels_alder_4_plus_2_cycloaddition</code></td><td>否</td><td>否</td></tr><tr><td>Diels-Alder cycloaddition</td><td><code>C1=CCCCC1</code><br>↔<br><code>C1CC1C1CC1</code></td><td>2.635 / 3.492</td><td><code>grammar:diels_alder_4_plus_2_cycloaddition</code></td><td>否</td><td>否</td></tr><tr><td>Diels-Alder cycloaddition</td><td><code>C=CC(C)C=C</code><br>↔<br><code>C=C.C=CC=C</code></td><td>3.342 / 2.512</td><td><code>grammar:diels_alder_4_plus_2_cycloaddition</code></td><td>否</td><td>否</td></tr><tr><td>Diels-Alder cycloaddition</td><td><code>C=CC(C)C=C</code><br>↔<br><code>CC1[CH+]CC[CH-]1</code></td><td>2.914 / 0.225</td><td><code>grammar:diels_alder_4_plus_2_cycloaddition</code></td><td>否</td><td>否</td></tr><tr><td>Diels-Alder cycloaddition</td><td><code>C=C.C=CC=C</code><br>↔<br><code>C=C.C=CC=C</code></td><td>1.662 / 1.665</td><td><code>grammar:diels_alder_4_plus_2_cycloaddition</code></td><td>否</td><td>否</td></tr><tr><td>Diels-Alder cycloaddition</td><td><code>C=C.C=CC=C</code><br>↔<br><code>C1=CCCCC1</code></td><td>1.467 / 0.993</td><td><code>grammar:diels_alder_4_plus_2_cycloaddition</code></td><td>是</td><td>是</td></tr><tr><td>Prilezhaev epoxidation</td><td><code>C=C.O=COO</code><br>↔<br><code>C=C.[H]/[O+]=C\O[O-]</code></td><td>1.748 / 0.036</td><td><code>grammar:prilezhaev_epoxidation</code></td><td>否</td><td>否</td></tr><tr><td>Prilezhaev epoxidation</td><td><code>C=C.O=COO</code><br>↔<br><code>C1CO1.O=CO</code></td><td>1.738 / 3.982</td><td><code>grammar:prilezhaev_epoxidation</code></td><td>是</td><td>是</td></tr><tr><td>Prilezhaev epoxidation</td><td><code>C=C.O=COO</code><br>↔<br><code>C1CO1.O=CO</code></td><td>1.738 / 4.029</td><td><code>grammar:prilezhaev_epoxidation</code></td><td>是</td><td>是</td></tr><tr><td>Transamidation</td><td><code>CC(N)=O.CN</code><br>↔<br><code>C=C(N)O.CN</code></td><td>2.820 / 1.658</td><td><code>SynEPD:17:forward</code></td><td>是</td><td>否</td></tr><tr><td>Transamidation</td><td><code>CC(N)=O.CN</code><br>↔<br><code>CN.[H]/N=C(\C)O</code></td><td>2.172 / 1.451</td><td><code>SynEPD:22:forward</code></td><td>否</td><td>否</td></tr><tr><td>Transamidation</td><td><code>CC(N)=O.CN</code><br>↔<br><code>CN[C@@](C)(N)O</code></td><td>1.915 / 1.257</td><td><code>SynEPD:907:forward</code></td><td>是</td><td>是</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>解释边界</h2><ul>
+<li>这些边通过 AIMNet2-2025 的力收敛、一阶鞍点和双侧极小值检查；当前没有 DFT/IRC 复核。</li>
+<li>FlowER 生成守恒的符号步骤；本实验检验这些类型的符号动作能否落到同一势能面事件。两者任务不同。</li>
+<li>转酰胺化只找到加成/互变相关事件，没有在本轮预算中形成“加成 → 质子转移 → 胺离去”的完整网络。</li>
+<li>所有旁路事件和失败 seed 均保留在统计中。</li>
+</ul></section>
+</main><footer>来源均可追溯到本地计算记录。MLIP 下降、DFT/IRC、符号假设分开标注；不同实验协议不合并为统一成功率。页面可离线打开。</footer></body></html>

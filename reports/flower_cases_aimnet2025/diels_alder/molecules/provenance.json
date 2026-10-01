@@ -1,0 +1,22 @@
+{
+  "event_count": 7,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "flower_diels_alder_minimal_o0\\arrows\\attempt_004\\result.json": "19675aefd21a444478f3eef460b37fd88d0d30b9c95338fc844d4746830c844a",
+    "flower_diels_alder_minimal_o0\\arrows\\attempt_006\\result.json": "c6d9439e9a0136fbeeefb8f23a54a2bb929e5d6ec1334118dccc417f024f94cc",
+    "flower_diels_alder_minimal_o0\\arrows\\attempt_007\\result.json": "341df7f119734c99628163b64cf23d0092be947577b2026187bf9e1e99f44477",
+    "flower_diels_alder_minimal_o0\\arrows\\attempt_008\\result.json": "7523e631cb9c14928e0b315f17bd8dd7b1d9082fe7d14061f6859a83bb0a1320",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_000\\result.json": "6d615ff63bcebb16c0d300d4d0819d52cd0a66daacbfd5319ce89640b633a3c7",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_001\\result.json": "adaaf0fcb59be43984d017b1dba6284ab78b53bf7fccb13eb5a7c3942b381cee",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_003\\result.json": "0aba7f915663d54a33f0d11c2bfb93cf3f251936c8552645e960aab930cedab4",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_004\\result.json": "0c420a52e639c8ce9b19e090629e32cdb3309765b8e7ba4edd79da8f72b694cc",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_005\\result.json": "c2b890590fe281b4de1e96d22fd83d2d72c2ede71f1e127efd6d4889c3fd1e6a",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_006\\result.json": "b714d0e49db5925de6950f9c2b0c7e3c1db170beecf1f93856dc0d3478a45e4b",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_007\\result.json": "4c0492bca894ce4cf0a60d37bb815bbdc23030a6c696dfc0190aebda34744866",
+    "flower_diels_alder_minimal_o1\\arrows\\attempt_010\\result.json": "a1878c9b3d6f890b8cc99cb7a687f60004a8793af2d0b9615684e3a196afd30e"
+  }
+}

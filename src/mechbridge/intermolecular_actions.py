@@ -22,6 +22,9 @@ def electron_actions(mol):
     carbonyls = matches('[C;+0]=[O;+0]')
     donors = matches('[O,N;+0]-[H]')
     enols = matches('[C;+0]=[C;+0]-[O;+0]-[H]')
+    dienes = matches('[C;+0]=[C;+0]-[C;+0]=[C;+0]')
+    alkenes = matches('[C;+0]=[C;+0]')
+    peracids = matches('[C;+0](=[O;+0])-[O;+0]-[O;+0]-[H]')
     # Both the symbolic zwitterion step and a concerted proton-transfer route
     # are hypotheses. The PES decides whether the zwitterion is a minimum.
     for c, other, o in matches('[C;+0]1[C;+0][O;+0]1'):
@@ -36,6 +39,10 @@ def electron_actions(mol):
                     [((nu,), (nu,c)), ((c,o), (o,h)), ((nu,h), (nu,))])
     # Addition with an explicit donor proton; no invented proton or catalyst.
     for c, o in carbonyls:
+        for (nu,) in matches('[N;+0;v3]'):
+            if component[c] != component[nu]:
+                yield action('carbonyl_amine_addition_stepwise',
+                    [((nu,), (nu,c)), ((c,o), (o,))])
         for nu, h in donors:
             if component[c] != component[nu]:
                 yield action('carbonyl_addition_with_proton_transfer',
@@ -59,6 +66,22 @@ def electron_actions(mol):
             if component[a] != component[d]:
                 yield action('dipolar_3_plus_2_cycloaddition',
                     [((c,), (c,d)), ((d,e), (e,a)), ((a,b), (b,))])
+    # FlowER Fig. 4 / Fig. S16 reaction classes. These are minimal, explicit
+    # reactant-only hypotheses; the downstream saddle search decides whether a
+    # matching physical event exists for the supplied encounter geometry.
+    for a, b, c, d in dienes:
+        for e, f in alkenes:
+            if component[a] != component[e]:
+                yield action('diels_alder_4_plus_2_cycloaddition',
+                    [((a,b), (a,e)), ((e,f), (f,d)), ((c,d), (b,c))])
+    for e, f in alkenes:
+        for acyl, carbonyl_o, proximal_o, terminal_o, h in peracids:
+            if component[e] != component[acyl]:
+                yield action('prilezhaev_epoxidation',
+                    [((e,f), (e,terminal_o)),
+                     ((proximal_o,terminal_o), (acyl,proximal_o)),
+                     ((acyl,carbonyl_o), (carbonyl_o,h)),
+                     ((terminal_o,h), (f,terminal_o))])
 
 
 def crosses_components(mol, edits):

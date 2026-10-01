@@ -181,7 +181,7 @@
   ],
   "independent_arrow_gold": 0,
   "raw_records_modified": false,
-  "legacy_pages_refreshed": true,
+  "legacy_pages_refreshed": false,
   "sources": {
     "reports/network_exploration_v1/MR_460039_0/arrows/network.json": "0206dcc3594ee67e200ef4e6f1e2e15da4030ea9280b114863131ec4eca7b583",
     "reports/network_exploration_v1/MR_460039_0/bond_edits/network.json": "0c9496d894557722b7fd7d2a87c9adb872811df478160c77bf5d2a4ddc014366",

@@ -1,0 +1,15 @@
+{
+  "policy": "same model, elemental inventory, charge and multiplicity; physical minima merge across different start species by graph isomorphism, energy and permutation-aware RMSD; TS merge by endpoints, energy and aligned RMSD when atom order agrees",
+  "geometry_tolerance_A": 0.15,
+  "energy_tolerance_eV": 0.03,
+  "ts_geometry_tolerance_A": 0.15,
+  "ts_energy_tolerance_eV": 0.03,
+  "source_hashes": {
+    "reports/flower_cases_aimnet2025/diels_alder/flower_diels_alder_minimal_o0/arrows/network.json": "f8cefc241646a85152e96191540235c38651e3fdf9fd141925388790cd0173f0",
+    "reports/flower_cases_aimnet2025/diels_alder/flower_diels_alder_minimal_o1/arrows/network.json": "f4181af2e018f5de724e4bddd0dbc59bb2b4d35833970a57869d5abfcfcdd2d8",
+    "reports/flower_cases_aimnet2025/prilezhaev/flower_prilezhaev_minimal_o0/arrows/network.json": "fb8a1b526128de557a06ce8dbac9faef79de056eefbbf9d1ba08fefa7684b26e",
+    "reports/flower_cases_aimnet2025/prilezhaev/flower_prilezhaev_minimal_o1/arrows/network.json": "9fabd275b8b569cbed2bd67b7b6cde52a99373e7916333fe775dd23ff782f60d",
+    "reports/flower_cases_aimnet2025/transamidation/flower_transamidation_minimal_o0/arrows/network.json": "40d31d6bd0b50950fc3795c6d579fa3ebbe0fc508b5472dd2ca535a26b3f4092",
+    "reports/flower_cases_aimnet2025/transamidation/flower_transamidation_minimal_o1/arrows/network.json": "352f2a70369b46fb8e70c86894b24ad2de90b51688c1ee9a0878dcb9e9885d4d"
+  }
+}

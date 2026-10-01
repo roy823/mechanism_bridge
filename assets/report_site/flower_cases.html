@@ -1,0 +1,34 @@
+{% extends 'page.html' %}{% block body %}
+<div class="breadcrumb"><a href="{{ root }}index.html">研究总览</a> / FlowER 反应类型物理搜索</div>
+<div class="eyebrow">完整箭头引导三维 seed · AIMNet2-2025 · Dimer · 双侧下降</div>
+<h1>FlowER 论文反应类型的 GPA 式物理搜索</h1>
+<p class="lead">使用 Diels–Alder、Prilezhaev 环氧化和转酰胺化的最小代表体系，检验符号电子动作能否引导发现真实 B–TS–C 事件。它们代表论文展示的反应类型，不是受许可限制的逐条 NameRxn 测试分子。</p>
+<div class="stats">
+  <div class="stat"><strong>{{ summary.completed_runs }}</strong><span>完成运行</span></div>
+  <div class="stat"><strong>{{ summary.attempts }}</strong><span>seed / TS 尝试</span></div>
+  <div class="stat"><strong>{{ summary.edges }}</strong><span>登记的 TS 边</span></div>
+  <div class="stat"><strong>{{ summary.case_target_edges }}</strong><span>反应类型目标边</span></div>
+</div>
+<div class="links">
+  <a class="button primary" href="aggregate/molecules/index.html">物种聚合 TransitionNet</a>
+  <a class="button" href="diels_alder/molecules/index.html">Diels–Alder 轨迹</a>
+  <a class="button" href="prilezhaev/molecules/index.html">Prilezhaev 轨迹</a>
+  <a class="button" href="transamidation/molecules/index.html">转酰胺化轨迹</a>
+  <a class="button" href="RESULTS_zh.md">详细中文报告</a>
+  <a class="button" href="summary.json">结构化结果</a>
+</div>
+<section class="panel section"><h2>逐类结论</h2>
+<div class="table-wrap"><table><thead><tr><th>反应类型</th><th>最小代表反应</th><th>尝试 / 评估</th><th>物理 TS 边</th><th>目标结论</th></tr></thead><tbody>
+{% for c in summary.cases %}<tr><td>{{ c.reaction_class }}</td><td><code>{{ c.reactant }}</code></td><td>{{ c.attempts }} / {{ c.evaluations }}</td><td>{{ c.edges }}</td><td>{{ c.conclusion }}</td></tr>{% endfor %}
+</tbody></table></div></section>
+<section class="panel"><h2>已验证的 B–TS–C</h2><p class="footnote">“命中提议”按组成与键连关系比较；当符号提议未指定新立体中心时，不要求实际三维下降端点抹去其立体化学。</p>
+<div class="table-wrap"><table><thead><tr><th>体系</th><th>实际端点</th><th>双向势垒/eV</th><th>符号模板</th><th>命中提议</th><th>类型目标</th></tr></thead><tbody>
+{% for e in summary.events %}<tr><td>{{ e.case }}</td><td><code>{{ e.endpoints[0] }}</code><br>↔<br><code>{{ e.endpoints[1] }}</code></td><td>{{ '%.3f'|format(e.barriers_eV[0]) }} / {{ '%.3f'|format(e.barriers_eV[1]) }}</td><td><code>{{ e.template_id }}</code></td><td>{{ '是' if e.proposal_match else '否' }}</td><td>{{ '是' if e.case_target else '否' }}</td></tr>{% endfor %}
+</tbody></table></div></section>
+<section class="panel"><h2>解释边界</h2><ul>
+<li>这些边通过 AIMNet2-2025 的力收敛、一阶鞍点和双侧极小值检查；当前没有 DFT/IRC 复核。</li>
+<li>FlowER 生成守恒的符号步骤；本实验检验这些类型的符号动作能否落到同一势能面事件。两者任务不同。</li>
+<li>转酰胺化只找到加成/互变相关事件，没有在本轮预算中形成“加成 → 质子转移 → 胺离去”的完整网络。</li>
+<li>所有旁路事件和失败 seed 均保留在统计中。</li>
+</ul></section>
+{% endblock %}

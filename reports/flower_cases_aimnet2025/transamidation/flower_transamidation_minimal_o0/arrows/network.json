@@ -1,0 +1,3566 @@
+{
+  "start": {
+    "id": "flower_transamidation_minimal_o0",
+    "atomic_numbers": [
+      6,
+      6,
+      8,
+      7,
+      6,
+      7,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "positions_A": [
+      [
+        0.11867911712490303,
+        0.22460244773348081,
+        -2.672016373242068
+      ],
+      [
+        -0.5136864738088929,
+        -1.0652566724528505,
+        -2.2624371710398163
+      ],
+      [
+        -1.1318488467783898,
+        -1.7603810096821997,
+        -3.1119696798757968
+      ],
+      [
+        -0.39133423525666244,
+        -1.5303874955861394,
+        -0.9191101504810077
+      ],
+      [
+        0.8237025473588817,
+        0.8721133875969052,
+        2.6351384077160374
+      ],
+      [
+        -0.537609290174792,
+        0.5856296285124853,
+        2.204922876174712
+      ],
+      [
+        -0.12443136039072643,
+        1.013970860495652,
+        -1.9303265930734266
+      ],
+      [
+        1.2199459514086846,
+        0.09677876192728818,
+        -2.722112427826447
+      ],
+      [
+        -0.25580655634749044,
+        0.5428338072862888,
+        -3.668175799018882
+      ],
+      [
+        0.13245873800203473,
+        -0.9719241929152045,
+        -0.20910589974557903
+      ],
+      [
+        -0.8238582033488038,
+        -2.436741811402087,
+        -0.6332320666696156
+      ],
+      [
+        0.8144245329246145,
+        1.483685816422512,
+        3.5637148137389625
+      ],
+      [
+        1.3618892681752084,
+        -0.07961450883717758,
+        2.8293457248002527
+      ],
+      [
+        1.3584242418880557,
+        1.428087946816415,
+        1.8363190746233111
+      ],
+      [
+        -1.0238633754236977,
+        0.09713695199548911,
+        2.9913347707959463
+      ],
+      [
+        -1.0270860553529266,
+        1.4994660820891437,
+        2.0677104931234203
+      ]
+    ],
+    "charge": 0,
+    "multiplicity": 1,
+    "provenance": {
+      "system": "flower_transamidation_minimal",
+      "input_smiles": "CC(N)=O.CN",
+      "reaction_class": "Transamidation",
+      "paper_location": "Fig. 4 and Fig. S16",
+      "source": "https://doi.org/10.1038/s41586-025-09426-9",
+      "representative_scope": "minimal_same-class_system; not exact paper evaluation molecule",
+      "initial_fragment_atom_ids": [
+        [
+          0,
+          1,
+          2,
+          3,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        [
+          4,
+          5,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      ],
+      "conformer_policies": [
+        "lowest_UFF_energy_reactant_conformer",
+        "lowest_UFF_energy_reactant_conformer"
+      ],
+      "assembly": "independent uniform SO(3) rotations, vdW gap 0.2 A",
+      "random_seed": 42200,
+      "reference_TS_or_product_geometry_used": false
+    }
+  },
+  "strategy": "arrows",
+  "protocol": {
+    "seed_policy": "reactant_graph_and_rigid_encounter_seeds_v6",
+    "max_attempts": 24,
+    "seeds_per_node": 1,
+    "geometry_seeds_per_node": 9,
+    "total_evaluations": 24000,
+    "evaluations_per_attempt": 1800,
+    "ts_steps": 160,
+    "descent_steps": 250,
+    "initial_fmax": 0.003,
+    "initial_curvature_steps": 3,
+    "fmax": 0.005,
+    "hessian_step": 0.005,
+    "hessian_batch_size": 32,
+    "dimer_extrapolate_forces": true,
+    "mode_displacement": 0.15,
+    "geometry_tolerance_A": 0.15,
+    "energy_tolerance_eV": 0.03,
+    "random_seed": 17
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "depth_discovered": 0,
+      "force_max_eV_A": 0.0018980223685503006,
+      "force_converged": true,
+      "energy_eV": -8298.19323991753,
+      "frequencies_cm-1": [
+        32.04864945625191,
+        55.22958978395339,
+        82.97882786807689,
+        112.58394927215318,
+        127.72977704317108,
+        184.58491367420496,
+        200.20241754716406,
+        381.505465192363,
+        419.6749835544628,
+        465.8566014318076,
+        551.6734163510372,
+        582.4792868400936,
+        638.6822953115753,
+        847.6957405434955,
+        938.3687097422129,
+        997.4663255059913,
+        1025.025126363561,
+        1043.22318595221,
+        1051.974088766223,
+        1157.9712832329005,
+        1190.114137420118,
+        1333.978340320864,
+        1347.5440125954108,
+        1397.4568564909566,
+        1467.7989618976783,
+        1489.803632816595,
+        1497.4889489460643,
+        1498.649165756281,
+        1545.2697199026322,
+        1658.7810332802665,
+        1693.4051718552084,
+        1751.469332393723,
+        2951.5162438243237,
+        3019.1720052216324,
+        3034.693844095221,
+        3049.2112569323335,
+        3089.2553988538534,
+        3113.380164552364,
+        3400.8457883718024,
+        3431.0479782684893,
+        3530.8702012923177,
+        3655.486768315118
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "positions_A": [
+        [
+          0.1742339210851558,
+          0.36473006229620303,
+          -2.0050114663129004
+        ],
+        [
+          -0.32164520078180775,
+          -1.0608402654456093,
+          -1.8852729361092393
+        ],
+        [
+          -0.46964873200931084,
+          -1.7732960249160539,
+          -2.870279085908656
+        ],
+        [
+          -0.5384714913070057,
+          -1.499176462837454,
+          -0.619303686409748
+        ],
+        [
+          0.8261585235224016,
+          0.7441580060086321,
+          2.001790142256458
+        ],
+        [
+          -0.5839689872817854,
+          0.49328723460862217,
+          1.7087623355854595
+        ],
+        [
+          -0.13954136758746397,
+          0.9947992150782861,
+          -1.1738575758743943
+        ],
+        [
+          1.2640807836401264,
+          0.36145675371664404,
+          -2.038655846632737
+        ],
+        [
+          -0.17968558020264544,
+          0.7836791046332521,
+          -2.9422649411592134
+        ],
+        [
+          -0.6016745745392846,
+          -0.8547447438111974,
+          0.1668072086062048
+        ],
+        [
+          -0.954261538152636,
+          -2.40871655493806,
+          -0.5227278424045338
+        ],
+        [
+          1.012118156435104,
+          1.4222557217776906,
+          2.8424102700796707
+        ],
+        [
+          1.3213559537148452,
+          -0.20181259786264136,
+          2.2148238969159886
+        ],
+        [
+          1.3073614090488976,
+          1.1589081626276472,
+          1.1187991715729901
+        ],
+        [
+          -1.0556516967535028,
+          0.11914664192739537,
+          2.521482833745002
+        ],
+        [
+          -1.0607633255915796,
+          1.3561631963868876,
+          1.4825022068398022
+        ]
+      ],
+      "graph_smiles": "CC(N)=O.CN"
+    },
+    {
+      "id": 1,
+      "depth_discovered": 1,
+      "force_max_eV_A": 0.004472981207072735,
+      "force_converged": true,
+      "energy_eV": -8297.031505377745,
+      "frequencies_cm-1": [
+        29.415605654203233,
+        36.947514095997974,
+        93.89194641515365,
+        131.56365554177123,
+        173.4283712969291,
+        208.93319620939926,
+        341.61896219694364,
+        362.6784389621653,
+        410.15026032145187,
+        431.7509125349649,
+        475.70660343870605,
+        524.8036256057927,
+        577.1383099607732,
+        665.1473668067227,
+        789.7436009747577,
+        929.5537909794464,
+        944.4100124902354,
+        994.6041018885298,
+        1004.4968278367155,
+        1045.8111308888247,
+        1162.81643086703,
+        1167.024259587082,
+        1262.5125788074138,
+        1327.5815310722828,
+        1445.5321495459912,
+        1468.7819498774759,
+        1480.4296428251164,
+        1487.7277281576953,
+        1533.2650811423134,
+        1668.3545656832432,
+        1693.0056867185874,
+        1730.8932580366863,
+        2937.958030207456,
+        3019.383593177846,
+        3026.482416033856,
+        3141.2802518571452,
+        3222.5531024645634,
+        3390.6297049308605,
+        3422.1672444275796,
+        3514.209027609422,
+        3621.3567938569113,
+        3776.8730641388993
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "positions_A": [
+        [
+          0.12065220592406663,
+          0.6383385155773306,
+          -1.8011963558018869
+        ],
+        [
+          -0.25896439400246607,
+          -0.6439431060790494,
+          -1.684142029906761
+        ],
+        [
+          0.04695895097250476,
+          -1.5962046609215457,
+          -2.623129428099665
+        ],
+        [
+          -1.0272332563521722,
+          -1.166821352284004,
+          -0.67710447848132
+        ],
+        [
+          0.8451928635094538,
+          0.5545053074069407,
+          1.942207085701636
+        ],
+        [
+          -0.6140785739893192,
+          0.48496031696788894,
+          1.8886557507077084
+        ],
+        [
+          -0.18917073664549686,
+          1.377002565126729,
+          -1.080561760441456
+        ],
+        [
+          0.6862110526788127,
+          0.97797261394101,
+          -2.654989766285219
+        ],
+        [
+          0.5314009175558997,
+          -1.1548860632977724,
+          -3.3283213127311844
+        ],
+        [
+          -0.9971810868401452,
+          -0.6252832685740871,
+          0.18704196745921925
+        ],
+        [
+          -0.8855846634136791,
+          -2.1512644466564357,
+          -0.5294997649564841
+        ],
+        [
+          1.2588680208318233,
+          1.1131888370044312,
+          2.7914715715811247
+        ],
+        [
+          1.2505649253492412,
+          -0.45577387476630726,
+          1.9787929373699575
+        ],
+        [
+          1.213662148300935,
+          1.006607030800842,
+          1.02275653851891
+        ],
+        [
+          -0.987760504318265,
+          0.09078834706504935,
+          2.742506284441074
+        ],
+        [
+          -1.010461850802015,
+          1.412588839246615,
+          1.812452278117808
+        ]
+      ],
+      "barrier_eV": 1.6578148568114557,
+      "graph_smiles": "C=C(N)O.CN"
+    }
+  ],
+  "edges": [
+    {
+      "id": 0,
+      "nodes": [
+        1,
+        0
+      ],
+      "attempt": 9,
+      "proposed_from": 0,
+      "ts_energy_eV": -8295.373690520933,
+      "ts_positions_A": [
+        [
+          0.19886601715693908,
+          0.4965757359410547,
+          -1.972130523223011
+        ],
+        [
+          -0.2478698462475658,
+          -0.8562063378185322,
+          -1.737319690259112
+        ],
+        [
+          -0.3719106976773866,
+          -1.472200547000732,
+          -2.8923925665057593
+        ],
+        [
+          -0.6724799522159342,
+          -1.387937160975741,
+          -0.6053956790931629
+        ],
+        [
+          0.8339829037814043,
+          0.7224287087358333,
+          2.045181511690274
+        ],
+        [
+          -0.5714475938066165,
+          0.41099928355403653,
+          1.7744889904638914
+        ],
+        [
+          -0.06697149061246897,
+          1.2173785058198479,
+          -1.189369725270433
+        ],
+        [
+          1.2430068025002972,
+          0.5884063788461439,
+          -2.265041401539521
+        ],
+        [
+          -0.20461025741236333,
+          -0.23632370356702712,
+          -3.250314500651674
+        ],
+        [
+          -0.6574662603698951,
+          -0.8282932735850405,
+          0.2588830502643513
+        ],
+        [
+          -1.052724873120891,
+          -2.320324298104373,
+          -0.6160731613814876
+        ],
+        [
+          0.9993790631627821,
+          1.4470538065220988,
+          2.8493531472905604
+        ],
+        [
+          1.363695399027597,
+          -0.19330357790875854,
+          2.3044152116622683
+        ],
+        [
+          1.297925033048446,
+          1.1078444603366338,
+          1.1403637844679744
+        ],
+        [
+          -1.01571559827042,
+          0.04508865232279484,
+          2.6066822412499806
+        ],
+        [
+          -1.07566125872508,
+          1.2588233278045051,
+          1.5486750254791573
+        ]
+      ],
+      "barriers_eV": [
+        1.6578148568114557,
+        2.819562233875331
+      ],
+      "source_connected": true,
+      "endpoint_chemistry": {
+        "classification": "intramolecular_with_spectator",
+        "cross_fragment_bonds": [],
+        "fragment_counts": [
+          2,
+          2
+        ],
+        "resonance_equivalent": false,
+        "endpoint_components": [
+          [
+            "C=C(N)O",
+            "CN"
+          ],
+          [
+            "CC(N)=O",
+            "CN"
+          ]
+        ]
+      },
+      "kind": "chemical"
+    }
+  ],
+  "attempts": [
+    {
+      "id": 0,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:907:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 0.8037781023316654,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              14,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.3861952539244919,
+          -0.2665880697446561
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "NCCCC=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#6&+0&A&v4]-[#7&+0&A&v3]-[#1&+0&A&v1].[#6&+0&A&v4]-[#6&+0&A&v4]=[#8&+0&A&v2]",
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0038081967936526495,
+          "selected_trial": 7,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              14
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 8.937298433992654
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.01119248936135784,
+        "geometric_fit_nfev": 6,
+        "geometric_fit_optimality": 4.72103993782598e-06,
+        "predicted_graph": "CNC(C)(N)O",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              14
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              5,
+              14
+            ],
+            "sink": [
+              5
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              2,
+              14
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              5,
+              14
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2200503522,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.11921010003425181
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 925,
+      "seconds": 11.499838590621948,
+      "artifact": "attempt_000/result.json"
+    },
+    {
+      "id": 1,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "grammar:carbonyl_amine_addition_stepwise",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.1771416873167564,
+        "progress_targets": [
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.3936756287687336
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": null,
+        "transferred": null,
+        "origin": "analyst_defined_reactant_only_electron_action_grammar",
+        "pattern_smarts": null,
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0,
+          "selected_trial": 1,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 10.808053663844955
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.010051170963298276,
+        "geometric_fit_nfev": 11,
+        "geometric_fit_optimality": 1.8527423368003152e-05,
+        "predicted_graph": "C[NH2+]C(C)(N)[O-]",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          },
+          {
+            "source": [
+              1,
+              2
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 3608189618,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.19681529997615144
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 880,
+      "seconds": 12.310940504074097,
+      "artifact": "attempt_001/result.json"
+    },
+    {
+      "id": 2,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:17:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.452028707363321,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              0,
+              6,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.45259209928103816
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CC=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            1,
+            0
+          ]
+        ],
+        "geometric_fit_cost": 0.16024733649569198,
+        "geometric_fit_nfev": 70,
+        "geometric_fit_optimality": 0.0008048877411403269,
+        "predicted_graph": "C=C(N)O.CN",
+        "arrows": [
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              6
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              0,
+              6
+            ],
+            "sink": [
+              0,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Pi+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              0,
+              6
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              2,
+              6
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 698829729,
+        "seed_strategy": "arrows",
+        "generation_seconds": 1.2442932999692857
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 861,
+      "seconds": 10.894316911697388,
+      "artifact": "attempt_002/result.json"
+    },
+    {
+      "id": 3,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:22:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.4482578113425155,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              3,
+              9,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.5034568725039449
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CC(N)=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.15296035861782042,
+        "geometric_fit_nfev": 66,
+        "geometric_fit_optimality": 0.001145951256233818,
+        "predicted_graph": "CC(=N)O.CN",
+        "arrows": [
+          {
+            "source": [
+              3
+            ],
+            "sink": [
+              3,
+              1
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              9
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              3,
+              9
+            ],
+            "sink": [
+              3
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              3
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              2,
+              9
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              3,
+              9
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 1629628333,
+        "seed_strategy": "arrows",
+        "generation_seconds": 1.2147418000386097
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 830,
+      "seconds": 10.476863622665405,
+      "artifact": "attempt_003/result.json"
+    },
+    {
+      "id": 4,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:907:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.2003609333555072,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              15,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.06380189217534245,
+          0.17411993780461044
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "NCCCC=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#6&+0&A&v4]-[#7&+0&A&v3]-[#1&+0&A&v1].[#6&+0&A&v4]-[#6&+0&A&v4]=[#8&+0&A&v2]",
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0004021590959635297,
+          "selected_trial": 55,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              15
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 8.638762314188563
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.014630669805590444,
+        "geometric_fit_nfev": 10,
+        "geometric_fit_optimality": 2.65430303961825e-05,
+        "predicted_graph": "CNC(C)(N)O",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              15
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              5,
+              15
+            ],
+            "sink": [
+              5
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              2,
+              15
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              5,
+              15
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2704044035,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.2095413000206463
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 817,
+      "seconds": 10.736513614654541,
+      "artifact": "attempt_004/result.json"
+    },
+    {
+      "id": 5,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:17:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.2610948953404235,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              0,
+              7,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.15022956666050633
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CC=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            1,
+            0
+          ]
+        ],
+        "geometric_fit_cost": 0.05910766056636803,
+        "geometric_fit_nfev": 59,
+        "geometric_fit_optimality": 0.0005565382925357201,
+        "predicted_graph": "C=C(N)O.CN",
+        "arrows": [
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              7
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              0,
+              7
+            ],
+            "sink": [
+              0,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Pi+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              0,
+              7
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              2,
+              7
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 1749208541,
+        "seed_strategy": "arrows",
+        "generation_seconds": 1.0652620999608189
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 897,
+      "seconds": 11.362416744232178,
+      "artifact": "attempt_005/result.json"
+    },
+    {
+      "id": 6,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:22:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.062214796924518,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              3,
+              10,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.04893041546160108
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CC(N)=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.016964637735744505,
+        "geometric_fit_nfev": 37,
+        "geometric_fit_optimality": 0.00018551965532721468,
+        "predicted_graph": "CC(=N)O.CN",
+        "arrows": [
+          {
+            "source": [
+              3
+            ],
+            "sink": [
+              3,
+              1
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              10
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              3,
+              10
+            ],
+            "sink": [
+              3
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              3
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              2,
+              10
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              3,
+              10
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2633603292,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.6784985999693163
+      },
+      "status": "unresolved_minimum",
+      "evaluations": 1176,
+      "seconds": 12.962672472000122,
+      "artifact": "attempt_006/result.json"
+    },
+    {
+      "id": 7,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "grammar:carbonyl_amine_addition_stepwise",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 0.8852049379811066,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.4254019512665653
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": null,
+        "transferred": null,
+        "origin": "analyst_defined_reactant_only_electron_action_grammar",
+        "pattern_smarts": null,
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0,
+          "selected_trial": 0,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 9.39983997114802
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.005687566068845717,
+        "geometric_fit_nfev": 10,
+        "geometric_fit_optimality": 2.786382152867011e-05,
+        "predicted_graph": "C[NH2+]C(C)(N)[O-]",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          },
+          {
+            "source": [
+              1,
+              2
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 1342186423,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.2053207999560982
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 896,
+      "seconds": 11.378620624542236,
+      "artifact": "attempt_007/result.json"
+    },
+    {
+      "id": 8,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "grammar:carbonyl_addition_with_proton_transfer",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 0.802080003232213,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              14,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.38480491279450973,
+          -0.26710642200415063
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": null,
+        "transferred": null,
+        "origin": "analyst_defined_reactant_only_electron_action_grammar",
+        "pattern_smarts": null,
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0038081967936526495,
+          "selected_trial": 7,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              14
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 8.937298433992654
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [
+          [
+            0,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 0.011470392799253496,
+        "geometric_fit_nfev": 6,
+        "geometric_fit_optimality": 8.13048650202125e-06,
+        "predicted_graph": "CNC(C)(N)O",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          },
+          {
+            "source": [
+              1,
+              2
+            ],
+            "sink": [
+              2,
+              14
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          },
+          {
+            "source": [
+              5,
+              14
+            ],
+            "sink": [
+              5
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              2,
+              14
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              5,
+              14
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2200503522,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.1181051000021398
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 929,
+      "seconds": 12.873783349990845,
+      "artifact": "attempt_008/result.json"
+    },
+    {
+      "id": 9,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:17:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.0967902633556768,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              0,
+              8,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.04223407909740311
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CC=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4]-[#6&+0&A&v4]-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            1,
+            0
+          ]
+        ],
+        "geometric_fit_cost": 0.01754023824525383,
+        "geometric_fit_nfev": 30,
+        "geometric_fit_optimality": 0.00019284586578163093,
+        "predicted_graph": "C=C(N)O.CN",
+        "arrows": [
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              8
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              0,
+              8
+            ],
+            "sink": [
+              0,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Pi+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              0,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 3836850590,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.6313227000064217
+      },
+      "status": "new_connection",
+      "evaluations": 932,
+      "seconds": 12.875610828399658,
+      "artifact": "attempt_009/result.json",
+      "observed_nodes": [
+        1,
+        0
+      ],
+      "source_is_endpoint": true
+    },
+    {
+      "id": 10,
+      "source_node": 1,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:1:reverse",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.048808797790602,
+        "progress_targets": [
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              2,
+              8,
+              5
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.6695940971896982
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CO.N",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#7&+0&A&v3].[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4]",
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0,
+          "selected_trial": 0,
+          "cross_forming_pairs": [
+            [
+              8,
+              5
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 9.453791365832208
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.007975402704761485,
+        "geometric_fit_nfev": 11,
+        "geometric_fit_optimality": 2.063012745837894e-05,
+        "predicted_graph": "C=C(N)[O-].C[NH3+]",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              5,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 4017914976,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.28438159998040646
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 921,
+      "seconds": 14.767455816268921,
+      "artifact": "attempt_010/result.json"
+    },
+    {
+      "id": 11,
+      "source_node": 1,
+      "proposal": {
+        "template_id": "SynEPD:30:reverse",
+        "name": "Proton transfer in tetrahedral intermediate",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              3
+            ],
+            "sink": [
+              3,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "edits": [
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              3,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "predicted_graph": "C=C([NH3+])[O-].CN",
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "template_source_graph": "COC(C)(N)O",
+        "transferred": true,
+        "pattern_smarts": "[#6&+0&A&v4](-[#7&+0&A&v3])-[#8&+0&A&v2]-[#1&+0&A&v1]",
+        "matched_atoms": [
+          1,
+          3,
+          8,
+          2
+        ],
+        "intermolecular": false,
+        "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+      },
+      "status": "seed_generation_failed",
+      "evaluations": 0,
+      "artifact": "attempt_011/result.json"
+    },
+    {
+      "id": 12,
+      "source_node": 1,
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "SynEPD:1:reverse",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 0.6816873854295783,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              2,
+              8,
+              5
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.7754238628462711
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CO.N",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#7&+0&A&v3].[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4]",
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0,
+          "selected_trial": 0,
+          "cross_forming_pairs": [
+            [
+              8,
+              5
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 12.026586245480615
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.003356036859746385,
+        "geometric_fit_nfev": 6,
+        "geometric_fit_optimality": 1.3499654052491136e-06,
+        "predicted_graph": "C=C(N)[O-].C[NH3+]",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              5,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 932205188,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.15015380003023893
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 946,
+      "seconds": 15.053984642028809,
+      "artifact": "attempt_012/result.json"
+    },
+    {
+      "id": 13,
+      "source_node": 1,
+      "proposal": {
+        "template_id": "SynEPD:30:reverse",
+        "name": "Proton transfer in tetrahedral intermediate",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              3
+            ],
+            "sink": [
+              3,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "edits": [
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              3,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "predicted_graph": "C=C([NH3+])[O-].CN",
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "template_source_graph": "COC(C)(N)O",
+        "transferred": true,
+        "pattern_smarts": "[#6&+0&A&v4](-[#7&+0&A&v3])-[#8&+0&A&v2]-[#1&+0&A&v1]",
+        "matched_atoms": [
+          1,
+          3,
+          8,
+          2
+        ],
+        "intermolecular": false,
+        "stereo_policy": "No new stereochemistry inferred by symbolic replay"
+      },
+      "status": "seed_generation_failed",
+      "evaluations": 0,
+      "artifact": "attempt_013/result.json"
+    },
+    {
+      "id": 14,
+      "source_node": 1,
+      "proposal": {
+        "fraction": 0.75,
+        "template_id": "SynEPD:1:reverse",
+        "displacement_norm_A": 1.4,
+        "unnormalized_fit_displacement_A": 1.699540112821003,
+        "progress_targets": [
+          0.6,
+          0.9
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              2,
+              8,
+              5
+            ],
+            "degrees": 170.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.9258789629858066
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CO.N",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#7&+0&A&v3].[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4]",
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0,
+          "selected_trial": 0,
+          "cross_forming_pairs": [
+            [
+              8,
+              5
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 7.855458242202231
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.020929783057990394,
+        "geometric_fit_nfev": 20,
+        "geometric_fit_optimality": 0.0001152268025291854,
+        "predicted_graph": "C=C(N)[O-].C[NH3+]",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              5,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 3530500609,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.38656760001322255
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 900,
+      "seconds": 13.339658975601196,
+      "artifact": "attempt_014/result.json"
+    },
+    {
+      "id": 15,
+      "source_node": 1,
+      "proposal": {
+        "fraction": 0.75,
+        "template_id": "SynEPD:30:reverse",
+        "displacement_norm_A": 1.4,
+        "unnormalized_fit_displacement_A": 1.9594000425029288,
+        "progress_targets": [
+          0.6,
+          0.9
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              2,
+              8,
+              3
+            ],
+            "degrees": 170.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.9967287897746498
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "COC(C)(N)O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#6&+0&A&v4](-[#7&+0&A&v3])-[#8&+0&A&v2]-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.03646474485252561,
+        "geometric_fit_nfev": 69,
+        "geometric_fit_optimality": 0.00023991524076694137,
+        "predicted_graph": "C=C([NH3+])[O-].CN",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              3
+            ],
+            "sink": [
+              3,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              3,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 3507884256,
+        "seed_strategy": "arrows",
+        "generation_seconds": 1.4253691000049002
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 888,
+      "seconds": 13.11502742767334,
+      "artifact": "attempt_015/result.json"
+    },
+    {
+      "id": 16,
+      "source_node": 1,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:17:reverse",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 0.7415117665077704,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              2,
+              8,
+              0
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.2594472887415255
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "C=CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2](-[#6&+0&A&v4]=[#6&+0&A&v4])-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            0,
+            1
+          ]
+        ],
+        "geometric_fit_cost": 0.004220380514783026,
+        "geometric_fit_nfev": 11,
+        "geometric_fit_optimality": 1.928665123615298e-05,
+        "predicted_graph": "CC(N)=O.CN",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              0,
+              1
+            ],
+            "sink": [
+              0,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Pi+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 1197172291,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.2744591000373475
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 867,
+      "seconds": 10.926703453063965,
+      "artifact": "attempt_016/result.json"
+    },
+    {
+      "id": 17,
+      "source_node": 1,
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "SynEPD:17:reverse",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 1.2338173164970188,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4,
+          0.4,
+          0.7000000000000001
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              2,
+              8,
+              0
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.5262570919315346
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "C=CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2](-[#6&+0&A&v4]=[#6&+0&A&v4])-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            0,
+            1
+          ]
+        ],
+        "geometric_fit_cost": 0.1859013659917528,
+        "geometric_fit_nfev": 29,
+        "geometric_fit_optimality": 0.0009091518748676267,
+        "predicted_graph": "CC(N)=O.CN",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              0,
+              1
+            ],
+            "sink": [
+              0,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Pi+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 1469535615,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.45569430000614375
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 960,
+      "seconds": 11.752151012420654,
+      "artifact": "attempt_017/result.json"
+    },
+    {
+      "id": 18,
+      "source_node": 1,
+      "proposal": {
+        "fraction": 0.75,
+        "template_id": "SynEPD:17:reverse",
+        "displacement_norm_A": 1.4,
+        "unnormalized_fit_displacement_A": 1.3959447700912386,
+        "progress_targets": [
+          0.6,
+          0.9,
+          0.9,
+          0.6
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              2,
+              8,
+              0
+            ],
+            "degrees": 170.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.9272334406839572
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "C=CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2](-[#6&+0&A&v4]=[#6&+0&A&v4])-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            0,
+            1
+          ]
+        ],
+        "geometric_fit_cost": 0.031228535245540354,
+        "geometric_fit_nfev": 28,
+        "geometric_fit_optimality": 0.00019321803327314313,
+        "predicted_graph": "CC(N)=O.CN",
+        "arrows": [
+          {
+            "source": [
+              2,
+              8
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              0,
+              1
+            ],
+            "sink": [
+              0,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Pi+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              8
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              2,
+              8
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 3892865259,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.4409583999658935
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 961,
+      "seconds": 11.631937026977539,
+      "artifact": "attempt_018/result.json"
+    },
+    {
+      "id": 19,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "SynEPD:22:forward",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 1.7762135470300502,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4,
+          0.4,
+          0.7000000000000001
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              3,
+              9,
+              2
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.004805724540426875
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CC(N)=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.5849749129218623,
+        "geometric_fit_nfev": 89,
+        "geometric_fit_optimality": 0.00224737907188724,
+        "predicted_graph": "CC(=N)O.CN",
+        "arrows": [
+          {
+            "source": [
+              3
+            ],
+            "sink": [
+              3,
+              1
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              9
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              3,
+              9
+            ],
+            "sink": [
+              3
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              3
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              2,
+              9
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              3,
+              9
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 3529396138,
+        "seed_strategy": "arrows",
+        "generation_seconds": 1.538096999982372
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 862,
+      "seconds": 10.582800388336182,
+      "artifact": "attempt_019/result.json"
+    },
+    {
+      "id": 20,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.75,
+        "template_id": "grammar:carbonyl_amine_addition_stepwise",
+        "displacement_norm_A": 1.4,
+        "unnormalized_fit_displacement_A": 1.4156059970347097,
+        "progress_targets": [
+          0.6,
+          0.9
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 120.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.48890844520142956
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": null,
+        "transferred": null,
+        "origin": "analyst_defined_reactant_only_electron_action_grammar",
+        "pattern_smarts": null,
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0,
+          "selected_trial": 1,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 9.056321271627112
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.014650723214285101,
+        "geometric_fit_nfev": 18,
+        "geometric_fit_optimality": 8.234390135703498e-05,
+        "predicted_graph": "C[NH2+]C(C)(N)[O-]",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          },
+          {
+            "source": [
+              1,
+              2
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          }
+        ],
+        "random_seed": 1277407741,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.28698689996963367
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 966,
+      "seconds": 11.731408834457397,
+      "artifact": "attempt_020/result.json"
+    },
+    {
+      "id": 21,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "grammar:carbonyl_addition_with_proton_transfer",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.1991237500257794,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              15,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.0637844628895723,
+          0.17413310848208777
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": null,
+        "transferred": null,
+        "origin": "analyst_defined_reactant_only_electron_action_grammar",
+        "pattern_smarts": null,
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.0004021590959635297,
+          "selected_trial": 55,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              15
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 8.638762314188563
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [
+          [
+            0,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 0.014797455602757801,
+        "geometric_fit_nfev": 10,
+        "geometric_fit_optimality": 2.6923115488332316e-05,
+        "predicted_graph": "CNC(C)(N)O",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          },
+          {
+            "source": [
+              1,
+              2
+            ],
+            "sink": [
+              2,
+              15
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          },
+          {
+            "source": [
+              5,
+              15
+            ],
+            "sink": [
+              5
+            ],
+            "electrons": 2,
+            "kind": "reactant_graph_grammar"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              2,
+              15
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              5,
+              15
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2704044035,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.1960397000075318
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 843,
+      "seconds": 10.629143476486206,
+      "artifact": "attempt_021/result.json"
+    },
+    {
+      "id": 22,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "SynEPD:22:forward",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 1.4437778693284355,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4,
+          0.4,
+          0.7000000000000001
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              3,
+              10,
+              2
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.4025519705097479
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "CC(N)=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#8&+0&A&v2]=[#6&+0&A&v4](-[#7&+0&A&v3]-[#1&+0&A&v1])-[#6&+0&A&v4]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.2562637322352985,
+        "geometric_fit_nfev": 111,
+        "geometric_fit_optimality": 0.001547877411096188,
+        "predicted_graph": "CC(=N)O.CN",
+        "arrows": [
+          {
+            "source": [
+              3
+            ],
+            "sink": [
+              3,
+              1
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              10
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              3,
+              10
+            ],
+            "sink": [
+              3
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              3
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              2,
+              10
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              3,
+              10
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2767958945,
+        "seed_strategy": "arrows",
+        "generation_seconds": 2.0206928999978118
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 964,
+      "seconds": 11.75441312789917,
+      "artifact": "attempt_022/result.json"
+    },
+    {
+      "id": 23,
+      "source_node": 0,
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "SynEPD:907:forward",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 0.9492206933435169,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4,
+          0.4,
+          0.7000000000000001
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              5,
+              14,
+              2
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              5,
+              1,
+              2
+            ],
+            "degrees": 110.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.6437235260276901,
+          -0.46987483869591223
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "NCCCC=O",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#6&+0&A&v4]-[#7&+0&A&v3]-[#1&+0&A&v1].[#6&+0&A&v4]-[#6&+0&A&v4]=[#8&+0&A&v2]",
+        "encounter_orientation": {
+          "policy": "64_rigid_orientations_cross_bond_distance_and_clash_score",
+          "score": 0.003029874090268451,
+          "selected_trial": 17,
+          "cross_forming_pairs": [
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              14
+            ]
+          ],
+          "contact_distance_A": 2.8,
+          "reference_product_or_TS_used": false,
+          "displacement_from_source_A": 8.471186402998411
+        },
+        "intermolecular": true,
+        "source_sink_couplings": [],
+        "geometric_fit_cost": 0.1606034174989731,
+        "geometric_fit_nfev": 6,
+        "geometric_fit_optimality": 2.6258800941314497e-05,
+        "predicted_graph": "CNC(C)(N)O",
+        "arrows": [
+          {
+            "source": [
+              5
+            ],
+            "sink": [
+              5,
+              1
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              2,
+              1
+            ],
+            "sink": [
+              2
+            ],
+            "electrons": 2,
+            "kind": "Pi-/LP+"
+          },
+          {
+            "source": [
+              2
+            ],
+            "sink": [
+              2,
+              14
+            ],
+            "electrons": 2,
+            "kind": "LP-/Sigma+"
+          },
+          {
+            "source": [
+              5,
+              14
+            ],
+            "sink": [
+              5
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              1,
+              2
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              1,
+              5
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              2,
+              14
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              5,
+              14
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 3113114884,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.11570750002283603
+      },
+      "status": "ts_force_unconverged",
+      "evaluations": 918,
+      "seconds": 11.111914873123169,
+      "artifact": "attempt_023/result.json"
+    }
+  ],
+  "evidence": "MLIP_descents_not_DFT_IRC",
+  "library_policy": "published_local_arrows_plus_explicit_reactant_grammar_v6",
+  "status": "completed",
+  "unsupported_nodes": [],
+  "exhausted_nodes": [
+    1
+  ],
+  "initial_relaxation_checks": [
+    {
+      "force_max_eV_A": 0.0018980223685503006,
+      "force_converged": true,
+      "energy_eV": -8298.19323991753,
+      "frequencies_cm-1": [
+        32.04864945625191,
+        55.22958978395339,
+        82.97882786807689,
+        112.58394927215318,
+        127.72977704317108,
+        184.58491367420496,
+        200.20241754716406,
+        381.505465192363,
+        419.6749835544628,
+        465.8566014318076,
+        551.6734163510372,
+        582.4792868400936,
+        638.6822953115753,
+        847.6957405434955,
+        938.3687097422129,
+        997.4663255059913,
+        1025.025126363561,
+        1043.22318595221,
+        1051.974088766223,
+        1157.9712832329005,
+        1190.114137420118,
+        1333.978340320864,
+        1347.5440125954108,
+        1397.4568564909566,
+        1467.7989618976783,
+        1489.803632816595,
+        1497.4889489460643,
+        1498.649165756281,
+        1545.2697199026322,
+        1658.7810332802665,
+        1693.4051718552084,
+        1751.469332393723,
+        2951.5162438243237,
+        3019.1720052216324,
+        3034.693844095221,
+        3049.2112569323335,
+        3089.2553988538534,
+        3113.380164552364,
+        3400.8457883718024,
+        3431.0479782684893,
+        3530.8702012923177,
+        3655.486768315118
+      ],
+      "imaginary_count": 0,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6
+    }
+  ],
+  "initial_point": {
+    "force_max_eV_A": 0.0018980223685503006,
+    "force_converged": true,
+    "energy_eV": -8298.19323991753,
+    "frequencies_cm-1": [
+      32.04864945625191,
+      55.22958978395339,
+      82.97882786807689,
+      112.58394927215318,
+      127.72977704317108,
+      184.58491367420496,
+      200.20241754716406,
+      381.505465192363,
+      419.6749835544628,
+      465.8566014318076,
+      551.6734163510372,
+      582.4792868400936,
+      638.6822953115753,
+      847.6957405434955,
+      938.3687097422129,
+      997.4663255059913,
+      1025.025126363561,
+      1043.22318595221,
+      1051.974088766223,
+      1157.9712832329005,
+      1190.114137420118,
+      1333.978340320864,
+      1347.5440125954108,
+      1397.4568564909566,
+      1467.7989618976783,
+      1489.803632816595,
+      1497.4889489460643,
+      1498.649165756281,
+      1545.2697199026322,
+      1658.7810332802665,
+      1693.4051718552084,
+      1751.469332393723,
+      2951.5162438243237,
+      3019.1720052216324,
+      3034.693844095221,
+      3049.2112569323335,
+      3089.2553988538534,
+      3113.380164552364,
+      3400.8457883718024,
+      3431.0479782684893,
+      3530.8702012923177,
+      3655.486768315118
+    ],
+    "imaginary_count": 0,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "initialization_evaluations": 239,
+  "evaluations": 20378,
+  "model_calls": 19727,
+  "model_seconds": 226.10402609803714,
+  "elapsed_seconds": 289.16082409996307,
+  "expanded_nodes": [
+    0,
+    1
+  ],
+  "searched_nodes": [
+    0,
+    1
+  ],
+  "node_batches": {
+    "0": 15,
+    "1": 10
+  },
+  "stop_reason": "attempt_budget",
+  "root_component_nodes": [
+    0,
+    1
+  ]
+}

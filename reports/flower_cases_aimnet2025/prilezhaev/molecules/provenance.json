@@ -1,0 +1,14 @@
+{
+  "event_count": 3,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "flower_prilezhaev_minimal_o0\\arrows\\attempt_002\\result.json": "3a400913e271b8e121e1d7593a1259cf70a0d162c59339ed34da47ce2a4a5ff2",
+    "flower_prilezhaev_minimal_o0\\arrows\\attempt_003\\result.json": "07ba1c5d9ef2a0264f69fc5b45816adfb25a2f493730fb597b5dfbc9e93b6714",
+    "flower_prilezhaev_minimal_o0\\arrows\\attempt_005\\result.json": "02955f74584c7e69bbde03207e523cf564641ec8f6d43f5b319b967b0d878e50",
+    "flower_prilezhaev_minimal_o1\\arrows\\attempt_003\\result.json": "2fb459696dadc3b134f84b225a6f8c75699797d9e8dc8a64e5cd7a7d95cbc43e"
+  }
+}

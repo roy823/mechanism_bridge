@@ -1,5 +1,5 @@
 """Build total same-system TransitionNets across strategies and orientations."""
-import copy,hashlib,json,sys
+import argparse,copy,hashlib,json,sys
 from pathlib import Path
 import networkx as nx
 import numpy as np
@@ -10,7 +10,7 @@ from mechbridge.molecular_visuals import load_events,entry
 from mechbridge.network_aggregation import aggregate_network_records
 from mechbridge.report_layout import molecular_document,prepare_shared_assets,relative_link,attach_checks
 
-BASE=ROOT/'reports/aimnet2025_reaction_paths'
+DEFAULT_BASE=ROOT/'reports/aimnet2025_reaction_paths'
 
 
 def layout_species(nodes,edges):
@@ -72,6 +72,9 @@ def species_projection(physical_nodes,physical_edges):
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--base',type=Path,default=DEFAULT_BASE)
+    BASE=parser.parse_args().base.resolve()
     paths=[]
     for path in sorted(BASE.rglob('network.json')):
         data=json.loads(path.read_text(encoding='utf-8'))
@@ -127,7 +130,7 @@ def main():
     summary=dict(systems=metrics,total_source_runs=sum(m['source_runs'] for m in metrics),
         raw_nodes=sum(m['raw_nodes'] for m in metrics),merged_nodes=sum(m['merged_nodes'] for m in metrics),
         raw_edges=sum(m['raw_edges'] for m in metrics),unique_ts_edges=sum(m['unique_ts_edges'] for m in metrics),
-        page='reports/aimnet2025_reaction_paths/aggregate/molecules/index.html',policy=provenance)
+        page=(out/'index.html').relative_to(ROOT).as_posix(),policy=provenance)
     continuation=[]
     for group in groups.values():
         for node in group['nodes']:

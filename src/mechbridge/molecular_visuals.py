@@ -66,6 +66,13 @@ def clean_svg(svg):
     return svg[svg.index('<svg'):]
 
 
+def symbolic_graph_key(smiles):
+    """Compare symbolic endpoints without inventing unspecified stereochemistry."""
+    mol=Chem.MolFromSmiles(smiles)
+    if mol is None:raise ValueError(f'Cannot parse symbolic endpoint: {smiles}')
+    return Chem.MolToSmiles(mol,canonical=True,isomericSmiles=False)
+
+
 def entry(mol, coordinates):
     smiles=graph_smiles(mol)
     formulas=[rdMolDescriptors.CalcMolFormula(m) for m in Chem.GetMolFrags(mol,asMols=True)]
@@ -139,7 +146,8 @@ def load_events(run, network_paths=None):
             pair=[endpoint_entries[left]['smiles'],endpoint_entries[right]['smiles']]
             proposal=attempt['proposal'].get('predicted_graph')
             source=n['nodes'][attempt['source_node']]['graph_smiles']
-            matched=sorted(pair)==sorted([source,proposal]) if proposal else None
+            matched=(sorted(map(symbolic_graph_key,pair))==
+                     sorted(map(symbolic_graph_key,[source,proposal]))) if proposal else None
             eid=f"{n['start']['id']}_{n['strategy']}_{edge['id']}"
             event=dict(id=eid,start=n['start']['id'],strategy=n['strategy'],edge_id=edge['id'],
                 node_ids=[edge['nodes'][left],edge['nodes'][right]],symbols=symbols,numbers=numbers,

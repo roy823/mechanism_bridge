@@ -1,0 +1,108 @@
+[
+  {
+    "id": "flower_diels_alder_minimal",
+    "reactant": "C=CC=C.C=C",
+    "reaction_class": "Diels-Alder cycloaddition",
+    "expected_products": [
+      "C1=CCCCC1"
+    ],
+    "paper_location": "Fig. 4d and Fig. S16",
+    "role": "minimal_representative_of_published_reaction_class",
+    "source": "https://doi.org/10.1038/s41586-025-09426-9",
+    "exact_NameRxn_record_available": false,
+    "symbolic_proposals": [
+      {
+        "template_id": "grammar:diels_alder_4_plus_2_cycloaddition",
+        "predicted_graph": "C1=CCCCC1"
+      },
+      {
+        "template_id": "grammar:diels_alder_4_plus_2_cycloaddition",
+        "predicted_graph": "C1=CCCCC1"
+      },
+      {
+        "template_id": "grammar:diels_alder_4_plus_2_cycloaddition",
+        "predicted_graph": "C1=CCCCC1"
+      },
+      {
+        "template_id": "grammar:diels_alder_4_plus_2_cycloaddition",
+        "predicted_graph": "C1=CCCCC1"
+      }
+    ]
+  },
+  {
+    "id": "flower_prilezhaev_minimal",
+    "reactant": "C=C.OOC=O",
+    "reaction_class": "Prilezhaev epoxidation",
+    "expected_products": [
+      "C1CO1.O=CO"
+    ],
+    "paper_location": "Fig. 4d and Fig. S16",
+    "role": "minimal_representative_of_published_reaction_class",
+    "source": "https://doi.org/10.1038/s41586-025-09426-9",
+    "exact_NameRxn_record_available": false,
+    "symbolic_proposals": [
+      {
+        "template_id": "grammar:prilezhaev_epoxidation",
+        "predicted_graph": "C1CO1.O=CO"
+      },
+      {
+        "template_id": "grammar:prilezhaev_epoxidation",
+        "predicted_graph": "C1CO1.O=CO"
+      }
+    ]
+  },
+  {
+    "id": "flower_transamidation_minimal",
+    "reactant": "CC(=O)N.CN",
+    "reaction_class": "Transamidation",
+    "expected_products": [
+      "CNC(C)=O.N"
+    ],
+    "paper_location": "Fig. 4 and Fig. S16",
+    "role": "minimal_representative_of_published_reaction_class",
+    "source": "https://doi.org/10.1038/s41586-025-09426-9",
+    "exact_NameRxn_record_available": false,
+    "symbolic_proposals": [
+      {
+        "template_id": "SynEPD:907:forward",
+        "predicted_graph": "CNC(C)(N)O"
+      },
+      {
+        "template_id": "grammar:carbonyl_amine_addition_stepwise",
+        "predicted_graph": "C[NH2+]C(C)(N)[O-]"
+      },
+      {
+        "template_id": "SynEPD:17:forward",
+        "predicted_graph": "C=C(N)O.CN"
+      },
+      {
+        "template_id": "SynEPD:22:forward",
+        "predicted_graph": "CC(=N)O.CN"
+      },
+      {
+        "template_id": "SynEPD:907:forward",
+        "predicted_graph": "CNC(C)(N)O"
+      },
+      {
+        "template_id": "SynEPD:17:forward",
+        "predicted_graph": "C=C(N)O.CN"
+      },
+      {
+        "template_id": "SynEPD:22:forward",
+        "predicted_graph": "CC(=N)O.CN"
+      },
+      {
+        "template_id": "grammar:carbonyl_addition_with_proton_transfer",
+        "predicted_graph": "CNC(C)(N)O"
+      },
+      {
+        "template_id": "SynEPD:17:forward",
+        "predicted_graph": "C=C(N)O.CN"
+      },
+      {
+        "template_id": "grammar:carbonyl_addition_with_proton_transfer",
+        "predicted_graph": "CNC(C)(N)O"
+      }
+    ]
+  }
+]
