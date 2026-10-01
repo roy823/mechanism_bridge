@@ -14,24 +14,38 @@ BASE=ROOT/'reports/aimnet2025_reaction_paths'
 
 
 def layout_species(nodes,edges):
-    graph=nx.Graph();graph.add_nodes_from(range(len(nodes)));graph.add_edges_from(e['nodes'] for e in edges if e['nodes'][0]!=e['nodes'][1])
-    candidates=[]
-    if len(nodes)<=2:return {i:[.2+.6*i/max(len(nodes)-1,1),.5] for i in range(len(nodes))}
-    for seed in range(32):candidates.append(nx.spring_layout(graph,seed=seed,k=1.4/np.sqrt(max(len(nodes),1)),iterations=300))
-    try:candidates.append(nx.kamada_kawai_layout(graph))
-    except nx.NetworkXException:pass
-    pairs=[e['nodes'] for e in edges if e['nodes'][0]!=e['nodes'][1]]
-    def crossings(pos):
-        score=0
+    count=len(nodes)
+    if count<=2:return {i:[.2+.6*i/max(count-1,1),.5] for i in range(count)}
+    cols=int(np.ceil(np.sqrt(count*1.4)));rows=int(np.ceil(count/cols));slots=[]
+    for row in range(rows):
+        present=min(cols,count-row*cols);xs=np.linspace(.08,.92,present) if present>1 else np.array([.5])
+        y=.12+.76*row/max(rows-1,1)
+        slots.extend([[float(x),float(y)] for x in xs])
+    pairs=sorted({tuple(sorted(e['nodes'])) for e in edges if e['nodes'][0]!=e['nodes'][1]})
+    def point_segment(p,a,b):
+        delta=b-a;t=np.clip(np.dot(p-a,delta)/max(np.dot(delta,delta),1e-12),0,1)
+        return np.linalg.norm(p-(a+t*delta))
+    def score(order):
+        pos={node:np.asarray(slots[slot]) for node,slot in enumerate(order)};cross=through=0
         for i,(a,b) in enumerate(pairs):
+            p,q=pos[a],pos[b]
             for c,d in pairs[i+1:]:
                 if len({a,b,c,d})<4:continue
-                p,q,r,s=[np.asarray(pos[x]) for x in (a,b,c,d)]
-                def orient(x,y,z):return np.cross(y-x,z-x)
-                if orient(p,q,r)*orient(p,q,s)<0 and orient(r,s,p)*orient(r,s,q)<0:score+=1
-        return score
-    best=min(candidates,key=crossings);xy=np.asarray([best[i] for i in range(len(nodes))]);lo=xy.min(0);span=np.maximum(xy.max(0)-lo,1e-9);xy=.08+.84*(xy-lo)/span
-    return {i:xy[i].tolist() for i in range(len(nodes))}
+                r,s=pos[c],pos[d]
+                orient=lambda x,y,z:np.cross(y-x,z-x)
+                if orient(p,q,r)*orient(p,q,s)<0 and orient(r,s,p)*orient(r,s,q)<0:cross+=1
+            through+=sum(point_segment(pos[k],p,q)<.105 for k in range(count) if k not in (a,b))
+        length=sum(np.sum((pos[a]-pos[b])**2) for a,b in pairs)
+        return cross*10000+through*500+length
+    rng=np.random.default_rng(20261001);best=None;best_score=float('inf')
+    for restart in range(80):
+        order=np.arange(count) if restart==0 else rng.permutation(count);current=score(order)
+        for _ in range(500):
+            a,b=rng.choice(count,2,replace=False);order[a],order[b]=order[b],order[a];candidate=score(order)
+            if candidate<=current:current=candidate
+            else:order[a],order[b]=order[b],order[a]
+        if current<best_score:best,best_score=order.copy(),current
+    return {node:slots[int(best[node])] for node in range(count)}
 
 
 def species_projection(physical_nodes,physical_edges):
