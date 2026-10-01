@@ -127,8 +127,8 @@ def test_all_information_conditions_have_equal_displacement():
                 assert meta['information']=='active_atom_ids_only'
 
 
-def test_network_rejects_event_detached_from_proposing_node(tmp_path,monkeypatch):
-    """A seed from A descending to B/C cannot create a root-connected edge."""
+def test_network_registers_observed_endpoints_not_proposing_node(tmp_path,monkeypatch):
+    """Topology-only mock: a seed from A discovering B/C must not invent A/B."""
     import mechbridge.reaction_network as net
     from rdkit.Chem import AllChem
     molecules=[]
@@ -157,9 +157,8 @@ def test_network_rejects_event_detached_from_proposing_node(tmp_path,monkeypatch
                positions_A=x.tolist(),charge=0,multiplicity=1)
     report=net.explore(start,None,EMT(),'geometry',tmp_path/'network',
                        net.SearchProtocol(max_attempts=1,seeds_per_node=1))
-    assert report['edges']==[]
-    assert len(report['nodes'])==1
-    assert report['attempts'][0]['status']=='detached_connection'
+    assert report['edges'][0]['nodes']==[1,2]
+    assert report['edges'][0]['proposed_from']==0
     assert report['attempts'][0]['source_is_endpoint'] is False
     assert report['root_component_nodes']==[0]
 

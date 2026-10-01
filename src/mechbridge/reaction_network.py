@@ -7,7 +7,6 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 import json
 import hashlib
-import os
 import time
 import traceback
 import numpy as np
@@ -15,12 +14,11 @@ import networkx as nx
 from ase import Atoms
 from ase.calculators.calculator import Calculator, all_changes
 from ase.io import write
-from ase.optimize import BFGS, FIRE
-from ase.mep import DimerControl, MinModeAtoms, NEB
-from .physics import analyze_stationary, finite_hessian
+from ase.optimize import BFGS
+from ase.mep import DimerControl, MinModeAtoms
+from .physics import analyze_stationary
 from .event_graph import geometry_mol, graph_smiles
-from .search_seeds import make_seed, internal_direction
-from .symbolic_endpoint import product_geometry
+from .search_seeds import make_seed
 from .exploration_actions import choose_action
 from .saddle_optimization import StationaryDimerTranslate
 from .event_classification import classify_event
@@ -82,12 +80,7 @@ class SearchProtocol:
     total_evaluations: int = 6000
     evaluations_per_attempt: int = 700
     ts_steps: int = 160
-    sella_steps: int = 400
     descent_steps: int = 250
-    endpoint_steps: int = 300
-    neb_steps: int = 250
-    neb_images: int = 7
-    neb_fmax: float = .08
     initial_fmax: float = .003
     initial_curvature_steps: int = 3
     fmax: float = .005
@@ -129,44 +122,6 @@ def inspect_point(atoms, protocol):
     return analysis, modes
 
 
-def validate_saddle_descents(seed, calculator, outdir, protocol, charge, result):
-    """Apply the common index-one and two-minimum acceptance contract."""
-    residual_force=float(np.linalg.norm(seed.get_forces(),axis=1).max())
-    if residual_force>protocol.fmax:
-        result['status']='ts_force_unconverged'
-        result['ts']=dict(force_max_eV_A=residual_force,force_converged=False)
-        write(outdir/'ts.xyz',seed,write_results=False)
-        return result
-    ts, modes = inspect_point(seed, protocol)
-    result['ts'] = ts
-    write(outdir/'ts.xyz', seed, write_results=False)
-    if not ts['force_converged'] or ts['imaginary_count'] != 1:
-        result['status'] = 'not_index_one'
-        return result
-    np.save(outdir/'negative_mode.npy', modes[0])
-    for sign in (-1, 1):
-        end = seed.copy()
-        end.positions += sign * protocol.mode_displacement * modes[0]
-        end.calc = calculator
-        with BFGS(end, maxstep=.1, logfile=str(outdir/f'descent_{sign}.log'),
-                  trajectory=str(outdir/f'descent_{sign}.traj')) as opt:
-            opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
-        analysis, _ = inspect_point(end, protocol)
-        analysis['positions_A'] = end.positions.tolist()
-        analysis['barrier_eV'] = ts['energy_eV'] - analysis['energy_eV']
-        mol = geometry_mol(end.numbers, end.positions, charge)
-        analysis['graph_smiles'] = graph_smiles(mol)
-        result['endpoints'].append(analysis)
-        write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
-    if not all(e['force_converged'] and e['imaginary_count'] == 0 and e['barrier_eV'] >= -1e-4
-               for e in result['endpoints']):
-        result['status'] = 'unresolved_minimum'
-    else:
-        result['status'] = 'validated_descents'
-        result['ts_positions_A'] = seed.positions.tolist()
-    return result
-
-
 def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
     outdir.mkdir(parents=True, exist_ok=False)
     started, initial_calls = time.time(), calculator.calls
@@ -186,123 +141,39 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
             with StationaryDimerTranslate(mm, logfile=str(outdir/'opt.log'),
                                   trajectory=str(outdir/'search.traj')) as opt:
                 result['optimizer_converged'] = bool(opt.run(fmax=protocol.fmax, steps=protocol.ts_steps))
-        validate_saddle_descents(seed,calculator,outdir,protocol,charge,result)
-    except BudgetExceeded:
-        result['status'] = 'budget_exhausted'
-    except Exception as exc:
-        result['status'] = 'calculation_failed'
-        result['error'] = f'{type(exc).__name__}: {exc}'
-        (outdir/'error.log').write_text(traceback.format_exc(), encoding='utf-8')
-    finally:
-        result['evaluations'] = calculator.calls - initial_calls
-        result['seconds'] = time.time() - started
-        atomic_json(outdir/'result.json', result)
-    return result
-
-
-def search_sella_connection(seed, direction, calculator, outdir, protocol, charge=0):
-    """Refine a path maximum with Sella P-RFO and apply the shared critic."""
-    cache=outdir.parent/'sella_jax_cache';cache.mkdir(exist_ok=True)
-    os.environ.setdefault('JAX_COMPILATION_CACHE_DIR',str(cache.resolve()))
-    from sella import Sella
-    outdir.mkdir(parents=True, exist_ok=False)
-    started, initial_calls = time.time(), calculator.calls
-    result = dict(status='started', evidence='Sella_PRFO_then_MLIP_two_sided_descents',
-                  is_IRC=False, DFT_verified=False, endpoints=[])
-    try:
-        seed.calc=calculator
-        write(outdir/'seed.xyz',seed,write_results=False)
-        np.save(outdir/'seed_direction.npy',direction)
-        def hessian_function(atoms):
-            return finite_hessian(atoms,protocol.hessian_step,
-                batch_forces=calculator.batch_forces,batch_size=protocol.hessian_batch_size)
-        with Sella(seed,order=1,v0=direction.ravel(),internal=False,
-                   hessian_function=hessian_function,diag_every_n=10,
-                   logfile=str(outdir/'sella.log'),trajectory=str(outdir/'search.traj')) as opt:
-            result['optimizer_converged']=bool(opt.run(fmax=protocol.fmax,steps=protocol.sella_steps))
-        validate_saddle_descents(seed,calculator,outdir,protocol,charge,result)
-    except BudgetExceeded:
-        result['status']='budget_exhausted'
-    except Exception as exc:
-        result['status']='calculation_failed'
-        result['error']=f'{type(exc).__name__}: {exc}'
-        (outdir/'error.log').write_text(traceback.format_exc(),encoding='utf-8')
-    finally:
-        result['evaluations']=calculator.calls-initial_calls
-        result['seconds']=time.time()-started
-        atomic_json(outdir/'result.json',result)
-    return result
-
-
-def search_neb_connection(source, source_mol, proposal, calculator, outdir, protocol,
-                          random_seed, charge=0):
-    """Construct a symbolic endpoint, optimize a NEB, then refine its saddle."""
-    outdir.mkdir(parents=True, exist_ok=False)
-    started, initial_calls = time.time(), calculator.calls
-    result = dict(status='started', evidence='symbolic_endpoint_NEB_Sella_then_MLIP_descents',
-                  is_IRC=False, DFT_verified=False, endpoints=[])
-    try:
-        guess, endpoint_meta = product_geometry(source.numbers, source.positions, source_mol,
-                                                 proposal, random_seed)
-        endpoint = Atoms(numbers=source.numbers, positions=guess, calculator=calculator)
-        write(outdir/'proposed_endpoint.xyz', endpoint, write_results=False)
-        with BFGS(endpoint, maxstep=.1, logfile=str(outdir/'endpoint.log'),
-                  trajectory=str(outdir/'endpoint.traj')) as opt:
-            endpoint_converged = bool(opt.run(fmax=protocol.initial_fmax,
-                                               steps=protocol.endpoint_steps))
-        endpoint_analysis, _ = inspect_point(endpoint, protocol)
-        endpoint_graph = graph_smiles(geometry_mol(endpoint.numbers, endpoint.positions, charge))
-        result['symbolic_endpoint'] = dict(**endpoint_meta, optimized_graph=endpoint_graph,
-            optimizer_converged=endpoint_converged, stationary=endpoint_analysis,
-            positions_A=endpoint.positions.tolist())
-        write(outdir/'optimized_endpoint.xyz', endpoint, write_results=False)
-        if (not endpoint_analysis['force_converged'] or endpoint_analysis['imaginary_count'] != 0
-                or endpoint_graph != proposal['predicted_graph']):
-            result['status'] = 'symbolic_endpoint_unresolved'
+        residual_force=float(np.linalg.norm(seed.get_forces(),axis=1).max())
+        if residual_force>protocol.fmax:
+            result['status']='ts_force_unconverged'
+            result['ts']=dict(force_max_eV_A=residual_force,force_converged=False)
+            write(outdir/'ts.xyz',seed,write_results=False)
             return result
-        images = [source.copy()]
-        images += [source.copy() for _ in range(protocol.neb_images-2)]
-        images += [endpoint.copy()]
-        for image in images:
-            image.calc = calculator
-        neb = NEB(images, climb=False, allow_shared_calculator=True,
-                  remove_rotation_and_translation=True, method='improvedtangent')
-        neb.interpolate(method='idpp')
-        with FIRE(neb, maxstep=.05, dt=.05, logfile=str(outdir/'neb.log'),
-                  trajectory=str(outdir/'neb.traj')) as opt:
-            neb_converged = bool(opt.run(fmax=protocol.neb_fmax, steps=protocol.neb_steps))
-        energies = [float(image.get_potential_energy()) for image in images]
-        maxima=[i for i in range(1,len(images)-1)
-                if energies[i]>=energies[i-1] and energies[i]>=energies[i+1]]
-        if not maxima:maxima=[1+int(np.argmax(energies[1:-1]))]
-        maxima.sort(key=lambda i:energies[i],reverse=True)
-        top=maxima[0]
-        result['neb'] = dict(images=protocol.neb_images, optimizer_converged=neb_converged,
-            fmax_eV_A=protocol.neb_fmax, energies_eV=energies, highest_image=top,
-            local_maxima=maxima,
-            endpoint_graphs=[graph_smiles(geometry_mol(i.numbers, i.positions, charge))
-                             for i in (images[0], images[-1])])
-        for index, image in enumerate(images):
-            write(outdir/f'neb_image_{index:02d}.xyz', image, write_results=False)
-        source_graph=graph_smiles(source_mol);target_graph=proposal['predicted_graph']
-        result['refinements']=[];selected=None
-        for rank,index in enumerate(maxima):
-            direction = internal_direction(images[index].positions,
-                images[index+1].positions-images[index-1].positions)
-            refined = search_sella_connection(images[index].copy(),direction,calculator,
-                outdir/f'saddle_refinement_{rank:02d}_image_{index:02d}',protocol,charge)
-            observed=[e.get('graph_smiles') for e in refined.get('endpoints',[])]
-            target_pair=(refined['status']=='validated_descents' and
-                         sorted(observed)==sorted([source_graph,target_graph]))
-            result['refinements'].append(dict(rank=rank,image=index,status=refined['status'],
-                endpoint_graphs=observed,target_graph_pair=target_pair,
-                evaluations=refined['evaluations']))
-            if target_pair:
-                selected=refined;break
-        if selected is None:
-            result['status']='path_not_recovered'
+        ts, modes = inspect_point(seed, protocol)
+        result['ts'] = ts
+        write(outdir/'ts.xyz', seed, write_results=False)
+        if not ts['force_converged'] or ts['imaginary_count'] != 1:
+            result['status'] = 'not_index_one'
+            return result
+        np.save(outdir/'negative_mode.npy', modes[0])
+        for sign in (-1, 1):
+            end = seed.copy()
+            end.positions += sign * protocol.mode_displacement * modes[0]
+            end.calc = calculator
+            with BFGS(end, maxstep=.1, logfile=str(outdir/f'descent_{sign}.log'),
+                      trajectory=str(outdir/f'descent_{sign}.traj')) as opt:
+                opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
+            analysis, _ = inspect_point(end, protocol)
+            analysis['positions_A'] = end.positions.tolist()
+            analysis['barrier_eV'] = ts['energy_eV'] - analysis['energy_eV']
+            mol = geometry_mol(end.numbers, end.positions, charge)
+            analysis['graph_smiles'] = graph_smiles(mol)
+            result['endpoints'].append(analysis)
+            write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
+        if not all(e['force_converged'] and e['imaginary_count'] == 0 and e['barrier_eV'] >= -1e-4
+                   for e in result['endpoints']):
+            result['status'] = 'unresolved_minimum'
         else:
-            result.update({k:v for k,v in selected.items() if k not in ('evaluations','seconds')})
+            result['status'] = 'validated_descents'
+            result['ts_positions_A'] = seed.positions.tolist()
     except BudgetExceeded:
         result['status'] = 'budget_exhausted'
     except Exception as exc:
@@ -319,7 +190,7 @@ def search_neb_connection(source, source_mol, proposal, calculator, outdir, prot
 def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()):
     """Only an observed initial geometry and a reusable symbol library enter search."""
     outdir = Path(outdir)
-    if strategy not in ('geometry','center_random','bond_edits','arrows','hybrid','neb_arrows'):
+    if strategy not in ('geometry','center_random','bond_edits','arrows','hybrid'):
         raise ValueError('Unknown search strategy')
     outdir.mkdir(parents=True, exist_ok=False)
     calculator = CountedCalculator(backend, protocol.total_evaluations)
@@ -432,14 +303,8 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 seed_rng = int.from_bytes(hashlib.sha256(identity.encode()).digest()[:4],'little')
                 try:
                     seed_started=time.perf_counter()
-                    if strategy == 'neb_arrows':
-                        x, direction = None, None
-                        meta = dict(template_id=proposal['template_id'], origin=proposal.get('origin'),
-                            predicted_graph=proposal['predicted_graph'], arrows=proposal['arrows'],
-                            net_edits=proposal['edits'], reference_product_geometry_used=False)
-                    else:
-                        x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
-                                                       variant, seed_rng)
+                    x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
+                                                   variant, seed_rng)
                 except (ValueError, RuntimeError) as exc:
                     dest = outdir/f'attempt_{aid:03d}'
                     dest.mkdir()
@@ -453,35 +318,19 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 meta['random_seed'] = seed_rng
                 meta['seed_strategy']=seed_strategy
                 meta['generation_seconds']=time.perf_counter()-seed_started
+                trial = state.copy()
+                trial.positions = x
                 calculator.attempt_limit = min(calculator.total_limit,
                     calculator.calls + protocol.evaluations_per_attempt)
                 dest = outdir/f'attempt_{aid:03d}'
-                if strategy == 'neb_arrows':
-                    result = search_neb_connection(state, mols[node_id], proposal, calculator, dest,
-                                                   protocol, seed_rng, start['charge'])
-                else:
-                    trial = state.copy()
-                    trial.positions = x
-                    result = search_connection(trial,direction,calculator,dest,protocol,start['charge'])
+                result = search_connection(trial,direction,calculator,dest,protocol,start['charge'])
                 attempt = dict(id=aid, source_node=node_id, proposal=meta,
                                status=result['status'], evaluations=result['evaluations'],
                                seconds=result['seconds'],
                                artifact=f'attempt_{aid:03d}/result.json')
                 attempts.append(attempt)
                 if result['status'] == 'validated_descents':
-                    matched=[]
-                    for end in result['endpoints']:
-                        x=np.asarray(end['positions_A']);m=geometry_mol(numbers,x,start['charge'])
-                        matched.append(abs(node['energy_eV']-end['energy_eV']) <= protocol.energy_tolerance_eV and
-                            molecular_rmsd(mols[node_id],np.asarray(node['positions_A']),m,x) <
-                            protocol.geometry_tolerance_A)
-                    if not any(matched):
-                        attempt['status']='detached_connection'
-                        attempt['source_is_endpoint']=False
-                        save()
-                        continue
-                    ends = [node_id if matched[i] else register(e,node['depth_discovered']+1)
-                            for i,e in enumerate(result['endpoints'])]
+                    ends = [register(e, node['depth_discovered']+1) for e in result['endpoints']]
                     attempt['observed_nodes'] = ends
                     attempt['source_is_endpoint'] = node_id in ends
                     if ends[0] == ends[1]:

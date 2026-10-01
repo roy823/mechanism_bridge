@@ -122,11 +122,9 @@ def build_site(refresh_legacy=True):
     cases=read_json(reports/'literature_benchmark_v6/cases.json')
     benchmark_path=reports/'literature_benchmark_v6/summary.json'
     aimnetcentral_path=reports/'aimnetcentral_v8/summary.json'
-    transitionnet_path=reports/'aimnet2025_transitionnet_v9/summary.json'
     render('benchmark.html',reports/'benchmark.html','benchmark',title='文献与基准',cases=cases,
         benchmark=read_json(benchmark_path) if benchmark_path.exists() else None,
-        aimnetcentral=read_json(aimnetcentral_path) if aimnetcentral_path.exists() else None,
-        transitionnet=read_json(transitionnet_path) if transitionnet_path.exists() else None)
+        aimnetcentral=read_json(aimnetcentral_path) if aimnetcentral_path.exists() else None)
     render('events.html',reports/'events.html','events',title='物理事件',events_json=json.dumps(events,ensure_ascii=False).replace('</','<\\/'))
     render('data.html',reports/'data.html','data',title='数据与复现')
     if refresh_legacy:

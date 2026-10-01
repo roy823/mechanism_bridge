@@ -29,5 +29,5 @@ def choose_action(proposals,used,known_graphs,strategy,geometry_limit=9):
         return None,'geometry',geometry_count,'geometry'
     if symbolic and strategy!='geometry':
         _,proposal,key,variant=min(symbolic,key=lambda v:v[0])
-        return proposal,key,variant,'arrows' if strategy in ('hybrid','neb_arrows') else strategy
+        return proposal,key,variant,'arrows' if strategy=='hybrid' else strategy
     return None

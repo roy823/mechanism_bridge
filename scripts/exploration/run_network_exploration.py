@@ -21,7 +21,7 @@ def main():
     p.add_argument('--potential',choices=['aimnet2-rxn','aimnet2','aimnet2-2025','aimnet2-nse'],default='aimnet2-rxn')
     p.add_argument('--device',choices=['cpu','cuda'],default='cpu')
     p.add_argument('--compile-model',action='store_true')
-    p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows','hybrid','neb_arrows'],
+    p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows','hybrid'],
                    default=['geometry','bond_edits','arrows'])
     p.add_argument('--start-ids', nargs='+')
     p.add_argument('--starts',type=Path,default=ROOT/'data/processed/network_starts.jsonl')
