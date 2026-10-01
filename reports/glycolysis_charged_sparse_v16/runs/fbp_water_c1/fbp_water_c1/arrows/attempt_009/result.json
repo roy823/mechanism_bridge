@@ -1,0 +1,12 @@
+{
+  "status": "budget_exhausted",
+  "evidence": "MLIP_two_sided_mode_displacement_descent",
+  "is_IRC": false,
+  "DFT_verified": false,
+  "endpoints": [],
+  "optimizer_force_criterion": "original_cartesian_per_atom_norm",
+  "evaluations": 8,
+  "model_calls": 8,
+  "model_seconds": 0.1066498999716714,
+  "seconds": 0.13275671005249023
+}

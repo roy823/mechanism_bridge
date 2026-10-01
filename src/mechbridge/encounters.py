@@ -36,35 +36,51 @@ def orient_reactive_encounter(numbers, positions, mol, edits, random_seed):
     and translation is recorded separately from the matched deformation norm.
     """
     fragments = Chem.GetMolFrags(mol)
-    if len(fragments) != 2:
+    if len(fragments) < 2:
         return np.array(positions,copy=True), None
-    ids_a, ids_b = [np.array(f,dtype=int) for f in fragments]
-    aset = set(ids_a)
+    component = {atom: index for index, fragment in enumerate(fragments) for atom in fragment}
     pairs = []
     for e in edits:
         i,j = e['atoms']
-        if e['before']==0 and (i in aset)!=(j in aset):
-            pairs.append((i,j) if i in aset else (j,i))
+        if e['before']==0 and component[i] != component[j]:
+            pairs.append((i,j))
     if not pairs:
         return np.array(positions,copy=True), None
+    active_components = tuple(sorted((component[pairs[0][0]], component[pairs[0][1]])))
+    pairs = [pair for pair in pairs
+             if tuple(sorted((component[pair[0]], component[pair[1]]))) == active_components]
+    ids_a, ids_b = [np.array(fragments[index],dtype=int) for index in active_components]
+    aset = set(ids_a)
+    pairs = [(i,j) if i in aset else (j,i) for i,j in pairs]
     numbers = np.asarray(numbers)
     pairs.sort(key=lambda p: (numbers[p[0]]==1 or numbers[p[1]]==1,p))
     anchor_a,anchor_b = pairs[0]
     rng = np.random.default_rng(random_seed)
     original = np.asarray(positions)
+    active_ids = np.concatenate((ids_a,ids_b))
+    active_center = original[active_ids].mean(0)
     best = None
     for trial in range(64):
         y = original.copy()
         for ids,anchor in ((ids_a,anchor_a),(ids_b,anchor_b)):
             y[ids] = (y[ids]-y[anchor]) @ Rotation.random(random_state=rng).as_matrix()
         y[ids_b] += np.array([0.,0.,2.8])
+        y[active_ids] += active_center-y[active_ids].mean(0)
         d = np.linalg.norm(y[ids_a,None]-y[ids_b][None,:],axis=-1)
         floor = 1.15*(covalent_radii[numbers[ids_a,None]]+covalent_radii[numbers[ids_b]][None,:])
         score = sum((np.linalg.norm(y[i]-y[j])-2.8)**2 for i,j in pairs)
         score += 50*np.maximum(floor-d,0).sum()**2
+        spectators = np.array([i for index,fragment in enumerate(fragments)
+                               if index not in active_components for i in fragment],dtype=int)
+        if len(spectators):
+            d_other=np.linalg.norm(y[active_ids,None]-y[spectators][None,:],axis=-1)
+            floor_other=(covalent_radii[numbers[active_ids,None]]+
+                         covalent_radii[numbers[spectators]][None,:])
+            score += 50*np.maximum(floor_other-d_other,0).sum()**2
         if best is None or score < best[0]:
             best = score,y-y.mean(0),trial
     return best[1],dict(policy='64_rigid_orientations_cross_bond_distance_and_clash_score',
         score=float(best[0]),selected_trial=best[2],cross_forming_pairs=pairs,
+        active_components=list(active_components),spectator_components=len(fragments)-2,
         contact_distance_A=2.8,reference_product_or_TS_used=False,
         displacement_from_source_A=float(np.linalg.norm(best[1]-original)))

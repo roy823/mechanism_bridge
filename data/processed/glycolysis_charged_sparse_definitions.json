@@ -1,0 +1,185 @@
+[
+  {
+    "id": "g6p",
+    "parts": [
+      "g6p"
+    ],
+    "segment": "G6P <-> enediol <-> F6P",
+    "canonical_smiles": "O=CC(O)C(O)C(O)C(O)COP(=O)([O-])O",
+    "formula": "C6H12O9P-",
+    "charge": -1,
+    "atoms": 28,
+    "variants": 2,
+    "proposal_templates": [
+      "SynEPD:141:forward",
+      "SynEPD:1511:forward",
+      "SynEPD:1531:forward",
+      "SynEPD:1575:forward",
+      "SynEPD:1662:reverse",
+      "SynEPD:1692:reverse",
+      "SynEPD:1762:forward",
+      "SynEPD:17:forward",
+      "SynEPD:270:forward",
+      "SynEPD:4:reverse",
+      "SynEPD:812:reverse",
+      "grammar:beta_hydroxy_carbonyl_retro_aldol"
+    ],
+    "microstate": "one negative charge per phosphate group; free Pi is H2PO4-",
+    "atom_conserved": true,
+    "charge_conserved": true,
+    "multiplicity": 1,
+    "reference_product_or_TS_geometry_used": false
+  },
+  {
+    "id": "f6p",
+    "parts": [
+      "f6p"
+    ],
+    "segment": "G6P <-> enediol <-> F6P",
+    "canonical_smiles": "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O",
+    "formula": "C6H12O9P-",
+    "charge": -1,
+    "atoms": 28,
+    "variants": 2,
+    "proposal_templates": [
+      "SynEPD:141:forward",
+      "SynEPD:1496:forward",
+      "SynEPD:1531:forward",
+      "SynEPD:1542:reverse",
+      "SynEPD:1575:forward",
+      "SynEPD:1662:reverse",
+      "SynEPD:1692:reverse",
+      "SynEPD:1693:reverse",
+      "SynEPD:1762:forward",
+      "SynEPD:1762:reverse",
+      "SynEPD:17:forward",
+      "SynEPD:270:forward",
+      "SynEPD:4:reverse",
+      "SynEPD:812:reverse",
+      "grammar:beta_hydroxy_carbonyl_retro_aldol"
+    ],
+    "microstate": "one negative charge per phosphate group; free Pi is H2PO4-",
+    "atom_conserved": true,
+    "charge_conserved": true,
+    "multiplicity": 1,
+    "reference_product_or_TS_geometry_used": false
+  },
+  {
+    "id": "gap",
+    "parts": [
+      "gap"
+    ],
+    "segment": "GAP <-> enediol <-> DHAP",
+    "canonical_smiles": "O=C[C@H](O)COP(=O)([O-])O",
+    "formula": "C3H6O6P-",
+    "charge": -1,
+    "atoms": 16,
+    "variants": 2,
+    "proposal_templates": [
+      "SynEPD:1511:forward",
+      "SynEPD:1662:reverse",
+      "SynEPD:1692:reverse",
+      "SynEPD:1762:forward",
+      "SynEPD:1763:reverse",
+      "SynEPD:17:forward",
+      "SynEPD:270:forward",
+      "SynEPD:4:reverse",
+      "SynEPD:812:reverse",
+      "grammar:alpha_hydroxy_carbonyl_to_enediol"
+    ],
+    "microstate": "one negative charge per phosphate group; free Pi is H2PO4-",
+    "atom_conserved": true,
+    "charge_conserved": true,
+    "multiplicity": 1,
+    "reference_product_or_TS_geometry_used": false
+  },
+  {
+    "id": "dhap",
+    "parts": [
+      "dhap"
+    ],
+    "segment": "GAP <-> enediol <-> DHAP",
+    "canonical_smiles": "O=C(CO)COP(=O)([O-])O",
+    "formula": "C3H6O6P-",
+    "charge": -1,
+    "atoms": 16,
+    "variants": 2,
+    "proposal_templates": [
+      "SynEPD:1762:reverse",
+      "SynEPD:1763:forward",
+      "SynEPD:17:forward",
+      "SynEPD:270:forward",
+      "SynEPD:4:reverse",
+      "grammar:alpha_hydroxy_carbonyl_to_enediol"
+    ],
+    "microstate": "one negative charge per phosphate group; free Pi is H2PO4-",
+    "atom_conserved": true,
+    "charge_conserved": true,
+    "multiplicity": 1,
+    "reference_product_or_TS_geometry_used": false
+  },
+  {
+    "id": "f6p_pi",
+    "parts": [
+      "f6p",
+      "pi"
+    ],
+    "segment": "F6P + H2PO4- <-> FBP + H2O",
+    "canonical_smiles": "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O.O=P([O-])(O)O",
+    "formula": "C6H14O13P2-2",
+    "charge": -2,
+    "atoms": 35,
+    "variants": 2,
+    "proposal_templates": [
+      "SynEPD:141:forward",
+      "SynEPD:1531:forward",
+      "SynEPD:1542:reverse",
+      "SynEPD:1575:forward",
+      "SynEPD:1662:reverse",
+      "SynEPD:1762:forward",
+      "SynEPD:270:forward",
+      "SynEPD:4:reverse",
+      "SynEPD:812:reverse",
+      "grammar:beta_hydroxy_carbonyl_retro_aldol",
+      "grammar:phosphate_anion_monoester_condensation"
+    ],
+    "microstate": "one negative charge per phosphate group; free Pi is H2PO4-",
+    "atom_conserved": true,
+    "charge_conserved": true,
+    "multiplicity": 1,
+    "reference_product_or_TS_geometry_used": false
+  },
+  {
+    "id": "fbp_water",
+    "parts": [
+      "fbp",
+      "water"
+    ],
+    "segment": "F6P + H2PO4- <-> FBP + H2O",
+    "canonical_smiles": "O.O=C(COP(=O)([O-])O)C(O)C(O)C(O)COP(=O)([O-])O",
+    "formula": "C6H14O13P2-2",
+    "charge": -2,
+    "atoms": 35,
+    "variants": 2,
+    "proposal_templates": [
+      "SynEPD:141:forward",
+      "SynEPD:1496:forward",
+      "SynEPD:1542:reverse",
+      "SynEPD:1575:forward",
+      "SynEPD:1662:reverse",
+      "SynEPD:1692:reverse",
+      "SynEPD:1693:reverse",
+      "SynEPD:17:forward",
+      "SynEPD:270:forward",
+      "SynEPD:4:reverse",
+      "SynEPD:812:reverse",
+      "grammar:beta_hydroxy_carbonyl_retro_aldol",
+      "grammar:phosphate_anion_monoester_hydrolysis"
+    ],
+    "microstate": "one negative charge per phosphate group; free Pi is H2PO4-",
+    "atom_conserved": true,
+    "charge_conserved": true,
+    "multiplicity": 1,
+    "reference_product_or_TS_geometry_used": false
+  }
+]

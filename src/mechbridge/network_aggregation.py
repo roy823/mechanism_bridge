@@ -8,7 +8,7 @@ from .reaction_network import molecular_rmsd,aligned_rmsd
 
 
 def system_name(start_id):
-    return re.sub(r'_o\d+$','',start_id)
+    return re.sub(r'_[oc]\d+$','',start_id)
 
 
 def aggregate_network_records(records,geometry_tolerance_A=.15,energy_tolerance_eV=.03,

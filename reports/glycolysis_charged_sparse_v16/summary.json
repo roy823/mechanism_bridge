@@ -1,0 +1,73 @@
+{
+  "model": "aimnet2-2025 member0",
+  "starts": 12,
+  "completed_networks": 18,
+  "evaluations": 380610,
+  "raw_physical_nodes": 89,
+  "raw_edges": 47,
+  "aggregate_species_nodes": 19,
+  "aggregate_species_edges": 27,
+  "proposal_matched_events": 3,
+  "checks": [
+    {
+      "label": "G6P <-> F6P skeleton connection",
+      "passed": true,
+      "direct": true,
+      "shortest_path": [
+        "O=CC(O)C(O)C(O)C(O)COP(=O)([O-])O",
+        "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O"
+      ],
+      "nodes_present": true
+    },
+    {
+      "label": "GAP <-> DHAP skeleton connection",
+      "passed": true,
+      "direct": true,
+      "shortest_path": [
+        "O=CC(O)COP(=O)([O-])O",
+        "O=C(CO)COP(=O)([O-])O"
+      ],
+      "nodes_present": true
+    },
+    {
+      "label": "F6P + H2PO4- <-> FBP + H2O",
+      "passed": true,
+      "direct": false,
+      "shortest_path": [
+        "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O.O=P([O-])(O)O",
+        "O.O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O.O=P(=O)[O-]",
+        "O.O=C(COP(=O)([O-])O)C(O)C(O)C(O)COP(=O)([O-])O"
+      ],
+      "nodes_present": true
+    },
+    {
+      "label": "stable G6P-enediol-F6P endpoint sequence",
+      "passed": false,
+      "route": [
+        "O=CC(O)C(O)C(O)C(O)COP(=O)([O-])O",
+        "O=P([O-])(O)OCC(O)C(O)C(O)C(O)=CO",
+        "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O"
+      ],
+      "nodes_present": false,
+      "step_edges": [],
+      "auxiliary_mechanistic_check": true
+    },
+    {
+      "label": "stable GAP-enediol-DHAP endpoint sequence",
+      "passed": false,
+      "route": [
+        "O=CC(O)COP(=O)([O-])O",
+        "O=P([O-])(O)OCC(O)=CO",
+        "O=C(CO)COP(=O)([O-])O"
+      ],
+      "nodes_present": true,
+      "step_edges": [
+        false,
+        true
+      ],
+      "auxiliary_mechanistic_check": true
+    }
+  ],
+  "html": "aggregate/molecules/index.html",
+  "scope": "charged gas-phase skeleton benchmark with one stoichiometric Pi or water where required"
+}

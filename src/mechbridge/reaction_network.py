@@ -260,8 +260,8 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         validator(numbers,start['charge'],start['multiplicity'])
     if start['multiplicity'] != 1:
         raise ValueError('Current Lewis-graph registry supports closed-shell singlet exploration only')
-    if strategy!='geometry' and (start['charge']!=0 or not set(numbers)<={1,6,7,8,15}):
-        raise ValueError('Current symbolic proposal layer only supports neutral CHNOP; use geometry or add reviewed actions')
+    if strategy!='geometry' and not set(numbers)<={1,6,7,8,15}:
+        raise ValueError('Current symbolic proposal layer only supports CHNOP; use geometry or add reviewed actions')
     nodes, edges, attempts, mols = [], [], [], []
     report = dict(start=start, strategy=strategy, protocol=asdict(protocol), nodes=nodes,
                   edges=edges, attempts=attempts, evidence='MLIP_descents_not_DFT_IRC',

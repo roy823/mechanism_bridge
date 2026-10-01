@@ -79,7 +79,7 @@ def replay(mol, arrows):
 
 
 class ArrowLibrary:
-    policy = 'published_local_arrows_plus_explicit_reactant_grammar_v7'
+    policy = 'published_local_arrows_plus_explicit_reactant_grammar_v8_charged_CHNOP'
 
     def __init__(self, path):
         self.templates = []
@@ -133,10 +133,9 @@ class ArrowLibrary:
     def propose(self, mol, limit=24):
         if limit < 1:
             raise ValueError('Proposal limit must be positive')
-        if (Chem.GetFormalCharge(mol) != 0 or
-            any(a.GetAtomicNum() not in (1, 6, 7, 8, 15) or a.GetNumRadicalElectrons()
-                or a.GetNumImplicitHs() or a.GetNumExplicitHs() for a in mol.GetAtoms())):
-            raise ValueError('Local pilot requires explicit-H neutral closed-shell CHNOP')
+        if any(a.GetAtomicNum() not in (1, 6, 7, 8, 15) or a.GetNumRadicalElectrons()
+               or a.GetNumImplicitHs() or a.GetNumExplicitHs() for a in mol.GetAtoms()):
+            raise ValueError('Local pilot requires explicit-H closed-shell CHNOP')
         key = graph_smiles(mol)
         result, seen = [], set()
         for template in self.templates:
@@ -197,6 +196,9 @@ class FilteredArrowLibrary:
         self.audit=library.audit
 
     def propose(self,mol,limit=24):
-        proposals=self.library.propose(mol,limit=max(64,limit))
+        # Filtering must happen before truncation: large polyfunctional molecules
+        # can otherwise fill the diverse proposal budget before the requested
+        # reviewed action is reached.
+        proposals=self.library.propose(mol,limit=max(1024,limit))
         return [proposal for proposal in proposals
                 if proposal['template_id'] in self.template_ids][:limit]

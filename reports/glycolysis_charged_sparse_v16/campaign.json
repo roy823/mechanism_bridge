@@ -1,0 +1,332 @@
+{
+  "started_at": 1790870298.5249147,
+  "model": "aimnet2-2025 member0",
+  "plan": [
+    {
+      "start": "g6p_c0",
+      "system": "g6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "g6p_c1",
+      "system": "g6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "f6p_c0",
+      "system": "f6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "f6p_c1",
+      "system": "f6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "gap_c0",
+      "system": "gap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "gap_c1",
+      "system": "gap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "dhap_c0",
+      "system": "dhap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "dhap_c1",
+      "system": "dhap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ]
+    },
+    {
+      "start": "f6p_pi_c0",
+      "system": "f6p_pi",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "f6p_pi_c1",
+      "system": "f6p_pi",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "fbp_water_c0",
+      "system": "fbp_water",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "fbp_water_c1",
+      "system": "fbp_water",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ]
+    }
+  ],
+  "physical_scope": "charged closed-shell CHNOP gas-phase skeleton benchmark; no enzyme, solvent, metal, ATP/ADP or NAD+/NADH",
+  "microstate": "one negative charge per phosphate group; free Pi is H2PO4-",
+  "invariant": "each fixed inventory conserves atoms, net charge and electron parity",
+  "root_policy": "six chemical roots with two conformer/orientation variants each",
+  "endpoint_acceptance": "carbon skeleton force max <= 0.02 eV/A",
+  "TS_acceptance": "full-system force max <= 0.01 eV/A and exactly one imaginary mode",
+  "completed": [
+    {
+      "start": "g6p_c1",
+      "system": "g6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/g6p_c1/g6p_c1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 22727,
+      "physical_nodes": 6,
+      "species": 4,
+      "edges": 5
+    },
+    {
+      "start": "g6p_c0",
+      "system": "g6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/g6p_c0/g6p_c0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 22727,
+      "physical_nodes": 6,
+      "species": 4,
+      "edges": 5
+    },
+    {
+      "start": "f6p_c0",
+      "system": "f6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/f6p_c0/f6p_c0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 23987,
+      "physical_nodes": 5,
+      "species": 3,
+      "edges": 2
+    },
+    {
+      "start": "gap_c0",
+      "system": "gap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/gap_c0/gap_c0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 20364,
+      "physical_nodes": 7,
+      "species": 3,
+      "edges": 5
+    },
+    {
+      "start": "gap_c1",
+      "system": "gap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/gap_c1/gap_c1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 20364,
+      "physical_nodes": 7,
+      "species": 3,
+      "edges": 5
+    },
+    {
+      "start": "f6p_c1",
+      "system": "f6p",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/f6p_c1/f6p_c1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 23987,
+      "physical_nodes": 5,
+      "species": 3,
+      "edges": 2
+    },
+    {
+      "start": "dhap_c0",
+      "system": "dhap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/dhap_c0/dhap_c0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 23579,
+      "physical_nodes": 6,
+      "species": 3,
+      "edges": 3
+    },
+    {
+      "start": "dhap_c1",
+      "system": "dhap",
+      "charge": -1,
+      "templates": [
+        "grammar:alpha_hydroxy_carbonyl_to_enediol",
+        "grammar:enediol_to_left_carbonyl",
+        "grammar:enediol_to_right_carbonyl"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/dhap_c1/dhap_c1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 23579,
+      "physical_nodes": 6,
+      "species": 3,
+      "edges": 3
+    },
+    {
+      "start": "f6p_pi_c0",
+      "system": "f6p_pi",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/f6p_pi_c0/f6p_pi_c0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 24000,
+      "physical_nodes": 1,
+      "species": 1,
+      "edges": 0
+    },
+    {
+      "start": "fbp_water_c0",
+      "system": "fbp_water",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/fbp_water_c0/fbp_water_c0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 24000,
+      "physical_nodes": 5,
+      "species": 3,
+      "edges": 2
+    },
+    {
+      "start": "f6p_pi_c1",
+      "system": "f6p_pi",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/f6p_pi_c1/f6p_pi_c1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 24000,
+      "physical_nodes": 1,
+      "species": 1,
+      "edges": 0
+    },
+    {
+      "start": "fbp_water_c1",
+      "system": "fbp_water",
+      "charge": -2,
+      "templates": [
+        "grammar:phosphate_anion_monoester_condensation",
+        "grammar:phosphate_anion_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_charged_sparse_v16/runs/fbp_water_c1/fbp_water_c1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 24000,
+      "physical_nodes": 7,
+      "species": 3,
+      "edges": 3
+    }
+  ],
+  "failed": [],
+  "finished_at": 1790871668.140032
+}

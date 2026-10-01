@@ -1,0 +1,95 @@
+{
+  "source_hashes": {
+    "reports/glycolysis_charged_sparse_v16/hydration/f6p_water_metaphosphate_n2/f6p_water_metaphosphate_n2/arrows/network.json": "f27087ef80d7cfff375a6cabe85d0f3b54e33d1035ebe56648c58e8eae899061",
+    "reports/glycolysis_charged_sparse_v16/hydration/f6p_water_metaphosphate_n3/f6p_water_metaphosphate_n3/arrows/network.json": "3878cc3380935284612c6d31fb8c1dfb7c34630fba1c9282e17a8c042f4574a1",
+    "reports/glycolysis_charged_sparse_v16/hydration/f6p_water_metaphosphate_n6/f6p_water_metaphosphate_n6/arrows/network.json": "2158b3c9641b138ba252cfc5863a72f42ea7331a2ba0885e268d394b27d803a8",
+    "reports/glycolysis_charged_sparse_v16/recovery/fbp_water_c0/fbp_water_c0/arrows/network.json": "c7e72edadedc5f3cf72394aba53ba9baf30fbcbcb358905b083fb971b2107286",
+    "reports/glycolysis_charged_sparse_v16/recovery/fbp_water_c1/fbp_water_c1/arrows/network.json": "415564317aba13c2a7a7075f394b905f6dff7225c4e80a61ff70b15a353742bc",
+    "reports/glycolysis_charged_sparse_v16/recovery_multistep/fbp_water_c1/fbp_water_c1/arrows/network.json": "c0a7579491770ad2169e90b47a782bbc4e6a849b8f905b2d8241db4f7a1fb633",
+    "reports/glycolysis_charged_sparse_v16/runs/dhap_c0/dhap_c0/arrows/network.json": "cf00e55274883f894353681498493672384a8817bdc6e4acdcb38c4b777d1703",
+    "reports/glycolysis_charged_sparse_v16/runs/dhap_c1/dhap_c1/arrows/network.json": "9d2183ccb62182cd11e2856b556ab0f0ec46ac50159c2953261f5fa1e771269b",
+    "reports/glycolysis_charged_sparse_v16/runs/f6p_c0/f6p_c0/arrows/network.json": "691c8fd72259e13897cb3fc5f536aa1b6e59c6177db8f013b07bc82c546013ea",
+    "reports/glycolysis_charged_sparse_v16/runs/f6p_c1/f6p_c1/arrows/network.json": "2d1e7a338e8d6bf949de7b7d7c7d7ebb0709d7244c5329bdbda84e9a85ed2718",
+    "reports/glycolysis_charged_sparse_v16/runs/f6p_pi_c0/f6p_pi_c0/arrows/network.json": "c96f3fa5deb81b109abf1b1d9fa28792a690e1bf48a58820abfe67a8bee526d1",
+    "reports/glycolysis_charged_sparse_v16/runs/f6p_pi_c1/f6p_pi_c1/arrows/network.json": "9949f25eaacceed2c46784dd5ea77b6d26c7a5f2bc143fb019061330abca80f3",
+    "reports/glycolysis_charged_sparse_v16/runs/fbp_water_c0/fbp_water_c0/arrows/network.json": "14b7b2a9413de21aae63166e64f6968f249bf5cdb39e3166d79e6adf3187f358",
+    "reports/glycolysis_charged_sparse_v16/runs/fbp_water_c1/fbp_water_c1/arrows/network.json": "a855c1db57e4fd34d3fc54549175f151ad7c21525a55512a2f39d0572889bac5",
+    "reports/glycolysis_charged_sparse_v16/runs/g6p_c0/g6p_c0/arrows/network.json": "316e39db95559b1119d6164a96a6005014086222b10e9ddc168205e38cfa2bd1",
+    "reports/glycolysis_charged_sparse_v16/runs/g6p_c1/g6p_c1/arrows/network.json": "062d40f3e06634e4d1f7d80bf9884d57d10ed045947fd3267716098acbdb7684",
+    "reports/glycolysis_charged_sparse_v16/runs/gap_c0/gap_c0/arrows/network.json": "f602faade42e3d3f193db665e8f6d2dd5056b1397a8abd86ce00e28a99a9045e",
+    "reports/glycolysis_charged_sparse_v16/runs/gap_c1/gap_c1/arrows/network.json": "2f57c3305283becc629c12ed1c025184cfe767cbcf397a603f359d3653589c97"
+  },
+  "summary": {
+    "model": "aimnet2-2025 member0",
+    "starts": 12,
+    "completed_networks": 18,
+    "evaluations": 380610,
+    "raw_physical_nodes": 89,
+    "raw_edges": 47,
+    "aggregate_species_nodes": 19,
+    "aggregate_species_edges": 27,
+    "proposal_matched_events": 3,
+    "checks": [
+      {
+        "label": "G6P <-> F6P skeleton connection",
+        "passed": true,
+        "direct": true,
+        "shortest_path": [
+          "O=CC(O)C(O)C(O)C(O)COP(=O)([O-])O",
+          "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O"
+        ],
+        "nodes_present": true
+      },
+      {
+        "label": "GAP <-> DHAP skeleton connection",
+        "passed": true,
+        "direct": true,
+        "shortest_path": [
+          "O=CC(O)COP(=O)([O-])O",
+          "O=C(CO)COP(=O)([O-])O"
+        ],
+        "nodes_present": true
+      },
+      {
+        "label": "F6P + H2PO4- <-> FBP + H2O",
+        "passed": true,
+        "direct": false,
+        "shortest_path": [
+          "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O.O=P([O-])(O)O",
+          "O.O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O.O=P(=O)[O-]",
+          "O.O=C(COP(=O)([O-])O)C(O)C(O)C(O)COP(=O)([O-])O"
+        ],
+        "nodes_present": true
+      },
+      {
+        "label": "stable G6P-enediol-F6P endpoint sequence",
+        "passed": false,
+        "route": [
+          "O=CC(O)C(O)C(O)C(O)COP(=O)([O-])O",
+          "O=P([O-])(O)OCC(O)C(O)C(O)C(O)=CO",
+          "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O"
+        ],
+        "nodes_present": false,
+        "step_edges": [],
+        "auxiliary_mechanistic_check": true
+      },
+      {
+        "label": "stable GAP-enediol-DHAP endpoint sequence",
+        "passed": false,
+        "route": [
+          "O=CC(O)COP(=O)([O-])O",
+          "O=P([O-])(O)OCC(O)=CO",
+          "O=C(CO)COP(=O)([O-])O"
+        ],
+        "nodes_present": true,
+        "step_edges": [
+          false,
+          true
+        ],
+        "auxiliary_mechanistic_check": true
+      }
+    ],
+    "html": "aggregate/molecules/index.html",
+    "scope": "charged gas-phase skeleton benchmark with one stoichiometric Pi or water where required"
+  }
+}

@@ -107,6 +107,6 @@ Linux/WSL 使用 `.venv-qc` 和 `requirements-qc.txt`。当前探索为 CPU 上�
 
 由 A 提出的种子若连接 B/C，只登记 B/C。失败、未收敛、符号库不覆盖与意外有效连接各自记录。电子守恒不能代替机理准确率。
 
-首轮限 CHNO、净中性闭壳层；不覆盖溶液、自由基和电子态交叉。AIMNet2-rxn 预训练包含 RGD1，当前试验不证明未见化学泛化。当前符号库使用局部电荷/价态模式，排除芳香活动中心与初始电子源不满足的表达；覆盖不到的新物种会停止符号分支。
+当前符号层覆盖显式氢、闭壳层 CHNOP，并在每个固定库存中严格守恒总电荷和电子奇偶性；反应动作最多处理三个片段，以允许“骨架＋一个水＋裂解基团”的连续网络增长。AIMNet2-2025 可用于带电 CHNOP，AIMNet2-rxn 仍限净中性体系。当前试验不覆盖溶液、自由基和电子态交叉，也不证明未见化学泛化。符号库使用局部电荷/价态模式；覆盖不到的新物种会停止对应符号分支。
 
 更多资料：[探索方法](docs/GPA_REACTION_EXPLORATION_zh.md)、[历史复现](docs/FEASIBILITY_RUN_zh.md)、[文献重评](docs/LITERATURE_REASSESSMENT_2026-09-29_zh.md)、[TS 到机理方案](docs/TS_TO_MECHANISM_WORKFLOW_zh.md)。

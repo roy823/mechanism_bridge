@@ -1,0 +1,7 @@
+{
+  "events": 27,
+  "networks": 3,
+  "path_xyz": 27,
+  "ts_xyz": 27,
+  "path_policy": "sampled frames embedded by the compact report, with TS frame retained"
+}

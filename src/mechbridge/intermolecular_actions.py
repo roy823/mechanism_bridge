@@ -1,4 +1,4 @@
-"""Small, explicit electron-action grammar for neutral two-fragment encounters.
+"""Small, explicit electron-action grammar for closed-shell CHNOP encounters.
 
 These are analyst-specified hypotheses, not published arrow labels or learned
 predictions. Only the input graph is read; no reference product or TS is used.
@@ -8,7 +8,7 @@ from rdkit import Chem
 
 def electron_actions(mol):
     fragments = Chem.GetMolFrags(mol)
-    if len(fragments) not in (1,2):
+    if not 1 <= len(fragments) <= 3:
         return
     component = {i: k for k, f in enumerate(fragments) for i in f}
 
@@ -30,6 +30,25 @@ def electron_actions(mol):
     phosphate_esters = matches('[C;+0]-[O;+0]-[P;+0](=[O;+0])(-[O;+0]-[H])-[O;+0]-[H]')
     phosphoric_acids = matches('[P;+0](=[O;+0])(-[O;+0]-[H])(-[O;+0]-[H])-[O;+0]-[H]')
     waters = matches('[O;+0](-[H])-[H]')
+    # Carbonyl/enediol tautomerization. These explicit proton-coupled arrows
+    # cover the shared G6P/F6P and GAP/DHAP enediols without using a product
+    # geometry. Both alpha sides are retained when a ketone has two choices.
+    for oxygen, carbonyl_c, alpha_c, alpha_o, alpha_h in matches(
+            '[O;+0]=[C;+0]-[C;H1,H2;+0](-[O;+0]-[H])'):
+        alpha_hydrogens = [a.GetIdx() for a in mol.GetAtomWithIdx(alpha_c).GetNeighbors()
+                           if a.GetAtomicNum() == 1]
+        for proton in alpha_hydrogens:
+            yield action('alpha_hydroxy_carbonyl_to_enediol',
+                [((alpha_c,proton), (carbonyl_c,alpha_c)),
+                 ((carbonyl_c,oxygen), (oxygen,proton))])
+    for left_o, left_h, left_c, right_c, right_o, right_h in matches(
+            '[O;+0](-[H])-[C;+0]=[C;+0]-[O;+0]-[H]'):
+        yield action('enediol_to_left_carbonyl',
+            [((left_o,left_h), (left_o,left_c)),
+             ((left_c,right_c), (right_c,left_h))])
+        yield action('enediol_to_right_carbonyl',
+            [((right_o,right_h), (right_o,right_c)),
+             ((left_c,right_c), (left_c,right_h))])
     # Both the symbolic zwitterion step and a concerted proton-transfer route
     # are hypotheses. The PES decides whether the zwitterion is a minimum.
     for c, other, o in matches('[C;+0]1[C;+0][O;+0]1'):
@@ -121,6 +140,64 @@ def electron_actions(mol):
                      ((phosphorus,leaving_o), (leaving_o,)),
                      ((alcohol_o,alcohol_h), (alcohol_o,)),
                      ((leaving_o,), (leaving_o,alcohol_h))])
+    # Site-specific F6P/FBP pair. FBP has two terminal phosphate esters; only
+    # hydrolysis at the CH2 group adjacent to the C2 carbonyl yields F6P.
+    # Keep these before the generic charged actions so the named site-specific
+    # proposal survives equivalent-arrow deduplication.
+    for phosphorus, phosphoryl_o, anion_o, acid_o, acid_h, ester_o, c1, c2, carbonyl_o in matches(
+            '[P;+0](=[O;+0])(-[O;-1])(-[O;+0]-[H])-[O;+0]-[C;H2;+0]-[C;+0](=[O;+0])'):
+        for water_o, water_h1, water_h2 in waters:
+            if component[ester_o] == component[water_o]:continue
+            yield action('fbp_c1_phosphate_hydrolysis_to_f6p',
+                [((water_o,), (water_o,phosphorus)),
+                 ((phosphorus,ester_o), (ester_o,)),
+                 ((water_o,water_h1), (water_o,)),
+                 ((ester_o,), (ester_o,water_h1))])
+    for alcohol_o, alcohol_h, c1, c2, carbonyl_o in matches(
+            '[O;+0](-[H])-[C;H2;+0]-[C;+0](=[O;+0])'):
+        for phosphorus, phosphoryl_o, anion_o, acid_o1, acid_h1, acid_o2, acid_h2 in matches(
+                '[P;+0](=[O;+0])(-[O;-1])(-[O;+0]-[H])-[O;+0]-[H]'):
+            if component[phosphorus] == component[alcohol_o]:continue
+            for leaving_o in (acid_o1,acid_o2):
+                yield action('f6p_c1_phosphate_condensation_to_fbp',
+                    [((alcohol_o,), (alcohol_o,phosphorus)),
+                     ((phosphorus,leaving_o), (leaving_o,)),
+                     ((alcohol_o,alcohol_h), (alcohol_o,)),
+                     ((leaving_o,), (leaving_o,alcohol_h))])
+    # Hydrate the metaphosphate endpoint actually observed after C1 phosphate
+    # cleavage. One water is already present in the fixed inventory; no extra
+    # solvent molecule is introduced.
+    for phosphorus, acceptor_o1, acceptor_o2, anion_o in matches(
+            '[P;+0](=[O;+0])(=[O;+0])-[O;-1]'):
+        for water_o, water_h1, water_h2 in waters:
+            if component[phosphorus] == component[water_o]:continue
+            for acceptor_o in (acceptor_o1,acceptor_o2):
+                yield action('metaphosphate_water_hydration_to_h2po4',
+                    [((water_o,), (water_o,phosphorus)),
+                     ((phosphorus,acceptor_o), (acceptor_o,water_h1)),
+                     ((water_o,water_h1), (water_o,))])
+    # Singly deprotonated phosphate microstates used by the charged glycolysis
+    # benchmark. The same atom-conserving substitution connects H2PO4- plus an
+    # alcohol to a monoanionic phosphate ester plus water.
+    for phosphorus, phosphoryl_o, anion_o, acid_o1, acid_h1, acid_o2, acid_h2 in matches(
+            '[P;+0](=[O;+0])(-[O;-1])(-[O;+0]-[H])-[O;+0]-[H]'):
+        for alcohol_c, alcohol_o, alcohol_h in matches('[C;+0]-[O;+0]-[H]'):
+            if component[phosphorus] == component[alcohol_o]:continue
+            for leaving_o in (acid_o1,acid_o2):
+                yield action('phosphate_anion_monoester_condensation',
+                    [((alcohol_o,), (alcohol_o,phosphorus)),
+                     ((phosphorus,leaving_o), (leaving_o,)),
+                     ((alcohol_o,alcohol_h), (alcohol_o,)),
+                     ((leaving_o,), (leaving_o,alcohol_h))])
+    for carbon, ester_o, phosphorus, phosphoryl_o, anion_o, acid_o, acid_h in matches(
+            '[C;+0]-[O;+0]-[P;+0](=[O;+0])(-[O;-1])-[O;+0]-[H]'):
+        for water_o, water_h1, water_h2 in waters:
+            if component[ester_o] == component[water_o]:continue
+            yield action('phosphate_anion_monoester_hydrolysis',
+                [((water_o,), (water_o,phosphorus)),
+                 ((phosphorus,ester_o), (ester_o,)),
+                 ((water_o,water_h1), (water_o,)),
+                 ((ester_o,), (ester_o,water_h1))])
     # Direct, atom-conserving retro-aldol grammar for a beta-hydroxy carbonyl.
     # The beta-OH proton terminates the carbon fragment created by C-C cleavage.
     for carbonyl_c, carbonyl_o, alpha_c, alpha_o, alpha_h, beta_c, beta_o, beta_h in matches(

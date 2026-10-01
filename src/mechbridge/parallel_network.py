@@ -107,8 +107,8 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
     if validator is not None:validator(numbers,start['charge'],start['multiplicity'])
     if start['multiplicity']!=1:
         raise ValueError('Current Lewis-graph registry supports closed-shell singlet exploration only')
-    if strategy!='geometry' and (start['charge']!=0 or not set(numbers)<={1,6,7,8,15}):
-        raise ValueError('Current symbolic proposal layer only supports neutral CHNOP')
+    if strategy!='geometry' and not set(numbers)<={1,6,7,8,15}:
+        raise ValueError('Current symbolic proposal layer only supports CHNOP')
     calculator=CountedCalculator(root_backend,protocol.total_evaluations)
     nodes=[];mols=[];edges=[];attempts=[];reservations=[]
     actions_used={};proposal_cache={};unsupported=set();exhausted=set();visits={}

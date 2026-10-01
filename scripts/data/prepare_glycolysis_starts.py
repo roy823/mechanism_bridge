@@ -22,7 +22,7 @@ from mechbridge.symbolic_library import ArrowLibrary, parse_explicit
 SPECIES = {
     'glucose_open': 'O=CC(O)C(O)C(O)C(O)CO',
     'g6p_open': 'O=CC(O)C(O)C(O)C(O)COP(=O)(O)O',
-    'f6p_open': 'O=P(O)(O)OCC(=O)C(O)C(O)C(O)CO',
+    'f6p_open': 'OCC(=O)C(O)C(O)C(O)COP(=O)(O)O',
     'fbp_open': 'O=P(O)(O)OCC(=O)C(O)C(O)C(O)COP(=O)(O)O',
     'gap': 'O=C[C@H](O)COP(=O)(O)O',
     'dhap': 'O=C(COP(=O)(O)O)CO',

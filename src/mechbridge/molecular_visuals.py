@@ -110,7 +110,7 @@ def load_events(run, network_paths=None, layout_network=True):
         projection=project_species_network(n['nodes'],n['edges'],n['root_component_nodes'])
         physical_entries={}
         for node in n['nodes']:
-            m=geometry_mol(numbers,node['positions_A'],0)
+            m=geometry_mol(numbers,node['positions_A'],n['start']['charge'])
             physical_entries[node['id']]=dict(id=node['id'],**entry(m,node['positions_A']),
                 energy=node['energy_eV']-n['nodes'][0]['energy_eV'])
         display_nodes=[]
@@ -133,7 +133,7 @@ def load_events(run, network_paths=None, layout_network=True):
             ts=np.array(data['ts_positions_A'])
             rotation=display_rotation(ts)
             center=ts.mean(0)
-            mols=[geometry_mol(numbers,e['positions_A'],0) for e in endpoints]
+            mols=[geometry_mol(numbers,e['positions_A'],n['start']['charge']) for e in endpoints]
             endpoint_entries=[entry(m,e['positions_A']) for m,e in zip(mols,endpoints)]
             branches=[read(folder/f'descent_{sign}.traj',index=':') for sign in (-1,1)]
             frames=[]
@@ -163,6 +163,7 @@ def load_events(run, network_paths=None, layout_network=True):
             event=dict(id=eid,start=n['start']['id'],strategy=n['strategy'],edge_id=edge['id'],
                 node_ids=[projection['physical_to_species'][i] for i in physical_node_ids],
                 physical_node_ids=physical_node_ids,symbols=symbols,numbers=numbers,
+                charge=n['start']['charge'],multiplicity=n['start']['multiplicity'],
                 left=endpoint_entries[left],right=endpoint_entries[right],frames=frames,ts_index=ts_index,
                 changes=changes,ts_energy=data['ts']['energy_eV'],
                 barrier_forward=endpoints[left]['barrier_eV'],barrier_reverse=endpoints[right]['barrier_eV'],
@@ -228,7 +229,7 @@ def static_figure(event,out):
     fig.suptitle(f"[{connectivity}] {left['name']} → TS → {right['name']}   |   {formula_math}",fontsize=20,color='#152d48')
     for col,end,frame in [(0,left,event['frames'][0]),(2,right,event['frames'][-1])]:
         ax=fig.add_subplot(grid[0,col]);ax.axis('off')
-        m=geometry_mol(event['numbers'],end['positions'],0)
+        m=geometry_mol(event['numbers'],end['positions'],event['charge'])
         ax.imshow(plt.imread(io.BytesIO(depiction(m,png=True)),format='png'))
         formula_end='$'+re.sub(r'(\d+)',r'_{\1}',end['formula'])+'$'
         ax.set_title(f"{end['name']}  ·  {formula_end}",fontsize=13)
@@ -283,7 +284,7 @@ def render_visuals(run,network_paths=None,make_static=True):
         write(out/(eid+'_path.xyz'),path,format='extxyz')
         write(out/(eid+'_TS.xyz'),path[event['ts_index']],write_results=False)
         for side in ['left','right']:
-            m=geometry_mol(event['numbers'],event[side]['positions'],0)
+            m=geometry_mol(event['numbers'],event[side]['positions'],event['charge'])
             (out/(eid+'_'+side+'.mol')).write_text(Chem.MolToMolBlock(m),encoding='utf-8')
         event['downloads']=dict(path=eid+'_path.xyz',ts=eid+'_TS.xyz',left=eid+'_left.mol',right=eid+'_right.mol')
     selected=[];seen=set()
