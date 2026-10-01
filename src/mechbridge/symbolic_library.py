@@ -79,7 +79,7 @@ def replay(mol, arrows):
 
 
 class ArrowLibrary:
-    policy = 'published_local_arrows_plus_explicit_reactant_grammar_v6'
+    policy = 'published_local_arrows_plus_explicit_reactant_grammar_v7'
 
     def __init__(self, path):
         self.templates = []
@@ -134,9 +134,9 @@ class ArrowLibrary:
         if limit < 1:
             raise ValueError('Proposal limit must be positive')
         if (Chem.GetFormalCharge(mol) != 0 or
-            any(a.GetAtomicNum() not in (1, 6, 7, 8) or a.GetNumRadicalElectrons()
+            any(a.GetAtomicNum() not in (1, 6, 7, 8, 15) or a.GetNumRadicalElectrons()
                 or a.GetNumImplicitHs() or a.GetNumExplicitHs() for a in mol.GetAtoms())):
-            raise ValueError('Local pilot requires explicit-H neutral closed-shell CHNO')
+            raise ValueError('Local pilot requires explicit-H neutral closed-shell CHNOP')
         key = graph_smiles(mol)
         result, seen = [], set()
         for template in self.templates:

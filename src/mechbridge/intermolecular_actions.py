@@ -27,6 +27,9 @@ def electron_actions(mol):
     peracids = matches('[C;+0](=[O;+0])-[O;+0]-[O;+0]-[H]')
     aldotetroses = matches('[C;H1;+0](=[O;+0])-[C;H1;+0](-[O;+0]-[H])-[C;H1;+0](-[O;+0]-[H])-[C;H2;+0]-[O;+0]-[H]')
     glycolaldehydes = matches('[C;H1;+0](=[O;+0])-[C;H2;+0]-[O;+0]-[H]')
+    phosphate_esters = matches('[C;+0]-[O;+0]-[P;+0](=[O;+0])(-[O;+0]-[H])-[O;+0]-[H]')
+    phosphoric_acids = matches('[P;+0](=[O;+0])(-[O;+0]-[H])(-[O;+0]-[H])-[O;+0]-[H]')
+    waters = matches('[O;+0](-[H])-[H]')
     # Both the symbolic zwitterion step and a concerted proton-transfer route
     # are hypotheses. The PES decides whether the zwitterion is a minimum.
     for c, other, o in matches('[C;+0]1[C;+0][O;+0]1'):
@@ -84,6 +87,74 @@ def electron_actions(mol):
                      ((proximal_o,terminal_o), (acyl,proximal_o)),
                      ((acyl,carbonyl_o), (carbonyl_o,h)),
                      ((terminal_o,h), (f,terminal_o))])
+    # Generic neutral phosphate monoester substitution.  In the enzyme-free
+    # glycolysis pilot H3PO4/H2O are explicit atom-conserving surrogates; these
+    # actions do not claim to reproduce ATP/ADP catalysis.
+    for carbon, ester_o, phosphorus, phosphoryl_o, acid_o1, acid_h1, acid_o2, acid_h2 in phosphate_esters:
+        for water_o, water_h1, water_h2 in waters:
+            if component[ester_o] == component[water_o]:continue
+            yield action('phosphate_monoester_hydrolysis',
+                [((water_o,), (water_o,phosphorus)),
+                 ((phosphorus,ester_o), (ester_o,)),
+                 ((water_o,water_h1), (water_o,)),
+                 ((ester_o,), (ester_o,water_h1))])
+        # A neighboring alcohol can exchange positions with the ester oxygen.
+        attached_carbon=carbon
+        for neighbour in mol.GetAtomWithIdx(attached_carbon).GetNeighbors():
+            if neighbour.GetAtomicNum()!=6:continue
+            for oxygen in neighbour.GetNeighbors():
+                if oxygen.GetAtomicNum()!=8 or oxygen.GetIdx()==ester_o:continue
+                hydrogens=[a.GetIdx() for a in oxygen.GetNeighbors() if a.GetAtomicNum()==1]
+                if not hydrogens:continue
+                acceptor_o=oxygen.GetIdx();proton=hydrogens[0]
+                yield action('vicinal_phosphate_migration',
+                    [((acceptor_o,), (acceptor_o,phosphorus)),
+                     ((phosphorus,ester_o), (ester_o,)),
+                     ((acceptor_o,proton), (acceptor_o,)),
+                     ((ester_o,), (ester_o,proton))])
+    for phosphorus, phosphoryl_o, acid_o1, acid_h1, acid_o2, acid_h2, acid_o3, acid_h3 in phosphoric_acids:
+        for alcohol_c, alcohol_o, alcohol_h in matches('[C;+0]-[O;+0]-[H]'):
+            if component[phosphorus] == component[alcohol_o]:continue
+            for leaving_o in (acid_o1,acid_o2,acid_o3):
+                yield action('phosphate_monoester_condensation',
+                    [((alcohol_o,), (alcohol_o,phosphorus)),
+                     ((phosphorus,leaving_o), (leaving_o,)),
+                     ((alcohol_o,alcohol_h), (alcohol_o,)),
+                     ((leaving_o,), (leaving_o,alcohol_h))])
+    # Direct, atom-conserving retro-aldol grammar for a beta-hydroxy carbonyl.
+    # The beta-OH proton terminates the carbon fragment created by C-C cleavage.
+    for carbonyl_c, carbonyl_o, alpha_c, alpha_o, alpha_h, beta_c, beta_o, beta_h in matches(
+            '[C;+0](=[O;+0])-[C;H1;+0](-[O;+0]-[H])-[C;H1;+0]-[O;+0]-[H]'):
+        yield action('beta_hydroxy_carbonyl_retro_aldol',
+            [((alpha_c,beta_c), (alpha_c,beta_h)),
+             ((beta_o,beta_h), (beta_o,beta_c))])
+    # Reverse aldol from an alpha-hydroxy carbonyl donor and an aldehyde/ketone.
+    for donor_c, donor_o, alpha_c, alpha_o, alpha_h in matches(
+            '[C;+0](=[O;+0])-[C;H1,H2;+0]-[O;+0]-[H]'):
+        for acceptor_c, acceptor_o in carbonyls:
+            if component[donor_c] == component[acceptor_c]:continue
+            carbon_h=[a.GetIdx() for a in mol.GetAtomWithIdx(alpha_c).GetNeighbors()
+                      if a.GetAtomicNum()==1]
+            for proton in carbon_h:
+                yield action('alpha_hydroxy_carbonyl_aldol_addition',
+                    [((alpha_c,proton), (alpha_c,acceptor_c)),
+                     ((acceptor_c,acceptor_o), (acceptor_o,proton))])
+    # Enzyme-free 2-phosphoglycerate dehydration and its exact hydration reverse.
+    for carboxyl_c, carboxyl_o, acid_o, acid_h, alpha_c, phosphate_o, phosphorus, beta_c, beta_o, beta_h in matches(
+            '[C;+0](=[O;+0])(-[O;+0]-[H])-[C;H1;+0](-[O;+0]-[P;+0])-[C;H2;+0]-[O;+0]-[H]'):
+        alpha_h=[a.GetIdx() for a in mol.GetAtomWithIdx(alpha_c).GetNeighbors()
+                 if a.GetAtomicNum()==1]
+        for proton in alpha_h:
+            yield action('phosphoglycerate_dehydration',
+                [((alpha_c,proton), (alpha_c,beta_c)),
+                 ((beta_c,beta_o), (beta_o,proton))])
+    for carboxyl_c, carboxyl_o, acid_o, acid_h, alpha_c, phosphate_o, phosphorus, beta_c in matches(
+            '[C;+0](=[O;+0])(-[O;+0]-[H])-[C;+0](-[O;+0]-[P;+0])=[C;H2;+0]'):
+        for water_o, water_h1, water_h2 in waters:
+            if component[alpha_c] == component[water_o]:continue
+            yield action('phosphoenolpyruvate_hydration',
+                [((alpha_c,beta_c), (alpha_c,water_h1)),
+                 ((water_o,water_h1), (beta_c,water_o))])
     # Canonical formose closure.  Retro-aldol transfers the beta-OH proton
     # while cleaving the central C-C bond, yielding two neutral glycolaldehydes.
     for c1,o1,c2,o2,h2,c3,o3,h3,c4,o4,h4 in aldotetroses:

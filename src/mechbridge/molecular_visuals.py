@@ -24,7 +24,7 @@ from .event_graph import geometry_mol, graph_smiles, bond_orders
 from .species_network import layout_species,project_species_network
 
 ROOT=Path(__file__).resolve().parents[2]
-COLORS={1:'#dbe3ef',6:'#475569',7:'#3478d4',8:'#e95058'}
+COLORS={1:'#dbe3ef',6:'#475569',7:'#3478d4',8:'#e95058',15:'#e08b2e'}
 NAMES={'CC=O':'乙醛','C=CO':'乙烯醇','C[N+](=O)[O-]':'硝基甲烷',
        'C=[N+]([O-])O':'aci-nitro 互变体','O=[NH+]C[O-]':'意外连接候选',
        'CC(N)=O':'乙酰胺','O=C1CCC1':'环丁酮','O=CC1CC1':'环收缩产物候选'}

@@ -31,9 +31,13 @@ def main():
     p.add_argument('--start-ids', nargs='+')
     p.add_argument('--starts',type=Path,default=ROOT/'data/processed/network_starts.jsonl')
     p.add_argument('--attempts', type=int, default=12)
+    p.add_argument('--ts-steps',type=int,default=160)
+    p.add_argument('--descent-steps',type=int,default=250)
     p.add_argument('--seeds-per-node', type=int, default=1)
     p.add_argument('--hessian-batch-size',type=int,default=32)
     p.add_argument('--fmax',type=float,default=.005)
+    p.add_argument('--initial-fmax',type=float,default=.003)
+    p.add_argument('--initial-steps',type=int,default=250)
     p.add_argument('--geometry-seeds-per-node',type=int,default=9)
     p.add_argument('--dimer-extrapolate-forces',action='store_true',
                    help='Enable ASE force extrapolation; optional, validated only on a small fixed-seed benchmark')
@@ -49,7 +53,9 @@ def main():
     RDLogger.DisableLog('rdApp.*')
     protocol = SearchProtocol(max_attempts=a.attempts, seeds_per_node=a.seeds_per_node,
         total_evaluations=a.evaluations, evaluations_per_attempt=a.attempt_evaluations,
+        ts_steps=a.ts_steps,descent_steps=a.descent_steps,
         random_seed=a.seed,hessian_batch_size=a.hessian_batch_size,fmax=a.fmax,
+        initial_fmax=a.initial_fmax,initial_steps=a.initial_steps,
         geometry_seeds_per_node=a.geometry_seeds_per_node,
         dimer_extrapolate_forces=a.dimer_extrapolate_forces)
     starts = [json.loads(l) for l in a.starts.read_text(encoding='utf-8').splitlines()]

@@ -80,6 +80,7 @@ class SearchProtocol:
     total_evaluations: int = 6000
     evaluations_per_attempt: int = 700
     ts_steps: int = 160
+    initial_steps: int = 250
     descent_steps: int = 250
     initial_fmax: float = .003
     initial_curvature_steps: int = 3
@@ -197,7 +198,7 @@ def initialize_root(start, calculator, outdir, protocol):
     root.calc=calculator
     with BFGS(root,maxstep=.1,logfile=str(outdir/'initial.log'),
               trajectory=str(outdir/'initial.traj')) as opt:
-        opt.run(fmax=protocol.initial_fmax,steps=protocol.descent_steps)
+        opt.run(fmax=protocol.initial_fmax,steps=protocol.initial_steps)
     root_info,root_modes=inspect_point(root,protocol)
     checks=[root_info.copy()]
     for repair in range(protocol.initial_curvature_steps):
@@ -206,7 +207,7 @@ def initialize_root(start, calculator, outdir, protocol):
         root.positions+=protocol.mode_displacement*root_modes[0]
         with BFGS(root,maxstep=.1,logfile=str(outdir/f'initial_curvature_{repair}.log'),
                   trajectory=str(outdir/f'initial_curvature_{repair}.traj')) as opt:
-            opt.run(fmax=protocol.initial_fmax,steps=protocol.descent_steps)
+            opt.run(fmax=protocol.initial_fmax,steps=protocol.initial_steps)
         root_info,root_modes=inspect_point(root,protocol)
         checks.append(root_info.copy())
     write(outdir/'initial.xyz',root,write_results=False)
@@ -228,8 +229,8 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         validator(numbers,start['charge'],start['multiplicity'])
     if start['multiplicity'] != 1:
         raise ValueError('Current Lewis-graph registry supports closed-shell singlet exploration only')
-    if strategy!='geometry' and (start['charge']!=0 or not set(numbers)<={1,6,7,8}):
-        raise ValueError('Current symbolic proposal layer only supports neutral CHNO; use geometry or add reviewed actions')
+    if strategy!='geometry' and (start['charge']!=0 or not set(numbers)<={1,6,7,8,15}):
+        raise ValueError('Current symbolic proposal layer only supports neutral CHNOP; use geometry or add reviewed actions')
     nodes, edges, attempts, mols = [], [], [], []
     report = dict(start=start, strategy=strategy, protocol=asdict(protocol), nodes=nodes,
                   edges=edges, attempts=attempts, evidence='MLIP_descents_not_DFT_IRC',

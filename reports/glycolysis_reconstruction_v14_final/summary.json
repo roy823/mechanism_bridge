@@ -1,0 +1,309 @@
+{
+  "model": "aimnet2-2025 member0",
+  "reference": "B97-3c",
+  "physical_scope": "neutral fully protonated phosphate microstates; enzyme-free gas-phase surrogate",
+  "ATP_ADP_present": false,
+  "NAD_NADH_present": false,
+  "DFT_verified": false,
+  "networks": 30,
+  "completed_networks": 30,
+  "starts": 28,
+  "attempts": 153,
+  "evaluations": 348771,
+  "edges": 30,
+  "edge_metrics": {
+    "chemical": 20,
+    "conformational": 10,
+    "source_connected": 7,
+    "proposal_endpoint_matches": 5
+  },
+  "evaluations_per_registered_edge": 11625.7,
+  "segments": [
+    {
+      "name": "G6P ↔ F6P",
+      "evidence": "full_atom",
+      "recovered": false,
+      "verified_edges": [],
+      "unresolved_exact_candidates": []
+    },
+    {
+      "name": "FBP ↔ GAP + DHAP",
+      "evidence": "full_atom",
+      "recovered": true,
+      "verified_edges": [
+        {
+          "source": "cleavage_fbp_o0",
+          "edge": 1,
+          "barriers_eV": [
+            2.753569583328499,
+            2.264492483860522
+          ],
+          "network": "reports/glycolysis_targeted_refine_v14/fbp/cleavage_fbp_o0/arrows/network.json"
+        }
+      ],
+      "unresolved_exact_candidates": [
+        {
+          "source": "cleavage_fbp_o0",
+          "attempt": 2,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.7501478751946706,
+            2.260137862387637
+          ],
+          "endpoint_force_max_eV_A": [
+            0.028921913355588913,
+            0.025727108120918274
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/cleavage_fbp_o0/cleavage_fbp_o0/arrows/attempt_002/result.json"
+        }
+      ]
+    },
+    {
+      "name": "GAP ↔ DHAP",
+      "evidence": "full_atom",
+      "recovered": false,
+      "verified_edges": [],
+      "unresolved_exact_candidates": []
+    },
+    {
+      "name": "3PG ↔ 2PG",
+      "evidence": "full_atom",
+      "recovered": false,
+      "verified_edges": [],
+      "unresolved_exact_candidates": []
+    },
+    {
+      "name": "2PG ↔ PEP + H2O",
+      "evidence": "full_atom",
+      "recovered": true,
+      "verified_edges": [
+        {
+          "source": "dehydration_2pg_o0",
+          "edge": 0,
+          "barriers_eV": [
+            1.8995177562901517,
+            2.042916201888147
+          ],
+          "network": "reports/glycolysis_targeted_refine_v14/dehydration/dehydration_2pg_o0/arrows/network.json"
+        }
+      ],
+      "unresolved_exact_candidates": [
+        {
+          "source": "dehydration_2pg_o0",
+          "attempt": 0,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            1.8979920050878718,
+            2.0428278452200175
+          ],
+          "endpoint_force_max_eV_A": [
+            0.004953803960233927,
+            0.004645613953471184
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/dehydration_2pg_o0/dehydration_2pg_o0/arrows/attempt_000/result.json"
+        },
+        {
+          "source": "dehydration_2pg_o0",
+          "attempt": 1,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            1.8929372559505282,
+            2.042916201888147
+          ],
+          "endpoint_force_max_eV_A": [
+            0.5716670751571655,
+            0.0029459025245159864
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/dehydration_2pg_o0/dehydration_2pg_o0/arrows/attempt_001/result.json"
+        },
+        {
+          "source": "dehydration_2pg_o0",
+          "attempt": 2,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            1.8980680204113014,
+            2.0429182936859434
+          ],
+          "endpoint_force_max_eV_A": [
+            0.011467982083559036,
+            0.004615988116711378
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/dehydration_2pg_o0/dehydration_2pg_o0/arrows/attempt_002/result.json"
+        },
+        {
+          "source": "dehydration_pep_water_o0",
+          "attempt": 0,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.2918495271296706,
+            2.4896498560192413
+          ],
+          "endpoint_force_max_eV_A": [
+            0.0037270470056682825,
+            0.11413362622261047
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/dehydration_pep_water_o0/dehydration_pep_water_o0/arrows/attempt_000/result.json"
+        },
+        {
+          "source": "dehydration_2pg_o0",
+          "attempt": 0,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            1.8979920050878718,
+            2.0428278452200175
+          ],
+          "endpoint_force_max_eV_A": [
+            0.004953803960233927,
+            0.004645613953471184
+          ],
+          "result": "reports/glycolysis_targeted_refine_v14/dehydration/dehydration_2pg_o0/arrows/attempt_000/result.json"
+        },
+        {
+          "source": "dehydration_2pg_o0",
+          "attempt": 2,
+          "status": "duplicate_connection",
+          "barriers_eV": [
+            1.8998203924529662,
+            2.0429182936859434
+          ],
+          "endpoint_force_max_eV_A": [
+            0.004791708197444677,
+            0.004615988116711378
+          ],
+          "result": "reports/glycolysis_targeted_refine_v14/dehydration/dehydration_2pg_o0/arrows/attempt_002/result.json"
+        }
+      ]
+    },
+    {
+      "name": "PEP + H2O ↔ pyruvate + H3PO4",
+      "evidence": "phosphate_surrogate",
+      "recovered": false,
+      "verified_edges": [],
+      "unresolved_exact_candidates": []
+    },
+    {
+      "name": "glucose + H3PO4 ↔ G6P + H2O",
+      "evidence": "phosphate_surrogate",
+      "recovered": false,
+      "verified_edges": [],
+      "unresolved_exact_candidates": [
+        {
+          "source": "glucose_phosphorylation_g6p_water_o0",
+          "attempt": 0,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.5062010702167754,
+            2.5175117039398174
+          ],
+          "endpoint_force_max_eV_A": [
+            0.13743922114372253,
+            0.1372119039297104
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/glucose_phosphorylation_g6p_water_o0/glucose_phosphorylation_g6p_water_o0/arrows/attempt_000/result.json"
+        },
+        {
+          "source": "glucose_phosphorylation_g6p_water_o0",
+          "attempt": 1,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.478526808685274,
+            2.4774140804292983
+          ],
+          "endpoint_force_max_eV_A": [
+            0.03240435570478439,
+            0.023062413558363914
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/glucose_phosphorylation_g6p_water_o0/glucose_phosphorylation_g6p_water_o0/arrows/attempt_001/result.json"
+        },
+        {
+          "source": "glucose_phosphorylation_g6p_water_o1",
+          "attempt": 0,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.1232747311660205,
+            2.3228709202448954
+          ],
+          "endpoint_force_max_eV_A": [
+            0.13475891947746277,
+            0.004878733307123184
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/glucose_phosphorylation_g6p_water_o1/glucose_phosphorylation_g6p_water_o1/arrows/attempt_000/result.json"
+        },
+        {
+          "source": "glucose_phosphorylation_glucose_pi_o0",
+          "attempt": 0,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.3836178761412157,
+            2.806709214069997
+          ],
+          "endpoint_force_max_eV_A": [
+            0.07942277938127518,
+            0.10053540021181107
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/glucose_phosphorylation_glucose_pi_o0/glucose_phosphorylation_glucose_pi_o0/arrows/attempt_000/result.json"
+        }
+      ]
+    },
+    {
+      "name": "F6P + H3PO4 ↔ FBP + H2O",
+      "evidence": "phosphate_surrogate",
+      "recovered": false,
+      "verified_edges": [],
+      "unresolved_exact_candidates": [
+        {
+          "source": "f6p_phosphorylation_fbp_water_o0",
+          "attempt": 1,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.4661291661468567,
+            2.643232666894619
+          ],
+          "endpoint_force_max_eV_A": [
+            0.021045370027422905,
+            0.006449734792113304
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/f6p_phosphorylation_fbp_water_o0/f6p_phosphorylation_fbp_water_o0/arrows/attempt_001/result.json"
+        },
+        {
+          "source": "f6p_phosphorylation_fbp_water_o1",
+          "attempt": 5,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.641723081600503,
+            2.4637523797428003
+          ],
+          "endpoint_force_max_eV_A": [
+            0.004374906420707703,
+            0.017829062417149544
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/f6p_phosphorylation_fbp_water_o1/f6p_phosphorylation_fbp_water_o1/arrows/attempt_005/result.json"
+        }
+      ]
+    },
+    {
+      "name": "1,3-BPG + H2O ↔ 3PG + H3PO4",
+      "evidence": "phosphate_surrogate",
+      "recovered": false,
+      "verified_edges": [],
+      "unresolved_exact_candidates": [
+        {
+          "source": "bpg_hydrolysis_bpg_water_o0",
+          "attempt": 0,
+          "status": "unresolved_minimum",
+          "barriers_eV": [
+            2.409545496753708,
+            1.7885401881794678
+          ],
+          "endpoint_force_max_eV_A": [
+            0.05652550980448723,
+            0.014397232793271542
+          ],
+          "result": "reports/glycolysis_reconstruction_v14_final/runs/bpg_hydrolysis_bpg_water_o0/bpg_hydrolysis_bpg_water_o0/arrows/attempt_000/result.json"
+        }
+      ]
+    }
+  ],
+  "recovered_segments": 2,
+  "total_segments": 9
+}
