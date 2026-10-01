@@ -186,3 +186,17 @@ class ArrowLibrary:
                 independently_annotated=False, intermolecular=crosses_components(mol,edits),
                 stereo_policy='No new stereochemistry inferred by symbolic replay'))
         return diverse_proposals(result, limit)
+
+
+class FilteredArrowLibrary:
+    """Expose only explicitly requested reviewed actions for targeted searches."""
+    def __init__(self,library,template_ids):
+        self.library=library;self.template_ids=tuple(template_ids)
+        if not self.template_ids:raise ValueError('At least one template ID is required')
+        self.policy=library.policy+'; filter='+','.join(self.template_ids)
+        self.audit=library.audit
+
+    def propose(self,mol,limit=24):
+        proposals=self.library.propose(mol,limit=max(64,limit))
+        return [proposal for proposal in proposals
+                if proposal['template_id'] in self.template_ids][:limit]

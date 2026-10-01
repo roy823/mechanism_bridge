@@ -1,0 +1,24 @@
+{
+  "networks": 14,
+  "events": 92,
+  "species_nodes": 63,
+  "edges": 92,
+  "energy_policy": "Cross-inventory nodes do not share an energy zero; node energies intentionally hidden",
+  "species_policy": "Canonical stereo-resolved endpoint graph; constitutional cycle checks are reported separately",
+  "source_hashes": {
+    "reports/formose_cycle_v12/runs/c2_two_formaldehyde_o0/c2_two_formaldehyde_o0/hybrid/network.json": "a1467d3e4cab7a5e546a46c9dcd650935e4ed2f5d28d4d9dba363783091d1264",
+    "reports/formose_cycle_v12/recovery/c2_glycolaldehyde_o0/c2_glycolaldehyde_o0/hybrid/network.json": "e318e54cc585dca55f7f6fc5dd2c8b8b79e23c9f70fc1a1508ec31f4de1e38a6",
+    "reports/formose_cycle_v12/recovery/c2_enediol_o0/c2_enediol_o0/hybrid/network.json": "5e3e4bbf345799620512b79fdf7f7d22927b2760b2173d577d04a424882e23db",
+    "reports/formose_cycle_v12/runs/c3_go_fa_o0/c3_go_fa_o0/hybrid/network.json": "61f92a88bf3ba2775474dace21fb629011619a2a1b95eb86383e5ea7678c9bc0",
+    "reports/formose_cycle_v12/runs/c3_glyceraldehyde_d_o0/c3_glyceraldehyde_d_o0/hybrid/network.json": "5406457b58d9bd02d18418992c50388640f79a49e7700ff032e746351238a3d6",
+    "reports/formose_cycle_v12/recovery/c3_enediol/c3_enediol_o0/hybrid/network.json": "ed1a55ac0ed162878611393e3612e22e61e044781c767aba255acf149a2e9d5b",
+    "reports/formose_cycle_v12/recovery/c4_erythrose_d_o0/c4_erythrose_d_o0/hybrid/network.json": "040622df0b61635f1386c0bf2dd78c782a57cefabb998a00a0315a0aa9c02b46",
+    "reports/formose_cycle_v12/recovery/c4_threose_d_o0/c4_threose_d_o0/hybrid/network.json": "a381f31d3255852478a9bc7cc84a171e312ccfeeb2c96960a3c797a4e669f016",
+    "reports/formose_cycle_v12/recovery/c4_erythrulose_d_o0/c4_erythrulose_d_o0/hybrid/network.json": "b9a6387aff0df40f677424ee025d6bf3ae9c3b0677eeeeb471550d08ae6e5e65",
+    "reports/formose_cycle_v12/recovery/c4_two_go/c4_two_glycolaldehyde_o0/hybrid/network.json": "40ff9c6f55bb2a2215cc0ff93045120c0f913be854cfae60959e53fde10a336f",
+    "reports/formose_closure_v13/runs/threose_uff_c0/threose_uff_c0/arrows/network.json": "5d320b3c4115e200b1cc988bc99db97e09a304844eb8fed90379aeeed0f01b86",
+    "reports/formose_closure_v13/runs/threose_uff_c2/threose_uff_c2/arrows/network.json": "c0d4f9e2ed214e27c6db3f2c09c4729969bd5f0c0765816ee90deeb907213c4d",
+    "reports/formose_closure_v13/runs/threose_uff_c3/threose_uff_c3/arrows/network.json": "21386d164e86bc45838b04c73e3afb86b732ee56316617997a5ceb5830f3698e",
+    "reports/formose_closure_v13/runs/two_go_ml_c0/two_go_ml_c0/arrows/network.json": "5b20c2342e970da67a3bb3096283d1b1aafaaf97dd5ed030162284ea502d538d"
+  }
+}

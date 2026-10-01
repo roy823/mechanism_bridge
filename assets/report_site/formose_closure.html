@@ -1,0 +1,13 @@
+{% extends 'page.html' %}{% block body %}
+<div class="breadcrumb"><a href="{{ root }}index.html">研究总览</a> / formose 闭环定向搜索</div>
+<div class="eyebrow">中性 tetrose retro‑aldol ↔ 2GO 逆羟醛 · 构象簇 seed</div>
+<h1>Formose 最后缺口：定向闭环结果</h1>
+<p class="lead">在 4 个 erythrose、4 个 threose 和 3 个 2GO 构象起点上，只启用严格互逆的 retro‑aldol/逆羟醛电子动作，并用 AIMNet2‑2025 验证实际鞍点和双侧端点。</p>
+<div class="stats"><div class="stat"><strong>{{ summary.starts }}</strong><span>构象起点</span></div><div class="stat"><strong>{{ summary.attempts }}</strong><span>定向任务</span></div><div class="stat"><strong>{{ summary.edges }}</strong><span>登记边</span></div><div class="stat"><strong>{{ summary.exact_closure_edges }}</strong><span>严格闭环边</span></div></div>
+<div class="notice"><b>结论：</b>已找到 <code>D-threose ↔ 2GO</code> 的严格物理边，组成级 formose 循环达到 6/6；立体分辨的连续循环仍缺少前一段 D-erythrose 到 D-threose 的连接。</div>
+<div class="links"><a class="button primary" href="global_transitionnet/molecules/index.html">全部 63 物种 TransitionNet</a><a class="button" href="runs/threose_uff_c3/molecules/index.html">闭环 TS 真实轨迹</a><a class="button" href="RESULTS_zh.md">详细报告</a><a class="button" href="summary.json">结构化结果</a></div>
+<section class="panel section"><h2>闭环边</h2><div class="table-wrap"><table><tbody><tr><th>实际端点</th><td><code>{{ summary.closure.endpoints[0] }}</code><br>↔<br><code>{{ summary.closure.endpoints[1] }}</code></td></tr><tr><th>双向势垒</th><td>{{ '%.3f'|format(summary.closure.barriers_eV[0]) }} / {{ '%.3f'|format(summary.closure.barriers_eV[1]) }} eV</td></tr><tr><th>符号提议命中</th><td>{{ '是' if summary.closure.proposal_match else '否' }}</td></tr><tr><th>命中构象</th><td>{{ summary.closure.start }}</td></tr></tbody></table></div></section>
+<section class="panel"><h2>构象依赖</h2><ul><li>erythrose：0/4 构象严格命中；</li><li>threose：1/4 构象严格命中；另外构象发现 GO＋C2 烯二醇等相邻通道；</li><li>2GO 逆向：0/3 构象严格命中中性 tetrose。</li></ul></section>
+<section class="panel"><h2>完整网络的两个读法</h2><div class="grid"><div><span class="badge good">组成级</span><h3>6/6 分段已覆盖</h3><p>忽略 erythrose/threose 的立体差异时，C2、C3、C4 的物理边可以组合成 GO 自催化增殖候选。</p></div><div><span class="badge warn">立体分辨级</span><h3>仍未完全连续</h3><p>C4 生长段连接 D‑erythrose，闭环段连接 D‑threose；二者之间没有已验证的互变路径。</p></div></div></section>
+<section class="panel"><h2>证据边界</h2><ul><li>按用户要求，本轮只使用 AIMNet2‑2025，没有使用 AIMNet2‑rxn 或 ensemble 交叉筛选。</li><li>闭环 TS 是 AIMNet2‑2025 一阶鞍点和双侧下降证据，尚无 DFT/IRC。</li><li>全网跨 C2/C3/C4 库存，节点之间不共享绝对能量零点，因此总图隐藏节点绝对能量。</li></ul></section>
+{% endblock %}

@@ -11,7 +11,7 @@ from rdkit import RDLogger
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.potentials import load_potential
-from mechbridge.symbolic_library import ArrowLibrary
+from mechbridge.symbolic_library import ArrowLibrary,FilteredArrowLibrary
 from mechbridge.reaction_network import SearchProtocol, explore, atomic_json
 from mechbridge.parallel_network import explore_shared
 
@@ -27,6 +27,7 @@ def main():
     p.add_argument('--threads-per-worker',type=int,default=2)
     p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows','hybrid'],
                    default=['geometry','bond_edits','arrows'])
+    p.add_argument('--template-ids',nargs='+',help='Restrict symbolic proposals to exact reviewed template IDs')
     p.add_argument('--start-ids', nargs='+')
     p.add_argument('--starts',type=Path,default=ROOT/'data/processed/network_starts.jsonl')
     p.add_argument('--attempts', type=int, default=12)
@@ -58,6 +59,7 @@ def main():
             raise ValueError('Unknown start ID')
     (a.outdir/'starts.jsonl').write_text(''.join(json.dumps(s)+'\n' for s in starts),encoding='utf-8')
     library = ArrowLibrary(ROOT/'data/raw/synepd/polar.json')
+    if a.template_ids:library=FilteredArrowLibrary(library,a.template_ids)
     backend,potential=load_potential(a.potential,ROOT,a.device,a.compile_model,
                                      threads=a.threads_per_worker)
     sources = list((ROOT/'src/mechbridge').glob('*.py')) + [Path(__file__)]
@@ -73,6 +75,7 @@ def main():
             if a.potential=='aimnet2-rxn' else 'Broad AIMNetCentral training overlap not audited for this run'),
         symbolic_hypotheses=library.policy,
         symbolic_library_audit=dict(library.audit),
+        template_ids=a.template_ids,
         scheduler=('central_species_registry_process_workers' if a.workers>1 else 'sequential'),
         workers=a.workers,threads_per_worker=a.threads_per_worker,
         started_at_unix=time.time())

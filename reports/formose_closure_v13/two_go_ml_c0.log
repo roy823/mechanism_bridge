@@ -1,0 +1,7 @@
+{"start": "two_go_ml_c0", "strategy": "arrows", "attempt": 1, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 955}
+{"start": "two_go_ml_c0", "strategy": "arrows", "attempt": 0, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 1913}
+{"start": "two_go_ml_c0", "strategy": "arrows", "attempt": 2, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 2861}
+{"start": "two_go_ml_c0", "strategy": "arrows", "attempt": 3, "status": "new_connection", "nodes": 3, "species": 2, "edges": 1, "evaluations": 3976}
+{"start": "two_go_ml_c0", "strategy": "arrows", "attempt": 5, "status": "ts_force_unconverged", "nodes": 3, "species": 2, "edges": 1, "evaluations": 4888}
+{"start": "two_go_ml_c0", "strategy": "arrows", "attempt": 4, "status": "unresolved_minimum", "nodes": 3, "species": 2, "edges": 1, "evaluations": 6299}
+{"start": "two_go_ml_c0", "strategy": "arrows", "status": "completed", "edges": 1, "evaluations": 6299}

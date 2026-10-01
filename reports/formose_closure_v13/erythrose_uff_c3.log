@@ -1,0 +1,37 @@
+Atoms:
+	0 8 O chg: -1  deg: 1 exp: N/A imp: 0 hyb: 
+	1 6 C chg: 0  deg: 4 exp: N/A imp: 0 hyb: 
+	2 6 C chg: 0  deg: 4 exp: N/A imp: 0 hyb: 
+	3 8 O chg: 0  deg: 2 exp: N/A imp: 0 hyb: 
+	4 6 C chg: 0  deg: 4 exp: N/A imp: 0 hyb: 
+	5 8 O chg: -1  deg: 1 exp: N/A imp: 0 hyb: 
+	6 6 C chg: 0  deg: 4 exp: N/A imp: 0 hyb: 
+	7 8 O chg: 0  deg: 2 exp: N/A imp: 0 hyb: 
+	8 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	9 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	10 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	11 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	12 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	13 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	14 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	15 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+Bonds:
+	0 1->0 order: 1
+	1 2->1 order: 1
+	2 3->2 order: 1
+	3 4->2 order: 1
+	4 5->4 order: 1
+	5 6->4 order: 1
+	6 7->6 order: 1
+	7 8->1 order: 1
+	8 9->2 order: 1
+	9 10->3 order: 1
+	10 11->4 order: 1
+	11 12->1 order: 1
+	12 13->6 order: 1
+	13 14->6 order: 1
+	14 15->7 order: 1
+{"start": "erythrose_uff_c3", "strategy": "arrows", "attempt": 0, "status": "calculation_failed", "nodes": 1, "species": 1, "edges": 0, "evaluations": 1386}
+{"start": "erythrose_uff_c3", "strategy": "arrows", "attempt": 1, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 2330}
+{"start": "erythrose_uff_c3", "strategy": "arrows", "attempt": 2, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 3244}
+{"start": "erythrose_uff_c3", "strategy": "arrows", "status": "completed", "edges": 0, "evaluations": 3244}

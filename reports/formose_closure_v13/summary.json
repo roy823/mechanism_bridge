@@ -1,0 +1,206 @@
+{
+  "model": "aimnet2-2025 member0",
+  "reference": "B97-3c",
+  "cross_screening_used": false,
+  "starts": 11,
+  "attempts": 48,
+  "evaluations": 50875,
+  "edges": 5,
+  "exact_closure_edges": 1,
+  "closure": {
+    "start": "threose_uff_c3",
+    "endpoints": [
+      "O=CCO.O=CCO",
+      "O=C[C@@H](O)[C@H](O)CO"
+    ],
+    "barriers_eV": [
+      2.4815519441290235,
+      2.8672999716091
+    ],
+    "template_id": "grammar:formose_retro_aldol_tetrose_to_2go",
+    "proposal_match": true,
+    "file": "reports/formose_closure_v13/runs/threose_uff_c3/threose_uff_c3/arrows/attempt_001/result.json"
+  },
+  "attempt_statuses": {
+    "ts_force_unconverged": 35,
+    "calculation_failed": 1,
+    "new_connection": 5,
+    "unresolved_minimum": 3,
+    "duplicate_connection": 2,
+    "not_index_one": 2
+  },
+  "constitutional_cycle_complete": true,
+  "constitutional_segments_passed": 6,
+  "constitutional_segments_total": 6,
+  "stereo_resolved_cycle_complete": false,
+  "stereo_gap": "growth branch reaches D-erythrose; exact closure edge starts from D-threose",
+  "prior_segments": [
+    {
+      "name": "起始：2FA ↔ GO",
+      "passed": true,
+      "path": [
+        "C=O.C=O",
+        "O=CCO"
+      ],
+      "note": "严格端点匹配；不属于自催化核心，但提供第一份 GO。",
+      "bottleneck_eV": 2.915721639500589,
+      "steps": [
+        {
+          "left": "C=O.C=O",
+          "right": "O=CCO",
+          "barriers_eV": [
+            2.076043124446187,
+            2.915721639500589
+          ],
+          "template_id": "grammar:carbonyl_C_H_coupled_addition",
+          "source": "c2_two_formaldehyde_o0"
+        }
+      ]
+    },
+    {
+      "name": "GO ↔ C2 烯二醇",
+      "passed": true,
+      "path": [
+        "O=CCO",
+        "OC=CO"
+      ],
+      "note": "为 GO＋FA 羟醛步骤提供反应性 C2 烯二醇。",
+      "bottleneck_eV": 0.10976827404556389,
+      "steps": [
+        {
+          "left": "O=CCO",
+          "right": "OC=CO",
+          "barriers_eV": [
+            0.06391929877918301,
+            0.10976827404556389
+          ],
+          "template_id": "SynEPD:17:forward",
+          "source": "c2_enediol_o0"
+        }
+      ]
+    },
+    {
+      "name": "C2 烯二醇＋FA ↔ GA",
+      "passed": true,
+      "path": [
+        "C=O.OC=CO",
+        "O=CC(O)CO"
+      ],
+      "note": "来自独立共享网络的中性羟醛成键边。",
+      "bottleneck_eV": 1.3384925912105246,
+      "steps": [
+        {
+          "left": "C=O.OC=CO",
+          "right": "O=CC(O)CO",
+          "barriers_eV": [
+            1.3384925912105246,
+            0.40701824556708743
+          ],
+          "template_id": "grammar:neutral_enol_aldol_addition",
+          "source": "prior_formose_shared_v11"
+        }
+      ]
+    },
+    {
+      "name": "GA ↔ C3 烯二醇 ↔ DHA",
+      "passed": true,
+      "path": [
+        "O=CC(O)CO",
+        "[H][O+]=C(C[O-])CO",
+        "OC=C(O)CO",
+        "O=C(CO)CO"
+      ],
+      "note": "经过电荷分离的甘油醛极限结构；另有直接 GA↔DHA 边。",
+      "bottleneck_eV": 3.8931204871623777,
+      "steps": [
+        {
+          "left": "O=CC(O)CO",
+          "right": "[H][O+]=C(C[O-])CO",
+          "barriers_eV": [
+            3.8931204871623777,
+            2.9734375624902896
+          ],
+          "template_id": null,
+          "source": "c3_enediol_o0"
+        },
+        {
+          "left": "[H][O+]=C(C[O-])CO",
+          "right": "OC=C(O)CO",
+          "barriers_eV": [
+            2.559541138349232,
+            0.9911973202433728
+          ],
+          "template_id": "SynEPD:17:reverse",
+          "source": "c3_enediol_o0"
+        },
+        {
+          "left": "OC=C(O)CO",
+          "right": "O=C(CO)CO",
+          "barriers_eV": [
+            2.226200225428329,
+            2.632681335506277
+          ],
+          "template_id": "SynEPD:4:reverse",
+          "source": "c3_enediol_o0"
+        }
+      ]
+    },
+    {
+      "name": "GA＋FA ↔ C4 erythrose",
+      "passed": true,
+      "path": [
+        "C=O.O=CC(O)CO",
+        "O=CC(O)CO.[H][C-]=[O+][H]",
+        "O=CC(O)C(O)CO"
+      ],
+      "note": "通过含甲醛叶立德的混合物中间节点。",
+      "bottleneck_eV": 3.4597125863292604,
+      "steps": [
+        {
+          "left": "C=O.O=CC(O)CO",
+          "right": "O=CC(O)CO.[H][C-]=[O+][H]",
+          "barriers_eV": [
+            3.104768252489521,
+            1.6303756883626193
+          ],
+          "template_id": null,
+          "source": "c4_erythrose_d_o0"
+        },
+        {
+          "left": "O=CC(O)CO.[H][C-]=[O+][H]",
+          "right": "O=CC(O)C(O)CO",
+          "barriers_eV": [
+            3.4597125863292604,
+            0.033130267776869005
+          ],
+          "template_id": "SynEPD:1762:forward",
+          "source": "c4_erythrose_d_o0"
+        }
+      ]
+    }
+  ],
+  "global_network": {
+    "networks": 14,
+    "events": 92,
+    "species_nodes": 63,
+    "edges": 92,
+    "energy_policy": "Cross-inventory nodes do not share an energy zero; node energies intentionally hidden",
+    "species_policy": "Canonical stereo-resolved endpoint graph; constitutional cycle checks are reported separately",
+    "source_hashes": {
+      "reports/formose_cycle_v12/runs/c2_two_formaldehyde_o0/c2_two_formaldehyde_o0/hybrid/network.json": "a1467d3e4cab7a5e546a46c9dcd650935e4ed2f5d28d4d9dba363783091d1264",
+      "reports/formose_cycle_v12/recovery/c2_glycolaldehyde_o0/c2_glycolaldehyde_o0/hybrid/network.json": "e318e54cc585dca55f7f6fc5dd2c8b8b79e23c9f70fc1a1508ec31f4de1e38a6",
+      "reports/formose_cycle_v12/recovery/c2_enediol_o0/c2_enediol_o0/hybrid/network.json": "5e3e4bbf345799620512b79fdf7f7d22927b2760b2173d577d04a424882e23db",
+      "reports/formose_cycle_v12/runs/c3_go_fa_o0/c3_go_fa_o0/hybrid/network.json": "61f92a88bf3ba2775474dace21fb629011619a2a1b95eb86383e5ea7678c9bc0",
+      "reports/formose_cycle_v12/runs/c3_glyceraldehyde_d_o0/c3_glyceraldehyde_d_o0/hybrid/network.json": "5406457b58d9bd02d18418992c50388640f79a49e7700ff032e746351238a3d6",
+      "reports/formose_cycle_v12/recovery/c3_enediol/c3_enediol_o0/hybrid/network.json": "ed1a55ac0ed162878611393e3612e22e61e044781c767aba255acf149a2e9d5b",
+      "reports/formose_cycle_v12/recovery/c4_erythrose_d_o0/c4_erythrose_d_o0/hybrid/network.json": "040622df0b61635f1386c0bf2dd78c782a57cefabb998a00a0315a0aa9c02b46",
+      "reports/formose_cycle_v12/recovery/c4_threose_d_o0/c4_threose_d_o0/hybrid/network.json": "a381f31d3255852478a9bc7cc84a171e312ccfeeb2c96960a3c797a4e669f016",
+      "reports/formose_cycle_v12/recovery/c4_erythrulose_d_o0/c4_erythrulose_d_o0/hybrid/network.json": "b9a6387aff0df40f677424ee025d6bf3ae9c3b0677eeeeb471550d08ae6e5e65",
+      "reports/formose_cycle_v12/recovery/c4_two_go/c4_two_glycolaldehyde_o0/hybrid/network.json": "40ff9c6f55bb2a2215cc0ff93045120c0f913be854cfae60959e53fde10a336f",
+      "reports/formose_closure_v13/runs/threose_uff_c0/threose_uff_c0/arrows/network.json": "5d320b3c4115e200b1cc988bc99db97e09a304844eb8fed90379aeeed0f01b86",
+      "reports/formose_closure_v13/runs/threose_uff_c2/threose_uff_c2/arrows/network.json": "c0d4f9e2ed214e27c6db3f2c09c4729969bd5f0c0765816ee90deeb907213c4d",
+      "reports/formose_closure_v13/runs/threose_uff_c3/threose_uff_c3/arrows/network.json": "21386d164e86bc45838b04c73e3afb86b732ee56316617997a5ceb5830f3698e",
+      "reports/formose_closure_v13/runs/two_go_ml_c0/two_go_ml_c0/arrows/network.json": "5b20c2342e970da67a3bb3096283d1b1aafaaf97dd5ed030162284ea502d538d"
+    }
+  }
+}

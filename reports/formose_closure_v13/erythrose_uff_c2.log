@@ -1,0 +1,4 @@
+{"start": "erythrose_uff_c2", "strategy": "arrows", "attempt": 0, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 1144}
+{"start": "erythrose_uff_c2", "strategy": "arrows", "attempt": 1, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 2102}
+{"start": "erythrose_uff_c2", "strategy": "arrows", "attempt": 2, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 3060}
+{"start": "erythrose_uff_c2", "strategy": "arrows", "status": "completed", "edges": 0, "evaluations": 3060}

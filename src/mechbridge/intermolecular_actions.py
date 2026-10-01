@@ -25,6 +25,8 @@ def electron_actions(mol):
     dienes = matches('[C;+0]=[C;+0]-[C;+0]=[C;+0]')
     alkenes = matches('[C;+0]=[C;+0]')
     peracids = matches('[C;+0](=[O;+0])-[O;+0]-[O;+0]-[H]')
+    aldotetroses = matches('[C;H1;+0](=[O;+0])-[C;H1;+0](-[O;+0]-[H])-[C;H1;+0](-[O;+0]-[H])-[C;H2;+0]-[O;+0]-[H]')
+    glycolaldehydes = matches('[C;H1;+0](=[O;+0])-[C;H2;+0]-[O;+0]-[H]')
     # Both the symbolic zwitterion step and a concerted proton-transfer route
     # are hypotheses. The PES decides whether the zwitterion is a minimum.
     for c, other, o in matches('[C;+0]1[C;+0][O;+0]1'):
@@ -82,6 +84,23 @@ def electron_actions(mol):
                      ((proximal_o,terminal_o), (acyl,proximal_o)),
                      ((acyl,carbonyl_o), (carbonyl_o,h)),
                      ((terminal_o,h), (f,terminal_o))])
+    # Canonical formose closure.  Retro-aldol transfers the beta-OH proton
+    # while cleaving the central C-C bond, yielding two neutral glycolaldehydes.
+    for c1,o1,c2,o2,h2,c3,o3,h3,c4,o4,h4 in aldotetroses:
+        yield action('formose_retro_aldol_tetrose_to_2go',
+            [((c2,c3),(c2,h3)),((o3,h3),(o3,)),((o3,),(o3,c3))])
+    # Exact reverse action from two glycolaldehydes. Symmetry-related choices
+    # and the two alpha hydrogens remain distinct three-dimensional seeds.
+    for acceptor in glycolaldehydes:
+        for donor in glycolaldehydes:
+            ca,oa,alpha,oh_a,h_oh_a=acceptor
+            cd,od,alpha_d,oh_d,h_oh_d=donor
+            if component[ca]==component[cd]:continue
+            for atom in mol.GetAtomWithIdx(alpha).GetNeighbors():
+                if atom.GetAtomicNum()!=1:continue
+                h_alpha=atom.GetIdx()
+                yield action('formose_inverse_aldol_2go_to_tetrose',
+                    [((alpha,h_alpha),(alpha,cd)),((od,),(od,h_alpha)),((cd,od),(od,))])
     # Transamidation continuation from a neutral tetrahedral intermediate.
     # Identify the original NH2 leaving group and the carbon-substituted incoming
     # amine directly from the observed graph; no expected product geometry enters.

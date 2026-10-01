@@ -69,6 +69,21 @@ def test_electron_grammar_never_invents_a_proton():
     assert list(electron_actions(parse_explicit('O=CCO')))==[]
 
 
+def test_formose_retro_aldol_and_inverse_actions_are_exact_reverses():
+    tetrose=parse_explicit('O=C[C@H](O)[C@H](O)CO')
+    retro=[arrows for name,arrows in electron_actions(tetrose)
+           if name=='formose_retro_aldol_tetrose_to_2go']
+    assert retro
+    product,_=replay(tetrose,retro[0])
+    assert graph_smiles(product)=='O=CCO.O=CCO'
+    go=parse_explicit('O=CCO.O=CCO')
+    inverse=[arrows for name,arrows in electron_actions(go)
+             if name=='formose_inverse_aldol_2go_to_tetrose']
+    assert inverse
+    products={graph_smiles(replay(go,arrows)[0]) for arrows in inverse}
+    assert 'O=CC(O)C(O)CO' in products
+
+
 def test_dft_optimizer_target_cannot_loosen_physical_gate(tmp_path):
     from mechbridge.verification import verify_event
     with pytest.raises(ValueError,match='no looser'):

@@ -1,0 +1,7 @@
+{"start": "threose_uff_c0", "strategy": "arrows", "attempt": 0, "status": "new_connection", "nodes": 3, "species": 2, "edges": 1, "evaluations": 1618}
+{"start": "threose_uff_c0", "strategy": "arrows", "attempt": 1, "status": "unresolved_minimum", "nodes": 3, "species": 2, "edges": 1, "evaluations": 3121}
+{"start": "threose_uff_c0", "strategy": "arrows", "attempt": 2, "status": "duplicate_connection", "nodes": 3, "species": 2, "edges": 1, "evaluations": 4180}
+{"start": "threose_uff_c0", "strategy": "arrows", "attempt": 3, "status": "ts_force_unconverged", "nodes": 3, "species": 2, "edges": 1, "evaluations": 5135}
+{"start": "threose_uff_c0", "strategy": "arrows", "attempt": 5, "status": "not_index_one", "nodes": 3, "species": 2, "edges": 1, "evaluations": 6133}
+{"start": "threose_uff_c0", "strategy": "arrows", "attempt": 4, "status": "unresolved_minimum", "nodes": 3, "species": 2, "edges": 1, "evaluations": 7573}
+{"start": "threose_uff_c0", "strategy": "arrows", "status": "completed", "edges": 1, "evaluations": 7573}

@@ -1,0 +1,136 @@
+{
+  "started_at": 1790846437.7410035,
+  "model": "aimnet2-2025 member0",
+  "starts": [
+    "erythrose_uff_c0",
+    "erythrose_uff_c1",
+    "erythrose_uff_c2",
+    "erythrose_uff_c3",
+    "threose_uff_c0",
+    "threose_uff_c1",
+    "threose_uff_c2",
+    "threose_uff_c3",
+    "two_go_ml_c0",
+    "two_go_ml_c1",
+    "two_go_ml_c4"
+  ],
+  "templates": [
+    "grammar:formose_retro_aldol_tetrose_to_2go",
+    "grammar:formose_inverse_aldol_2go_to_tetrose"
+  ],
+  "parallel_starts": 3,
+  "completed": [
+    {
+      "start": "erythrose_uff_c0",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/erythrose_uff_c0/erythrose_uff_c0/arrows/network.json",
+      "status": "completed",
+      "attempts": 3,
+      "evaluations": 3110,
+      "nodes": 1,
+      "edges": 0
+    },
+    {
+      "start": "erythrose_uff_c2",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/erythrose_uff_c2/erythrose_uff_c2/arrows/network.json",
+      "status": "completed",
+      "attempts": 3,
+      "evaluations": 3060,
+      "nodes": 1,
+      "edges": 0
+    },
+    {
+      "start": "erythrose_uff_c1",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/erythrose_uff_c1/erythrose_uff_c1/arrows/network.json",
+      "status": "completed",
+      "attempts": 3,
+      "evaluations": 2987,
+      "nodes": 1,
+      "edges": 0
+    },
+    {
+      "start": "erythrose_uff_c3",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/erythrose_uff_c3/erythrose_uff_c3/arrows/network.json",
+      "status": "completed",
+      "attempts": 3,
+      "evaluations": 3244,
+      "nodes": 1,
+      "edges": 0
+    },
+    {
+      "start": "threose_uff_c1",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/threose_uff_c1/threose_uff_c1/arrows/network.json",
+      "status": "completed",
+      "attempts": 3,
+      "evaluations": 3044,
+      "nodes": 1,
+      "edges": 0
+    },
+    {
+      "start": "threose_uff_c0",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/threose_uff_c0/threose_uff_c0/arrows/network.json",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 7573,
+      "nodes": 3,
+      "edges": 1
+    },
+    {
+      "start": "threose_uff_c2",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/threose_uff_c2/threose_uff_c2/arrows/network.json",
+      "status": "completed",
+      "attempts": 3,
+      "evaluations": 3365,
+      "nodes": 3,
+      "edges": 1
+    },
+    {
+      "start": "threose_uff_c3",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/threose_uff_c3/threose_uff_c3/arrows/network.json",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 6519,
+      "nodes": 4,
+      "edges": 2
+    },
+    {
+      "start": "two_go_ml_c0",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/two_go_ml_c0/two_go_ml_c0/arrows/network.json",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 6299,
+      "nodes": 3,
+      "edges": 1
+    },
+    {
+      "start": "two_go_ml_c1",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/two_go_ml_c1/two_go_ml_c1/arrows/network.json",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 6040,
+      "nodes": 1,
+      "edges": 0
+    },
+    {
+      "start": "two_go_ml_c4",
+      "exit_code": 0,
+      "network": "reports/formose_closure_v13/runs/two_go_ml_c4/two_go_ml_c4/arrows/network.json",
+      "status": "completed",
+      "attempts": 6,
+      "evaluations": 5634,
+      "nodes": 1,
+      "edges": 0
+    }
+  ],
+  "failed": [],
+  "finished_at": 1790846856.2081273
+}

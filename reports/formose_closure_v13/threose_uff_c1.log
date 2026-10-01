@@ -1,0 +1,4 @@
+{"start": "threose_uff_c1", "strategy": "arrows", "attempt": 1, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 1142}
+{"start": "threose_uff_c1", "strategy": "arrows", "attempt": 0, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 2099}
+{"start": "threose_uff_c1", "strategy": "arrows", "attempt": 2, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 3044}
+{"start": "threose_uff_c1", "strategy": "arrows", "status": "completed", "edges": 0, "evaluations": 3044}
