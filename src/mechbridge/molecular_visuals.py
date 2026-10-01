@@ -21,7 +21,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 from .event_graph import geometry_mol, graph_smiles, bond_orders
-from .species_network import project_species_network
+from .species_network import layout_species,project_species_network
 
 ROOT=Path(__file__).resolve().parents[2]
 COLORS={1:'#dbe3ef',6:'#475569',7:'#3478d4',8:'#e95058'}
@@ -91,7 +91,7 @@ def display_rotation(ts):
     return rotation
 
 
-def load_events(run, network_paths=None):
+def load_events(run, network_paths=None, layout_network=True):
     events=[]
     networks=[]
     manifest_path=Path(run)/'manifest.json'
@@ -178,6 +178,9 @@ def load_events(run, network_paths=None):
             network['edges'].append(dict(id=eid,nodes=projected['nodes'],barriers=edge['barriers_eV'],
                 physical_nodes=edge['nodes'],parallel_index=projected['parallel_index'],
                 parallel_count=projected['parallel_count']))
+        if layout_network:
+            layout=layout_species(network['nodes'],network['edges'])
+            for node in network['nodes']:node['layout']=layout[node['id']]
         networks.append(network)
     # Start with the clean, familiar chemical example, while exposing every saved edge.
     events.sort(key=lambda e:(e['start']!='MR_8342_1',e['strategy']!='arrows',not e['root_connected'],e['edge_id']))

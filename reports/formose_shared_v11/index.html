@@ -1,0 +1,22 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>并行三碳糖 TransitionNet · Mechanism Bridge</title><link rel="stylesheet" href="../_site/site.css"></head><body>
+<header class="topbar"><a class="brand" href="../index.html">Mechanism Bridge<small>反应事件 · 证据 · 基准</small></a><nav class="nav" aria-label="全站导航"><a  href="../index.html">研究总览</a><a class="active" aria-current="page" href="../index.html#experiments">实验结果</a><a  href="../events.html">物理事件</a><a  href="../benchmark.html">文献与基准</a><a  href="../data.html">数据与复现</a></nav></header>
+<main class="portal">
+<div class="breadcrumb"><a href="../index.html">研究总览</a> / 并行三碳糖网络</div>
+<div class="eyebrow">Formose / triose 子网 · 共享构象簇调度 · AIMNet2-2025</div>
+<h1>从甲醛＋烯二醇连续增长的 TransitionNet</h1>
+<p class="lead">在固定 C3H6O3 原子库存上，从甲醛＋乙烯二醇烯醇出发，不指定最终产物，由完整箭头和几何 seed、Dimer、双侧下降及共享前沿连续构建物种网络。</p>
+<div class="stats"><div class="stat"><strong>120</strong><span>并行任务</span></div><div class="stat"><strong>26</strong><span>唯一物种</span></div><div class="stat"><strong>30</strong><span>TS 边</span></div><div class="stat"><strong>10</strong><span>最深物种步骤</span></div></div>
+<div class="links"><a class="button primary" href="molecules/index.html">查看真实轨迹与 TransitionNet</a><a class="button" href="RESULTS_zh.md">详细中文报告</a><a class="button" href="summary.json">结构化结果</a></div>
+<section class="panel section"><h2>网络规模</h2><div class="table-wrap"><table><tbody>
+<tr><th>物理极小值 / 构象簇 / 物种</th><td>44 / 39 / 26</td></tr>
+<tr><th>根物种可达</th><td>22 / 26 个物种</td></tr>
+<tr><th>物种连通分量 / 回路</th><td>3 / 2</td></tr>
+<tr><th>符号 seed / 几何 seed 产生的边</th><td>29 / 1</td></tr>
+<tr><th>实际端点命中符号提议</th><td>15 / 30</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>一条最深的物种级路径</h2><p class="footnote">路径由已验证 TS 边组成；同一物种内部允许切换已登记构象。该构象切换尚不等于每一对构象之间都有显式 TS。</p><div class="table-wrap"><table><thead><tr><th>步</th><th>物种 A</th><th>物种 B</th><th>双向势垒/eV</th><th>seed</th></tr></thead><tbody>
+<tr><td>1</td><td><code>C=O.O/C=C/O</code></td><td><code>O=C[C@@H](O)CO</code></td><td>1.338 / 0.407</td><td>arrows<br><code>grammar:neutral_enol_aldol_addition</code></td></tr><tr><td>2</td><td><code>O=C[C@@H](O)CO</code></td><td><code>O.O=C/C=C/O</code></td><td>2.855 / 3.178</td><td>arrows<br><code>SynEPD:812:reverse</code></td></tr><tr><td>3</td><td><code>O.O=C/C=C/O</code></td><td><code>O/C=C/C(O)O</code></td><td>1.885 / 1.586</td><td>arrows<br><code>SynEPD:270:forward</code></td></tr><tr><td>4</td><td><code>O/C=C/C(O)O</code></td><td><code>O=CCC(O)O</code></td><td>2.256 / 2.708</td><td>arrows<br><code>SynEPD:4:reverse</code></td></tr><tr><td>5</td><td><code>O=CCC(O)O</code></td><td><code>C=CO.O=CO</code></td><td>1.126 / 1.016</td><td>geometry<br><code>geometry</code></td></tr><tr><td>6</td><td><code>C=CO.O=CO</code></td><td><code>CC=O.O=CO</code></td><td>0.897 / 0.487</td><td>arrows<br><code>grammar:carbonyl_addition_with_proton_transfer</code></td></tr><tr><td>7</td><td><code>CC=O.O=CO</code></td><td><code>C[C@H](O)C(=O)O</code></td><td>3.082 / 2.477</td><td>arrows<br><code>grammar:carbonyl_C_H_coupled_addition</code></td></tr><tr><td>8</td><td><code>C[C@H](O)C(=O)O</code></td><td><code>CC(O)=C(O)O</code></td><td>1.837 / 2.988</td><td>arrows<br><code>SynEPD:17:forward</code></td></tr><tr><td>9</td><td><code>CC(O)=C(O)O</code></td><td><code>C[C@@H](O)C(=O)O</code></td><td>2.449 / 3.509</td><td>arrows<br><code>SynEPD:17:reverse</code></td></tr><tr><td>10</td><td><code>C[C@@H](O)C(=O)O</code></td><td><code>CC=O.[H]/[O+]=[C-]/O</code></td><td>2.187 / 0.101</td><td>arrows<br><code>SynEPD:4:reverse</code></td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>化学解释</h2><ul><li>第一条目标相关边是甲醛＋烯二醇 ↔ 甘油醛，来自中性烯醇羟醛加成箭头。</li><li>后续网络包含水合/脱水、羰基–烯醇互变、裂解、重组和带电极限结构。</li><li>这是一张无磷酸、无酶、气相势能面上的三碳糖/formose 子网，不是细胞糖酵解十步路径。</li></ul></section>
+<section class="panel"><h2>证据边界</h2><ul><li>边通过 AIMNet2-2025 一阶鞍点与双侧下降，没有新增 DFT/IRC。</li><li>“最深 10 步”是物种合并图上的路径；严格构象级连续性还需要构象转换边和动力学筛选。</li><li>高能旁路与不合理实验产率的物种照实保留，不能当作生物化学主通路。</li></ul></section>
+</main><footer>来源均可追溯到本地计算记录。MLIP 下降、DFT/IRC、符号假设分开标注；不同实验协议不合并为统一成功率。页面可离线打开。</footer></body></html>

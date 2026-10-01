@@ -1,0 +1,20 @@
+{% extends 'page.html' %}{% block body %}
+<div class="breadcrumb"><a href="{{ root }}index.html">研究总览</a> / 并行三碳糖网络</div>
+<div class="eyebrow">Formose / triose 子网 · 共享构象簇调度 · AIMNet2-2025</div>
+<h1>从甲醛＋烯二醇连续增长的 TransitionNet</h1>
+<p class="lead">在固定 C3H6O3 原子库存上，从甲醛＋乙烯二醇烯醇出发，不指定最终产物，由完整箭头和几何 seed、Dimer、双侧下降及共享前沿连续构建物种网络。</p>
+<div class="stats"><div class="stat"><strong>{{ summary.attempts }}</strong><span>并行任务</span></div><div class="stat"><strong>{{ summary.species }}</strong><span>唯一物种</span></div><div class="stat"><strong>{{ summary.edges }}</strong><span>TS 边</span></div><div class="stat"><strong>{{ summary.max_species_depth }}</strong><span>最深物种步骤</span></div></div>
+<div class="links"><a class="button primary" href="molecules/index.html">查看真实轨迹与 TransitionNet</a><a class="button" href="RESULTS_zh.md">详细中文报告</a><a class="button" href="summary.json">结构化结果</a></div>
+<section class="panel section"><h2>网络规模</h2><div class="table-wrap"><table><tbody>
+<tr><th>物理极小值 / 构象簇 / 物种</th><td>{{ summary.physical_nodes }} / {{ summary.conformer_clusters }} / {{ summary.species }}</td></tr>
+<tr><th>根物种可达</th><td>{{ summary.root_reachable_species }} / {{ summary.species }} 个物种</td></tr>
+<tr><th>物种连通分量 / 回路</th><td>{{ summary.species_components }} / {{ summary.cycles }}</td></tr>
+<tr><th>符号 seed / 几何 seed 产生的边</th><td>{{ summary.arrow_edges }} / {{ summary.geometry_edges }}</td></tr>
+<tr><th>实际端点命中符号提议</th><td>{{ summary.proposal_matches }} / {{ summary.edges }}</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>一条最深的物种级路径</h2><p class="footnote">路径由已验证 TS 边组成；同一物种内部允许切换已登记构象。该构象切换尚不等于每一对构象之间都有显式 TS。</p><div class="table-wrap"><table><thead><tr><th>步</th><th>物种 A</th><th>物种 B</th><th>双向势垒/eV</th><th>seed</th></tr></thead><tbody>
+{% for step in summary.deepest_path %}<tr><td>{{ loop.index }}</td><td><code>{{ step.left }}</code></td><td><code>{{ step.right }}</code></td><td>{{ '%.3f'|format(step.barriers_eV[0]) }} / {{ '%.3f'|format(step.barriers_eV[1]) }}</td><td>{{ step.seed_strategy }}<br><code>{{ step.template_id or 'geometry' }}</code></td></tr>{% endfor %}
+</tbody></table></div></section>
+<section class="panel"><h2>化学解释</h2><ul><li>第一条目标相关边是甲醛＋烯二醇 ↔ 甘油醛，来自中性烯醇羟醛加成箭头。</li><li>后续网络包含水合/脱水、羰基–烯醇互变、裂解、重组和带电极限结构。</li><li>这是一张无磷酸、无酶、气相势能面上的三碳糖/formose 子网，不是细胞糖酵解十步路径。</li></ul></section>
+<section class="panel"><h2>证据边界</h2><ul><li>边通过 AIMNet2-2025 一阶鞍点与双侧下降，没有新增 DFT/IRC。</li><li>“最深 10 步”是物种合并图上的路径；严格构象级连续性还需要构象转换边和动力学筛选。</li><li>高能旁路与不合理实验产率的物种照实保留，不能当作生物化学主通路。</li></ul></section>
+{% endblock %}

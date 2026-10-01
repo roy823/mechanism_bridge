@@ -1,0 +1,167 @@
+{
+  "model": "aimnet2-2025 member0",
+  "reference": "B97-3c",
+  "start": "C=O.O/C=C/O",
+  "scope": "fixed C3H6O3 gas-phase formose/triose network; not enzymatic glycolysis",
+  "workers": 4,
+  "threads_per_worker": 5,
+  "attempts": 120,
+  "evaluations": 115009,
+  "reservations": 120,
+  "unique_reservations": 120,
+  "physical_nodes": 44,
+  "conformer_clusters": 39,
+  "species": 26,
+  "edges": 30,
+  "chemical_edges": 28,
+  "conformational_edges": 2,
+  "species_components": 3,
+  "root_reachable_species": 22,
+  "max_species_depth": 10,
+  "cycles": 2,
+  "species_self_loops": 2,
+  "proposal_matches": 15,
+  "source_connected_edges": 14,
+  "arrow_edges": 29,
+  "geometry_edges": 1,
+  "attempt_statuses": {
+    "ts_force_unconverged": 80,
+    "new_connection": 30,
+    "duplicate_connection": 4,
+    "unresolved_minimum": 5,
+    "same_basin_return": 1
+  },
+  "deepest_path": [
+    {
+      "edge": 0,
+      "left": "C=O.O/C=C/O",
+      "right": "O=C[C@@H](O)CO",
+      "barriers_eV": [
+        1.3384925912105246,
+        0.40701824556708743
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "grammar:neutral_enol_aldol_addition",
+      "predicted_graph": "O=CC(O)CO"
+    },
+    {
+      "edge": 1,
+      "left": "O=C[C@@H](O)CO",
+      "right": "O.O=C/C=C/O",
+      "barriers_eV": [
+        2.8548376307699073,
+        3.1783947132043977
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "SynEPD:812:reverse",
+      "predicted_graph": "O.O=CC=CO"
+    },
+    {
+      "edge": 2,
+      "left": "O.O=C/C=C/O",
+      "right": "O/C=C/C(O)O",
+      "barriers_eV": [
+        1.8852329322144215,
+        1.5858997190844093
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "SynEPD:270:forward",
+      "predicted_graph": "O/C=C/C(O)O"
+    },
+    {
+      "edge": 5,
+      "left": "O/C=C/C(O)O",
+      "right": "O=CCC(O)O",
+      "barriers_eV": [
+        2.255581935414739,
+        2.7080110922870517
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "SynEPD:4:reverse",
+      "predicted_graph": "[O-]/C=C/C(O)[OH2+]"
+    },
+    {
+      "edge": 9,
+      "left": "O=CCC(O)O",
+      "right": "C=CO.O=CO",
+      "barriers_eV": [
+        1.1261869630179717,
+        1.0162356560394983
+      ],
+      "seed_strategy": "geometry",
+      "template_id": null,
+      "predicted_graph": null
+    },
+    {
+      "edge": 11,
+      "left": "C=CO.O=CO",
+      "right": "CC=O.O=CO",
+      "barriers_eV": [
+        0.8973433514820499,
+        0.487250257316191
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "grammar:carbonyl_addition_with_proton_transfer",
+      "predicted_graph": "C=COC(O)O"
+    },
+    {
+      "edge": 17,
+      "left": "CC=O.O=CO",
+      "right": "C[C@H](O)C(=O)O",
+      "barriers_eV": [
+        3.0818322402810736,
+        2.4766689627194864
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "grammar:carbonyl_C_H_coupled_addition",
+      "predicted_graph": "CC(O)C(=O)O"
+    },
+    {
+      "edge": 23,
+      "left": "C[C@H](O)C(=O)O",
+      "right": "CC(O)=C(O)O",
+      "barriers_eV": [
+        1.8370167423199746,
+        2.987999795588621
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "SynEPD:17:forward",
+      "predicted_graph": "CC(O)=C(O)O"
+    },
+    {
+      "edge": 25,
+      "left": "CC(O)=C(O)O",
+      "right": "C[C@@H](O)C(=O)O",
+      "barriers_eV": [
+        2.449291098742833,
+        3.509326251836683
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "SynEPD:17:reverse",
+      "predicted_graph": "CC(O)C(=O)O"
+    },
+    {
+      "edge": 28,
+      "left": "C[C@@H](O)C(=O)O",
+      "right": "CC=O.[H]/[O+]=[C-]/O",
+      "barriers_eV": [
+        2.1868165173364105,
+        0.10066944754362339
+      ],
+      "seed_strategy": "arrows",
+      "template_id": "SynEPD:4:reverse",
+      "predicted_graph": "C[C@@H]([O-])C(=O)[OH2+]"
+    }
+  ],
+  "deepest_species": "CC=O.[H]/[O+]=[C-]/O",
+  "scheduler": {
+    "kind": "central_species_registry_process_workers",
+    "workers": 4,
+    "threads_per_worker": 5,
+    "dispatch": "completion_driven",
+    "reservation_key": "species_graph+conformer_cluster+action+geometry_variant",
+    "conformer_policy": "symmetry-aware molecular RMSD clusters; lowest-energy representative per cluster",
+    "conformer_cluster_tolerance_A": 0.5
+  },
+  "network_file": "reports/formose_shared_v11/formaldehyde_enediol_o1/hybrid/network.json"
+}

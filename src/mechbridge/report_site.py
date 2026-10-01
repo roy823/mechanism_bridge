@@ -99,7 +99,7 @@ def build_site(refresh_legacy=True):
     for stage in stages:
         for run in stage['runs']:
             path=ROOT/run['file'];sources.append(path)
-            loaded,networks=load_events(ROOT,[path])
+            loaded,networks=load_events(ROOT,[path],layout_network=False)
             for event in loaded:events.append(export_event(event,networks[0],stage['id'],checks))
     for q in checks:
         sources.append(ROOT/q['file'])

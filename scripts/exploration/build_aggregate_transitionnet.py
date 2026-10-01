@@ -8,45 +8,10 @@ ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'src'))
 from mechbridge.event_graph import geometry_mol
 from mechbridge.molecular_visuals import load_events,entry
 from mechbridge.network_aggregation import aggregate_network_records
-from mechbridge.species_network import project_species_network
+from mechbridge.species_network import layout_species,project_species_network
 from mechbridge.report_layout import molecular_document,prepare_shared_assets,relative_link,attach_checks
 
 DEFAULT_BASE=ROOT/'reports/aimnet2025_reaction_paths'
-
-
-def layout_species(nodes,edges):
-    count=len(nodes)
-    if count<=2:return {i:[.2+.6*i/max(count-1,1),.5] for i in range(count)}
-    cols=int(np.ceil(np.sqrt(count*1.4)));rows=int(np.ceil(count/cols));slots=[]
-    for row in range(rows):
-        present=min(cols,count-row*cols);xs=np.linspace(.08,.92,present) if present>1 else np.array([.5])
-        y=.12+.76*row/max(rows-1,1)
-        slots.extend([[float(x),float(y)] for x in xs])
-    pairs=sorted({tuple(sorted(e['nodes'])) for e in edges if e['nodes'][0]!=e['nodes'][1]})
-    def point_segment(p,a,b):
-        delta=b-a;t=np.clip(np.dot(p-a,delta)/max(np.dot(delta,delta),1e-12),0,1)
-        return np.linalg.norm(p-(a+t*delta))
-    def score(order):
-        pos={node:np.asarray(slots[slot]) for node,slot in enumerate(order)};cross=through=0
-        for i,(a,b) in enumerate(pairs):
-            p,q=pos[a],pos[b]
-            for c,d in pairs[i+1:]:
-                if len({a,b,c,d})<4:continue
-                r,s=pos[c],pos[d]
-                orient=lambda x,y,z:np.cross(y-x,z-x)
-                if orient(p,q,r)*orient(p,q,s)<0 and orient(r,s,p)*orient(r,s,q)<0:cross+=1
-            through+=sum(point_segment(pos[k],p,q)<.105 for k in range(count) if k not in (a,b))
-        length=sum(np.sum((pos[a]-pos[b])**2) for a,b in pairs)
-        return cross*10000+through*500+length
-    rng=np.random.default_rng(20261001);best=None;best_score=float('inf')
-    for restart in range(80):
-        order=np.arange(count) if restart==0 else rng.permutation(count);current=score(order)
-        for _ in range(500):
-            a,b=rng.choice(count,2,replace=False);order[a],order[b]=order[b],order[a];candidate=score(order)
-            if candidate<=current:current=candidate
-            else:order[a],order[b]=order[b],order[a]
-        if current<best_score:best,best_score=order.copy(),current
-    return {node:slots[int(best[node])] for node in range(count)}
 
 
 def species_projection(physical_nodes,physical_edges):
@@ -77,7 +42,7 @@ def main():
     events=[];event_lookup={}
     for path,data in paths:
         run=BASE/path.relative_to(BASE).parts[0]
-        loaded,_=load_events(run,[path])
+        loaded,_=load_events(run,[path],layout_network=False)
         record=path.relative_to(BASE).as_posix();key=next(k for k,g in groups.items() if (record,0) in g['node_map'])
         group=groups[key]
         for event in loaded:
