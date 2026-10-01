@@ -1,0 +1,19 @@
+{
+  "event_count": 8,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "flower_transamidation_minimal_o1\\arrows\\attempt_004\\result.json": "f2ecfc119aa09f75c25fe64f4d885e9ee1e6cf3b3835d7d2d8b16c3043e584c9",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_006\\result.json": "67e74081485595af9fcfd4bf7b38965ea06e91b0c690587e054eeabe15aaa040",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_008\\result.json": "13e84b20371b47508a2c4a30032aaaabc6236348757773be18fbd6cbe9311898",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_012\\result.json": "c9504d5842bdea2365d633c6129aa6762fcf6965553b6883643b271781298d03",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_017\\result.json": "afa85ecd9f49898b0e7576031d518ff0bd6649b7e4efe6d5ea5de3b8bcb9826d",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_026\\result.json": "800dae0bfe5bd259b1775f003da8371354fd17931ff9dd7e97a0274092457606",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_029\\result.json": "e3f93654276e7e7f49c5f5e36e144941a33370a76d55a8207aad2b589c356617",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_048\\result.json": "4ef92eebc241afa0e3a7ed3201c606a70088847344b276e1918bbc661a19ed11",
+    "flower_transamidation_minimal_o1\\arrows\\attempt_050\\result.json": "eef407888e80cc44e51c44569fe6c95600b525551e17a67a37b991d04ea89f79"
+  }
+}

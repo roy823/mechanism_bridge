@@ -1,0 +1,71 @@
+{
+  "model": "aimnet2-2025 member0",
+  "reference": "B97-3c",
+  "final": {
+    "folder": "transamidation_conformer_clusters",
+    "file": "reports/shared_network_v10/transamidation_conformer_clusters/flower_transamidation_minimal_o1/arrows/network.json",
+    "status": "completed",
+    "workers": 3,
+    "threads_per_worker": 6,
+    "attempts": 24,
+    "evaluations": 23672,
+    "physical_nodes": 6,
+    "species": 3,
+    "conformer_clusters": 4,
+    "edges": 4,
+    "reservations": 24,
+    "unique_reservations": 24,
+    "searched_nodes": 5,
+    "scheduler": {
+      "kind": "central_species_registry_process_workers",
+      "workers": 3,
+      "threads_per_worker": 6,
+      "dispatch": "completion_driven",
+      "reservation_key": "species_graph+conformer_cluster+action+geometry_variant",
+      "conformer_policy": "symmetry-aware molecular RMSD clusters; lowest-energy representative per cluster",
+      "conformer_cluster_tolerance_A": 0.5
+    },
+    "stop_reason": "attempt_budget",
+    "initial_conformer_clusters": 2
+  },
+  "long_growth": {
+    "folder": "transamidation_species",
+    "file": "reports/shared_network_v10/transamidation_species/flower_transamidation_minimal_o1/arrows/network.json",
+    "status": "completed",
+    "workers": 3,
+    "threads_per_worker": 6,
+    "attempts": 54,
+    "evaluations": 52847,
+    "physical_nodes": 10,
+    "species": 6,
+    "conformer_clusters": 0,
+    "edges": 8,
+    "reservations": 54,
+    "unique_reservations": 54,
+    "searched_nodes": 6,
+    "scheduler": {
+      "kind": "central_species_registry_process_workers",
+      "workers": 3,
+      "threads_per_worker": 6,
+      "dispatch": "completion_driven",
+      "reservation_key": "species_graph+action+geometry_variant",
+      "conformer_policy": "lowest-energy physical conformer per species"
+    },
+    "stop_reason": "attempt_budget"
+  },
+  "target_product": "CNC(C)=O.N",
+  "target_attempts": 6,
+  "direct_elimination_attempts": 3,
+  "tautomerization_attempts": 3,
+  "target_statuses": [
+    "ts_force_unconverged",
+    "ts_force_unconverged",
+    "ts_force_unconverged",
+    "ts_force_unconverged",
+    "ts_force_unconverged",
+    "ts_force_unconverged"
+  ],
+  "intermediate_tasks": 14,
+  "final_scheduler": "species+conformer_cluster+action+geometry_variant",
+  "chemistry_conclusion": "shared growth reached tetrahedral intermediate and an imidic-acid+ammonia event; final amide tautomerization not physically validated"
+}

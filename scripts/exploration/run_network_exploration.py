@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.potentials import load_potential
 from mechbridge.symbolic_library import ArrowLibrary
 from mechbridge.reaction_network import SearchProtocol, explore, atomic_json
+from mechbridge.parallel_network import explore_shared
 
 
 def main():
@@ -21,6 +22,9 @@ def main():
     p.add_argument('--potential',choices=['aimnet2-rxn','aimnet2','aimnet2-2025','aimnet2-nse'],default='aimnet2-rxn')
     p.add_argument('--device',choices=['cpu','cuda'],default='cpu')
     p.add_argument('--compile-model',action='store_true')
+    p.add_argument('--workers',type=int,default=1,
+                   help='CPU process workers sharing one centrally registered TransitionNet')
+    p.add_argument('--threads-per-worker',type=int,default=2)
     p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows','hybrid'],
                    default=['geometry','bond_edits','arrows'])
     p.add_argument('--start-ids', nargs='+')
@@ -36,6 +40,8 @@ def main():
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
     a = p.parse_args()
+    if a.workers<1 or a.threads_per_worker<1:
+        p.error('workers and threads-per-worker must be positive')
     if a.outdir.exists():
         raise FileExistsError('Use a new output directory; prior experiments are preserved')
     a.outdir.mkdir(parents=True)
@@ -52,7 +58,8 @@ def main():
             raise ValueError('Unknown start ID')
     (a.outdir/'starts.jsonl').write_text(''.join(json.dumps(s)+'\n' for s in starts),encoding='utf-8')
     library = ArrowLibrary(ROOT/'data/raw/synepd/polar.json')
-    backend,potential=load_potential(a.potential,ROOT,a.device,a.compile_model)
+    backend,potential=load_potential(a.potential,ROOT,a.device,a.compile_model,
+                                     threads=a.threads_per_worker)
     sources = list((ROOT/'src/mechbridge').glob('*.py')) + [Path(__file__)]
     with zipfile.ZipFile(a.outdir/'source_snapshot.zip','w',zipfile.ZIP_DEFLATED) as archive:
         for source in sources:archive.write(source,source.relative_to(ROOT).as_posix())
@@ -66,11 +73,17 @@ def main():
             if a.potential=='aimnet2-rxn' else 'Broad AIMNetCentral training overlap not audited for this run'),
         symbolic_hypotheses=library.policy,
         symbolic_library_audit=dict(library.audit),
+        scheduler=('central_species_registry_process_workers' if a.workers>1 else 'sequential'),
+        workers=a.workers,threads_per_worker=a.threads_per_worker,
         started_at_unix=time.time())
     atomic_json(a.outdir/'manifest.json', manifest)
     for start in starts:
         for strategy in a.strategies:
-            report = explore(start, library, backend, strategy, a.outdir/start['id']/strategy, protocol)
+            if a.workers>1:
+                report=explore_shared(start,library,backend,strategy,a.outdir/start['id']/strategy,
+                    a.potential,ROOT,protocol,a.workers,a.threads_per_worker,a.device,a.compile_model)
+            else:
+                report=explore(start,library,backend,strategy,a.outdir/start['id']/strategy,protocol)
             print(json.dumps(dict(start=start['id'], strategy=strategy, status=report['status'],
                                   edges=len(report['edges']), evaluations=report['evaluations'])), flush=True)
 

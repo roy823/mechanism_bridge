@@ -226,6 +226,25 @@ def test_action_scheduler_diversity_and_finite_exhaustion():
     assert choose_action([],{},set(),'hybrid')[-1]=='geometry'
 
 
+def test_parallel_reservation_identity_is_rigid_invariant_and_variant_specific():
+    from mechbridge.parallel_network import reservation_identity
+    node=dict(graph_smiles='CC=O',positions_A=[[0.,0.,0.],[1.2,0.,0.],[1.8,.8,0.]])
+    proposal=dict(edits=[dict(atoms=[0,1],before=1,after=2)],
+                  arrows=[dict(source=[0],sink=[0,1],electrons=2)])
+    first,_=reservation_identity(node,proposal,0,'arrows','species-c0')
+    rotation=np.array([[0.,-1.,0.],[1.,0.,0.],[0.,0.,1.]])
+    moved=dict(node,positions_A=(np.asarray(node['positions_A'])@rotation+4).tolist())
+    same,_=reservation_identity(moved,proposal,0,'arrows','species-c0')
+    distorted=dict(node,positions_A=[[0.,0.,0.],[1.4,0.,0.],[2.2,.9,0.]])
+    same_cluster,_=reservation_identity(distorted,proposal,0,'arrows','species-c0')
+    other_conformer,_=reservation_identity(distorted,proposal,0,'arrows','species-c1')
+    other,_=reservation_identity(node,proposal,1,'arrows','species-c0')
+    assert first==same
+    assert first==same_cluster
+    assert first!=other_conformer
+    assert first!=other
+
+
 def test_dimer_stops_on_physical_force_not_projected_norm():
     from mechbridge.saddle_optimization import StationaryDimerTranslate
     class Modes:

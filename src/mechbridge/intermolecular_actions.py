@@ -8,7 +8,7 @@ from rdkit import Chem
 
 def electron_actions(mol):
     fragments = Chem.GetMolFrags(mol)
-    if len(fragments) != 2:
+    if len(fragments) not in (1,2):
         return
     component = {i: k for k, f in enumerate(fragments) for i in f}
 
@@ -39,7 +39,7 @@ def electron_actions(mol):
                     [((nu,), (nu,c)), ((c,o), (o,h)), ((nu,h), (nu,))])
     # Addition with an explicit donor proton; no invented proton or catalyst.
     for c, o in carbonyls:
-        for (nu,) in matches('[N;+0;v3]'):
+        for nu, _ in matches('[N;+0;v3]-[H]'):
             if component[c] != component[nu]:
                 yield action('carbonyl_amine_addition_stepwise',
                     [((nu,), (nu,c)), ((c,o), (o,))])
@@ -82,6 +82,36 @@ def electron_actions(mol):
                      ((proximal_o,terminal_o), (acyl,proximal_o)),
                      ((acyl,carbonyl_o), (carbonyl_o,h)),
                      ((terminal_o,h), (f,terminal_o))])
+    # Transamidation continuation from a neutral tetrahedral intermediate.
+    # Identify the original NH2 leaving group and the carbon-substituted incoming
+    # amine directly from the observed graph; no expected product geometry enters.
+    for center in mol.GetAtoms():
+        if center.GetAtomicNum()!=6:continue
+        neighbours=list(center.GetNeighbors())
+        oxygens=[a for a in neighbours if a.GetAtomicNum()==8 and a.GetFormalCharge()==0]
+        nitrogens=[a for a in neighbours if a.GetAtomicNum()==7]
+        if len(oxygens)!=1 or len(nitrogens)!=2:continue
+        oxygen=oxygens[0]
+        oxygen_h=[a for a in oxygen.GetNeighbors() if a.GetAtomicNum()==1]
+        if len(oxygen_h)!=1:continue
+        leaving=[];incoming=[]
+        for nitrogen in nitrogens:
+            heavy=[a for a in nitrogen.GetNeighbors() if a.GetAtomicNum()!=1 and a.GetIdx()!=center.GetIdx()]
+            hydrogens=[a for a in nitrogen.GetNeighbors() if a.GetAtomicNum()==1]
+            if not heavy and len(hydrogens)>=2:leaving.append((nitrogen,hydrogens))
+            if len(heavy)==1:incoming.append((nitrogen,hydrogens))
+        if len(leaving)!=1 or len(incoming)!=1:continue
+        leave,leave_h=leaving[0];arrive,arrive_h=incoming[0]
+        c,o,nl,na,ho=center.GetIdx(),oxygen.GetIdx(),leave.GetIdx(),arrive.GetIdx(),oxygen_h[0].GetIdx()
+        if leave.GetFormalCharge()==0 and arrive.GetFormalCharge()==0 and arrive_h:
+            hn=arrive_h[0].GetIdx()
+            yield action('transamidation_amine_to_amine_proton_transfer',
+                [((na,hn),(na,)),((nl,),(nl,hn))])
+            yield action('transamidation_proton_coupled_amine_elimination',
+                [((o,),(o,c)),((c,nl),(nl,ho)),((o,ho),(o,))])
+        elif leave.GetFormalCharge()==1 and arrive.GetFormalCharge()==-1 and not arrive_h:
+            yield action('transamidation_tetrahedral_collapse',
+                [((o,),(o,c)),((c,nl),(nl,)),((o,ho),(o,)),((na,),(na,ho))])
 
 
 def crosses_components(mol, edits):

@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'src'))
 from mechbridge.event_graph import geometry_mol
 from mechbridge.molecular_visuals import load_events,entry
 from mechbridge.network_aggregation import aggregate_network_records
+from mechbridge.species_network import project_species_network
 from mechbridge.report_layout import molecular_document,prepare_shared_assets,relative_link,attach_checks
 
 DEFAULT_BASE=ROOT/'reports/aimnet2025_reaction_paths'
@@ -49,23 +50,14 @@ def layout_species(nodes,edges):
 
 
 def species_projection(physical_nodes,physical_edges):
-    species=[];lookup={};physical_to_species={}
-    for node in physical_nodes:
-        key=node['smiles']
-        if key not in lookup:
-            lookup[key]=len(species);species.append(dict(id=len(species),representative=node,physical_nodes=[],energy=node['energy']))
-        sid=lookup[key];physical_to_species[node['id']]=sid;species[sid]['physical_nodes'].append(node['id'])
-        if node['energy']<species[sid]['energy']:species[sid]['representative']=node;species[sid]['energy']=node['energy']
+    projection=project_species_network(physical_nodes,physical_edges)
+    physical_by_id={node['id']:node for node in physical_nodes}
     nodes=[]
-    for item in species:
-        rep=dict(item['representative']);rep['id']=item['id'];rep['energy']=item['energy'];rep['conformer_count']=len(item['physical_nodes']);rep['physical_nodes']=item['physical_nodes'];nodes.append(rep)
-    edges=[];pair_counts={}
-    for edge in physical_edges:
-        pair=[physical_to_species[i] for i in edge['nodes']];key=tuple(sorted(pair));pair_counts[key]=pair_counts.get(key,0)+1
-        edges.append(dict(edge,nodes=pair))
-    used={}
-    for edge in edges:
-        key=tuple(sorted(edge['nodes']));edge['parallel_index']=used.get(key,0);edge['parallel_count']=pair_counts[key];used[key]=edge['parallel_index']+1
+    for item in projection['nodes']:
+        rep=dict(physical_by_id[item['representative_node']]);rep['id']=item['id']
+        rep['energy']=item['energy_eV'];rep['conformer_count']=len(item['physical_nodes'])
+        rep['physical_nodes']=item['physical_nodes'];nodes.append(rep)
+    edges=projection['edges']
     layout=layout_species(nodes,edges)
     for node in nodes:node['layout']=layout[node['id']]
     return nodes,edges
@@ -90,7 +82,9 @@ def main():
         group=groups[key]
         for event in loaded:
             item=copy.deepcopy(event);item['network_id']='aggregate:'+group['system']
-            item['node_ids']=[group['node_map'][(record,i)] for i in event['node_ids']]
+            physical_ids=event.get('physical_node_ids',event['node_ids'])
+            item['node_ids']=[group['node_map'][(record,i)] for i in physical_ids]
+            item['physical_node_ids']=physical_ids
             item['aggregate_edge_id']=group['edge_map'][(record,event['edge_id'])]
             campaign=path.relative_to(BASE).parts[0]
             item['downloads']={kind:f'../../{campaign}/molecules/{event["id"]}_{suffix}' for kind,suffix in

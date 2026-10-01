@@ -7,7 +7,7 @@ def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def load_potential(name,root,device='cpu',compile_model=False):
+def load_potential(name,root,device='cpu',compile_model=False,threads=2):
     root=Path(root)
     if name=='aimnet2-rxn':
         from .aimnet_backend import ReactionPotential
@@ -19,7 +19,7 @@ def load_potential(name,root,device='cpu',compile_model=False):
     elif name in ('aimnet2','aimnet2-2025','aimnet2-nse'):
         from .aimnetcentral_backend import AIMNetCentralPotential,FAMILIES
         folder=root/'models/aimnetcentral';backend=AIMNetCentralPotential(name,folder,device=device,
-            compile_model=compile_model)
+            compile_model=compile_model,threads=threads)
         model_file=folder/FAMILIES[name]['file']
         details=dict(reference={'aimnet2':'wB97M-D3/def2-TZVPP','aimnet2-2025':'B97-3c',
             'aimnet2-nse':'wB97M-D3 open-shell'}[name],elements=sorted(backend.supported_species),

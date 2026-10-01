@@ -7,6 +7,9 @@ NAVIGATION=[('overview','研究总览','index.html'),('experiments','实验结�
 
 
 def relative_link(target,folder):
+    target,folder=Path(target).resolve(),Path(folder).resolve()
+    if target.drive.lower()!=folder.drive.lower():
+        return target.as_uri()
     return os.path.relpath(target,folder).replace('\\','/')
 
 

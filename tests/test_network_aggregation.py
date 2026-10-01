@@ -3,6 +3,7 @@ import numpy as np
 from rdkit.Chem import AllChem
 
 from mechbridge.network_aggregation import aggregate_network_records
+from mechbridge.species_network import project_species_network
 from mechbridge.symbolic_library import parse_explicit
 
 
@@ -23,3 +24,19 @@ def test_aggregate_merges_duplicate_minima_and_ts_but_keeps_parallel_ts():
     assert len(group['edges'])==2
     assert len(group['edges'][0]['origins'])==2
     assert group['root_nodes']==[0]
+
+
+def test_species_projection_merges_conformers_and_preserves_all_ts_edges():
+    nodes=[dict(id=0,graph_smiles='CC=O',energy_eV=-10.,depth_discovered=0),
+           dict(id=1,graph_smiles='CC=O',energy_eV=-9.9,depth_discovered=1),
+           dict(id=2,graph_smiles='C=CO',energy_eV=-9.8,depth_discovered=1)]
+    edges=[dict(id=0,nodes=[0,1]),dict(id=1,nodes=[1,2]),dict(id=2,nodes=[0,2])]
+    projected=project_species_network(nodes,edges,[0])
+    assert len(projected['nodes'])==2
+    assert projected['nodes'][0]['physical_nodes']==[0,1]
+    assert projected['nodes'][0]['representative_node']==0
+    assert projected['edges'][0]['nodes']==[0,0]
+    assert projected['edges'][1]['nodes']==[0,1]
+    assert projected['edges'][1]['parallel_count']==2
+    assert projected['edges'][2]['parallel_index']==1
+    assert projected['root_nodes']==[0]

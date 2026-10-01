@@ -21,6 +21,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 from .event_graph import geometry_mol, graph_smiles, bond_orders
+from .species_network import project_species_network
 
 ROOT=Path(__file__).resolve().parents[2]
 COLORS={1:'#dbe3ef',6:'#475569',7:'#3478d4',8:'#e95058'}
@@ -106,12 +107,21 @@ def load_events(run, network_paths=None):
         if n['status']!='completed':continue
         numbers=n['start']['atomic_numbers']
         symbols=Atoms(numbers=numbers).get_chemical_symbols()
-        network=dict(start=n['start']['id'],strategy=n['strategy'],nodes=[],edges=[],
-                     root_nodes=n['root_component_nodes'])
+        projection=project_species_network(n['nodes'],n['edges'],n['root_component_nodes'])
+        physical_entries={}
         for node in n['nodes']:
             m=geometry_mol(numbers,node['positions_A'],0)
-            network['nodes'].append(dict(id=node['id'],**entry(m,node['positions_A']),
-                energy=node['energy_eV']-n['nodes'][0]['energy_eV']))
+            physical_entries[node['id']]=dict(id=node['id'],**entry(m,node['positions_A']),
+                energy=node['energy_eV']-n['nodes'][0]['energy_eV'])
+        display_nodes=[]
+        for species in projection['nodes']:
+            representative=dict(physical_entries[species['representative_node']])
+            representative.update(id=species['id'],conformer_count=len(species['physical_nodes']),
+                                  physical_nodes=species['physical_nodes'])
+            display_nodes.append(representative)
+        network=dict(start=n['start']['id'],strategy=n['strategy'],nodes=display_nodes,edges=[],
+                     root_nodes=projection['root_nodes'],physical_node_count=len(n['nodes']))
+        projected_edges={edge['id']:edge for edge in projection['edges']}
         for edge in n['edges']:
             attempt=n['attempts'][edge['attempt']]
             folder=path.parent/f"attempt_{edge['attempt']:03d}"
@@ -149,8 +159,10 @@ def load_events(run, network_paths=None):
             matched=(sorted(map(symbolic_graph_key,pair))==
                      sorted(map(symbolic_graph_key,[source,proposal]))) if proposal else None
             eid=f"{n['start']['id']}_{n['strategy']}_{edge['id']}"
+            physical_node_ids=[edge['nodes'][left],edge['nodes'][right]]
             event=dict(id=eid,start=n['start']['id'],strategy=n['strategy'],edge_id=edge['id'],
-                node_ids=[edge['nodes'][left],edge['nodes'][right]],symbols=symbols,numbers=numbers,
+                node_ids=[projection['physical_to_species'][i] for i in physical_node_ids],
+                physical_node_ids=physical_node_ids,symbols=symbols,numbers=numbers,
                 left=endpoint_entries[left],right=endpoint_entries[right],frames=frames,ts_index=ts_index,
                 changes=changes,ts_energy=data['ts']['energy_eV'],
                 barrier_forward=endpoints[left]['barrier_eV'],barrier_reverse=endpoints[right]['barrier_eV'],
@@ -162,7 +174,10 @@ def load_events(run, network_paths=None):
                 path_label='沿负模位移后的双侧 BFGS 下降，非 IRC',related_checks=[],
                 source_result=(folder/'result.json').relative_to(ROOT).as_posix())
             events.append(event)
-            network['edges'].append(dict(id=eid,nodes=edge['nodes'],barriers=edge['barriers_eV']))
+            projected=projected_edges[edge['id']]
+            network['edges'].append(dict(id=eid,nodes=projected['nodes'],barriers=edge['barriers_eV'],
+                physical_nodes=edge['nodes'],parallel_index=projected['parallel_index'],
+                parallel_count=projected['parallel_count']))
         networks.append(network)
     # Start with the clean, familiar chemical example, while exposing every saved edge.
     events.sort(key=lambda e:(e['start']!='MR_8342_1',e['strategy']!='arrows',not e['root_connected'],e['edge_id']))

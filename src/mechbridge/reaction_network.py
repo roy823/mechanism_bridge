@@ -125,6 +125,7 @@ def inspect_point(atoms, protocol):
 def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
     outdir.mkdir(parents=True, exist_ok=False)
     started, initial_calls = time.time(), calculator.calls
+    initial_model_calls,initial_model_seconds=calculator.model_calls,calculator.model_seconds
     result = dict(status='started', evidence='MLIP_two_sided_mode_displacement_descent',
                   is_IRC=False, DFT_verified=False, endpoints=[],
                   optimizer_force_criterion='original_cartesian_per_atom_norm')
@@ -182,9 +183,36 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
         (outdir/'error.log').write_text(traceback.format_exc(), encoding='utf-8')
     finally:
         result['evaluations'] = calculator.calls - initial_calls
+        result['model_calls'] = calculator.model_calls-initial_model_calls
+        result['model_seconds'] = calculator.model_seconds-initial_model_seconds
         result['seconds'] = time.time() - started
         atomic_json(outdir/'result.json', result)
     return result
+
+
+def initialize_root(start, calculator, outdir, protocol):
+    """Relax and curvature-check the only user-supplied starting geometry."""
+    outdir=Path(outdir)
+    root=Atoms(numbers=start['atomic_numbers'],positions=start['positions_A'])
+    root.calc=calculator
+    with BFGS(root,maxstep=.1,logfile=str(outdir/'initial.log'),
+              trajectory=str(outdir/'initial.traj')) as opt:
+        opt.run(fmax=protocol.initial_fmax,steps=protocol.descent_steps)
+    root_info,root_modes=inspect_point(root,protocol)
+    checks=[root_info.copy()]
+    for repair in range(protocol.initial_curvature_steps):
+        if not root_info['force_converged'] or root_info['imaginary_count']==0:
+            break
+        root.positions+=protocol.mode_displacement*root_modes[0]
+        with BFGS(root,maxstep=.1,logfile=str(outdir/f'initial_curvature_{repair}.log'),
+                  trajectory=str(outdir/f'initial_curvature_{repair}.traj')) as opt:
+            opt.run(fmax=protocol.initial_fmax,steps=protocol.descent_steps)
+        root_info,root_modes=inspect_point(root,protocol)
+        checks.append(root_info.copy())
+    write(outdir/'initial.xyz',root,write_results=False)
+    root_info.update(positions_A=root.positions.tolist(),graph_smiles=graph_smiles(
+        geometry_mol(root.numbers,root.positions,start['charge'])))
+    return root_info,checks,calculator.calls
 
 
 def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()):
@@ -226,32 +254,13 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         mols.append(m)
         return idx
     try:
-        root = Atoms(numbers=numbers, positions=start['positions_A'])
-        root.calc = calculator
-        with BFGS(root, maxstep=.1, logfile=str(outdir/'initial.log'),
-                  trajectory=str(outdir/'initial.traj')) as opt:
-            opt.run(fmax=protocol.initial_fmax, steps=protocol.descent_steps)
-        root_info, root_modes = inspect_point(root, protocol)
-        report['initial_relaxation_checks'] = [root_info.copy()]
-        # Symmetric UFF structures can have zero force at a torsional maximum.
-        # A minimum initializer must use curvature, not force convergence alone.
-        for repair in range(protocol.initial_curvature_steps):
-            if not root_info['force_converged'] or root_info['imaginary_count'] == 0:
-                break
-            root.positions += protocol.mode_displacement * root_modes[0]
-            with BFGS(root,maxstep=.1,logfile=str(outdir/f'initial_curvature_{repair}.log'),
-                      trajectory=str(outdir/f'initial_curvature_{repair}.traj')) as opt:
-                opt.run(fmax=protocol.initial_fmax,steps=protocol.descent_steps)
-            root_info, root_modes = inspect_point(root,protocol)
-            report['initial_relaxation_checks'].append(root_info.copy())
-        report['initial_point'] = root_info.copy()
-        report['initialization_evaluations'] = calculator.calls
-        write(outdir/'initial.xyz', root, write_results=False)
+        root_info,checks,initialization_evaluations=initialize_root(start,calculator,outdir,protocol)
+        report['initial_relaxation_checks']=checks
+        report['initial_point']=root_info.copy()
+        report['initialization_evaluations']=initialization_evaluations
         if not root_info['force_converged'] or root_info['imaginary_count'] != 0:
             report['status'] = 'initial_minimum_unresolved'
             return report
-        root_info.update(positions_A=root.positions.tolist(), graph_smiles=graph_smiles(
-            geometry_mol(numbers, root.positions, start['charge'])))
         register(root_info, 0)
         expanded = set()
         visits = {}

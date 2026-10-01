@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>共享 TransitionNet 调度 · Mechanism Bridge</title><link rel="stylesheet" href="../_site/site.css"></head><body>
+<header class="topbar"><a class="brand" href="../index.html">Mechanism Bridge<small>反应事件 · 证据 · 基准</small></a><nav class="nav" aria-label="全站导航"><a  href="../index.html">研究总览</a><a class="active" aria-current="page" href="../index.html#experiments">实验结果</a><a  href="../events.html">物理事件</a><a  href="../benchmark.html">文献与基准</a><a  href="../data.html">数据与复现</a></nav></header>
+<main class="portal">
+<div class="breadcrumb"><a href="../index.html">研究总览</a> / 共享 TransitionNet 调度</div>
+<div class="eyebrow">中央注册 · CPU 进程 worker · 构象簇 reservation</div>
+<h1>共享网络调度与转酰胺化连续增长</h1>
+<p class="lead">一个中央进程维护物种、物理构象、TS 边和 reservation；多个 CPU worker 只执行 seed、Dimer 和双侧下降。worker 返回后，中央进程立即去重、更新网络并派发新物种和新构象。</p>
+<div class="stats"><div class="stat"><strong>3</strong><span>CPU worker</span></div><div class="stat"><strong>24</strong><span>构象簇调度尝试</span></div><div class="stat"><strong>3</strong><span>唯一物种节点</span></div><div class="stat"><strong>4</strong><span>物理 TS 边</span></div></div>
+<div class="links"><a class="button primary" href="transamidation_conformer_clusters/molecules/index.html">构象簇调度真实轨迹</a><a class="button" href="transamidation_species/molecules/index.html">较长网络增长轨迹</a><a class="button" href="RESULTS_zh.md">详细中文报告</a><a class="button" href="summary.json">结构化结果</a></div>
+<section class="panel section"><h2>两层网络</h2><div class="grid"><div><span class="badge good">显示层</span><h3>唯一化学物种节点</h3><p>同一规范键连图只显示一次；节点标注所含构象数。构象间 TS 显示为自环，多条不同 TS 显示为平行边。</p></div><div><span class="badge">物理层</span><h3>构象和相遇几何全部保留</h3><p>物理极小值继续按能量和对称感知 RMSD 登记。调度使用物种、构象簇、动作和几何变体四元 reservation。</p></div></div></section>
+<section class="panel"><h2>本轮转酰胺化结果</h2><div class="table-wrap"><table><thead><tr><th>阶段</th><th>实际发现</th><th>结论</th></tr></thead><tbody>
+<tr><td>胺加成</td><td><code>CC(N)=O.CN ↔ CN[C@@](C)(N)O</code></td><td>物理边通过，四面体进入共享前沿。</td></tr>
+<tr><td>后续扩展</td><td><code>CN[C@@](C)(N)O ↔ C/N=C(/C)O.N</code></td><td>由质子转移 seed 发现相邻的消除/互变事件，实际端点与符号提议不同。</td></tr>
+<tr><td>目标酰胺</td><td><code>C/N=C(/C)O.N → CNC(C)=O.N</code></td><td>符号动作自动派发 3 个几何变体，但均未达到 TS 力收敛。</td></tr>
+</tbody></table></div></section>
+<section class="panel"><h2>构象处理</h2><p>最终调度代码以 0.5 Å 的对称感知分子 RMSD 建立构象簇，每个构象簇选择当前最低能代表构象。当前验证运行把同一初始物种识别为 2 个构象簇，同时仍在 TransitionNet 中显示为一个物种节点。</p></section>
+<section class="panel"><h2>证据边界</h2><ul><li>所有边仍是 AIMNet2-2025 一阶鞍点与双侧下降证据，没有新增 DFT/IRC。</li><li>并行改变任务完成顺序；reservation 和 seed 随机数均记录，网络写入只发生在中央进程。</li><li>本轮证明了新物种会自动进入搜索前沿；没有证明完整转酰胺化路径已经闭合。</li></ul></section>
+</main><footer>来源均可追溯到本地计算记录。MLIP 下降、DFT/IRC、符号假设分开标注；不同实验协议不合并为统一成功率。页面可离线打开。</footer></body></html>
