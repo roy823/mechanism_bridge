@@ -13,6 +13,50 @@ from mechbridge.report_layout import molecular_document,prepare_shared_assets,re
 BASE=ROOT/'reports/aimnet2025_reaction_paths'
 
 
+def layout_species(nodes,edges):
+    graph=nx.Graph();graph.add_nodes_from(range(len(nodes)));graph.add_edges_from(e['nodes'] for e in edges if e['nodes'][0]!=e['nodes'][1])
+    candidates=[]
+    if len(nodes)<=2:return {i:[.2+.6*i/max(len(nodes)-1,1),.5] for i in range(len(nodes))}
+    for seed in range(32):candidates.append(nx.spring_layout(graph,seed=seed,k=1.4/np.sqrt(max(len(nodes),1)),iterations=300))
+    try:candidates.append(nx.kamada_kawai_layout(graph))
+    except nx.NetworkXException:pass
+    pairs=[e['nodes'] for e in edges if e['nodes'][0]!=e['nodes'][1]]
+    def crossings(pos):
+        score=0
+        for i,(a,b) in enumerate(pairs):
+            for c,d in pairs[i+1:]:
+                if len({a,b,c,d})<4:continue
+                p,q,r,s=[np.asarray(pos[x]) for x in (a,b,c,d)]
+                def orient(x,y,z):return np.cross(y-x,z-x)
+                if orient(p,q,r)*orient(p,q,s)<0 and orient(r,s,p)*orient(r,s,q)<0:score+=1
+        return score
+    best=min(candidates,key=crossings);xy=np.asarray([best[i] for i in range(len(nodes))]);lo=xy.min(0);span=np.maximum(xy.max(0)-lo,1e-9);xy=.08+.84*(xy-lo)/span
+    return {i:xy[i].tolist() for i in range(len(nodes))}
+
+
+def species_projection(physical_nodes,physical_edges):
+    species=[];lookup={};physical_to_species={}
+    for node in physical_nodes:
+        key=node['smiles']
+        if key not in lookup:
+            lookup[key]=len(species);species.append(dict(id=len(species),representative=node,physical_nodes=[],energy=node['energy']))
+        sid=lookup[key];physical_to_species[node['id']]=sid;species[sid]['physical_nodes'].append(node['id'])
+        if node['energy']<species[sid]['energy']:species[sid]['representative']=node;species[sid]['energy']=node['energy']
+    nodes=[]
+    for item in species:
+        rep=dict(item['representative']);rep['id']=item['id'];rep['energy']=item['energy'];rep['conformer_count']=len(item['physical_nodes']);rep['physical_nodes']=item['physical_nodes'];nodes.append(rep)
+    edges=[];pair_counts={}
+    for edge in physical_edges:
+        pair=[physical_to_species[i] for i in edge['nodes']];key=tuple(sorted(pair));pair_counts[key]=pair_counts.get(key,0)+1
+        edges.append(dict(edge,nodes=pair))
+    used={}
+    for edge in edges:
+        key=tuple(sorted(edge['nodes']));edge['parallel_index']=used.get(key,0);edge['parallel_count']=pair_counts[key];used[key]=edge['parallel_index']+1
+    layout=layout_species(nodes,edges)
+    for node in nodes:node['layout']=layout[node['id']]
+    return nodes,edges
+
+
 def main():
     paths=[]
     for path in sorted(BASE.rglob('network.json')):
@@ -49,12 +93,15 @@ def main():
                 barriers=edge['barriers_eV'],origins=edge['origins']))
         graph=nx.Graph();graph.add_nodes_from(range(len(nodes)));graph.add_edges_from(e['nodes'] for e in edges)
         components=nx.number_connected_components(graph) if nodes else 0
+        species_nodes,species_edges=species_projection(nodes,edges);species_roots=sorted({next(n['id'] for n in species_nodes if root in n['physical_nodes']) for root in group['root_nodes']})
         networks.append(dict(id='aggregate:'+group['system'],start=group['system'],strategy='aggregate',
-            title=f"{group['system']} 固定原子库存 · 聚合总网",nodes=nodes,edges=edges,root_nodes=group['root_nodes']))
+            title=f"{group['system']} 固定原子库存 · 物种聚合总网",nodes=species_nodes,edges=species_edges,root_nodes=species_roots))
         metrics.append(dict(system=group['system'],source_systems=group['source_systems'],source_runs=len({o['record'] for n in group['nodes'] for o in n['origins']}),
             raw_nodes=sum(len(record['network']['nodes']) for record in records if (record['id'],0) in group['node_map']),
             merged_nodes=len(nodes),raw_edges=sum(len(record['network']['edges']) for record in records if (record['id'],0) in group['node_map']),
-            unique_ts_edges=len(edges),components=components,root_nodes=group['root_nodes'],parallel_pairs=len(edges)-len({tuple(sorted(e['nodes'])) for e in edges})))
+            unique_ts_edges=len(edges),species_nodes=len(species_nodes),species_edges=len(species_edges),
+            internal_conformer_ts=sum(e['nodes'][0]==e['nodes'][1] for e in species_edges),components=components,
+            root_nodes=group['root_nodes'],parallel_pairs=len(edges)-len({tuple(sorted(e['nodes'])) for e in edges})))
     # Point every event to its total network; duplicate discoveries highlight the deduplicated edge.
     out=BASE/'aggregate/molecules';out.mkdir(parents=True,exist_ok=True);prepare_shared_assets();attach_checks(events,out)
     payload=dict(events=events,networks=networks,figures=[],report_url=relative_link(BASE/'index.html',out))

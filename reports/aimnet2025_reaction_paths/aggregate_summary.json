@@ -10,6 +10,9 @@
       "merged_nodes": 9,
       "raw_edges": 12,
       "unique_ts_edges": 6,
+      "species_nodes": 5,
+      "species_edges": 6,
+      "internal_conformer_ts": 3,
       "components": 4,
       "root_nodes": [
         0
@@ -26,6 +29,9 @@
       "merged_nodes": 27,
       "raw_edges": 22,
       "unique_ts_edges": 20,
+      "species_nodes": 8,
+      "species_edges": 20,
+      "internal_conformer_ts": 4,
       "components": 10,
       "root_nodes": [
         0,
@@ -59,6 +65,9 @@
       "merged_nodes": 22,
       "raw_edges": 17,
       "unique_ts_edges": 12,
+      "species_nodes": 10,
+      "species_edges": 12,
+      "internal_conformer_ts": 1,
       "components": 11,
       "root_nodes": [
         0,
@@ -80,6 +89,9 @@
       "merged_nodes": 5,
       "raw_edges": 2,
       "unique_ts_edges": 2,
+      "species_nodes": 3,
+      "species_edges": 2,
+      "internal_conformer_ts": 0,
       "components": 3,
       "root_nodes": [
         0
