@@ -19,6 +19,10 @@ def main():
     run=BASE/'bimolecular'
     paths=sorted((run/'formaldehyde_glycolaldehyde_o0').glob('*/network.json'))
     outputs.append(render_visuals(run,paths,make_static=False))
+    run=BASE/'frontier_expansion'
+    paths=[path for path in sorted(run.rglob('network.json'))
+           if json.loads(path.read_text(encoding='utf-8'))['status']=='completed']
+    if paths:outputs.append(render_visuals(run,paths,make_static=False))
     print(json.dumps(outputs,ensure_ascii=False,indent=2))
 
 

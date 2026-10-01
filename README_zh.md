@@ -29,7 +29,7 @@
 | 验证 v2 | [固定方案](docs/VALIDATION_V2_zh.md)、[实际结果](reports/validation_v2/RESULTS_zh.md) |
 | 局部迁移 v3：丙醛与丙酮，48 次主对照及单独续探诊断 | [实施说明](docs/LOCAL_TRANSFER_V3_zh.md)、[结果与 DFT 证据](reports/local_transfer_v3/RESULTS_zh.md)、[真实分子视图](reports/local_transfer_v3/search_curvature/acetone_s17/molecules/index.html) |
 | 网络增长 v4：8 体系、24 组运行及效率检查 | [方案](docs/NETWORK_GROWTH_V4_zh.md)、[实际结果](reports/network_growth_v4/RESULTS_zh.md) |
-| AIMNet2-2025 正式算法扩展：40 条 B–TS–C 边、24 个端点图对 | [结果总表](reports/aimnet2025_reaction_paths/index.html)、[保存的三维反应过程](reports/aimnet2025_reaction_paths/intramolecular/molecules/index.html) |
+| AIMNet2-2025 正式算法扩展与聚合总网：53 条记录边、40 条不同 TS | [聚合同体系 TransitionNet](reports/aimnet2025_reaction_paths/aggregate/molecules/index.html)、[结果总表](reports/aimnet2025_reaction_paths/index.html) |
 | 历史 RF、DFT 和 IBO 可行性试验 | [历史结果](FEASIBILITY_RESULTS_zh.md) |
 
 v1 中符号组优于当时的随机几何基线，但位移幅度未统一，且完整箭头尚无稳定超越净变键的证据。v2 专门检验这些限制。乙醛与乙烯醇属于同一反应家族，不算独立样本。

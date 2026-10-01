@@ -6,7 +6,7 @@
 
 这里的策略名 `arrows` 指完整箭头引导的三维 seed，并非只预测箭头。它使用电子源/受体、净变键、活性原子、相遇取向、分步反应进度和进攻角构造 seed 及初始 Dimer 方向。
 
-在羟基乙醛、甘油醛、甲醛＋羟基乙醛、甲醛＋烯二醇、Coley 3217 和两个环氧乙烷＋氨取向上，共完成 13 组运行、237 次尝试和 226,512 个几何评估，登记 40 条 B–TS–C 边、24 个按体系区分的端点图对。5 个端点图对与选定文献案例对应，包括 formose C–C 成键、Coley [3+2] 环加成和环氧开环。完整结果和实际保存轨迹见 [AIMNet2-2025 反应路径报告](../reports/aimnet2025_reaction_paths/RESULTS_zh.md)。这些新边尚未追加 DFT/IRC。
+加入聚合节点前沿扩展后，共完成 30 组运行、306 次尝试和 292,962 个几何评估，登记 53 条 B–TS–C 边、30 个按固定原子库存区分的端点图对。按能量和置换对齐 RMSD 合并相同物理极小值，并按端点、TS 能量和 TS RMSD 去除重复路径后，得到 63 个物理极小值与 40 条不同 TS；6 个端点图对与选定文献案例对应，包括 formose C–C 成键、Coley [3+2] 环加成和环氧开环。`C3H6O3` 总网联合了甲醛＋烯二醇、甲醛＋羟基乙醛和甘油醛三个起点，共有 22 个物理节点与 12 条不同 TS。完整结果见 [聚合同体系 TransitionNet](../reports/aimnet2025_reaction_paths/aggregate/molecules/index.html) 和 [反应路径报告](../reports/aimnet2025_reaction_paths/RESULTS_zh.md)。这些新边尚未追加 DFT/IRC。
 
 ## 2026-10-01：AIMNetCentral 广元素实测选择
 

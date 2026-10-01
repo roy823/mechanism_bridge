@@ -3,13 +3,13 @@
   "reference": "B97-3c",
   "algorithm": "formal v1-v6 event registration",
   "registration": "A proposes a seed; the observed B-TS-C is registered even when A is neither endpoint",
-  "completed_runs": 13,
-  "attempts": 237,
-  "evaluations": 226512,
-  "edges": 40,
-  "unique_graph_pairs": 24,
-  "literature_relevant_edges": 7,
-  "unique_literature_pairs": 5,
+  "completed_runs": 30,
+  "attempts": 306,
+  "evaluations": 292962,
+  "edges": 53,
+  "unique_graph_pairs": 30,
+  "literature_relevant_edges": 11,
+  "unique_literature_pairs": 6,
   "runs": [
     {
       "start": "formaldehyde_enediol_o1",
@@ -82,6 +82,234 @@
       "target_edges": 1,
       "viewer": "epoxide_ammonia/molecules/index.html",
       "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n1",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 4175,
+      "edges": 1,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n1/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n10",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "initial_minimum_unresolved",
+      "attempts": 0,
+      "evaluations": 414,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": null,
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n10/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n12",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3635,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n12/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n13",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3949,
+      "edges": 2,
+      "target_edges": 2,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n13/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n14",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 4139,
+      "edges": 1,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n14/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n15",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3658,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n15/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n16",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3748,
+      "edges": 1,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n16/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n2",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3900,
+      "edges": 2,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n2/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n3",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3872,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n3/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n4",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3609,
+      "edges": 1,
+      "target_edges": 1,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n4/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n5",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3644,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n5/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n6",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3680,
+      "edges": 2,
+      "target_edges": 1,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n6/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n7",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3922,
+      "edges": 1,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n7/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n8",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3836,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n8/hybrid/network.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n9",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3963,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n9/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde__aggregate_n1",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3695,
+      "edges": 1,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/formaldehyde_glycolaldehyde__aggregate_n1/hybrid/network.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde__aggregate_n2",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3741,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/formaldehyde_glycolaldehyde__aggregate_n2/hybrid/network.json"
+    },
+    {
+      "start": "glyceraldehyde__aggregate_n1",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "completed",
+      "attempts": 4,
+      "evaluations": 3912,
+      "edges": 1,
+      "target_edges": 0,
+      "viewer": "frontier_expansion/molecules/index.html",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/glyceraldehyde__aggregate_n1/hybrid/network.json"
+    },
+    {
+      "start": "glyceraldehyde__aggregate_n2",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "status": "running",
+      "attempts": 1,
+      "evaluations": 958,
+      "edges": 0,
+      "target_edges": 0,
+      "viewer": null,
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/glyceraldehyde__aggregate_n2/hybrid/network.json"
     },
     {
       "start": "glyceraldehyde",
@@ -183,6 +411,7 @@
   "events": [
     {
       "start": "formaldehyde_glycolaldehyde_o0",
+      "system": "formaldehyde_glycolaldehyde_o0",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 0,
@@ -203,6 +432,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o0",
+      "system": "flower_epoxide_ammonia_o0",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 0,
@@ -223,6 +453,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o0",
+      "system": "flower_epoxide_ammonia_o0",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 1,
@@ -243,6 +474,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o0",
+      "system": "flower_epoxide_ammonia_o0",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 2,
@@ -263,6 +495,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o0",
+      "system": "flower_epoxide_ammonia_o0",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 3,
@@ -283,6 +516,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o0",
+      "system": "flower_epoxide_ammonia_o0",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 4,
@@ -303,6 +537,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o0",
+      "system": "flower_epoxide_ammonia_o0",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 5,
@@ -323,6 +558,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o1",
+      "system": "flower_epoxide_ammonia_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 0,
@@ -343,6 +579,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o1",
+      "system": "flower_epoxide_ammonia_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 1,
@@ -363,6 +600,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o1",
+      "system": "flower_epoxide_ammonia_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 2,
@@ -383,6 +621,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o1",
+      "system": "flower_epoxide_ammonia_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 3,
@@ -403,6 +642,7 @@
     },
     {
       "start": "flower_epoxide_ammonia_o1",
+      "system": "flower_epoxide_ammonia_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 4,
@@ -422,7 +662,281 @@
       "result_file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_012/result.json"
     },
     {
+      "start": "flower_epoxide_ammonia__aggregate_n1",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "NCCO",
+        "C=O.[CH2-][NH3+]"
+      ],
+      "barriers_eV": [
+        4.757818458670954,
+        2.5708368991381576
+      ],
+      "source_connected": false,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:1:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n1/hybrid/attempt_002/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n13",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "C1CO1.N",
+        "NCCO"
+      ],
+      "barriers_eV": [
+        2.195837034244505,
+        3.198465875020702
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n13/hybrid/attempt_000/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n13",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 1,
+      "endpoints": [
+        "C1CO1.N",
+        "NCCO"
+      ],
+      "barriers_eV": [
+        2.1957922309857167,
+        3.1984286544739007
+      ],
+      "source_connected": true,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_stepwise",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n13/hybrid/attempt_001/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n14",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "C1CO1.N",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        3.5033662997584543,
+        3.4976469832572548
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n14/hybrid/attempt_002/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n16",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "C=O.CN",
+        "CNCO"
+      ],
+      "barriers_eV": [
+        1.1590783722249398,
+        1.5764788517808483
+      ],
+      "source_connected": false,
+      "predicted_graph": "CNCO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:carbonyl_addition_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n16/hybrid/attempt_001/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n2",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "[NH3+]CC[O-]",
+        "NC[CH-][O-].[H+].[H+]"
+      ],
+      "barriers_eV": [
+        0.7523915908650451,
+        2.3234359394618878
+      ],
+      "source_connected": true,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:1:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n2/hybrid/attempt_000/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n2",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 1,
+      "endpoints": [
+        "[NH3+]CC[O-]",
+        "NC[CH-][O-].[H+].[H+]"
+      ],
+      "barriers_eV": [
+        0.752365443261624,
+        2.323421449599664
+      ],
+      "source_connected": true,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:1:forward",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n2/hybrid/attempt_002/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n4",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "C1CO1.N",
+        "NCCO"
+      ],
+      "barriers_eV": [
+        2.1957823064540207,
+        3.198418829056209
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n4/hybrid/attempt_000/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n6",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "NC[CH-][O-].[H+].[H+]",
+        "[NH3+]CC[O-]"
+      ],
+      "barriers_eV": [
+        2.365447546077121,
+        0.7892407457084119
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": false,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n6/hybrid/attempt_000/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n6",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 1,
+      "endpoints": [
+        "NCCO",
+        "C1CO1.N"
+      ],
+      "barriers_eV": [
+        3.2720989464660306,
+        2.269410840058299
+      ],
+      "source_connected": false,
+      "predicted_graph": "NCCO",
+      "proposal_endpoint_match": true,
+      "template_id": "grammar:epoxide_amine_opening_with_proton_transfer",
+      "literature_relevant": true,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n6/hybrid/attempt_002/result.json"
+    },
+    {
+      "start": "flower_epoxide_ammonia__aggregate_n7",
+      "system": "flower_epoxide_ammonia",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "C=O.[CH2-][NH3+]",
+        "NCCO"
+      ],
+      "barriers_eV": [
+        2.5708365747950666,
+        4.757824181413525
+      ],
+      "source_connected": false,
+      "predicted_graph": "[NH3+]CC[O-]",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:1:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n7/hybrid/attempt_002/result.json"
+    },
+    {
+      "start": "formaldehyde_glycolaldehyde__aggregate_n1",
+      "system": "formaldehyde_glycolaldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "OCCO.[C-]#[O+]"
+      ],
+      "barriers_eV": [
+        2.721596039389624,
+        2.4490219599119882
+      ],
+      "source_connected": true,
+      "predicted_graph": "O.O=C=CCO",
+      "proposal_endpoint_match": false,
+      "template_id": "SynEPD:812:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/formaldehyde_glycolaldehyde__aggregate_n1/hybrid/attempt_000/result.json"
+    },
+    {
+      "start": "glyceraldehyde__aggregate_n1",
+      "system": "glyceraldehyde",
+      "strategy": "hybrid",
+      "strategy_label": "符号 seed＋纯几何 seed",
+      "edge": 0,
+      "endpoints": [
+        "O=C[C@@H](O)CO",
+        "O.O=C/C=C/O"
+      ],
+      "barriers_eV": [
+        2.85484840319441,
+        3.178756309696837
+      ],
+      "source_connected": true,
+      "predicted_graph": "O.O=CC=CO",
+      "proposal_endpoint_match": true,
+      "template_id": "SynEPD:812:reverse",
+      "literature_relevant": false,
+      "result_file": "reports/aimnet2025_reaction_paths/frontier_expansion/glyceraldehyde__aggregate_n1/hybrid/attempt_001/result.json"
+    },
+    {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 0,
@@ -443,6 +957,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 1,
@@ -463,6 +978,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "geometry",
       "strategy_label": "纯几何 seed",
       "edge": 0,
@@ -483,6 +999,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "geometry",
       "strategy_label": "纯几何 seed",
       "edge": 1,
@@ -503,6 +1020,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "geometry",
       "strategy_label": "纯几何 seed",
       "edge": 2,
@@ -523,6 +1041,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "geometry",
       "strategy_label": "纯几何 seed",
       "edge": 3,
@@ -543,6 +1062,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 0,
@@ -563,6 +1083,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 1,
@@ -583,6 +1104,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 2,
@@ -603,6 +1125,7 @@
     },
     {
       "start": "glyceraldehyde",
+      "system": "glyceraldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 3,
@@ -623,6 +1146,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 0,
@@ -643,6 +1167,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 1,
@@ -663,6 +1188,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 2,
@@ -683,6 +1209,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 3,
@@ -703,6 +1230,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 4,
@@ -723,6 +1251,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "geometry",
       "strategy_label": "纯几何 seed",
       "edge": 0,
@@ -743,6 +1272,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 0,
@@ -763,6 +1293,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 1,
@@ -783,6 +1314,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 2,
@@ -803,6 +1335,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 3,
@@ -823,6 +1356,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 4,
@@ -843,6 +1377,7 @@
     },
     {
       "start": "glycolaldehyde",
+      "system": "glycolaldehyde",
       "strategy": "hybrid",
       "strategy_label": "符号 seed＋纯几何 seed",
       "edge": 5,
@@ -863,6 +1398,7 @@
     },
     {
       "start": "coley_3217_o1",
+      "system": "coley_3217_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 0,
@@ -883,6 +1419,7 @@
     },
     {
       "start": "coley_3217_o1",
+      "system": "coley_3217_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 1,
@@ -903,6 +1440,7 @@
     },
     {
       "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 0,
@@ -923,6 +1461,7 @@
     },
     {
       "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 1,
@@ -943,6 +1482,7 @@
     },
     {
       "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 2,
@@ -963,6 +1503,7 @@
     },
     {
       "start": "formaldehyde_enediol_o1",
+      "system": "formaldehyde_enediol_o1",
       "strategy": "arrows",
       "strategy_label": "完整箭头引导三维 seed",
       "edge": 3,
@@ -986,9 +1527,147 @@
     "formaldehyde_glycolaldehyde_o0": 1,
     "flower_epoxide_ammonia_o0": 6,
     "flower_epoxide_ammonia_o1": 5,
-    "glyceraldehyde": 10,
+    "flower_epoxide_ammonia": 11,
+    "formaldehyde_glycolaldehyde": 1,
+    "glyceraldehyde": 11,
     "glycolaldehyde": 12,
     "coley_3217_o1": 2,
     "formaldehyde_enediol_o1": 4
+  },
+  "aggregate": {
+    "systems": [
+      {
+        "system": "C2H4O2",
+        "source_systems": [
+          "glycolaldehyde"
+        ],
+        "source_runs": 3,
+        "raw_nodes": 19,
+        "merged_nodes": 9,
+        "raw_edges": 12,
+        "unique_ts_edges": 6,
+        "components": 4,
+        "root_nodes": [
+          0
+        ],
+        "parallel_pairs": 1
+      },
+      {
+        "system": "C2H7NO",
+        "source_systems": [
+          "flower_epoxide_ammonia"
+        ],
+        "source_runs": 16,
+        "raw_nodes": 54,
+        "merged_nodes": 27,
+        "raw_edges": 22,
+        "unique_ts_edges": 20,
+        "components": 10,
+        "root_nodes": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          24
+        ],
+        "parallel_pairs": 3
+      },
+      {
+        "system": "C3H6O3",
+        "source_systems": [
+          "formaldehyde_enediol",
+          "formaldehyde_glycolaldehyde",
+          "glyceraldehyde"
+        ],
+        "source_runs": 10,
+        "raw_nodes": 37,
+        "merged_nodes": 22,
+        "raw_edges": 17,
+        "unique_ts_edges": 12,
+        "components": 11,
+        "root_nodes": [
+          0,
+          1,
+          2,
+          4,
+          6,
+          16
+        ],
+        "parallel_pairs": 1
+      },
+      {
+        "system": "C4H8N2",
+        "source_systems": [
+          "coley_3217"
+        ],
+        "source_runs": 1,
+        "raw_nodes": 5,
+        "merged_nodes": 5,
+        "raw_edges": 2,
+        "unique_ts_edges": 2,
+        "components": 3,
+        "root_nodes": [
+          0
+        ],
+        "parallel_pairs": 0
+      }
+    ],
+    "total_source_runs": 30,
+    "raw_nodes": 115,
+    "merged_nodes": 63,
+    "raw_edges": 53,
+    "unique_ts_edges": 40,
+    "page": "reports/aimnet2025_reaction_paths/aggregate/molecules/index.html",
+    "policy": {
+      "policy": "same model, elemental inventory, charge and multiplicity; physical minima merge across different start species by graph isomorphism, energy and permutation-aware RMSD; TS merge by endpoints, energy and aligned RMSD when atom order agrees",
+      "geometry_tolerance_A": 0.15,
+      "energy_tolerance_eV": 0.03,
+      "ts_geometry_tolerance_A": 0.15,
+      "ts_energy_tolerance_eV": 0.03,
+      "source_hashes": {
+        "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/arrows/network.json": "5f4b5ffcd1675240f98f51d593d767c4aeda4f81651df0cc69c37c9c85e985d8",
+        "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/geometry/network.json": "7e7e0df1ff8dd5f69a2c1423c59efd090f926249ddeee685207df30fc06556e2",
+        "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/hybrid/network.json": "08cc003f0b1876db0d24b0a7f7897134dd7784d2ade2d940e63846eab14bd5b8",
+        "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o0/arrows/network.json": "186efa5863bb55ac9aecffe19baca476c6fed075ce37d01f98dc3edea3b718df",
+        "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/network.json": "6c3aea41a9843f6f516a13b85001bc2ff022b7eb4d79bdaf063fee9ac30f7085",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n1/hybrid/network.json": "6af9ca2bc502c299267e414df862bb23e1a102ded7a3cf4c335c4e49b248a18e",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n12/hybrid/network.json": "891a9c0dca24ae4fc9cc0aefaa9a74c991da6e8c26d6aa12080204feb61e78bd",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n13/hybrid/network.json": "b650060456bf35e2d8938d857c1dbb694fd4c5f581906a7a8032fd4101511a6e",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n14/hybrid/network.json": "498c1ce07c8b8bf89ed2c934f4b17de6e501b76cedaa7989dfc8cd6da7ef0605",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n15/hybrid/network.json": "b83a188e78672be8c522a8e7542ac94d801a6b47eb9f3f4824f8e2b5990e61ed",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n16/hybrid/network.json": "5ee5b64c9dbb9e8669cca05b053f548d207012393fe93e503538fcdc70b945ae",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n2/hybrid/network.json": "e6471aa06da4d0706f625dc274aa4bfd74497997c5e8f0f09131f670601c56f5",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n3/hybrid/network.json": "1ae2e72dbf7339064aeb6a2053ba0700720016d5cea94bf5bf3a037d220669d8",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n4/hybrid/network.json": "8a6e75e03a339cd8975b27122d9d0cc3e5c353fbbd2a12283e719c1d8a3b20c3",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n5/hybrid/network.json": "4cb44856f2085d6bf249dde6a7e306e27672907d26d5efad3b4cece5e1db04f7",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n6/hybrid/network.json": "58b58b2fb969eb1680719b8b65ff33cb58f25e1ca6f7da2b9d439610438a4e19",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n7/hybrid/network.json": "1bd816cc7f949050ae95f3a10276dd5d891c7182706f89ba9fe5b6c5879a3311",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n8/hybrid/network.json": "f77da59dd8424bc5367cb4bcd88056c35da30aabb4111bf2c41b7a7ac160c0e7",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n9/hybrid/network.json": "d27d86fd99b0128fcf4c361d7f4b21ed943e81b30238f028d5c89a42d3c4c0b8",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/formaldehyde_glycolaldehyde__aggregate_n1/hybrid/network.json": "bb705582f9b01e4f75ac4641439b631b62166406b019cd5480ccc06d55b56bd3",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/formaldehyde_glycolaldehyde__aggregate_n2/hybrid/network.json": "c6bd96a05ee743d3ad9ac643f7d78e5b34b21e1745e68e03850f2640080aecf8",
+        "reports/aimnet2025_reaction_paths/frontier_expansion/glyceraldehyde__aggregate_n1/hybrid/network.json": "d8e620f53a44aded78d7a30edaf7aff8de138a55e6f8d78a222b12f567966a3a",
+        "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/arrows/network.json": "923cf4b55c5349e6f5396aefc6d23fa8ac2c45113de04df8fd64fe96e1470594",
+        "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/geometry/network.json": "996602a19ac41069208fc0332949b4a5a9dfa68ad15804dcb80709ea4273d807",
+        "reports/aimnet2025_reaction_paths/intramolecular/glyceraldehyde/hybrid/network.json": "0a5254969be325ca56c8cd247de9a7d3d10c136c643c86afd018b440dddaa9f4",
+        "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/arrows/network.json": "0a0ef0ba7e2ae25a2bc688ddccf4a9f5d1ebb5cd3cdb432708b332cf5e83c7e1",
+        "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/geometry/network.json": "8c56efe6858add10fcefc429ab00d3ca8fd449ba1946a836e277f64e01e4a002",
+        "reports/aimnet2025_reaction_paths/intramolecular/glycolaldehyde/hybrid/network.json": "a953753f22ece0652d2fd2b932643b2ce3e4668502c0587d4b2302082c60acfc",
+        "reports/aimnet2025_reaction_paths/targeted_bimolecular/coley_3217_o1/arrows/network.json": "af443dbf05d6e1ef542b06dd5943635f95665b38aa381e246f6548770b14167d",
+        "reports/aimnet2025_reaction_paths/targeted_bimolecular/formaldehyde_enediol_o1/arrows/network.json": "5cbfda8503558109aaa486e3a394c83bbd8d1f9a041ec527040417fd9a5431db"
+      }
+    },
+    "continuation_starts": 39
   }
 }

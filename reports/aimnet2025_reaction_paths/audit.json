@@ -41,6 +41,11 @@
       "passed": true
     },
     {
+      "check": "aimnet2_2025_manifest",
+      "campaign": "frontier_expansion",
+      "passed": true
+    },
+    {
       "check": "event_physics_and_graphs",
       "file": "reports/aimnet2025_reaction_paths/bimolecular/formaldehyde_glycolaldehyde_o0/arrows/attempt_020/result.json",
       "passed": true
@@ -98,6 +103,71 @@
     {
       "check": "event_physics_and_graphs",
       "file": "reports/aimnet2025_reaction_paths/epoxide_ammonia/flower_epoxide_ammonia_o1/arrows/attempt_012/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n1/hybrid/attempt_002/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n13/hybrid/attempt_000/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n13/hybrid/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n14/hybrid/attempt_002/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n16/hybrid/attempt_001/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n2/hybrid/attempt_000/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n2/hybrid/attempt_002/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n4/hybrid/attempt_000/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n6/hybrid/attempt_000/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n6/hybrid/attempt_002/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/flower_epoxide_ammonia__aggregate_n7/hybrid/attempt_002/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/formaldehyde_glycolaldehyde__aggregate_n1/hybrid/attempt_000/result.json",
+      "passed": true
+    },
+    {
+      "check": "event_physics_and_graphs",
+      "file": "reports/aimnet2025_reaction_paths/frontier_expansion/glyceraldehyde__aggregate_n1/hybrid/attempt_001/result.json",
       "passed": true
     },
     {
@@ -261,11 +331,41 @@
       "passed": true
     },
     {
+      "check": "molecular_view_exists",
+      "page": "frontier_expansion/molecules/index.html",
+      "passed": true
+    },
+    {
+      "check": "molecular_view_exists",
+      "page": "aggregate/molecules/index.html",
+      "passed": true
+    },
+    {
       "check": "five_named_literature_pairs",
+      "passed": true
+    },
+    {
+      "check": "aggregate_raw_edges",
+      "passed": true
+    },
+    {
+      "check": "aggregate_deduplicates_nodes",
+      "passed": true
+    },
+    {
+      "check": "aggregate_total_edges",
+      "passed": true
+    },
+    {
+      "check": "aggregate_inventory_groups",
+      "passed": true
+    },
+    {
+      "check": "c3_inventory_combines_three_start_systems",
       "passed": true
     }
   ],
-  "passed": 54,
-  "total": 54,
+  "passed": 75,
+  "total": 75,
   "all_passed": true
 }

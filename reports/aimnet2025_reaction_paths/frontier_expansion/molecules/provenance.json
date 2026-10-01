@@ -1,0 +1,24 @@
+{
+  "event_count": 13,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "flower_epoxide_ammonia__aggregate_n1\\hybrid\\attempt_002\\result.json": "618502a3aec5834591257381cbddd8cd13727b67ebe991ad4c80ff50e73af314",
+    "flower_epoxide_ammonia__aggregate_n13\\hybrid\\attempt_000\\result.json": "a9115c3f4a76fa460b5d7a16d266e8e3d3b3536733b58406421e5fc2c9b24894",
+    "flower_epoxide_ammonia__aggregate_n13\\hybrid\\attempt_001\\result.json": "7f73cbec88a08dfa777d0185b1fa15541e837672328ac190bc2806db551b92ff",
+    "flower_epoxide_ammonia__aggregate_n14\\hybrid\\attempt_002\\result.json": "0615e64328d7612b9509103c031b10df78d550d573b30ffa7df493d4a2befd0b",
+    "flower_epoxide_ammonia__aggregate_n16\\hybrid\\attempt_001\\result.json": "5eb64d29783bc3f550b2ac8a5e303837bcb61f8f3a01c3947ebc6a8dcae0b083",
+    "flower_epoxide_ammonia__aggregate_n2\\hybrid\\attempt_000\\result.json": "bd121bcbe1b0d6d67dbc543594e5c04dc872764cb578d7fca9ddb38b1e0c4449",
+    "flower_epoxide_ammonia__aggregate_n2\\hybrid\\attempt_002\\result.json": "6a4dafaf5185ba045231f0db4bd9d3abbf58846ccc774e180db2bd9005d294ec",
+    "flower_epoxide_ammonia__aggregate_n4\\hybrid\\attempt_000\\result.json": "7c0ed90a8b91d6e8bde37b647a22bc0a7cc97e107c671897cabb948a3300f550",
+    "flower_epoxide_ammonia__aggregate_n4\\hybrid\\attempt_002\\result.json": "098503fed8f32ed69cb5b9c8971bf361ae14b6a6c0336eb92bea21769c2cc17b",
+    "flower_epoxide_ammonia__aggregate_n6\\hybrid\\attempt_000\\result.json": "0dbd96b88d48908a8d4a0a8d69e8799b0eb369b1d613bbae1f568dd02525f606",
+    "flower_epoxide_ammonia__aggregate_n6\\hybrid\\attempt_002\\result.json": "9aa83db2632091aa082d76f42ce68ecc264158658e0034a1c26335ed4ecbfd94",
+    "flower_epoxide_ammonia__aggregate_n7\\hybrid\\attempt_002\\result.json": "2a917b935068833f62e10bcfaf6189892dd9f250cf246e1f12ba2095f2a4cfc4",
+    "formaldehyde_glycolaldehyde__aggregate_n1\\hybrid\\attempt_000\\result.json": "21eea5d5e9cc187757e425d75d1f6ac0a0995ba78a0fff3a1fe57512a91762fb",
+    "glyceraldehyde__aggregate_n1\\hybrid\\attempt_001\\result.json": "2ec48b88ff90fec4bc8ed3acb84c1694da6ce5445b7d4e1c5e459a7654f046a0"
+  }
+}

@@ -21,7 +21,7 @@
 const DATA=__MOLECULAR_DATA__;
 if(new URLSearchParams(location.search).get('embed')==='1')document.body.classList.add('embedded');
 const $=id=>document.getElementById(id), colors={H:'#dbe3ef',C:'#475569',N:'#3478d4',O:'#e95058'};
-const strategyNames={DFT:'DFT / IRC',arrows:'完整箭头',bond_edits:'净变键',center_random:'仅反应中心',geometry:'几何',hybrid:'符号＋几何'};
+const strategyNames={DFT:'DFT / IRC',arrows:'完整箭头引导三维 seed',bond_edits:'净变键',center_random:'仅反应中心',geometry:'几何',hybrid:'符号 seed＋几何 seed',aggregate:'聚合同体系网络'};
 let current,frameIndex=0,timer=null,viewers={};
 const escapeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const formula=s=>escapeText(s).replace(/(\d+)/g,'<sub>$1</sub>');
@@ -61,15 +61,16 @@ function setFrame(index){frameIndex=Math.max(0,Math.min(current.frames.length-1,
  chart();$('distances').innerHTML=current.changes.map(c=>`<tr><td>${escapeText(c.label)}</td><td>${c.distances[0].toFixed(3)}</td><td><b>${c.distances[frameIndex].toFixed(3)}</b></td><td>${c.distances[c.distances.length-1].toFixed(3)}</td></tr>`).join('');
 }
 function stop(){if(timer)clearInterval(timer);timer=null;$('play').textContent='播放构型';}
-function drawNetwork(){const n=DATA.networks.find(n=>n.start===current.start&&n.strategy===current.strategy);
- $('networkTitle').textContent=`${n.start} · ${strategyNames[n.strategy]}`;
- const w=1000,h=n.nodes.length>3?600:330,centers=n.nodes.map((node,i)=>n.nodes.length<=3?[180+i*320,h/2]:[w/2+355*Math.cos(2*Math.PI*i/n.nodes.length-Math.PI/2),h/2+205*Math.sin(2*Math.PI*i/n.nodes.length-Math.PI/2)]);
+function drawNetwork(){const n=(current.network_id?DATA.networks.find(n=>n.id===current.network_id):null)||DATA.networks.find(n=>n.start===current.start&&n.strategy===current.strategy);
+ $('networkTitle').textContent=n.title||`${n.start} · ${strategyNames[n.strategy]}`;const activeEdge=current.aggregate_edge_id||current.id;
+ const many=n.nodes.length>10,cols=many?Math.ceil(Math.sqrt(n.nodes.length*1.4)):0,rows=many?Math.ceil(n.nodes.length/cols):0;
+ const w=many?Math.max(1000,cols*220):1000,h=many?Math.max(600,rows*180):(n.nodes.length>3?600:330),centers=n.nodes.map((node,i)=>many?[110+(i%cols)*220,95+Math.floor(i/cols)*180]:n.nodes.length<=3?[180+i*320,h/2]:[w/2+355*Math.cos(2*Math.PI*i/n.nodes.length-Math.PI/2),h/2+205*Math.sin(2*Math.PI*i/n.nodes.length-Math.PI/2)]);
  let s=['<svg viewBox="0 0 '+w+' '+h+'" xmlns="http://www.w3.org/2000/svg">'];
  n.edges.forEach((edge,i)=>{const a=centers[edge.nodes[0]],b=centers[edge.nodes[1]],offset=(i%3-1)*32;const mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2+offset;
- s.push(`<path d="M${a} Q${mx},${my} ${b}" fill="none" stroke="${edge.id===current.id?'#087f95':'#a9b8c9'}" stroke-width="${edge.id===current.id?3:1.5}"/><text x="${mx}" y="${my-9}" text-anchor="middle" font-size="12" fill="#60738a">TS ${edge.id.split('_').pop()}</text>`);});
- n.nodes.forEach((node,i)=>{const [x,y]=centers[i],connected=n.root_nodes.includes(node.id);s.push(`<rect x="${x-91}" y="${y-65}" width="182" height="130" rx="12" fill="${connected?'white':'#f2f4f7'}" stroke="${current.evidence!=='DFT_IRC'&&node.id===0?'#087f95':'#d7e0ea'}" stroke-width="${current.evidence!=='DFT_IRC'&&node.id===0?2:1}"/><foreignObject x="${x-84}" y="${y-60}" width="168" height="91"><div xmlns="http://www.w3.org/1999/xhtml" style="height:91px">${node.svg.replace(/width='460px'/,"width='168px'").replace(/height='200px'/,"height='91px'")}</div></foreignObject><text x="${x}" y="${y+43}" text-anchor="middle" font-size="12" fill="#183149">${current.evidence!=='DFT_IRC'&&node.id===0?'起点 ':''}N${node.id} · ${escapeText(node.formula)}</text><text x="${x}" y="${y+59}" text-anchor="middle" font-size="11" fill="#66788c">ΔE ${node.energy.toFixed(3)} eV</text>`);});
+ s.push(`<path d="M${a} Q${mx},${my} ${b}" fill="none" stroke="${edge.id===activeEdge?'#087f95':'#a9b8c9'}" stroke-width="${edge.id===activeEdge?3:1.5}"/><text x="${mx}" y="${my-9}" text-anchor="middle" font-size="12" fill="#60738a">TS ${escapeText(String(edge.label??edge.id).split('_').pop())}</text>`);});
+ n.nodes.forEach((node,i)=>{const [x,y]=centers[i],connected=n.root_nodes.includes(node.id);s.push(`<rect x="${x-91}" y="${y-65}" width="182" height="130" rx="12" fill="${connected?'white':'#f2f4f7'}" stroke="${current.evidence!=='DFT_IRC'&&connected?'#087f95':'#d7e0ea'}" stroke-width="${current.evidence!=='DFT_IRC'&&connected?2:1}"/><foreignObject x="${x-84}" y="${y-60}" width="168" height="91"><div xmlns="http://www.w3.org/1999/xhtml" style="height:91px">${node.svg.replace(/width='460px'/,"width='168px'").replace(/height='200px'/,"height='91px'")}</div></foreignObject><text x="${x}" y="${y+43}" text-anchor="middle" font-size="12" fill="#183149">${current.evidence!=='DFT_IRC'&&connected?'起点 ':''}N${node.id} · ${escapeText(node.formula)}</text><text x="${x}" y="${y+59}" text-anchor="middle" font-size="11" fill="#66788c">ΔE ${node.energy.toFixed(3)} eV</text>`);});
  s.push('</svg>');$('network').innerHTML=s.join('');$('edgeButtons').innerHTML='';
- n.edges.forEach(edge=>{const button=document.createElement('button');button.textContent=`查看 TS ${edge.id.split('_').pop()}：N${edge.nodes[0]} ↔ N${edge.nodes[1]}`;button.onclick=()=>selectEvent(edge.id);$('edgeButtons').appendChild(button);});
+ n.edges.forEach(edge=>{const button=document.createElement('button');button.textContent=`查看 TS ${String(edge.label??edge.id).split('_').pop()}：N${edge.nodes[0]} ↔ N${edge.nodes[1]}${edge.origins?.length>1?' · '+edge.origins.length+' 次发现':''}`;button.onclick=()=>selectEvent(edge.event_id||edge.id);$('edgeButtons').appendChild(button);});
 }
 function selectEvent(id){stop();current=DATA.events.find(e=>e.id===id);$('event').value=id;
  $('evidenceBadge').textContent=current.evidence==='DFT_IRC'?'DFT / IRC 实际坐标':'MLIP 双侧下降坐标';

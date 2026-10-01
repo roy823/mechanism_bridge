@@ -1,7 +1,7 @@
 {
   "passed": true,
-  "html_pages": 201,
-  "local_links_checked": 2234,
+  "html_pages": 203,
+  "local_links_checked": 2272,
   "missing_links": [],
   "source_hashes_unchanged": true,
   "browser": "Installed Edge, headless; isolated Playwright environment",
@@ -9,6 +9,7 @@
   "ui_checks": [
     "overview_to_benchmark_navigation",
     "aimnet2025_saved_TS_and_descent_viewer",
+    "aggregate_same_system_transitionnet",
     "DFT_filter_actual_coordinates_and_WebGL",
     "TS_jump_and_actual_frame_playback",
     "MLIP_coordinates_keep_MLIP_label_with_linked_DFT",
