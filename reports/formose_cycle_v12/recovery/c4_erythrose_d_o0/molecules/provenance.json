@@ -1,0 +1,15 @@
+{
+  "event_count": 5,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "c4_erythrose_d_o0\\hybrid\\attempt_001\\result.json": "ecc330fbfc08fc44baef3929c169337e8f44912ff37f041ed634ec9176ee54d0",
+    "c4_erythrose_d_o0\\hybrid\\attempt_016\\result.json": "cab2c97ec969c8fa73a241b1aa49114cecd263c0308e846454959607cb37dca7",
+    "c4_erythrose_d_o0\\hybrid\\attempt_026\\result.json": "a256b6eb9dfa0cf7f5dbe469344343408ce09881ab156c06c94c31f2edd0c939",
+    "c4_erythrose_d_o0\\hybrid\\attempt_038\\result.json": "7612505b45f54e82428692382b1699c15744210065449082b95bb1f8736046dd",
+    "c4_erythrose_d_o0\\hybrid\\attempt_039\\result.json": "01d1acabea06935e4d02c1fb785a8d2513f705bd7718cf6c8f16c5359f8545da"
+  }
+}

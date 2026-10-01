@@ -1,0 +1,19 @@
+{
+  "event_count": 9,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_001\\result.json": "a4952ab898f58b8bb71cfc993141062c905e50e8550496ce6d6a7745f027ce5f",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_002\\result.json": "04091edfafb69c37d77246827b0b15f0ef25d6ef925f06c68867388c1ad566f2",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_017\\result.json": "940e5a4ee784e4d495c5d6493f582002fd2333cdca5d64108cad4472b521928f",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_018\\result.json": "aebb370cd7eb8a0d98798687ddd7fe2a2a99faaf7d21576c72fbae0a36647802",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_019\\result.json": "3726a94b289ad3bac06a27ceb8cd71e3be5123818ca83f1a09b1628b3b92a904",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_021\\result.json": "47fc7db927b3a400f869a5668abb5659da8ceaba0fa6649bde852a060909ae93",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_024\\result.json": "0903a39a613d02c5dcb23ddc1e21449cb7a772f3216d88f13bb1655c288f61e1",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_025\\result.json": "bcfe6b21a6b423b07142fc39821f4f47deb28ad1ec3716dfe2009cdf2f5e5d78",
+    "c2_two_formaldehyde_o0\\hybrid\\attempt_028\\result.json": "f1264de4eef86d916d8b2c002b99e339930a24206843a0684cb002c3b6855a95"
+  }
+}

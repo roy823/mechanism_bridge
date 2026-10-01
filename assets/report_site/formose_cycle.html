@@ -1,0 +1,15 @@
+{% extends 'page.html' %}{% block body %}
+<div class="breadcrumb"><a href="{{ root }}index.html">研究总览</a> / 多库存 formose 循环审计</div>
+<div class="eyebrow">C2＋C3＋C4 并行根 · 化学计量超图 · 严格端点匹配</div>
+<h1>完整 formose 自催化循环搜索</h1>
+<p class="lead">将循环相关的甲醛、羟基乙醛、C2/C3 烯二醇、甘油醛、DHA、四碳醛糖/酮糖和 2GO 分别作为并行根；每个固定库存内部搜索真实 TS，再按物种多重集组合循环。</p>
+<div class="stats"><div class="stat"><strong>{{ summary.executed_roots }}</strong><span>实际运行根体系</span></div><div class="stat"><strong>{{ summary.total_attempts }}</strong><span>seed / TS 任务</span></div><div class="stat"><strong>{{ summary.raw_edges }}</strong><span>登记 TS 边</span></div><div class="stat"><strong>{{ summary.passed_segments }}/{{ summary.total_segments }}</strong><span>严格循环分段</span></div></div>
+<div class="notice"><b>循环结论：</b>{{ '已找到严格闭环' if summary.strict_cycle_complete else '尚未形成严格闭环' }}。当前缺口：{{ summary.missing_segment }}。</div>
+<div class="links"><a class="button primary" href="RESULTS_zh.md">详细中文报告</a><a class="button" href="summary.json">结构化审计</a></div>
+<section class="panel section"><h2>循环分段检查</h2><div class="table-wrap"><table><thead><tr><th>分段</th><th>状态</th><th>实际物理路径</th><th>解释</th></tr></thead><tbody>
+{% for row in summary.segments %}<tr><td>{{ row.name }}</td><td><span class="badge {{ 'good' if row.passed else 'warn' }}">{{ '通过' if row.passed else '缺失' }}</span></td><td>{% for state in row.path %}<code>{{ state }}</code>{% if not loop.last %}<br>↔<br>{% endif %}{% endfor %}{% if row.bottleneck_eV is not none %}<br><span class="muted">路径最大双向势垒 {{ '%.3f'|format(row.bottleneck_eV) }} eV</span>{% endif %}</td><td>{{ row.note }}</td></tr>{% endfor %}
+</tbody></table></div></section>
+<section class="panel"><h2>LdB–AvE 与直接 GA/DHA 通道</h2><p>当前找到甘油醛经电荷分离结构和 C3 烯二醇到 DHA 的三边路径；同时也找到一条直接 GA↔DHA 边。直接边在当前 AIMNet2‑2025 上的瓶颈更低，这与 ReactionAtlas 报告的“只走烯二醇通路”不一致，需要优先 DFT 精修。</p></section>
+<section class="panel"><h2>真实轨迹入口</h2><div class="grid">{% for viewer in summary.viewers %}<div class="card"><h3>{{ viewer.label }}</h3><p>{{ viewer.description }}</p><a class="action" href="{{ viewer.href }}">打开 TransitionNet →</a></div>{% endfor %}</div></section>
+<section class="panel"><h2>证据边界</h2><ul><li>输入某个物种只把它作为搜索根，不会自动创建任何反应边；表中“通过”要求实际一阶鞍点和双侧下降端点。</li><li>部分 campaign 子进程被工具中断；其中已经完成的 B–TS–C 边保留，报告单独标记部分运行。</li><li>完整循环仍缺中性四碳糖到 2GO 的严格连接，不能用 C4 羰基叶立德代替。</li><li>所有边是 AIMNet2‑2025 气相 MLIP 证据，尚无 DFT/IRC。</li></ul></section>
+{% endblock %}

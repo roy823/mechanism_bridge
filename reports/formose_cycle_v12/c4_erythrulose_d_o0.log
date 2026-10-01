@@ -1,0 +1,8 @@
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 1, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 1053}
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 0, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 1982}
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 2, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 2909}
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 3, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 3833}
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 5, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 4774}
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 4, "status": "new_connection", "nodes": 3, "species": 2, "edges": 1, "evaluations": 6076}
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 6, "status": "ts_force_unconverged", "nodes": 3, "species": 2, "edges": 1, "evaluations": 7020}
+{"start": "c4_erythrulose_d_o0", "strategy": "hybrid", "attempt": 7, "status": "ts_force_unconverged", "nodes": 3, "species": 2, "edges": 1, "evaluations": 7969}

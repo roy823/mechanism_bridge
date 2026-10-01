@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "D:\学习相关文档\LEARN\MolGPA\mechanism_bridge\src\mechbridge\reaction_network.py", line 168, in search_connection
+    mol = geometry_mol(end.numbers, end.positions, charge)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\学习相关文档\LEARN\MolGPA\mechanism_bridge\src\mechbridge\event_graph.py", line 15, in geometry_mol
+    rdDetermineBonds.DetermineBonds(mol, charge=int(charge), allowChargedFragments=True,
+ValueError: Valence of atom 2 is 5, which is larger than the allowed maximum, 4

@@ -1,0 +1,88 @@
+{
+  "started_at": 1790842923.5441163,
+  "starts_file": "data/processed/formose_cycle_starts.jsonl",
+  "plan": [
+    {
+      "start": "c2_two_formaldehyde_o0",
+      "attempts": 30
+    },
+    {
+      "start": "c3_go_fa_o0",
+      "attempts": 36
+    },
+    {
+      "start": "c3_glyceraldehyde_d_o0",
+      "attempts": 36
+    },
+    {
+      "start": "c3_dha_o0",
+      "attempts": 36
+    },
+    {
+      "start": "c3_enediol_o0",
+      "attempts": 36
+    },
+    {
+      "start": "c4_ga_fa_o0",
+      "attempts": 36
+    },
+    {
+      "start": "c4_erythrulose_d_o0",
+      "attempts": 30
+    },
+    {
+      "start": "c4_two_glycolaldehyde_o0",
+      "attempts": 36
+    }
+  ],
+  "parallel_systems": 3,
+  "workers_per_system": 2,
+  "threads_per_worker": 4,
+  "completed": [
+    {
+      "start": "c2_two_formaldehyde_o0",
+      "attempts": 30,
+      "exit_code": 0,
+      "network": "reports/formose_cycle_v12/runs/c2_two_formaldehyde_o0/c2_two_formaldehyde_o0/hybrid/network.json",
+      "status": "completed",
+      "evaluations": 28499,
+      "physical_nodes": 12,
+      "species": 4,
+      "edges": 9
+    },
+    {
+      "start": "c3_glyceraldehyde_d_o0",
+      "attempts": 36,
+      "exit_code": 0,
+      "network": "reports/formose_cycle_v12/runs/c3_glyceraldehyde_d_o0/c3_glyceraldehyde_d_o0/hybrid/network.json",
+      "status": "completed",
+      "evaluations": 34528,
+      "physical_nodes": 7,
+      "species": 5,
+      "edges": 6
+    },
+    {
+      "start": "c3_go_fa_o0",
+      "attempts": 36,
+      "exit_code": 0,
+      "network": "reports/formose_cycle_v12/runs/c3_go_fa_o0/c3_go_fa_o0/hybrid/network.json",
+      "status": "completed",
+      "evaluations": 35367,
+      "physical_nodes": 11,
+      "species": 7,
+      "edges": 5
+    },
+    {
+      "start": "c4_ga_fa_o0",
+      "attempts": 36,
+      "exit_code": 0,
+      "network": "reports/formose_cycle_v12/runs/c4_ga_fa_o0/c4_ga_fa_o0/hybrid/network.json",
+      "status": "initial_minimum_unresolved",
+      "evaluations": 347,
+      "physical_nodes": 0,
+      "species": 0,
+      "edges": 0
+    }
+  ],
+  "failed": []
+}

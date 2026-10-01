@@ -1,0 +1,41 @@
+{
+  "status": "not_index_one",
+  "evidence": "MLIP_two_sided_mode_displacement_descent",
+  "is_IRC": false,
+  "DFT_verified": false,
+  "endpoints": [],
+  "optimizer_force_criterion": "original_cartesian_per_atom_norm",
+  "optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.0038682648446410894,
+    "force_converged": true,
+    "energy_eV": -6224.976033467392,
+    "frequencies_cm-1": [
+      -568.0233213470167,
+      -96.47207814402978,
+      189.76630451652582,
+      247.72386515547782,
+      321.0205279035664,
+      403.8827274939909,
+      650.4930156381955,
+      742.1920713373925,
+      895.9866648756231,
+      983.6933926457064,
+      1245.3446817727959,
+      1319.9958647449937,
+      1358.126248267086,
+      1536.8928534075599,
+      1576.5462790752404,
+      2920.0822651110625,
+      3062.177869138559,
+      3765.326904535483
+    ],
+    "imaginary_count": 2,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "evaluations": 484,
+  "model_calls": 438,
+  "model_seconds": 4.406450600246899,
+  "seconds": 5.308318614959717
+}

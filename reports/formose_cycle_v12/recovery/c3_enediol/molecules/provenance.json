@@ -1,0 +1,28 @@
+{
+  "event_count": 16,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "c3_enediol_o0\\hybrid\\attempt_000\\result.json": "00c19461ae8948bb1a667712f7283405c220c51d96d592d8686aaec21d7bfccc",
+    "c3_enediol_o0\\hybrid\\attempt_005\\result.json": "bbaaf53e2617d2db81aa7261ac80cc54bb4edcca5ae64b76eb55c9312d52e0bc",
+    "c3_enediol_o0\\hybrid\\attempt_006\\result.json": "fd0401841c2b2c2540be6306f232403b8538cb5da6da3aa4b1237e30072fff9f",
+    "c3_enediol_o0\\hybrid\\attempt_008\\result.json": "6f51a1865fadaf754ace5d6f1d273764fdfb473fa4beea627f5d60db71d679ed",
+    "c3_enediol_o0\\hybrid\\attempt_009\\result.json": "d95609d4abf3a6d154ce674ae64543292a28807575997bd85688163d3d269976",
+    "c3_enediol_o0\\hybrid\\attempt_012\\result.json": "24937b911e8a508c6ebf62c3368f90b9be36cf1410259d5506ca6d41fdebda2f",
+    "c3_enediol_o0\\hybrid\\attempt_013\\result.json": "1cecfb64b61f0622f2faab13b52fec8b7b2611cbda4a8d2db82cba1c6e7263a0",
+    "c3_enediol_o0\\hybrid\\attempt_018\\result.json": "3fc9c3376e962a86c609afb3ddab9dceba861e86b4f0c575a8573249cb6dc0ac",
+    "c3_enediol_o0\\hybrid\\attempt_019\\result.json": "cbf6f383590d6058098223a0c837d4200ed30d2f670c50b3dd8ba20e6a9dd46d",
+    "c3_enediol_o0\\hybrid\\attempt_027\\result.json": "bb91da1357f3cbb6f31b5aed3e9b29e4f9bfb7e1701ec2afcec2497f6fb93dfa",
+    "c3_enediol_o0\\hybrid\\attempt_034\\result.json": "4ce2c89a9345c4dfa4ee0e9de79d9f530dc4645841f021ffdfe7d0d855588de7",
+    "c3_enediol_o0\\hybrid\\attempt_036\\result.json": "162d07dea177acadf5943e652b90550caa06f233224b4f022e7bedbf550b17ab",
+    "c3_enediol_o0\\hybrid\\attempt_038\\result.json": "627ba39c6c0c225af1aa3b8509ce0489363f80c2c6ffc50532d784e1aad766ee",
+    "c3_enediol_o0\\hybrid\\attempt_039\\result.json": "f7863060452071e881e4b1d311b239cbf93ac537216689aa3be59509de4f3d90",
+    "c3_enediol_o0\\hybrid\\attempt_040\\result.json": "749baf1e6c6b9dcad4f7dae970526af1bc7f49d47e7c8b488dea6a7d200e54e8",
+    "c3_enediol_o0\\hybrid\\attempt_041\\result.json": "dbd09524add7d73c138ebd13fc18212ecb4d8ea2e7f1f3c8099d3a671f2e5cfb",
+    "c3_enediol_o0\\hybrid\\attempt_043\\result.json": "5ecd6d75a9ebf06b17d02738804c6cbc4176c54b8418beb9c0c94efdc11689da",
+    "c3_enediol_o0\\hybrid\\attempt_047\\result.json": "115d3442774906808a25a63e37b669b97a35f6c6fc01687e7631dc7f162d86b2"
+  }
+}

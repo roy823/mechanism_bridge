@@ -1,0 +1,61 @@
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 0, "status": "ts_force_unconverged", "nodes": 1, "species": 1, "edges": 0, "evaluations": 1048}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 1, "status": "new_connection", "nodes": 3, "species": 2, "edges": 1, "evaluations": 2199}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 2, "status": "new_connection", "nodes": 4, "species": 3, "edges": 2, "evaluations": 3177}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 3, "status": "ts_force_unconverged", "nodes": 4, "species": 3, "edges": 2, "evaluations": 4125}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 4, "status": "unresolved_minimum", "nodes": 4, "species": 3, "edges": 2, "evaluations": 5199}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 5, "status": "ts_force_unconverged", "nodes": 4, "species": 3, "edges": 2, "evaluations": 6131}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 6, "status": "ts_force_unconverged", "nodes": 4, "species": 3, "edges": 2, "evaluations": 7020}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 7, "status": "duplicate_connection", "nodes": 4, "species": 3, "edges": 2, "evaluations": 8007}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 8, "status": "ts_force_unconverged", "nodes": 4, "species": 3, "edges": 2, "evaluations": 8940}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 9, "status": "new_connection", "nodes": 5, "species": 4, "edges": 3, "evaluations": 10057}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 10, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 3, "evaluations": 11016}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 11, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 3, "evaluations": 11980}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 12, "status": "new_connection", "nodes": 5, "species": 4, "edges": 4, "evaluations": 13073}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 13, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 4, "evaluations": 13889}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 14, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 4, "evaluations": 14822}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 15, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 4, "evaluations": 15640}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 16, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 4, "evaluations": 16596}
+Atoms:
+	0 8 O chg: -2  deg: 0 exp: N/A imp: 0 hyb: 
+	1 6 C chg: 1  deg: 3 exp: N/A imp: 0 hyb: 
+	2 6 C chg: 0  deg: 3 exp: N/A imp: 0 hyb: 
+	3 8 O chg: 0  deg: 2 exp: N/A imp: 0 hyb: 
+	4 6 C chg: 0  deg: 4 exp: N/A imp: 0 hyb: 
+	5 8 O chg: 0  deg: 2 exp: N/A imp: 0 hyb: 
+	6 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	7 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	8 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	9 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	10 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+	11 1 H chg: 0  deg: 1 exp: N/A imp: 0 hyb: 
+Bonds:
+	0 2->1 order: 2
+	1 3->2 order: 1
+	2 4->2 order: 1
+	3 5->4 order: 1
+	4 6->1 order: 1
+	5 7->1 order: 1
+	6 8->3 order: 1
+	7 9->4 order: 1
+	8 10->4 order: 1
+	9 11->5 order: 1
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 17, "status": "calculation_failed", "nodes": 5, "species": 4, "edges": 4, "evaluations": 17665}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 18, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 4, "evaluations": 18454}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 19, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 4, "evaluations": 19390}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 20, "status": "ts_force_unconverged", "nodes": 5, "species": 4, "edges": 4, "evaluations": 20224}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 21, "status": "new_connection", "nodes": 6, "species": 4, "edges": 5, "evaluations": 21363}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 22, "status": "ts_force_unconverged", "nodes": 6, "species": 4, "edges": 5, "evaluations": 22228}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 23, "status": "ts_force_unconverged", "nodes": 6, "species": 4, "edges": 5, "evaluations": 23169}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 24, "status": "ts_force_unconverged", "nodes": 6, "species": 4, "edges": 5, "evaluations": 24013}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 25, "status": "ts_force_unconverged", "nodes": 6, "species": 4, "edges": 5, "evaluations": 24930}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 26, "status": "ts_force_unconverged", "nodes": 6, "species": 4, "edges": 5, "evaluations": 25841}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 27, "status": "ts_force_unconverged", "nodes": 6, "species": 4, "edges": 5, "evaluations": 26787}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 28, "status": "ts_force_unconverged", "nodes": 6, "species": 4, "edges": 5, "evaluations": 27720}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 29, "status": "new_connection", "nodes": 7, "species": 5, "edges": 6, "evaluations": 28610}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 30, "status": "ts_force_unconverged", "nodes": 7, "species": 5, "edges": 6, "evaluations": 29489}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 31, "status": "ts_force_unconverged", "nodes": 7, "species": 5, "edges": 6, "evaluations": 30407}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 32, "status": "ts_force_unconverged", "nodes": 7, "species": 5, "edges": 6, "evaluations": 31294}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 33, "status": "ts_force_unconverged", "nodes": 7, "species": 5, "edges": 6, "evaluations": 32229}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 34, "status": "ts_force_unconverged", "nodes": 7, "species": 5, "edges": 6, "evaluations": 33166}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "attempt": 35, "status": "unresolved_minimum", "nodes": 7, "species": 5, "edges": 6, "evaluations": 34528}
+{"start": "c3_glyceraldehyde_d_o0", "strategy": "hybrid", "status": "completed", "edges": 6, "evaluations": 34528}

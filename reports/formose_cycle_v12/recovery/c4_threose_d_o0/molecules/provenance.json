@@ -1,0 +1,21 @@
+{
+  "event_count": 11,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "c4_threose_d_o0\\hybrid\\attempt_006\\result.json": "ea5ab5b6f091720b6543a9cecd48f2d4dd6a15052aeef413a61216a8a11094a4",
+    "c4_threose_d_o0\\hybrid\\attempt_011\\result.json": "885979de4f436b29710d6902e68b5160268b2c61ae85dc94839df26a8dc366a0",
+    "c4_threose_d_o0\\hybrid\\attempt_013\\result.json": "bedf36f9fceb3a28b2c6600f57a48c1f1e8bcc82daec786b9899a43eeda926a5",
+    "c4_threose_d_o0\\hybrid\\attempt_015\\result.json": "41876d598db290fe643b977437bbedafe4075503e575fd61173efcf2c05e6518",
+    "c4_threose_d_o0\\hybrid\\attempt_016\\result.json": "83f2b0fb8bd8bd1863b0d02bde6ea07eae8032c8a564e4c9a301a9eddf707b6b",
+    "c4_threose_d_o0\\hybrid\\attempt_017\\result.json": "859657a624e01bb702b6ae80e3be162e67a0361fae8298dd61ff6fddfbc62d38",
+    "c4_threose_d_o0\\hybrid\\attempt_018\\result.json": "c26201ba5995a5d4e20dd1923bbf72667708150b6dacc9cd2c88a0ce6bcac8c0",
+    "c4_threose_d_o0\\hybrid\\attempt_020\\result.json": "3c716c8abb44a5c5c8046e342497c734bebae964792293b5fa749adec5d62e38",
+    "c4_threose_d_o0\\hybrid\\attempt_035\\result.json": "4b8e5aa7ebdee15b1ce6a3a5f4991397918c8b1f36708088642860628f2fb596",
+    "c4_threose_d_o0\\hybrid\\attempt_042\\result.json": "1e9685f2f578eed7ec636c6cfd16f27c3a735017bc2fc0a6307b87f5f9178a7f",
+    "c4_threose_d_o0\\hybrid\\attempt_044\\result.json": "d45ee246d2251f59daae9f1c0fad658454672f68264bfd2c08caefbc9f8b0225"
+  }
+}

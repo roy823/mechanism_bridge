@@ -1,0 +1,6 @@
+MinModeTranslate: STEP      TIME          ENERGY    MAX-FORCE     STEPSIZE    CURVATURE  ROT-STEPS
+MinModeTranslate:    0  16:31:27    -9332.795260       7.9596     --------    -9.020146          3
+MinModeTranslate:    0  16:31:27    -9332.795260       7.9596     0.100000    -9.020146          3
+MinModeTranslate:    1  16:31:27    -9333.870132       3.6242     --------     0.701622          3
+MinModeTranslate:    1  16:31:27    -9333.870132       3.6242     0.100000     0.701622          3
+MinModeTranslate:    2  16:31:27    -9333.192809       8.6805     --------    -6.560612          3

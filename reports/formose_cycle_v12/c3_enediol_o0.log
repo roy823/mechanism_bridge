@@ -1,0 +1,16 @@
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 0, "status": "new_connection", "nodes": 2, "species": 2, "edges": 1, "evaluations": 1116}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 1, "status": "ts_force_unconverged", "nodes": 2, "species": 2, "edges": 1, "evaluations": 1958}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 2, "status": "ts_force_unconverged", "nodes": 2, "species": 2, "edges": 1, "evaluations": 2818}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 3, "status": "ts_force_unconverged", "nodes": 2, "species": 2, "edges": 1, "evaluations": 3775}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 5, "status": "new_connection", "nodes": 3, "species": 2, "edges": 2, "evaluations": 4506}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 4, "status": "ts_force_unconverged", "nodes": 3, "species": 2, "edges": 2, "evaluations": 5367}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 6, "status": "new_connection", "nodes": 5, "species": 3, "edges": 3, "evaluations": 6379}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 7, "status": "ts_force_unconverged", "nodes": 5, "species": 3, "edges": 3, "evaluations": 7235}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 9, "status": "new_connection", "nodes": 6, "species": 4, "edges": 4, "evaluations": 8260}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 8, "status": "new_connection", "nodes": 7, "species": 4, "edges": 5, "evaluations": 9360}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 10, "status": "ts_force_unconverged", "nodes": 7, "species": 4, "edges": 5, "evaluations": 10236}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 11, "status": "ts_force_unconverged", "nodes": 7, "species": 4, "edges": 5, "evaluations": 11123}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 13, "status": "new_connection", "nodes": 8, "species": 5, "edges": 6, "evaluations": 11970}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 12, "status": "new_connection", "nodes": 9, "species": 6, "edges": 7, "evaluations": 13201}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 14, "status": "ts_force_unconverged", "nodes": 9, "species": 6, "edges": 7, "evaluations": 14131}
+{"start": "c3_enediol_o0", "strategy": "hybrid", "attempt": 15, "status": "ts_force_unconverged", "nodes": 9, "species": 6, "edges": 7, "evaluations": 15092}

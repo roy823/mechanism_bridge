@@ -1,0 +1,17 @@
+{
+  "event_count": 6,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "c3_glyceraldehyde_d_o0\\hybrid\\attempt_001\\result.json": "a5be7466fe24ee164d9f9bce21ed4efdf8a7a6f301623930c2872d42833714be",
+    "c3_glyceraldehyde_d_o0\\hybrid\\attempt_002\\result.json": "4cda011cc55c828652bae2effd540aa00feeabaf269311b03a86669bf1acf67c",
+    "c3_glyceraldehyde_d_o0\\hybrid\\attempt_007\\result.json": "a7147dc85f53bcd87b2a43c280c814500599e708a47f5a1b310339425b470b08",
+    "c3_glyceraldehyde_d_o0\\hybrid\\attempt_009\\result.json": "ed53f3fc8c9ae56ef715ab8f307eef4cb8e8a89d480a6738d98f95e7ff5c587b",
+    "c3_glyceraldehyde_d_o0\\hybrid\\attempt_012\\result.json": "6bae28b0caa78de6bd597d5aa90ba5a2c0b12be2d41729f05ee14348f7116034",
+    "c3_glyceraldehyde_d_o0\\hybrid\\attempt_021\\result.json": "10bbbea00e233c1e70f73e031286d2bdcf19db6a854d90b56e3d8cac84680b01",
+    "c3_glyceraldehyde_d_o0\\hybrid\\attempt_029\\result.json": "b4c353ad1cbe112285f32b9d360c936d467351759991e7e4583f58807dd52c0f"
+  }
+}

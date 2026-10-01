@@ -1,0 +1,42 @@
+{
+  "status": "calculation_failed",
+  "evidence": "MLIP_two_sided_mode_displacement_descent",
+  "is_IRC": false,
+  "DFT_verified": false,
+  "endpoints": [],
+  "optimizer_force_criterion": "original_cartesian_per_atom_norm",
+  "optimizer_converged": true,
+  "ts": {
+    "force_max_eV_A": 0.004954895004630089,
+    "force_converged": true,
+    "energy_eV": -6222.395263334733,
+    "frequencies_cm-1": [
+      -5809.946106007414,
+      230.90128504220633,
+      257.50337361006825,
+      373.19904258377034,
+      390.40877894852497,
+      668.9509884848615,
+      705.4093087113479,
+      1005.8543054245755,
+      1184.8110040141705,
+      1332.79858542476,
+      1422.8600066416354,
+      1467.9311248936297,
+      1675.0559902158113,
+      2292.7146839341744,
+      2532.0933413753837,
+      3591.5138795935263,
+      3909.1941643604423,
+      6230.006250229365
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6
+  },
+  "error": "ValueError: Valence of atom 2 is 5, which is larger than the allowed maximum, 4",
+  "evaluations": 933,
+  "model_calls": 841,
+  "model_seconds": 8.1958495992003,
+  "seconds": 9.973381280899048
+}

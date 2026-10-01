@@ -1,0 +1,23 @@
+{
+  "event_count": 11,
+  "figures": [],
+  "positions": "Actual saved unmodified coordinates; display applies one common rigid rotation per event",
+  "energy": "Saved trajectory energies and saved TS result; no new model calls",
+  "frames": "Reversed left BFGS descent + saved TS + forward right BFGS descent; no interpolation",
+  "bond_display": "Endpoint Lewis graphs; changing contacts dashed in TS/path, no TS bond-order claim",
+  "source_hashes": {
+    "c2_enediol_o0\\hybrid\\attempt_000\\result.json": "15a8ddcb54ab2c9e86b609c8d7ed2ccdb9f0a12289577d9e89051b4948c4416d",
+    "c2_enediol_o0\\hybrid\\attempt_002\\result.json": "dc93c4a185979399f8eaf35c51b8fad96c5730ea3d876b3615c9176c2cd40e82",
+    "c2_enediol_o0\\hybrid\\attempt_004\\result.json": "ce4bd9ed04e0b05436469358ef9befe2aa1eec203829c1aaac0384f52412ee17",
+    "c2_enediol_o0\\hybrid\\attempt_005\\result.json": "a38956efd33264d9126d3ee2eaacc9ec98e7b2ee6f5e8b85d369c0410d17f56a",
+    "c2_enediol_o0\\hybrid\\attempt_007\\result.json": "667ecd24cce919f180983dfac78b42310d89fa18fd76e186053e0da4176685d4",
+    "c2_enediol_o0\\hybrid\\attempt_008\\result.json": "9eab61a1989367e971aac7ff36ab1500f4bb47f06cc703b02f5774b116fb1b51",
+    "c2_enediol_o0\\hybrid\\attempt_011\\result.json": "3fcbddf5d432e7e78245a56d5728fb28c8bc9f36bc642a4b63fd9d4dbbfe1ba1",
+    "c2_enediol_o0\\hybrid\\attempt_013\\result.json": "28f5edd6abeedccc86e310511159cbcae536d51e903ebf21b59323aae7e8d690",
+    "c2_enediol_o0\\hybrid\\attempt_018\\result.json": "609ac631f3b2c2a96feea0c89d3881baf5ff49135bfe6a3e4d8565d34f208278",
+    "c2_enediol_o0\\hybrid\\attempt_020\\result.json": "46154c5e9ae983d323db981a39c18b2eea7b12c95c7f06f2cf26a94067281b26",
+    "c2_enediol_o0\\hybrid\\attempt_025\\result.json": "92b3de2086749e5e024b1721a49fa6bb354a09d7d05c18d5bd87948f306e79f3",
+    "c2_enediol_o0\\hybrid\\attempt_030\\result.json": "5bc7cbd46558c12cf41b45da65ffb75212ea4bb6540052e803ba14a776acb1dd",
+    "c2_enediol_o0\\hybrid\\attempt_031\\result.json": "44657ef8efa6cb793a9b60d3d9fab29180aa288b1c136ec2242d11e2f9211570"
+  }
+}
