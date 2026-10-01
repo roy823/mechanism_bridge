@@ -1,0 +1,487 @@
+{
+  "started_at": 1790865745.9228666,
+  "model": "aimnet2-2025 member0",
+  "plan": [
+    {
+      "start": "hmp_g6p_o0",
+      "system": "hmp_g6p",
+      "templates": [
+        "SynEPD:1531:forward",
+        "SynEPD:1536:reverse"
+      ]
+    },
+    {
+      "start": "hmp_f6p_o0",
+      "system": "hmp_f6p",
+      "templates": [
+        "SynEPD:1531:reverse",
+        "SynEPD:1536:forward"
+      ]
+    },
+    {
+      "start": "triose_gap_o0",
+      "system": "triose_gap",
+      "templates": [
+        "SynEPD:1762:forward",
+        "SynEPD:1763:reverse"
+      ]
+    },
+    {
+      "start": "triose_dhap_o0",
+      "system": "triose_dhap",
+      "templates": [
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward"
+      ]
+    },
+    {
+      "start": "pg_shift_3pg_o0",
+      "system": "pg_shift_3pg",
+      "templates": [
+        "grammar:vicinal_phosphate_migration"
+      ]
+    },
+    {
+      "start": "pg_shift_2pg_o0",
+      "system": "pg_shift_2pg",
+      "templates": [
+        "grammar:vicinal_phosphate_migration"
+      ]
+    },
+    {
+      "start": "pep_hydrolysis_pep_water_o0",
+      "system": "pep_hydrolysis_pep_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ]
+    },
+    {
+      "start": "pep_hydrolysis_pep_water_o1",
+      "system": "pep_hydrolysis_pep_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ]
+    },
+    {
+      "start": "pep_hydrolysis_pyruvate_pi_o0",
+      "system": "pep_hydrolysis_pyruvate_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ]
+    },
+    {
+      "start": "pep_hydrolysis_pyruvate_pi_o1",
+      "system": "pep_hydrolysis_pyruvate_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ]
+    },
+    {
+      "start": "glucose_phosphorylation_glucose_pi_o0",
+      "system": "glucose_phosphorylation_glucose_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ]
+    },
+    {
+      "start": "glucose_phosphorylation_glucose_pi_o1",
+      "system": "glucose_phosphorylation_glucose_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ]
+    },
+    {
+      "start": "glucose_phosphorylation_g6p_water_o0",
+      "system": "glucose_phosphorylation_g6p_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "glucose_phosphorylation_g6p_water_o1",
+      "system": "glucose_phosphorylation_g6p_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "f6p_phosphorylation_f6p_pi_o0",
+      "system": "f6p_phosphorylation_f6p_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ]
+    },
+    {
+      "start": "f6p_phosphorylation_f6p_pi_o1",
+      "system": "f6p_phosphorylation_f6p_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ]
+    },
+    {
+      "start": "f6p_phosphorylation_fbp_water_o0",
+      "system": "f6p_phosphorylation_fbp_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "f6p_phosphorylation_fbp_water_o1",
+      "system": "f6p_phosphorylation_fbp_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "bpg_hydrolysis_bpg_water_o0",
+      "system": "bpg_hydrolysis_bpg_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "bpg_hydrolysis_bpg_water_o1",
+      "system": "bpg_hydrolysis_bpg_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ]
+    },
+    {
+      "start": "bpg_hydrolysis_3pg_pi_o0",
+      "system": "bpg_hydrolysis_3pg_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ]
+    },
+    {
+      "start": "bpg_hydrolysis_3pg_pi_o1",
+      "system": "bpg_hydrolysis_3pg_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ]
+    }
+  ],
+  "endpoint_acceptance": "all carbon-containing fragments; force max <= 0.02 eV/A",
+  "TS_acceptance": "full-system force max <= 0.01 eV/A and exactly one imaginary mode",
+  "completed": [
+    {
+      "start": "triose_gap_o0",
+      "system": "triose_gap",
+      "templates": [
+        "SynEPD:1762:forward",
+        "SynEPD:1763:reverse"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/triose_gap_o0/triose_gap_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 9466,
+      "physical_nodes": 6,
+      "species": 3,
+      "edges": 4
+    },
+    {
+      "start": "hmp_f6p_o0",
+      "system": "hmp_f6p",
+      "templates": [
+        "SynEPD:1531:reverse",
+        "SynEPD:1536:forward"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/hmp_f6p_o0/hmp_f6p_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 8647,
+      "physical_nodes": 1,
+      "species": 1,
+      "edges": 0
+    },
+    {
+      "start": "hmp_g6p_o0",
+      "system": "hmp_g6p",
+      "templates": [
+        "SynEPD:1531:forward",
+        "SynEPD:1536:reverse"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/hmp_g6p_o0/hmp_g6p_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 15882,
+      "physical_nodes": 6,
+      "species": 5,
+      "edges": 3
+    },
+    {
+      "start": "triose_dhap_o0",
+      "system": "triose_dhap",
+      "templates": [
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/triose_dhap_o0/triose_dhap_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 16746,
+      "physical_nodes": 1,
+      "species": 1,
+      "edges": 0
+    },
+    {
+      "start": "pg_shift_3pg_o0",
+      "system": "pg_shift_3pg",
+      "templates": [
+        "grammar:vicinal_phosphate_migration"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/pg_shift_3pg_o0/pg_shift_3pg_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 12425,
+      "physical_nodes": 9,
+      "species": 5,
+      "edges": 5
+    },
+    {
+      "start": "pg_shift_2pg_o0",
+      "system": "pg_shift_2pg",
+      "templates": [
+        "grammar:vicinal_phosphate_migration"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/pg_shift_2pg_o0/pg_shift_2pg_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 12145,
+      "physical_nodes": 11,
+      "species": 5,
+      "edges": 6
+    },
+    {
+      "start": "pep_hydrolysis_pep_water_o1",
+      "system": "pep_hydrolysis_pep_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pep_water_o1/pep_hydrolysis_pep_water_o1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 12825,
+      "physical_nodes": 7,
+      "species": 3,
+      "edges": 3
+    },
+    {
+      "start": "pep_hydrolysis_pep_water_o0",
+      "system": "pep_hydrolysis_pep_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pep_water_o0/pep_hydrolysis_pep_water_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 13526,
+      "physical_nodes": 9,
+      "species": 2,
+      "edges": 4
+    },
+    {
+      "start": "pep_hydrolysis_pyruvate_pi_o0",
+      "system": "pep_hydrolysis_pyruvate_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pyruvate_pi_o0/pep_hydrolysis_pyruvate_pi_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 15292,
+      "physical_nodes": 3,
+      "species": 2,
+      "edges": 1
+    },
+    {
+      "start": "pep_hydrolysis_pyruvate_pi_o1",
+      "system": "pep_hydrolysis_pyruvate_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation",
+        "SynEPD:17:forward",
+        "SynEPD:17:reverse",
+        "SynEPD:1762:forward",
+        "SynEPD:1762:reverse",
+        "SynEPD:1763:forward",
+        "SynEPD:1763:reverse"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pyruvate_pi_o1/pep_hydrolysis_pyruvate_pi_o1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 16821,
+      "physical_nodes": 3,
+      "species": 3,
+      "edges": 1
+    },
+    {
+      "start": "glucose_phosphorylation_glucose_pi_o0",
+      "system": "glucose_phosphorylation_glucose_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_glucose_pi_o0/glucose_phosphorylation_glucose_pi_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 16412,
+      "physical_nodes": 5,
+      "species": 3,
+      "edges": 2
+    },
+    {
+      "start": "glucose_phosphorylation_glucose_pi_o1",
+      "system": "glucose_phosphorylation_glucose_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_glucose_pi_o1/glucose_phosphorylation_glucose_pi_o1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 15912,
+      "physical_nodes": 5,
+      "species": 3,
+      "edges": 2
+    },
+    {
+      "start": "glucose_phosphorylation_g6p_water_o0",
+      "system": "glucose_phosphorylation_g6p_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_g6p_water_o0/glucose_phosphorylation_g6p_water_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 13925,
+      "physical_nodes": 11,
+      "species": 4,
+      "edges": 5
+    },
+    {
+      "start": "glucose_phosphorylation_g6p_water_o1",
+      "system": "glucose_phosphorylation_g6p_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_g6p_water_o1/glucose_phosphorylation_g6p_water_o1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 16197,
+      "physical_nodes": 7,
+      "species": 2,
+      "edges": 3
+    },
+    {
+      "start": "f6p_phosphorylation_f6p_pi_o0",
+      "system": "f6p_phosphorylation_f6p_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_f6p_pi_o0/f6p_phosphorylation_f6p_pi_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 17007,
+      "physical_nodes": 3,
+      "species": 2,
+      "edges": 1
+    },
+    {
+      "start": "f6p_phosphorylation_f6p_pi_o1",
+      "system": "f6p_phosphorylation_f6p_pi",
+      "templates": [
+        "grammar:phosphate_monoester_condensation"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_f6p_pi_o1/f6p_phosphorylation_f6p_pi_o1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 16253,
+      "physical_nodes": 1,
+      "species": 1,
+      "edges": 0
+    },
+    {
+      "start": "f6p_phosphorylation_fbp_water_o0",
+      "system": "f6p_phosphorylation_fbp_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_fbp_water_o0/f6p_phosphorylation_fbp_water_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 15593,
+      "physical_nodes": 3,
+      "species": 2,
+      "edges": 1
+    },
+    {
+      "start": "f6p_phosphorylation_fbp_water_o1",
+      "system": "f6p_phosphorylation_fbp_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_fbp_water_o1/f6p_phosphorylation_fbp_water_o1/arrows/network.json",
+      "status": "completed",
+      "evaluations": 15479,
+      "physical_nodes": 7,
+      "species": 4,
+      "edges": 3
+    },
+    {
+      "start": "bpg_hydrolysis_bpg_water_o0",
+      "system": "bpg_hydrolysis_bpg_water",
+      "templates": [
+        "grammar:phosphate_monoester_hydrolysis"
+      ],
+      "exit_code": 0,
+      "network": "reports/glycolysis_relaxed_recovery_v15/runs/bpg_hydrolysis_bpg_water_o0/bpg_hydrolysis_bpg_water_o0/arrows/network.json",
+      "status": "completed",
+      "evaluations": 16545,
+      "physical_nodes": 3,
+      "species": 2,
+      "edges": 1
+    }
+  ],
+  "failed": []
+}

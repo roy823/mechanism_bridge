@@ -205,7 +205,9 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
         root_info,checks,initialization_evaluations=initialize_root(start,calculator,outdir,protocol)
         report['initial_relaxation_checks']=checks;report['initial_point']=root_info.copy()
         report['initialization_evaluations']=initialization_evaluations
-        if not root_info['force_converged'] or root_info['imaginary_count']!=0:
+        root_valid=(root_info['full_system_minimum'] if protocol.endpoint_acceptance=='full_system'
+                    else root_info['carbon_skeleton_force_converged'])
+        if not root_valid:
             report['status']='initial_minimum_unresolved';return report
         register(root_info,0);save()
         pending={};reserved_evaluations=0
@@ -235,7 +237,7 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
                     attempt['model_calls']=result.get('model_calls',0)
                     worker_evaluations+=attempt['evaluations'];worker_model_seconds+=result.get('model_seconds',0.)
                     reservation['status']='completed';reservation['actual_evaluations']=attempt['evaluations']
-                    if result['status']=='validated_descents':
+                    if result['status'] in ('validated_descents','validated_core_descents'):
                         source=nodes[attempt['source_node']]
                         registered=[register(endpoint,source['depth_discovered']+1) for endpoint in result['endpoints']]
                         ends=[item[0] for item in registered]
@@ -255,6 +257,7 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
                                     ts_positions_A=result['ts_positions_A'],
                                     barriers_eV=[e['barrier_eV'] for e in result['endpoints']],
                                     source_connected=attempt['source_node'] in ends,
+                                    endpoint_acceptance=result['status'],
                                     endpoint_chemistry=chemistry,
                                     kind='conformational' if chemistry['resonance_equivalent'] else 'chemical'))
                     save()

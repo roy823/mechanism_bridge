@@ -1,7 +1,7 @@
 {
-  "events": 30,
-  "species_nodes": 33,
-  "edges": 30,
+  "events": 59,
+  "species_nodes": 53,
+  "edges": 59,
   "source_hashes": {
     "reports/glycolysis_reconstruction_v14_final/runs/bpg_hydrolysis_3pg_pi_o0/bpg_hydrolysis_3pg_pi_o0/arrows/network.json": "638eac10ff5a9156d7074dda15fa6450683bfebe49a7c663945dcadd259944a3",
     "reports/glycolysis_reconstruction_v14_final/runs/bpg_hydrolysis_3pg_pi_o1/bpg_hydrolysis_3pg_pi_o1/arrows/network.json": "72097398445286afc469c4a122c10c29e9aa8f2a374e95b717ba5c553bbb6aa3",
@@ -32,6 +32,28 @@
     "reports/glycolysis_reconstruction_v14_final/runs/triose_dhap_o0/triose_dhap_o0/arrows/network.json": "50990c935f65387d726c95fbc9c91d11a08eef689fe87681174e2292eb0637da",
     "reports/glycolysis_reconstruction_v14_final/runs/triose_gap_o0/triose_gap_o0/arrows/network.json": "2de5e00302aadf8945ccd77bbfeb159d08f249e8367310d845571724672b2d59",
     "reports/glycolysis_targeted_refine_v14/dehydration/dehydration_2pg_o0/arrows/network.json": "3563fdcf4f917fb11a7986cde50b735039bea7d33f45c8ee3510eff23c12e4f0",
-    "reports/glycolysis_targeted_refine_v14/fbp/cleavage_fbp_o0/arrows/network.json": "2af50d33046f09bd6ae03209fbc673df08c13954b4baa8baa65bd68aee2c2ea1"
+    "reports/glycolysis_targeted_refine_v14/fbp/cleavage_fbp_o0/arrows/network.json": "2af50d33046f09bd6ae03209fbc673df08c13954b4baa8baa65bd68aee2c2ea1",
+    "reports/glycolysis_relaxed_recovery_v15/runs/bpg_hydrolysis_bpg_water_o0/bpg_hydrolysis_bpg_water_o0/arrows/network.json": "88d33d3f0039c5df6fef901b838ca6e159fda41dd68b7dcd8b10d523b62c6ca7",
+    "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_f6p_pi_o0/f6p_phosphorylation_f6p_pi_o0/arrows/network.json": "ba3af4b2ad5b439dd2cef76c836d6e38fd5614a85839c13e6ccc217a06263abe",
+    "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_f6p_pi_o1/f6p_phosphorylation_f6p_pi_o1/arrows/network.json": "07db94712daf04364e9999a27c686f6ddc2987e6d6680cf09da7d4d659bf2428",
+    "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_fbp_water_o0/f6p_phosphorylation_fbp_water_o0/arrows/network.json": "18a7b3e1deb606d5c16b5e812b36addf20d88fc789853a7542429174f28a911c",
+    "reports/glycolysis_relaxed_recovery_v15/runs/f6p_phosphorylation_fbp_water_o1/f6p_phosphorylation_fbp_water_o1/arrows/network.json": "536e8cd275bb3e489a266025c1946694f1380e1a763a21678e6b9d84750e5eed",
+    "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_g6p_water_o0/glucose_phosphorylation_g6p_water_o0/arrows/network.json": "7c0d958ec26669c0dd3a386bd3a8f7246c051ff8de1f1cacf82958857007bad1",
+    "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_g6p_water_o1/glucose_phosphorylation_g6p_water_o1/arrows/network.json": "a7f07287d839e78f5a847886fa53cdb2d7c0b04a9a880e282ac6c9aca276899d",
+    "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_glucose_pi_o0/glucose_phosphorylation_glucose_pi_o0/arrows/network.json": "428b8224989b8f745fa3545cfd3e086307419068b4664c3aaee465512fffe22a",
+    "reports/glycolysis_relaxed_recovery_v15/runs/glucose_phosphorylation_glucose_pi_o1/glucose_phosphorylation_glucose_pi_o1/arrows/network.json": "91e95ca9292cc7c12d05cfb7feb46d0f6d56ab041547b60beb8b78219fad0da8",
+    "reports/glycolysis_relaxed_recovery_v15/runs/hmp_f6p_o0/hmp_f6p_o0/arrows/network.json": "ab2b4ec10b5ac59c2bc71552baa9202b27f98773ed67ff2e3a32744ddca118ce",
+    "reports/glycolysis_relaxed_recovery_v15/runs/hmp_g6p_o0/hmp_g6p_o0/arrows/network.json": "50b6825e352a59948500f2894afc33c84a71f650429c483426013d4f4df4470e",
+    "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pep_water_o0/pep_hydrolysis_pep_water_o0/arrows/network.json": "81bc7f3851f8d9716ff413da07139487030a474aa6cb7e0cf8feeda2d67d6547",
+    "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pep_water_o1/pep_hydrolysis_pep_water_o1/arrows/network.json": "02f31e5b1908472d9ded81ab6e7c155d8e704f82dea33a9ad929540506ed0aec",
+    "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pyruvate_pi_o0/pep_hydrolysis_pyruvate_pi_o0/arrows/network.json": "93f25cd9560ad1a15ca70aec0253678165921652259f2a9e374467193da19753",
+    "reports/glycolysis_relaxed_recovery_v15/runs/pep_hydrolysis_pyruvate_pi_o1/pep_hydrolysis_pyruvate_pi_o1/arrows/network.json": "0ecbf0e0e66aa0f69e7faade18deec3a35084f8a843cbc1805645fade5098794",
+    "reports/glycolysis_relaxed_recovery_v15/runs/pg_shift_2pg_o0/pg_shift_2pg_o0/arrows/network.json": "f2b1f10ecd5b60c3d8b76366d8bed7cc7d2c9bcb1b4b3f88f35bd53957484a5d",
+    "reports/glycolysis_relaxed_recovery_v15/runs/pg_shift_3pg_o0/pg_shift_3pg_o0/arrows/network.json": "e79fe9f28cc5dc20c962574ce386f3e88308999b87d8c27fd8b2af3db70a59c0",
+    "reports/glycolysis_relaxed_recovery_v15/runs/triose_dhap_o0/triose_dhap_o0/arrows/network.json": "538e6631738e71a950778306984c94a2122e95faab3c0001a7dd825c1b36b6de",
+    "reports/glycolysis_relaxed_recovery_v15/runs/triose_gap_o0/triose_gap_o0/arrows/network.json": "1a46ccaf16a81171b2748307fe6a634055df8c00cd65959cbc43320a7055cbac",
+    "reports/glycolysis_relaxed_recovery_v15_resume/bpg_water_o1/bpg_hydrolysis_bpg_water_o1/arrows/network.json": "9343adfce136c56f51fa0deb21bbb2b5d745f32d55ced15bcf2a0664f0a899d5",
+    "reports/glycolysis_relaxed_recovery_v15_resume/pg3_pi_o0/bpg_hydrolysis_3pg_pi_o0/arrows/network.json": "ea7fd08be62212fde7f6f3e6f93ef4ae2737f45f8f22ef558eae7533676fd0ee",
+    "reports/glycolysis_relaxed_recovery_v15_resume/pg3_pi_o1/bpg_hydrolysis_3pg_pi_o1/arrows/network.json": "c450b7e35c27476181d116d646fce60afed7575cd23806248e180897e4b748ba"
   }
 }

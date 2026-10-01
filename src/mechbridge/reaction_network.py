@@ -16,6 +16,7 @@ from ase.calculators.calculator import Calculator, all_changes
 from ase.io import write
 from ase.optimize import BFGS
 from ase.mep import DimerControl, MinModeAtoms
+from rdkit import Chem
 from .physics import analyze_stationary
 from .event_graph import geometry_mol, graph_smiles
 from .search_seeds import make_seed
@@ -85,6 +86,8 @@ class SearchProtocol:
     initial_fmax: float = .003
     initial_curvature_steps: int = 3
     fmax: float = .005
+    endpoint_acceptance: str = 'full_system'
+    endpoint_core_fmax: float = .02
     hessian_step: float = .005
     hessian_batch_size: int = 1
     dimer_extrapolate_forces: bool = False
@@ -116,11 +119,30 @@ def atomic_json(path, data):
 
 
 def inspect_point(atoms, protocol):
+    force_norms=np.linalg.norm(atoms.get_forces(),axis=1)
     batch=atoms.calc.batch_forces if protocol.hessian_batch_size>1 else None
     analysis = analyze_stationary(atoms, protocol.fmax, protocol.hessian_step,
                                   batch_forces=batch,batch_size=protocol.hessian_batch_size)
+    analysis['force_norms_eV_A']=force_norms.tolist()
     modes = analysis.pop('modes')
     return analysis, modes
+
+
+def annotate_carbon_skeleton(analysis,mol,protocol):
+    """Record a relaxed endpoint criterion without hiding full-system checks."""
+    fragments=Chem.GetMolFrags(mol)
+    core=sorted(i for fragment in fragments
+        if any(mol.GetAtomWithIdx(j).GetAtomicNum()==6 for j in fragment) for i in fragment)
+    if not core:
+        core=list(range(mol.GetNumAtoms()))
+    spectator=sorted(set(range(mol.GetNumAtoms()))-set(core))
+    force=np.asarray(analysis['force_norms_eV_A'])
+    analysis.update(carbon_skeleton_atoms=core,spectator_atoms=spectator,
+        carbon_skeleton_force_max_eV_A=float(force[core].max()),
+        carbon_skeleton_force_converged=bool(force[core].max()<=protocol.endpoint_core_fmax),
+        spectator_force_max_eV_A=(float(force[spectator].max()) if spectator else 0.),
+        full_system_minimum=bool(analysis['force_converged'] and analysis['imaginary_count']==0))
+    return analysis
 
 
 def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
@@ -167,15 +189,23 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
             analysis['positions_A'] = end.positions.tolist()
             analysis['barrier_eV'] = ts['energy_eV'] - analysis['energy_eV']
             mol = geometry_mol(end.numbers, end.positions, charge)
+            annotate_carbon_skeleton(analysis,mol,protocol)
             analysis['graph_smiles'] = graph_smiles(mol)
             result['endpoints'].append(analysis)
             write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
-        if not all(e['force_converged'] and e['imaginary_count'] == 0 and e['barrier_eV'] >= -1e-4
-                   for e in result['endpoints']):
-            result['status'] = 'unresolved_minimum'
-        else:
+        full_valid=all(e['full_system_minimum'] and e['barrier_eV']>=-1e-4
+                       for e in result['endpoints'])
+        core_valid=all(e['carbon_skeleton_force_converged'] and e['barrier_eV']>=-1e-4
+                       for e in result['endpoints'])
+        result['endpoint_acceptance']=protocol.endpoint_acceptance
+        if full_valid:
             result['status'] = 'validated_descents'
             result['ts_positions_A'] = seed.positions.tolist()
+        elif protocol.endpoint_acceptance=='carbon_skeleton' and core_valid:
+            result['status'] = 'validated_core_descents'
+            result['ts_positions_A'] = seed.positions.tolist()
+        else:
+            result['status'] = 'unresolved_minimum'
     except BudgetExceeded:
         result['status'] = 'budget_exhausted'
     except Exception as exc:
@@ -211,8 +241,9 @@ def initialize_root(start, calculator, outdir, protocol):
         root_info,root_modes=inspect_point(root,protocol)
         checks.append(root_info.copy())
     write(outdir/'initial.xyz',root,write_results=False)
-    root_info.update(positions_A=root.positions.tolist(),graph_smiles=graph_smiles(
-        geometry_mol(root.numbers,root.positions,start['charge'])))
+    root_mol=geometry_mol(root.numbers,root.positions,start['charge'])
+    annotate_carbon_skeleton(root_info,root_mol,protocol)
+    root_info.update(positions_A=root.positions.tolist(),graph_smiles=graph_smiles(root_mol))
     return root_info,checks,calculator.calls
 
 
@@ -259,7 +290,9 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         report['initial_relaxation_checks']=checks
         report['initial_point']=root_info.copy()
         report['initialization_evaluations']=initialization_evaluations
-        if not root_info['force_converged'] or root_info['imaginary_count'] != 0:
+        root_valid=(root_info['full_system_minimum'] if protocol.endpoint_acceptance=='full_system'
+                    else root_info['carbon_skeleton_force_converged'])
+        if not root_valid:
             report['status'] = 'initial_minimum_unresolved'
             return report
         register(root_info, 0)
@@ -339,7 +372,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                                seconds=result['seconds'],
                                artifact=f'attempt_{aid:03d}/result.json')
                 attempts.append(attempt)
-                if result['status'] == 'validated_descents':
+                if result['status'] in ('validated_descents','validated_core_descents'):
                     ends = [register(e, node['depth_discovered']+1) for e in result['endpoints']]
                     attempt['observed_nodes'] = ends
                     attempt['source_is_endpoint'] = node_id in ends
@@ -365,6 +398,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                                 ts_positions_A=result['ts_positions_A'],
                                 barriers_eV=[e['barrier_eV'] for e in result['endpoints']],
                                 source_connected=node_id in ends,
+                                endpoint_acceptance=result['status'],
                                 endpoint_chemistry=chemistry,
                                 kind='conformational' if chemistry['resonance_equivalent'] else 'chemical'))
                 save()

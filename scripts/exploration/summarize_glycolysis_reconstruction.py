@@ -6,6 +6,7 @@ import sys
 
 from ase import Atoms
 from ase.io import write
+import networkx as nx
 from rdkit import Chem, RDLogger
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -17,6 +18,8 @@ from mechbridge.species_network import layout_species
 
 BASE = ROOT / 'reports/glycolysis_reconstruction_v14_final'
 TARGETED = ROOT / 'reports/glycolysis_targeted_refine_v14'
+RELAXED = ROOT / 'reports/glycolysis_relaxed_recovery_v15'
+RELAXED_RESUME = ROOT / 'reports/glycolysis_relaxed_recovery_v15_resume'
 STARTS = ROOT / 'data/processed/glycolysis_starts.jsonl'
 DEFINITIONS = ROOT / 'data/processed/glycolysis_definitions.json'
 
@@ -45,7 +48,8 @@ def constitution(smiles):
 
 
 def network_paths():
-    return sorted((BASE / 'runs').rglob('network.json')) + sorted(TARGETED.rglob('network.json'))
+    return (sorted((BASE / 'runs').rglob('network.json')) + sorted(TARGETED.rglob('network.json')) +
+            sorted(RELAXED.rglob('network.json')) + sorted(RELAXED_RESUME.rglob('network.json')))
 
 
 def main():
@@ -54,13 +58,17 @@ def main():
     networks = []
     for path in network_paths():
         data = json.loads(path.read_text(encoding='utf-8'))
-        networks.append((path, data))
+        if data['status'] == 'completed':
+            networks.append((path, data))
     edge_metrics = dict(chemical=0, conformational=0, source_connected=0,
-                        proposal_endpoint_matches=0)
+                        proposal_endpoint_matches=0, carbon_skeleton_accepted=0)
+    combined = nx.Graph()
     for _, network in networks:
         for edge in network.get('edges', []):
             edge_metrics[edge.get('kind', 'chemical')] += 1
             edge_metrics['source_connected'] += int(edge.get('source_connected', False))
+            edge_metrics['carbon_skeleton_accepted'] += int(
+                edge.get('endpoint_acceptance') == 'validated_core_descents')
             attempt = network['attempts'][edge['attempt']]
             proposal = attempt.get('proposal') or {}
             predicted = proposal.get('predicted_graph')
@@ -68,6 +76,7 @@ def main():
             observed = sorted(constitution(network['nodes'][i]['graph_smiles']) for i in edge['nodes'])
             if predicted and observed == sorted([constitution(source), constitution(predicted)]):
                 edge_metrics['proposal_endpoint_matches'] += 1
+            combined.add_edge(*observed)
     segments = []
     for label, left_id, right_id, evidence in PAIRS:
         target = {constitution(definitions[left_id]['canonical_smiles']),
@@ -78,7 +87,9 @@ def main():
                 observed = {constitution(network['nodes'][i]['graph_smiles']) for i in edge['nodes']}
                 if observed == target:
                     verified.append(dict(source=network['start']['id'], edge=edge['id'],
-                        barriers_eV=edge['barriers_eV'], network=path.relative_to(ROOT).as_posix()))
+                        barriers_eV=edge['barriers_eV'],
+                        acceptance=edge.get('endpoint_acceptance','legacy_full_system'),
+                        network=path.relative_to(ROOT).as_posix()))
             for attempt in network.get('attempts', []):
                 result_path = path.parent / attempt['artifact']
                 if not result_path.exists():
@@ -92,7 +103,12 @@ def main():
                         status=attempt['status'], barriers_eV=[x['barrier_eV'] for x in result['endpoints']],
                         endpoint_force_max_eV_A=[x['force_max_eV_A'] for x in result['endpoints']],
                         result=result_path.relative_to(ROOT).as_posix()))
-        segments.append(dict(name=label, evidence=evidence, recovered=bool(verified),
+        target_nodes=sorted(target)
+        path_states=(nx.shortest_path(combined,*target_nodes)
+                     if len(target_nodes)==2 and all(combined.has_node(x) for x in target_nodes)
+                        and nx.has_path(combined,*target_nodes) else [])
+        segments.append(dict(name=label, evidence=evidence, recovered=bool(path_states),
+                             direct_recovered=bool(verified),path=path_states,
                              verified_edges=verified, unresolved_exact_candidates=unresolved))
     summary = dict(model='aimnet2-2025 member0', reference='B97-3c',
         physical_scope='neutral fully protonated phosphate microstates; enzyme-free gas-phase surrogate',
@@ -113,11 +129,13 @@ def main():
         f"平均每条注册边 {summary['evaluations_per_registered_edge']:.0f} 次评估。", '',
         f"其中 {edge_metrics['chemical']} 条化学边、{edge_metrics['conformational']} 条构象边；"
         f"{edge_metrics['source_connected']} 条包含发起极小值，"
-        f"{edge_metrics['proposal_endpoint_matches']} 条严格命中符号提议端点。", '',
-        '## 已知片段审计', '', '| 片段 | 证据类型 | 严格恢复 | 未完全收敛的精确端点候选 |',
-        '|---|---|---:|---:|']
+        f"{edge_metrics['proposal_endpoint_matches']} 条严格命中符号提议端点，"
+        f"{edge_metrics['carbon_skeleton_accepted']} 条仅按含碳骨架验收。", '',
+        '## 已知片段审计', '', '| 片段 | 证据类型 | 直接边 | 多步可达 | 未完全收敛的精确端点候选 |',
+        '|---|---|---:|---:|---:|']
     for row in segments:
-        lines.append(f"| {row['name']} | {row['evidence']} | {'是' if row['recovered'] else '否'} | "
+        lines.append(f"| {row['name']} | {row['evidence']} | {'是' if row['direct_recovered'] else '否'} | "
+                     f"{'是' if row['recovered'] else '否'} | "
                      f"{len(row['unresolved_exact_candidates'])} |")
     lines += ['', f"严格恢复 {summary['recovered_segments']}/{summary['total_segments']} 个参考片段。", '',
               '## 严格恢复的物理边', '']
@@ -125,7 +143,7 @@ def main():
         for edge in row['verified_edges']:
             barriers = ' / '.join(f"{value:.3f}" for value in edge['barriers_eV'])
             lines.append(f"- **{row['name']}**：双向候选能垒 {barriers} eV；"
-                         f"来源 `{edge['network']}`。")
+                         f"端点验收 `{edge['acceptance']}`；来源 `{edge['network']}`。")
     lines += ['', '## 证据边界', '',
         '- 所有物理边均为 AIMNet2-2025 鞍点与双侧下降，不是 DFT/IRC。',
         '- 磷酸基团采用完全质子化中性微观状态；结果不代表生理 pH。',
@@ -138,7 +156,17 @@ def main():
     events = []
     for path, network in networks:
         if network['status'] == 'completed' and network.get('edges'):
+            required=[path.parent/f"attempt_{edge['attempt']:03d}"/'descent_-1.traj'
+                      for edge in network['edges']]
+            if not all(item.exists() for item in required):
+                continue
             loaded, _ = load_events(path.parents[2], [path], layout_network=False)
+            relative=path.relative_to(ROOT).as_posix()
+            tag=('v15r' if 'glycolysis_relaxed_recovery_v15_resume' in relative else
+                 'v15' if 'glycolysis_relaxed_recovery_v15' in relative else
+                 'v14t' if 'glycolysis_targeted_refine_v14' in relative else 'v14')
+            for event in loaded:
+                event['id']=f"{tag}_{event['id']}"
             events.extend(loaded)
     nodes, node_by_key = [], {}
 

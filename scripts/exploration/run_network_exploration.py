@@ -38,6 +38,8 @@ def main():
     p.add_argument('--fmax',type=float,default=.005)
     p.add_argument('--initial-fmax',type=float,default=.003)
     p.add_argument('--initial-steps',type=int,default=250)
+    p.add_argument('--endpoint-acceptance',choices=['full_system','carbon_skeleton'],default='full_system')
+    p.add_argument('--endpoint-core-fmax',type=float,default=.02)
     p.add_argument('--geometry-seeds-per-node',type=int,default=9)
     p.add_argument('--dimer-extrapolate-forces',action='store_true',
                    help='Enable ASE force extrapolation; optional, validated only on a small fixed-seed benchmark')
@@ -56,6 +58,7 @@ def main():
         ts_steps=a.ts_steps,descent_steps=a.descent_steps,
         random_seed=a.seed,hessian_batch_size=a.hessian_batch_size,fmax=a.fmax,
         initial_fmax=a.initial_fmax,initial_steps=a.initial_steps,
+        endpoint_acceptance=a.endpoint_acceptance,endpoint_core_fmax=a.endpoint_core_fmax,
         geometry_seeds_per_node=a.geometry_seeds_per_node,
         dimer_extrapolate_forces=a.dimer_extrapolate_forces)
     starts = [json.loads(l) for l in a.starts.read_text(encoding='utf-8').splitlines()]

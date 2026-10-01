@@ -1,0 +1,17 @@
+{
+  "status": "ts_force_unconverged",
+  "evidence": "MLIP_two_sided_mode_displacement_descent",
+  "is_IRC": false,
+  "DFT_verified": false,
+  "endpoints": [],
+  "optimizer_force_criterion": "original_cartesian_per_atom_norm",
+  "optimizer_converged": false,
+  "ts": {
+    "force_max_eV_A": 0.24524657428264618,
+    "force_converged": false
+  },
+  "evaluations": 2771,
+  "model_calls": 2771,
+  "model_seconds": 47.455246501311194,
+  "seconds": 56.207661390304565
+}

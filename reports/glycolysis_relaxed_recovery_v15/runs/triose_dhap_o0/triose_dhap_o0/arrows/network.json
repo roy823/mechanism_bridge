@@ -1,0 +1,1839 @@
+{
+  "start": {
+    "id": "triose_dhap_o0",
+    "atomic_numbers": [
+      8,
+      6,
+      6,
+      8,
+      15,
+      8,
+      8,
+      8,
+      6,
+      8,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "positions_A": [
+      [
+        1.7540485807495134,
+        -1.239789399543245,
+        -1.269225987461774
+      ],
+      [
+        1.4302036451225988,
+        -0.6692511795227021,
+        -0.23845140818164254
+      ],
+      [
+        -0.027611424764702925,
+        -0.5214841825334197,
+        0.09162117994459361
+      ],
+      [
+        -0.6408190959396186,
+        0.2632016666073161,
+        -0.9028517965059157
+      ],
+      [
+        -2.3004184662552123,
+        0.3953610003608405,
+        -0.533442632168021
+      ],
+      [
+        -2.975390288243668,
+        1.2347695131196326,
+        -1.5942166178315944
+      ],
+      [
+        -3.0158591450639203,
+        -1.1387263235642264,
+        -0.503889828487886
+      ],
+      [
+        -2.505402290774214,
+        1.1389974458203431,
+        0.9735943662049515
+      ],
+      [
+        2.5017051523567155,
+        -0.13731990363727953,
+        0.6745871147905974
+      ],
+      [
+        3.2571448660499587,
+        0.8397897519561149,
+        0.013059549634540396
+      ],
+      [
+        -0.47201565692456005,
+        -1.541706766148472,
+        0.1249861839603635
+      ],
+      [
+        -0.13927861177503714,
+        -0.044881971468652616,
+        1.0910915809722976
+      ],
+      [
+        -2.7985073849470026,
+        -1.5357785660350514,
+        -1.3848997822728706
+      ],
+      [
+        -2.0046712985855004,
+        1.9908506970481092,
+        0.905077555817967
+      ],
+      [
+        3.1728314717342134,
+        -0.9729806245340757,
+        0.9641811043650909
+      ],
+      [
+        2.070452237383111,
+        0.28220612526035455,
+        1.6110698653521678
+      ],
+      [
+        2.693587709877324,
+        1.6567427168144142,
+        -0.022290448132866358
+      ]
+    ],
+    "charge": 0,
+    "multiplicity": 1,
+    "provenance": {
+      "system": "triose_dhap",
+      "segment": "GAP <-> DHAP",
+      "evidence": "full_atom",
+      "inventory": "inventory_02",
+      "input_smiles": "O=C(CO)COP(=O)(O)O",
+      "parts": [
+        "dhap"
+      ],
+      "microstate": "fully protonated neutral phosphate surrogate",
+      "conformer_source": "ETKDGv3+UFF",
+      "conformer_energies": [
+        5.376354975626178
+      ],
+      "random_seed": 72500,
+      "reference_TS_or_product_geometry_used": false
+    }
+  },
+  "strategy": "arrows",
+  "protocol": {
+    "seed_policy": "reactant_graph_and_rigid_encounter_seeds_v6",
+    "max_attempts": 6,
+    "seeds_per_node": 1,
+    "geometry_seeds_per_node": 9,
+    "total_evaluations": 18000,
+    "evaluations_per_attempt": 4000,
+    "ts_steps": 500,
+    "initial_steps": 700,
+    "descent_steps": 400,
+    "initial_fmax": 0.02,
+    "initial_curvature_steps": 3,
+    "fmax": 0.01,
+    "endpoint_acceptance": "carbon_skeleton",
+    "endpoint_core_fmax": 0.02,
+    "hessian_step": 0.005,
+    "hessian_batch_size": 32,
+    "dimer_extrapolate_forces": true,
+    "mode_displacement": 0.15,
+    "geometry_tolerance_A": 0.15,
+    "energy_tolerance_eV": 0.03,
+    "random_seed": 17
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "depth_discovered": 0,
+      "force_max_eV_A": 0.01577320694923401,
+      "force_converged": false,
+      "energy_eV": -24790.331750763507,
+      "frequencies_cm-1": [
+        -30.09086651005429,
+        31.313666642843327,
+        77.46350687536432,
+        84.96406398145979,
+        103.03520185787667,
+        169.2959709184042,
+        227.52766566368442,
+        242.16410272489202,
+        274.48786882208316,
+        315.8369967719878,
+        323.74064136657637,
+        372.3607696529937,
+        388.29011980637284,
+        418.625109899895,
+        430.4612383836969,
+        450.6086154020184,
+        464.5950541636916,
+        680.7163422723714,
+        769.8950969242044,
+        822.1896554960584,
+        843.4460767627799,
+        865.6538425705146,
+        907.1911731845873,
+        993.4790751868472,
+        1016.9475371901708,
+        1020.5775456861627,
+        1051.031167075513,
+        1109.401971886774,
+        1155.5581578703539,
+        1248.8676525268797,
+        1292.446984413754,
+        1301.2641543421867,
+        1316.4761470540202,
+        1375.6031994318253,
+        1437.470199805842,
+        1484.820075491424,
+        1490.6389647936132,
+        1748.4049121048981,
+        2883.307663655758,
+        2913.7449593586557,
+        3003.6718196293664,
+        3022.288841974868,
+        3614.330315657997,
+        3746.0756270766747,
+        3749.501399035666
+      ],
+      "imaginary_count": 1,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "force_norms_eV_A": [
+        0.014230017550289631,
+        0.01577320694923401,
+        0.003477848134934902,
+        0.012413659133017063,
+        0.008777262642979622,
+        0.008915615268051624,
+        0.015407807193696499,
+        0.012204006314277649,
+        0.006189578678458929,
+        0.004454021342098713,
+        0.009646451100707054,
+        0.014102017506957054,
+        0.012056929059326649,
+        0.009234407916665077,
+        0.007395360618829727,
+        0.008865313604474068,
+        0.010528252460062504
+      ],
+      "carbon_skeleton_atoms": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "spectator_atoms": [],
+      "carbon_skeleton_force_max_eV_A": 0.01577320694923401,
+      "carbon_skeleton_force_converged": true,
+      "spectator_force_max_eV_A": 0.0,
+      "full_system_minimum": false,
+      "positions_A": [
+        [
+          1.8279316328046586,
+          0.5953384006131467,
+          -1.3178083389643958
+        ],
+        [
+          1.5020284604240697,
+          0.11115033084819767,
+          -0.25674823357358145
+        ],
+        [
+          0.06406121965861077,
+          -0.1484017963025377,
+          0.12910040855284635
+        ],
+        [
+          -0.804700371950528,
+          0.3412344864832864,
+          -0.8798924217643347
+        ],
+        [
+          -2.3908502495631847,
+          0.28666359282272563,
+          -0.658757281689664
+        ],
+        [
+          -3.1823425386952717,
+          0.7801543273955379,
+          -1.7996507705423466
+        ],
+        [
+          -2.643862470273213,
+          -1.252061740763431,
+          -0.22718818710184158
+        ],
+        [
+          -2.5855145896776404,
+          1.081231701670343,
+          0.7367234970115153
+        ],
+        [
+          2.5711552872697214,
+          -0.27268978589528076,
+          0.7484059352725169
+        ],
+        [
+          3.862623836088635,
+          -0.0611495983925502,
+          0.2576555463398864
+        ],
+        [
+          -0.08489180221253956,
+          -1.2230283933064292,
+          0.2622501702409616
+        ],
+        [
+          -0.1624555055034852,
+          0.32216678589800907,
+          1.088017657654517
+        ],
+        [
+          -3.3209710565503383,
+          -1.6511923244736977,
+          -0.7879408977267907
+        ],
+        [
+          -3.244559884042161,
+          1.7791580025328333,
+          0.6330115057284423
+        ],
+        [
+          2.4367559417234923,
+          -1.3243183865565122,
+          1.0343675073184102
+        ],
+        [
+          2.4051995734926326,
+          0.30917568623888914,
+          1.666529114438531
+        ],
+        [
+          3.750395188561853,
+          0.3265683726096938,
+          -0.6280714670511903
+        ]
+      ],
+      "graph_smiles": "O=C(CO)COP(=O)(O)O"
+    }
+  ],
+  "edges": [],
+  "attempts": [
+    {
+      "id": 0,
+      "source_node": 0,
+      "status": "ts_force_unconverged",
+      "reservation_id": "ee4c356fba5b94c20666485e7bc63828bfdd5c2ac253faa68a2a36a0d7449db1",
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:1762:reverse",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.0829132033853697,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              8,
+              14,
+              1
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              9,
+              16,
+              0
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              14,
+              1,
+              0
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.222158276558616,
+          -0.4150191811801016,
+          -0.42304218854917486
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "O=C(CO)CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4](-[#6&+0&A&v4](=[#8&+0&A&v2])-[#6&+0&A&v4])-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            5,
+            3
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 0.45138746999606594,
+        "geometric_fit_nfev": 10,
+        "geometric_fit_optimality": 0.0007844165817163382,
+        "predicted_graph": "O=CC(O)COP(=O)(O)O",
+        "arrows": [
+          {
+            "source": [
+              16,
+              9
+            ],
+            "sink": [
+              9,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Pi-/Sigma+"
+          },
+          {
+            "source": [
+              8,
+              14
+            ],
+            "sink": [
+              1,
+              14
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Sigma+"
+          },
+          {
+            "source": [
+              1,
+              0
+            ],
+            "sink": [
+              0
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              0
+            ],
+            "sink": [
+              16,
+              0
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              16
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              14
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              8,
+              9
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              8,
+              14
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              9,
+              16
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2104636134,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.3554800000274554
+      },
+      "evaluations": 2909,
+      "artifact": "attempt_000/result.json",
+      "seconds": 56.15319061279297,
+      "model_calls": 2909
+    },
+    {
+      "id": 1,
+      "source_node": 0,
+      "status": "ts_force_unconverged",
+      "reservation_id": "223091d4f5a89d214083d69fd8a9d1ed56fe76e065e8b31244de73c3e9565e27",
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:1762:reverse",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.059258087150739,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              8,
+              15,
+              1
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              9,
+              16,
+              0
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              15,
+              1,
+              0
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.20839973839583412,
+          -0.4124562562358733,
+          -0.39776057744832743
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "O=C(CO)CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4](-[#6&+0&A&v4](=[#8&+0&A&v2])-[#6&+0&A&v4])-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            5,
+            3
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 0.4475030573104586,
+        "geometric_fit_nfev": 9,
+        "geometric_fit_optimality": 0.000839274766013895,
+        "predicted_graph": "O=CC(O)COP(=O)(O)O",
+        "arrows": [
+          {
+            "source": [
+              16,
+              9
+            ],
+            "sink": [
+              9,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Pi-/Sigma+"
+          },
+          {
+            "source": [
+              8,
+              15
+            ],
+            "sink": [
+              1,
+              15
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Sigma+"
+          },
+          {
+            "source": [
+              1,
+              0
+            ],
+            "sink": [
+              0
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              0
+            ],
+            "sink": [
+              16,
+              0
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              16
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              15
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              8,
+              9
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              8,
+              15
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              9,
+              16
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2541598172,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.3399800999904983
+      },
+      "evaluations": 2791,
+      "artifact": "attempt_001/result.json",
+      "seconds": 55.26552176475525,
+      "model_calls": 2791
+    },
+    {
+      "id": 2,
+      "source_node": 0,
+      "status": "ts_force_unconverged",
+      "reservation_id": "7a9431a7308b0ed48cd1598cfd76d5404a4c923cce429cd50ef69a58f4d590f5",
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:1763:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.0827739723217498,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              8,
+              14,
+              1
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              9,
+              16,
+              0
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              14,
+              1,
+              0
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.22211214334673646,
+          -0.41498567978900586,
+          -0.42300270664365086
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "O=C(CO)CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4](-[#1&+0&A&v1])-[#6&+0&A&v4](-[#6&+0&A&v4])=[#8&+0&A&v2]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 0.4513863976199168,
+        "geometric_fit_nfev": 10,
+        "geometric_fit_optimality": 0.0009524120051759566,
+        "predicted_graph": "O=CC(O)COP(=O)(O)O",
+        "arrows": [
+          {
+            "source": [
+              0,
+              1
+            ],
+            "sink": [
+              16,
+              0
+            ],
+            "electrons": 2,
+            "kind": "Pi-/Sigma+"
+          },
+          {
+            "source": [
+              14,
+              8
+            ],
+            "sink": [
+              14,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Sigma+"
+          },
+          {
+            "source": [
+              9
+            ],
+            "sink": [
+              9,
+              8
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              16,
+              9
+            ],
+            "sink": [
+              9
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              16
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              14
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              8,
+              9
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              8,
+              14
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              9,
+              16
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2104636134,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.3989780000410974
+      },
+      "evaluations": 2893,
+      "artifact": "attempt_002/result.json",
+      "seconds": 61.82375478744507,
+      "model_calls": 2893
+    },
+    {
+      "id": 3,
+      "source_node": 0,
+      "status": "ts_force_unconverged",
+      "reservation_id": "884144be47178a31834b7514343ccec7a582fbb97a4861078a3c22054c3d2a40",
+      "proposal": {
+        "fraction": 0.35,
+        "template_id": "SynEPD:1763:forward",
+        "displacement_norm_A": 0.6,
+        "unnormalized_fit_displacement_A": 1.0591079696066366,
+        "progress_targets": [
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35,
+          0.35
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              8,
+              15,
+              1
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              9,
+              16,
+              0
+            ],
+            "degrees": 110.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              15,
+              1,
+              0
+            ],
+            "degrees": 100.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          0.20834821985908936,
+          -0.4124225904109253,
+          -0.39772234989279276
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "O=C(CO)CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4](-[#1&+0&A&v1])-[#6&+0&A&v4](-[#6&+0&A&v4])=[#8&+0&A&v2]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            0,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 0.44750191926308824,
+        "geometric_fit_nfev": 9,
+        "geometric_fit_optimality": 0.0008267253635614591,
+        "predicted_graph": "O=CC(O)COP(=O)(O)O",
+        "arrows": [
+          {
+            "source": [
+              0,
+              1
+            ],
+            "sink": [
+              16,
+              0
+            ],
+            "electrons": 2,
+            "kind": "Pi-/Sigma+"
+          },
+          {
+            "source": [
+              15,
+              8
+            ],
+            "sink": [
+              15,
+              1
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Sigma+"
+          },
+          {
+            "source": [
+              9
+            ],
+            "sink": [
+              9,
+              8
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              16,
+              9
+            ],
+            "sink": [
+              9
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              16
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              15
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              8,
+              9
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              8,
+              15
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              9,
+              16
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 2541598172,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.35833109996747226
+      },
+      "evaluations": 2800,
+      "artifact": "attempt_003/result.json",
+      "seconds": 58.89618968963623,
+      "model_calls": 2800
+    },
+    {
+      "id": 4,
+      "source_node": 0,
+      "status": "ts_force_unconverged",
+      "reservation_id": "6a968426094a94e6dfc36c54d278209a350fcb13f6b212fb3a7efc785d6f8187",
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "SynEPD:1762:reverse",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 1.467097776387889,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4,
+          0.4,
+          0.4,
+          0.7000000000000001,
+          0.7000000000000001
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              8,
+              14,
+              1
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              9,
+              16,
+              0
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              14,
+              1,
+              0
+            ],
+            "degrees": 110.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.18627898360769535,
+          -0.7135030857326539,
+          -0.48252617489212735
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "O=C(CO)CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4](-[#6&+0&A&v4](=[#8&+0&A&v2])-[#6&+0&A&v4])-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            5,
+            3
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 1.1180874764739477,
+        "geometric_fit_nfev": 9,
+        "geometric_fit_optimality": 0.0013998183166720683,
+        "predicted_graph": "O=CC(O)COP(=O)(O)O",
+        "arrows": [
+          {
+            "source": [
+              16,
+              9
+            ],
+            "sink": [
+              9,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Pi-/Sigma+"
+          },
+          {
+            "source": [
+              8,
+              14
+            ],
+            "sink": [
+              1,
+              14
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Sigma+"
+          },
+          {
+            "source": [
+              1,
+              0
+            ],
+            "sink": [
+              0
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              0
+            ],
+            "sink": [
+              16,
+              0
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              16
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              14
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              8,
+              9
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              8,
+              14
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              9,
+              16
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 1190498765,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.38165569998091087
+      },
+      "evaluations": 2746,
+      "artifact": "attempt_004/result.json",
+      "seconds": 56.92464876174927,
+      "model_calls": 2746
+    },
+    {
+      "id": 5,
+      "source_node": 0,
+      "status": "budget_exhausted",
+      "reservation_id": "a5253cd403a7d271d0e287ade619775eba8990ff684744312ded7b91b513371b",
+      "proposal": {
+        "fraction": 0.55,
+        "template_id": "SynEPD:1762:reverse",
+        "displacement_norm_A": 1.0,
+        "unnormalized_fit_displacement_A": 1.448198564777963,
+        "progress_targets": [
+          0.7000000000000001,
+          0.4,
+          0.4,
+          0.4,
+          0.7000000000000001,
+          0.7000000000000001
+        ],
+        "angle_targets": [
+          {
+            "atoms": [
+              8,
+              15,
+              1
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              9,
+              16,
+              0
+            ],
+            "degrees": 140.0,
+            "kind": "hydrogen_transfer"
+          },
+          {
+            "atoms": [
+              15,
+              1,
+              0
+            ],
+            "degrees": 110.0,
+            "kind": "carbonyl_addition"
+          }
+        ],
+        "angle_cosines_at_seed": [
+          -0.19871854442025547,
+          -0.7150525023293683,
+          -0.4661376253182303
+        ],
+        "mode_policy": "damped_internal_coordinate_tangent_at_seed",
+        "template_source_graph": "O=C(CO)CO",
+        "transferred": true,
+        "origin": "local_transfer_of_published_SynEPD_arrows",
+        "pattern_smarts": "[#1&+0&A&v1]-[#8&+0&A&v2]-[#6&+0&A&v4](-[#6&+0&A&v4](=[#8&+0&A&v2])-[#6&+0&A&v4])-[#1&+0&A&v1]",
+        "encounter_orientation": null,
+        "intermolecular": false,
+        "source_sink_couplings": [
+          [
+            5,
+            3
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "geometric_fit_cost": 1.112873779933881,
+        "geometric_fit_nfev": 9,
+        "geometric_fit_optimality": 0.001126577024168425,
+        "predicted_graph": "O=CC(O)COP(=O)(O)O",
+        "arrows": [
+          {
+            "source": [
+              16,
+              9
+            ],
+            "sink": [
+              9,
+              8
+            ],
+            "electrons": 2,
+            "kind": "Pi-/Sigma+"
+          },
+          {
+            "source": [
+              8,
+              15
+            ],
+            "sink": [
+              1,
+              15
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/Sigma+"
+          },
+          {
+            "source": [
+              1,
+              0
+            ],
+            "sink": [
+              0
+            ],
+            "electrons": 2,
+            "kind": "LP-/Pi+"
+          },
+          {
+            "source": [
+              0
+            ],
+            "sink": [
+              16,
+              0
+            ],
+            "electrons": 2,
+            "kind": "Sigma-/LP+"
+          }
+        ],
+        "net_edits": [
+          {
+            "atoms": [
+              0,
+              1
+            ],
+            "before": 2.0,
+            "after": 1.0
+          },
+          {
+            "atoms": [
+              0,
+              16
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              1,
+              15
+            ],
+            "before": 0,
+            "after": 1
+          },
+          {
+            "atoms": [
+              8,
+              9
+            ],
+            "before": 1.0,
+            "after": 2.0
+          },
+          {
+            "atoms": [
+              8,
+              15
+            ],
+            "before": 1.0,
+            "after": 0.0
+          },
+          {
+            "atoms": [
+              9,
+              16
+            ],
+            "before": 1.0,
+            "after": 0.0
+          }
+        ],
+        "random_seed": 1367842346,
+        "seed_strategy": "arrows",
+        "generation_seconds": 0.32339269999647513
+      },
+      "evaluations": 2334,
+      "artifact": "attempt_005/result.json",
+      "seconds": 49.02921009063721,
+      "model_calls": 2334
+    }
+  ],
+  "reservations": [
+    {
+      "id": "ee4c356fba5b94c20666485e7bc63828bfdd5c2ac253faa68a2a36a0d7449db1",
+      "identity": {
+        "species": "O=C(CO)COP(=O)(O)O",
+        "conformer_cluster": "O=C(CO)COP(=O)(O)O|c0",
+        "action": "{\"arrows\": [{\"electrons\": 2, \"kind\": \"Pi-/Sigma+\", \"sink\": [9, 8], \"source\": [16, 9]}, {\"electrons\": 2, \"kind\": \"Sigma-/Sigma+\", \"sink\": [1, 14], \"source\": [8, 14]}, {\"electrons\": 2, \"kind\": \"LP-/Pi+\", \"sink\": [0], \"source\": [1, 0]}, {\"electrons\": 2, \"kind\": \"Sigma-/LP+\", \"sink\": [16, 0], \"source\": [0]}], \"edits\": [{\"after\": 1.0, \"atoms\": [0, 1], \"before\": 2.0}, {\"after\": 1, \"atoms\": [0, 16], \"before\": 0}, {\"after\": 1, \"atoms\": [1, 14], \"before\": 0}, {\"after\": 2.0, \"atoms\": [8, 9], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [8, 14], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [9, 16], \"before\": 1.0}]}",
+        "variant": 0,
+        "seed_strategy": "arrows"
+      },
+      "status": "completed",
+      "attempt": 0,
+      "source_node": 0,
+      "reserved_evaluations": 4000,
+      "actual_evaluations": 2909
+    },
+    {
+      "id": "223091d4f5a89d214083d69fd8a9d1ed56fe76e065e8b31244de73c3e9565e27",
+      "identity": {
+        "species": "O=C(CO)COP(=O)(O)O",
+        "conformer_cluster": "O=C(CO)COP(=O)(O)O|c0",
+        "action": "{\"arrows\": [{\"electrons\": 2, \"kind\": \"Pi-/Sigma+\", \"sink\": [9, 8], \"source\": [16, 9]}, {\"electrons\": 2, \"kind\": \"Sigma-/Sigma+\", \"sink\": [1, 15], \"source\": [8, 15]}, {\"electrons\": 2, \"kind\": \"LP-/Pi+\", \"sink\": [0], \"source\": [1, 0]}, {\"electrons\": 2, \"kind\": \"Sigma-/LP+\", \"sink\": [16, 0], \"source\": [0]}], \"edits\": [{\"after\": 1.0, \"atoms\": [0, 1], \"before\": 2.0}, {\"after\": 1, \"atoms\": [0, 16], \"before\": 0}, {\"after\": 1, \"atoms\": [1, 15], \"before\": 0}, {\"after\": 2.0, \"atoms\": [8, 9], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [8, 15], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [9, 16], \"before\": 1.0}]}",
+        "variant": 0,
+        "seed_strategy": "arrows"
+      },
+      "status": "completed",
+      "attempt": 1,
+      "source_node": 0,
+      "reserved_evaluations": 4000,
+      "actual_evaluations": 2791
+    },
+    {
+      "id": "7a9431a7308b0ed48cd1598cfd76d5404a4c923cce429cd50ef69a58f4d590f5",
+      "identity": {
+        "species": "O=C(CO)COP(=O)(O)O",
+        "conformer_cluster": "O=C(CO)COP(=O)(O)O|c0",
+        "action": "{\"arrows\": [{\"electrons\": 2, \"kind\": \"Pi-/Sigma+\", \"sink\": [16, 0], \"source\": [0, 1]}, {\"electrons\": 2, \"kind\": \"Sigma-/Sigma+\", \"sink\": [14, 1], \"source\": [14, 8]}, {\"electrons\": 2, \"kind\": \"LP-/Pi+\", \"sink\": [9, 8], \"source\": [9]}, {\"electrons\": 2, \"kind\": \"Sigma-/LP+\", \"sink\": [9], \"source\": [16, 9]}], \"edits\": [{\"after\": 1.0, \"atoms\": [0, 1], \"before\": 2.0}, {\"after\": 1, \"atoms\": [0, 16], \"before\": 0}, {\"after\": 1, \"atoms\": [1, 14], \"before\": 0}, {\"after\": 2.0, \"atoms\": [8, 9], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [8, 14], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [9, 16], \"before\": 1.0}]}",
+        "variant": 0,
+        "seed_strategy": "arrows"
+      },
+      "status": "completed",
+      "attempt": 2,
+      "source_node": 0,
+      "reserved_evaluations": 4000,
+      "actual_evaluations": 2893
+    },
+    {
+      "id": "884144be47178a31834b7514343ccec7a582fbb97a4861078a3c22054c3d2a40",
+      "identity": {
+        "species": "O=C(CO)COP(=O)(O)O",
+        "conformer_cluster": "O=C(CO)COP(=O)(O)O|c0",
+        "action": "{\"arrows\": [{\"electrons\": 2, \"kind\": \"Pi-/Sigma+\", \"sink\": [16, 0], \"source\": [0, 1]}, {\"electrons\": 2, \"kind\": \"Sigma-/Sigma+\", \"sink\": [15, 1], \"source\": [15, 8]}, {\"electrons\": 2, \"kind\": \"LP-/Pi+\", \"sink\": [9, 8], \"source\": [9]}, {\"electrons\": 2, \"kind\": \"Sigma-/LP+\", \"sink\": [9], \"source\": [16, 9]}], \"edits\": [{\"after\": 1.0, \"atoms\": [0, 1], \"before\": 2.0}, {\"after\": 1, \"atoms\": [0, 16], \"before\": 0}, {\"after\": 1, \"atoms\": [1, 15], \"before\": 0}, {\"after\": 2.0, \"atoms\": [8, 9], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [8, 15], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [9, 16], \"before\": 1.0}]}",
+        "variant": 0,
+        "seed_strategy": "arrows"
+      },
+      "status": "completed",
+      "attempt": 3,
+      "source_node": 0,
+      "reserved_evaluations": 4000,
+      "actual_evaluations": 2800
+    },
+    {
+      "id": "6a968426094a94e6dfc36c54d278209a350fcb13f6b212fb3a7efc785d6f8187",
+      "identity": {
+        "species": "O=C(CO)COP(=O)(O)O",
+        "conformer_cluster": "O=C(CO)COP(=O)(O)O|c0",
+        "action": "{\"arrows\": [{\"electrons\": 2, \"kind\": \"Pi-/Sigma+\", \"sink\": [9, 8], \"source\": [16, 9]}, {\"electrons\": 2, \"kind\": \"Sigma-/Sigma+\", \"sink\": [1, 14], \"source\": [8, 14]}, {\"electrons\": 2, \"kind\": \"LP-/Pi+\", \"sink\": [0], \"source\": [1, 0]}, {\"electrons\": 2, \"kind\": \"Sigma-/LP+\", \"sink\": [16, 0], \"source\": [0]}], \"edits\": [{\"after\": 1.0, \"atoms\": [0, 1], \"before\": 2.0}, {\"after\": 1, \"atoms\": [0, 16], \"before\": 0}, {\"after\": 1, \"atoms\": [1, 14], \"before\": 0}, {\"after\": 2.0, \"atoms\": [8, 9], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [8, 14], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [9, 16], \"before\": 1.0}]}",
+        "variant": 1,
+        "seed_strategy": "arrows"
+      },
+      "status": "completed",
+      "attempt": 4,
+      "source_node": 0,
+      "reserved_evaluations": 4000,
+      "actual_evaluations": 2746
+    },
+    {
+      "id": "a5253cd403a7d271d0e287ade619775eba8990ff684744312ded7b91b513371b",
+      "identity": {
+        "species": "O=C(CO)COP(=O)(O)O",
+        "conformer_cluster": "O=C(CO)COP(=O)(O)O|c0",
+        "action": "{\"arrows\": [{\"electrons\": 2, \"kind\": \"Pi-/Sigma+\", \"sink\": [9, 8], \"source\": [16, 9]}, {\"electrons\": 2, \"kind\": \"Sigma-/Sigma+\", \"sink\": [1, 15], \"source\": [8, 15]}, {\"electrons\": 2, \"kind\": \"LP-/Pi+\", \"sink\": [0], \"source\": [1, 0]}, {\"electrons\": 2, \"kind\": \"Sigma-/LP+\", \"sink\": [16, 0], \"source\": [0]}], \"edits\": [{\"after\": 1.0, \"atoms\": [0, 1], \"before\": 2.0}, {\"after\": 1, \"atoms\": [0, 16], \"before\": 0}, {\"after\": 1, \"atoms\": [1, 15], \"before\": 0}, {\"after\": 2.0, \"atoms\": [8, 9], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [8, 15], \"before\": 1.0}, {\"after\": 0.0, \"atoms\": [9, 16], \"before\": 1.0}]}",
+        "variant": 1,
+        "seed_strategy": "arrows"
+      },
+      "status": "completed",
+      "attempt": 5,
+      "source_node": 0,
+      "reserved_evaluations": 2334,
+      "actual_evaluations": 2334
+    }
+  ],
+  "evidence": "MLIP_descents_not_DFT_IRC",
+  "library_policy": "published_local_arrows_plus_explicit_reactant_grammar_v7; filter=SynEPD:1762:reverse,SynEPD:1763:forward",
+  "status": "completed",
+  "scheduler": {
+    "kind": "central_species_registry_process_workers",
+    "workers": 2,
+    "threads_per_worker": 3,
+    "dispatch": "completion_driven",
+    "reservation_key": "species_graph+conformer_cluster+action+geometry_variant",
+    "conformer_policy": "symmetry-aware molecular RMSD clusters; lowest-energy representative per cluster",
+    "conformer_cluster_tolerance_A": 0.5
+  },
+  "unsupported_conformer_clusters": [],
+  "exhausted_conformer_clusters": [],
+  "initial_relaxation_checks": [
+    {
+      "force_max_eV_A": 0.01577320694923401,
+      "force_converged": false,
+      "energy_eV": -24790.331750763507,
+      "frequencies_cm-1": [
+        -30.09086651005429,
+        31.313666642843327,
+        77.46350687536432,
+        84.96406398145979,
+        103.03520185787667,
+        169.2959709184042,
+        227.52766566368442,
+        242.16410272489202,
+        274.48786882208316,
+        315.8369967719878,
+        323.74064136657637,
+        372.3607696529937,
+        388.29011980637284,
+        418.625109899895,
+        430.4612383836969,
+        450.6086154020184,
+        464.5950541636916,
+        680.7163422723714,
+        769.8950969242044,
+        822.1896554960584,
+        843.4460767627799,
+        865.6538425705146,
+        907.1911731845873,
+        993.4790751868472,
+        1016.9475371901708,
+        1020.5775456861627,
+        1051.031167075513,
+        1109.401971886774,
+        1155.5581578703539,
+        1248.8676525268797,
+        1292.446984413754,
+        1301.2641543421867,
+        1316.4761470540202,
+        1375.6031994318253,
+        1437.470199805842,
+        1484.820075491424,
+        1490.6389647936132,
+        1748.4049121048981,
+        2883.307663655758,
+        2913.7449593586557,
+        3003.6718196293664,
+        3022.288841974868,
+        3614.330315657997,
+        3746.0756270766747,
+        3749.501399035666
+      ],
+      "imaginary_count": 1,
+      "imaginary_threshold_cm-1": 30.0,
+      "rigid_mode_count": 6,
+      "force_norms_eV_A": [
+        0.014230017550289631,
+        0.01577320694923401,
+        0.003477848134934902,
+        0.012413659133017063,
+        0.008777262642979622,
+        0.008915615268051624,
+        0.015407807193696499,
+        0.012204006314277649,
+        0.006189578678458929,
+        0.004454021342098713,
+        0.009646451100707054,
+        0.014102017506957054,
+        0.012056929059326649,
+        0.009234407916665077,
+        0.007395360618829727,
+        0.008865313604474068,
+        0.010528252460062504
+      ]
+    }
+  ],
+  "initial_point": {
+    "force_max_eV_A": 0.01577320694923401,
+    "force_converged": false,
+    "energy_eV": -24790.331750763507,
+    "frequencies_cm-1": [
+      -30.09086651005429,
+      31.313666642843327,
+      77.46350687536432,
+      84.96406398145979,
+      103.03520185787667,
+      169.2959709184042,
+      227.52766566368442,
+      242.16410272489202,
+      274.48786882208316,
+      315.8369967719878,
+      323.74064136657637,
+      372.3607696529937,
+      388.29011980637284,
+      418.625109899895,
+      430.4612383836969,
+      450.6086154020184,
+      464.5950541636916,
+      680.7163422723714,
+      769.8950969242044,
+      822.1896554960584,
+      843.4460767627799,
+      865.6538425705146,
+      907.1911731845873,
+      993.4790751868472,
+      1016.9475371901708,
+      1020.5775456861627,
+      1051.031167075513,
+      1109.401971886774,
+      1155.5581578703539,
+      1248.8676525268797,
+      1292.446984413754,
+      1301.2641543421867,
+      1316.4761470540202,
+      1375.6031994318253,
+      1437.470199805842,
+      1484.820075491424,
+      1490.6389647936132,
+      1748.4049121048981,
+      2883.307663655758,
+      2913.7449593586557,
+      3003.6718196293664,
+      3022.288841974868,
+      3614.330315657997,
+      3746.0756270766747,
+      3749.501399035666
+    ],
+    "imaginary_count": 1,
+    "imaginary_threshold_cm-1": 30.0,
+    "rigid_mode_count": 6,
+    "force_norms_eV_A": [
+      0.014230017550289631,
+      0.01577320694923401,
+      0.003477848134934902,
+      0.012413659133017063,
+      0.008777262642979622,
+      0.008915615268051624,
+      0.015407807193696499,
+      0.012204006314277649,
+      0.006189578678458929,
+      0.004454021342098713,
+      0.009646451100707054,
+      0.014102017506957054,
+      0.012056929059326649,
+      0.009234407916665077,
+      0.007395360618829727,
+      0.008865313604474068,
+      0.010528252460062504
+    ],
+    "carbon_skeleton_atoms": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "spectator_atoms": [],
+    "carbon_skeleton_force_max_eV_A": 0.01577320694923401,
+    "carbon_skeleton_force_converged": true,
+    "spectator_force_max_eV_A": 0.0,
+    "full_system_minimum": false,
+    "positions_A": [
+      [
+        1.8279316328046586,
+        0.5953384006131467,
+        -1.3178083389643958
+      ],
+      [
+        1.5020284604240697,
+        0.11115033084819767,
+        -0.25674823357358145
+      ],
+      [
+        0.06406121965861077,
+        -0.1484017963025377,
+        0.12910040855284635
+      ],
+      [
+        -0.804700371950528,
+        0.3412344864832864,
+        -0.8798924217643347
+      ],
+      [
+        -2.3908502495631847,
+        0.28666359282272563,
+        -0.658757281689664
+      ],
+      [
+        -3.1823425386952717,
+        0.7801543273955379,
+        -1.7996507705423466
+      ],
+      [
+        -2.643862470273213,
+        -1.252061740763431,
+        -0.22718818710184158
+      ],
+      [
+        -2.5855145896776404,
+        1.081231701670343,
+        0.7367234970115153
+      ],
+      [
+        2.5711552872697214,
+        -0.27268978589528076,
+        0.7484059352725169
+      ],
+      [
+        3.862623836088635,
+        -0.0611495983925502,
+        0.2576555463398864
+      ],
+      [
+        -0.08489180221253956,
+        -1.2230283933064292,
+        0.2622501702409616
+      ],
+      [
+        -0.1624555055034852,
+        0.32216678589800907,
+        1.088017657654517
+      ],
+      [
+        -3.3209710565503383,
+        -1.6511923244736977,
+        -0.7879408977267907
+      ],
+      [
+        -3.244559884042161,
+        1.7791580025328333,
+        0.6330115057284423
+      ],
+      [
+        2.4367559417234923,
+        -1.3243183865565122,
+        1.0343675073184102
+      ],
+      [
+        2.4051995734926326,
+        0.30917568623888914,
+        1.666529114438531
+      ],
+      [
+        3.750395188561853,
+        0.3265683726096938,
+        -0.6280714670511903
+      ]
+    ],
+    "graph_smiles": "O=C(CO)COP(=O)(O)O"
+  },
+  "initialization_evaluations": 273,
+  "species_nodes": [
+    {
+      "id": 0,
+      "graph_smiles": "O=C(CO)COP(=O)(O)O",
+      "physical_nodes": [
+        0
+      ],
+      "representative_node": 0,
+      "energy_eV": -24790.331750763507,
+      "depth_discovered": 0
+    }
+  ],
+  "physical_to_species": {
+    "0": 0
+  },
+  "conformer_clusters": [
+    {
+      "id": 0,
+      "graph_smiles": "O=C(CO)COP(=O)(O)O",
+      "physical_nodes": [
+        0
+      ],
+      "representative_node": 0,
+      "energy_eV": -24790.331750763507
+    }
+  ],
+  "root_component_nodes": [
+    0
+  ],
+  "evaluations": 16746,
+  "model_calls": 16648,
+  "model_seconds": 273.3758731043199,
+  "elapsed_seconds": 230.88191360002384,
+  "searched_nodes": [
+    0
+  ],
+  "expanded_species": [
+    "O=C(CO)COP(=O)(O)O"
+  ],
+  "conformer_cluster_batches": {
+    "O=C(CO)COP(=O)(O)O|c0": 6
+  },
+  "stop_reason": "attempt_budget"
+}
