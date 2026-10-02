@@ -375,6 +375,7 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
     try:
         seed.calc = calculator
         write(outdir / 'seed.xyz', seed, write_results=False)
+        np.save(outdir / 'seed_positions_A.npy', seed.positions)   # full precision for exact replays
         np.save(outdir / 'seed_direction.npy', direction)
         with DimerControl(logfile=str(outdir/'dimer.log'), dimer_separation=.005,
                           maximum_translation=.1, max_num_rot=3,

@@ -139,6 +139,8 @@ def replay(entry, variant, backends, outdir, threads):
     if potential not in backends:
         backends[potential] = load_potential(potential, ROOT, threads=threads)[0]
     seed = read(attempt/'seed.xyz')
+    if (attempt/'seed_positions_A.npy').exists():     # seed.xyz keeps 8 decimals only
+        seed.positions = np.load(attempt/'seed_positions_A.npy')
     direction = np.load(attempt/'seed_direction.npy')
     start = network['start']
     # As in explore(): the validator also sets the backend's charge/multiplicity.
