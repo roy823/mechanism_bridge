@@ -18,6 +18,7 @@ from mechbridge.reaction_network import (CONNECTION_PROTOCOLS, ENCOUNTER_POLICIE
 from mechbridge.search_seeds import SEED_FEATURES
 from mechbridge.parallel_network import START_METHODS, explore_shared
 from mechbridge.provenance import runtime_provenance
+from mechbridge.oracle_library import OracleReferenceLibrary
 
 
 # CLI flag destination -> SearchProtocol field.
@@ -93,6 +94,9 @@ def main():
     p.add_argument('--evaluations', type=int, default=6000)
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
+    p.add_argument('--oracle-references',type=Path,
+                   help='Engine-only track: propose exactly the reference net edits at the root '
+                        '(knows the answer; bond_edits/center_random only)')
     p.add_argument('--protocol-json',type=Path,
                    help='Frozen protocol (all SearchProtocol fields except random_seed); '
                         'protocol flags above must then stay at their defaults')
@@ -101,6 +105,8 @@ def main():
         changed = sorted('--'+k.replace('_','-') for k in PROTOCOL_FLAGS if getattr(a,k)!=p.get_default(k))
         if changed:
             p.error(f'--protocol-json cannot be combined with protocol flags: {changed}')
+    if a.oracle_references and set(a.strategies) - {'geometry', 'bond_edits', 'center_random'}:
+        p.error('--oracle-references supports geometry, bond_edits and center_random only')
     if a.workers<1 or a.threads_per_worker<1 or a.seeds_per_node<1 or a.symbolic_seed_scale<=0:
         p.error('workers, threads-per-worker, seeds-per-node and symbolic-seed-scale must be positive')
     protocol = protocol_from_json(a.protocol_json, a.seed) if a.protocol_json else SearchProtocol(
@@ -148,6 +154,8 @@ def main():
         symbolic_library_audit=dict(library.audit),
         template_ids=a.template_ids,
         scheduler=('central_species_registry_process_workers' if a.workers>1 else 'sequential'),
+        oracle_references=(dict(path=str(a.oracle_references), policy=OracleReferenceLibrary.policy,
+            sha256=hashlib.sha256(a.oracle_references.read_bytes()).hexdigest()) if a.oracle_references else None),
         workers=a.workers,threads_per_worker=a.threads_per_worker,
         start_method=a.start_method if a.workers>1 else None,
         protocol_json=(dict(path=str(a.protocol_json),
@@ -155,14 +163,17 @@ def main():
         provenance=runtime_provenance(ROOT),
         started_at_unix=time.time())
     atomic_json(a.outdir/'manifest.json', manifest)
+    oracle = ({r['id']: r for r in map(json.loads, a.oracle_references.read_text(encoding='utf-8').splitlines())}
+              if a.oracle_references else None)
     for start in starts:
+        start_library = OracleReferenceLibrary(oracle[start['id']], start) if oracle else library
         for strategy in a.strategies:
             if a.workers>1:
-                report=explore_shared(start,library,backend,strategy,a.outdir/start['id']/strategy,
+                report=explore_shared(start,start_library,backend,strategy,a.outdir/start['id']/strategy,
                     a.potential,ROOT,protocol,a.workers,a.threads_per_worker,a.device,a.compile_model,
                     a.start_method)
             else:
-                report=explore(start,library,backend,strategy,a.outdir/start['id']/strategy,protocol)
+                report=explore(start,start_library,backend,strategy,a.outdir/start['id']/strategy,protocol)
             print(json.dumps(dict(start=start['id'], strategy=strategy, status=report['status'],
                                   edges=len(report['edges']), evaluations=report['evaluations'])), flush=True)
 

@@ -41,6 +41,7 @@ from mechbridge.reaction_network import (BudgetExceeded, CountedCalculator, alig
                                          atomic_json, descend_endpoints, edge_chemistry,
                                          initialize_root, inspect_point, is_recoverable_failure,
                                          molecular_rmsd)
+from mechbridge.oracle_library import OracleReferenceLibrary  # noqa: E402
 from mechbridge.symbolic_library import ArrowLibrary, ResonanceAwareLibrary  # noqa: E402
 from run_network_exploration import protocol_from_json  # noqa: E402
 
@@ -183,7 +184,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--starts', type=Path, required=True)
     parser.add_argument('--start-id', required=True)
-    parser.add_argument('--arm', choices=['edits', 'b2f2'], required=True)
+    parser.add_argument('--arm', choices=['edits', 'b2f2', 'oracle'], required=True)
+    parser.add_argument('--oracle-references', type=Path,
+                        help='References file for the oracle arm (reference net edits; knows the answer)')
     parser.add_argument('--seed', type=int, default=17)
     parser.add_argument('--protocol-json', type=Path, required=True)
     parser.add_argument('--potential', default='aimnet2-rxn')
@@ -246,7 +249,12 @@ def main():
         register(root, 0)
         root_atoms = Atoms(numbers=numbers, positions=root['positions_A'])
         root_mol = mols[0]
-        if args.arm == 'edits':
+        if args.arm == 'oracle':
+            references = {r['id']: r for r in map(json.loads, args.oracle_references.read_text(encoding='utf-8').splitlines())}
+            oracle = OracleReferenceLibrary(references[start['id']], start)
+            sets = proposal_driving_sets(oracle.propose(root_mol))
+            report['baseline']['oracle_policy'] = oracle.policy
+        elif args.arm == 'edits':
             library = ArrowLibrary(ROOT/'data/raw/synepd/polar.json')
             if protocol.proposal_resonance_forms:      # same proposals as the symbolic arms
                 library = ResonanceAwareLibrary(library, protocol.proposal_resonance_forms)
