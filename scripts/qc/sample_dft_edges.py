@@ -1,9 +1,10 @@
 """Pre-registered Fig. 6 sample: stratified random MLIP edges for DFT verification.
 
 Frame: every new edge whose attempt result is 'validated_descents' in the given
-campaign directories. Duplicates across runs (same unordered graph pair, TS
-aligned RMSD <= 0.15 A and |dE| <= 0.03 eV) keep the first occurrence in
-manifest order. Strata are strategies; a campaign whose protocol is not
+campaign directories. Duplicates within a stratum (same start, unordered graph
+pair, TS aligned RMSD <= 0.15 A and |dE| <= 0.03 eV) keep the first occurrence
+in manifest order; an edge found by two strategies stays in both strata (a DFT
+result for one physical edge is then shared). Strata are strategies; a campaign whose protocol is not
 FP-JCTC-1 labels its strata strategy@protocol (e.g. the paired arrows-legacy
 arm). Each stratum gets --per-stratum edges; a short stratum is taken whole and
 the remainder is spread over the others in proportion to their size. The seed
@@ -45,7 +46,7 @@ def frame(campaigns):
                                       kind=edge['kind'], pair=pair, ts_energy_eV=edge['ts_energy_eV'],
                                       ts=np.asarray(edge['ts_positions_A'])))
     for edge in edges:
-        if any(k['start'] == edge['start'] and k['pair'] == edge['pair'] and
+        if any(k['stratum'] == edge['stratum'] and k['start'] == edge['start'] and k['pair'] == edge['pair'] and
                abs(k['ts_energy_eV'] - edge['ts_energy_eV']) <= .03 and aligned_rmsd(k['ts'], edge['ts']) <= .15
                for k in kept):
             continue

@@ -32,4 +32,6 @@ def test_strata_label_non_main_protocols(tmp_path):
     edges, kept = module.frame([main, legacy])
     assert [e['stratum'] for e in edges] == ['arrows', 'arrows@FP-JCTC-1-arrows-legacy']
     assert [e['strategy'] for e in edges] == ['arrows', 'arrows']      # run directories keep the strategy
-    assert len(kept) == 1                                             # same start, pair and TS: one edge kept
+    assert len(kept) == 2                                             # duplicates are removed within a stratum only
+    again, kept = module.frame([main, main])
+    assert len(again) == 2 and len(kept) == 1
