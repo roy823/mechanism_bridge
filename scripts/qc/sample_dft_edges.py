@@ -3,9 +3,11 @@
 Frame: every new edge whose attempt result is 'validated_descents' in the given
 campaign directories. Duplicates across runs (same unordered graph pair, TS
 aligned RMSD <= 0.15 A and |dE| <= 0.03 eV) keep the first occurrence in
-manifest order. Strata are strategies; each gets --per-stratum edges; a short
-stratum is taken whole and the remainder is spread over the others in
-proportion to their size. The seed is fixed before any DFT calculation.
+manifest order. Strata are strategies; a campaign whose protocol is not
+FP-JCTC-1 labels its strata strategy@protocol (e.g. the paired arrows-legacy
+arm). Each stratum gets --per-stratum edges; a short stratum is taken whole and
+the remainder is spread over the others in proportion to their size. The seed
+is fixed before any DFT calculation.
 Usage: sample_dft_edges.py CAMPAIGN_DIR [...] --out FILE [--per-stratum 16 --seed 20261002]
 """
 import argparse
@@ -25,6 +27,8 @@ def frame(campaigns):
     edges, kept = [], []
     for campaign in campaigns:
         manifest = list(csv.DictReader((campaign/'manifest.tsv').open(encoding='utf-8'), delimiter='\t'))
+        protocol = Path(json.loads((campaign/'campaign.json').read_text(encoding='utf-8'))['protocol']).stem
+        suffix = '' if protocol == 'FP-JCTC-1' else '@' + protocol
         for task in manifest:
             run = campaign/'runs'/task['outdir']
             for path in sorted(run.glob('*/*/network.json')):
@@ -36,7 +40,8 @@ def frame(campaigns):
                         continue
                     pair = tuple(sorted(network['nodes'][i]['graph_smiles'] for i in edge['nodes']))
                     edges.append(dict(campaign=str(campaign), run=str(run), start=task['start_id'],
-                                      strategy=task['strategy'], seed=int(task['seed']), edge=edge['id'],
+                                      strategy=task['strategy'], stratum=task['strategy'] + suffix,
+                                      seed=int(task['seed']), edge=edge['id'],
                                       kind=edge['kind'], pair=pair, ts_energy_eV=edge['ts_energy_eV'],
                                       ts=np.asarray(edge['ts_positions_A'])))
     for edge in edges:
@@ -63,7 +68,7 @@ def main():
         unique = [e for e in unique if e['kind'] == 'chemical']
     strata = {}
     for edge in unique:
-        strata.setdefault(edge['strategy'], []).append(edge)
+        strata.setdefault(edge['stratum'], []).append(edge)
     target = args.per_stratum*len(strata)
     take = {s: min(args.per_stratum, len(v)) for s, v in strata.items()}
     spare = target - sum(take.values())
