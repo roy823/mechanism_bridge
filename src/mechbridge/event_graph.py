@@ -25,7 +25,19 @@ def graph_smiles(mol):
     copy = Chem.Mol(mol)
     for atom in copy.GetAtoms():
         atom.SetAtomMapNum(0)
-    return Chem.MolToSmiles(Chem.RemoveHs(copy), isomericSmiles=True)
+    stripped = Chem.RemoveHs(copy)
+    try:
+        return Chem.MolToSmiles(stripped, isomericSmiles=True)
+    except RuntimeError:
+        # RDKit 2024.03 canonicalization can raise "Invariant Violation" on some
+        # stereo/ring patterns; canonicalize a re-parsed non-canonical SMILES.
+        try:
+            again = Chem.MolFromSmiles(Chem.MolToSmiles(stripped, isomericSmiles=True, canonical=False))
+            if again is not None:
+                return Chem.MolToSmiles(again, isomericSmiles=True)
+        except RuntimeError:
+            pass
+        raise ValueError('RDKit could not canonicalize the graph')
 
 
 def resonance_equivalent(left, right):

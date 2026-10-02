@@ -148,9 +148,10 @@ class ArrowLibrary:
                                sink=[match[i] for i in a['sink']]) for a in template['arrows']]
                 try:
                     product, edits = replay(mol, arrows)
+                    product_graph = graph_smiles(product)
                 except (ValueError, RuntimeError):
                     continue
-                if not edits or graph_smiles(product) == key:
+                if not edits or product_graph == key:
                     continue
                 # Different electron source/sink assignments can have identical net
                 # edits. Preserve these alternatives for the cross-representation task.
@@ -161,7 +162,7 @@ class ArrowLibrary:
                     continue
                 seen.add(signature)
                 result.append(dict(template_id=template['template_id'], name=template['name'],
-                                   arrows=arrows, edits=edits, predicted_graph=graph_smiles(product),
+                                   arrows=arrows, edits=edits, predicted_graph=product_graph,
                                    origin='local_transfer_of_published_SynEPD_arrows',
                                    template_source_graph=template['source_graph'],
                                    transferred=key != template['source_graph'],
@@ -171,16 +172,17 @@ class ArrowLibrary:
         for name, arrows in electron_actions(mol):
             try:
                 product, edits = replay(mol, arrows)
+                product_graph = graph_smiles(product)
             except (ValueError, RuntimeError):
                 continue
             signature = (tuple((tuple(e['atoms']), e['after']) for e in edits),
                          tuple(sorted((tuple(sorted(a['source'])), tuple(sorted(a['sink'])), 2)
                                       for a in arrows)))
-            if not edits or signature in seen or graph_smiles(product) == key:
+            if not edits or signature in seen or product_graph == key:
                 continue
             seen.add(signature)
             result.append(dict(template_id='grammar:'+name, name=name, arrows=arrows,
-                edits=edits, predicted_graph=graph_smiles(product),
+                edits=edits, predicted_graph=product_graph,
                 origin='analyst_defined_reactant_only_electron_action_grammar',
                 independently_annotated=False, intermolecular=crosses_components(mol,edits),
                 stereo_policy='No new stereochemistry inferred by symbolic replay'))

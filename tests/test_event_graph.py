@@ -88,3 +88,20 @@ def test_resonance_form_that_rdkit_cannot_canonicalize_is_skipped(monkeypatch):
     monkeypatch.setattr(eg, 'graph_smiles', graph)
     monkeypatch.setattr(eg.Chem, 'ResonanceMolSupplier', lambda *args, **kwargs: [broken, None])
     assert eg.resonance_equivalent(left, right) is False
+
+
+def test_graph_smiles_falls_back_when_canonicalization_fails(monkeypatch):
+    import mechbridge.event_graph as eg
+    from mechbridge.symbolic_library import parse_explicit
+    mol = parse_explicit('OC=CO')
+    expected = eg.graph_smiles(mol)
+    real = eg.Chem.MolToSmiles
+    calls = []
+    def flaky(m, *args, **kwargs):
+        calls.append(kwargs.get('canonical', True))
+        if len(calls) == 1:
+            raise RuntimeError('Invariant Violation')
+        return real(m, *args, **kwargs)
+    monkeypatch.setattr(eg.Chem, 'MolToSmiles', flaky)
+    assert eg.graph_smiles(mol) == expected
+    assert calls == [True, False, True]
