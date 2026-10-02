@@ -50,7 +50,8 @@ def main():
                     passed=detail['ts']['imaginary_count']==1 and detail['ts']['force_converged']
                     and detail['ts']['force_max_eV_A']<=n['protocol']['fmax']
                     and all(e['imaginary_count']==0 and e['force_converged'] and
-                            e['force_max_eV_A']<=n['protocol']['fmax'] and e['barrier_eV']>=-1e-4
+                            e['force_max_eV_A']<=n['protocol']['fmax'] and
+                            e['barrier_eV']>=n['protocol'].get('min_barrier_eV',-1e-4)
                             for e in detail['endpoints'])))
     result=dict(passed=all(c['passed'] for c in checks),checks=checks)
     (args.run/'artifact_audit.json').write_text(json.dumps(result,indent=2),encoding='utf-8')

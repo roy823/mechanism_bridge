@@ -3,6 +3,7 @@
 Connections here are MLIP mode-displacement descents, explicitly not DFT IRC.
 No expected product is used to accept or reject a physical connection.
 """
+from concurrent.futures.process import BrokenProcessPool
 from dataclasses import dataclass, asdict
 from pathlib import Path
 import json
@@ -19,7 +20,7 @@ from ase.mep import DimerControl, MinModeAtoms
 from rdkit import Chem
 from .physics import analyze_stationary
 from .event_graph import geometry_mol, graph_smiles
-from .search_seeds import make_seed
+from .search_seeds import ENCOUNTER_POLICIES, make_seed
 from .exploration_actions import choose_action
 from .saddle_optimization import StationaryDimerTranslate
 from .event_classification import classify_event
@@ -27,6 +28,27 @@ from .event_classification import classify_event
 
 class BudgetExceeded(RuntimeError):
     pass
+
+
+ENDPOINT_ACCEPTANCE = ('full_system', 'carbon_skeleton')
+
+
+def is_recoverable_failure(exc):
+    """True for numerical or chemical-perception failures of one attempt.
+
+    Examples are RDKit valence/charge perception errors, nonfinite model output,
+    arithmetic errors and singular linear algebra. Programming and infrastructure
+    errors (TypeError, KeyError, OSError, AssertionError, NotImplementedError,
+    broken process pools, CUDA memory/device errors) must stop the run instead of
+    being counted as failed chemistry.
+    """
+    if isinstance(exc, (NotImplementedError, RecursionError, BrokenProcessPool)):
+        return False
+    message = str(exc)
+    if (type(exc).__name__ == 'OutOfMemoryError' or 'CUDA out of memory' in message
+            or 'CUDA error' in message):
+        return False
+    return isinstance(exc, (ValueError, RuntimeError, ArithmeticError))
 
 
 class CountedCalculator(Calculator):
@@ -96,6 +118,19 @@ class SearchProtocol:
     geometry_tolerance_A: float = .15
     energy_tolerance_eV: float = .03
     random_seed: int = 17
+    # Each endpoint must satisfy E_TS - E_end >= min_barrier_eV. The legacy
+    # value -1e-4 lets an endpoint lie up to 0.1 meV above the TS.
+    min_barrier_eV: float = -1e-4
+    # 'symbolic_only' (legacy): only bond_edits/arrows get the rigid encounter
+    # search. 'matched_controls': geometry/center_random get the same search
+    # with a proposal-free contact pair.
+    encounter_policy: str = 'symbolic_only'
+
+    def __post_init__(self):
+        if self.encounter_policy not in ENCOUNTER_POLICIES:
+            raise ValueError(f'Unknown encounter_policy: {self.encounter_policy}')
+        if self.endpoint_acceptance not in ENDPOINT_ACCEPTANCE:
+            raise ValueError(f'Unknown endpoint_acceptance: {self.endpoint_acceptance}')
 
 
 def aligned_rmsd(x, y):
@@ -146,6 +181,35 @@ def annotate_carbon_skeleton(analysis,mol,protocol):
     return analysis
 
 
+def edge_chemistry(attempt_mols, node_mols):
+    """Edge chemistry in the attempt's atom numbering (both endpoints share the TS's).
+
+    A registered node may match an endpoint only up to an atom permutation, so
+    its stored molecule can give wrong bond indices. The old node-frame result is
+    kept under node_frame_endpoint_chemistry when it differs, for comparison
+    with runs made before this change.
+    """
+    chemistry = classify_event(*attempt_mols)
+    fields = dict(endpoint_chemistry=chemistry, endpoint_chemistry_atom_frame='attempt')
+    legacy = classify_event(*node_mols)
+    if ((legacy['classification'], legacy['cross_fragment_bonds']) !=
+            (chemistry['classification'], chemistry['cross_fragment_bonds'])):
+        fields['node_frame_endpoint_chemistry'] = legacy
+    return fields
+
+
+def connection_status(endpoints, protocol):
+    """Accept or reject two descended endpoints; no expected product is used."""
+    def downhill(e):
+        return e['barrier_eV'] >= protocol.min_barrier_eV
+    if all(e['full_system_minimum'] and downhill(e) for e in endpoints):
+        return 'validated_descents'
+    if (protocol.endpoint_acceptance == 'carbon_skeleton' and
+            all(e['carbon_skeleton_force_converged'] and downhill(e) for e in endpoints)):
+        return 'validated_core_descents'
+    return 'unresolved_minimum'
+
+
 def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
     outdir.mkdir(parents=True, exist_ok=False)
     started, initial_calls = time.time(), calculator.calls
@@ -194,25 +258,21 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
             analysis['graph_smiles'] = graph_smiles(mol)
             result['endpoints'].append(analysis)
             write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
-        full_valid=all(e['full_system_minimum'] and e['barrier_eV']>=-1e-4
-                       for e in result['endpoints'])
-        core_valid=all(e['carbon_skeleton_force_converged'] and e['barrier_eV']>=-1e-4
-                       for e in result['endpoints'])
         result['endpoint_acceptance']=protocol.endpoint_acceptance
-        if full_valid:
-            result['status'] = 'validated_descents'
+        result['status'] = connection_status(result['endpoints'], protocol)
+        if result['status'] != 'unresolved_minimum':
             result['ts_positions_A'] = seed.positions.tolist()
-        elif protocol.endpoint_acceptance=='carbon_skeleton' and core_valid:
-            result['status'] = 'validated_core_descents'
-            result['ts_positions_A'] = seed.positions.tolist()
-        else:
-            result['status'] = 'unresolved_minimum'
     except BudgetExceeded:
         result['status'] = 'budget_exhausted'
     except Exception as exc:
-        result['status'] = 'calculation_failed'
+        recoverable = is_recoverable_failure(exc)
+        # Unrecoverable: a bug or an infrastructure fault. result.json is still
+        # written below, then the run stops.
+        result['status'] = 'calculation_failed' if recoverable else 'fatal_error'
         result['error'] = f'{type(exc).__name__}: {exc}'
         (outdir/'error.log').write_text(traceback.format_exc(), encoding='utf-8')
+        if not recoverable:
+            raise
     finally:
         result['evaluations'] = calculator.calls - initial_calls
         result['model_calls'] = calculator.model_calls-initial_model_calls
@@ -276,16 +336,17 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         report['elapsed_seconds'] = time.perf_counter()-started
         atomic_json(outdir/'network.json', report)
     def register(end, depth):
+        """Return (node id, endpoint graph in this attempt's atom numbering)."""
         x = np.asarray(end['positions_A'])
         m = geometry_mol(numbers, x, start['charge'])
         for node, oldmol in zip(nodes, mols):
             if (abs(node['energy_eV']-end['energy_eV']) <= protocol.energy_tolerance_eV and
                 molecular_rmsd(oldmol, np.array(node['positions_A']), m, x) < protocol.geometry_tolerance_A):
-                return node['id']
+                return node['id'], m
         idx = len(nodes)
         nodes.append(dict(id=idx, depth_discovered=depth, **end))
         mols.append(m)
-        return idx
+        return idx, m
     try:
         root_info,checks,initialization_evaluations=initialize_root(start,calculator,outdir,protocol)
         report['initial_relaxation_checks']=checks
@@ -348,8 +409,11 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 try:
                     seed_started=time.perf_counter()
                     x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
-                                                   variant, seed_rng, protocol.symbolic_seed_scale)
-                except (ValueError, RuntimeError) as exc:
+                                                   variant, seed_rng, protocol.symbolic_seed_scale,
+                                                   protocol.encounter_policy)
+                except Exception as exc:
+                    if not is_recoverable_failure(exc):
+                        raise
                     dest = outdir/f'attempt_{aid:03d}'
                     dest.mkdir()
                     failure = dict(status='seed_generation_failed',error=str(exc),evaluations=0,
@@ -367,14 +431,24 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 calculator.attempt_limit = min(calculator.total_limit,
                     calculator.calls + protocol.evaluations_per_attempt)
                 dest = outdir/f'attempt_{aid:03d}'
-                result = search_connection(trial,direction,calculator,dest,protocol,start['charge'])
+                calls_before = calculator.calls
+                try:
+                    result = search_connection(trial,direction,calculator,dest,protocol,start['charge'])
+                except Exception as exc:
+                    # Keep the accounting identity evaluations = init + sum(attempts).
+                    attempts.append(dict(id=aid, source_node=node_id, proposal=meta,
+                        status='fatal_error', error=f'{type(exc).__name__}: {exc}',
+                        evaluations=calculator.calls-calls_before,
+                        artifact=f'attempt_{aid:03d}/result.json'))
+                    raise
                 attempt = dict(id=aid, source_node=node_id, proposal=meta,
                                status=result['status'], evaluations=result['evaluations'],
                                seconds=result['seconds'],
                                artifact=f'attempt_{aid:03d}/result.json')
                 attempts.append(attempt)
                 if result['status'] in ('validated_descents','validated_core_descents'):
-                    ends = [register(e, node['depth_discovered']+1) for e in result['endpoints']]
+                    registered = [register(e, node['depth_discovered']+1) for e in result['endpoints']]
+                    ends = [item[0] for item in registered]
                     attempt['observed_nodes'] = ends
                     attempt['source_is_endpoint'] = node_id in ends
                     if ends[0] == ends[1]:
@@ -393,15 +467,17 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                                 break
                         attempt['status'] = 'duplicate_connection' if duplicate else 'new_connection'
                         if not duplicate:
-                            chemistry=classify_event(mols[ends[0]],mols[ends[1]])
+                            chemistry=edge_chemistry([item[1] for item in registered],
+                                                     [mols[i] for i in ends])
                             edges.append(dict(id=len(edges), nodes=ends, attempt=aid,
                                 proposed_from=node_id, ts_energy_eV=result['ts']['energy_eV'],
                                 ts_positions_A=result['ts_positions_A'],
                                 barriers_eV=[e['barrier_eV'] for e in result['endpoints']],
                                 source_connected=node_id in ends,
                                 endpoint_acceptance=result['status'],
-                                endpoint_chemistry=chemistry,
-                                kind='conformational' if chemistry['resonance_equivalent'] else 'chemical'))
+                                **chemistry,
+                                kind=('conformational' if chemistry['endpoint_chemistry']['resonance_equivalent']
+                                      else 'chemical')))
                 save()
                 print(json.dumps(dict(start=start['id'], strategy=strategy, attempt=aid,
                                       status=attempt['status'], evaluations=calculator.calls)), flush=True)
@@ -417,6 +493,10 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         report['root_component_nodes'] = sorted(nx.node_connected_component(graph, 0))
     except BudgetExceeded:
         report['status'] = 'initialization_budget_exhausted'
+    except Exception as exc:
+        report['status'] = 'aborted_error'
+        report['error'] = f'{type(exc).__name__}: {exc}'
+        raise
     finally:
         save()
     return report

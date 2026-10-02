@@ -28,7 +28,7 @@ def main():
             file=run/job['start']/strategy/'network.json'
             if not file.exists():raise ValueError('Missing run: '+str(file))
             n=json.loads(file.read_text(encoding='utf-8'))
-            if n['status']=='running':raise ValueError('Unfinished run')
+            if n['status'] in ('running','aborted_error'):raise ValueError('Unfinished run')
             start=n['start'];system=start['provenance']['system']
             initial=geometry_mol(start['atomic_numbers'],start['positions_A'],0)
             connected=set(n.get('root_component_nodes',[]))

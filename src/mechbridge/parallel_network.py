@@ -1,28 +1,47 @@
 """Shared-state CPU scheduler for GPA-style reaction-network exploration."""
 from concurrent.futures import FIRST_COMPLETED,ProcessPoolExecutor,wait
+from concurrent.futures.process import BrokenProcessPool
 from dataclasses import asdict
 import hashlib
 import json
+import multiprocessing
 import os
 from pathlib import Path
 import time
+import traceback
 
 import networkx as nx
 import numpy as np
 from ase import Atoms
 from rdkit import RDLogger
 
-from .event_classification import classify_event
 from .event_graph import geometry_mol,graph_smiles
 from .exploration_actions import action_key,choose_action
 from .potentials import load_potential
 from .reaction_network import (BudgetExceeded,CountedCalculator,SearchProtocol,aligned_rmsd,
-                               atomic_json,initialize_root,molecular_rmsd,search_connection)
+                               atomic_json,edge_chemistry,initialize_root,is_recoverable_failure,
+                               molecular_rmsd,search_connection)
 from .search_seeds import make_seed
 from .species_network import project_species_network
 
 
 _WORKER_BACKEND=None
+# Explicit and recorded: Linux defaults to fork before Python 3.14, which is
+# unsafe after the parent has run torch for root initialization.
+START_METHODS=('spawn','forkserver','fork')
+
+
+def worker_failure_evaluations(artifact,exc,reserved):
+    """Evaluations to charge for a task whose worker raised, and how they were known."""
+    if Path(artifact).exists():
+        try:
+            return int(json.loads(Path(artifact).read_text(encoding='utf-8'))['evaluations']),'artifact'
+        except (OSError,ValueError,KeyError,TypeError):
+            return reserved,'reserved_upper_bound'
+    if isinstance(exc,BrokenProcessPool):
+        return reserved,'reserved_upper_bound'
+    # No artifact: the error happened before search_connection created a counter.
+    return 0,'no_artifact_before_search'
 
 
 def _initialize_worker(potential_name,root,device,compile_model,threads):
@@ -42,14 +61,16 @@ def _run_task(task):
     protocol=SearchProtocol(**task['protocol'])
     destination=Path(task['destination'])
     state=Atoms(numbers=task['numbers'],positions=task['positions_A'])
-    mol=geometry_mol(task['numbers'],task['positions_A'],task['charge'])
     try:
         started=time.perf_counter()
+        mol=geometry_mol(task['numbers'],task['positions_A'],task['charge'])
         x,direction,meta=make_seed(state,mol,task['seed_strategy'],task['proposal'],
-                                   task['variant'],task['random_seed'],protocol.symbolic_seed_scale)
+                                   task['variant'],task['random_seed'],protocol.symbolic_seed_scale,
+                                   protocol.encounter_policy)
         meta.update(random_seed=task['random_seed'],seed_strategy=task['seed_strategy'],
                     generation_seconds=time.perf_counter()-started)
-    except (ValueError,RuntimeError) as exc:
+    except Exception as exc:
+        if not is_recoverable_failure(exc):raise
         destination.mkdir(parents=True,exist_ok=False)
         result=dict(status='seed_generation_failed',error=str(exc),evaluations=0,seconds=0.,
                     evidence='MLIP_two_sided_mode_displacement_descent',is_IRC=False,
@@ -93,10 +114,12 @@ def conformer_frontier(nodes,mols,tolerance_A=.5):
 
 def explore_shared(start,library,root_backend,strategy,outdir,potential_name,root,
                    protocol=SearchProtocol(),workers=2,threads_per_worker=2,
-                   device='cpu',compile_model=False):
+                   device='cpu',compile_model=False,start_method='spawn'):
     """Explore one shared TransitionNet while independent workers evaluate seeds."""
     if workers<1 or threads_per_worker<1:
         raise ValueError('workers and threads_per_worker must be positive')
+    if start_method not in START_METHODS:
+        raise ValueError(f'Unknown process start method: {start_method}')
     if strategy not in ('geometry','center_random','bond_edits','arrows','hybrid'):
         raise ValueError('Unknown search strategy')
     if device!='cpu' and workers>1:
@@ -116,7 +139,7 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
         attempts=attempts,reservations=reservations,evidence='MLIP_descents_not_DFT_IRC',
         library_policy=library.policy if library is not None else 'geometry_only',status='running',
         scheduler=dict(kind='central_species_registry_process_workers',workers=workers,
-            threads_per_worker=threads_per_worker,dispatch='completion_driven',
+            threads_per_worker=threads_per_worker,start_method=start_method,dispatch='completion_driven',
             reservation_key='species_graph+conformer_cluster+action+geometry_variant',
             conformer_policy='symmetry-aware molecular RMSD clusters; lowest-energy representative per cluster',
             conformer_cluster_tolerance_A=.5),
@@ -124,15 +147,16 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
     started=time.perf_counter();worker_evaluations=0;worker_model_seconds=0.
 
     def register(end,depth):
+        """Return (node id, is new, endpoint graph in this attempt's atom numbering)."""
         x=np.asarray(end['positions_A']);mol=geometry_mol(numbers,x,start['charge'])
         for node,oldmol in zip(nodes,mols):
             if (abs(node['energy_eV']-end['energy_eV'])<=protocol.energy_tolerance_eV and
                 molecular_rmsd(oldmol,np.asarray(node['positions_A']),mol,x)<protocol.geometry_tolerance_A):
-                return node['id'],False
+                return node['id'],False,mol
         idx=len(nodes);record=dict(id=idx,depth_discovered=depth,**end)
         record['graph_smiles']=graph_smiles(mol)
         nodes.append(record);mols.append(mol)
-        return idx,True
+        return idx,True,mol
 
     def update_projection():
         graph=nx.Graph();graph.add_nodes_from(range(len(nodes)));graph.add_edges_from(e['nodes'] for e in edges)
@@ -212,59 +236,95 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
             report['status']='initial_minimum_unresolved';return report
         register(root_info,0);save()
         pending={};reserved_evaluations=0
-        with ProcessPoolExecutor(max_workers=workers,initializer=_initialize_worker,
+
+        def abandon(pool,exc):
+            """Stop after a fatal error; charge in-flight attempts once workers finish."""
+            nonlocal worker_evaluations
+            for future,(reservation,attempt_id) in pending.items():
+                future.cancel()
+                attempts[attempt_id]['status']='abandoned_after_error';reservation['status']='abandoned'
+            report['status']='aborted_error';report['error']=f'{type(exc).__name__}: {exc}'
+            save()   # persist before waiting on running workers
+            pool.shutdown(wait=True,cancel_futures=True)
+            for future,(reservation,attempt_id) in pending.items():
+                attempt=attempts[attempt_id]
+                if future.cancelled():
+                    evaluations,accounting=0,'cancelled_before_start'
+                else:
+                    evaluations,accounting=worker_failure_evaluations(outdir/attempt['artifact'],
+                        future.exception(),reservation['reserved_evaluations'])
+                attempt.update(evaluations=evaluations,evaluations_accounting=accounting)
+                reservation['actual_evaluations']=evaluations;worker_evaluations+=evaluations
+            report['evaluations_complete']=not any(a.get('evaluations_accounting')=='reserved_upper_bound'
+                                                   for a in attempts)
+
+        with ProcessPoolExecutor(max_workers=workers,mp_context=multiprocessing.get_context(start_method),
+                initializer=_initialize_worker,
                 initargs=(potential_name,str(Path(root).resolve()),device,compile_model,threads_per_worker)) as pool:
-            while True:
-                while len(pending)<workers:
-                    selected=select_task(reserved_evaluations)
-                    if selected is None:break
-                    task,reservation,attempt_id=selected
-                    future=pool.submit(_run_task,task);pending[future]=(reservation,attempt_id)
-                    reserved_evaluations+=reservation['reserved_evaluations'];save()
-                if not pending:break
-                completed,_=wait(pending,return_when=FIRST_COMPLETED)
-                for future in completed:
-                    reservation,attempt_id=pending.pop(future)
-                    reserved_evaluations-=reservation['reserved_evaluations']
-                    attempt=attempts[attempt_id]
-                    try:payload=future.result()
-                    except Exception as exc:
-                        payload=dict(result=dict(status='calculation_failed',evaluations=0,seconds=0.,
-                            error=f'{type(exc).__name__}: {exc}',endpoints=[]),proposal=attempt['proposal'],
-                            meta=attempt['proposal'])
-                    result=payload['result'];attempt['proposal']=payload['meta']
-                    attempt.update(status=result['status'],evaluations=result.get('evaluations',0),
-                                   seconds=result.get('seconds',0.))
-                    attempt['model_calls']=result.get('model_calls',0)
-                    worker_evaluations+=attempt['evaluations'];worker_model_seconds+=result.get('model_seconds',0.)
-                    reservation['status']='completed';reservation['actual_evaluations']=attempt['evaluations']
-                    if result['status'] in ('validated_descents','validated_core_descents'):
-                        source=nodes[attempt['source_node']]
-                        registered=[register(endpoint,source['depth_discovered']+1) for endpoint in result['endpoints']]
-                        ends=[item[0] for item in registered]
-                        attempt['observed_nodes']=ends;attempt['new_nodes']=[i for i,new in registered if new]
-                        attempt['source_is_endpoint']=attempt['source_node'] in ends
-                        if ends[0]==ends[1]:attempt['status']='same_basin_return'
-                        else:
-                            duplicate=any(sorted(edge['nodes'])==sorted(ends) and
-                                abs(edge['ts_energy_eV']-result['ts']['energy_eV'])<.03 and
-                                aligned_rmsd(np.asarray(edge['ts_positions_A']),
-                                             np.asarray(result['ts_positions_A']))<.15 for edge in edges)
-                            attempt['status']='duplicate_connection' if duplicate else 'new_connection'
-                            if not duplicate:
-                                chemistry=classify_event(mols[ends[0]],mols[ends[1]])
-                                edges.append(dict(id=len(edges),nodes=ends,attempt=attempt_id,
-                                    proposed_from=attempt['source_node'],ts_energy_eV=result['ts']['energy_eV'],
-                                    ts_positions_A=result['ts_positions_A'],
-                                    barriers_eV=[e['barrier_eV'] for e in result['endpoints']],
-                                    source_connected=attempt['source_node'] in ends,
-                                    endpoint_acceptance=result['status'],
-                                    endpoint_chemistry=chemistry,
-                                    kind='conformational' if chemistry['resonance_equivalent'] else 'chemical'))
-                    save()
-                    print(json.dumps(dict(start=start['id'],strategy=strategy,attempt=attempt_id,
-                        status=attempt['status'],nodes=len(nodes),species=len(report['species_nodes']),
-                        edges=len(edges),evaluations=report['evaluations'])),flush=True)
+            try:
+                while True:
+                    while len(pending)<workers:
+                        selected=select_task(reserved_evaluations)
+                        if selected is None:break
+                        task,reservation,attempt_id=selected
+                        future=pool.submit(_run_task,task);pending[future]=(reservation,attempt_id)
+                        reserved_evaluations+=reservation['reserved_evaluations'];save()
+                    if not pending:break
+                    completed,_=wait(pending,return_when=FIRST_COMPLETED)
+                    for future in completed:
+                        reservation,attempt_id=pending.pop(future)
+                        reserved_evaluations-=reservation['reserved_evaluations']
+                        attempt=attempts[attempt_id]
+                        try:payload=future.result()
+                        except Exception as exc:
+                            # Chemistry failures return normally from the worker; anything
+                            # raised here is a bug, a broken pool or a pickling failure.
+                            evaluations,accounting=worker_failure_evaluations(outdir/attempt['artifact'],exc,
+                                                                              reservation['reserved_evaluations'])
+                            log=f'worker_error_attempt_{attempt_id:03d}.log'
+                            (outdir/log).write_text(''.join(traceback.format_exception(exc)),encoding='utf-8')
+                            attempt.update(status='worker_error',error=f'{type(exc).__name__}: {exc}',
+                                           error_log=log,evaluations=evaluations,evaluations_accounting=accounting)
+                            worker_evaluations+=evaluations
+                            reservation.update(status='failed',actual_evaluations=evaluations)
+                            raise
+                        result=payload['result'];attempt['proposal']=payload['meta']
+                        attempt.update(status=result['status'],evaluations=result.get('evaluations',0),
+                                       seconds=result.get('seconds',0.))
+                        attempt['model_calls']=result.get('model_calls',0)
+                        worker_evaluations+=attempt['evaluations'];worker_model_seconds+=result.get('model_seconds',0.)
+                        reservation['status']='completed';reservation['actual_evaluations']=attempt['evaluations']
+                        if result['status'] in ('validated_descents','validated_core_descents'):
+                            source=nodes[attempt['source_node']]
+                            registered=[register(endpoint,source['depth_discovered']+1) for endpoint in result['endpoints']]
+                            ends=[item[0] for item in registered]
+                            attempt['observed_nodes']=ends;attempt['new_nodes']=[i for i,new,_ in registered if new]
+                            attempt['source_is_endpoint']=attempt['source_node'] in ends
+                            if ends[0]==ends[1]:attempt['status']='same_basin_return'
+                            else:
+                                duplicate=any(sorted(edge['nodes'])==sorted(ends) and
+                                    abs(edge['ts_energy_eV']-result['ts']['energy_eV'])<.03 and
+                                    aligned_rmsd(np.asarray(edge['ts_positions_A']),
+                                                 np.asarray(result['ts_positions_A']))<.15 for edge in edges)
+                                attempt['status']='duplicate_connection' if duplicate else 'new_connection'
+                                if not duplicate:
+                                    chemistry=edge_chemistry([item[2] for item in registered],
+                                                             [mols[i] for i in ends])
+                                    edges.append(dict(id=len(edges),nodes=ends,attempt=attempt_id,
+                                        proposed_from=attempt['source_node'],ts_energy_eV=result['ts']['energy_eV'],
+                                        ts_positions_A=result['ts_positions_A'],
+                                        barriers_eV=[e['barrier_eV'] for e in result['endpoints']],
+                                        source_connected=attempt['source_node'] in ends,
+                                        endpoint_acceptance=result['status'],
+                                        **chemistry,
+                                        kind=('conformational' if chemistry['endpoint_chemistry']['resonance_equivalent']
+                                              else 'chemical')))
+                        save()
+                        print(json.dumps(dict(start=start['id'],strategy=strategy,attempt=attempt_id,
+                            status=attempt['status'],nodes=len(nodes),species=len(report['species_nodes']),
+                            edges=len(edges),evaluations=report['evaluations'])),flush=True)
+            except Exception as exc:
+                abandon(pool,exc);raise
         report['status']='completed'
         report['searched_nodes']=sorted({a['source_node'] for a in attempts})
         report['expanded_species']=sorted({nodes[i]['graph_smiles'] for i in report['searched_nodes']})
@@ -273,5 +333,8 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
             'attempt_budget' if len(attempts)>=protocol.max_attempts else 'frontier_exhausted')
     except BudgetExceeded:
         report['status']='initialization_budget_exhausted'
+    except Exception as exc:
+        report['status']='aborted_error';report['error']=f'{type(exc).__name__}: {exc}'
+        raise
     finally:save()
     return report

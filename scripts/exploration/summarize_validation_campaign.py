@@ -36,7 +36,7 @@ def summarize(root):
             path=root/'search'/job['folder']/job['start']/strategy/'network.json'
             if not path.exists():raise RuntimeError(f'Missing planned run: {path}')
             n=json.loads(path.read_text(encoding='utf-8'))
-            if n['status']=='running':raise RuntimeError(f'Incomplete run: {path}')
+            if n['status'] in ('running','aborted_error'):raise RuntimeError(f'Incomplete run: {path}')
             pairs,connected,edges=graph_pairs(n)
             cumulative=n.get('initialization_evaluations',n['evaluations'])
             attempts=[];first=None

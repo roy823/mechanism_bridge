@@ -103,7 +103,7 @@ def load_events(run, network_paths=None, layout_network=True):
     paths=run.glob('*/*/network.json') if network_paths is None else [Path(p).resolve() for p in network_paths]
     for path in sorted(paths):
         n=json.loads(path.read_text(encoding='utf-8'))
-        if n['status']=='running': raise ValueError('Only finished runs can be visualized')
+        if n['status'] in ('running','aborted_error'): raise ValueError('Only finished runs can be visualized')
         if n['status']!='completed':continue
         numbers=n['start']['atomic_numbers']
         symbols=Atoms(numbers=numbers).get_chemical_symbols()

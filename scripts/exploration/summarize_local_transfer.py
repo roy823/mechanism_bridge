@@ -27,7 +27,7 @@ def main():
             for strategy in manifest['strategies']:
                 path=run/start/strategy/'network.json'
                 n=json.loads(path.read_text(encoding='utf-8'))
-                if n['status']=='running':raise ValueError(f'Unfinished run: {path}')
+                if n['status'] in ('running','aborted_error'):raise ValueError(f'Unfinished run: {path}')
                 graph=nx.Graph();graph.add_nodes_from(range(len(n['nodes'])))
                 graph.add_edges_from(e['nodes'] for e in n['edges'])
                 connected=nx.node_connected_component(graph,0) if n['nodes'] else set()
@@ -92,7 +92,7 @@ def main():
     continuation=args.root/'continuation/acetone_enol_observed/arrows/network.json'
     if continuation.exists():
         extra=json.loads(continuation.read_text(encoding='utf-8'))
-        if extra['status']=='running':raise ValueError('Continuation probe still running')
+        if extra['status'] in ('running','aborted_error'):raise ValueError('Continuation probe still running')
         result['posthoc_continuation']=dict(status=extra['status'],evaluations=extra['evaluations'],
             attempts=len(extra['attempts']),source_graph=extra['start']['provenance']['reactant_smiles'],
             edges=[dict(kind=e['kind'],source_connected=e['source_connected'],

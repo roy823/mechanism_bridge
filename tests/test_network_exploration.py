@@ -145,7 +145,8 @@ def test_network_registers_observed_endpoints_not_proposing_node(tmp_path,monkey
         def run(self,**kwargs):return True
     monkeypatch.setattr(net,'BFGS',NoRelax)
     monkeypatch.setattr(net,'inspect_point',lambda atoms,protocol: (
-        dict(energy_eV=0.,force_converged=True,imaginary_count=0),None))
+        dict(energy_eV=0.,force_converged=True,imaginary_count=0,
+             force_norms_eV_A=[0.]*len(atoms)),None))
     def observed(*args):
         ends=[dict(positions_A=xyz.tolist(),graph_smiles=graph_smiles(mol),energy_eV=.1,
                    barrier_eV=.9,force_converged=True,imaginary_count=0)
@@ -176,7 +177,8 @@ def test_root_initialization_escapes_negative_curvature_and_charges_cost(tmp_pat
         checks.append(atoms.positions.copy())
         mode=np.zeros_like(atoms.positions);mode[1,2]=1.
         return dict(energy_eV=float(atoms.get_potential_energy()),force_converged=True,
-                    imaginary_count=max(0,3-len(checks))),[mode]
+                    imaginary_count=max(0,3-len(checks)),
+                    force_norms_eV_A=[0.]*len(atoms)),[mode]
     monkeypatch.setattr(net,'BFGS',EvaluateOnly)
     monkeypatch.setattr(net,'inspect_point',point)
     start=dict(id='water_control',atomic_numbers=[8,1,1],
@@ -261,3 +263,134 @@ def test_dimer_stops_on_physical_force_not_projected_norm():
     assert optimizer.gradient_converged(np.array([.0051,0.,0.]))
     optimizer.dimeratoms.curvature=1.
     assert not optimizer.gradient_converged(np.zeros(3))
+
+
+def test_recoverable_failure_classification():
+    from mechbridge.reaction_network import is_recoverable_failure
+    from concurrent.futures.process import BrokenProcessPool
+    for exc in (ValueError('valence'),np.linalg.LinAlgError('singular'),RuntimeError('diverged'),
+                ZeroDivisionError('step'),BudgetExceeded('budget')):
+        assert is_recoverable_failure(exc)
+    for exc in (TypeError('bug'),KeyError('field'),AttributeError('bug'),IndexError('bug'),
+                OSError('disk'),AssertionError('invariant'),NotImplementedError('missing'),
+                RecursionError('loop'),BrokenProcessPool('worker died'),
+                RuntimeError('CUDA out of memory. Tried to allocate 2 GiB')):
+        assert not is_recoverable_failure(exc)
+
+
+@pytest.mark.parametrize('error,status,raises',[(TypeError,'fatal_error',True),
+                                                (ValueError,'calculation_failed',False)])
+def test_search_connection_separates_bugs_from_failed_chemistry(tmp_path,monkeypatch,error,status,raises):
+    import mechbridge.reaction_network as net
+    class Broken:
+        def __init__(self,*args,**kwargs):raise error('injected')
+    monkeypatch.setattr(net,'DimerControl',Broken)
+    seed=Atoms('H2',positions=[[0.,0.,0.],[0.,0.,.75]])
+    calc=CountedCalculator(EMT(),100)
+    run=lambda: net.search_connection(seed,np.zeros((2,3)),calc,tmp_path/'attempt',net.SearchProtocol())
+    if raises:
+        with pytest.raises(error):run()
+    else:
+        assert run()['status']==status
+    result=json.loads((tmp_path/'attempt'/'result.json').read_text())
+    assert result['status']==status
+    assert result['error']==f'{error.__name__}: injected'
+    assert (tmp_path/'attempt'/'error.log').exists()
+
+
+def test_connection_status_barrier_gate_and_acceptance():
+    from mechbridge.reaction_network import SearchProtocol,connection_status
+    def end(barrier,full=True):
+        return dict(full_system_minimum=full,carbon_skeleton_force_converged=True,barrier_eV=barrier)
+    legacy,strict=SearchProtocol(),SearchProtocol(min_barrier_eV=1e-3)
+    # The legacy gate accepts an endpoint 0.05 meV above the TS; the strict gate does not.
+    assert connection_status([end(.5),end(-5e-5)],legacy)=='validated_descents'
+    assert connection_status([end(.5),end(-5e-5)],strict)=='unresolved_minimum'
+    assert connection_status([end(.5),end(5e-4)],strict)=='unresolved_minimum'
+    assert connection_status([end(.5),end(2e-3)],strict)=='validated_descents'
+    core=[end(.5,False),end(.4,False)]
+    assert connection_status(core,legacy)=='unresolved_minimum'
+    assert connection_status(core,SearchProtocol(endpoint_acceptance='carbon_skeleton'))=='validated_core_descents'
+    with pytest.raises(ValueError):SearchProtocol(encounter_policy='unknown')
+    with pytest.raises(ValueError):SearchProtocol(endpoint_acceptance='unknown')
+
+
+def test_edge_chemistry_uses_attempt_atom_frame(tmp_path,monkeypatch):
+    """A node matched only up to a fragment swap must not supply the bond indices."""
+    import mechbridge.reaction_network as net
+    from rdkit.Chem import AllChem
+    monomer=parse_explicit('C=O')
+    assert AllChem.EmbedMolecule(monomer,randomSeed=5)==0
+    xyz=monomer.GetConformer().GetPositions()
+    numbers=[a.GetAtomicNum() for a in monomer.GetAtoms()]*2
+    shift=np.array([5.,0.,0.])
+    x=np.vstack([xyz,xyz+shift])
+    swapped=np.vstack([xyz+shift,xyz])     # same nuclei, fragment labels exchanged
+    apart=np.vstack([xyz,xyz+2*shift])
+    class NoRelax:
+        def __init__(self,*args,**kwargs):pass
+        def __enter__(self):return self
+        def __exit__(self,*args):return False
+        def run(self,**kwargs):return True
+    monkeypatch.setattr(net,'BFGS',NoRelax)
+    monkeypatch.setattr(net,'inspect_point',lambda atoms,protocol: (
+        dict(energy_eV=0.,force_converged=True,imaginary_count=0,
+             force_norms_eV_A=[0.]*len(atoms)),None))
+    def observed(*args):
+        ends=[dict(positions_A=y.tolist(),graph_smiles='C=O.C=O',energy_eV=e,barrier_eV=1.-e,
+                   force_converged=True,imaginary_count=0) for y,e in ((swapped,0.),(apart,.1))]
+        return dict(status='validated_descents',evaluations=0,seconds=0.,endpoints=ends,
+                    ts={'energy_eV':1.},ts_positions_A=x.tolist())
+    monkeypatch.setattr(net,'search_connection',observed)
+    seen=[]
+    real=net.classify_event
+    def capture(left,right):
+        seen.append((left.GetConformer().GetPositions(),right.GetConformer().GetPositions()))
+        return real(left,right)
+    monkeypatch.setattr(net,'classify_event',capture)
+    start=dict(id='fragment_swap',atomic_numbers=numbers,positions_A=x.tolist(),charge=0,multiplicity=1)
+    report=net.explore(start,None,EMT(),'geometry',tmp_path/'network',
+                       net.SearchProtocol(max_attempts=1,seeds_per_node=1))
+    assert report['attempts'][0]['observed_nodes'][0]==0      # swapped copy matched the root
+    assert report['edges'][0]['endpoint_chemistry_atom_frame']=='attempt'
+    left,right=seen[0]
+    assert np.allclose(left,swapped) and np.allclose(right,apart)
+
+
+def test_worker_failure_is_charged_from_artifact_or_reservation(tmp_path):
+    from concurrent.futures.process import BrokenProcessPool
+    from mechbridge.parallel_network import worker_failure_evaluations
+    artifact=tmp_path/'result.json'
+    assert worker_failure_evaluations(artifact,TypeError('bug'),700)==(0,'no_artifact_before_search')
+    assert worker_failure_evaluations(artifact,BrokenProcessPool('killed'),700)==(700,'reserved_upper_bound')
+    artifact.write_text(json.dumps(dict(status='fatal_error',evaluations=42)))
+    assert worker_failure_evaluations(artifact,TypeError('bug'),700)==(42,'artifact')
+
+
+def test_explore_shared_uses_explicit_start_method_and_records_abort(tmp_path,monkeypatch):
+    import mechbridge.parallel_network as par
+    from mechbridge.reaction_network import SearchProtocol
+    class Stop(Exception):pass
+    captured={}
+    class FakePool:
+        def __init__(self,**kwargs):
+            captured.update(kwargs);raise Stop('pool not started in this test')
+    def root(start,calculator,outdir,protocol):
+        info=dict(energy_eV=0.,force_converged=True,imaginary_count=0,full_system_minimum=True,
+                  carbon_skeleton_force_converged=True,positions_A=start['positions_A'],graph_smiles='O')
+        return info,[dict(info)],0
+    monkeypatch.setattr(par,'ProcessPoolExecutor',FakePool)
+    monkeypatch.setattr(par,'initialize_root',root)
+    start=dict(id='water',atomic_numbers=[8,1,1],positions_A=[[0.,0.,0.],[.96,0.,0.],[-.24,.93,0.]],
+               charge=0,multiplicity=1)
+    with pytest.raises(ValueError,match='start method'):
+        par.explore_shared(start,None,EMT(),'geometry',tmp_path/'bad','aimnet2-2025',tmp_path,
+                           SearchProtocol(),workers=2,start_method='threads')
+    with pytest.raises(Stop):
+        par.explore_shared(start,None,EMT(),'geometry',tmp_path/'run','aimnet2-2025',tmp_path,
+                           SearchProtocol(),workers=2)
+    assert captured['mp_context'].get_start_method()=='spawn'
+    report=json.loads((tmp_path/'run'/'network.json').read_text())
+    assert report['status']=='aborted_error'
+    assert report['error'].startswith('Stop')
+    assert report['scheduler']['start_method']=='spawn'
