@@ -108,9 +108,13 @@ def main():
     labels, counts, failures = {}, {}, {}
     for name in BENCHMARKS:
         dataset = Path(name).stem
-        counts[dataset] = dict.fromkeys(LABELS, 0)
+        counts[dataset] = dict.fromkeys((*LABELS, 'not_admitted'), 0)
         for line in (ROOT/name).read_text(encoding='utf-8').splitlines():
             reference = json.loads(line)
+            if reference.get('admission') != 'accepted':      # no graph keys: perception failed
+                labels[reference['id']] = dict(label='not_admitted')
+                counts[dataset]['not_admitted'] += 1
+                continue
             try:
                 labels[reference['id']] = result = label(reference, index)
             except ValueError as exc:

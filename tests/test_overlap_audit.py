@@ -26,6 +26,6 @@ def test_overlap_labels_follow_the_key_hierarchy(tmp_path):
              ('seen_formula', 'COC', 'C=O.C'),
              ('unseen', 'CCCCO', 'CCCC=O.[H][H]')]
     for expected, reactant, product in cases:
-        result = audit.label(dict(reactant_key=reactant, product_key=product), index)
+        result = audit.label(dict(reactant_key=reactant, product_key=product, admission='accepted'), index)
         assert result['label'] == expected, (expected, reactant, result)
     assert audit.label(dict(reactant_key='CC1CO1', product_key='CCC=O'), index)['k1_rgd1_ids'] == ['MR_2']
