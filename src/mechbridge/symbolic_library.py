@@ -202,3 +202,68 @@ class FilteredArrowLibrary:
         proposals=self.library.propose(mol,limit=max(1024,limit))
         return [proposal for proposal in proposals
                 if proposal['template_id'] in self.template_ids][:limit]
+
+
+class ResonanceAwareLibrary:
+    """Also propose from enumerated resonance forms of the node graph.
+
+    Geometry perception picks one Lewis structure, but templates and grammar
+    rules are written for particular forms (e.g. a nitrile ylide rather than its
+    allenyl-enolate form), so a reaction can be missed only because of the
+    drawing. Resonance forms keep atom order and connectivity, so their arrows
+    and edits apply to the same geometry. Proposals are deduplicated by edits
+    and arrows and record the form they came from.
+    """
+    def __init__(self, library, max_forms=8):
+        if max_forms < 1:
+            raise ValueError('max_forms must be positive')
+        self.library, self.max_forms = library, int(max_forms)
+        self.policy = library.policy + f'; resonance_forms={self.max_forms}'
+        self.audit = library.audit
+
+    def forms(self, mol):
+        flags = (Chem.UNCONSTRAINED_ANIONS | Chem.UNCONSTRAINED_CATIONS |
+                 Chem.ALLOW_CHARGE_SEPARATION)
+        key, out = graph_smiles(mol), []
+        try:
+            structures = Chem.ResonanceMolSupplier(mol, flags=flags, maxStructs=4*self.max_forms)
+        except RuntimeError:
+            return out
+        seen = {key}
+        for form in structures:
+            if form is None or len(out) >= self.max_forms:
+                continue
+            try:
+                form = Chem.Mol(form)
+                Chem.SanitizeMol(form)
+                smiles = graph_smiles(form)
+            except (ValueError, RuntimeError):
+                continue
+            if smiles not in seen and Chem.GetFormalCharge(form) == Chem.GetFormalCharge(mol):
+                seen.add(smiles)
+                out.append(form)
+        return out
+
+    def propose(self, mol, limit=24):
+        base = self.library.propose(mol, limit=max(limit, 64))
+        signature = lambda p: (tuple((tuple(e['atoms']), e['after']) for e in p['edits']),
+                               tuple(sorted((tuple(sorted(a['source'])), tuple(sorted(a['sink'])))
+                                            for a in p['arrows'])))
+        seen = {signature(p) for p in base}
+        result = list(base)
+        forms = self.forms(mol)
+        # A "product" that is only another drawing of the node is not a reaction.
+        drawings = {graph_smiles(mol)} | {graph_smiles(f) for f in forms}
+        for form in forms:
+            try:
+                proposals = self.library.propose(form, limit=max(limit, 64))
+            except ValueError:
+                continue
+            for p in proposals:
+                s = signature(p)
+                if s in seen or p['predicted_graph'] in drawings:
+                    continue
+                seen.add(s)
+                result.append(dict(p, origin=p.get('origin', '')+'_via_resonance_form',
+                                   resonance_form=graph_smiles(form)))
+        return diverse_proposals(result, limit)

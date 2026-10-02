@@ -19,8 +19,9 @@ from rdkit import RDLogger
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.event_graph import geometry_mol  # noqa: E402
-from mechbridge.reference_matching import stereo_free, wilson  # noqa: E402
-from mechbridge.symbolic_library import ArrowLibrary  # noqa: E402
+from mechbridge.reference_matching import (automorphisms, bond_set, mol_bonds, permute,  # noqa: E402
+                                           stereo_free, wilson)
+from mechbridge.symbolic_library import ArrowLibrary, ResonanceAwareLibrary  # noqa: E402
 
 
 def main():
@@ -28,10 +29,14 @@ def main():
     parser.add_argument('--starts', type=Path, required=True)
     parser.add_argument('--references', type=Path, required=True)
     parser.add_argument('--ids', type=Path, help='JSON with representable_ids (restricts the set)')
+    parser.add_argument('--resonance-forms', type=int, default=0,
+                        help='Also propose from up to N resonance forms (ResonanceAwareLibrary)')
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     RDLogger.DisableLog('rdApp.*')
     library = ArrowLibrary(ROOT/'data/raw/synepd/polar.json')
+    if args.resonance_forms:
+        library = ResonanceAwareLibrary(library, args.resonance_forms)
     references = {r['id']: r for r in map(json.loads, args.references.read_text(encoding='utf-8').splitlines())}
     keep = None
     if args.ids:
@@ -50,15 +55,36 @@ def main():
             proposals, error = [], f'{type(exc).__name__}: {exc}'
         products = sorted({stereo_free(p['predicted_graph']) for p in proposals})
         origins = sorted({str(p.get('origin')) for p in proposals})
+        # Connectivity match (independent of the resonance drawing): reactant bonds
+        # plus formed minus broken bonds, under one reactant automorphism.
+        node_bonds = mol_bonds(mol)
+        target = bond_set(reference['product_bonds'])
+        maps = automorphisms(reference['atomic_numbers'], reference['reactant_bonds'])
+        connected = False
+        for proposal in proposals:
+            product = set(node_bonds)
+            for e in proposal['edits']:
+                pair = tuple(sorted(int(a) for a in e['atoms']))
+                if e['after'] == 0:
+                    product.discard(pair)
+                elif e['before'] == 0:
+                    product.add(pair)
+            if any(permute(frozenset(product), m) == target for m in maps):
+                connected = True
+                break
         rows.append(dict(id=start['id'], proposals=len(proposals), predicted_products=len(products),
                          reference_product_proposed=reference['product_key'] in products,
+                         reference_connectivity_proposed=connected,
                          origins=origins, error=error))
     n = len(rows)
     covered = sum(r['reference_product_proposed'] for r in rows)
+    connected = sum(r['reference_connectivity_proposed'] for r in rows)
     with_any = sum(r['proposals'] > 0 for r in rows)
-    summary = dict(starts=str(args.starts), reactions=n, any_proposal=with_any,
+    summary = dict(starts=str(args.starts), library_policy=library.policy, reactions=n, any_proposal=with_any,
                    any_proposal_wilson95=wilson(with_any, n), reference_product_proposed=covered,
                    reference_product_proposed_wilson95=wilson(covered, n),
+                   reference_connectivity_proposed=connected,
+                   reference_connectivity_proposed_wilson95=wilson(connected, n),
                    median_proposals=float(np.median([r['proposals'] for r in rows])) if rows else None,
                    rows=rows)
     args.out.parent.mkdir(parents=True, exist_ok=True)
