@@ -68,13 +68,13 @@ def required_seeds(per_seed, a, b, systems, relative=.2, alpha=.05, power=.8):
         return dict(out, note='both strategies find nothing on these systems')
     delta = relative*level
     tau2 = max(0., float(np.var(means_a - means_b, ddof=1)) - (var_a + var_b)/pilot_seeds)
-    capacity = delta**2*systems/(norm.ppf(1 - alpha/2) + norm.ppf(power))**2
+    capacity = float(delta**2*systems/(norm.ppf(1 - alpha/2) + norm.ppf(power))**2)
     def seeds(room):
         if room <= 0:
             return None                       # no seed count reaches the power
         return max(1, math.ceil((var_a + var_b)/room))
     out.update(delta=delta, tau2=tau2, seeds_required=seeds(capacity - tau2),
-               seeds_noise_only=seeds(capacity), heterogeneity_limited=capacity <= tau2)
+               seeds_noise_only=seeds(capacity), heterogeneity_limited=bool(capacity <= tau2))
     return out
 
 

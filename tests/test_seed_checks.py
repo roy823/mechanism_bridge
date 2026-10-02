@@ -31,3 +31,10 @@ def test_required_seeds_noise_and_heterogeneity():
     result = checks.required_seeds(spread, 'arrows', 'bond_edits', systems=10)
     assert result['heterogeneity_limited'] and result['seeds_required'] is None
     assert result['seeds_noise_only'] == 1
+
+
+def test_required_seeds_result_is_json_serializable():
+    import json
+    checks = load()
+    noisy = dict(arrows={'a': [0, 10], 'b': [10, 20]}, bond_edits={'a': [0, 0], 'b': [10, 10]})
+    json.dumps(checks.required_seeds(noisy, 'arrows', 'bond_edits', systems=10))
