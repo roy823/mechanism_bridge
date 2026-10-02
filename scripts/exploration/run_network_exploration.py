@@ -12,8 +12,10 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.potentials import load_potential
 from mechbridge.symbolic_library import ArrowLibrary,FilteredArrowLibrary
-from mechbridge.reaction_network import SearchProtocol, explore, atomic_json
-from mechbridge.parallel_network import explore_shared
+from mechbridge.reaction_network import (ENCOUNTER_POLICIES, SearchProtocol, explore,
+                                         atomic_json)
+from mechbridge.parallel_network import START_METHODS, explore_shared
+from mechbridge.provenance import runtime_provenance
 
 
 def main():
@@ -25,6 +27,8 @@ def main():
     p.add_argument('--workers',type=int,default=1,
                    help='CPU process workers sharing one centrally registered TransitionNet')
     p.add_argument('--threads-per-worker',type=int,default=2)
+    p.add_argument('--start-method',choices=START_METHODS,default='spawn',
+                   help='Process start method for --workers > 1 (recorded in network.json)')
     p.add_argument('--strategies', nargs='+', choices=['geometry','center_random','bond_edits','arrows','hybrid'],
                    default=['geometry','bond_edits','arrows'])
     p.add_argument('--template-ids',nargs='+',help='Restrict symbolic proposals to exact reviewed template IDs')
@@ -44,6 +48,10 @@ def main():
     p.add_argument('--geometry-seeds-per-node',type=int,default=9)
     p.add_argument('--dimer-extrapolate-forces',action='store_true',
                    help='Enable ASE force extrapolation; optional, validated only on a small fixed-seed benchmark')
+    p.add_argument('--min-barrier',type=float,default=-1e-4,
+                   help='Required E_TS - E_endpoint in eV for both endpoints (legacy -1e-4)')
+    p.add_argument('--encounter-policy',choices=ENCOUNTER_POLICIES,default='symbolic_only',
+                   help="'matched_controls' gives geometry/center_random the same rigid encounter search")
     p.add_argument('--evaluations', type=int, default=6000)
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
@@ -62,7 +70,8 @@ def main():
         initial_fmax=a.initial_fmax,initial_steps=a.initial_steps,
         endpoint_acceptance=a.endpoint_acceptance,endpoint_core_fmax=a.endpoint_core_fmax,
         geometry_seeds_per_node=a.geometry_seeds_per_node,
-        dimer_extrapolate_forces=a.dimer_extrapolate_forces)
+        dimer_extrapolate_forces=a.dimer_extrapolate_forces,
+        min_barrier_eV=a.min_barrier,encounter_policy=a.encounter_policy)
     starts = [json.loads(l) for l in a.starts.read_text(encoding='utf-8').splitlines()]
     if a.start_ids:
         starts = [s for s in starts if s['id'] in a.start_ids]
@@ -89,13 +98,16 @@ def main():
         template_ids=a.template_ids,
         scheduler=('central_species_registry_process_workers' if a.workers>1 else 'sequential'),
         workers=a.workers,threads_per_worker=a.threads_per_worker,
+        start_method=a.start_method if a.workers>1 else None,
+        provenance=runtime_provenance(ROOT),
         started_at_unix=time.time())
     atomic_json(a.outdir/'manifest.json', manifest)
     for start in starts:
         for strategy in a.strategies:
             if a.workers>1:
                 report=explore_shared(start,library,backend,strategy,a.outdir/start['id']/strategy,
-                    a.potential,ROOT,protocol,a.workers,a.threads_per_worker,a.device,a.compile_model)
+                    a.potential,ROOT,protocol,a.workers,a.threads_per_worker,a.device,a.compile_model,
+                    a.start_method)
             else:
                 report=explore(start,library,backend,strategy,a.outdir/start['id']/strategy,protocol)
             print(json.dumps(dict(start=start['id'], strategy=strategy, status=report['status'],
