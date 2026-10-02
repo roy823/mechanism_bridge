@@ -21,6 +21,8 @@ def main():
     p.add_argument('--outdir',type=Path,required=True)
     p.add_argument('--selection',required=True,help='Predeclared event selection rule for this experiment')
     p.add_argument('--threads',type=int,default=2,help='PySCF threads (historical runs used 2)')
+    p.add_argument('--polish-steps',type=int,default=100,
+                   help='BFGS steps for each IRC endpoint polish (historical runs used 100)')
     p.add_argument('--device',choices=['cpu','gpu'],default='cpu',
                    help="'gpu': GPU4PySCF with the same functional, basis, grid and SCF settings")
     args=p.parse_args()
@@ -56,7 +58,7 @@ def main():
     print(json.dumps({'event':record['event_id'],'status':'starting_DFT_and_IRC'}),flush=True)
     with threadpool_limits(limits=1,user_api='blas'):
         result=verify_event(record,args.outdir,threads=args.threads,frames=0,ts_steps=100,irc_steps=160,
-                            device=args.device)
+                            device=args.device,polish_steps=args.polish_steps)
     print(json.dumps({k:result.get(k) for k in ['event_id','status','physical_event_verified',
         'expected_endpoint_match','gradient_evaluations','elapsed_seconds','error']}),flush=True)
 

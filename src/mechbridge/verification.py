@@ -40,7 +40,8 @@ def stationary(atoms, calculator, fmax=0.02):
 
 
 def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
-                 ts_steps=100, irc_steps=120, frames=17, ts_optimizer_fmax=0.01, device="cpu"):
+                 ts_steps=100, irc_steps=120, frames=17, ts_optimizer_fmax=0.01, device="cpu",
+                 polish_steps=100):
     """Validate a supplied candidate on DFT; frames=0 omits orbital annotation."""
     if frames == 1 or frames < 0:
         raise ValueError('Use frames=0 for physical verification, or frames>=2 for orbital analysis')
@@ -53,6 +54,7 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
               "method":method,"basis":basis,"charge":record["charge"],
               "multiplicity":record["multiplicity"],"environment":"gas_phase",
               "protocol":{"threads":threads,"device":device,"ts_max_steps":ts_steps,"irc_max_steps":irc_steps,
+                          "endpoint_polish_max_steps":polish_steps,
                           "irc_dx_A_sqrt_amu":0.08,"ts_minimum_fmax_eV_A":0.02,
                           "ts_optimizer_fmax_eV_A":ts_optimizer_fmax,
                           "irc_fmax_eV_A":0.05,"irc_inner_fmax_eV_A":0.02,
@@ -94,7 +96,7 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
                 result["status"] = "unresolved_irc"; save(); return result
             path = read(outdir/f"irc_{direction}.traj",index=":")
             with BFGS(branch,logfile=str(outdir/f"minimum_{direction}.log")) as opt:
-                opt.run(fmax=0.02,steps=100)
+                opt.run(fmax=0.02,steps=polish_steps)    # historical cap 100
             end, _, _ = stationary(branch,calc)
             end["irc_converged"] = converged
             end["graph_smiles"] = graph_smiles(geometry_mol(branch.numbers,branch.positions,record["charge"]))
