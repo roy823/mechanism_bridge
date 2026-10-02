@@ -279,6 +279,45 @@ def integrate_irc(atoms, outdir, protocol, direction):
                 irc_end_energy_eV=float(atoms.get_potential_energy()))
 
 
+def descend_endpoints(seed, modes, ts_energy, calculator, outdir, protocol, charge, result):
+    """Both endpoints of an index-one saddle: +/- mode displacement or MLIP IRC, then BFGS.
+
+    Appends the analysed endpoints to result['endpoints'] and sets the IRC
+    evidence fields, endpoint_acceptance and status. Shared by the search and by
+    external baselines so that every arm uses the same post-processing chain.
+    """
+    np.save(outdir/'negative_mode.npy', modes[0])
+    irc = protocol.connection_protocol == 'irc'
+    for sign in (-1, 1):
+        end = seed.copy()
+        if irc:
+            end.calc = calculator
+            irc_info = integrate_irc(end, outdir, protocol, 'reverse' if sign < 0 else 'forward')
+        else:
+            end.positions += sign * protocol.mode_displacement * modes[0]
+            end.calc = calculator
+        with BFGS(end, maxstep=.1, logfile=str(outdir/f'descent_{sign}.log'),
+                  trajectory=str(outdir/f'descent_{sign}.traj')) as opt:
+            opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
+        analysis, _ = inspect_point(end, protocol)
+        if irc:
+            irc_info['irc_polish_energy_change_eV'] = analysis['energy_eV']-irc_info['irc_end_energy_eV']
+            analysis.update(irc_info)
+        analysis['positions_A'] = end.positions.tolist()
+        analysis['barrier_eV'] = ts_energy - analysis['energy_eV']
+        mol = geometry_mol(end.numbers, end.positions, charge)
+        annotate_carbon_skeleton(analysis,mol,protocol)
+        analysis['graph_smiles'] = graph_smiles(mol)
+        result['endpoints'].append(analysis)
+        write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
+    if irc:
+        converged = all(e['irc_converged'] for e in result['endpoints'])
+        result.update(is_IRC=converged, evidence=('MLIP_bidirectional_IRC' if converged else
+                                                  'MLIP_IRC_not_converged_then_descent'))
+    result['endpoint_acceptance']=protocol.endpoint_acceptance
+    result['status'] = connection_status(result['endpoints'], protocol)
+
+
 def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
     outdir.mkdir(parents=True, exist_ok=False)
     started, initial_calls = time.time(), calculator.calls
@@ -314,36 +353,7 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
         if not ts['force_converged'] or ts['imaginary_count'] != 1:
             result['status'] = 'not_index_one'
             return result
-        np.save(outdir/'negative_mode.npy', modes[0])
-        irc = protocol.connection_protocol == 'irc'
-        for sign in (-1, 1):
-            end = seed.copy()
-            if irc:
-                end.calc = calculator
-                irc_info = integrate_irc(end, outdir, protocol, 'reverse' if sign < 0 else 'forward')
-            else:
-                end.positions += sign * protocol.mode_displacement * modes[0]
-                end.calc = calculator
-            with BFGS(end, maxstep=.1, logfile=str(outdir/f'descent_{sign}.log'),
-                      trajectory=str(outdir/f'descent_{sign}.traj')) as opt:
-                opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
-            analysis, _ = inspect_point(end, protocol)
-            if irc:
-                irc_info['irc_polish_energy_change_eV'] = analysis['energy_eV']-irc_info['irc_end_energy_eV']
-                analysis.update(irc_info)
-            analysis['positions_A'] = end.positions.tolist()
-            analysis['barrier_eV'] = ts['energy_eV'] - analysis['energy_eV']
-            mol = geometry_mol(end.numbers, end.positions, charge)
-            annotate_carbon_skeleton(analysis,mol,protocol)
-            analysis['graph_smiles'] = graph_smiles(mol)
-            result['endpoints'].append(analysis)
-            write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
-        if irc:
-            converged = all(e['irc_converged'] for e in result['endpoints'])
-            result.update(is_IRC=converged, evidence=('MLIP_bidirectional_IRC' if converged else
-                                                      'MLIP_IRC_not_converged_then_descent'))
-        result['endpoint_acceptance']=protocol.endpoint_acceptance
-        result['status'] = connection_status(result['endpoints'], protocol)
+        descend_endpoints(seed, modes, ts['energy_eV'], calculator, outdir, protocol, charge, result)
         if result['status'] != 'unresolved_minimum':
             result['ts_positions_A'] = seed.positions.tolist()
     except BudgetExceeded:
