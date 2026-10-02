@@ -142,6 +142,9 @@ class SearchProtocol:
     # 'legacy': historical seeds. 'arrow_features_v1': arrow-only terms for
     # arrows, matched random-order progress axis for bond_edits (arrow_features).
     seed_features: str = 'legacy'
+    # >0: symbolic proposals also come from up to N resonance forms of each node
+    # (symbolic_library.ResonanceAwareLibrary); 0 is the historical behaviour.
+    proposal_resonance_forms: int = 0
 
     def __post_init__(self):
         if self.encounter_policy not in ENCOUNTER_POLICIES:
@@ -154,6 +157,8 @@ class SearchProtocol:
             raise ValueError(f'Unknown connection_protocol: {self.connection_protocol}')
         if self.seed_features not in SEED_FEATURES:
             raise ValueError(f'Unknown seed_features: {self.seed_features}')
+        if self.proposal_resonance_forms < 0:
+            raise ValueError('proposal_resonance_forms must be >= 0')
 
 
 def aligned_rmsd(x, y):

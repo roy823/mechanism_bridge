@@ -7,7 +7,7 @@
   "total_evaluations": 16000,
   "evaluations_per_attempt": 1900,
   "ts_steps": 160,
-  "initial_steps": 250,
+  "initial_steps": 1500,
   "descent_steps": 250,
   "initial_fmax": 0.003,
   "initial_curvature_steps": 3,
@@ -30,5 +30,6 @@
   "irc_steps": 300,
   "irc_fmax": 0.05,
   "irc_inner_fmax": 0.02,
-  "seed_features": "arrow_features_v1"
+  "seed_features": "arrow_features_v1",
+  "proposal_resonance_forms": 0
 }

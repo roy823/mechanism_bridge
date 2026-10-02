@@ -41,7 +41,7 @@ from mechbridge.reaction_network import (BudgetExceeded, CountedCalculator, alig
                                          atomic_json, descend_endpoints, edge_chemistry,
                                          initialize_root, inspect_point, is_recoverable_failure,
                                          molecular_rmsd)
-from mechbridge.symbolic_library import ArrowLibrary  # noqa: E402
+from mechbridge.symbolic_library import ArrowLibrary, ResonanceAwareLibrary  # noqa: E402
 from run_network_exploration import protocol_from_json  # noqa: E402
 
 MAX_DEGREE = {1: 1, 6: 4, 7: 3, 8: 2}    # neutral closed-shell connectivity ceiling (CHNO)
@@ -248,6 +248,8 @@ def main():
         root_mol = mols[0]
         if args.arm == 'edits':
             library = ArrowLibrary(ROOT/'data/raw/synepd/polar.json')
+            if protocol.proposal_resonance_forms:      # same proposals as the symbolic arms
+                library = ResonanceAwareLibrary(library, protocol.proposal_resonance_forms)
             sets = proposal_driving_sets(library.propose(root_mol))
         else:
             rng = np.random.default_rng([protocol.random_seed, 11])

@@ -12,7 +12,7 @@ from rdkit import RDLogger
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.potentials import load_potential
-from mechbridge.symbolic_library import ArrowLibrary,FilteredArrowLibrary
+from mechbridge.symbolic_library import ArrowLibrary,FilteredArrowLibrary,ResonanceAwareLibrary
 from mechbridge.reaction_network import (CONNECTION_PROTOCOLS, ENCOUNTER_POLICIES, TS_OPTIMIZERS,
                                          SearchProtocol, explore, atomic_json)
 from mechbridge.search_seeds import SEED_FEATURES
@@ -31,7 +31,7 @@ PROTOCOL_FLAGS = dict(attempts='max_attempts', seeds_per_node='seeds_per_node',
     dimer_extrapolate_forces='dimer_extrapolate_forces', min_barrier='min_barrier_eV',
     encounter_policy='encounter_policy', ts_optimizer='ts_optimizer', dimer_fmax='dimer_fmax',
     sella_steps='sella_steps', connection_protocol='connection_protocol', irc_steps='irc_steps',
-    seed_features='seed_features')
+    seed_features='seed_features', proposal_resonance_forms='proposal_resonance_forms')
 
 
 def protocol_from_json(path, seed):
@@ -86,6 +86,8 @@ def main():
     p.add_argument('--connection-protocol',choices=CONNECTION_PROTOCOLS,default='mode_displacement',
                    help="'irc': bidirectional Sella IRC on the MLIP before endpoint polishing")
     p.add_argument('--irc-steps',type=int,default=300)
+    p.add_argument('--proposal-resonance-forms',type=int,default=0,
+                   help='Also propose from up to N resonance forms of each node (0: historical)')
     p.add_argument('--seed-features',choices=SEED_FEATURES,default='legacy',
                    help="'arrow_features_v1': lone-pair, push-pull order and coupling terms for arrows")
     p.add_argument('--evaluations', type=int, default=6000)
@@ -114,7 +116,7 @@ def main():
         min_barrier_eV=a.min_barrier,encounter_policy=a.encounter_policy,
         ts_optimizer=a.ts_optimizer,dimer_fmax=a.dimer_fmax,sella_steps=a.sella_steps,
         connection_protocol=a.connection_protocol,irc_steps=a.irc_steps,
-        seed_features=a.seed_features)
+        seed_features=a.seed_features,proposal_resonance_forms=a.proposal_resonance_forms)
     if a.outdir.exists():
         raise FileExistsError('Use a new output directory; prior experiments are preserved')
     a.outdir.mkdir(parents=True)
@@ -126,6 +128,8 @@ def main():
             raise ValueError('Unknown start ID')
     (a.outdir/'starts.jsonl').write_text(''.join(json.dumps(s)+'\n' for s in starts),encoding='utf-8')
     library = ArrowLibrary(ROOT/'data/raw/synepd/polar.json')
+    if protocol.proposal_resonance_forms:
+        library = ResonanceAwareLibrary(library, protocol.proposal_resonance_forms)
     if a.template_ids:library=FilteredArrowLibrary(library,a.template_ids)
     backend,potential=load_potential(a.potential,ROOT,a.device,a.compile_model,
                                      threads=a.threads_per_worker)
