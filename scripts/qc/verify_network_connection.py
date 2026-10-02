@@ -20,6 +20,7 @@ def main():
     p.add_argument('--edge',type=int,required=True)
     p.add_argument('--outdir',type=Path,required=True)
     p.add_argument('--selection',required=True,help='Predeclared event selection rule for this experiment')
+    p.add_argument('--threads',type=int,default=2,help='PySCF threads (historical runs used 2)')
     args=p.parse_args()
     args.run=args.run.resolve()
     args.outdir=args.outdir.resolve()
@@ -44,14 +45,14 @@ def main():
     args.outdir.mkdir(parents=True)
     (args.outdir/'input.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
     provenance=dict(packages={m:importlib.metadata.version(m) for m in ['pyscf','sella','numpy','ase']},
-        blas_threads=1,pyscf_threads=2,frames=0,
+        blas_threads=1,pyscf_threads=args.threads,frames=0,
         selection=args.selection,
         files={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
                for p in [ROOT/'src/mechbridge/verification.py',ROOT/'src/mechbridge/backends.py',Path(__file__)]})
     (args.outdir/'provenance.json').write_text(json.dumps(provenance,indent=2),encoding='utf-8')
     print(json.dumps({'event':record['event_id'],'status':'starting_DFT_and_IRC'}),flush=True)
     with threadpool_limits(limits=1,user_api='blas'):
-        result=verify_event(record,args.outdir,threads=2,frames=0,ts_steps=100,irc_steps=160)
+        result=verify_event(record,args.outdir,threads=args.threads,frames=0,ts_steps=100,irc_steps=160)
     print(json.dumps({k:result.get(k) for k in ['event_id','status','physical_event_verified',
         'expected_endpoint_match','gradient_evaluations','elapsed_seconds','error']}),flush=True)
 
