@@ -1,5 +1,6 @@
 """Run comparable geometry/net-edit/full-arrow GPA-style searches on real starts."""
 import argparse
+import dataclasses
 import hashlib
 import json
 from pathlib import Path
@@ -16,6 +17,29 @@ from mechbridge.reaction_network import (ENCOUNTER_POLICIES, SearchProtocol, exp
                                          atomic_json)
 from mechbridge.parallel_network import START_METHODS, explore_shared
 from mechbridge.provenance import runtime_provenance
+
+
+# CLI flag destination -> SearchProtocol field.
+PROTOCOL_FLAGS = dict(attempts='max_attempts', seeds_per_node='seeds_per_node',
+    symbolic_seed_scale='symbolic_seed_scale', evaluations='total_evaluations',
+    attempt_evaluations='evaluations_per_attempt', ts_steps='ts_steps',
+    descent_steps='descent_steps', hessian_batch_size='hessian_batch_size', fmax='fmax',
+    initial_fmax='initial_fmax', initial_steps='initial_steps',
+    endpoint_acceptance='endpoint_acceptance', endpoint_core_fmax='endpoint_core_fmax',
+    geometry_seeds_per_node='geometry_seeds_per_node',
+    dimer_extrapolate_forces='dimer_extrapolate_forces', min_barrier='min_barrier_eV',
+    encounter_policy='encounter_policy')
+
+
+def protocol_from_json(path, seed):
+    """Frozen protocol: every SearchProtocol field except random_seed, which is per run."""
+    data = json.loads(Path(path).read_text(encoding='utf-8'))
+    fields = {f.name for f in dataclasses.fields(SearchProtocol)} - {'random_seed'}
+    missing, unknown = sorted(fields - set(data)), sorted(set(data) - fields)
+    if missing or unknown:
+        raise ValueError(f'Protocol JSON must list exactly the SearchProtocol fields except '
+                         f'random_seed; missing={missing}, unknown={unknown}')
+    return SearchProtocol(**data, random_seed=seed)
 
 
 def main():
@@ -55,14 +79,18 @@ def main():
     p.add_argument('--evaluations', type=int, default=6000)
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
+    p.add_argument('--protocol-json',type=Path,
+                   help='Frozen protocol (all SearchProtocol fields except random_seed); '
+                        'protocol flags above must then stay at their defaults')
     a = p.parse_args()
+    if a.protocol_json:
+        changed = sorted('--'+k.replace('_','-') for k in PROTOCOL_FLAGS if getattr(a,k)!=p.get_default(k))
+        if changed:
+            p.error(f'--protocol-json cannot be combined with protocol flags: {changed}')
     if a.workers<1 or a.threads_per_worker<1 or a.seeds_per_node<1 or a.symbolic_seed_scale<=0:
         p.error('workers, threads-per-worker, seeds-per-node and symbolic-seed-scale must be positive')
-    if a.outdir.exists():
-        raise FileExistsError('Use a new output directory; prior experiments are preserved')
-    a.outdir.mkdir(parents=True)
-    RDLogger.DisableLog('rdApp.*')
-    protocol = SearchProtocol(max_attempts=a.attempts, seeds_per_node=a.seeds_per_node,
+    protocol = protocol_from_json(a.protocol_json, a.seed) if a.protocol_json else SearchProtocol(
+        max_attempts=a.attempts, seeds_per_node=a.seeds_per_node,
         symbolic_seed_scale=a.symbolic_seed_scale,
         total_evaluations=a.evaluations, evaluations_per_attempt=a.attempt_evaluations,
         ts_steps=a.ts_steps,descent_steps=a.descent_steps,
@@ -72,6 +100,10 @@ def main():
         geometry_seeds_per_node=a.geometry_seeds_per_node,
         dimer_extrapolate_forces=a.dimer_extrapolate_forces,
         min_barrier_eV=a.min_barrier,encounter_policy=a.encounter_policy)
+    if a.outdir.exists():
+        raise FileExistsError('Use a new output directory; prior experiments are preserved')
+    a.outdir.mkdir(parents=True)
+    RDLogger.DisableLog('rdApp.*')
     starts = [json.loads(l) for l in a.starts.read_text(encoding='utf-8').splitlines()]
     if a.start_ids:
         starts = [s for s in starts if s['id'] in a.start_ids]
@@ -99,6 +131,8 @@ def main():
         scheduler=('central_species_registry_process_workers' if a.workers>1 else 'sequential'),
         workers=a.workers,threads_per_worker=a.threads_per_worker,
         start_method=a.start_method if a.workers>1 else None,
+        protocol_json=(dict(path=str(a.protocol_json),
+            sha256=hashlib.sha256(a.protocol_json.read_bytes()).hexdigest()) if a.protocol_json else None),
         provenance=runtime_provenance(ROOT),
         started_at_unix=time.time())
     atomic_json(a.outdir/'manifest.json', manifest)
