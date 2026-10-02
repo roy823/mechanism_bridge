@@ -20,10 +20,15 @@ class PySCFCalculator(Calculator):
     implemented_properties = ["energy", "forces"]
 
     def __init__(self, charge, multiplicity, method="wb97x", basis="6-31g(d)", threads=1,
-                 reuse_density=False, **kwargs):
+                 reuse_density=False, device="cpu", **kwargs):
         super().__init__(**kwargs)
         if multiplicity != 1:
             raise ValueError("v0.1 PySCF backend only supports closed-shell singlets")
+        if device not in ("cpu", "gpu"):
+            raise ValueError(f"Unknown device: {device}")
+        # 'gpu': GPU4PySCF with the same functional, basis, grid and SCF settings
+        # (no density fitting), so CPU and GPU labels describe one PES.
+        self.device = device
         self.charge, self.multiplicity = charge, multiplicity
         self.method, self.basis, self.threads = method, basis, threads
         self.evaluation_count = 0
@@ -40,6 +45,12 @@ class PySCFCalculator(Calculator):
         m = gto.M(atom=list(zip(self.atoms.get_chemical_symbols(), self.atoms.positions.tolist())),
                   unit="Angstrom", charge=self.charge, spin=0, basis=self.basis, verbose=0)
         mf = scf.RHF(m) if self.method.upper() == "HF" else dft.RKS(m, xc=self.method)
+        if self.device == "gpu":
+            from gpu4pyscf import scf as gpu_scf, dft as gpu_dft
+            cpu = mf
+            mf = gpu_scf.RHF(m) if self.method.upper() == "HF" else gpu_dft.RKS(m, xc=self.method)
+            if self.method.upper() != "HF":
+                mf.grids.level, mf.grids.prune = cpu.grids.level, cpu.grids.prune
         mf.conv_tol = 1e-10; mf.max_cycle = 150
         dm0 = None
         if (self.reuse_density and self.mean_field is not None and m.nelectron == self.mean_field.mol.nelectron
@@ -50,6 +61,8 @@ class PySCFCalculator(Calculator):
         if not mf.converged:
             raise RuntimeError("SCF did not converge; do not use these labels")
         gradient = mf.nuc_grad_method().kernel()
+        if hasattr(gradient, "get"):        # cupy array from GPU4PySCF
+            gradient = gradient.get()
         self.mean_field = mf
         self.evaluation_count += 1
         self.results = {"energy": float(energy * Hartree), "forces": -gradient * Hartree / Bohr}
@@ -58,7 +71,8 @@ class PySCFCalculator(Calculator):
         """Analytic Cartesian Hessian on the same converged PES, in eV/A^2."""
         import numpy as np
         self.get_potential_energy(atoms)
-        raw = np.asarray(self.mean_field.Hessian().kernel())
+        raw = self.mean_field.Hessian().kernel()
+        raw = raw.get() if hasattr(raw, "get") else np.asarray(raw)
         result = raw.transpose(0, 2, 1, 3).reshape(3 * len(atoms), 3 * len(atoms))
         result = result * Hartree / Bohr**2
         if not np.isfinite(result).all():

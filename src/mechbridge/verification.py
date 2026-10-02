@@ -40,7 +40,7 @@ def stationary(atoms, calculator, fmax=0.02):
 
 
 def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
-                 ts_steps=100, irc_steps=120, frames=17, ts_optimizer_fmax=0.01):
+                 ts_steps=100, irc_steps=120, frames=17, ts_optimizer_fmax=0.01, device="cpu"):
     """Validate a supplied candidate on DFT; frames=0 omits orbital annotation."""
     if frames == 1 or frames < 0:
         raise ValueError('Use frames=0 for physical verification, or frames>=2 for orbital analysis')
@@ -52,7 +52,7 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
     result = {"event_id":record["event_id"],"source":record,
               "method":method,"basis":basis,"charge":record["charge"],
               "multiplicity":record["multiplicity"],"environment":"gas_phase",
-              "protocol":{"threads":threads,"ts_max_steps":ts_steps,"irc_max_steps":irc_steps,
+              "protocol":{"threads":threads,"device":device,"ts_max_steps":ts_steps,"irc_max_steps":irc_steps,
                           "irc_dx_A_sqrt_amu":0.08,"ts_minimum_fmax_eV_A":0.02,
                           "ts_optimizer_fmax_eV_A":ts_optimizer_fmax,
                           "irc_fmax_eV_A":0.05,"irc_inner_fmax_eV_A":0.02,
@@ -66,7 +66,7 @@ def verify_event(record, outdir, method="wb97x", basis="6-31g(d)", threads=2,
         temp = outdir / "verification.json.tmp"
         temp.write_text(json.dumps(result,indent=2,allow_nan=False),encoding="utf-8")
         temp.replace(outdir / "verification.json")
-    calc = PySCFCalculator(record["charge"],record["multiplicity"],method,basis,threads)
+    calc = PySCFCalculator(record["charge"],record["multiplicity"],method,basis,threads,device=device)
     try:
         atoms = Atoms(numbers=record["atomic_numbers"],positions=record["positions_A"]["ts"])
         atoms.calc = calc

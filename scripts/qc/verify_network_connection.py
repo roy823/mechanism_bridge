@@ -21,6 +21,8 @@ def main():
     p.add_argument('--outdir',type=Path,required=True)
     p.add_argument('--selection',required=True,help='Predeclared event selection rule for this experiment')
     p.add_argument('--threads',type=int,default=2,help='PySCF threads (historical runs used 2)')
+    p.add_argument('--device',choices=['cpu','gpu'],default='cpu',
+                   help="'gpu': GPU4PySCF with the same functional, basis, grid and SCF settings")
     args=p.parse_args()
     args.run=args.run.resolve()
     args.outdir=args.outdir.resolve()
@@ -38,21 +40,23 @@ def main():
         reactant_smiles=trial['endpoints'][0]['graph_smiles'],
         product_smiles=trial['endpoints'][1]['graph_smiles'],
         expected_pair_origin='Actual MLIP descent endpoints, not the symbolic target',
-        source_json=str(trial_file.relative_to(ROOT)),
+        source_json=str(trial_file.relative_to(ROOT) if trial_file.is_relative_to(ROOT) else trial_file),
         source_sha256=hashlib.sha256(trial_file.read_bytes()).hexdigest(),
         original_symbolic_proposal=attempt['proposal'],
         source_index_one_frequencies=trial['ts']['frequencies_cm-1'])
     args.outdir.mkdir(parents=True)
     (args.outdir/'input.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
-    provenance=dict(packages={m:importlib.metadata.version(m) for m in ['pyscf','sella','numpy','ase']},
-        blas_threads=1,pyscf_threads=args.threads,frames=0,
+    packages=['pyscf','sella','numpy','ase']+(['gpu4pyscf-cuda12x','cupy-cuda12x'] if args.device=='gpu' else [])
+    provenance=dict(packages={m:importlib.metadata.version(m) for m in packages},
+        blas_threads=1,pyscf_threads=args.threads,device=args.device,frames=0,
         selection=args.selection,
         files={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
                for p in [ROOT/'src/mechbridge/verification.py',ROOT/'src/mechbridge/backends.py',Path(__file__)]})
     (args.outdir/'provenance.json').write_text(json.dumps(provenance,indent=2),encoding='utf-8')
     print(json.dumps({'event':record['event_id'],'status':'starting_DFT_and_IRC'}),flush=True)
     with threadpool_limits(limits=1,user_api='blas'):
-        result=verify_event(record,args.outdir,threads=args.threads,frames=0,ts_steps=100,irc_steps=160)
+        result=verify_event(record,args.outdir,threads=args.threads,frames=0,ts_steps=100,irc_steps=160,
+                            device=args.device)
     print(json.dumps({k:result.get(k) for k in ['event_id','status','physical_event_verified',
         'expected_endpoint_match','gradient_evaluations','elapsed_seconds','error']}),flush=True)
 
