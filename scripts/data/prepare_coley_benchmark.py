@@ -61,7 +61,9 @@ def stratum(reactant, product):
         shared = {n.GetIdx() for n in x.GetNeighbors()} & {n.GetIdx() for n in y.GetNeighbors()}
         if shared:
             centre = reactant.GetAtomWithIdx(min(shared))
-            triplet = '-'.join([x.GetSymbol(), centre.GetSymbol(), y.GetSymbol()])
+            # A dipole read in either direction is the same type: C-N-N == N-N-C.
+            triplet = min('-'.join([x.GetSymbol(), centre.GetSymbol(), y.GetSymbol()]),
+                          '-'.join([y.GetSymbol(), centre.GetSymbol(), x.GetSymbol()]))
             p, q = (by_map[m] for m in partner)
             bond = reactant.GetBondBetweenAtoms(p.GetIdx(), q.GetIdx())
             dipolarophile = f"{p.GetSymbol()}{'-=#'[int(bond.GetBondTypeAsDouble())-1] if bond else '?'}{q.GetSymbol()}"
@@ -175,7 +177,11 @@ def main():
             numbers = record['atomic_numbers']
             xyz = assemble_encounter(numbers, x, Chem.GetMolFrags(plain), seed)
             observed = geometry_mol(numbers, xyz, 0)
-            if not resonance_equivalent(plain, observed):
+            # As in v5: compare connectivity/resonance only; the 3D embedding may
+            # assign stereo the SMILES leaves unspecified.
+            expected, perceived = Chem.Mol(plain), Chem.Mol(observed)
+            Chem.RemoveStereochemistry(expected); Chem.RemoveStereochemistry(perceived)
+            if not resonance_equivalent(expected, perceived):
                 raise ValueError('encounter geometry changes the perceived reactant graph')
             record['admission'] = 'accepted'
             starts.append(dict(id=ident, atomic_numbers=numbers, positions_A=xyz.tolist(), charge=0,
