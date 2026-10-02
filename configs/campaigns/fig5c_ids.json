@@ -1,0 +1,15 @@
+{
+  "purpose": "Fig. 5c seed-feature ablations (arrows only): the first five Coley and the first five growth systems of fig35_ids.json, chosen by position before any main-campaign result",
+  "ids": [
+    "coley_70",
+    "coley_71",
+    "coley_92",
+    "coley_165",
+    "coley_166",
+    "acetone",
+    "propanal",
+    "glycolaldehyde",
+    "glyceraldehyde",
+    "acetylacetone"
+  ]
+}

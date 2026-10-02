@@ -35,3 +35,6 @@ FP-JCTC-1-arrows-legacy.json differs only in seed_features='legacy'. It runs the
 arrows strategy with the historical seed (0.7 source/sink coupling only) on the
 Fig. 3/5a systems as the A_cur arm of the E-doc design; its seed RNG equals the
 FP-JCTC-1 arrows arm, so the two are paired.
+
+FP-JCTC-1-ablation-<arm>.json (Fig. 5c) each differ from FP-JCTC-1 only in
+seed_feature_ablation; they run the arrows strategy on configs/campaigns/fig5c_ids.json.
