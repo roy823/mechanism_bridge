@@ -13,4 +13,6 @@ endpoints) decides connection_protocol.
 | evaluations_per_attempt | 1900 | P90 of accepted attempts under dimer+sella+irc = 1855, rounded up to 100, floor 1400 |
 | encounter_policy | matched_controls | fair rigid-encounter search for the geometry/center_random controls |
 | seed_features | arrow_features_v1 | arrow-only lone-pair, push-pull order and coupling terms; matched random-order control for bond_edits |
+| proposal_resonance_forms | 8 | symbolic coverage of the reference product (connectivity): Coley 19/100 -> 86/100, T1x 13/204 unchanged (UF job 44466654) |
+| initial_steps | 1500 | Coley encounter complexes stopped at fmax 0.0099 eV/A after 250 BFGS steps; root relaxation is shared by all strategies |
 | other fields | as in v4 (network_growth_v4) | 16000 evaluations, 24 attempts, fmax 0.005 eV/A, batch-32 FD Hessian |
