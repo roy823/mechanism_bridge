@@ -6,11 +6,14 @@ TS identity (G doc 4.3), for accepted attempts of one group:
   different : different endpoints, |dE_TS| > 0.04 eV or core RMSD > 0.30 A;
   otherwise uncertain. Clusters are the connected components of 'same'.
   (The asynchrony criterion of G doc 4.3 is not applied.)
+Intended success (G doc 4.3): an accepted attempt whose two endpoint graphs are
+the source graph and the predicted product graph (stereo-free comparison).
 Tests per group:
   arrow sets: permutation test (10000 draws, seed 20261002) of the chi-square
               statistic of the arrow-set x TS-cluster table of accepted attempts;
-  each arrow set versus bond_edits: exact McNemar test of success, paired by
-              (sample, random seed) over the seeds both arms ran.
+  each arrow set versus bond_edits: exact McNemar tests of accepted and of
+              intended success, paired by (sample, random seed) over the seeds
+              both arms ran.
 Holm correction is applied within each test family across groups.
 Usage: summarize_same_edits.py RUN.json [...] --out FILE
 """
@@ -26,8 +29,9 @@ from scipy.stats import binomtest
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
-from mechbridge.event_graph import geometry_mol  # noqa: E402
+from mechbridge.event_graph import geometry_mol, graph_smiles  # noqa: E402
 from mechbridge.reaction_network import aligned_rmsd  # noqa: E402
+from mechbridge.reference_matching import stereo_free  # noqa: E402
 
 ACCEPTED = ('validated_descents', 'validated_core_descents')
 
@@ -69,10 +73,19 @@ def permutation_p(arms, clusters, draws=10000, seed=20261002):
     return (hits + 1)/(draws + 1)
 
 
-def mcnemar(rows_a, rows_b):
+def intended(row, source, predicted):
+    if row['status'] not in ACCEPTED or not row.get('endpoint_graphs'):
+        return False
+    try:
+        return sorted(stereo_free(g) for g in row['endpoint_graphs']) == sorted([source, predicted])
+    except ValueError:
+        return False
+
+
+def mcnemar(rows_a, rows_b, success=lambda r: r['status'] in ACCEPTED):
     """Exact McNemar on success, paired by (sample, seed)."""
-    ok_a = {(r['sample'], r['seed']): r['status'] in ACCEPTED for r in rows_a}
-    ok_b = {(r['sample'], r['seed']): r['status'] in ACCEPTED for r in rows_b}
+    ok_a = {(r['sample'], r['seed']): success(r) for r in rows_a}
+    ok_b = {(r['sample'], r['seed']): success(r) for r in rows_b}
     pairs = sorted(set(ok_a) & set(ok_b))
     a_only = sum(ok_a[k] and not ok_b[k] for k in pairs)
     b_only = sum(ok_b[k] and not ok_a[k] for k in pairs)
@@ -98,7 +111,10 @@ def main():
     for path in args.runs:
         report = json.loads(path.read_text(encoding='utf-8'))
         mol = geometry_mol(report['atomic_numbers'], np.asarray(report['root_positions_A']), report['charge'])
+        source = stereo_free(graph_smiles(mol))
         for group in report['groups']:
+            predicted = stereo_free(group['predicted_graph'])
+            hit = lambda r: intended(r, source, predicted)
             g = group['group']
             rows = [r for r in report['rows'] if r['group'] == g]
             core = core_atoms(mol, group['edits'])
@@ -120,7 +136,7 @@ def main():
             for arm in arms:
                 mine = [r for r in rows if r['arm'] == arm]
                 idx = [i for i, r in enumerate(accepted) if r['arm'] == arm]
-                per_arm[arm] = dict(attempts=len(mine), accepted=len(idx),
+                per_arm[arm] = dict(attempts=len(mine), accepted=len(idx), intended=sum(hit(r) for r in mine),
                                     evaluations=sum(r['evaluations'] for r in mine),
                                     clusters=sorted({cluster[i] for i in idx}))
             arrow_idx = [i for i, r in enumerate(accepted) if r['arm'] != 'bond_edits']
@@ -133,14 +149,18 @@ def main():
                                                            [cluster[i] for i in arrow_idx]),
                          versus_bond_edits={arm: mcnemar([r for r in rows if r['arm'] == arm],
                                                          [r for r in rows if r['arm'] == 'bond_edits'])
-                                            for arm in arms if arm != 'bond_edits'})
+                                            for arm in arms if arm != 'bond_edits'},
+                         intended_versus_bond_edits={arm: mcnemar([r for r in rows if r['arm'] == arm],
+                                                                  [r for r in rows if r['arm'] == 'bond_edits'], hit)
+                                                     for arm in arms if arm != 'bond_edits'})
             out.append(entry)
     for family in ('arrow_set_cluster_p',):
         for e, p in zip(out, holm([e[family] for e in out])):
             e[family + '_holm'] = p
-    flat = [(e, arm) for e in out for arm in e['versus_bond_edits']]
-    for (e, arm), p in zip(flat, holm([e['versus_bond_edits'][arm]['p'] for e, arm in flat])):
-        e['versus_bond_edits'][arm]['p_holm'] = p
+    for family in ('versus_bond_edits', 'intended_versus_bond_edits'):
+        flat = [(e, arm) for e in out for arm in e[family]]
+        for (e, arm), p in zip(flat, holm([e[family][arm]['p'] for e, arm in flat])):
+            e[family][arm]['p_holm'] = p
     args.out.write_text(json.dumps(out, indent=2), encoding='utf-8')
     print(json.dumps([{k: v for k, v in e.items() if k not in ('core_atoms',)} for e in out], indent=1))
 

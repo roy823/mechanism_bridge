@@ -35,3 +35,11 @@ def test_permutation_test_separated_clusters():
     p = summary.permutation_p(['a']*3 + ['b']*3, [0]*3 + [1]*3, draws=2000)
     assert 0 < p < .2                                                   # 2 of 20 labelings separate
     assert summary.permutation_p(['a', 'b'], [0, 0]) is None
+
+
+def test_intended_success_ignores_stereo():
+    summary = load()
+    row = dict(status='validated_descents', endpoint_graphs=['O=CCO', 'O/C=C\\O'])
+    assert summary.intended(row, 'O=CCO', 'OC=CO')
+    assert not summary.intended(dict(row, endpoint_graphs=['O=CCO', 'O=CCO']), 'O=CCO', 'OC=CO')
+    assert not summary.intended(dict(row, status='unresolved_minimum'), 'O=CCO', 'OC=CO')
