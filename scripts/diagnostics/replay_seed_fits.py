@@ -78,6 +78,8 @@ def main():
     parser.add_argument('--task', type=int, default=0)
     parser.add_argument('--tasks', type=int, default=1)
     args = parser.parse_args()
+    if not 0 <= args.task < args.tasks:
+        parser.error('--task must be in [0, --tasks)')
     RDLogger.DisableLog('rdApp.*')
     manifest = list(csv.DictReader((args.campaign/'manifest.tsv').open(encoding='utf-8'), delimiter='\t'))
     failures, controls = [], []
