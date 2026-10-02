@@ -34,3 +34,18 @@ def test_paired_test_reports_wins():
     per_system = dict(arrows={'a': 3., 'b': 2., 'c': 5.}, bond_edits={'a': 1., 'b': 2., 'c': 4.})
     result = summary.paired_test(per_system, 'arrows', 'bond_edits')
     assert result['systems'] == 3 and result['wins'] == 2 and result['losses'] == 0
+
+
+def test_manifest_rows_have_no_carriage_return(tmp_path, monkeypatch):
+    path = ROOT/'scripts/exploration/build_campaign_manifest.py'
+    spec = importlib.util.spec_from_file_location('build_campaign_manifest', path)
+    builder = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(builder)
+    out = tmp_path/'campaign'
+    monkeypatch.setattr('sys.argv', ['build', '--name', 't', '--starts', str(ROOT/'data/processed/t1x_test_starts.jsonl'),
+                                     '--limit', '1', '--strategies', 'geometry', '--seeds', '17',
+                                     '--protocol', str(ROOT/'configs/FP-JCTC-1-draft.json'), '--out', str(out)])
+    builder.main()
+    raw = (out/'manifest.tsv').read_bytes()
+    assert b'\r' not in raw
+    assert raw.decode().splitlines()[1].split('\t')[-1].endswith('/geometry/s17')

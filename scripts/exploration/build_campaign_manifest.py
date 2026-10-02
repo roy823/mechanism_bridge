@@ -53,8 +53,9 @@ def main():
                                      potential=args.potential,
                                      outdir=f'{start}/{strategy}/s{seed}'))
     args.out.mkdir(parents=True, exist_ok=True)
+    # LF line ends: the SLURM array reads rows with awk/read, and a CR would end up in outdir.
     with manifest.open('w', encoding='utf-8', newline='') as handle:
-        writer = csv.DictWriter(handle, fieldnames=['task_id', *rows[0]], delimiter='\t')
+        writer = csv.DictWriter(handle, fieldnames=['task_id', *rows[0]], delimiter='\t', lineterminator='\n')
         writer.writeheader()
         for task_id, row in enumerate(rows, start=1):
             writer.writerow(dict(task_id=task_id, **row))
