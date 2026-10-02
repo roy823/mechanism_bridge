@@ -24,6 +24,7 @@ def main():
     parser.add_argument('--historical', type=Path, nargs='+', required=True)
     parser.add_argument('--outdir', type=Path, required=True)
     parser.add_argument('--threads', type=int, default=8)
+    parser.add_argument('--polish-steps', type=int, default=100, help='BFGS cap for each IRC endpoint polish')
     args = parser.parse_args()
     if args.outdir.exists():
         raise FileExistsError(args.outdir)
@@ -33,7 +34,8 @@ def main():
         protocol = old['protocol']
         new = verify_event(old['source'], args.outdir/path.parent.name, threads=args.threads, frames=0,
                            ts_steps=protocol['ts_max_steps'], irc_steps=protocol['irc_max_steps'],
-                           ts_optimizer_fmax=protocol.get('ts_optimizer_fmax_eV_A', .01), device='gpu')
+                           ts_optimizer_fmax=protocol.get('ts_optimizer_fmax_eV_A', .01), device='gpu',
+                           polish_steps=args.polish_steps)
         row = dict(historical=str(path), status=[old['status'], new['status']],
                    verified=[old.get('physical_event_verified'), new.get('physical_event_verified')],
                    gradient_evaluations=[old.get('gradient_evaluations'), new.get('gradient_evaluations')],
