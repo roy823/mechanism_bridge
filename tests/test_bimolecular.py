@@ -15,10 +15,12 @@ def test_bimolecular_electron_grammar(smiles,target):
     mol=parse_explicit(smiles);products=[]
     for name,arrows in electron_actions(mol):
         product,edits=replay(mol,arrows)
-        assert crosses_components(mol,edits)
         assert Chem.GetFormalCharge(product)==0
         assert product.GetNumAtoms()==mol.GetNumAtoms()
-        products.append(graph_smiles(product))
+        # Since eb879dd the grammar also holds intramolecular tautomerizations
+        # (keto/enol, enediol); only cross-component actions form the adducts.
+        if crosses_components(mol,edits):
+            products.append(graph_smiles(product))
     # Cycloadduct constitution is checked by ring/fragment topology, not an
     # independently annotated electron-path assertion.
     if smiles.startswith('C=C.'):
@@ -66,7 +68,15 @@ def test_resonance_and_actual_interfragment_classification():
 
 def test_electron_grammar_never_invents_a_proton():
     assert list(electron_actions(parse_explicit('C=O.N(C)(C)C')))==[]
-    assert list(electron_actions(parse_explicit('O=CCO')))==[]
+    # A lone glycolaldehyde only gets the enediol tautomerization (one action per
+    # alpha hydrogen); each moves an existing proton and keeps the neutral formula.
+    mol=parse_explicit('O=CCO')
+    actions=list(electron_actions(mol))
+    assert [name for name,_ in actions]==['alpha_hydroxy_carbonyl_to_enediol']*2
+    for _,arrows in actions:
+        product,_=replay(mol,arrows)
+        assert product.GetNumAtoms()==mol.GetNumAtoms() and Chem.GetFormalCharge(product)==0
+        assert graph_smiles(product)=='OC=CO'
 
 
 def test_formose_retro_aldol_and_inverse_actions_are_exact_reverses():
