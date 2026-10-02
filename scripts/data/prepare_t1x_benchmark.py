@@ -89,7 +89,13 @@ def main():
             try:
                 if not set(numbers) <= {1, 6, 7, 8}:
                     raise ValueError('elements outside CHNO')
-                mol_r, mol_p = geometry_mol(numbers, reactant, 0), geometry_mol(numbers, product, 0)
+                mols = []
+                for side, positions in (('reactant', reactant), ('product', product)):
+                    try:
+                        mols.append(geometry_mol(numbers, positions, 0))
+                    except ValueError as exc:
+                        raise ValueError(f'{side} perception: {exc}') from exc
+                mol_r, mol_p = mols
                 graph_r, graph_p = graph_smiles(mol_r), graph_smiles(mol_p)
                 if connectivity(mol_r) == connectivity(mol_p):
                     raise ValueError('reactant and product share the same connectivity')
@@ -111,8 +117,10 @@ def main():
                    references_sha256=hashlib.sha256(args.references.read_bytes()).hexdigest())
     for record in references:
         if record['admission'] == 'rejected':
-            summary['rejected'][record['admission_reason']] = summary['rejected'].get(
-                record['admission_reason'], 0) + 1
+            # Group by side and error class, e.g. "product perception: Valence ...".
+            reason = record['admission_reason'].split(';')[0]
+            reason = reason.split(' of atom ')[0] if 'Valence' in reason else reason
+            summary['rejected'][reason] = summary['rejected'].get(reason, 0) + 1
     print(json.dumps(summary, indent=2))
 
 
