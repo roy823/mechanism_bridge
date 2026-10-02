@@ -1,0 +1,4029 @@
+{
+  "inputs": {
+    "rgd1": {
+      "path": "/blue/xuefeng.liu/jiangsy.stanford/10-2jsy-test/mechanism_bridge/data/raw/rgd1_zenodo/RGD1CHNO_AMsmiles.csv",
+      "sha256": "7b0ecae0a7f7b2439a03bed4bfbf80fbc9b647b0823e5a8e7b1e3be96d0ad05e"
+    },
+    "t1x_test_references": {
+      "path": "data/processed/t1x_test_references.jsonl",
+      "sha256": "9cd824d54129376a45f017e7426c7fae5f672bf44435adb3ce20309eb059d271"
+    },
+    "coley_benchmark_references": {
+      "path": "data/processed/coley_benchmark_references.jsonl",
+      "sha256": "f53a3aedccfd085a71298143ea8cbb717788cb04a1103f76f5807d81f2fd9ac8"
+    }
+  },
+  "code": {
+    "commit": "fecff18a30b049d86f6bf4d3dcdf8d7fc80b78b0",
+    "dirty": false,
+    "diff_sha256": null,
+    "scope": [
+      "src",
+      "scripts",
+      "configs",
+      "tests",
+      "pyproject.toml"
+    ]
+  },
+  "rdkit": "2024.03.2",
+  "rgd1_stats": {
+    "rows": 176898,
+    "parsed": 176898,
+    "parse_errors": 0
+  },
+  "rgd1_distinct_k1_pairs": 127368,
+  "counts": {
+    "t1x_test_references": {
+      "seen_reaction": 23,
+      "seen_reactant": 138,
+      "seen_formula": 83,
+      "unseen": 0,
+      "not_admitted": 43
+    },
+    "coley_benchmark_references": {
+      "seen_reaction": 0,
+      "seen_reactant": 1,
+      "seen_formula": 2,
+      "unseen": 97,
+      "not_admitted": 0
+    }
+  },
+  "failures": {},
+  "definitions": "Training-overlap labels for the Fig. 4 benchmarks against RGD1 (B doc 2.4).\n\nAIMNet2-rxn was trained on RGD1, so every benchmark reaction is labelled\nbefore any method is scored. Keys are computed from stereo-free molecules:\n  K1 reaction key: unordered pair of the two sides, each side the sorted tuple\n     of standard InChIKeys of its components;\n  K2 reactant key: InChIKey connectivity blocks (first 14 characters) of the\n     reactant components; 'all' = every component occurs among the components\n     of any RGD1 endpoint (reactant or product side), 'any' = at least one;\n  K3 composition key: molecular formula of the whole reaction.\nLabel (first that applies): seen_reaction (K1), seen_reactant (K2 all),\nseen_formula (K3), unseen. Standard InChI treats some heteroatom H as mobile,\nso tautomers can share a key; this errs towards labelling a reaction as seen.\n'strict_pair' repeats K1 with stereo-free canonical SMILES (no mobile-H\nmerging) for information. Not covered: the AIMNet2 base training structures,\nthe unpublished enumerated reactions of AIMNet2-rxn, and geometry keys (K4).\nUsage: audit_benchmark_overlap.py --out FILE [--rgd1 CSV]\n",
+  "labels": {
+    "t1x_test_C2H3N3O2_rxn10005": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H3N3O2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2H3N3O2_rxn8548": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H3N3O2",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C2H3N3O2_rxn8549": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H3N3O2",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C2H3N3O2_rxn8550": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H3N3O2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2H3N3O2_rxn8551": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H3N3O2",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C2H5NO2_rxn1961": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_42569_0",
+        "MR_42569_1"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H5NO2",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C2H5NO2_rxn1962": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_42574_1",
+        "MR_76309_0"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2H5NO2_rxn3682": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2H5NO2_rxn3683": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_15427_0",
+        "MR_15427_2"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2H5NO2_rxn3684": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_44132_2"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2H5NO2_rxn3685": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_15427_0",
+        "MR_15427_2"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 2,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2HNO_rxn4439": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2HNO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2HNO_rxn4440": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_528435_0"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2HNO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2HNO_rxn4441": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2HNO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2HNO_rxn4442": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C2HNO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C2HNO3_rxn1883": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C2HNO3",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0098": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0099": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0100": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn0101": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0102": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0103": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn0104": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0105": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0106": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0107": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0249": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0250": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_124039_0",
+        "MR_164566_1",
+        "MR_430590_1",
+        "MR_639513_1"
+      ],
+      "k1_hits": 4,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0251": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0252": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_163600_0",
+        "MR_707615_0"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 2,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0253": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0344": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0345": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn0346": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0347": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0892": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0893": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0894": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0895": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn0896": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1061": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_197436_0",
+        "MR_78783_0"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 2,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1062": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1063": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1064": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1065": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1066": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1083": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1084": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1085": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1086": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1087": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1088": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1089": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1090": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1091": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1092": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1093": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1094": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1095": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1143": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1144": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1145": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1146": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1147": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1148": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1149": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1150": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1151": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1152": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_648478_0",
+        "MR_648478_2"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1153": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1154": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1155": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn1156": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1157": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1158": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1274": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_1053_1"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1275": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1276": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1277": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1278": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn1279": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1280": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1281": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1282": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1283": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1284": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_52686_0"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1285": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn1286": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1287": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1317": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1318": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1319": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1320": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1321": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn1322": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1784": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1785": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1786": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn1787": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1788": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1789": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1790": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1791": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1792": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1825": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1826": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1827": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1828": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1829": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn1830": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2548": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2549": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2550": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2551": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2552": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2553": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2554": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2555": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn2556": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C3H5NO2_rxn2557": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3101": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3102": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3103": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_374839_2"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3104": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn3105": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_88498_0",
+        "MR_88498_1"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 2,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3106": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3107": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3108": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn3109": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4103": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4104": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4105": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4106": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4107": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_61065_1",
+        "MR_61067_1",
+        "MR_61067_2"
+      ],
+      "k1_hits": 3,
+      "strict_pair_hits": 3,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4108": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_104495_1"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4109": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_29218_0",
+        "MR_29219_1"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 2,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4110": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4111": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn4112": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn4113": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4114": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C3H5NO2_rxn4115": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_29218_1"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4116": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4117": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4118": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4119": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4120": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4121": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4122": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4123": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4124": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4497": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4498": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4499": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn4500": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4511": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4512": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4513": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_396502_0"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4514": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4515": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4516": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4517": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4518": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn4519": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4520": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4521": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn4522": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn4523": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn8967": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C3H5NO2_rxn9058": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9059": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9060": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9079": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9080": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9082": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9083": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9246": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H5NO2_rxn9303": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H5NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H8N2O_rxn4002": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H8N2O_rxn4003": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_15923_0",
+        "MR_15924_0"
+      ],
+      "k1_hits": 2,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C3H8N2O_rxn4004": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_5590_1"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H8N2O_rxn4005": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H8N2O_rxn4060": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_36349_0"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H8N2O_rxn4061": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H8N2O_rxn4062": {
+      "label": "seen_reaction",
+      "k1_rgd1_ids": [
+        "MR_36342_0"
+      ],
+      "k1_hits": 1,
+      "strict_pair_hits": 1,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3H8N2O_rxn4063": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3H8N2O",
+      "identity_reaction_under_inchi": true
+    },
+    "t1x_test_C3HNO2_rxn0108": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3HNO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3HNO2_rxn0109": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3HNO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3HNO2_rxn0110": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3HNO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C3HNO2_rxn8946": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C3HNO2",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn10053": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn10054": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5687": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5688": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5689": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5690": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5691": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5692": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5693": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5694": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5695": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn5696": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5697": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn5967": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn5968": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5969": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn5970": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn6187": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn6188": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn6189": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn6190": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn6191": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn6192": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn6193": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn6194": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn6195": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn6196": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn6197": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn6198": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7059": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7060": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7061": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7062": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7063": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7064": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7475": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7476": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7477": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7478": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7547": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7548": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7549": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7550": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7936": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7937": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7938": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7939": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7940": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7941": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7942": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7943": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7944": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7945": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7946": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7947": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7948": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7949": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7950": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7951": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7952": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7953": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7954": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7955": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7956": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7957": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7958": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn7959": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7960": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn7961": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8825": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8826": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8827": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn8828": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8829": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8830": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn8831": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8832": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8833": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8834": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn8835": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn8836": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8837": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8838": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8839": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8840": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8841": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8842": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8843": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8844": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8884": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn8885": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn9592": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn9593": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn9661": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn9662": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "t1x_test_C5H5NO_rxn9663": {
+      "label": "not_admitted"
+    },
+    "t1x_test_C5H5NO_rxn9925": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": true,
+      "formula": "C5H5NO",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_70": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H17NO",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_71": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H17NO",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_92": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C11H15NO4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_165": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C11H11N3O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_166": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C11H11N3O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_210": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H12N2O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_892": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C17H16N4O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_186": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H16N2O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_187": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H16N2O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_276": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C15H21N3O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_721": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C15H13N3O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_763": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C15H16N4O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_765": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C15H16N4O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_775": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C18H14N4O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_1105": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H10N6O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3233": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C8H12N2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3309": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C8H10N4O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3320": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C10H15N3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3361": {
+      "label": "seen_reactant",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": true,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H19NO",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3499": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H18N2O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3507": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H23N",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3554": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H17NO",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3667": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H23NO",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3753": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H19N3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3769": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H14N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3791": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H14N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3792": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H19NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3797": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H15NO5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3834": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H11NO5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3840": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H12N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3854": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C12H20N2O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4022": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C16H19NO2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4024": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H14N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4036": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C12H20N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4043": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H15N3O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4321": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H19N5O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4327": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H20N4O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4330": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H20N4O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4335": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C16H16N4O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4342": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C17H16N2O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4369": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H16N2O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4395": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C13H19N3O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4483": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C15H16N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4534": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H17N3O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4620": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H17N3O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_297": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H20N4O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_795": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H17N3O7",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_74": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C11H9N5O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_271": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H15N3O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_274": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H15N3O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_280": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H18N4O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_596": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H16N4O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_676": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C17H15N3O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_687": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C17H16N4O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_798": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H16N4O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3341": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C9H14N2O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3552": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C9H16N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3613": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H18N2O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3639": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C10H16N4O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3646": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H20N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3674": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H20N4O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3682": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C10H16N2O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3781": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C10H15N5O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3873": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C11H13N3O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3898": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C15H20N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4230": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C15H17N3O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4625": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H17N3O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3285": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C10H13NO",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4366": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H15NO6",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_82": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C13H12N2O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_122": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H12N2O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_215": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H19NO3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_744": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C16H10N4O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3386": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C12H10N2O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3459": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C10H13N3O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3482": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H20O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3487": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C9H11NO5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3549": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H18O4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3737": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H16O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3742": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C13H22O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4044": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H16O7",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4604": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H18N2O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4605": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C14H18N2O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4719": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C13H14N4O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_5005": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C14H16N2O7",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_304": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C11H13NO7",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_1087": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C15H16N2O7",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3335": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C8H11NO4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3621": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H17NO3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3735": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C10H12N4O3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3836": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C13H13NO4",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4418": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H17N3O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_4007": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C11H16N2O5",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3221": {
+      "label": "seen_formula",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": true,
+      "formula": "C4H7N3O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3306": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C10H13N3",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3571": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": true,
+      "k3": false,
+      "formula": "C12H17N3O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3775": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H18N4O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3827": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H22N4O",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3846": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C12H21N3O2",
+      "identity_reaction_under_inchi": false
+    },
+    "coley_3449": {
+      "label": "unseen",
+      "k1_rgd1_ids": [],
+      "k1_hits": 0,
+      "strict_pair_hits": 0,
+      "k2_all": false,
+      "k2_any": false,
+      "k3": false,
+      "formula": "C8H9N3O4",
+      "identity_reaction_under_inchi": false
+    }
+  }
+}
