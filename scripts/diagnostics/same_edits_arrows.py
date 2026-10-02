@@ -9,8 +9,11 @@ attempts. The attempt RNG is derived exactly as in explore(), so the arrow
 sets of a group share their random numbers and differ only in the arrows.
 Each seed runs search_connection under the protocol (one billed attempt).
 TS identity (G doc 4.3) is evaluated by summarize_same_edits.py.
+--edit-keys FILE keeps only the groups whose net bond edits are listed for this
+start (JSON {start_id: [edits, ...]}), so a pre-registered selection survives
+the root re-optimization that renumbers proposals.
 Usage: same_edits_arrows.py --starts FILE --start-id ID --protocol-json P --outdir DIR
-         [--seeds 17 29 43 59] [--samples 0 1 2] [--max-groups N]
+         [--seeds 17 29 43 59] [--samples 0 1 2] [--max-groups N] [--edit-keys FILE]
 """
 import argparse
 import dataclasses
@@ -57,6 +60,7 @@ def main():
     parser.add_argument('--seeds', type=int, nargs='+', default=[17, 29, 43, 59])
     parser.add_argument('--samples', type=int, nargs='+', default=[0, 1, 2])
     parser.add_argument('--max-groups', type=int, help='Keep the first N groups (proposal order)')
+    parser.add_argument('--edit-keys', type=Path, help='JSON {start_id: [edits, ...]} selecting groups')
     parser.add_argument('--outdir', type=Path, required=True)
     args = parser.parse_args()
     if args.outdir.exists():
@@ -82,6 +86,12 @@ def main():
     groups = {}
     for proposal in library.propose(mol, limit=64):
         groups.setdefault(key(proposal['edits']), {}).setdefault(key(proposal['arrows']), proposal)
+    if args.edit_keys:
+        wanted = {key(e) for e in json.loads(args.edit_keys.read_text(encoding='utf-8')).get(start['id'], [])}
+        missing = wanted - set(groups)
+        if missing:
+            print(json.dumps(dict(start=start['id'], selected_groups_not_proposed=len(missing))), flush=True)
+        groups = {k: v for k, v in groups.items() if k in wanted}
     groups = [list(v.values()) for v in groups.values() if len(v) >= 2][:args.max_groups]
     rows = []
     def attempt(group, arm, proposal, sample, seed, strategy):
