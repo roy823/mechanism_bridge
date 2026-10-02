@@ -3,7 +3,9 @@ import numpy as np
 from scipy.optimize import least_squares
 from ase.data import covalent_radii
 from .event_graph import bond_orders
-from .encounters import orient_reactive_encounter
+from .encounters import orient_control_encounter, orient_reactive_encounter
+
+ENCOUNTER_POLICIES = ('symbolic_only', 'matched_controls')
 
 
 def internal_direction(x, direction):
@@ -82,7 +84,16 @@ def reaction_direction(x, ij, delta, unchanged):
     return internal_direction(x, tangent)
 
 
-def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed_scale=1.0):
+def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed_scale=1.0,
+              encounter_policy='symbolic_only'):
+    """Seed geometry and initial direction for one attempt.
+
+    encounter_policy='matched_controls' gives the geometry and center_random
+    controls the same rigid encounter search as the symbolic strategies, with a
+    proposal-free contact pair; 'symbolic_only' is the historical behaviour.
+    """
+    if encounter_policy not in ENCOUNTER_POLICIES:
+        raise ValueError(f'Unknown encounter_policy: {encounter_policy}')
     x = atoms.positions.copy()
     rng = np.random.default_rng(random_seed)
     fraction = (0.35, 0.55, 0.75)[sample % 3]
@@ -94,6 +105,9 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
             if proposal is None:
                 raise ValueError('Center control requires proposed active atom identities')
             active = {i for edit in proposal['edits'] for i in edit['atoms']}
+        encounter = None
+        if encounter_policy == 'matched_controls':
+            x, encounter = orient_control_encounter(atoms.numbers, x, mol, active, random_seed)
         pairs = [(i, j) for i in sorted(active) for j in sorted(active) if j<i and np.linalg.norm(x[i]-x[j]) < 3.5]
         if not pairs:
             raise ValueError('No local pairs for geometry seed')
@@ -106,9 +120,12 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
             d[i] += v
             d[j] -= v
         d = internal_direction(x, d)
-        return x + amplitude * d, d, dict(fraction=fraction, template_id=None,
+        meta = dict(fraction=fraction, template_id=None,
             displacement_norm_A=amplitude, active_atoms=sorted(active),
             information='active_atom_ids_only' if strategy=='center_random' else 'geometry_only')
+        if encounter_policy == 'matched_controls':
+            meta.update(encounter_policy=encounter_policy, encounter_orientation=encounter)
+        return x + amplitude * d, d, meta
     if strategy not in ('bond_edits', 'arrows') or proposal is None:
         raise ValueError('Symbolic strategy needs an applicable proposal')
     if symbolic_seed_scale <= 0:

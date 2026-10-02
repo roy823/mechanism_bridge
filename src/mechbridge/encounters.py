@@ -54,9 +54,53 @@ def orient_reactive_encounter(numbers, positions, mol, edits, random_seed):
     pairs = [(i,j) if i in aset else (j,i) for i,j in pairs]
     numbers = np.asarray(numbers)
     pairs.sort(key=lambda p: (numbers[p[0]]==1 or numbers[p[1]]==1,p))
-    anchor_a,anchor_b = pairs[0]
     rng = np.random.default_rng(random_seed)
     original = np.asarray(positions)
+    best = _best_rigid_orientation(numbers, original, fragments, active_components, pairs, rng)
+    return best[1],dict(policy='64_rigid_orientations_cross_bond_distance_and_clash_score',
+        score=float(best[0]),selected_trial=best[2],cross_forming_pairs=pairs,
+        active_components=list(active_components),spectator_components=len(fragments)-2,
+        contact_distance_A=2.8,reference_product_or_TS_used=False,
+        displacement_from_source_A=float(np.linalg.norm(best[1]-original)))
+
+
+def orient_control_encounter(numbers, positions, mol, allowed_atoms, random_seed):
+    """Proposal-free rigid placement for the geometry and center_random controls.
+
+    Same 64-trial pool, 2.8 A contact and clash score as the symbolic encounter,
+    but the contact pair is drawn uniformly from cross-fragment pairs of
+    `allowed_atoms` (heavy-atom pairs first) instead of a proposed forming bond.
+    """
+    fragments = Chem.GetMolFrags(mol)
+    if len(fragments) < 2:
+        return np.array(positions,copy=True), None
+    component = {atom: index for index, fragment in enumerate(fragments) for atom in fragment}
+    numbers = np.asarray(numbers)
+    allowed = sorted(allowed_atoms)
+    cross = [(i,j) for i in allowed for j in allowed if i<j and component[i]!=component[j]]
+    heavy = [p for p in cross if numbers[p[0]]>1 and numbers[p[1]]>1]
+    candidates = heavy or cross
+    if not candidates:
+        return np.array(positions,copy=True), None
+    rng = np.random.default_rng(random_seed)
+    i,j = candidates[int(rng.integers(len(candidates)))]
+    active_components = tuple(sorted((component[i], component[j])))
+    pair = (i,j) if component[i]==active_components[0] else (j,i)
+    original = np.asarray(positions)
+    best = _best_rigid_orientation(numbers, original, fragments, active_components, [pair], rng)
+    return best[1],dict(policy='64_rigid_orientations_random_cross_pair_contact_and_clash_score',
+        score=float(best[0]),selected_trial=best[2],contact_pair=list(map(int,pair)),
+        contact_pair_pool='heavy_atom_cross_pairs' if heavy else 'all_cross_pairs',
+        candidate_pairs=len(candidates),active_components=list(active_components),
+        spectator_components=len(fragments)-2,contact_distance_A=2.8,
+        proposal_bond_used=False,reference_product_or_TS_used=False,
+        displacement_from_source_A=float(np.linalg.norm(best[1]-original)))
+
+
+def _best_rigid_orientation(numbers, original, fragments, active_components, pairs, rng):
+    """Score 64 rigid placements that put pairs[0] at 2.8 A; no PES evaluation."""
+    ids_a, ids_b = [np.array(fragments[index],dtype=int) for index in active_components]
+    anchor_a,anchor_b = pairs[0]
     active_ids = np.concatenate((ids_a,ids_b))
     active_center = original[active_ids].mean(0)
     best = None
@@ -79,8 +123,4 @@ def orient_reactive_encounter(numbers, positions, mol, edits, random_seed):
             score += 50*np.maximum(floor_other-d_other,0).sum()**2
         if best is None or score < best[0]:
             best = score,y-y.mean(0),trial
-    return best[1],dict(policy='64_rigid_orientations_cross_bond_distance_and_clash_score',
-        score=float(best[0]),selected_trial=best[2],cross_forming_pairs=pairs,
-        active_components=list(active_components),spectator_components=len(fragments)-2,
-        contact_distance_A=2.8,reference_product_or_TS_used=False,
-        displacement_from_source_A=float(np.linalg.norm(best[1]-original)))
+    return best
