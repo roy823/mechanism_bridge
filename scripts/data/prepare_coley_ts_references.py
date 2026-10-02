@@ -7,8 +7,12 @@ survives at the TS and only the two forming bonds (about 2.2 A) are new, so the
 TS connectivity from a distance criterion (RDKit DetermineConnectivity, no bond
 orders) equals the reactant connectivity. The covalent-radius factor is reduced
 from 1.3 until that graph is isomorphic (element-labelled) to our reactant bonds;
-the factor is recorded. Any isomorphism is acceptable because screening and
-scoring allow reactant automorphisms. The TS is used only by the post-search screen, never as
+the factor is recorded. Screening and scoring allow reactant automorphisms, so
+any isomorphism would do; to make the labels follow the reference reaction, all
+heavy-atom isomorphisms are compared and the one with the shortest forming
+bonds (reference product minus reactant bonds, all between heavy atoms in a
+[3+2] cycloaddition) is kept; hydrogens follow their heavy atoms. The forming
+bond distances are recorded. The TS is used only by the post-search screen, never as
 a search input. References that cannot be matched are kept with the reason and
 admission='no_reference_ts', so the screen skips them.
 Usage: prepare_coley_ts_references.py --profiles full_data_profiles.tar.gz --out FILE
@@ -33,6 +37,18 @@ sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.reference_matching import mol_bonds  # noqa: E402
 
 FACTORS = (1.3, 1.25, 1.2, 1.15, 1.1)
+
+
+def full_mapping(heavy, theirs, ours):
+    """Extend a heavy-atom map (author -> ours) to hydrogens, each H following its heavy atom."""
+    mapping = dict(heavy)
+    for author, mine in heavy.items():
+        hs_author = sorted(n for n in theirs[author] if theirs.nodes[n]['z'] == 1)
+        hs_mine = sorted(n for n in ours[mine] if ours.nodes[n]['z'] == 1)
+        if len(hs_author) != len(hs_mine):
+            return None
+        mapping.update(zip(hs_author, hs_mine))
+    return mapping if len(mapping) == len(ours) else None
 
 
 def labelled_graph(numbers, bonds):
@@ -84,19 +100,34 @@ def main():
         try:
             ts = author_ts(members, reference['rxn_id'])
             ours = labelled_graph(reference['atomic_numbers'], reference['reactant_bonds'])
-            mapping = factor = None
+            forming = sorted({tuple(sorted(map(int, b[:2]))) for b in reference['product_bonds']} -
+                             {tuple(sorted(map(int, b[:2]))) for b in reference['reactant_bonds']})
+            best = factor = None
+            heavy_ours = ours.subgraph(n for n in ours if ours.nodes[n]['z'] != 1)
             for factor in FACTORS:
                 theirs = labelled_graph(ts.numbers, connectivity(ts.numbers, ts.positions, factor))
-                matcher = isomorphism.GraphMatcher(theirs, ours, node_match=lambda a, b: a['z'] == b['z'])
-                mapping = next(matcher.isomorphisms_iter(), None)
-                if mapping is not None:
+                if not nx.is_isomorphic(theirs, ours, node_match=lambda a, b: a['z'] == b['z']):
+                    continue
+                heavy_theirs = theirs.subgraph(n for n in theirs if theirs.nodes[n]['z'] != 1)
+                matcher = isomorphism.GraphMatcher(heavy_theirs, heavy_ours,
+                                                   node_match=lambda a, b: a['z'] == b['z'])
+                for heavy in matcher.isomorphisms_iter():
+                    mapping = full_mapping(heavy, theirs, ours)
+                    if mapping is None:
+                        continue
+                    order = np.empty(len(ts), dtype=int)
+                    for author, mine in mapping.items():
+                        order[mine] = author
+                    x = ts.positions[order]
+                    distances = [float(np.linalg.norm(x[i] - x[j])) for i, j in forming]
+                    if best is None or sum(distances) < sum(best[1]):
+                        best = (x, distances)
+                if best is not None:
                     break
-            if mapping is None:
+            if best is None:
                 raise ValueError('TS connectivity never matches the reference reactant')
-            order = np.empty(len(ts), dtype=int)
-            for author, mine in mapping.items():
-                order[mine] = author
-            out['ts_positions_A'] = ts.positions[order].tolist()
+            out['ts_positions_A'] = best[0].tolist()
+            out['ts_forming_bond_distances_A'] = best[1]
             out['ts_source'] = ('Coley/Stuyver autodE profile TS (optimized); author order mapped by an '
                                 f'isomorphism of the TS connectivity at covalent factor {factor}')
         except (ValueError, RuntimeError, KeyError) as exc:
