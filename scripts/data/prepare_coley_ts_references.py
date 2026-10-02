@@ -6,7 +6,8 @@ author order is matched to ours by an element-labelled isomorphism between the
 connectivity perceived from the author's r0 and r1 geometries and our reactant
 bonds; any isomorphism is acceptable because screening and scoring allow
 reactant automorphisms. The TS is used only by the post-search screen, never as
-a search input. References that cannot be matched are kept with the reason.
+a search input. References that cannot be matched are kept with the reason and
+admission='no_reference_ts', so the screen skips them.
 Usage: prepare_coley_ts_references.py --profiles full_data_profiles.tar.gz --out FILE
 """
 import argparse
@@ -88,8 +89,9 @@ def main():
             out['ts_positions_A'] = ts[order].tolist()
             out['ts_source'] = 'Coley/Stuyver autodE profile TS, author order mapped by isomorphism'
         except (ValueError, RuntimeError, KeyError) as exc:
-            out['ts_positions_A'] = None
-            out['ts_source'] = f'unavailable: {exc}'
+            # This file only feeds the screen, which reads admitted references; scoring
+            # keeps the original references file, where the reaction stays admitted.
+            out.update(ts_positions_A=None, ts_source=f'unavailable: {exc}', admission='no_reference_ts')
             failures[reference['id']] = str(exc)
         rows.append(out)
     args.out.write_text(''.join(json.dumps(r) + '\n' for r in rows), encoding='utf-8')
