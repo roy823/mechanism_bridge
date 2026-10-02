@@ -77,6 +77,7 @@ class SearchProtocol:
     seed_policy: str = 'reactant_graph_and_rigid_encounter_seeds_v6'
     max_attempts: int = 12
     seeds_per_node: int = 1
+    symbolic_seed_scale: float = 1.0
     geometry_seeds_per_node: int = 9
     total_evaluations: int = 6000
     evaluations_per_attempt: int = 700
@@ -331,7 +332,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 aid = len(attempts)
                 used=actions_used.setdefault(node_id,{})
                 choice=choose_action(proposals,used,{n['graph_smiles'] for n in nodes},strategy,
-                                     protocol.geometry_seeds_per_node)
+                                     protocol.geometry_seeds_per_node,3*protocol.seeds_per_node)
                 if choice is None:
                     report['exhausted_nodes'].append(node_id)
                     break
@@ -347,7 +348,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                 try:
                     seed_started=time.perf_counter()
                     x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
-                                                   variant, seed_rng)
+                                                   variant, seed_rng, protocol.symbolic_seed_scale)
                 except (ValueError, RuntimeError) as exc:
                     dest = outdir/f'attempt_{aid:03d}'
                     dest.mkdir()

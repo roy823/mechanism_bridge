@@ -1,0 +1,563 @@
+{
+  "source_hashes": {
+    "reports/glycolysis_gap_recovery_v18/protonation/pyruvate_protonation_c0/pyruvate_protonation_c0/arrows/network.json": "26c9772322258a63731007f7e9e9af5729445b01fbad4bc537136cd9bff6bcf2",
+    "reports/glycolysis_gap_recovery_v18/protonation/pyruvate_protonation_c1/pyruvate_protonation_c1/arrows/network.json": "22049bd061644a8758e6c5ed34775b7c592de8b7848bedc799109f05afb39c1f",
+    "reports/glycolysis_gap_recovery_v18/runs/fbp_cleavage_strong_c0/fbp_cleavage_strong_c0/arrows/network.json": "d163a69df4762e8bbce85aa9d497f56e8097e3981f7b61775323e2782e5552e5",
+    "reports/glycolysis_gap_recovery_v18/runs/fbp_cleavage_strong_c1/fbp_cleavage_strong_c1/arrows/network.json": "4377f020010dcb414d81d7ba8024cb42c300da5944092df0e08b86f609f52714",
+    "reports/glycolysis_gap_recovery_v18/runs/fbp_cleavage_very_strong_c0/fbp_cleavage_very_strong_c0/arrows/network.json": "e46e5988937f464d3b68e1da3f578a6072039f5d305e980a2d2f333d6646764c",
+    "reports/glycolysis_gap_recovery_v18/runs/fbp_cleavage_very_strong_c1/fbp_cleavage_very_strong_c1/arrows/network.json": "ce1db9d981085b5a1cc0ceb5d1b70b45c941882c18be3963286c4cd4611b5b3c",
+    "reports/glycolysis_gap_recovery_v18/runs/glucose_c6_c0/glucose_c6_c0/arrows/network.json": "e5e86f1d41e4986f1d001104fc1e35eec8f5253b0515a5080f6043a32f41e508",
+    "reports/glycolysis_gap_recovery_v18/runs/glucose_c6_c1/glucose_c6_c1/arrows/network.json": "5767b7989d28edb71003b75f49a6d0c328d34d7dcb809be3f19276c2ddfca6b8",
+    "reports/glycolysis_gap_recovery_v18/runs/pep_enol_continuation_c0/pep_enol_continuation_c0/arrows/network.json": "069c87f65c2f8e45748f58d2274f084bf094563ec1a55ac728416656e0d02a15",
+    "reports/glycolysis_gap_recovery_v18/runs/pep_enol_continuation_c1/pep_enol_continuation_c1/arrows/network.json": "8947204268a647f0da8fc758a8fd3bbf1fd8eac2e93952ee1f783f18d494a366",
+    "reports/glycolysis_gap_recovery_v18/runs/pg_shift_soft_c0/pg_shift_soft_c0/arrows/network.json": "c59d3d403ad92ccd5d766e17c9c07c0b0994eed5061c20392e8bb2c883074cfc",
+    "reports/glycolysis_gap_recovery_v18/runs/pg_shift_soft_c1/pg_shift_soft_c1/arrows/network.json": "83e9d9fdf5291e3ecc4c1f91cb6db6547a916e56a7b2cf4ffc8886508f9f19c0",
+    "reports/glycolysis_gap_recovery_v18/runs/pg_shift_strong_c0/pg_shift_strong_c0/arrows/network.json": "acf478569140b6d897c3ecf22278b5f0325c9d2a83fa697a62e46ac9691d7be2",
+    "reports/glycolysis_gap_recovery_v18/runs/pg_shift_strong_c1/pg_shift_strong_c1/arrows/network.json": "b4b029dd95b5fda17c01f546e4920282415557abcd891bb993e70294bd61dbe7",
+    "reports/glycolysis_sparse_endpoint_v17/runs/bpg_hydrolysis_c0/bpg_hydrolysis_c0/arrows/network.json": "64d7b41ad7df3a923d595b2afebe09e8ace70dcd1c71de29479c8688edd21590",
+    "reports/glycolysis_sparse_endpoint_v17/runs/bpg_hydrolysis_c1/bpg_hydrolysis_c1/arrows/network.json": "ff39ff165a3362ec718a9f328619385b37452d238c8762124f9659709652733a",
+    "reports/glycolysis_sparse_endpoint_v17/runs/f6p_phosphorylation_c0/f6p_phosphorylation_c0/arrows/network.json": "3ff62cd65ea8970b7f69a5ef58eaf5fc9ed8c3deacf922063ec05b2583f71be5",
+    "reports/glycolysis_sparse_endpoint_v17/runs/f6p_phosphorylation_c1/f6p_phosphorylation_c1/arrows/network.json": "c20eeafa8fb0e7b8fbf0e0a36c82bf6637a104b3a25e1c0fe428429f9c07ed33",
+    "reports/glycolysis_sparse_endpoint_v17/runs/fbp_cleavage_c0/fbp_cleavage_c0/arrows/network.json": "305edb5e915338c11f92647566d32cec6335c0a7e6062ab6963dc88ace74f892",
+    "reports/glycolysis_sparse_endpoint_v17/runs/fbp_cleavage_c1/fbp_cleavage_c1/arrows/network.json": "618c993ba277460b79235180803c8b32e6ad9bff40ac668092f0eb2bd172ebf9",
+    "reports/glycolysis_sparse_endpoint_v17/runs/glucose_phosphorylation_c0/glucose_phosphorylation_c0/arrows/network.json": "034253d8645306e02a7b3da54b38182cee932346183b59bd0a5b712de2c18e0a",
+    "reports/glycolysis_sparse_endpoint_v17/runs/glucose_phosphorylation_c1/glucose_phosphorylation_c1/arrows/network.json": "933d3a782c44e4e32d72718dea1b230f56a0d77b184e0fa8b943416e3087be4a",
+    "reports/glycolysis_sparse_endpoint_v17/runs/hexose_isomerization_c0/hexose_isomerization_c0/arrows/network.json": "bef8dcafbeeda2f858395744609a5b4ee3c091a28f6baa02af7406b8a41ed698",
+    "reports/glycolysis_sparse_endpoint_v17/runs/hexose_isomerization_c1/hexose_isomerization_c1/arrows/network.json": "c9e1c8987cdfd6c87225be1ad20cbae7d7b9d1e9e6eea7f004fe7ac9e9c29761",
+    "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c0/pep_hydrolysis_c0/arrows/network.json": "b1a91e69c531e377cab9fe74f2099fbd14c09e15b0e55deac790346fbebfc6d8",
+    "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c1/pep_hydrolysis_c1/arrows/network.json": "57ab371a98b84480ff6ceefccd33eb99372919f6e809a749972082ab869cd903",
+    "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_dehydration_c0/phosphoglycerate_dehydration_c0/arrows/network.json": "645d6fbc437e3b2c1f5b2c85534c5a80874855944aad57729e8320233cf02c09",
+    "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_dehydration_c1/phosphoglycerate_dehydration_c1/arrows/network.json": "706161194c441a2ebd2a6356f88ca6e9c1ae05f8ae1c781dccfbbbac53edc10c",
+    "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_shift_c0/phosphoglycerate_shift_c0/arrows/network.json": "5e3dd79ab4c77a94002157be5017e5fb2a2a5719faed3f84115e8df88145d358",
+    "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_shift_c1/phosphoglycerate_shift_c1/arrows/network.json": "911b0814f681ac74d4ba020ff0324ce14801c1bc628dfbe7d2aabb9a5d2b064d",
+    "reports/glycolysis_sparse_endpoint_v17/runs/triose_isomerization_c0/triose_isomerization_c0/arrows/network.json": "cbdbe637c422fe37886af6264f1b2dd7cd68658dd8acd8e7d7151a8129fbb08f",
+    "reports/glycolysis_sparse_endpoint_v17/runs/triose_isomerization_c1/triose_isomerization_c1/arrows/network.json": "2186356235c437bc350e5805de83dedc05df1b0a62f6ced1cd226be4f756d4be"
+  },
+  "summary": {
+    "model": "aimnet2-2025 member0",
+    "chemical_roots": 9,
+    "initial_variants": 18,
+    "completed_networks": 32,
+    "evaluations": 635834,
+    "raw_edges": 117,
+    "aggregate_inventory_networks": 7,
+    "aggregate_species_nodes": 93,
+    "aggregate_edges": 115,
+    "passed": 9,
+    "targets": 9,
+    "checks": [
+      {
+        "label": "G6P ↔ F6P",
+        "passed": true,
+        "direct": true,
+        "path": [
+          "O=CC(O)C(O)C(O)C(O)COP(=O)([O-])O",
+          "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O"
+        ],
+        "path_edges": 1,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                2.3907403663833975,
+                2.130045487967436
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/hexose_isomerization_c0/hexose_isomerization_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 1
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "FBP ↔ GAP + DHAP",
+        "passed": true,
+        "direct": false,
+        "path": [
+          "O=C(COP(=O)([O-])O)C(O)C(O)C(O)COP(=O)([O-])O",
+          "O=CC(O)COP(=O)([O-])O.O=P([O-])(O)OCC(O)=CO",
+          "O=C(CO)COP(=O)([O-])O.O=CC(O)COP(=O)([O-])O"
+        ],
+        "path_edges": 2,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                1.648772368891514,
+                0.7173718529666075
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/fbp_cleavage_strong_c0/fbp_cleavage_strong_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 1
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "barriers_eV": [
+                2.661949454108253,
+                3.3813673237818875
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/fbp_cleavage_very_strong_c0/fbp_cleavage_very_strong_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 1
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "GAP ↔ DHAP",
+        "passed": true,
+        "direct": true,
+        "path": [
+          "O=CC(O)COP(=O)([O-])O",
+          "O=C(CO)COP(=O)([O-])O"
+        ],
+        "path_edges": 1,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                1.7359783948377299,
+                2.0454380627925275
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/triose_isomerization_c0/triose_isomerization_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 1
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "3PG ↔ 2PG",
+        "passed": true,
+        "direct": false,
+        "path": [
+          "O=C(O)C(O)COP(=O)([O-])O",
+          "O=C(O)C(O)CO.O=P(=O)[O-]",
+          "O=C(O)C(CO)OP(=O)([O-])O"
+        ],
+        "path_edges": 2,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                0.9504620228144631,
+                0.3429975395629299
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/pg_shift_soft_c0/pg_shift_soft_c0/arrows/network.json",
+                  "edge": 7,
+                  "attempt": 10
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                2.0918221067331615,
+                1.2525848888435576
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/pg_shift_soft_c1/pg_shift_soft_c1/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 2
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                0.93405342614642,
+                1.4411262782996346
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/pg_shift_soft_c1/pg_shift_soft_c1/arrows/network.json",
+                  "edge": 2,
+                  "attempt": 6
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                1.0793805743705889,
+                1.3586802617828653
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_shift_c0/phosphoglycerate_shift_c0/arrows/network.json",
+                  "edge": 3,
+                  "attempt": 4
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "barriers_eV": [
+                1.1110538570246717,
+                1.8552023321353772
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/pg_shift_soft_c0/pg_shift_soft_c0/arrows/network.json",
+                  "edge": 3,
+                  "attempt": 3
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                1.3991735070303548,
+                1.06709446147579
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/pg_shift_strong_c0/pg_shift_strong_c0/arrows/network.json",
+                  "edge": 1,
+                  "attempt": 2
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                0.8489182759003597,
+                1.4492254453725764
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/pg_shift_strong_c0/pg_shift_strong_c0/arrows/network.json",
+                  "edge": 2,
+                  "attempt": 5
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "2PG ↔ PEP + H2O",
+        "passed": true,
+        "direct": true,
+        "path": [
+          "O=C(O)C(CO)OP(=O)([O-])O",
+          "C=C(OP(=O)([O-])O)C(=O)O.O"
+        ],
+        "path_edges": 1,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                2.010583415387373,
+                2.0897899428964593
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_dehydration_c0/phosphoglycerate_dehydration_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 0
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                2.427994604477135,
+                2.4424508404845255
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_dehydration_c1/phosphoglycerate_dehydration_c1/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 0
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                3.1068544505651516,
+                2.9405130986524455
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/phosphoglycerate_dehydration_c1/phosphoglycerate_dehydration_c1/arrows/network.json",
+                  "edge": 2,
+                  "attempt": 5
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "PEP + H2O ↔ pyruvate + Pi",
+        "passed": true,
+        "direct": false,
+        "path": [
+          "C=C(OP(=O)([O-])O)C(=O)O.O",
+          "C=C(O)C(=O)O.O.O=P(=O)[O-]",
+          "C=C(O)C(=O)O.O=P([O-])(O)O",
+          "CC(=O)C(=O)[O-].O=P(O)(O)O",
+          "CC(=O)C(=O)O.O=P([O-])(O)O"
+        ],
+        "path_edges": 4,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                1.293491218748386,
+                0.9171079991319857
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c0/pep_hydrolysis_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 0
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                0.4854389956271916,
+                1.290421717974823
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c0/pep_hydrolysis_c0/arrows/network.json",
+                  "edge": 1,
+                  "attempt": 3
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                1.3737409689711058,
+                0.8304776323166152
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c0/pep_hydrolysis_c0/arrows/network.json",
+                  "edge": 6,
+                  "attempt": 8
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                0.9095604211288446,
+                1.447666393891268
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c1/pep_hydrolysis_c1/arrows/network.json",
+                  "edge": 4,
+                  "attempt": 4
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                1.2068777706736,
+                0.8561743604805088
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c1/pep_hydrolysis_c1/arrows/network.json",
+                  "edge": 5,
+                  "attempt": 5
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "barriers_eV": [
+                0.3403895165101858,
+                0.762675763828156
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/pep_hydrolysis_c0/pep_hydrolysis_c0/arrows/network.json",
+                  "edge": 4,
+                  "attempt": 5
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "barriers_eV": [
+                2.580385411692987,
+                3.564368227886007
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/pep_enol_continuation_c0/pep_enol_continuation_c0/arrows/network.json",
+                  "edge": 1,
+                  "attempt": 0
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "barriers_eV": [
+                0.0001872191933216527,
+                1.1478578194073634
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/protonation/pyruvate_protonation_c0/pyruvate_protonation_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 5
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "glucose + Pi ↔ G6P + H2O",
+        "passed": true,
+        "direct": true,
+        "path": [
+          "O=CC(O)C(O)C(O)C(O)CO.O=P([O-])(O)O",
+          "O.O=CC(O)C(O)C(O)C(O)COP(=O)([O-])O"
+        ],
+        "path_edges": 1,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                2.2506593382713618,
+                2.3402216662143474
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_gap_recovery_v18/runs/glucose_c6_c0/glucose_c6_c0/arrows/network.json",
+                  "edge": 3,
+                  "attempt": 7
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "FBP + H2O ↔ F6P + Pi",
+        "passed": true,
+        "direct": false,
+        "path": [
+          "O.O=C(COP(=O)([O-])O)C(O)C(O)C(O)COP(=O)([O-])O",
+          "O.O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O.O=P(=O)[O-]",
+          "O=C(CO)C(O)C(O)C(O)COP(=O)([O-])O.O=P([O-])(O)O"
+        ],
+        "path_edges": 2,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                0.8262715985038085,
+                1.3321088333104854
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/f6p_phosphorylation_c1/f6p_phosphorylation_c1/arrows/network.json",
+                  "edge": 2,
+                  "attempt": 4
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "barriers_eV": [
+                0.9110643547319341,
+                1.4658420395935536
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/f6p_phosphorylation_c1/f6p_phosphorylation_c1/arrows/network.json",
+                  "edge": 4,
+                  "attempt": 8
+                }
+              ]
+            }
+          ]
+        ]
+      },
+      {
+        "label": "1,3-BPG + H2O ↔ 3PG + Pi",
+        "passed": true,
+        "direct": false,
+        "path": [
+          "O.O=C(OP(=O)([O-])O)C(O)COP(=O)([O-])O",
+          "O.O=C(O)C(O)COP(=O)([O-])O.O=P(=O)[O-]",
+          "O=C(O)C(O)COP(=O)([O-])O.O=P([O-])(O)O"
+        ],
+        "path_edges": 2,
+        "step_evidence": [
+          [
+            {
+              "barriers_eV": [
+                0.8911470354942139,
+                1.3313301880698418
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/bpg_hydrolysis_c0/bpg_hydrolysis_c0/arrows/network.json",
+                  "edge": 0,
+                  "attempt": 0
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "barriers_eV": [
+                0.5590267546504037,
+                0.1285763081323239
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/bpg_hydrolysis_c1/bpg_hydrolysis_c1/arrows/network.json",
+                  "edge": 1,
+                  "attempt": 2
+                }
+              ]
+            },
+            {
+              "barriers_eV": [
+                0.5513866619148757,
+                0.07630722752946895
+              ],
+              "origins": [
+                {
+                  "record": "reports/glycolysis_sparse_endpoint_v17/runs/bpg_hydrolysis_c1/bpg_hydrolysis_c1/arrows/network.json",
+                  "edge": 2,
+                  "attempt": 3
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ],
+    "html": "molecules/index.html"
+  }
+}

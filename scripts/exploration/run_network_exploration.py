@@ -34,6 +34,7 @@ def main():
     p.add_argument('--ts-steps',type=int,default=160)
     p.add_argument('--descent-steps',type=int,default=250)
     p.add_argument('--seeds-per-node', type=int, default=1)
+    p.add_argument('--symbolic-seed-scale',type=float,default=1.0)
     p.add_argument('--hessian-batch-size',type=int,default=32)
     p.add_argument('--fmax',type=float,default=.005)
     p.add_argument('--initial-fmax',type=float,default=.003)
@@ -47,13 +48,14 @@ def main():
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
     a = p.parse_args()
-    if a.workers<1 or a.threads_per_worker<1:
-        p.error('workers and threads-per-worker must be positive')
+    if a.workers<1 or a.threads_per_worker<1 or a.seeds_per_node<1 or a.symbolic_seed_scale<=0:
+        p.error('workers, threads-per-worker, seeds-per-node and symbolic-seed-scale must be positive')
     if a.outdir.exists():
         raise FileExistsError('Use a new output directory; prior experiments are preserved')
     a.outdir.mkdir(parents=True)
     RDLogger.DisableLog('rdApp.*')
     protocol = SearchProtocol(max_attempts=a.attempts, seeds_per_node=a.seeds_per_node,
+        symbolic_seed_scale=a.symbolic_seed_scale,
         total_evaluations=a.evaluations, evaluations_per_attempt=a.attempt_evaluations,
         ts_steps=a.ts_steps,descent_steps=a.descent_steps,
         random_seed=a.seed,hessian_batch_size=a.hessian_batch_size,fmax=a.fmax,

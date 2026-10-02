@@ -30,6 +30,27 @@ def electron_actions(mol):
     phosphate_esters = matches('[C;+0]-[O;+0]-[P;+0](=[O;+0])(-[O;+0]-[H])-[O;+0]-[H]')
     phosphoric_acids = matches('[P;+0](=[O;+0])(-[O;+0]-[H])(-[O;+0]-[H])-[O;+0]-[H]')
     waters = matches('[O;+0](-[H])-[H]')
+    for carboxyl_c, carbonyl_o, carboxylate_o in matches('[C;+0](=[O;+0])-[O;-1]'):
+        for phosphorus, phosphoryl_o, acid_o1, acid_h1, acid_o2, acid_h2, acid_o3, acid_h3 in phosphoric_acids:
+            if component[carboxylate_o] == component[phosphorus]:continue
+            for acid_o, proton in ((acid_o1,acid_h1),(acid_o2,acid_h2),(acid_o3,acid_h3)):
+                yield action('phosphoric_acid_to_carboxylate_proton_transfer',
+                    [((acid_o,proton), (acid_o,)),
+                     ((carboxylate_o,), (carboxylate_o,proton))])
+    # Enol pyruvate -> keto pyruvate after PEP phosphate hydrolysis.
+    for terminal_c, enol_c, enol_o, enol_h, carboxyl_c, carboxyl_o, acid_o, acid_h in matches(
+            '[C;H2;+0]=[C;+0](-[O;+0]-[H])-[C;+0](=[O;+0])-[O;+0]-[H]'):
+        yield action('pyruvate_enol_to_keto',
+            [((enol_o,enol_h), (enol_o,enol_c)),
+             ((terminal_c,enol_c), (terminal_c,enol_h))])
+    for methyl_c, keto_c, keto_o, carboxyl_c, carboxyl_o, acid_o, acid_h in matches(
+            '[C;H3;+0]-[C;+0](=[O;+0])-[C;+0](=[O;+0])-[O;+0]-[H]'):
+        methyl_hydrogens=[a.GetIdx() for a in mol.GetAtomWithIdx(methyl_c).GetNeighbors()
+                          if a.GetAtomicNum()==1]
+        for proton in methyl_hydrogens:
+            yield action('pyruvate_keto_to_enol',
+                [((methyl_c,proton), (methyl_c,keto_c)),
+                 ((keto_c,keto_o), (keto_o,proton))])
     # Carbonyl/enediol tautomerization. These explicit proton-coupled arrows
     # cover the shared G6P/F6P and GAP/DHAP enediols without using a product
     # geometry. Both alpha sides are retained when a ketone has two choices.
@@ -140,6 +161,27 @@ def electron_actions(mol):
                      ((phosphorus,leaving_o), (leaving_o,)),
                      ((alcohol_o,alcohol_h), (alcohol_o,)),
                      ((leaving_o,), (leaving_o,alcohol_h))])
+    # Site-specific glucose C6 phosphorylation. Internal secondary alcohols are
+    # deliberately excluded from this reconstruction action.
+    for c1,o1,c2,o2,h2,c3,o3,h3,c4,o4,h4,c5,o5,h5,c6,o6,h6 in matches(
+            '[C;H1;+0](=[O;+0])-[C;H1;+0](-[O;+0]-[H])-[C;H1;+0](-[O;+0]-[H])-[C;H1;+0](-[O;+0]-[H])-[C;H1;+0](-[O;+0]-[H])-[C;H2;+0]-[O;+0]-[H]'):
+        for phosphorus, phosphoryl_o, anion_o, acid_o1, acid_h1, acid_o2, acid_h2 in matches(
+                '[P;+0](=[O;+0])(-[O;-1])(-[O;+0]-[H])-[O;+0]-[H]'):
+            if component[phosphorus] == component[o6]:continue
+            for leaving_o in (acid_o1,acid_o2):
+                yield action('glucose_c6_phosphate_condensation',
+                    [((o6,), (o6,phosphorus)),
+                     ((phosphorus,leaving_o), (leaving_o,)),
+                     ((o6,h6), (o6,)),
+                     ((leaving_o,), (leaving_o,h6))])
+    # Site-specific 3PG -> 2PG migration before the generic charged action.
+    for carboxyl_c, carbonyl_o, acid_o, acid_h, c2, o2, h2, c3, o3, phosphorus, phosphoryl_o, anion_o, phosphate_o, phosphate_h in matches(
+            '[C;+0](=[O;+0])(-[O;+0]-[H])-[C;H1;+0](-[O;+0]-[H])-[C;H2;+0]-[O;+0]-[P;+0](=[O;+0])(-[O;-1])-[O;+0]-[H]'):
+        yield action('phosphoglycerate_3_to_2_site_specific',
+            [((o2,), (o2,phosphorus)),
+             ((phosphorus,o3), (o3,)),
+             ((o2,h2), (o2,)),
+             ((o3,), (o3,h2))])
     # Site-specific F6P/FBP pair. FBP has two terminal phosphate esters; only
     # hydrolysis at the CH2 group adjacent to the C2 carbonyl yields F6P.
     # Keep these before the generic charged actions so the named site-specific
@@ -198,6 +240,18 @@ def electron_actions(mol):
                  ((phosphorus,ester_o), (ester_o,)),
                  ((water_o,water_h1), (water_o,)),
                  ((ester_o,), (ester_o,water_h1))])
+        for neighbour in mol.GetAtomWithIdx(carbon).GetNeighbors():
+            if neighbour.GetAtomicNum()!=6:continue
+            for oxygen in neighbour.GetNeighbors():
+                if oxygen.GetAtomicNum()!=8 or oxygen.GetIdx()==ester_o:continue
+                hydrogens=[a.GetIdx() for a in oxygen.GetNeighbors() if a.GetAtomicNum()==1]
+                if not hydrogens:continue
+                acceptor_o=oxygen.GetIdx();proton=hydrogens[0]
+                yield action('vicinal_phosphate_anion_migration',
+                    [((acceptor_o,), (acceptor_o,phosphorus)),
+                     ((phosphorus,ester_o), (ester_o,)),
+                     ((acceptor_o,proton), (acceptor_o,)),
+                     ((ester_o,), (ester_o,proton))])
     # Direct, atom-conserving retro-aldol grammar for a beta-hydroxy carbonyl.
     # The beta-OH proton terminates the carbon fragment created by C-C cleavage.
     for carbonyl_c, carbonyl_o, alpha_c, alpha_o, alpha_h, beta_c, beta_o, beta_h in matches(

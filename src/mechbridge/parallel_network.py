@@ -46,7 +46,7 @@ def _run_task(task):
     try:
         started=time.perf_counter()
         x,direction,meta=make_seed(state,mol,task['seed_strategy'],task['proposal'],
-                                   task['variant'],task['random_seed'])
+                                   task['variant'],task['random_seed'],protocol.symbolic_seed_scale)
         meta.update(random_seed=task['random_seed'],seed_strategy=task['seed_strategy'],
                     generation_seconds=time.perf_counter()-started)
     except (ValueError,RuntimeError) as exc:
@@ -173,7 +173,8 @@ def explore_shared(start,library,root_backend,strategy,outdir,potential_name,roo
                 unsupported.add(cluster_key);continue
             species_graph=nodes[node_id]['graph_smiles']
             used=actions_used.setdefault(cluster_key,{})
-            choice=choose_action(proposals,used,known_graphs,strategy,protocol.geometry_seeds_per_node)
+            choice=choose_action(proposals,used,known_graphs,strategy,
+                                 protocol.geometry_seeds_per_node,3*protocol.seeds_per_node)
             if choice is None:
                 exhausted.add(cluster_key);continue
             proposal,key,variant,seed_strategy=choice

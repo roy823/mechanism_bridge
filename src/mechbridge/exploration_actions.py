@@ -6,7 +6,7 @@ def action_key(proposal):
     return json.dumps(dict(edits=proposal['edits'],arrows=proposal['arrows']),sort_keys=True)
 
 
-def choose_action(proposals,used,known_graphs,strategy,geometry_limit=9):
+def choose_action(proposals,used,known_graphs,strategy,geometry_limit=9,symbolic_variant_limit=3):
     """Spread trials across product hypotheses before symmetry-related mappings.
 
     Each atom-mapped action has three geometric variants. Successful observations
@@ -21,7 +21,7 @@ def choose_action(proposals,used,known_graphs,strategy,geometry_limit=9):
         product_trials[p['predicted_graph']]=product_trials.get(p['predicted_graph'],0)+count
     for index,p in enumerate(proposals):
         key=action_key(p);count=used.get(key,0)
-        if count<3:
+        if count<symbolic_variant_limit:
             symbolic.append(((p['predicted_graph'] in known_graphs,
                 product_trials[p['predicted_graph']],count,index),p,key,count))
     geometry_due=(strategy=='geometry' or (strategy=='hybrid' and (trials%4==3 or not symbolic)))

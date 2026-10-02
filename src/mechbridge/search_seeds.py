@@ -82,7 +82,7 @@ def reaction_direction(x, ij, delta, unchanged):
     return internal_direction(x, tangent)
 
 
-def make_seed(atoms, mol, strategy, proposal, sample, random_seed):
+def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed_scale=1.0):
     x = atoms.positions.copy()
     rng = np.random.default_rng(random_seed)
     fraction = (0.35, 0.55, 0.75)[sample % 3]
@@ -111,6 +111,9 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed):
             information='active_atom_ids_only' if strategy=='center_random' else 'geometry_only')
     if strategy not in ('bond_edits', 'arrows') or proposal is None:
         raise ValueError('Symbolic strategy needs an applicable proposal')
+    if symbolic_seed_scale <= 0:
+        raise ValueError('Symbolic seed scale must be positive')
+    amplitude *= symbolic_seed_scale
     edits = proposal['edits']
     x, encounter = orient_reactive_encounter(atoms.numbers,x,mol,edits,random_seed)
     old_bonds = bond_orders(mol)
