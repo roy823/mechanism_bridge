@@ -6,7 +6,10 @@ pairs, new species, longest enumerated multistep path, and the anytime curve
 order; serial runs). Per strategy: means over systems of per-system seed means,
 and paired Wilcoxon signed-rank tests across systems against a reference
 strategy (e.g. arrows vs bond_edits, every strategy vs geometry).
-Usage: summarize_campaign.py CAMPAIGN_DIR --out FILE [--budget 16000]
+Several campaigns can be pooled (e.g. Fig. 3 = the first 20 Coley starts of the
+Coley campaign plus the growth campaign) and restricted with --ids. Runs that
+are still running or ended in aborted_error count as missing, not as zero.
+Usage: summarize_campaign.py CAMPAIGN_DIR [...] --out FILE [--budget 16000] [--ids F.json]
 """
 import argparse
 import csv
@@ -68,21 +71,33 @@ def paired_test(per_system, strategy, reference):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('campaign', type=Path)
+    parser.add_argument('campaigns', type=Path, nargs='+')
     parser.add_argument('--budget', type=int, default=16000)
+    parser.add_argument('--ids', type=Path, help='JSON list or {"ids": [...]} restricting the starts')
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
-    manifest = list(csv.DictReader((args.campaign/'manifest.tsv').open(encoding='utf-8'), delimiter='\t'))
+    keep = None
+    if args.ids:
+        data = json.loads(args.ids.read_text(encoding='utf-8'))
+        keep = set(data if isinstance(data, list) else data['ids'])
+    manifest = []
+    for campaign in args.campaigns:
+        tasks = csv.DictReader((campaign/'manifest.tsv').open(encoding='utf-8'), delimiter='\t')
+        manifest += [dict(t, campaign=campaign) for t in tasks if keep is None or t['start_id'] in keep]
     rows, missing = [], []
     for task in manifest:
-        paths = list((args.campaign/'runs'/task['outdir']).glob('*/*/network.json'))
+        paths = list((task['campaign']/'runs'/task['outdir']).glob('*/*/network.json'))
         if not paths:
-            missing.append(task['task_id'])
+            missing.append(f"{task['campaign'].name}:{task['task_id']}")
             continue
         network = json.loads(paths[0].read_text(encoding='utf-8'))
+        if network['status'] in ('running', 'aborted_error'):
+            missing.append(f"{task['campaign'].name}:{task['task_id']}:{network['status']}")
+            continue
         metrics = growth_metrics(network)
         curve = anytime(network)
-        rows.append(dict(task=int(task['task_id']), start=task['start_id'], strategy=task['strategy'],
+        rows.append(dict(campaign=task['campaign'].name, task=int(task['task_id']), start=task['start_id'],
+                         strategy=task['strategy'],
                          seed=int(task['seed']), status=network['status'], evaluations=network.get('evaluations'),
                          attempts=len(network['attempts']), edges=len(network['edges']),
                          root_chemical_pairs=len(root_pairs(network, network['edges'])),
@@ -106,7 +121,8 @@ def main():
     statuses = {}
     for row in rows:
         statuses[row['status']] = statuses.get(row['status'], 0) + 1
-    result = dict(campaign=str(args.campaign), budget=args.budget, tasks=len(manifest), finished=len(rows),
+    result = dict(campaigns=[str(c) for c in args.campaigns], ids=None if args.ids is None else str(args.ids),
+                  budget=args.budget, tasks=len(manifest), finished=len(rows),
                   missing_tasks=missing, run_statuses=statuses, per_strategy=summary, paired_tests=tests,
                   per_system_means=per_system, rows=rows)
     args.out.write_text(json.dumps(result, indent=2), encoding='utf-8')
