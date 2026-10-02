@@ -10,9 +10,15 @@ a network; each replay is one billed attempt.
 Sample once (deterministic), then run array tasks over the sample:
   replay_attempts.py sample --out sample.json [--p1 100 --p2 60 --seed 20261002]
   replay_attempts.py run --sample sample.json --variants legacy sella --task 0 --tasks 16 --out DIR
+P1c (TS stage on large systems) samples saved seeds of campaign runs instead:
+  replay_attempts.py sample-campaign CAMPAIGN_DIR [...] --out sample.json [--large 120 --small 120]
+Seeds are deduplicated by content (T1x reactions that share a reactant repeat
+the same seeds) and split by size (--large-atoms); within each stratum the
+draw is round-robin over (start, strategy) after a seeded shuffle.
 """
 import argparse
 import dataclasses
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -33,7 +39,13 @@ VARIANTS = {
     # P3 fmax sensitivity around the candidate protocol (TS and endpoint gates move together).
     'sella_irc_f003': dict(ts_optimizer='dimer+sella', connection_protocol='irc', fmax=.003),
     'sella_irc_f010': dict(ts_optimizer='dimer+sella', connection_protocol='irc', fmax=.010),
+    # P1c, applied on top of a run's stored (draft) protocol: earlier Dimer->Sella
+    # hand-off with more Sella steps, near Sella-only, and a longer Dimer.
+    'p1c_handoff03': dict(dimer_fmax=.3, sella_steps=300),
+    'p1c_handoff10': dict(dimer_fmax=1., sella_steps=400),
+    'p1c_long_dimer': dict(ts_steps=400),
 }
+P1C_VARIANTS = ('legacy', 'p1c_handoff03', 'p1c_handoff10', 'p1c_long_dimer')
 VALIDATED = ('validated_descents', 'validated_core_descents')
 
 
@@ -83,6 +95,41 @@ def sample(args):
     print(json.dumps(dict(pool=len(rows), P1=len(p1), P2=len(p2)), indent=2))
 
 
+def campaign_attempts(campaigns, large_atoms):
+    """Saved seeds of campaign runs, deduplicated by seed content, with size strata."""
+    rows, seen = [], set()
+    for campaign in campaigns:
+        for direction in sorted(campaign.resolve().glob('runs/*/*/*/*/*/attempt_*/seed_direction.npy')):
+            attempt = direction.parent
+            if not ((attempt/'seed.xyz').exists() and (attempt/'result.json').exists()):
+                continue
+            status = json.loads((attempt/'result.json').read_text(encoding='utf-8')).get('status')
+            if status in (None, 'seed_generation_failed'):
+                continue
+            digest = hashlib.sha256((attempt/'seed.xyz').read_bytes() + direction.read_bytes()).hexdigest()
+            if digest in seen:
+                continue
+            seen.add(digest)
+            atoms = len(read(attempt/'seed.xyz'))
+            start, strategy = attempt.parts[-3], attempt.parts[-2]
+            rows.append(dict(attempt=str(attempt), family=f'{start}/{strategy}', historical_status=status,
+                             atoms=atoms, stratum='large' if atoms >= large_atoms else 'small'))
+    return rows
+
+
+def sample_campaign(args):
+    rng = np.random.default_rng(args.seed)
+    rows = campaign_attempts(args.campaigns, args.large_atoms)
+    plan = dict(seed=args.seed, campaigns=[str(c) for c in args.campaigns], large_atoms=args.large_atoms,
+                pool={s: sum(r['stratum'] == s for r in rows) for s in ('large', 'small')},
+                P1c_large=round_robin([r for r in rows if r['stratum'] == 'large'], args.large, rng),
+                P1c_small=round_robin([r for r in rows if r['stratum'] == 'small'], args.small, rng),
+                rule='content-deduplicated saved seeds; round-robin over start/strategy after a seeded shuffle')
+    args.out.write_text(json.dumps(plan, indent=2), encoding='utf-8')
+    print(json.dumps(dict(pool=plan['pool'], large=len(plan['P1c_large']), small=len(plan['P1c_small'])),
+                     indent=2))
+
+
 def replay(entry, variant, backends, outdir, threads):
     attempt = ROOT/entry['attempt']
     network = json.loads((attempt.parent/'network.json').read_text(encoding='utf-8'))
@@ -119,11 +166,12 @@ def replay(entry, variant, backends, outdir, threads):
 
 def run(args):
     plan = json.loads(args.sample.read_text(encoding='utf-8'))
-    jobs = [(group, entry, variant) for group, variants in (('P1', args.variants), ('P2', args.variants))
-            for entry in plan[group] for variant in variants
-            if (group, variant) in {('P1', 'legacy'), ('P1', 'sella'), ('P1', 'sella_irc'),
-                                    ('P2', 'legacy'), ('P2', 'irc'), ('P2', 'sella_irc'),
-                                    ('P2', 'sella_irc_f003'), ('P2', 'sella_irc_f010')}]
+    allowed = {('P1', 'legacy'), ('P1', 'sella'), ('P1', 'sella_irc'),
+               ('P2', 'legacy'), ('P2', 'irc'), ('P2', 'sella_irc'),
+               ('P2', 'sella_irc_f003'), ('P2', 'sella_irc_f010'),
+               *((g, v) for g in ('P1c_large', 'P1c_small') for v in P1C_VARIANTS)}
+    jobs = [(group, entry, variant) for group in ('P1', 'P2', 'P1c_large', 'P1c_small')
+            for entry in plan.get(group, []) for variant in args.variants if (group, variant) in allowed]
     mine = jobs[args.task::args.tasks]
     args.out.mkdir(parents=True, exist_ok=True)
     backends, rows = {}, []
@@ -145,6 +193,13 @@ def main():
     s.add_argument('--p1', type=int, default=100)
     s.add_argument('--p2', type=int, default=60)
     s.add_argument('--seed', type=int, default=20261002)
+    c = sub.add_parser('sample-campaign')
+    c.add_argument('campaigns', type=Path, nargs='+')
+    c.add_argument('--out', type=Path, required=True)
+    c.add_argument('--large', type=int, default=120)
+    c.add_argument('--small', type=int, default=120)
+    c.add_argument('--large-atoms', type=int, default=25)
+    c.add_argument('--seed', type=int, default=20261002)
     r = sub.add_parser('run')
     r.add_argument('--sample', type=Path, required=True)
     r.add_argument('--variants', nargs='+', choices=sorted(VARIANTS), required=True)
@@ -153,10 +208,10 @@ def main():
     r.add_argument('--threads', type=int, default=2)
     r.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
-    if args.command == 'sample':
+    if args.command in ('sample', 'sample-campaign'):
         if args.out.exists():
             raise FileExistsError(args.out)
-        sample(args)
+        (sample if args.command == 'sample' else sample_campaign)(args)
     else:
         if not 0 <= args.task < args.tasks:
             parser.error('--task must be in [0, --tasks)')

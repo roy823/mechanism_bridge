@@ -7,6 +7,13 @@ P2 adopts MLIP IRC in search if its accepted-connection endpoint graphs agree wi
 the displacement protocol at least as often as they are accepted, and its evaluations
 per attempt are <= 2 x displacement; otherwise IRC is used only on reported edges.
 Same TS: aligned RMSD <= 0.15 A and |dE| <= 0.03 eV (registry tolerances).
+P1c (TS stage for large systems; written before the replays ran) compares each
+candidate V with the draft protocol A ('legacy') on the same seeds and adopts V if
+  (i)  large systems: accepted-connection rate(V) >= rate(A) + 5 points, and
+  (ii) small systems: rate(V) >= rate(A) - 2 points and median evaluations per
+       attempt(V) <= 1.10 x A.
+Among qualifying candidates the highest large-system rate wins; candidates within
+2 points of it are ranked by total evaluations over both strata. None: keep A.
 Usage: summarize_replays.py RESULTS_DIR --out FILE
 """
 import argparse
@@ -177,6 +184,49 @@ def repeat_consistency(rows):
     return dict(repeated_replays=repeats, identical_status_and_evaluations=identical)
 
 
+def stratum_summary(rows, variants):
+    by = {}
+    for row in rows:
+        by.setdefault(row['attempt'], {})[row['variant']] = row
+    complete = [v for v in by.values() if set(variants) <= set(v)]
+    out = dict(attempts=len(complete))
+    for variant in variants:
+        group = [c[variant] for c in complete]
+        accepted = rate(group, ACCEPTED)
+        total = sum(r['evaluations'] for r in group)
+        statuses = {}
+        for r in group:
+            statuses[r['status']] = statuses.get(r['status'], 0) + 1
+        out[variant] = dict(accepted_rate=accepted, index_one_rate=rate(group, INDEX_ONE),
+                            median_evaluations=float(np.median([r['evaluations'] for r in group])) if group else None,
+                            total_evaluations=total,
+                            evaluations_per_accepted=total/accepted['hits'] if accepted['hits'] else None,
+                            statuses=statuses)
+    if 'legacy' in variants:
+        legacy = [c['legacy'] for c in complete]
+        out['legacy_historical_match'] = sum(bool(r.get('historical_match')) for r in legacy)
+    return out
+
+
+def p1c_summary(rows):
+    variants = ('legacy', 'p1c_handoff03', 'p1c_handoff10', 'p1c_long_dimer')
+    large = stratum_summary([r for r in rows if r['group'] == 'P1c_large'], variants)
+    small = stratum_summary([r for r in rows if r['group'] == 'P1c_small'], variants)
+    if not large['attempts'] or not small['attempts']:
+        return dict(large=large, small=small, decision=None)
+    def points(stratum, v):
+        return 100*(stratum[v]['accepted_rate']['rate'] - stratum['legacy']['accepted_rate']['rate'])
+    qualifying = [v for v in variants[1:] if points(large, v) >= 5 and points(small, v) >= -2 and
+                  small[v]['median_evaluations'] <= 1.10*small['legacy']['median_evaluations']]
+    choice = 'legacy'
+    if qualifying:
+        best = max(points(large, v) for v in qualifying)
+        near = [v for v in qualifying if points(large, v) >= best - 2]
+        choice = min(near, key=lambda v: large[v]['total_evaluations'] + small[v]['total_evaluations'])
+    return dict(large=large, small=small, qualifying=qualifying, decision=choice,
+                points_vs_legacy={v: dict(large=points(large, v), small=points(small, v)) for v in variants[1:]})
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('results', type=Path, nargs='+')
@@ -187,7 +237,7 @@ def main():
                    P1=p1_summary([r for r in rows if r['group'] == 'P1']),
                    P2=p2_summary([r for r in rows if r['group'] == 'P2']),
                    P3=p3_summary([r for r in rows if r['group'] == 'P2']),
-                   repeats=repeat_consistency(rows))
+                   P1c=p1c_summary(rows), repeats=repeat_consistency(rows))
     args.out.write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(json.dumps(summary, indent=2))
 
