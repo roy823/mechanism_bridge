@@ -29,7 +29,7 @@ def assemble_encounter(numbers, positions, fragments, random_seed):
     return x-x.mean(0)
 
 
-def orient_reactive_encounter(numbers, positions, mol, edits, random_seed):
+def orient_reactive_encounter(numbers, positions, mol, edits, random_seed, extra_score=None):
     """Sample rigid placements exposing proposed cross-fragment forming bonds.
 
     The 64 inexpensive geometric trials do not evaluate the PES. This rotation
@@ -56,7 +56,8 @@ def orient_reactive_encounter(numbers, positions, mol, edits, random_seed):
     pairs.sort(key=lambda p: (numbers[p[0]]==1 or numbers[p[1]]==1,p))
     rng = np.random.default_rng(random_seed)
     original = np.asarray(positions)
-    best = _best_rigid_orientation(numbers, original, fragments, active_components, pairs, rng)
+    best = _best_rigid_orientation(numbers, original, fragments, active_components, pairs, rng,
+                                   extra_score)
     return best[1],dict(policy='64_rigid_orientations_cross_bond_distance_and_clash_score',
         score=float(best[0]),selected_trial=best[2],cross_forming_pairs=pairs,
         active_components=list(active_components),spectator_components=len(fragments)-2,
@@ -97,8 +98,12 @@ def orient_control_encounter(numbers, positions, mol, allowed_atoms, random_seed
         displacement_from_source_A=float(np.linalg.norm(best[1]-original)))
 
 
-def _best_rigid_orientation(numbers, original, fragments, active_components, pairs, rng):
-    """Score 64 rigid placements that put pairs[0] at 2.8 A; no PES evaluation."""
+def _best_rigid_orientation(numbers, original, fragments, active_components, pairs, rng,
+                            extra_score=None):
+    """Score 64 rigid placements that put pairs[0] at 2.8 A; no PES evaluation.
+
+    extra_score(y), when given, is added to each trial's score (arrow-only terms).
+    """
     ids_a, ids_b = [np.array(fragments[index],dtype=int) for index in active_components]
     anchor_a,anchor_b = pairs[0]
     active_ids = np.concatenate((ids_a,ids_b))
@@ -121,6 +126,8 @@ def _best_rigid_orientation(numbers, original, fragments, active_components, pai
             floor_other=(covalent_radii[numbers[active_ids,None]]+
                          covalent_radii[numbers[spectators]][None,:])
             score += 50*np.maximum(floor_other-d_other,0).sum()**2
+        if extra_score is not None:
+            score += extra_score(y)
         if best is None or score < best[0]:
             best = score,y-y.mean(0),trial
     return best

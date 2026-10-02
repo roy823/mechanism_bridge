@@ -4,8 +4,11 @@ from scipy.optimize import least_squares
 from ase.data import covalent_radii
 from .event_graph import bond_orders
 from .encounters import orient_control_encounter, orient_reactive_encounter
+from .arrow_features import (chain_progress_shift, generalized_links, lone_pair_alignment_score,
+                             lone_pair_residuals, lone_pair_terms, arrow_chain)
 
 ENCOUNTER_POLICIES = ('symbolic_only', 'matched_controls')
+SEED_FEATURES = ('legacy', 'arrow_features_v1')
 
 
 def internal_direction(x, direction):
@@ -85,15 +88,23 @@ def reaction_direction(x, ij, delta, unchanged):
 
 
 def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed_scale=1.0,
-              encounter_policy='symbolic_only'):
+              encounter_policy='symbolic_only', seed_features='legacy'):
     """Seed geometry and initial direction for one attempt.
 
     encounter_policy='matched_controls' gives the geometry and center_random
     controls the same rigid encounter search as the symbolic strategies, with a
     proposal-free contact pair; 'symbolic_only' is the historical behaviour.
+    seed_features='arrow_features_v1' adds arrow-only terms for 'arrows'
+    (arrow_features) and the matched random-order progress axis for 'bond_edits',
+    which then never sees the arrows; 'legacy' is the historical behaviour.
     """
     if encounter_policy not in ENCOUNTER_POLICIES:
         raise ValueError(f'Unknown encounter_policy: {encounter_policy}')
+    if seed_features not in SEED_FEATURES:
+        raise ValueError(f'Unknown seed_features: {seed_features}')
+    features = seed_features == 'arrow_features_v1' and strategy in ('bond_edits', 'arrows')
+    if features and strategy == 'bond_edits' and proposal is not None:
+        proposal = {k: v for k, v in proposal.items() if k != 'arrows'}   # leak guard
     x = atoms.positions.copy()
     rng = np.random.default_rng(random_seed)
     fraction = (0.35, 0.55, 0.75)[sample % 3]
@@ -132,7 +143,9 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
         raise ValueError('Symbolic seed scale must be positive')
     amplitude *= symbolic_seed_scale
     edits = proposal['edits']
-    x, encounter = orient_reactive_encounter(atoms.numbers,x,mol,edits,random_seed)
+    arrows = proposal['arrows'] if (features and strategy == 'arrows') else None
+    extra = (lambda y: lone_pair_alignment_score(y, mol, arrows)) if arrows else None
+    x, encounter = orient_reactive_encounter(atoms.numbers,x,mol,edits,random_seed,extra)
     old_bonds = bond_orders(mol)
     changed = {tuple(e['atoms']) for e in edits}
     ij = np.array([e['atoms'] for e in edits])
@@ -150,13 +163,20 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
     # Matched across net-edit and arrow controls: synchronous, decrease-leading,
     # and increase-leading trajectories. These are proposals, not assumed paths.
     phase = (0., -.15, .15)[sample % 3]
+    shift, chain_lambda = (chain_progress_shift(edits, arrows, sample, random_seed) if features
+                           else (0., None))
     progress_target = np.clip(fraction + phase*np.array([
-        np.sign(e['after']-e['before']) for e in edits]), .15, .9)
+        np.sign(e['after']-e['before']) for e in edits]) + shift, .15, .9)
     angles = angle_targets(atoms.numbers, edits, sample)
     unchanged = [(i, j) for i, j in old_bonds if (i, j) not in changed]
     links = []
     index = {tuple(e['atoms']): k for k, e in enumerate(edits)}
-    if strategy == 'arrows':
+    lp_terms = []
+    if strategy == 'arrows' and arrows is not None:
+        # Generalized source/sink coupling along the push-pull chain, plus lone pairs.
+        links = generalized_links(arrows, {tuple(sorted(e['atoms'])): k for k, e in enumerate(edits)})
+        lp_terms = lone_pair_terms(arrows, mol, x)
+    elif strategy == 'arrows':
         for arrow in proposal['arrows']:
             a, b = tuple(sorted(arrow['source'])), tuple(sorted(arrow['sink']))
             if a in index and b in index:
@@ -172,6 +192,8 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
         out.extend(0.7 * ((progress[a] - progress[b]) -
                    (progress_target[a]-progress_target[b])) for a,b in links)
         out.extend((cosine_angle(y,a['atoms'])-np.cos(np.deg2rad(a['degrees']))) / .5 for a in angles)
+        if lp_terms:
+            out.extend(lone_pair_residuals(y, mol, lp_terms, sample))
         for i in range(len(y)):
             for j in range(i):
                 floor = .6 * (covalent_radii[atoms.numbers[i]] + covalent_radii[atoms.numbers[j]])
@@ -186,7 +208,7 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
     displacement = internal_direction(x, y-x)
     seed = x + amplitude * displacement
     direction = reaction_direction(seed, ij, delta * progress_target, unchanged)
-    return seed, direction, dict(fraction=fraction, template_id=proposal['template_id'],
+    meta = dict(fraction=fraction, template_id=proposal['template_id'],
                             displacement_norm_A=amplitude,
                             unnormalized_fit_displacement_A=float(np.linalg.norm(y-x)),
                             progress_targets=progress_target.tolist(), angle_targets=angles,
@@ -202,3 +224,16 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
                             predicted_graph=proposal['predicted_graph'],
                             arrows=proposal['arrows'] if strategy=='arrows' else None,
                             net_edits=edits)
+    if features:
+        terms = dict(seed_features=seed_features, chain_lambda=chain_lambda,
+                     chain_shift=np.atleast_1d(shift).tolist())
+        if arrows is not None:
+            _, _, cyclic = arrow_chain(arrows)
+            terms.update(chain_order='arrow_push_pull_rank', chain_cyclic=cyclic,
+                         generalized_links=len(links), lone_pair_terms=len(lp_terms),
+                         lone_pair_residuals_at_seed=lone_pair_residuals(seed, mol, lp_terms, sample),
+                         encounter_lone_pair_alignment=encounter is not None)
+        else:
+            terms.update(chain_order='random_bond_permutation_control')
+        meta['arrow_terms'] = terms
+    return seed, direction, meta

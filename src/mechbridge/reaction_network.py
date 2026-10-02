@@ -20,7 +20,7 @@ from ase.mep import DimerControl, MinModeAtoms
 from rdkit import Chem
 from .physics import analyze_stationary
 from .event_graph import geometry_mol, graph_smiles
-from .search_seeds import ENCOUNTER_POLICIES, make_seed
+from .search_seeds import ENCOUNTER_POLICIES, SEED_FEATURES, make_seed
 from .exploration_actions import choose_action
 from .saddle_optimization import StationaryDimerTranslate
 from .event_classification import classify_event
@@ -139,6 +139,9 @@ class SearchProtocol:
     irc_steps: int = 300
     irc_fmax: float = .05
     irc_inner_fmax: float = .02
+    # 'legacy': historical seeds. 'arrow_features_v1': arrow-only terms for
+    # arrows, matched random-order progress axis for bond_edits (arrow_features).
+    seed_features: str = 'legacy'
 
     def __post_init__(self):
         if self.encounter_policy not in ENCOUNTER_POLICIES:
@@ -149,6 +152,8 @@ class SearchProtocol:
             raise ValueError(f'Unknown ts_optimizer: {self.ts_optimizer}')
         if self.connection_protocol not in CONNECTION_PROTOCOLS:
             raise ValueError(f'Unknown connection_protocol: {self.connection_protocol}')
+        if self.seed_features not in SEED_FEATURES:
+            raise ValueError(f'Unknown seed_features: {self.seed_features}')
 
 
 def aligned_rmsd(x, y):
@@ -489,7 +494,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                     seed_started=time.perf_counter()
                     x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
                                                    variant, seed_rng, protocol.symbolic_seed_scale,
-                                                   protocol.encounter_policy)
+                                                   protocol.encounter_policy, protocol.seed_features)
                 except Exception as exc:
                     if not is_recoverable_failure(exc):
                         raise

@@ -15,6 +15,7 @@ from mechbridge.potentials import load_potential
 from mechbridge.symbolic_library import ArrowLibrary,FilteredArrowLibrary
 from mechbridge.reaction_network import (CONNECTION_PROTOCOLS, ENCOUNTER_POLICIES, TS_OPTIMIZERS,
                                          SearchProtocol, explore, atomic_json)
+from mechbridge.search_seeds import SEED_FEATURES
 from mechbridge.parallel_network import START_METHODS, explore_shared
 from mechbridge.provenance import runtime_provenance
 
@@ -29,7 +30,8 @@ PROTOCOL_FLAGS = dict(attempts='max_attempts', seeds_per_node='seeds_per_node',
     geometry_seeds_per_node='geometry_seeds_per_node',
     dimer_extrapolate_forces='dimer_extrapolate_forces', min_barrier='min_barrier_eV',
     encounter_policy='encounter_policy', ts_optimizer='ts_optimizer', dimer_fmax='dimer_fmax',
-    sella_steps='sella_steps', connection_protocol='connection_protocol', irc_steps='irc_steps')
+    sella_steps='sella_steps', connection_protocol='connection_protocol', irc_steps='irc_steps',
+    seed_features='seed_features')
 
 
 def protocol_from_json(path, seed):
@@ -84,6 +86,8 @@ def main():
     p.add_argument('--connection-protocol',choices=CONNECTION_PROTOCOLS,default='mode_displacement',
                    help="'irc': bidirectional Sella IRC on the MLIP before endpoint polishing")
     p.add_argument('--irc-steps',type=int,default=300)
+    p.add_argument('--seed-features',choices=SEED_FEATURES,default='legacy',
+                   help="'arrow_features_v1': lone-pair, push-pull order and coupling terms for arrows")
     p.add_argument('--evaluations', type=int, default=6000)
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
@@ -109,7 +113,8 @@ def main():
         dimer_extrapolate_forces=a.dimer_extrapolate_forces,
         min_barrier_eV=a.min_barrier,encounter_policy=a.encounter_policy,
         ts_optimizer=a.ts_optimizer,dimer_fmax=a.dimer_fmax,sella_steps=a.sella_steps,
-        connection_protocol=a.connection_protocol,irc_steps=a.irc_steps)
+        connection_protocol=a.connection_protocol,irc_steps=a.irc_steps,
+        seed_features=a.seed_features)
     if a.outdir.exists():
         raise FileExistsError('Use a new output directory; prior experiments are preserved')
     a.outdir.mkdir(parents=True)
