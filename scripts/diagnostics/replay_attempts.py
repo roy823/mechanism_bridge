@@ -30,6 +30,9 @@ VARIANTS = {
     'sella': dict(ts_optimizer='dimer+sella'),
     'irc': dict(connection_protocol='irc'),
     'sella_irc': dict(ts_optimizer='dimer+sella', connection_protocol='irc'),
+    # P3 fmax sensitivity around the candidate protocol (TS and endpoint gates move together).
+    'sella_irc_f003': dict(ts_optimizer='dimer+sella', connection_protocol='irc', fmax=.003),
+    'sella_irc_f010': dict(ts_optimizer='dimer+sella', connection_protocol='irc', fmax=.010),
 }
 VALIDATED = ('validated_descents', 'validated_core_descents')
 
@@ -119,7 +122,8 @@ def run(args):
     jobs = [(group, entry, variant) for group, variants in (('P1', args.variants), ('P2', args.variants))
             for entry in plan[group] for variant in variants
             if (group, variant) in {('P1', 'legacy'), ('P1', 'sella'), ('P1', 'sella_irc'),
-                                    ('P2', 'legacy'), ('P2', 'irc'), ('P2', 'sella_irc')}]
+                                    ('P2', 'legacy'), ('P2', 'irc'), ('P2', 'sella_irc'),
+                                    ('P2', 'sella_irc_f003'), ('P2', 'sella_irc_f010')}]
     mine = jobs[args.task::args.tasks]
     args.out.mkdir(parents=True, exist_ok=True)
     backends, rows = {}, []
