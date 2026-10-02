@@ -49,3 +49,14 @@ def test_manifest_rows_have_no_carriage_return(tmp_path, monkeypatch):
     raw = (out/'manifest.tsv').read_bytes()
     assert b'\r' not in raw
     assert raw.decode().splitlines()[1].split('\t')[-1].endswith('/geometry/s17')
+
+
+def test_species_connectivity_counts_reoriented_encounter_complexes():
+    summary = load()
+    nodes = [dict(id=0, graph_smiles='C=O.C=O'), dict(id=1, graph_smiles='C=O.C=O'), dict(id=2, graph_smiles='O=CCO')]
+    network = dict(nodes=nodes, edges=[dict(id=0, attempt=0, nodes=[1, 2], kind='chemical')],
+                   attempts=[dict(evaluations=500)], initialization_evaluations=50)
+    assert summary.root_pairs(network, network['edges']) == {('C=O.C=O', 'O=CCO')}
+    assert summary.root_pairs(network, network['edges'], species=False) == set()
+    assert summary.species_reach(network) == (1, 1)
+    assert summary.anytime(network) == [(550, 1)] and summary.anytime(network, species=False) == [(550, 0)]

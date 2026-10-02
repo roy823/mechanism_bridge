@@ -46,3 +46,17 @@ def test_seed_feature_ablation_needs_arrow_features():
     with pytest.raises(ValueError, match='arrow_features_v1'):
         SearchProtocol(seed_feature_ablation='reversed_arrows')
     SearchProtocol(seed_features='arrow_features_v1', seed_feature_ablation='reversed_arrows')
+
+
+def test_join_same_species_and_frontier_validation():
+    import networkx as nx
+    from mechbridge.reaction_network import join_same_species
+    nodes = [dict(id=0, graph_smiles='A'), dict(id=1, graph_smiles='A'), dict(id=2, graph_smiles='B'),
+             dict(id=3, graph_smiles='B')]
+    graph = nx.Graph()
+    graph.add_nodes_from(range(4))
+    graph.add_edge(1, 2)
+    assert nx.node_connected_component(graph, 0) == {0}
+    assert nx.node_connected_component(join_same_species(graph, nodes), 0) == {0, 1, 2, 3}
+    with pytest.raises(ValueError, match='frontier_connectivity'):
+        SearchProtocol(frontier_connectivity='graph')

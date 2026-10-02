@@ -3,7 +3,11 @@
 Per run: final status, evaluations, root-connected distinct chemical graph
 pairs, new species, longest enumerated multistep path, and the anytime curve
 (distinct root-connected chemical pairs versus cumulative evaluations, attempt
-order; serial runs). Per strategy: means over systems of per-system seed means,
+order; serial runs). Primary connectivity is by species: minima with one graph
+are one species, so a reaction from a re-oriented encounter complex of the root
+species counts (pilot 3: every formaldehyde-dimer edge started from such a
+complex and none touched the root minimum). The physical (node-level) counts
+are reported alongside. Per strategy: means over systems of per-system seed means,
 and paired Wilcoxon signed-rank tests across systems against a reference
 strategy (e.g. arrows vs bond_edits, every strategy vs geometry).
 Several campaigns can be pooled (e.g. Fig. 3 = the first 20 Coley starts of the
@@ -26,25 +30,51 @@ sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.network_metrics import growth_metrics  # noqa: E402
 
 
-def root_pairs(network, edges):
-    """Distinct unordered species pairs of chemical edges in the root component."""
-    graph = nx.Graph()
-    graph.add_nodes_from(range(len(network['nodes'])))
-    graph.add_edges_from(e['nodes'] for e in edges)
-    if not network['nodes']:
+def root_pairs(network, edges, species=True):
+    """Distinct unordered species pairs of chemical edges connected to the root.
+
+    species=True: connectivity over species (graph SMILES); False: over minima.
+    """
+    nodes = network['nodes']
+    if not nodes:
         return set()
-    connected = nx.node_connected_component(graph, 0)
-    smiles = [n['graph_smiles'] for n in network['nodes']]
-    return {tuple(sorted(smiles[i] for i in e['nodes'])) for e in edges
-            if e['kind'] == 'chemical' and set(e['nodes']) <= connected}
+    smiles = [n['graph_smiles'] for n in nodes]
+    graph = nx.Graph()
+    if species:
+        graph.add_nodes_from(smiles)
+        graph.add_edges_from((smiles[a], smiles[b]) for a, b in (e['nodes'] for e in edges))
+        connected = nx.node_connected_component(graph, smiles[0])
+        inside = [smiles[e['nodes'][0]] in connected for e in edges]
+    else:
+        graph.add_nodes_from(range(len(nodes)))
+        graph.add_edges_from(e['nodes'] for e in edges)
+        connected = nx.node_connected_component(graph, 0)
+        inside = [set(e['nodes']) <= connected for e in edges]
+    return {tuple(sorted(smiles[i] for i in e['nodes'])) for e, ok in zip(edges, inside)
+            if ok and e['kind'] == 'chemical'}
 
 
-def anytime(network):
+def species_reach(network):
+    """(new species joined to the root species by chemical edges, largest chemical-step depth)."""
+    nodes = network['nodes']
+    if not nodes:
+        return 0, 0
+    smiles = [n['graph_smiles'] for n in nodes]
+    graph = nx.Graph()
+    graph.add_node(smiles[0])
+    graph.add_edges_from((smiles[a], smiles[b]) for e in network['edges'] if e['kind'] == 'chemical'
+                         for a, b in [e['nodes']] if smiles[a] != smiles[b])
+    depth = nx.single_source_shortest_path_length(graph, smiles[0])
+    return len(depth) - 1, max(depth.values())
+
+
+def anytime(network, species=True):
     """[(cumulative evaluations, distinct root-connected chemical pairs)] after each attempt."""
     spent, curve = network.get('initialization_evaluations', 0), []
     for k, attempt in enumerate(network['attempts']):
         spent += attempt['evaluations']
-        curve.append((spent, len(root_pairs(network, [e for e in network['edges'] if e['attempt'] <= k]))))
+        edges = [e for e in network['edges'] if e['attempt'] <= k]
+        curve.append((spent, len(root_pairs(network, edges, species))))
     return curve
 
 
@@ -95,15 +125,19 @@ def main():
             missing.append(f"{task['campaign'].name}:{task['task_id']}:{network['status']}")
             continue
         metrics = growth_metrics(network)
-        curve = anytime(network)
+        curve, physical = anytime(network), anytime(network, species=False)
+        new_species, depth = species_reach(network)
         rows.append(dict(campaign=task['campaign'].name, task=int(task['task_id']), start=task['start_id'],
                          strategy=task['strategy'],
                          seed=int(task['seed']), status=network['status'], evaluations=network.get('evaluations'),
                          attempts=len(network['attempts']), edges=len(network['edges']),
                          root_chemical_pairs=len(root_pairs(network, network['edges'])),
                          pairs_at_budget=value_at(curve, args.budget),
-                         new_species=len(metrics['root_species']) - 1,
-                         longest_enumerated_chemical_path=metrics['longest_enumerated_chemical_path'],
+                         new_species=new_species, max_species_depth=depth,
+                         root_chemical_pairs_physical=len(root_pairs(network, network['edges'], species=False)),
+                         pairs_at_budget_physical=value_at(physical, args.budget),
+                         new_species_physical=len(metrics['root_species']) - 1,
+                         longest_enumerated_chemical_path_physical=metrics['longest_enumerated_chemical_path'],
                          anytime=curve))
     per_system = {}
     for row in rows:

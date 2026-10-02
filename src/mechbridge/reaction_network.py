@@ -33,6 +33,17 @@ class BudgetExceeded(RuntimeError):
 ENDPOINT_ACCEPTANCE = ('full_system', 'carbon_skeleton')
 TS_OPTIMIZERS = ('dimer', 'dimer+sella')
 CONNECTION_PROTOCOLS = ('mode_displacement', 'irc')
+FRONTIER_CONNECTIVITY = ('physical', 'species')
+
+
+def join_same_species(graph, nodes):
+    """Link minima that share a graph (conformers, encounter-complex orientations)."""
+    first = {}
+    for node in nodes:
+        anchor = first.setdefault(node['graph_smiles'], node['id'])
+        if anchor != node['id']:
+            graph.add_edge(anchor, node['id'])
+    return graph
 
 
 def is_recoverable_failure(exc):
@@ -150,6 +161,10 @@ class SearchProtocol:
     seed_fit_max_nfev: int = 200
     # Fig. 5c arms (search_seeds.SEED_ABLATIONS); 'none' keeps every arrow feature.
     seed_feature_ablation: str = 'none'
+    # 'physical' (legacy): expand only minima joined to the root by observed edges.
+    # 'species': minima with the same graph also count as joined, so a reaction
+    # from a re-oriented encounter complex of the root species is root-connected.
+    frontier_connectivity: str = 'physical'
 
     def __post_init__(self):
         if self.encounter_policy not in ENCOUNTER_POLICIES:
@@ -168,6 +183,8 @@ class SearchProtocol:
             raise ValueError('seed_fit_max_nfev must be >= 1')
         if self.seed_feature_ablation not in SEED_ABLATIONS:
             raise ValueError(f'Unknown seed_feature_ablation: {self.seed_feature_ablation}')
+        if self.frontier_connectivity not in FRONTIER_CONNECTIVITY:
+            raise ValueError(f'Unknown frontier_connectivity: {self.frontier_connectivity}')
         if self.seed_feature_ablation != 'none' and self.seed_features != 'arrow_features_v1':
             raise ValueError("seed_feature_ablation needs seed_features='arrow_features_v1'")
 
@@ -490,6 +507,8 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
             graph = nx.Graph()
             graph.add_nodes_from(range(len(nodes)))
             graph.add_edges_from(e['nodes'] for e in edges)
+            if protocol.frontier_connectivity == 'species':
+                join_same_species(graph, nodes)
             connected = nx.node_connected_component(graph, 0)
             available = sorted(connected - set(report['unsupported_nodes']) - set(report['exhausted_nodes']))
             if not available:
@@ -624,6 +643,9 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
         graph.add_nodes_from(range(len(nodes)))
         graph.add_edges_from(e['nodes'] for e in edges)
         report['root_component_nodes'] = sorted(nx.node_connected_component(graph, 0))
+        if protocol.frontier_connectivity == 'species':
+            report['species_root_component_nodes'] = sorted(
+                nx.node_connected_component(join_same_species(graph, nodes), 0))
     except BudgetExceeded:
         report['status'] = 'initialization_budget_exhausted'
     except Exception as exc:
