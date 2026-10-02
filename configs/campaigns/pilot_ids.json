@@ -1,0 +1,19 @@
+{
+  "purpose": "Pre-freeze pilot: P0 seed determinism, arrow-feature trigger rates, run time; first 8 representable T1x, first 4 Coley starts, two v4/v5 starts",
+  "ids": [
+    "t1x_test_C2H3N3O2_rxn10005",
+    "t1x_test_C2H3N3O2_rxn8548",
+    "t1x_test_C2H3N3O2_rxn8549",
+    "t1x_test_C2H3N3O2_rxn8550",
+    "t1x_test_C2H3N3O2_rxn8551",
+    "t1x_test_C2H5NO2_rxn1961",
+    "t1x_test_C2H5NO2_rxn1962",
+    "t1x_test_C2H5NO2_rxn3684",
+    "coley_70",
+    "coley_71",
+    "coley_92",
+    "coley_165",
+    "glycolaldehyde",
+    "formaldehyde_dimer_o0"
+  ]
+}

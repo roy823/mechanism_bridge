@@ -37,7 +37,7 @@ def main():
     keep = None
     if args.ids:
         data = json.loads(args.ids.read_text(encoding='utf-8'))
-        keep = set(data['representable_ids'] if isinstance(data, dict) else data)
+        keep = set(data if isinstance(data, list) else data.get('representable_ids') or data['ids'])
     rows = []
     for starts in args.starts:
         ids = [json.loads(line)['id'] for line in starts.read_text(encoding='utf-8').splitlines()]
