@@ -132,6 +132,51 @@ def p2_summary(rows):
                 caveat='No DFT IRC references in this sample; agreement is with the displacement protocol')
 
 
+def p3_summary(rows):
+    """fmax sensitivity on the P2 seeds: TS and endpoint identity versus fmax 0.005."""
+    by = {}
+    for row in rows:
+        by.setdefault(row['attempt'], {})[row['variant']] = row
+    out = {}
+    for other in ('sella_irc_f003', 'sella_irc_f010'):
+        pairs = [v for v in by.values() if {'sella_irc', other} <= set(v)]
+        if not pairs:
+            continue
+        both = [p for p in pairs if p['sella_irc']['status'] in ACCEPTED and p[other]['status'] in ACCEPTED]
+        same_ts = 0
+        for p in both:
+            xa, xb = ts_geometry(p['sella_irc']), ts_geometry(p[other])
+            if (xa is not None and xb is not None and aligned_rmsd(xa, xb) <= .15 and
+                    abs(p['sella_irc']['ts_energy_eV'] - p[other]['ts_energy_eV']) <= .03):
+                same_ts += 1
+        same_ends = sum(sorted(p['sella_irc']['endpoint_graphs']) == sorted(p[other]['endpoint_graphs'])
+                        for p in both)
+        out[other] = dict(pairs=len(pairs), accepted=dict(fmax_005=sum(p['sella_irc']['status'] in ACCEPTED
+                                                                         for p in pairs),
+                                                          other=sum(p[other]['status'] in ACCEPTED for p in pairs)),
+                          both_accepted=len(both), same_TS=same_ts, same_endpoints=same_ends,
+                          median_evaluation_ratio=float(np.median([p[other]['evaluations']/p['sella_irc']['evaluations']
+                                                                   for p in pairs if p['sella_irc']['evaluations']])))
+    keep = out.get('sella_irc_f003')
+    out['keep_fmax_005'] = bool(keep and keep['both_accepted'] and
+                                min(keep['same_TS'], keep['same_endpoints']) >= .98*keep['both_accepted'])
+    return out
+
+
+def repeat_consistency(rows):
+    """Same (group, attempt, variant) replayed in several result directories."""
+    seen, repeats, identical = {}, 0, 0
+    for row in rows:
+        key = (row['group'], row['attempt'], row['variant'])
+        if key in seen:
+            repeats += 1
+            first = seen[key]
+            identical += first['status'] == row['status'] and first['evaluations'] == row['evaluations']
+        else:
+            seen[key] = row
+    return dict(repeated_replays=repeats, identical_status_and_evaluations=identical)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('results', type=Path, nargs='+')
@@ -140,7 +185,9 @@ def main():
     rows = load(args.results)
     summary = dict(results=[str(r) for r in args.results], rows=len(rows),
                    P1=p1_summary([r for r in rows if r['group'] == 'P1']),
-                   P2=p2_summary([r for r in rows if r['group'] == 'P2']))
+                   P2=p2_summary([r for r in rows if r['group'] == 'P2']),
+                   P3=p3_summary([r for r in rows if r['group'] == 'P2']),
+                   repeats=repeat_consistency(rows))
     args.out.write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(json.dumps(summary, indent=2))
 
