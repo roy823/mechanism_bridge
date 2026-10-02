@@ -37,7 +37,19 @@ def resonance_equivalent(left, right):
     target=graph_smiles(right)
     if graph_smiles(left)==target:return True
     flags=Chem.UNCONSTRAINED_ANIONS|Chem.UNCONSTRAINED_CATIONS|Chem.ALLOW_CHARGE_SEPARATION
-    return any(graph_smiles(m)==target for m in Chem.ResonanceMolSupplier(left,flags=flags,maxStructs=256))
+    # RDKit can fail to canonicalize an exotic resonance form ("Invariant
+    # Violation", a RuntimeError); such a form cannot prove equivalence.
+    try:
+        structures=Chem.ResonanceMolSupplier(left,flags=flags,maxStructs=256)
+    except RuntimeError:
+        return False
+    for m in structures:
+        if m is None:continue
+        try:
+            if graph_smiles(m)==target:return True
+        except RuntimeError:
+            continue
+    return False
 
 
 def bond_orders(mol):

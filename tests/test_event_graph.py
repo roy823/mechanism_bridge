@@ -73,3 +73,18 @@ def test_same_net_changes_do_not_erase_different_electron_pair_correspondences()
     a=[dict(source=[0,1],sink=[2,3],electrons=2),dict(source=[4,5],sink=[6,7],electrons=2)]
     b=[dict(source=[0,1],sink=[6,7],electrons=2),dict(source=[4,5],sink=[2,3],electrons=2)]
     assert contract_atom_relays(a)['normalized_flows']!=contract_atom_relays(b)['normalized_flows']
+
+
+def test_resonance_form_that_rdkit_cannot_canonicalize_is_skipped(monkeypatch):
+    import mechbridge.event_graph as eg
+    from mechbridge.symbolic_library import parse_explicit
+    left, right = parse_explicit('CC=O'), parse_explicit('C=CO')
+    broken = object()
+    real = eg.graph_smiles
+    def graph(m):
+        if m is broken:
+            raise RuntimeError('Invariant Violation')
+        return real(m)
+    monkeypatch.setattr(eg, 'graph_smiles', graph)
+    monkeypatch.setattr(eg.Chem, 'ResonanceMolSupplier', lambda *args, **kwargs: [broken, None])
+    assert eg.resonance_equivalent(left, right) is False
