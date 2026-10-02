@@ -88,7 +88,7 @@ def reaction_direction(x, ij, delta, unchanged):
 
 
 def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed_scale=1.0,
-              encounter_policy='symbolic_only', seed_features='legacy'):
+              encounter_policy='symbolic_only', seed_features='legacy', seed_fit_max_nfev=200):
     """Seed geometry and initial direction for one attempt.
 
     encounter_policy='matched_controls' gives the geometry and center_random
@@ -97,6 +97,7 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
     seed_features='arrow_features_v1' adds arrow-only terms for 'arrows'
     (arrow_features) and the matched random-order progress axis for 'bond_edits',
     which then never sees the arrows; 'legacy' is the historical behaviour.
+    seed_fit_max_nfev caps the symbolic seed-geometry fit (historical value 200).
     """
     if encounter_policy not in ENCOUNTER_POLICIES:
         raise ValueError(f'Unknown encounter_policy: {encounter_policy}')
@@ -200,7 +201,7 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
                 out.append(3 * max(0., floor - np.linalg.norm(y[i]-y[j])))
         return out
     initial = x + rng.normal(0., .015, x.shape)
-    fit = least_squares(residual, initial.ravel(), max_nfev=200,
+    fit = least_squares(residual, initial.ravel(), max_nfev=seed_fit_max_nfev,
                         ftol=1e-5, xtol=1e-5, gtol=1e-5)
     if not fit.success or not np.isfinite(fit.x).all():
         raise ValueError(f'Seed geometry fit did not converge: {fit.message}')

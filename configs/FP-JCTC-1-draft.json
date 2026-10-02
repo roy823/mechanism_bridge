@@ -31,5 +31,6 @@
   "irc_fmax": 0.05,
   "irc_inner_fmax": 0.02,
   "seed_features": "arrow_features_v1",
-  "proposal_resonance_forms": 8
+  "proposal_resonance_forms": 8,
+  "seed_fit_max_nfev": 200
 }

@@ -35,3 +35,8 @@ def test_cli_protocol_flags_map_to_protocol_fields():
     runner = load_runner()
     fields = {f.name for f in dataclasses.fields(SearchProtocol)}
     assert set(runner.PROTOCOL_FLAGS.values()) <= fields
+
+
+def test_seed_fit_cap_must_be_positive():
+    with pytest.raises(ValueError, match='seed_fit_max_nfev'):
+        SearchProtocol(seed_fit_max_nfev=0)

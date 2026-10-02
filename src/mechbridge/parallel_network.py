@@ -66,7 +66,8 @@ def _run_task(task):
         mol=geometry_mol(task['numbers'],task['positions_A'],task['charge'])
         x,direction,meta=make_seed(state,mol,task['seed_strategy'],task['proposal'],
                                    task['variant'],task['random_seed'],protocol.symbolic_seed_scale,
-                                   protocol.encounter_policy,protocol.seed_features)
+                                   protocol.encounter_policy,protocol.seed_features,
+                                   protocol.seed_fit_max_nfev)
         meta.update(random_seed=task['random_seed'],seed_strategy=task['seed_strategy'],
                     generation_seconds=time.perf_counter()-started)
     except Exception as exc:

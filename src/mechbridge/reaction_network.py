@@ -145,6 +145,9 @@ class SearchProtocol:
     # >0: symbolic proposals also come from up to N resonance forms of each node
     # (symbolic_library.ResonanceAwareLibrary); 0 is the historical behaviour.
     proposal_resonance_forms: int = 0
+    # Iteration cap of the symbolic seed-geometry least-squares fit; 200 is the
+    # historical value. A fit that converges earlier is unchanged by a larger cap.
+    seed_fit_max_nfev: int = 200
 
     def __post_init__(self):
         if self.encounter_policy not in ENCOUNTER_POLICIES:
@@ -159,6 +162,8 @@ class SearchProtocol:
             raise ValueError(f'Unknown seed_features: {self.seed_features}')
         if self.proposal_resonance_forms < 0:
             raise ValueError('proposal_resonance_forms must be >= 0')
+        if self.seed_fit_max_nfev < 1:
+            raise ValueError('seed_fit_max_nfev must be >= 1')
 
 
 def aligned_rmsd(x, y):
@@ -531,7 +536,8 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                     seed_started=time.perf_counter()
                     x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
                                                    variant, seed_rng, protocol.symbolic_seed_scale,
-                                                   protocol.encounter_policy, protocol.seed_features)
+                                                   protocol.encounter_policy, protocol.seed_features,
+                                                   protocol.seed_fit_max_nfev)
                 except Exception as exc:
                     if not is_recoverable_failure(exc):
                         raise

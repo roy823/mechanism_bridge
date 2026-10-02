@@ -68,3 +68,15 @@ def test_arrow_features_are_active_and_legacy_is_unchanged():
         assert np.linalg.norm(featured[0]-atoms.positions) == pytest.approx(legacy[2]['displacement_norm_A'])
     with pytest.raises(ValueError):
         make_seed(atoms, mol, 'arrows', proposal, 0, 29, seed_features='unknown')
+
+
+def test_seed_fit_cap_only_changes_fits_that_reach_it():
+    mol, atoms, proposal = tautomer()
+    for sample in range(3):
+        base = make_seed(atoms, mol, 'arrows', proposal, sample, 29, seed_features='arrow_features_v1')
+        assert base[2]['geometric_fit_nfev'] < 200
+        wider = make_seed(atoms, mol, 'arrows', proposal, sample, 29, seed_features='arrow_features_v1',
+                          seed_fit_max_nfev=3000)
+        assert np.array_equal(base[0], wider[0]) and np.array_equal(base[1], wider[1])
+    with pytest.raises(ValueError, match='did not converge'):
+        make_seed(atoms, mol, 'arrows', proposal, 0, 29, seed_features='arrow_features_v1', seed_fit_max_nfev=1)

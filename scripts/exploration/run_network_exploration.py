@@ -32,7 +32,8 @@ PROTOCOL_FLAGS = dict(attempts='max_attempts', seeds_per_node='seeds_per_node',
     dimer_extrapolate_forces='dimer_extrapolate_forces', min_barrier='min_barrier_eV',
     encounter_policy='encounter_policy', ts_optimizer='ts_optimizer', dimer_fmax='dimer_fmax',
     sella_steps='sella_steps', connection_protocol='connection_protocol', irc_steps='irc_steps',
-    seed_features='seed_features', proposal_resonance_forms='proposal_resonance_forms')
+    seed_features='seed_features', proposal_resonance_forms='proposal_resonance_forms',
+    seed_fit_max_nfev='seed_fit_max_nfev')
 
 
 def protocol_from_json(path, seed):
@@ -89,6 +90,8 @@ def main():
     p.add_argument('--irc-steps',type=int,default=300)
     p.add_argument('--proposal-resonance-forms',type=int,default=0,
                    help='Also propose from up to N resonance forms of each node (0: historical)')
+    p.add_argument('--seed-fit-max-nfev',type=int,default=200,
+                   help='Iteration cap of the symbolic seed-geometry fit (historical: 200)')
     p.add_argument('--seed-features',choices=SEED_FEATURES,default='legacy',
                    help="'arrow_features_v1': lone-pair, push-pull order and coupling terms for arrows")
     p.add_argument('--evaluations', type=int, default=6000)
@@ -122,7 +125,8 @@ def main():
         min_barrier_eV=a.min_barrier,encounter_policy=a.encounter_policy,
         ts_optimizer=a.ts_optimizer,dimer_fmax=a.dimer_fmax,sella_steps=a.sella_steps,
         connection_protocol=a.connection_protocol,irc_steps=a.irc_steps,
-        seed_features=a.seed_features,proposal_resonance_forms=a.proposal_resonance_forms)
+        seed_features=a.seed_features,proposal_resonance_forms=a.proposal_resonance_forms,
+        seed_fit_max_nfev=a.seed_fit_max_nfev)
     if a.outdir.exists():
         raise FileExistsError('Use a new output directory; prior experiments are preserved')
     a.outdir.mkdir(parents=True)
