@@ -495,7 +495,15 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
             node = nodes[node_id]
             state = Atoms(numbers=numbers, positions=node['positions_A'])
             if node_id not in proposal_cache:
-                proposal_cache[node_id]=library.propose(mols[node_id]) if strategy!='geometry' else []
+                try:
+                    proposal_cache[node_id]=library.propose(mols[node_id]) if strategy!='geometry' else []
+                except Exception as exc:
+                    if not is_recoverable_failure(exc):
+                        raise
+                    # As in the parallel scheduler: no proposals for this node, recorded.
+                    proposal_cache[node_id]=[]
+                    report.setdefault('proposal_failures',[]).append(
+                        dict(node=node_id,error=f'{type(exc).__name__}: {exc}'))
             proposals=proposal_cache[node_id]
             if strategy not in ('geometry','hybrid') and not proposals:
                 report['unsupported_nodes'].append(node_id)
