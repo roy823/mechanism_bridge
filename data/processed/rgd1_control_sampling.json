@@ -1,0 +1,48 @@
+{
+  "seed": 20261002,
+  "size": 100,
+  "csv_sha256": "7b0ecae0a7f7b2439a03bed4bfbf80fbc9b647b0823e5a8e7b1e3be96d0ad05e",
+  "h5_name": "RGD1_allrxns.h5",
+  "csv_rejected": {
+    "charged or open-shell side": 9402,
+    "reactant and product share the same connectivity": 258
+  },
+  "frame_unique_pairs": 122487,
+  "strata": {
+    "b1f1": {
+      "frame": 14030,
+      "quota": 11,
+      "examined": 11,
+      "accepted": 11,
+      "rejected": {}
+    },
+    "b2f2": {
+      "frame": 37861,
+      "quota": 31,
+      "examined": 31,
+      "accepted": 31,
+      "rejected": {}
+    },
+    "b3f3+": {
+      "frame": 620,
+      "quota": 1,
+      "examined": 1,
+      "accepted": 1,
+      "rejected": {}
+    },
+    "other": {
+      "frame": 69976,
+      "quota": 57,
+      "examined": 59,
+      "accepted": 57,
+      "rejected": {
+        "Valence of atom 2 is 5, which is larger than the allowed maximum, 4": 1,
+        "PG connectivity differs from the CSV product": 1
+      }
+    }
+  },
+  "accepted": 100,
+  "starts_sha256": "9b957c855f0a71b4d7ebdcfb68ffcade7ce9361335dd62eb120238ef44b4d641",
+  "references_sha256": "6d8ad845ea2568cdc8ec4c1e1755d449be2458d5cec7c8596678713d1e114f2d",
+  "definitions": "RGD1 seen-domain positive control: frame, stratified sample, starts + references.\n\nAIMNet2-rxn was trained on RGD1, so this set only measures the gain from\ntraining overlap and never enters generalization claims (B doc 4.1).\nFrame (CSV level, every row): mapped reactant and product SMILES parse with\nall hydrogens explicit, map numbers are 1..N, both sides are net neutral and\nclosed shell, CHNO only, and the connectivities differ. Rows are deduplicated\nby the unordered pair of stereo-free graph keys, keeping the row with the\nlowest TS energy in the HDF5 (TS conformers of one reaction share a pair).\nStrata: net connectivity change b1f1, b2f2, b3f3+ (both counts >= 3), other.\nAllocation: proportional to frame stratum sizes (largest remainder).\nSampling: one fixed permutation per stratum from default_rng(seed); candidates\nare examined in that order and accepted until the quota is met when the HDF5\ngroup agrees with the CSV: same element order as the atom maps (map k ->\natom k-1), reactant connectivity perceived from RG equals the CSV reactant,\nlikewise PG versus the CSV product when the group stores PG, and TSG present.\nStarts hold only RG; references hold everything used for scoring.\nUsage: prepare_rgd1_control.py --csv RGD1CHNO_AMsmiles.csv --h5 RGD1_allrxns.h5 [--size 100]\n"
+}
