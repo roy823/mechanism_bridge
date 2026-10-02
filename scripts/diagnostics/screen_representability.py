@@ -25,7 +25,8 @@ sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.event_graph import geometry_mol, graph_smiles  # noqa: E402
 from mechbridge.potentials import load_potential  # noqa: E402
 from mechbridge.reaction_network import (BudgetExceeded, CountedCalculator, SearchProtocol,  # noqa: E402
-                                         aligned_rmsd, inspect_point, integrate_irc)
+                                         aligned_rmsd, inspect_point, integrate_irc,
+                                         is_recoverable_failure)
 from mechbridge.reference_matching import (automorphisms, bond_set, edge_matches, mol_bonds,  # noqa: E402
                                            permute, stereo_free)
 
@@ -90,7 +91,9 @@ def screen(reference, backend, protocol, outdir, prfo_steps, budget):
             row['barrier_from_reactant_side_eV'] = row['ts_energy_eV'] - reactant_end['energy_eV']
     except BudgetExceeded:
         row['stage'] = 'budget_exhausted'
-    except ValueError as exc:   # perception or nonfinite model output: not representable
+    except Exception as exc:   # perception, nonfinite output, optimizer failure: not representable
+        if not is_recoverable_failure(exc):
+            raise
         row.update(stage='calculation_failed', error=f'{type(exc).__name__}: {exc}')
     finally:
         row.update(evaluations=calculator.calls, seconds=time.time()-started)

@@ -438,7 +438,11 @@ def _mock_search_engines(monkeypatch,calls,ts_imaginary=0):
     return net
 
 
-def _fake_sella(calls):
+class _InnerLoopFailure(RuntimeError):
+    pass
+
+
+def _fake_sella(calls,fail_directions=()):
     import types
     class Sella(_NoOpContext):
         def __init__(self,atoms,**kwargs):calls.append(('Sella',kwargs))
@@ -446,8 +450,18 @@ def _fake_sella(calls):
     class IRC(_NoOpContext):
         def __init__(self,atoms,**kwargs):calls.append(('IRC',kwargs));self.atoms=atoms
         def run(self,fmax,fmax_inner,steps,direction):
-            calls.append(('IRC.run',direction,fmax,fmax_inner,steps));self.atoms.get_forces();return True
+            calls.append(('IRC.run',direction,fmax,fmax_inner,steps));self.atoms.get_forces()
+            if direction in fail_directions:raise _InnerLoopFailure
+            return True
     return types.SimpleNamespace(Sella=Sella,IRC=IRC)
+
+
+def _install_fake_sella(monkeypatch,calls,fail_directions=()):
+    import sys,types
+    monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls,fail_directions))
+    monkeypatch.setitem(sys.modules,'sella.optimize',types.SimpleNamespace())
+    monkeypatch.setitem(sys.modules,'sella.optimize.irc',
+                        types.SimpleNamespace(IRCInnerLoopConvergenceFailure=_InnerLoopFailure))
 
 
 @pytest.mark.parametrize('optimizer',['dimer','dimer+sella'])
@@ -455,7 +469,8 @@ def test_ts_optimizer_stages(tmp_path,monkeypatch,optimizer):
     import sys
     calls=[]
     net=_mock_search_engines(monkeypatch,calls)
-    monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls) if optimizer=='dimer+sella' else None)
+    if optimizer=='dimer+sella':_install_fake_sella(monkeypatch,calls)
+    else:monkeypatch.setitem(sys.modules,'sella',None)
     x=np.array([[0.,0.,0.],[0.,0.,.75]])
     seed=Atoms('H2',positions=x)
     calc=CountedCalculator(_Harmonic(x),1000)
@@ -477,7 +492,7 @@ def test_sella_runs_only_after_the_dimer_gate(tmp_path,monkeypatch):
     import sys
     calls=[]
     net=_mock_search_engines(monkeypatch,calls)
-    monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls))
+    _install_fake_sella(monkeypatch,calls)
     x=np.array([[0.,0.,0.],[0.,0.,.75]])
     seed=Atoms('H2',positions=x+np.array([[.1,0.,0.],[0.,0.,0.]]))   # residual force 0.1 > 0.05
     result=net.search_connection(seed,np.zeros((2,3)),CountedCalculator(_Harmonic(x),1000),
@@ -491,7 +506,7 @@ def test_irc_connection_protocol(tmp_path,monkeypatch):
     import sys
     calls=[]
     net=_mock_search_engines(monkeypatch,calls,ts_imaginary=1)
-    monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls))
+    _install_fake_sella(monkeypatch,calls)
     # Water, because the endpoints go through real RDKit bond perception.
     x=np.array([[0.,0.,0.],[.96,0.,0.],[-.24,.93,0.]])
     protocol=net.SearchProtocol(connection_protocol='irc')
@@ -506,3 +521,17 @@ def test_irc_connection_protocol(tmp_path,monkeypatch):
     assert result['status']=='validated_descents'
     with pytest.raises(ValueError):net.SearchProtocol(connection_protocol='neb')
     with pytest.raises(ValueError):net.SearchProtocol(ts_optimizer='sella')
+
+
+def test_irc_inner_loop_failure_is_an_unconverged_branch(tmp_path,monkeypatch):
+    calls=[]
+    net=_mock_search_engines(monkeypatch,calls,ts_imaginary=1)
+    _install_fake_sella(monkeypatch,calls,fail_directions=('forward',))
+    x=np.array([[0.,0.,0.],[.96,0.,0.],[-.24,.93,0.]])
+    result=net.search_connection(Atoms('OH2',positions=x),np.zeros((3,3)),
+                                 CountedCalculator(_Harmonic(x),1000),tmp_path/'attempt',
+                                 net.SearchProtocol(connection_protocol='irc'))
+    assert [e['irc_converged'] for e in result['endpoints']]==[True,False]
+    assert result['endpoints'][1]['irc_failure']=='inner_loop_convergence_failure'
+    assert result['is_IRC'] is False and result['evidence']=='MLIP_IRC_not_converged_then_descent'
+    assert result['status']=='validated_descents'

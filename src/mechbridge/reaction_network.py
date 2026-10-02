@@ -251,15 +251,25 @@ def refine_with_sella(seed, outdir, protocol, result, initial_calls):
 
 
 def integrate_irc(atoms, outdir, protocol, direction):
-    """One Sella IRC branch on the MLIP (DFT-verification settings); BFGS polish follows."""
+    """One Sella IRC branch on the MLIP (DFT-verification settings); BFGS polish follows.
+
+    An inner-loop convergence failure stops the branch at its last IRC point and
+    is recorded as an unconverged IRC; the caller still polishes that point, so
+    the endpoint is a descended minimum but the edge is not IRC evidence.
+    """
     from sella import IRC
+    from sella.optimize.irc import IRCInnerLoopConvergenceFailure
     calls = atoms.calc.calls
+    failure = None
     with IRC(atoms, dx=protocol.irc_dx, ninner_iter=20, keep_going=False,
              logfile=str(outdir/f'irc_{direction}.log'),
              trajectory=str(outdir/f'irc_{direction}.traj')) as irc:
-        converged = bool(irc.run(fmax=protocol.irc_fmax, fmax_inner=protocol.irc_inner_fmax,
-                                 steps=protocol.irc_steps, direction=direction))
-    return dict(irc_direction=direction, irc_converged=converged,
+        try:
+            converged = bool(irc.run(fmax=protocol.irc_fmax, fmax_inner=protocol.irc_inner_fmax,
+                                     steps=protocol.irc_steps, direction=direction))
+        except IRCInnerLoopConvergenceFailure:
+            converged, failure = False, 'inner_loop_convergence_failure'
+    return dict(irc_direction=direction, irc_converged=converged, irc_failure=failure,
                 irc_evaluations=atoms.calc.calls-calls,
                 irc_end_energy_eV=float(atoms.get_potential_energy()))
 
