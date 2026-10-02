@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.potentials import load_potential
 from mechbridge.symbolic_library import ArrowLibrary,FilteredArrowLibrary
-from mechbridge.reaction_network import (ENCOUNTER_POLICIES, SearchProtocol, explore,
-                                         atomic_json)
+from mechbridge.reaction_network import (CONNECTION_PROTOCOLS, ENCOUNTER_POLICIES, TS_OPTIMIZERS,
+                                         SearchProtocol, explore, atomic_json)
 from mechbridge.parallel_network import START_METHODS, explore_shared
 from mechbridge.provenance import runtime_provenance
 
@@ -28,7 +28,8 @@ PROTOCOL_FLAGS = dict(attempts='max_attempts', seeds_per_node='seeds_per_node',
     endpoint_acceptance='endpoint_acceptance', endpoint_core_fmax='endpoint_core_fmax',
     geometry_seeds_per_node='geometry_seeds_per_node',
     dimer_extrapolate_forces='dimer_extrapolate_forces', min_barrier='min_barrier_eV',
-    encounter_policy='encounter_policy')
+    encounter_policy='encounter_policy', ts_optimizer='ts_optimizer', dimer_fmax='dimer_fmax',
+    sella_steps='sella_steps', connection_protocol='connection_protocol', irc_steps='irc_steps')
 
 
 def protocol_from_json(path, seed):
@@ -76,6 +77,13 @@ def main():
                    help='Required E_TS - E_endpoint in eV for both endpoints (legacy -1e-4)')
     p.add_argument('--encounter-policy',choices=ENCOUNTER_POLICIES,default='symbolic_only',
                    help="'matched_controls' gives geometry/center_random the same rigid encounter search")
+    p.add_argument('--ts-optimizer',choices=TS_OPTIMIZERS,default='dimer',
+                   help="'dimer+sella': Dimer to --dimer-fmax, then Sella P-RFO to --fmax")
+    p.add_argument('--dimer-fmax',type=float,default=.05)
+    p.add_argument('--sella-steps',type=int,default=100)
+    p.add_argument('--connection-protocol',choices=CONNECTION_PROTOCOLS,default='mode_displacement',
+                   help="'irc': bidirectional Sella IRC on the MLIP before endpoint polishing")
+    p.add_argument('--irc-steps',type=int,default=300)
     p.add_argument('--evaluations', type=int, default=6000)
     p.add_argument('--attempt-evaluations', type=int, default=700)
     p.add_argument('--seed', type=int, default=17)
@@ -99,7 +107,9 @@ def main():
         endpoint_acceptance=a.endpoint_acceptance,endpoint_core_fmax=a.endpoint_core_fmax,
         geometry_seeds_per_node=a.geometry_seeds_per_node,
         dimer_extrapolate_forces=a.dimer_extrapolate_forces,
-        min_barrier_eV=a.min_barrier,encounter_policy=a.encounter_policy)
+        min_barrier_eV=a.min_barrier,encounter_policy=a.encounter_policy,
+        ts_optimizer=a.ts_optimizer,dimer_fmax=a.dimer_fmax,sella_steps=a.sella_steps,
+        connection_protocol=a.connection_protocol,irc_steps=a.irc_steps)
     if a.outdir.exists():
         raise FileExistsError('Use a new output directory; prior experiments are preserved')
     a.outdir.mkdir(parents=True)

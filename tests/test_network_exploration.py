@@ -3,6 +3,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 from ase import Atoms
+from ase.calculators.calculator import Calculator, all_changes
 from ase.calculators.emt import EMT
 from rdkit import Chem
 from mechbridge.event_graph import graph_smiles
@@ -394,3 +395,113 @@ def test_explore_shared_uses_explicit_start_method_and_records_abort(tmp_path,mo
     assert report['status']=='aborted_error'
     assert report['error'].startswith('Stop')
     assert report['scheduler']['start_method']=='spawn'
+
+
+class _NoOpContext:
+    def __init__(self,*args,**kwargs):pass
+    def __enter__(self):return self
+    def __exit__(self,*args):return False
+
+
+class _NoRelax(_NoOpContext):
+    def run(self,**kwargs):return True
+
+
+class _Harmonic(Calculator):
+    """Analytic well centred on given positions."""
+    implemented_properties=['energy','forces']
+    def __init__(self,center):
+        super().__init__();self.center=np.asarray(center,dtype=float)
+    def calculate(self,atoms=None,properties=('energy',),system_changes=all_changes):
+        super().calculate(atoms,properties,system_changes)
+        d=self.atoms.positions-self.center
+        self.results=dict(energy=float((d*d).sum()/2),forces=-d)
+
+
+def _mock_search_engines(monkeypatch,calls,ts_imaginary=0):
+    import mechbridge.reaction_network as net
+    class Dimer(_NoOpContext):
+        def run(self,fmax,steps):calls.append(('Dimer.run',fmax,steps));return True
+    monkeypatch.setattr(net,'DimerControl',_NoOpContext)
+    monkeypatch.setattr(net,'MinModeAtoms',lambda *args,**kwargs:None)
+    monkeypatch.setattr(net,'StationaryDimerTranslate',Dimer)
+    monkeypatch.setattr(net,'BFGS',_NoRelax)
+    points=[]
+    def inspect(atoms,protocol):
+        points.append(atoms.positions.copy())
+        first=len(points)==1
+        mode=np.zeros_like(atoms.positions);mode[0,0]=1.
+        return (dict(energy_eV=1. if first else .2,force_converged=True,
+                     imaginary_count=ts_imaginary if first else 0,force_max_eV_A=0.,
+                     force_norms_eV_A=[0.]*len(atoms)),[mode])
+    monkeypatch.setattr(net,'inspect_point',inspect)
+    return net
+
+
+def _fake_sella(calls):
+    import types
+    class Sella(_NoOpContext):
+        def __init__(self,atoms,**kwargs):calls.append(('Sella',kwargs))
+        def run(self,fmax,steps):calls.append(('Sella.run',fmax,steps));return True
+    class IRC(_NoOpContext):
+        def __init__(self,atoms,**kwargs):calls.append(('IRC',kwargs));self.atoms=atoms
+        def run(self,fmax,fmax_inner,steps,direction):
+            calls.append(('IRC.run',direction,fmax,fmax_inner,steps));self.atoms.get_forces();return True
+    return types.SimpleNamespace(Sella=Sella,IRC=IRC)
+
+
+@pytest.mark.parametrize('optimizer',['dimer','dimer+sella'])
+def test_ts_optimizer_stages(tmp_path,monkeypatch,optimizer):
+    import sys
+    calls=[]
+    net=_mock_search_engines(monkeypatch,calls)
+    monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls) if optimizer=='dimer+sella' else None)
+    x=np.array([[0.,0.,0.],[0.,0.,.75]])
+    seed=Atoms('H2',positions=x)
+    calc=CountedCalculator(_Harmonic(x),1000)
+    protocol=net.SearchProtocol(ts_optimizer=optimizer)
+    result=net.search_connection(seed,np.zeros((2,3)),calc,tmp_path/'attempt',protocol)
+    assert result['status']=='not_index_one'
+    if optimizer=='dimer':
+        assert calls==[('Dimer.run',protocol.fmax,protocol.ts_steps)]
+        assert 'ts_optimization' not in result
+    else:
+        assert calls[0]==('Dimer.run',protocol.dimer_fmax,protocol.ts_steps)
+        assert calls[1]==('Sella',dict(order=1,internal=False,logfile=str(tmp_path/'attempt'/'sella.log'),
+                                        trajectory=str(tmp_path/'attempt'/'sella.traj')))
+        assert calls[2]==('Sella.run',protocol.fmax,protocol.sella_steps)
+        assert result['ts_optimization']['sella_run'] is True
+
+
+def test_sella_runs_only_after_the_dimer_gate(tmp_path,monkeypatch):
+    import sys
+    calls=[]
+    net=_mock_search_engines(monkeypatch,calls)
+    monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls))
+    x=np.array([[0.,0.,0.],[0.,0.,.75]])
+    seed=Atoms('H2',positions=x+np.array([[.1,0.,0.],[0.,0.,0.]]))   # residual force 0.1 > 0.05
+    result=net.search_connection(seed,np.zeros((2,3)),CountedCalculator(_Harmonic(x),1000),
+                                 tmp_path/'attempt',net.SearchProtocol(ts_optimizer='dimer+sella'))
+    assert result['status']=='ts_force_unconverged'
+    assert [c[0] for c in calls]==['Dimer.run']
+    assert result['ts_optimization']['sella_run'] is False
+
+
+def test_irc_connection_protocol(tmp_path,monkeypatch):
+    import sys
+    calls=[]
+    net=_mock_search_engines(monkeypatch,calls,ts_imaginary=1)
+    monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls))
+    x=np.array([[0.,0.,0.],[0.,0.,.75]])
+    protocol=net.SearchProtocol(connection_protocol='irc')
+    result=net.search_connection(Atoms('H2',positions=x),np.zeros((2,3)),
+                                 CountedCalculator(_Harmonic(x),1000),tmp_path/'attempt',protocol)
+    runs=[c for c in calls if c[0]=='IRC.run']
+    assert [c[1] for c in runs]==['reverse','forward']
+    assert all(c[2:]==(protocol.irc_fmax,protocol.irc_inner_fmax,protocol.irc_steps) for c in runs)
+    assert all(c[1]['dx']==protocol.irc_dx and c[1]['ninner_iter']==20 for c in calls if c[0]=='IRC')
+    assert [e['irc_direction'] for e in result['endpoints']]==['reverse','forward']
+    assert result['is_IRC'] is True and result['evidence']=='MLIP_bidirectional_IRC'
+    assert result['status']=='validated_descents'
+    with pytest.raises(ValueError):net.SearchProtocol(connection_protocol='neb')
+    with pytest.raises(ValueError):net.SearchProtocol(ts_optimizer='sella')

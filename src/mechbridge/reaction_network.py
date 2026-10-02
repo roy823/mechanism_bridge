@@ -31,6 +31,8 @@ class BudgetExceeded(RuntimeError):
 
 
 ENDPOINT_ACCEPTANCE = ('full_system', 'carbon_skeleton')
+TS_OPTIMIZERS = ('dimer', 'dimer+sella')
+CONNECTION_PROTOCOLS = ('mode_displacement', 'irc')
 
 
 def is_recoverable_failure(exc):
@@ -125,12 +127,28 @@ class SearchProtocol:
     # search. 'matched_controls': geometry/center_random get the same search
     # with a proposal-free contact pair.
     encounter_policy: str = 'symbolic_only'
+    # 'dimer' (legacy): Dimer to fmax. 'dimer+sella': Dimer to dimer_fmax, then
+    # Sella P-RFO (order=1, Cartesian, as in DFT verification) to fmax.
+    ts_optimizer: str = 'dimer'
+    dimer_fmax: float = .05
+    sella_steps: int = 100
+    # 'mode_displacement' (legacy): +/- mode_displacement along the TS mode, then
+    # BFGS. 'irc': Sella IRC on the MLIP in both directions, then BFGS to fmax.
+    connection_protocol: str = 'mode_displacement'
+    irc_dx: float = .08
+    irc_steps: int = 300
+    irc_fmax: float = .05
+    irc_inner_fmax: float = .02
 
     def __post_init__(self):
         if self.encounter_policy not in ENCOUNTER_POLICIES:
             raise ValueError(f'Unknown encounter_policy: {self.encounter_policy}')
         if self.endpoint_acceptance not in ENDPOINT_ACCEPTANCE:
             raise ValueError(f'Unknown endpoint_acceptance: {self.endpoint_acceptance}')
+        if self.ts_optimizer not in TS_OPTIMIZERS:
+            raise ValueError(f'Unknown ts_optimizer: {self.ts_optimizer}')
+        if self.connection_protocol not in CONNECTION_PROTOCOLS:
+            raise ValueError(f'Unknown connection_protocol: {self.connection_protocol}')
 
 
 def aligned_rmsd(x, y):
@@ -210,6 +228,42 @@ def connection_status(endpoints, protocol):
     return 'unresolved_minimum'
 
 
+def refine_with_sella(seed, outdir, protocol, result, initial_calls):
+    """Sella P-RFO refinement of a Dimer point that passed the loose dimer_fmax gate.
+
+    Every Sella evaluation, including its iterative Hessian estimates, goes
+    through seed.calc and is billed like any other geometry.
+    """
+    calls = seed.calc.calls
+    dimer_force = float(np.linalg.norm(seed.get_forces(), axis=1).max())
+    stage = dict(ts_optimizer=protocol.ts_optimizer, dimer_fmax_eV_A=protocol.dimer_fmax,
+                 dimer_converged=result['optimizer_converged'], dimer_force_max_eV_A=dimer_force,
+                 dimer_evaluations=calls-initial_calls, sella_run=False)
+    result['ts_optimization'] = stage
+    if dimer_force > protocol.dimer_fmax:
+        return
+    from sella import Sella
+    with Sella(seed, order=1, internal=False, logfile=str(outdir/'sella.log'),
+               trajectory=str(outdir/'sella.traj')) as opt:
+        stage['sella_converged'] = bool(opt.run(fmax=protocol.fmax, steps=protocol.sella_steps))
+    stage.update(sella_run=True, sella_evaluations=seed.calc.calls-calls)
+    result['optimizer_converged'] = stage['sella_converged']
+
+
+def integrate_irc(atoms, outdir, protocol, direction):
+    """One Sella IRC branch on the MLIP (DFT-verification settings); BFGS polish follows."""
+    from sella import IRC
+    calls = atoms.calc.calls
+    with IRC(atoms, dx=protocol.irc_dx, ninner_iter=20, keep_going=False,
+             logfile=str(outdir/f'irc_{direction}.log'),
+             trajectory=str(outdir/f'irc_{direction}.traj')) as irc:
+        converged = bool(irc.run(fmax=protocol.irc_fmax, fmax_inner=protocol.irc_inner_fmax,
+                                 steps=protocol.irc_steps, direction=direction))
+    return dict(irc_direction=direction, irc_converged=converged,
+                irc_evaluations=atoms.calc.calls-calls,
+                irc_end_energy_eV=float(atoms.get_potential_energy()))
+
+
 def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
     outdir.mkdir(parents=True, exist_ok=False)
     started, initial_calls = time.time(), calculator.calls
@@ -227,9 +281,12 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
                           f_rot_min=.01, f_rot_max=.1) as control:
             mm = MinModeAtoms(seed, control=control, eigenmodes=[direction.copy()],
                               random_seed=protocol.random_seed)
+            dimer_target = protocol.fmax if protocol.ts_optimizer == 'dimer' else protocol.dimer_fmax
             with StationaryDimerTranslate(mm, logfile=str(outdir/'opt.log'),
                                   trajectory=str(outdir/'search.traj')) as opt:
-                result['optimizer_converged'] = bool(opt.run(fmax=protocol.fmax, steps=protocol.ts_steps))
+                result['optimizer_converged'] = bool(opt.run(fmax=dimer_target, steps=protocol.ts_steps))
+        if protocol.ts_optimizer == 'dimer+sella':
+            refine_with_sella(seed, outdir, protocol, result, initial_calls)
         residual_force=float(np.linalg.norm(seed.get_forces(),axis=1).max())
         if residual_force>protocol.fmax:
             result['status']='ts_force_unconverged'
@@ -243,14 +300,22 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
             result['status'] = 'not_index_one'
             return result
         np.save(outdir/'negative_mode.npy', modes[0])
+        irc = protocol.connection_protocol == 'irc'
         for sign in (-1, 1):
             end = seed.copy()
-            end.positions += sign * protocol.mode_displacement * modes[0]
-            end.calc = calculator
+            if irc:
+                end.calc = calculator
+                irc_info = integrate_irc(end, outdir, protocol, 'reverse' if sign < 0 else 'forward')
+            else:
+                end.positions += sign * protocol.mode_displacement * modes[0]
+                end.calc = calculator
             with BFGS(end, maxstep=.1, logfile=str(outdir/f'descent_{sign}.log'),
                       trajectory=str(outdir/f'descent_{sign}.traj')) as opt:
                 opt.run(fmax=protocol.fmax, steps=protocol.descent_steps)
             analysis, _ = inspect_point(end, protocol)
+            if irc:
+                irc_info['irc_polish_energy_change_eV'] = analysis['energy_eV']-irc_info['irc_end_energy_eV']
+                analysis.update(irc_info)
             analysis['positions_A'] = end.positions.tolist()
             analysis['barrier_eV'] = ts['energy_eV'] - analysis['energy_eV']
             mol = geometry_mol(end.numbers, end.positions, charge)
@@ -258,6 +323,10 @@ def search_connection(seed, direction, calculator, outdir, protocol, charge=0):
             analysis['graph_smiles'] = graph_smiles(mol)
             result['endpoints'].append(analysis)
             write(outdir/f'minimum_{sign}.xyz', end, write_results=False)
+        if irc:
+            converged = all(e['irc_converged'] for e in result['endpoints'])
+            result.update(is_IRC=converged, evidence=('MLIP_bidirectional_IRC' if converged else
+                                                      'MLIP_IRC_not_converged_then_descent'))
         result['endpoint_acceptance']=protocol.endpoint_acceptance
         result['status'] = connection_status(result['endpoints'], protocol)
         if result['status'] != 'unresolved_minimum':
