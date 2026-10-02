@@ -16,7 +16,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-STRATEGIES = ('geometry', 'center_random', 'bond_edits', 'arrows', 'hybrid')
+STRATEGIES = ('geometry', 'center_random', 'bond_edits', 'arrows', 'hybrid',
+              'pygsm_edits', 'pygsm_b2f2', 'pygsm_oracle')
 
 
 def main():
@@ -29,6 +30,8 @@ def main():
     parser.add_argument('--seeds', type=int, nargs='+', required=True)
     parser.add_argument('--protocol', type=Path, required=True)
     parser.add_argument('--potential', default='aimnet2-rxn')
+    parser.add_argument('--extra-args', default='',
+                        help='Extra runner arguments recorded in campaign.json, e.g. "--oracle-references F"')
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     manifest = args.out/'manifest.tsv'
@@ -60,6 +63,7 @@ def main():
                 starts=[s.resolve().relative_to(ROOT).as_posix() for s in args.starts],
                 ids_filter=None if args.ids is None else str(args.ids), limit=args.limit,
                 protocol=str(args.protocol), protocol_sha256=protocol_sha, potential=args.potential,
+                extra_args=args.extra_args,
                 manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest())
     (args.out/'campaign.json').write_text(json.dumps(meta, indent=2), encoding='utf-8')
     print(json.dumps(meta, indent=2))
