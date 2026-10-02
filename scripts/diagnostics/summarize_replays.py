@@ -26,15 +26,18 @@ INDEX_ONE = {'validated_descents', 'validated_core_descents', 'unresolved_minimu
 ACCEPTED = {'validated_descents', 'validated_core_descents'}
 
 
-def load(results):
+def load(results_dirs):
     rows = []
-    for path in sorted(results.glob('task_*.json')):
-        rows += json.loads(path.read_text(encoding='utf-8'))
+    for results in results_dirs:
+        for path in sorted(results.glob('task_*.json')):
+            for row in json.loads(path.read_text(encoding='utf-8')):
+                rows.append(dict(row, results_dir=str(results)))
     return rows
 
 
-def ts_geometry(results, row):
-    path = results/'attempts'/row['group']/row['attempt'].replace('/', '__')/row['variant']/'ts.xyz'
+def ts_geometry(row):
+    path = (Path(row['results_dir'])/'attempts'/row['group']/row['attempt'].replace('/', '__')/
+            row['variant']/'ts.xyz')
     return read(path).positions if path.exists() else None
 
 
@@ -49,7 +52,7 @@ def median_evaluations(rows):
     return float(np.median(found)) if found else None
 
 
-def p1_summary(rows, results):
+def p1_summary(rows):
     by = {}
     for row in rows:
         by.setdefault(row['attempt'], {})[row['variant']] = row
@@ -60,7 +63,7 @@ def p1_summary(rows, results):
         a, b = pair['legacy'], pair['sella']
         if a['status'] in INDEX_ONE and b['status'] in INDEX_ONE:
             both += 1
-            xa, xb = ts_geometry(results, a), ts_geometry(results, b)
+            xa, xb = ts_geometry(a), ts_geometry(b)
             if (xa is not None and xb is not None and aligned_rmsd(xa, xb) <= .15
                     and abs(a['ts_energy_eV'] - b['ts_energy_eV']) <= .03):
                 same += 1
@@ -85,7 +88,26 @@ def p1_summary(rows, results):
                 both_found=both, same_TS_when_both_found=same,
                 rescued_force_unconverged=rescued, statuses=statuses,
                 legacy_historical_match=sum(bool(r.get('historical_match')) for r in legacy),
-                adopt_dimer_sella=adopt)
+                legacy_historical_status_match=sum(r['status'] == r['historical_status'] for r in legacy),
+                adopt_dimer_sella=adopt,
+                sella_irc=combined_summary(by))
+
+
+def combined_summary(by):
+    """Dimer->Sella with and without MLIP IRC endpoints on the same seeds (P1b)."""
+    pairs = [v for v in by.values() if {'sella', 'sella_irc'} <= set(v)]
+    if not pairs:
+        return None
+    sella, combined = [p['sella'] for p in pairs], [p['sella_irc'] for p in pairs]
+    return dict(attempts=len(pairs), accepted_rate=dict(sella=rate(sella, ACCEPTED),
+                                                        sella_irc=rate(combined, ACCEPTED)),
+                index_one_rate=dict(sella=rate(sella, INDEX_ONE), sella_irc=rate(combined, INDEX_ONE)),
+                unresolved_rescued=sum(p['sella']['status'] == 'unresolved_minimum' and
+                                       p['sella_irc']['status'] in ACCEPTED for p in pairs),
+                accepted_lost=sum(p['sella']['status'] in ACCEPTED and
+                                  p['sella_irc']['status'] not in ACCEPTED for p in pairs),
+                median_evaluations=dict(sella=float(np.median([r['evaluations'] for r in sella])),
+                                        sella_irc=float(np.median([r['evaluations'] for r in combined]))))
 
 
 def p2_summary(rows):
@@ -112,12 +134,12 @@ def p2_summary(rows):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('results', type=Path)
+    parser.add_argument('results', type=Path, nargs='+')
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     rows = load(args.results)
-    summary = dict(results=str(args.results), rows=len(rows),
-                   P1=p1_summary([r for r in rows if r['group'] == 'P1'], args.results),
+    summary = dict(results=[str(r) for r in args.results], rows=len(rows),
+                   P1=p1_summary([r for r in rows if r['group'] == 'P1']),
                    P2=p2_summary([r for r in rows if r['group'] == 'P2']))
     args.out.write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(json.dumps(summary, indent=2))
