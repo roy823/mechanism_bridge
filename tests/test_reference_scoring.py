@@ -1,15 +1,21 @@
 import importlib.util
 from pathlib import Path
 
+import mechbridge.reference_matching as scorer_module
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def load_scorer():
+    return scorer_module
+
+
+def test_scorer_script_imports():
     path = ROOT/'scripts/exploration/score_reference_recovery.py'
     spec = importlib.util.spec_from_file_location('score_reference_recovery', path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module
+    assert module.edge_matches is scorer_module.edge_matches
 
 
 def test_mapped_match_allows_only_reactant_automorphisms():

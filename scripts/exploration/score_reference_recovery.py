@@ -11,63 +11,17 @@ Usage: python score_reference_recovery.py --runs RUN_DIR [RUN_DIR ...] --referen
 """
 import argparse
 import json
-import math
 from pathlib import Path
 import sys
 
-import networkx as nx
 import numpy as np
-from networkx.algorithms.isomorphism import GraphMatcher
-from rdkit import Chem, RDLogger
+from rdkit import RDLogger
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
 from mechbridge.event_graph import geometry_mol, graph_smiles  # noqa: E402
-
-MAX_AUTOMORPHISMS = 5000
-
-
-def stereo_free(smiles):
-    mol = Chem.MolFromSmiles(smiles)
-    Chem.RemoveStereochemistry(mol)
-    return Chem.MolToSmiles(mol, isomericSmiles=False)
-
-
-def bond_set(bonds):
-    return frozenset(tuple(sorted(map(int, b[:2]))) for b in bonds)
-
-
-def automorphisms(numbers, bonds):
-    graph = nx.Graph()
-    graph.add_nodes_from((i, dict(z=int(z))) for i, z in enumerate(numbers))
-    graph.add_edges_from(tuple(b[:2]) for b in bonds)
-    matcher = GraphMatcher(graph, graph, node_match=lambda a, b: a['z'] == b['z'])
-    maps = []
-    for mapping in matcher.isomorphisms_iter():
-        maps.append(mapping)
-        if len(maps) >= MAX_AUTOMORPHISMS:
-            break
-    return maps
-
-
-def permute(bonds, mapping):
-    return frozenset(tuple(sorted((mapping[i], mapping[j]))) for i, j in bonds)
-
-
-def edge_matches(bonds_u, bonds_v, react, prod, maps):
-    """One reactant automorphism must map the endpoints onto (reactant, product)."""
-    return any((permute(bonds_u, m) == react and permute(bonds_v, m) == prod) or
-               (permute(bonds_v, m) == react and permute(bonds_u, m) == prod) for m in maps)
-
-
-def wilson(successes, n, z=1.96):
-    if not n:
-        return None
-    p = successes/n
-    center = (p + z*z/(2*n))/(1 + z*z/n)
-    half = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))/(1 + z*z/n)
-    return [center - half, center + half]
-
+from mechbridge.reference_matching import (MAX_AUTOMORPHISMS, automorphisms, bond_set,  # noqa: E402
+                                           edge_matches, mol_bonds, stereo_free, wilson)
 
 def score_network(network, reference, maps):
     numbers = network['start']['atomic_numbers']
@@ -79,9 +33,7 @@ def score_network(network, reference, maps):
     def node_info(index):
         if index not in cache:
             mol = geometry_mol(numbers, np.asarray(network['nodes'][index]['positions_A']), charge)
-            bonds = frozenset(tuple(sorted((b.GetBeginAtomIdx(), b.GetEndAtomIdx())))
-                              for b in mol.GetBonds())
-            cache[index] = (bonds, stereo_free(graph_smiles(mol)))
+            cache[index] = (mol_bonds(mol), stereo_free(graph_smiles(mol)))
         return cache[index]
 
     attempts = network['attempts']
