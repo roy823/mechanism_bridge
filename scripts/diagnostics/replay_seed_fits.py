@@ -50,7 +50,8 @@ def refit(network, node_id, strategy, proposal, variant, cap):
     started = time.perf_counter()
     try:
         x, _, meta = make_seed(state, mol, strategy, proposal, variant, rng, protocol['symbolic_seed_scale'],
-                               protocol['encounter_policy'], protocol['seed_features'], cap)
+                               protocol['encounter_policy'], protocol['seed_features'], cap,
+                               protocol.get('seed_feature_ablation', 'none'))
     except (ValueError, RuntimeError, ArithmeticError) as exc:     # recoverable in explore()
         return dict(ok=False, error=str(exc), seconds=time.perf_counter() - started, rng=rng)
     return dict(ok=True, nfev=int(meta['geometric_fit_nfev']), cost=float(meta['geometric_fit_cost']),

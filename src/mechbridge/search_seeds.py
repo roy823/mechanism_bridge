@@ -9,6 +9,33 @@ from .arrow_features import (chain_progress_shift, generalized_links, lone_pair_
 
 ENCOUNTER_POLICIES = ('symbolic_only', 'matched_controls')
 SEED_FEATURES = ('legacy', 'arrow_features_v1')
+# Fig. 5c arms for the arrows strategy under arrow_features_v1: leave one feature
+# out, or keep every feature but corrupt the arrows (reversed; shuffled
+# source/sink pairing over the same touched atoms and bonds). 'none' = all features.
+SEED_ABLATIONS = ('none', 'no_lone_pair_direction', 'no_chain_order', 'no_generalized_links',
+                  'no_encounter_alignment', 'reversed_arrows', 'shuffled_arrows')
+
+
+def legacy_links(arrows, index):
+    """Historical coupling: an arrow whose source and sink are both changed bonds."""
+    links = []
+    for arrow in arrows:
+        a, b = tuple(sorted(arrow['source'])), tuple(sorted(arrow['sink']))
+        if a in index and b in index:
+            links.append((index[a], index[b]))
+    return links
+
+
+def ablate_arrows(arrows, ablation, random_seed):
+    """Arrow-corrupting negative controls; other ablations leave the arrows unchanged."""
+    if ablation == 'reversed_arrows':
+        return [dict(a, source=a['sink'], sink=a['source']) for a in reversed(arrows)]
+    if ablation == 'shuffled_arrows':
+        rng = np.random.default_rng([int(random_seed), 11])     # separate stream
+        sources = [arrows[k]['source'] for k in rng.permutation(len(arrows))]
+        sinks = [arrows[k]['sink'] for k in rng.permutation(len(arrows))]
+        return [dict(a, source=u, sink=v) for a, u, v in zip(arrows, sources, sinks)]
+    return arrows
 
 
 def internal_direction(x, direction):
@@ -88,7 +115,8 @@ def reaction_direction(x, ij, delta, unchanged):
 
 
 def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed_scale=1.0,
-              encounter_policy='symbolic_only', seed_features='legacy', seed_fit_max_nfev=200):
+              encounter_policy='symbolic_only', seed_features='legacy', seed_fit_max_nfev=200,
+              seed_feature_ablation='none'):
     """Seed geometry and initial direction for one attempt.
 
     encounter_policy='matched_controls' gives the geometry and center_random
@@ -98,11 +126,14 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
     (arrow_features) and the matched random-order progress axis for 'bond_edits',
     which then never sees the arrows; 'legacy' is the historical behaviour.
     seed_fit_max_nfev caps the symbolic seed-geometry fit (historical value 200).
+    seed_feature_ablation (SEED_ABLATIONS) changes only arrows under arrow_features_v1.
     """
     if encounter_policy not in ENCOUNTER_POLICIES:
         raise ValueError(f'Unknown encounter_policy: {encounter_policy}')
     if seed_features not in SEED_FEATURES:
         raise ValueError(f'Unknown seed_features: {seed_features}')
+    if seed_feature_ablation not in SEED_ABLATIONS:
+        raise ValueError(f'Unknown seed_feature_ablation: {seed_feature_ablation}')
     features = seed_features == 'arrow_features_v1' and strategy in ('bond_edits', 'arrows')
     if features and strategy == 'bond_edits' and proposal is not None:
         proposal = {k: v for k, v in proposal.items() if k != 'arrows'}   # leak guard
@@ -145,7 +176,11 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
     amplitude *= symbolic_seed_scale
     edits = proposal['edits']
     arrows = proposal['arrows'] if (features and strategy == 'arrows') else None
-    extra = (lambda y: lone_pair_alignment_score(y, mol, arrows)) if arrows else None
+    ablation = seed_feature_ablation if arrows is not None else 'none'
+    if arrows is not None:
+        arrows = ablate_arrows(arrows, ablation, random_seed)
+    extra = ((lambda y: lone_pair_alignment_score(y, mol, arrows))
+             if arrows and ablation != 'no_encounter_alignment' else None)
     x, encounter = orient_reactive_encounter(atoms.numbers,x,mol,edits,random_seed,extra)
     old_bonds = bond_orders(mol)
     changed = {tuple(e['atoms']) for e in edits}
@@ -164,8 +199,8 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
     # Matched across net-edit and arrow controls: synchronous, decrease-leading,
     # and increase-leading trajectories. These are proposals, not assumed paths.
     phase = (0., -.15, .15)[sample % 3]
-    shift, chain_lambda = (chain_progress_shift(edits, arrows, sample, random_seed) if features
-                           else (0., None))
+    shift, chain_lambda = (chain_progress_shift(edits, None if ablation == 'no_chain_order' else arrows,
+                                                sample, random_seed) if features else (0., None))
     progress_target = np.clip(fraction + phase*np.array([
         np.sign(e['after']-e['before']) for e in edits]) + shift, .15, .9)
     angles = angle_targets(atoms.numbers, edits, sample)
@@ -175,13 +210,13 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
     lp_terms = []
     if strategy == 'arrows' and arrows is not None:
         # Generalized source/sink coupling along the push-pull chain, plus lone pairs.
-        links = generalized_links(arrows, {tuple(sorted(e['atoms'])): k for k, e in enumerate(edits)})
-        lp_terms = lone_pair_terms(arrows, mol, x)
+        if ablation == 'no_generalized_links':
+            links = legacy_links(arrows, index)
+        else:
+            links = generalized_links(arrows, {tuple(sorted(e['atoms'])): k for k, e in enumerate(edits)})
+        lp_terms = [] if ablation == 'no_lone_pair_direction' else lone_pair_terms(arrows, mol, x)
     elif strategy == 'arrows':
-        for arrow in proposal['arrows']:
-            a, b = tuple(sorted(arrow['source'])), tuple(sorted(arrow['sink']))
-            if a in index and b in index:
-                links.append((index[a], index[b]))
+        links = legacy_links(proposal['arrows'], index)
     # Source/sink progress differences follow the sampled asynchronous targets.
     def residual(flat):
         y = flat.reshape(x.shape)
@@ -230,10 +265,14 @@ def make_seed(atoms, mol, strategy, proposal, sample, random_seed, symbolic_seed
                      chain_shift=np.atleast_1d(shift).tolist())
         if arrows is not None:
             _, _, cyclic = arrow_chain(arrows)
-            terms.update(chain_order='arrow_push_pull_rank', chain_cyclic=cyclic,
+            if ablation != 'none':
+                terms['ablation'] = ablation
+            terms.update(chain_order=('random_bond_permutation_control' if ablation == 'no_chain_order'
+                                      else 'arrow_push_pull_rank'), chain_cyclic=cyclic,
                          generalized_links=len(links), lone_pair_terms=len(lp_terms),
                          lone_pair_residuals_at_seed=lone_pair_residuals(seed, mol, lp_terms, sample),
-                         encounter_lone_pair_alignment=encounter is not None)
+                         encounter_lone_pair_alignment=(encounter is not None and
+                                                        ablation != 'no_encounter_alignment'))
         else:
             terms.update(chain_order='random_bond_permutation_control')
         meta['arrow_terms'] = terms

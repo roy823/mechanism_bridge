@@ -15,7 +15,7 @@ from mechbridge.potentials import load_potential
 from mechbridge.symbolic_library import ArrowLibrary,FilteredArrowLibrary,ResonanceAwareLibrary
 from mechbridge.reaction_network import (CONNECTION_PROTOCOLS, ENCOUNTER_POLICIES, TS_OPTIMIZERS,
                                          SearchProtocol, explore, atomic_json)
-from mechbridge.search_seeds import SEED_FEATURES
+from mechbridge.search_seeds import SEED_ABLATIONS, SEED_FEATURES
 from mechbridge.parallel_network import START_METHODS, explore_shared
 from mechbridge.provenance import runtime_provenance
 from mechbridge.oracle_library import OracleReferenceLibrary
@@ -33,7 +33,7 @@ PROTOCOL_FLAGS = dict(attempts='max_attempts', seeds_per_node='seeds_per_node',
     encounter_policy='encounter_policy', ts_optimizer='ts_optimizer', dimer_fmax='dimer_fmax',
     sella_steps='sella_steps', connection_protocol='connection_protocol', irc_steps='irc_steps',
     seed_features='seed_features', proposal_resonance_forms='proposal_resonance_forms',
-    seed_fit_max_nfev='seed_fit_max_nfev')
+    seed_fit_max_nfev='seed_fit_max_nfev', seed_feature_ablation='seed_feature_ablation')
 
 
 def protocol_from_json(path, seed):
@@ -90,6 +90,8 @@ def main():
     p.add_argument('--irc-steps',type=int,default=300)
     p.add_argument('--proposal-resonance-forms',type=int,default=0,
                    help='Also propose from up to N resonance forms of each node (0: historical)')
+    p.add_argument('--seed-feature-ablation',choices=SEED_ABLATIONS,default='none',
+                   help='Fig. 5c arm for arrows under arrow_features_v1 (none: all features)')
     p.add_argument('--seed-fit-max-nfev',type=int,default=200,
                    help='Iteration cap of the symbolic seed-geometry fit (historical: 200)')
     p.add_argument('--seed-features',choices=SEED_FEATURES,default='legacy',
@@ -126,7 +128,7 @@ def main():
         ts_optimizer=a.ts_optimizer,dimer_fmax=a.dimer_fmax,sella_steps=a.sella_steps,
         connection_protocol=a.connection_protocol,irc_steps=a.irc_steps,
         seed_features=a.seed_features,proposal_resonance_forms=a.proposal_resonance_forms,
-        seed_fit_max_nfev=a.seed_fit_max_nfev)
+        seed_fit_max_nfev=a.seed_fit_max_nfev,seed_feature_ablation=a.seed_feature_ablation)
     if a.outdir.exists():
         raise FileExistsError('Use a new output directory; prior experiments are preserved')
     a.outdir.mkdir(parents=True)

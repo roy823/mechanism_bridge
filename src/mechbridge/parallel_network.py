@@ -67,7 +67,7 @@ def _run_task(task):
         x,direction,meta=make_seed(state,mol,task['seed_strategy'],task['proposal'],
                                    task['variant'],task['random_seed'],protocol.symbolic_seed_scale,
                                    protocol.encounter_policy,protocol.seed_features,
-                                   protocol.seed_fit_max_nfev)
+                                   protocol.seed_fit_max_nfev,protocol.seed_feature_ablation)
         meta.update(random_seed=task['random_seed'],seed_strategy=task['seed_strategy'],
                     generation_seconds=time.perf_counter()-started)
     except Exception as exc:

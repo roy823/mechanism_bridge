@@ -80,3 +80,36 @@ def test_seed_fit_cap_only_changes_fits_that_reach_it():
         assert np.array_equal(base[0], wider[0]) and np.array_equal(base[1], wider[1])
     with pytest.raises(ValueError, match='did not converge'):
         make_seed(atoms, mol, 'arrows', proposal, 0, 29, seed_features='arrow_features_v1', seed_fit_max_nfev=1)
+
+
+def test_seed_feature_ablations_change_only_their_feature():
+    from mechbridge.search_seeds import SEED_ABLATIONS, ablate_arrows
+    mol, atoms, proposal = tautomer()
+    full = [make_seed(atoms, mol, 'arrows', proposal, s, 29, seed_features='arrow_features_v1') for s in range(3)]
+    for sample in range(3):
+        same = make_seed(atoms, mol, 'arrows', proposal, sample, 29, seed_features='arrow_features_v1',
+                         seed_feature_ablation='none')
+        assert np.array_equal(same[0], full[sample][0]) and 'ablation' not in same[2]['arrow_terms']
+    lp = make_seed(atoms, mol, 'arrows', proposal, 0, 29, seed_features='arrow_features_v1',
+                   seed_feature_ablation='no_lone_pair_direction')[2]['arrow_terms']
+    assert lp['lone_pair_terms'] == 0 and lp['ablation'] == 'no_lone_pair_direction'
+    order = make_seed(atoms, mol, 'arrows', proposal, 0, 29, seed_features='arrow_features_v1',
+                      seed_feature_ablation='no_chain_order')[2]['arrow_terms']
+    base = make_seed(atoms, mol, 'bond_edits', proposal, 0, 29, seed_features='arrow_features_v1')
+    assert order['chain_order'] == 'random_bond_permutation_control'
+    assert order['chain_shift'] == base[2]['arrow_terms']['chain_shift']      # matched control axis
+    arrows = proposal['arrows']
+    reversed_ = ablate_arrows(arrows, 'reversed_arrows', 29)
+    assert reversed_[0]['source'] == arrows[-1]['sink'] and reversed_[-1]['sink'] == arrows[0]['source']
+    shuffled = ablate_arrows(arrows, 'shuffled_arrows', 29)
+    assert sorted(map(str, (a['source'] for a in shuffled))) == sorted(map(str, (a['source'] for a in arrows)))
+    for ablation in SEED_ABLATIONS:       # corrupted arrows may need a longer fit, not a failure
+        make_seed(atoms, mol, 'arrows', proposal, 1, 29, seed_features='arrow_features_v1',
+                  seed_fit_max_nfev=3000, seed_feature_ablation=ablation)
+    # bond_edits never sees arrows, so an ablation cannot change its seed.
+    for ablation in ('reversed_arrows', 'no_chain_order'):
+        other = make_seed(atoms, mol, 'bond_edits', proposal, 0, 29, seed_features='arrow_features_v1',
+                          seed_feature_ablation=ablation)
+        assert np.array_equal(other[0], base[0])
+    with pytest.raises(ValueError, match='seed_feature_ablation'):
+        make_seed(atoms, mol, 'arrows', proposal, 0, 29, seed_feature_ablation='unknown')

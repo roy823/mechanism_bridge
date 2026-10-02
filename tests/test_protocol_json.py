@@ -40,3 +40,9 @@ def test_cli_protocol_flags_map_to_protocol_fields():
 def test_seed_fit_cap_must_be_positive():
     with pytest.raises(ValueError, match='seed_fit_max_nfev'):
         SearchProtocol(seed_fit_max_nfev=0)
+
+
+def test_seed_feature_ablation_needs_arrow_features():
+    with pytest.raises(ValueError, match='arrow_features_v1'):
+        SearchProtocol(seed_feature_ablation='reversed_arrows')
+    SearchProtocol(seed_features='arrow_features_v1', seed_feature_ablation='reversed_arrows')

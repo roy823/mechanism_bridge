@@ -20,7 +20,7 @@ from ase.mep import DimerControl, MinModeAtoms
 from rdkit import Chem
 from .physics import analyze_stationary
 from .event_graph import geometry_mol, graph_smiles
-from .search_seeds import ENCOUNTER_POLICIES, SEED_FEATURES, make_seed
+from .search_seeds import ENCOUNTER_POLICIES, SEED_ABLATIONS, SEED_FEATURES, make_seed
 from .exploration_actions import choose_action
 from .saddle_optimization import StationaryDimerTranslate
 from .event_classification import classify_event
@@ -148,6 +148,8 @@ class SearchProtocol:
     # Iteration cap of the symbolic seed-geometry least-squares fit; 200 is the
     # historical value. A fit that converges earlier is unchanged by a larger cap.
     seed_fit_max_nfev: int = 200
+    # Fig. 5c arms (search_seeds.SEED_ABLATIONS); 'none' keeps every arrow feature.
+    seed_feature_ablation: str = 'none'
 
     def __post_init__(self):
         if self.encounter_policy not in ENCOUNTER_POLICIES:
@@ -164,6 +166,10 @@ class SearchProtocol:
             raise ValueError('proposal_resonance_forms must be >= 0')
         if self.seed_fit_max_nfev < 1:
             raise ValueError('seed_fit_max_nfev must be >= 1')
+        if self.seed_feature_ablation not in SEED_ABLATIONS:
+            raise ValueError(f'Unknown seed_feature_ablation: {self.seed_feature_ablation}')
+        if self.seed_feature_ablation != 'none' and self.seed_features != 'arrow_features_v1':
+            raise ValueError("seed_feature_ablation needs seed_features='arrow_features_v1'")
 
 
 def aligned_rmsd(x, y):
@@ -537,7 +543,7 @@ def explore(start, library, backend, strategy, outdir, protocol=SearchProtocol()
                     x, direction, meta = make_seed(state, mols[node_id], seed_strategy, proposal,
                                                    variant, seed_rng, protocol.symbolic_seed_scale,
                                                    protocol.encounter_policy, protocol.seed_features,
-                                                   protocol.seed_fit_max_nfev)
+                                                   protocol.seed_fit_max_nfev, protocol.seed_feature_ablation)
                 except Exception as exc:
                     if not is_recoverable_failure(exc):
                         raise
