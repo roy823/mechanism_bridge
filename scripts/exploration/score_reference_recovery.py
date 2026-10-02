@@ -12,8 +12,12 @@ independent (seeds; reactions of one reactant), so the summary adds a 95%
 percentile interval from a bootstrap over starts (clusters); the Wilson
 interval treats rows as independent and is kept for reference only.
 
+--representable restricts the main denominator to representable reactions;
+--labels adds layers by training-overlap label and the pre-registered main
+layer (unseen plus seen_formula) on that denominator.
+
 Usage: python score_reference_recovery.py --runs RUN_DIR [RUN_DIR ...] --references FILE --out FILE
-         [--groups GROUPS.json]
+         [--groups GROUPS.json] [--representable IDS.json] [--labels OVERLAP.json]
 """
 import argparse
 import json
@@ -81,11 +85,33 @@ def cluster_bootstrap(rows, key, draws, seed):
     return [float(np.percentile(rates, 2.5)), float(np.percentile(rates, 97.5))]
 
 
+MAIN_LAYERS = ('unseen', 'seen_formula')
+
+
+def summarize(rows, draws, seed):
+    """Per strategy: S1 counts, rates, Wilson and cluster-bootstrap intervals."""
+    summary = {}
+    for strategy in sorted({r['strategy'] for r in rows}):
+        mine = [r for r in rows if r['strategy'] == strategy]
+        entry = dict(runs=len(mine), reactions=len({r['reference'] for r in mine}),
+                     starts=len({r['start'] for r in mine}))
+        for key in ('S1_mapped', 'S1_unmapped'):
+            hits = sum(bool(r[key]) for r in mine)
+            entry[key] = hits
+            entry[f'{key}_rate'] = hits/len(mine)
+            entry[f'{key}_rate_wilson95'] = wilson(hits, len(mine))
+            entry[f'{key}_rate_cluster_bootstrap95'] = cluster_bootstrap(mine, key, draws, seed)
+        summary[strategy] = entry
+    return summary
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runs', type=Path, nargs='+', required=True)
     parser.add_argument('--references', type=Path, required=True)
     parser.add_argument('--groups', type=Path, help='Score each representative run against its group')
+    parser.add_argument('--representable', type=Path, help='JSON with representable_ids (main denominator)')
+    parser.add_argument('--labels', type=Path, help='audit_benchmark_overlap.py output')
     parser.add_argument('--bootstrap', type=int, default=10000)
     parser.add_argument('--bootstrap-seed', type=int, default=20261002)
     parser.add_argument('--out', type=Path, required=True)
@@ -108,24 +134,24 @@ def main():
                            seed=network['protocol']['random_seed'], file=str(path),
                            **score_network(network, reference, maps))
                 rows.append(row)
-    summary = {}
+    labels = json.loads(args.labels.read_text(encoding='utf-8'))['labels'] if args.labels else {}
+    keep = (set(json.loads(args.representable.read_text(encoding='utf-8'))['representable_ids'])
+            if args.representable else None)
     for row in rows:
-        entry = summary.setdefault(row['strategy'], dict(runs=0, S1_mapped=0, S1_unmapped=0))
-        entry['runs'] += 1
-        entry['S1_mapped'] += row['S1_mapped']
-        entry['S1_unmapped'] += row['S1_unmapped']
-    for strategy, entry in summary.items():
-        mine = [r for r in rows if r['strategy'] == strategy]
-        entry.update(reactions=len({r['reference'] for r in mine}), starts=len({r['start'] for r in mine}))
-        for key in ('S1_mapped', 'S1_unmapped'):
-            entry[f'{key}_rate'] = entry[key]/entry['runs']
-            entry[f'{key}_rate_wilson95'] = wilson(entry[key], entry['runs'])
-            entry[f'{key}_rate_cluster_bootstrap95'] = cluster_bootstrap(mine, key, args.bootstrap,
-                                                                         args.bootstrap_seed)
+        row['representable'] = keep is None or row['reference'] in keep
+        row['overlap_label'] = labels.get(row['reference'], {}).get('label')
+    base = [r for r in rows if r['representable']]
+    subsets = dict(representable=base) if keep is not None else {}
+    if labels:
+        for name in sorted({r['overlap_label'] for r in base} - {None}):
+            subsets[f'label={name}'] = [r for r in base if r['overlap_label'] == name]
+        subsets['main_layers'] = [r for r in base if r['overlap_label'] in MAIN_LAYERS]
+    summary = summarize(rows, args.bootstrap, args.bootstrap_seed)
+    layers = {k: summarize(v, args.bootstrap, args.bootstrap_seed) for k, v in subsets.items() if v}
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(dict(references=str(args.references), summary=summary, rows=rows),
-                                   indent=2), encoding='utf-8')
-    print(json.dumps(summary, indent=2))
+    args.out.write_text(json.dumps(dict(references=str(args.references), summary=summary, subsets=layers,
+                                        main_layers=list(MAIN_LAYERS), rows=rows), indent=2), encoding='utf-8')
+    print(json.dumps(dict(all=summary, **layers), indent=2))
 
 
 if __name__ == '__main__':

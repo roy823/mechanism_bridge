@@ -71,3 +71,16 @@ def test_t1x_reactant_groups_share_one_geometry(tmp_path, monkeypatch):
     module.main()
     result = json.loads(out.read_text())
     assert result['ids'] == ['r1', 'r3'] and result['groups'] == {'r1': ['r1', 'r2'], 'r3': ['r3']}
+
+
+def test_summary_layers_by_overlap_label():
+    path = ROOT/'scripts/exploration/score_reference_recovery.py'
+    spec = importlib.util.spec_from_file_location('score_reference_recovery', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    rows = [dict(start='a', reference='r1', strategy='arrows', S1_mapped=True, S1_unmapped=False),
+            dict(start='a', reference='r2', strategy='arrows', S1_mapped=False, S1_unmapped=False)]
+    summary = module.summarize(rows, 100, 1)
+    assert summary['arrows']['S1_mapped'] == 1 and summary['arrows']['S1_mapped_rate'] == .5
+    assert summary['arrows']['reactions'] == 2 and summary['arrows']['starts'] == 1
+    assert module.MAIN_LAYERS == ('unseen', 'seen_formula')
