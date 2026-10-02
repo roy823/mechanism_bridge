@@ -492,9 +492,10 @@ def test_irc_connection_protocol(tmp_path,monkeypatch):
     calls=[]
     net=_mock_search_engines(monkeypatch,calls,ts_imaginary=1)
     monkeypatch.setitem(sys.modules,'sella',_fake_sella(calls))
-    x=np.array([[0.,0.,0.],[0.,0.,.75]])
+    # Water, because the endpoints go through real RDKit bond perception.
+    x=np.array([[0.,0.,0.],[.96,0.,0.],[-.24,.93,0.]])
     protocol=net.SearchProtocol(connection_protocol='irc')
-    result=net.search_connection(Atoms('H2',positions=x),np.zeros((2,3)),
+    result=net.search_connection(Atoms('OH2',positions=x),np.zeros((3,3)),
                                  CountedCalculator(_Harmonic(x),1000),tmp_path/'attempt',protocol)
     runs=[c for c in calls if c[0]=='IRC.run']
     assert [c[1] for c in runs]==['reverse','forward']
