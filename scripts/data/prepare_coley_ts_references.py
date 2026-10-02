@@ -1,11 +1,14 @@
 """Attach author TS geometries to the Coley [3+2] references for the representability screen.
 
-The autodE profiles (full_data_profiles.tar.gz) store each TS with the atoms of
-reactant r0 followed by r1. Our starts follow the mapped reaction SMILES, so the
-author order is matched to ours by an element-labelled isomorphism between the
-connectivity perceived from the author's r0 and r1 geometries and our reactant
-bonds; any isomorphism is acceptable because screening and scoring allow
-reactant automorphisms. The TS is used only by the post-search screen, never as
+The autodE profiles (full_data_profiles.tar.gz) hold each optimized TS in the
+author's atom order, which differs from our starts (heavy atoms of both
+reactants first, then hydrogens). In a [3+2] cycloaddition every reactant bond
+survives at the TS and only the two forming bonds (about 2.2 A) are new, so the
+TS connectivity from a distance criterion (RDKit DetermineConnectivity, no bond
+orders) equals the reactant connectivity. The covalent-radius factor is reduced
+from 1.3 until that graph is isomorphic (element-labelled) to our reactant bonds;
+the factor is recorded. Any isomorphism is acceptable because screening and
+scoring allow reactant automorphisms. The TS is used only by the post-search screen, never as
 a search input. References that cannot be matched are kept with the reason and
 admission='no_reference_ts', so the screen skips them.
 Usage: prepare_coley_ts_references.py --profiles full_data_profiles.tar.gz --out FILE
@@ -22,12 +25,14 @@ import networkx as nx
 from networkx.algorithms import isomorphism
 import numpy as np
 from ase.io import read
-from rdkit import RDLogger
+from rdkit import Chem, RDLogger
+from rdkit.Chem import rdDetermineBonds
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'src'))
-from mechbridge.event_graph import geometry_mol  # noqa: E402
 from mechbridge.reference_matching import mol_bonds  # noqa: E402
+
+FACTORS = (1.3, 1.25, 1.2, 1.15, 1.1)
 
 
 def labelled_graph(numbers, bonds):
@@ -37,21 +42,22 @@ def labelled_graph(numbers, bonds):
     return graph
 
 
-def author_reaction(members, rxn_id):
-    """(numbers, reactant bonds, TS positions) in the author's r0+r1 order."""
-    def xyz(prefix):
-        names = [n for n in members if n.startswith(f'full_dataset_profiles/{rxn_id}/{prefix}')
-                 and n.endswith('.xyz') and 'imag_mode' not in n]
-        if len(names) != 1:
-            raise ValueError(f'{len(names)} files for {prefix}')
-        return read(io.StringIO(members[names[0]]), format='xyz')
-    r0, r1, ts = xyz('r0_'), xyz('r1_'), xyz('TS_')
-    numbers = list(r0.numbers) + list(r1.numbers)
-    if list(ts.numbers) != numbers:
-        raise ValueError('TS atoms are not r0 followed by r1')
-    bonds = set(mol_bonds(geometry_mol(r0.numbers, r0.positions, 0)))
-    bonds |= {(i + len(r0), j + len(r0)) for i, j in mol_bonds(geometry_mol(r1.numbers, r1.positions, 0))}
-    return numbers, bonds, ts.positions
+def author_ts(members, rxn_id):
+    """The optimized TS (ASE Atoms) of one reaction, in the author's atom order."""
+    names = [n for n in members if n.startswith(f'full_dataset_profiles/{rxn_id}/TS_')
+             and n.endswith('.xyz') and 'imag_mode' not in n]
+    if len(names) != 1:
+        raise ValueError(f'{len(names)} TS files')
+    return read(io.StringIO(members[names[0]]), format='xyz')
+
+
+def connectivity(numbers, positions, factor):
+    table = Chem.GetPeriodicTable()
+    block = f'{len(numbers)}\n\n' + '\n'.join(f'{table.GetElementSymbol(int(z))} {x:.10f} {y:.10f} {w:.10f}'
+                                             for z, (x, y, w) in zip(numbers, positions))
+    mol = Chem.MolFromXYZBlock(block)
+    rdDetermineBonds.DetermineConnectivity(mol, useHueckel=False, covFactor=factor)
+    return mol_bonds(mol)
 
 
 def main():
@@ -76,18 +82,23 @@ def main():
     for reference in references:
         out = dict(reference)
         try:
-            numbers, bonds, ts = author_reaction(members, reference['rxn_id'])
+            ts = author_ts(members, reference['rxn_id'])
             ours = labelled_graph(reference['atomic_numbers'], reference['reactant_bonds'])
-            theirs = labelled_graph(numbers, bonds)
-            matcher = isomorphism.GraphMatcher(theirs, ours, node_match=lambda a, b: a['z'] == b['z'])
-            mapping = next(matcher.isomorphisms_iter(), None)
+            mapping = factor = None
+            for factor in FACTORS:
+                theirs = labelled_graph(ts.numbers, connectivity(ts.numbers, ts.positions, factor))
+                matcher = isomorphism.GraphMatcher(theirs, ours, node_match=lambda a, b: a['z'] == b['z'])
+                mapping = next(matcher.isomorphisms_iter(), None)
+                if mapping is not None:
+                    break
             if mapping is None:
-                raise ValueError('author reactant connectivity differs from the reference reactant')
-            order = np.empty(len(numbers), dtype=int)
+                raise ValueError('TS connectivity never matches the reference reactant')
+            order = np.empty(len(ts), dtype=int)
             for author, mine in mapping.items():
                 order[mine] = author
-            out['ts_positions_A'] = ts[order].tolist()
-            out['ts_source'] = 'Coley/Stuyver autodE profile TS, author order mapped by isomorphism'
+            out['ts_positions_A'] = ts.positions[order].tolist()
+            out['ts_source'] = ('Coley/Stuyver autodE profile TS (optimized); author order mapped by an '
+                                f'isomorphism of the TS connectivity at covalent factor {factor}')
         except (ValueError, RuntimeError, KeyError) as exc:
             # This file only feeds the screen, which reads admitted references; scoring
             # keeps the original references file, where the reaction stays admitted.
