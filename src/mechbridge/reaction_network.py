@@ -217,9 +217,23 @@ def edge_chemistry(attempt_mols, node_mols):
     kept under node_frame_endpoint_chemistry when it differs, for comparison
     with runs made before this change.
     """
-    chemistry = classify_event(*attempt_mols)
+    try:
+        chemistry = classify_event(*attempt_mols)
+    except Exception as exc:
+        if not is_recoverable_failure(exc):
+            raise
+        # RDKit could not perceive or canonicalize these endpoints; keep the edge,
+        # mark it unclassified, and fall back to graph identity for its kind.
+        same = graph_smiles(attempt_mols[0]) == graph_smiles(attempt_mols[1])
+        chemistry = dict(classification='unclassified', error=f'{type(exc).__name__}: {exc}',
+                         cross_fragment_bonds=[], resonance_equivalent=same)
     fields = dict(endpoint_chemistry=chemistry, endpoint_chemistry_atom_frame='attempt')
-    legacy = classify_event(*node_mols)
+    try:
+        legacy = classify_event(*node_mols)
+    except Exception as exc:
+        if not is_recoverable_failure(exc):
+            raise
+        return fields
     if ((legacy['classification'], legacy['cross_fragment_bonds']) !=
             (chemistry['classification'], chemistry['cross_fragment_bonds'])):
         fields['node_frame_endpoint_chemistry'] = legacy

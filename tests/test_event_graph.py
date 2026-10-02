@@ -105,3 +105,30 @@ def test_graph_smiles_falls_back_when_canonicalization_fails(monkeypatch):
     monkeypatch.setattr(eg.Chem, 'MolToSmiles', flaky)
     assert eg.graph_smiles(mol) == expected
     assert calls == [True, False, True]
+
+
+def test_resonance_check_skips_forms_reported_as_value_errors(monkeypatch):
+    import mechbridge.event_graph as eg
+    from mechbridge.symbolic_library import parse_explicit
+    left, right = parse_explicit('CC=O'), parse_explicit('C=CO')
+    broken = object()
+    real = eg.graph_smiles
+    def graph(m):
+        if m is broken:
+            raise ValueError('RDKit could not canonicalize the graph')
+        return real(m)
+    monkeypatch.setattr(eg, 'graph_smiles', graph)
+    monkeypatch.setattr(eg.Chem, 'ResonanceMolSupplier', lambda *args, **kwargs: [broken])
+    assert eg.resonance_equivalent(left, right) is False
+
+
+def test_edge_chemistry_marks_unclassifiable_edges(monkeypatch):
+    import mechbridge.reaction_network as net
+    from mechbridge.symbolic_library import parse_explicit
+    def fail(*args):
+        raise ValueError('RDKit could not canonicalize the graph')
+    monkeypatch.setattr(net, 'classify_event', fail)
+    a, b = parse_explicit('CC=O'), parse_explicit('C=CO')
+    fields = net.edge_chemistry([a, b], [a, b])
+    assert fields['endpoint_chemistry']['classification'] == 'unclassified'
+    assert fields['endpoint_chemistry']['resonance_equivalent'] is False

@@ -59,7 +59,7 @@ def resonance_equivalent(left, right):
         if m is None:continue
         try:
             if graph_smiles(m)==target:return True
-        except RuntimeError:
+        except (RuntimeError, ValueError):   # graph_smiles reports canonicalization failure as ValueError
             continue
     return False
 
