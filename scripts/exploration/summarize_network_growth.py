@@ -24,12 +24,13 @@ def main():
             run=root/'search'/job['folder']
             path=run/job['start']/strategy/'network.json'
             n=json.loads(path.read_text(encoding='utf-8'))
-            if n['status']=='running':raise ValueError('Unfinished network')
+            if n['status'] in ('running','aborted_error'):raise ValueError('Unfinished network')
             metric=growth_metrics(n)
             rows.append(dict(start=job['start'],strategy=strategy,status=n['status'],
                 attempts=len(n['attempts']),evaluations=n['evaluations'],
                 model_calls=n['model_calls'],model_seconds=n['model_seconds'],seconds=n['elapsed_seconds'],
-                outcomes=dict(Counter(t['status'] for t in n['attempts'])),**metric,
+                outcomes=dict(Counter(t['status'] for t in n['attempts'])),
+                **{k:value for k,value in metric.items() if k!='enumerated_chains'},
                 file=path.relative_to(ROOT).as_posix()))
             if selection is None and strategy in ('arrows','hybrid') and metric['chains']:
                 chain=metric['chains'][0]
