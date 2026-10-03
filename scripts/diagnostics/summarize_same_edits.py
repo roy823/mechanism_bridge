@@ -15,7 +15,10 @@ Tests per group:
               intended success, paired by (sample, random seed) over the seeds
               both arms ran.
 Holm correction is applied within each test family across groups.
-Usage: summarize_same_edits.py RUN.json [...] --out FILE
+Post hoc, not pre-registered (--references, benchmark starts only): per arm, accepted attempts
+whose two end graphs are the reference reactant and product (stereo-free keys), and per group
+the number of formally charged atoms in the source and the predicted graph.
+Usage: summarize_same_edits.py RUN.json [...] --out FILE [--references FILE]
 """
 import argparse
 from itertools import combinations
@@ -25,6 +28,7 @@ import sys
 
 import networkx as nx
 import numpy as np
+from rdkit import Chem
 from scipy.stats import binomtest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -82,6 +86,18 @@ def intended(row, source, predicted):
         return False
 
 
+def safe_key(smiles):
+    try:
+        return stereo_free(smiles)
+    except ValueError:
+        return smiles
+
+
+def charged_atoms(smiles):
+    mol = Chem.MolFromSmiles(smiles, sanitize=False)
+    return None if mol is None else sum(a.GetFormalCharge() != 0 for a in mol.GetAtoms())
+
+
 def mcnemar(rows_a, rows_b, success=lambda r: r['status'] in ACCEPTED):
     """Exact McNemar on success, paired by (sample, seed)."""
     ok_a = {(r['sample'], r['seed']): success(r) for r in rows_a}
@@ -106,7 +122,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('runs', type=Path, nargs='+')
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--references', type=Path, help='benchmark references (post hoc reference hits)')
     args = parser.parse_args()
+    references = ({r['id']: r for r in map(json.loads, args.references.read_text(encoding='utf-8').splitlines())}
+                  if args.references else {})
     out = []
     for path in args.runs:
         report = json.loads(path.read_text(encoding='utf-8'))
@@ -139,11 +158,18 @@ def main():
                 per_arm[arm] = dict(attempts=len(mine), accepted=len(idx), intended=sum(hit(r) for r in mine),
                                     evaluations=sum(r['evaluations'] for r in mine),
                                     clusters=sorted({cluster[i] for i in idx}))
+                reference = references.get(report['start'])
+                if reference is not None:
+                    keys = sorted([reference['reactant_key'], reference['product_key']])
+                    per_arm[arm]['reference_hits'] = sum(
+                        r['status'] in ACCEPTED and len(r.get('endpoint_graphs') or []) == 2
+                        and sorted(safe_key(x) for x in r['endpoint_graphs']) == keys for r in mine)
             arrow_idx = [i for i, r in enumerate(accepted) if r['arm'] != 'bond_edits']
             entry = dict(start=report['start'], group=g, predicted_graph=group['predicted_graph'],
                          arrow_sets=[s['template_id'] for s in group['arrow_sets']],
                          from_resonance=[('resonance' in (s.get('origin') or '')) for s in group['arrow_sets']],
                          core_atoms=core, pair_relations=counts, clusters=len(set(cluster.values())),
+                         charged_atoms=dict(source=charged_atoms(source), predicted=charged_atoms(predicted)),
                          per_arm=per_arm,
                          arrow_set_cluster_p=permutation_p([accepted[i]['arm'] for i in arrow_idx],
                                                            [cluster[i] for i in arrow_idx]),
