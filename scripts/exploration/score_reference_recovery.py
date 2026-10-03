@@ -15,9 +15,15 @@ interval treats rows as independent and is kept for reference only.
 --representable restricts the main denominator to representable reactions;
 --labels adds layers by training-overlap label and the pre-registered main
 layer (unseen plus seen_formula) on that denominator.
+--root-check (root_preservation.py output) adds, for every subset, a copy
+without the starts whose MLIP-relaxed root does not keep the reference
+reactant connectivity (sensitivity analysis, plan §5, 2026-10-02 22:05 EDT).
+--from-scores reuses the rows of an earlier output instead of scoring the
+networks again (the subsets and intervals are recomputed).
 
 Usage: python score_reference_recovery.py --runs RUN_DIR [RUN_DIR ...] --references FILE --out FILE
-         [--groups GROUPS.json] [--representable IDS.json] [--labels OVERLAP.json]
+         [--groups GROUPS.json] [--representable IDS.json] [--labels OVERLAP.json] [--root-check FILE]
+       python score_reference_recovery.py --from-scores OLD.json --references FILE --out FILE [...]
 """
 import argparse
 import json
@@ -107,21 +113,25 @@ def summarize(rows, draws, seed):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--runs', type=Path, nargs='+', required=True)
+    parser.add_argument('--runs', type=Path, nargs='+')
+    parser.add_argument('--from-scores', type=Path, help='reuse the rows of an earlier output')
     parser.add_argument('--references', type=Path, required=True)
     parser.add_argument('--groups', type=Path, help='Score each representative run against its group')
     parser.add_argument('--representable', type=Path, help='JSON with representable_ids (main denominator)')
     parser.add_argument('--labels', type=Path, help='audit_benchmark_overlap.py output')
+    parser.add_argument('--root-check', type=Path, help='root_preservation.py output (sensitivity subsets)')
     parser.add_argument('--bootstrap', type=int, default=10000)
     parser.add_argument('--bootstrap-seed', type=int, default=20261002)
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     RDLogger.DisableLog('rdApp.*')
+    if not args.runs and not args.from_scores:
+        parser.error('give --runs or --from-scores')
     references = {r['id']: r for r in map(json.loads,
                   args.references.read_text(encoding='utf-8').splitlines())}
     groups = json.loads(args.groups.read_text(encoding='utf-8'))['groups'] if args.groups else None
-    rows = []
-    for run in args.runs:
+    rows = json.loads(args.from_scores.read_text(encoding='utf-8'))['rows'] if args.from_scores else []
+    for run in args.runs or []:
         for path in sorted(run.rglob('network.json')):
             network = json.loads(path.read_text(encoding='utf-8'))
             start = network['start']['id']
@@ -146,6 +156,10 @@ def main():
         for name in sorted({r['overlap_label'] for r in base} - {None}):
             subsets[f'label={name}'] = [r for r in base if r['overlap_label'] == name]
         subsets['main_layers'] = [r for r in base if r['overlap_label'] in MAIN_LAYERS]
+    if args.root_check:
+        changed = {r['start'] for r in json.loads(args.root_check.read_text(encoding='utf-8'))['not_preserved']}
+        for name, subset in list(subsets.items()) + [('all', rows)]:
+            subsets[f'{name}_root_preserved'] = [r for r in subset if r['start'] not in changed]
     summary = summarize(rows, args.bootstrap, args.bootstrap_seed)
     layers = {k: summarize(v, args.bootstrap, args.bootstrap_seed) for k, v in subsets.items() if v}
     args.out.parent.mkdir(parents=True, exist_ok=True)
