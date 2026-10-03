@@ -106,6 +106,7 @@ def main():
         axes[1].annotate('n.d.' if p is None else f'p={p:.2g}', (k, max(diff.max(), 0)), textcoords='offset points',
                          xytext=(0, 6), ha='center', fontsize=7)
     axes[1].axhline(0, color='grey', lw=.8)
+    axes[1].margins(y=.15)                      # room for the p labels above the highest point
     axes[1].set(xticks=range(len(ablations)), ylabel='ablation - full arrows (pairs)',
                 title='(b) paired differences (Holm p)')
     axes[1].set_xticklabels([short(a) for a in ablations], rotation=40, ha='right', fontsize=8)
