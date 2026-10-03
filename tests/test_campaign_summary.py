@@ -60,3 +60,27 @@ def test_species_connectivity_counts_reoriented_encounter_complexes():
     assert summary.root_pairs(network, network['edges'], species=False) == set()
     assert summary.species_reach(network) == (1, 1)
     assert summary.anytime(network) == [(550, 1)] and summary.anytime(network, species=False) == [(550, 0)]
+
+
+def test_campaigns_with_other_protocols_form_separate_arms(tmp_path, monkeypatch):
+    import json
+    summary = load()
+    run = dict(network(), status='completed', evaluations=690)
+    run['attempts'] = [dict(a, source_node=0) for a in run['attempts']]
+    def campaign(name, protocol):
+        d = tmp_path/name
+        net = d/'runs/a/arrows/s17/a/arrows'
+        net.mkdir(parents=True)
+        (d/'campaign.json').write_text(json.dumps(dict(protocol=f'configs/{protocol}.json')))
+        (d/'manifest.tsv').write_text('task_id\tstart_file\tstart_id\tstrategy\tseed\tpotential\toutdir\n'
+                                      '1\tx\ta\tarrows\t17\taimnet2-rxn\ta/arrows/s17\n')
+        (net/'network.json').write_text(json.dumps(run))
+        return d
+    out = tmp_path/'summary.json'
+    monkeypatch.setattr('sys.argv', ['s', str(campaign('C1', 'FP-JCTC-1')),
+                                     str(campaign('C8_x', 'FP-JCTC-1-ablation-x')), '--out', str(out)])
+    summary.main()
+    result = json.loads(out.read_text())
+    assert set(result['per_strategy']) == {'arrows', 'arrows@FP-JCTC-1-ablation-x'}
+    assert 'arrows@FP-JCTC-1-ablation-x_vs_arrows' in result['paired_tests']
+    assert {r['protocol'] for r in result['rows']} == {'FP-JCTC-1', 'FP-JCTC-1-ablation-x'}

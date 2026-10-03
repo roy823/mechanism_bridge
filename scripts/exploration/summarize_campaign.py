@@ -11,8 +11,11 @@ are reported alongside. Per strategy: means over systems of per-system seed mean
 and paired Wilcoxon signed-rank tests across systems against a reference
 strategy (e.g. arrows vs bond_edits, every strategy vs geometry).
 Several campaigns can be pooled (e.g. Fig. 3 = the first 20 Coley starts of the
-Coley campaign plus the growth campaign) and restricted with --ids. Runs that
-are still running or ended in aborted_error count as missing, not as zero.
+Coley campaign plus the growth campaign) and restricted with --ids. A campaign
+whose protocol is not FP-JCTC-1 labels its runs strategy@protocol (e.g. the
+arrows-legacy arm of Fig. 5a, the seed-feature ablations of Fig. 5c), and each
+such arm is also tested against its base strategy. Runs that are still running
+or ended in aborted_error count as missing, not as zero.
 Usage: summarize_campaign.py CAMPAIGN_DIR [...] --out FILE [--budget 16000] [--ids F.json]
 """
 import argparse
@@ -112,8 +115,11 @@ def main():
         keep = set(data if isinstance(data, list) else data['ids'])
     manifest = []
     for campaign in args.campaigns:
+        protocol = Path(json.loads((campaign/'campaign.json').read_text(encoding='utf-8'))['protocol']).stem
+        suffix = '' if protocol == 'FP-JCTC-1' else '@' + protocol
         tasks = csv.DictReader((campaign/'manifest.tsv').open(encoding='utf-8'), delimiter='\t')
-        manifest += [dict(t, campaign=campaign) for t in tasks if keep is None or t['start_id'] in keep]
+        manifest += [dict(t, campaign=campaign, protocol=protocol, strategy=t['strategy'] + suffix)
+                     for t in tasks if keep is None or t['start_id'] in keep]
     rows, missing = [], []
     for task in manifest:
         paths = list((task['campaign']/'runs'/task['outdir']).glob('*/*/network.json'))
@@ -128,7 +134,7 @@ def main():
         curve, physical = anytime(network), anytime(network, species=False)
         new_species, depth = species_reach(network)
         rows.append(dict(campaign=task['campaign'].name, task=int(task['task_id']), start=task['start_id'],
-                         strategy=task['strategy'],
+                         strategy=task['strategy'], protocol=task['protocol'],
                          seed=int(task['seed']), status=network['status'], evaluations=network.get('evaluations'),
                          attempts=len(network['attempts']), edges=len(network['edges']),
                          root_chemical_pairs=len(root_pairs(network, network['edges'])),
@@ -152,6 +158,10 @@ def main():
             tests[f'{s}_vs_geometry'] = paired_test(per_system, s, 'geometry')
     if 'arrows' in per_system and 'bond_edits' in per_system:
         tests['arrows_vs_bond_edits'] = paired_test(per_system, 'arrows', 'bond_edits')
+    for s in strategies:
+        base = s.split('@')[0]
+        if '@' in s and base in per_system:
+            tests[f'{s}_vs_{base}'] = paired_test(per_system, s, base)
     statuses = {}
     for row in rows:
         statuses[row['status']] = statuses.get(row['status'], 0) + 1

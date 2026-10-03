@@ -8,7 +8,9 @@ graph (stereo-free; 'intended'). Redundancy: the share of attempts whose (source
 predicted graph) pair was already proposed earlier in the same run.
 Aggregates per strategy (pooled over attempts, plus per-system means of the per-run
 values) and per proposal origin within each strategy (e.g. transferred published
-templates versus grammar arrows). Runs still running or aborted are skipped.
+templates versus grammar arrows). A campaign whose protocol is not FP-JCTC-1 labels
+its runs strategy@protocol, as in summarize_campaign.py. Runs still running or
+aborted are skipped.
 Usage: attempt_outcomes.py CAMPAIGN_DIR [...] --out FILE [--ids F.json]
 """
 import argparse
@@ -84,6 +86,8 @@ def main():
     per_run = defaultdict(lambda: defaultdict(list))   # strategy -> start -> per-run dicts
     skipped = []
     for campaign in args.campaigns:
+        protocol = Path(json.loads((campaign/'campaign.json').read_text(encoding='utf-8'))['protocol']).stem
+        suffix = '' if protocol == 'FP-JCTC-1' else '@' + protocol
         for task in csv.DictReader((campaign/'manifest.tsv').open(encoding='utf-8'), delimiter='\t'):
             if keep is not None and task['start_id'] not in keep:
                 continue
@@ -93,7 +97,7 @@ def main():
                 skipped.append(f"{campaign.name}:{task['task_id']}")
                 continue
             rows = run_outcomes(network)
-            strategy = task['strategy']
+            strategy = task['strategy'] + suffix
             pooled[strategy] += rows
             for row in rows:
                 by_origin[strategy][row['origin']].append(row)
