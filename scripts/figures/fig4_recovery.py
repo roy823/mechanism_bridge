@@ -17,6 +17,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt  # noqa: E402
+import matplotlib.ticker  # noqa: E402
 import numpy as np  # noqa: E402
 
 ORDER = ('geometry', 'center_random', 'bond_edits', 'arrows', 'pygsm_edits', 'pygsm_b2f2', 'pygsm_oracle')
@@ -69,6 +70,7 @@ def main():
                 title=f'{name}\n({layer}, {len({r["reference"] for r in rows})} reactions)')
         top.tick_params(axis='x', rotation=30)
         bottom.set(xlabel='MLIP evaluations', ylabel='recovered within budget', ylim=(0, 1))
+        bottom.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(4))   # narrow panels: keep labels apart
         bottom.legend(frameon=False, fontsize=8)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(args.out.with_suffix('.png'), dpi=180)
