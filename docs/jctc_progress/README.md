@@ -62,4 +62,5 @@
 - `methods_draft_FP-JCTC-1.md`：方法初稿（英文正文）；
 - `pre_freeze_tests.md`：冻结前测试记录；
 - `latent_dynamics_plan.md`：潜空间动力学与 TransitionNet 的调研与设想；
+- `fp_jctc2_plan_draft.md`：FP-JCTC-2 修正与验证计划（草案，待确认）；
 - `figures/`：主要图。
