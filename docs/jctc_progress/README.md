@@ -53,7 +53,7 @@
    - 再用一个新模型判断给定条件（温度、溶剂、pH）下哪些边可达（参考 ReactionAtlas，arXiv 2606.30778）；
    - 以 ReactionAtlas 公开数据作对标；
    - 目标体系是从小分子出发的糖酵解网络（含磷酸与溶剂）。
-3. 潜空间动力学：把网络中的极小、TS 与 IRC 路径放进潜在表示空间，把反应理解为能量曲面上的轨迹（正在调研）。
+3. 潜空间动力学：把网络中的极小、TS 与 IRC 路径放进潜在表示空间，把反应理解为能量曲面上的轨迹。调研与设想见 `latent_dynamics_plan.md`。
 
 ## 5. 文件
 
@@ -61,4 +61,5 @@
 - `campaign_plan.md`：战役设计与事先写定的判据；
 - `methods_draft_FP-JCTC-1.md`：方法初稿（英文正文）；
 - `pre_freeze_tests.md`：冻结前测试记录；
+- `latent_dynamics_plan.md`：潜空间动力学与 TransitionNet 的调研与设想；
 - `figures/`：主要图。
